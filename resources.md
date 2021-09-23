@@ -1793,3 +1793,15 @@ Python Flask:
 -   [Flask Advanced Patterns](https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1)
 
 -   [Flask MVC Boilerplate](https://github.com/tojrobinson/flask-mvc)
+
+
+
+
+
+---
+---
+
+
+# Javascript Resources
+
+
