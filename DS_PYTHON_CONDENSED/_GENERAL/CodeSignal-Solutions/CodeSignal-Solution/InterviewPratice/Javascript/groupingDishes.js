@@ -42,10 +42,10 @@ function groupingDishes(dishes) {
 }
 
 let dishes = [
-  ['Salad', 'Tomato', 'Cucumber', 'Salad', 'Sauce'],
-  ['Pizza', 'Tomato', 'Sausage', 'Sauce', 'Dough'],
-  ['Quesadilla', 'Chicken', 'Cheese', 'Sauce'],
-  ['Sandwich', 'Salad', 'Bread', 'Tomato', 'Cheese'],
+  ["Salad", "Tomato", "Cucumber", "Salad", "Sauce"],
+  ["Pizza", "Tomato", "Sausage", "Sauce", "Dough"],
+  ["Quesadilla", "Chicken", "Cheese", "Sauce"],
+  ["Sandwich", "Salad", "Bread", "Tomato", "Cheese"],
 ];
 
 let input = groupingDishes(dishes);

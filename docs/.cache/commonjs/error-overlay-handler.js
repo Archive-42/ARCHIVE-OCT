@@ -10,9 +10,16 @@ var ErrorOverlay = _interopRequireWildcard(require("react-error-overlay"));
 // Report runtime errors
 ErrorOverlay.startReportingRuntimeErrors({
   onError: () => {},
-  filename: `/commons.js`
+  filename: `/commons.js`,
 });
-ErrorOverlay.setEditorHandler(errorLocation => window.fetch(`/__open-stack-frame-in-editor?fileName=` + window.encodeURIComponent(errorLocation.fileName) + `&lineNumber=` + window.encodeURIComponent(errorLocation.lineNumber || 1)));
+ErrorOverlay.setEditorHandler((errorLocation) =>
+  window.fetch(
+    `/__open-stack-frame-in-editor?fileName=` +
+      window.encodeURIComponent(errorLocation.fileName) +
+      `&lineNumber=` +
+      window.encodeURIComponent(errorLocation.lineNumber || 1)
+  )
+);
 const errorMap = {};
 exports.errorMap = errorMap;
 
@@ -25,21 +32,23 @@ const handleErrorOverlay = () => {
   let errorStringsToDisplay = [];
 
   if (errors.length > 0) {
-    errorStringsToDisplay = flat(errors).map(error => {
-      if (typeof error === `string`) {
-        return error;
-      } else if (typeof error === `object`) {
-        const errorStrBuilder = [error.text];
+    errorStringsToDisplay = flat(errors)
+      .map((error) => {
+        if (typeof error === `string`) {
+          return error;
+        } else if (typeof error === `object`) {
+          const errorStrBuilder = [error.text];
 
-        if (error.filePath) {
-          errorStrBuilder.push(`File: ${error.filePath}`);
+          if (error.filePath) {
+            errorStrBuilder.push(`File: ${error.filePath}`);
+          }
+
+          return errorStrBuilder.join(`\n\n`);
         }
 
-        return errorStrBuilder.join(`\n\n`);
-      }
-
-      return null;
-    }).filter(Boolean);
+        return null;
+      })
+      .filter(Boolean);
   }
 
   if (errorStringsToDisplay.length > 0) {
@@ -49,7 +58,7 @@ const handleErrorOverlay = () => {
   }
 };
 
-const clearError = errorID => {
+const clearError = (errorID) => {
   delete errorMap[errorID];
   handleErrorOverlay();
 };

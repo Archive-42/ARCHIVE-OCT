@@ -1,4 +1,3 @@
-
 ---
 section: configuring-npm
 title: folders
@@ -224,9 +223,11 @@ cannot be found elsewhere. See [`package.json`](/configuring-npm/package.json) f
 - [npm publish](/cli-commands/npm-publish)
 
 ---
+
 section: configuring-npm
 title: install
 description: Download and install node and npm
+
 ---
 
 # install(5)
@@ -293,9 +294,11 @@ For more information on installing Node.js on a variety of operating systems, se
 [pkg-mgr]: https://nodejs.org/en/download/package-manager/
 
 ---
+
 section: configuring-npm
 title: npmrc
 description: The npm config files
+
 ---
 
 # npmrc(5)
@@ -397,9 +400,11 @@ manner.
 - [npm](/cli-commands/npm)
 
 ---
+
 section: configuring-npm
 title: package.json
 description: Specifics of npm's package.json handling
+
 ---
 
 # package.json(5)
@@ -1321,9 +1326,11 @@ npm will default some values based on package contents.
 - [npm uninstall](/cli-commands/npm-uninstall)
 
 ---
+
 section: configuring-npm
 title: package-lock.json
 description: A manifestation of the manifest
+
 ---
 
 # package-lock.json(5)
@@ -1468,9 +1475,11 @@ The dependencies of this dependency, exactly as at the top level.
 - [npm install](/cli-commands/npm-install)
 
 ---
+
 section: configuring-npm
 title: package-locks
 description: An explanation of npm lockfiles
+
 ---
 
 # package-locks(5)
@@ -1650,9 +1659,11 @@ pre-`npm@5.7.0` versions of npm 5, albeit a bit more noisily. Note that if
 - [npm shrinkwrap](/cli-commands/npm-shrinkwrap)
 
 ---
+
 section: configuring-npm
 title: shrinkwrap.json
 description: A publishable lockfile
+
 ---
 
 # npm-shrinkwrap.json(5)
@@ -1683,4 +1694,3 @@ to the manual page for [package-lock.json](/configuring-npm/package-lock-json).
 - [package-lock.json](/configuring-npm/package-lock-json)
 - [package.json](/configuring-npm/package-json)
 - [npm install](/cli-commands/npm-install)
-

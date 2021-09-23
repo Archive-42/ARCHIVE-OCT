@@ -3,23 +3,29 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.cleanPath = exports.findPath = exports.findMatchPath = exports.setMatchPaths = void 0;
+exports.cleanPath =
+  exports.findPath =
+  exports.findMatchPath =
+  exports.setMatchPaths =
+    void 0;
 
 var _utils = require("@reach/router/lib/utils");
 
 var _stripPrefix = _interopRequireDefault(require("./strip-prefix"));
 
-var _normalizePagePath = _interopRequireDefault(require("./normalize-page-path"));
+var _normalizePagePath = _interopRequireDefault(
+  require("./normalize-page-path")
+);
 
 const pathCache = new Map();
 let matchPaths = [];
 
-const trimPathname = rawPathname => {
+const trimPathname = (rawPathname) => {
   const pathname = decodeURIComponent(rawPathname); // Remove the pathPrefix from the pathname.
 
   const trimmedPathname = (0, _stripPrefix.default)(pathname, __BASE_PATH__) // Remove any hashfragment
-  .split(`#`)[0] // Remove search query
-  .split(`?`)[0];
+    .split(`#`)[0] // Remove search query
+    .split(`?`)[0];
   return trimmedPathname;
 };
 /**
@@ -28,8 +34,7 @@ const trimPathname = rawPathname => {
  * @param {Array<{path: string, matchPath: string}>} value collection of matchPaths
  */
 
-
-const setMatchPaths = value => {
+const setMatchPaths = (value) => {
   matchPaths = value;
 };
 /**
@@ -41,16 +46,12 @@ const setMatchPaths = value => {
  * @return {string|null}
  */
 
-
 exports.setMatchPaths = setMatchPaths;
 
-const findMatchPath = rawPathname => {
+const findMatchPath = (rawPathname) => {
   const trimmedPathname = cleanPath(rawPathname);
 
-  for (const {
-    matchPath,
-    path
-  } of matchPaths) {
+  for (const { matchPath, path } of matchPaths) {
     if ((0, _utils.match)(matchPath, trimmedPathname)) {
       return (0, _normalizePagePath.default)(path);
     }
@@ -66,10 +67,9 @@ const findMatchPath = rawPathname => {
 // Or if `match-paths.json` contains `{ "/foo*": "/page1", ...}`, then
 // `/foo?bar=far` => `/page1`
 
-
 exports.findMatchPath = findMatchPath;
 
-const findPath = rawPathname => {
+const findPath = (rawPathname) => {
   const trimmedPathname = trimPathname(rawPathname);
 
   if (pathCache.has(trimmedPathname)) {
@@ -93,10 +93,9 @@ const findPath = rawPathname => {
  * @return {string}
  */
 
-
 exports.findPath = findPath;
 
-const cleanPath = rawPathname => {
+const cleanPath = (rawPathname) => {
   const trimmedPathname = trimPathname(rawPathname);
   let foundPath = trimmedPathname;
 

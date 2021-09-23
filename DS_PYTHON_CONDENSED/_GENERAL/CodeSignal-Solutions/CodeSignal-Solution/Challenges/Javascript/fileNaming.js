@@ -7,7 +7,7 @@ function fileNaming(names) {
     }
     let s = names[i];
     for (let n = 1; list.includes(s); n++) {
-      s = names[i] + '(' + n + ')';
+      s = names[i] + "(" + n + ")";
     }
     list.push(s);
   }

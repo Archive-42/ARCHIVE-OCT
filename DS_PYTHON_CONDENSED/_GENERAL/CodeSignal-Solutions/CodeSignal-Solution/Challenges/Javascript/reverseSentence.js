@@ -1,3 +1,3 @@
 function reverseSentence(sentence) {
-  return sentence.split(' ').reverse().join(' ');
+  return sentence.split(" ").reverse().join(" ");
 }

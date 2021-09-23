@@ -1,4 +1,3 @@
-
 ---
 section: using-npm
 title: config
@@ -1302,9 +1301,11 @@ Set to `"browser"` to view html help content in the default web browser.
 - [npm](/cli-commands/npm)
 
 ---
+
 section: using-npm
 title: developers
 description: Developer Guide
+
 ---
 
 # developers(7)
@@ -1555,9 +1556,11 @@ Tell the world how easy it is to install your program!
 - [npm registry](/using-npm/registry)
 
 ---
+
 section: using-npm
 title: disputes
 description: Handling Module Name Disputes
+
 ---
 
 # disputes(7)
@@ -1693,9 +1696,11 @@ License.
 - [npm owner](/cli-commands/npm-owner)
 
 ---
+
 section: using-npm
 title: orgs
 description: Working with Teams & Orgs
+
 ---
 
 # orgs(7)
@@ -1792,9 +1797,11 @@ npm access ls-collaborators <pkg>
 - [npm scope](/using-npm/scope)
 
 ---
+
 section: using-npm
 title: registry
 description: The JavaScript Package Registry
+
 ---
 
 # registry(7)
@@ -1900,9 +1907,11 @@ Yes, head over to <https://www.npmjs.com/>
 - [npm disputes](/using-npm/disputes)
 
 ---
+
 section: using-npm
 title: removal
 description: Cleaning the Slate
+
 ---
 
 # removal(7)
@@ -1971,9 +1980,11 @@ find /usr/local/{lib/node,bin} -exec grep -l npm \{\} \; ;
 - [npm prune](/cli-commands/npm-prune)
 
 ---
+
 section: using-npm
 title: scope
 description: Scoped packages
+
 ---
 
 # scope(7)
@@ -2103,9 +2114,11 @@ that registry instead.
 - [npm registry](/using-npm/registry)
 
 ---
+
 section: using-npm
 title: scripts
 description: How npm handles the "scripts" field
+
 ---
 
 # scripts(7)
@@ -2420,9 +2433,11 @@ above.
 - [npm install](/cli-commands/npm-install)
 
 ---
+
 section: using-npm
 title: semver
 description: The semantic versioner for npm
+
 ---
 
 # semver(7) -- The semantic versioner for npm
@@ -2836,4 +2851,3 @@ coercion is 16 characters; longer components will be ignored
 (`10000000000000000.4.7.4` becomes `4.7.4`). The maximum value for any
 semver component is `Number.MAX_SAFE_INTEGER || (2**53 - 1)`; higher value
 components are invalid (`9999999999999999.4.7.4` is likely invalid).
-

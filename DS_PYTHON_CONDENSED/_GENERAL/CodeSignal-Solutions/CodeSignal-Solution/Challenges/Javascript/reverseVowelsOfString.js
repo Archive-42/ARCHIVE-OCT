@@ -1,6 +1,6 @@
 function reverseVowelsOfString(s) {
-  let out = '',
-    vowels = '';
+  let out = "",
+    vowels = "";
 
   for (let ch of s) {
     if (ch.match(/[aeiou]/i) == ch) {

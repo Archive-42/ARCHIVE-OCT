@@ -3,7 +3,7 @@ function commonCharacterCount2(s) {
     set = [];
 
   for (let i = 97, k = 0; i <= 122; i++, k = 0) {
-    let ch = '';
+    let ch = "";
     for (let str of s) {
       ch = String.fromCharCode(i);
       if (!str.includes(ch)) {

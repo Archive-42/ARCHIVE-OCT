@@ -4,5 +4,5 @@ function amendTheSentence(s) {
     .map((e) => {
       return e.toLowerCase();
     })
-    .join(' ');
+    .join(" ");
 }

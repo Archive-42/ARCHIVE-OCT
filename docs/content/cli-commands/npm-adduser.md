@@ -1,9 +1,7 @@
 ---
-
 section: cli-commands
 title: npm-adduser
 description: Set access level on published packages
-
 ---
 
 # npm-adduser(1)
