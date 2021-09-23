@@ -1805,3 +1805,1169 @@ Python Flask:
 # Javascript Resources
 
 
+
+JavaScript Bookmarks
+====================
+
+JS:
+===
+
+1.  [Modern JavaScript Tutorial](https://javascript.info/) ([HN](https://news.ycombinator.com/item?id=25333350))
+
+2.  [You don't know JS books](https://github.com/getify/You-Dont-Know-JS)
+
+3.  [JS in 14 minutes](https://jgthms.com/javascript-in-14-minutes/)
+
+4.  [2017 JavaScript Rising Stars](https://risingstars.js.org/2017/en/)
+
+5.  [ES6 features](https://github.com/lukehoban/es6features)
+
+6.  [The Definitive Guide to Object-Oriented JavaScript](https://www.youtube.com/watch?v=PMfcsYzj-9M) --- Amazing video to understand JS inheritance & objects.
+
+7.  [JavaScript: The Core](http://j//dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/)
+
+8.  [JavaScript is Good, Actually](https://ashfurrow.com/blog/javascript-is-good-actually/) ([HN](https://news.ycombinator.com/item?id=17079952))
+
+9.  [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms) --- Algorithms and data structures implemented in JavaScript with explanations and links to further readings.
+
+10. [EC6 Features](http://es6-features.org/)
+
+11. [Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript)
+
+12. [Ask HN: "Expert Level" JavaScript questions?](https://news.ycombinator.com/item?id=17324538)
+
+13. [Benefits of prototypal inheritance over classical?](https://stackoverflow.com/questions/2800964/benefits-of-prototypal-inheritance-over-classical/16872315#16872315)
+
+14. [Pax](https://github.com/nathan/pax) --- Fastest JavaScript bundler in the galaxy.
+
+15. [Philip Roberts: What the heck is the event loop anyway? (2014)](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+
+16. [Jake Archibald: In The Loop (2018)](https://www.youtube.com/watch?v=cCOL7MC4Pl0)
+
+17. [Yonatan Kra --- The Event Loop and your code (2020)](https://www.youtube.com/watch?v=Nqx3rtv_dko)
+
+18. [BundlePhobia](https://bundlephobia.com/) --- Find the cost of adding a npm package to your bundle. ([Code](https://github.com/pastelsky/bundlephobia)) ([Tweet](https://twitter.com/jsunderhood/status/1318204704988561409))
+
+19. [An Overview of JavaScript Testing in 2018](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
+
+20. [Introduction to ES6 Promises --- The Four Functions You Need To Avoid Callback Hell](http://jamesknelson.com/grokking-es6-promises-the-four-functions-you-need-to-avoid-callback-hell/)
+
+21. [Nice ES6/Promises/React cheat sheets](http://jamesknelson.com/thank-you-for-subscribing/)
+
+22. [JavaScript Visualizer](https://tylermcginnis.com/javascript-visualizer/) --- Tool for visualizing Execution Context, Hoisting, Closures, and Scopes in JavaScript.
+
+23. [WallabyJS](https://wallabyjs.com/docs/) --- Integrated continuous testing tool for JavaScript.
+
+24. [ES6 features](http://es6-features.org/)
+
+25. [The State of JavaScript --- The State of the Web (2018)](https://www.youtube.com/watch?v=i5R7giitymk)
+
+26. [A Quick Tour Of ES6 (Or, The Bits You'll Actually Use)](http://jamesknelson.com/es6-the-bits-youll-actually-use/)
+
+27. [JavaScript on the Desktop, Fast and Slow (2018)](https://medium.com/@felixrieseberg/javascript-on-the-desktop-fast-and-slow-2b744dfb8b55)
+
+28. [ES6 for humans](https://github.com/metagrover/ES6-for-humans)
+
+29. [33 concepts every JavaScript developer should know](https://github.com/leonardomso/33-js-concepts)
+
+30. [Design Patterns JS](https://github.com/fbeline/Design-Patterns-JS) --- All the 23 (GoF) design patterns implemented in JavaScript.
+
+31. [Standard Library Proposal](https://github.com/tc39/proposal-javascript-standard-library)
+
+32. [30 seconds of code](https://github.com/30-seconds/30-seconds-of-code) --- Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
+
+33. [puppet-run](https://github.com/andywer/puppet-run) --- Run anything JavaScript in a headless Chrome from your command line.
+
+34. [Yalc](https://github.com/whitecolor/yalc) --- Better workflow than npm | yarn link for package authors.
+
+35. [ECMAScript proposals](https://github.com/tc39/proposals)
+
+36. [FromJS](https://github.com/mattzeunert/fromjs) --- See where each character on the screen came from in code.
+
+37. [RunJS](https://projects.lukehaas.me/runjs/) --- Scratchpad for your thoughts, a playground for your creativity.
+
+38. [Pragmatic, balanced FP in JavaScript book](https://github.com/getify/Functional-Light-JS)
+
+39. [Pack](https://github.com/pikapkg/pack) --- Helps you build amazing packages without the hassle.
+
+40. [Learning JavaScript (2016)](https://mafinto.sh/blog/learning-javascript.html)
+
+41. [@pika/web](https://github.com/pikapkg/web) --- Install npm dependencies that run directly in the browser. No Browserify, Webpack or import maps required.
+
+42. [Sucrase](https://github.com/alangpierce/sucrase) --- Super-fast alternative to Babel for when you can target modern JS runtimes.
+
+43. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+
+44. [JavaScript Developer's Reading List](https://github.com/twhite96/js-dev-reads) --- List of hand-picked books and articles for JavaScript developers.
+
+45. [Promisees](https://github.com/bevacqua/promisees) --- Promise visualization playground for the adventurous.
+
+46. [promise-fun](https://github.com/sindresorhus/promise-fun) --- Promise packages, patterns, chat, and tutorials.
+
+47. [Perflink](https://github.com/lukejacksonn/perflink) --- JavaScript performance benchmarks that you can share via URL.
+
+48. [Mostly adequate guide to FP (in JavaScript)](https://mostly-adequate.gitbooks.io/mostly-adequate-guide/) ([Code](https://github.com/MostlyAdequate/mostly-adequate-guide)) ([HN](https://news.ycombinator.com/item?id=22654135))
+
+49. [Volta](https://github.com/volta-cli/volta) --- JavaScript Launcher.
+
+50. [Modern JS Cheat Sheet](https://github.com/mbeaudru/modern-js-cheatsheet)
+
+51. [Fastpack](https://fastpack.sh/) --- Pack JavaScript fast & easy.
+
+52. [Reference implementation for the JavaScript Binary AST format](https://github.com/binast/binjs-ref)
+
+53. [Babel Handbook](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/README.md)
+
+54. [List of (Advanced) JavaScript Questions](https://github.com/lydiahallie/javascript-questions)
+
+55. [Faster script loading with BinaryAST? (2019)](https://blog.cloudflare.com/binary-ast/)
+
+56. [recast](https://github.com/benjamn/recast) --- JavaScript syntax tree transformer, nondestructive pretty-printer, and automatic source map generator.
+
+57. [Madge](https://github.com/pahen/madge) --- Create graphs from your CommonJS, AMD or ES6 module dependencies.
+
+58. [npmfs](https://npmfs.com/) --- JavaScript Package Inspector.
+
+59. [Fantasy Land Specification](https://github.com/fantasyland/fantasy-land) --- Specification for interoperability of common algebraic structures in JavaScript.
+
+60. [Meriyah](https://github.com/meriyah/meriyah) --- 100% compliant, self-hosted javascript parser with high focus on both performance and stability.
+
+61. [The cost of JavaScript in 2019](https://news.ycombinator.com/item?id=20317736) ([HN](https://news.ycombinator.com/item?id=20317736))
+
+62. [Poi](https://github.com/egoist/poi) --- Zero-config bundler for JavaScript applications.
+
+63. [Advanced JavaScript Course](https://tylermcginnis.com/courses/advanced-javascript)
+
+64. [Jay](https://github.com/nikersify/jay) --- Supercharged JavaScript REPL.
+
+65. [Data Structures and Algorithms in JavaScript](https://github.com/amejiarosario/dsa.js-data-structures-algorithms-javascript)
+
+66. [JavaScript & Node.js Testing Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices)
+
+67. [Just](https://github.com/microsoft/just) --- Library that organizes build tasks for your JS projects.
+
+68. [ECMAScript (JS) specification](https://tc39.es/ecma262/) ([Code](https://github.com/tc39/ecma262)) ([Web version 2](https://read262.netlify.com/))
+
+69. [André Staltz: Two Fundamental Abstractions --- Uphill Conf 2018](https://www.youtube.com/watch?v=fdol03pcvMA)
+
+70. [JSMonday](http://www.jsmonday.dev/) --- Weekly JS inspiration.
+
+71. [Chevrotain](https://github.com/SAP/chevrotain) --- Parser Building Toolkit for JavaScript.
+
+72. [Comprehensive list of new ES features](https://github.com/daumann/ECMAScript-new-features-list)
+
+73. [Exploring JS: JavaScript books for programmers](https://exploringjs.com/)
+
+74. [JavaScript for Impatient Programmers book](https://exploringjs.com/impatient-js/toc.html) ([HN](https://news.ycombinator.com/item?id=23689280))
+
+75. [Exploring ES2018 and ES2019](https://exploringjs.com/es2018-es2019/toc.html)
+
+76. [TC39 Meeting Notes](https://tc39.es/tc39-notes/)
+
+77. [Mesh Spreadsheet](https://github.com/chrispsn/mesh/) --- Visualise data and edit JavaScript code using a spreadsheet interface. ([Web](http://mesh-spreadsheet.com/))
+
+78. [Immutable JavaScript Data Structures with Immer (2019)](https://egghead.io/courses/immutable-javascript-data-structures-with-immer)
+
+79. [Immutability is Changing --- From Immutable.js to Immer (2019)](https://www.youtube.com/watch?v=bFuRvcAEiHg)
+
+80. [Tenko](https://github.com/pvdz/tenko) --- 100% spec compliant ES2020 JavaScript parser written in JS.
+
+81. [code-red](https://github.com/Rich-Harris/code-red) --- Experimental toolkit for writing x-to-JavaScript compilers.
+
+82. [Reduce in JavaScript (2019)](https://yuanchuan.dev/2019/03/04/the-reduce-function.html)
+
+83. [Pika](https://www.pika.dev/registry) --- New kind of package registry for the modern web.
+
+84. [Brian Holt: Futurist Code Bases: Integrating JS of the Future Today (2019)](https://www.youtube.com/watch?v=lQOWTXanWwU)
+
+85. [JS TLDR](https://js-tldr.info/) --- Zen mode web-documentation. ([Code](https://github.com/RusinovAnton/js-tldr)) ([Article](https://medium.com/@rusinovantondev/js-tl-dr-zen-mode-web-docs-for-javascript-developers-cf45e0143a09))
+
+86. [Currying Functions in ES6 (2016)](https://sunjay.dev/2016/08/13/es6-currying)
+
+87. [Manipulating AST with JavaScript (2019)](https://lihautan.com/manipulating-ast-with-javascript/)
+
+88. [Is JavaScript Statically or Dynamically Scoped? (2018)](https://www.cs.cornell.edu/~asampson/blog/scope.html)
+
+89. [Fixed-point combinators in JavaScript: Memoizing recursive functions](http://matt.might.net/articles/implementation-of-recursive-fixed-point-y-combinator-in-javascript-for-memoization/)
+
+90. [runpkg](https://github.com/FormidableLabs/runpkg) --- Lets you navigate any JavaScript package on npm thanks to unpkg.com.
+
+91. [What is this in JavaScript?](https://www.madebymike.com.au/writing/this-in-javascript/)
+
+92. [Beginner JavaScript course](https://beginnerjavascript.com/)
+
+93. [ES6 Cheat Sheet](https://github.com/DrkSephy/es6-cheatsheet)
+
+94. [JavaScript Visualized: Event Loop (2019)](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
+
+95. [JavaScript Visualized: Scope (Chain) (2019)](https://dev.to/lydiahallie/javascript-visualized-scope-chain-13pd)
+
+96. [JavaScript Visualized: Hoisting (2019)](https://dev.to/lydiahallie/javascript-visualized-hoisting-478h)
+
+97. [Fuzzilli](https://github.com/googleprojectzero/fuzzilli) --- JavaScript Engine Fuzzer.
+
+98. [Deep JavaScript: Theory and techniques (2019)](https://exploringjs.com/deep-js/) ([HN](https://news.ycombinator.com/item?id=23552180))
+
+99. [JavaScript Adaption of Structure and Interpretation of Computer Programs](https://sicp.comp.nus.edu.sg/) ([HN](https://news.ycombinator.com/item?id=21822903)) ([Code](https://github.com/source-academy/sicp))
+
+100. [State of JS 2019](https://2019.stateofjs.com/) ([HN](https://news.ycombinator.com/item?id=21831747))
+
+101. [Cancelation without Breaking a Promise (2016)](https://medium.com/hackernoon/considering-cancelation-a96e0f3c2298) --- Reflecting on what was so tricky about cancelable Promises, embracing functional purity as a solution.
+
+102. [ECMAScript Discussion Archives](https://esdiscuss.org/) ([Code](https://github.com/esdiscuss/esdiscuss.org))
+
+103. [What Is JavaScript Made Of? (2019)](https://overreacted.io/what-is-javascript-made-of/)
+
+104. [JavaScript Visualized: Prototypal Inheritance (2020)](https://dev.to/lydiahallie/javascript-visualized-prototypal-inheritance-47co)
+
+105. [Y: The Most Beautiful Idea in Computer Science explained in JavaScript (2018)](https://lucasfcosta.com/2018/05/20/Y-The-Most-Beautiful-Idea-in-Computer-Science.html)
+
+106. [2019 JavaScript Rising Stars](https://risingstars.js.org/2019/en/) ([Code](https://github.com/bestofjs/javascript-risingstars))
+
+107. [Best of JS](https://bestofjs.org/) --- Best of JavaScript, HTML and CSS. ([Code](https://github.com/bestofjs/bestofjs-webui)) ([Web Timeline](https://bestofjs.org/timeline)) ([HN](https://news.ycombinator.com/item?id=24142462))
+
+108. [omggif](https://github.com/deanm/omggif) --- JavaScript implementation of a GIF 89a encoder and decoder.
+
+109. [Sampling bias, FDR, and The State of JS (2020)](https://davidea.st/articles/sampling-bias-fdr-state-of-js)
+
+110. [JavaScript Visualized: Generators and Iterators (2020)](https://dev.to/lydiahallie/javascript-visualized-generators-and-iterators-e36)
+
+111. [jsep](https://github.com/soney/jsep) --- JavaScript Expression Parser.
+
+112. [JS Tips & Tidbits](https://github.com/nas5w/javascript-tips-and-tidbits)
+
+113. [I have been underestimating JS (2020)](https://adlrocha.substack.com/p/adlrocha-i-have-been-underestimating) --- Understanding V8 and NodeJS Steams.
+
+114. [Taming the asynchronous beast with CSP channels in JavaScript (2014)](https://jlongster.com/Taming-the-Asynchronous-Beast-with-CSP-in-JavaScript)
+
+115. [Debounce vs Throttle: Definitive Visual Guide (2019)](https://redd.one/blog/debounce-vs-throttle)
+
+116. [GistLink](https://gist.link/) --- Code apps or components. See them render as you type. Share your creations via URL.
+
+117. [source-map-explorer](https://github.com/danvk/source-map-explorer) --- Analyze and debug space usage through source maps.
+
+118. [Diglett](https://github.com/oblador/diglett) --- Keep your JS project lean by detecting duplicate dependencies.
+
+119. [Learn Vanilla JS Roadmap](https://learnvanillajs.com/roadmap/)
+
+120. [Learn JavaScript](https://learnjavascript.online/) --- Easiest way to learn & practice modern JavaScript step by step.
+
+121. [Mini projects built with HTML5, CSS & JavaScript. No frameworks or libraries](https://github.com/bradtraversy/vanillawebprojects) ([HN](https://news.ycombinator.com/item?id=22231963))
+
+122. [IxJS](https://github.com/ReactiveX/IxJS) --- Interactive Extensions for JavaScript.
+
+123. [Renovate](https://github.com/renovatebot/renovate) --- Universal dependency update tool that fits into your workflows.
+
+124. [The ECMAScript Ecosystem (2020)](https://dev.to/laurieontech/the-ecmascript-ecosystem-2e13)
+
+125. [esbuild](https://github.com/evanw/esbuild/) --- Extremely fast JavaScript bundler and minifier written in Go. ([HN](https://news.ycombinator.com/item?id=22335707)) ([Architecture](https://github.com/evanw/esbuild/blob/master/docs/architecture.md)) ([serverless-esbuild](https://github.com/floydspace/serverless-esbuild)) ([Awesome](https://github.com/egoist/awesome-esbuild)) ([Web](https://esbuild.github.io/)) ([Esbuild plugins](https://github.com/remorses/esbuild-plugins))
+
+126. [Community plugins for esbuild](https://github.com/esbuild/community-plugins)
+
+127. [Why Is Esbuild Fast?](https://esbuild.github.io/faq/#why-is-esbuild-fast) ([HN](https://news.ycombinator.com/item?id=26154509))
+
+128. [bundless](https://github.com/remorses/bundless) --- Dev server and bundler for esbuild. ([Web](https://bundless.vercel.app/))
+
+129. [esbuild-register](https://github.com/egoist/esbuild-register) --- Transpile JSX, TypeScript and esnext features on the fly with esbuild.
+
+130. [JavaScript: Understanding the Weird Parts course (2015)](https://www.udemy.com/course/understand-javascript/)
+
+131. [Fastpack](https://github.com/fastpack/fastpack) --- Pack JS code into a single bundle fast & easy.
+
+132. [guijs](https://github.com/Akryum/guijs) --- App that helps you manage JS projects with a Graphical User Interface.
+
+133. [Rome Toolchain](https://github.com/rome/tools) --- Linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS. ([Web](https://rome.tools/)) ([HN](https://news.ycombinator.com/item?id=22430682)) ([HN 2](https://news.ycombinator.com/item?id=24094377)) ([HN 3](https://news.ycombinator.com/item?id=24882413))
+
+134. [Bolt](https://github.com/boltpkg/bolt) --- Super-powered JavaScript project management.
+
+135. [tiny-js](https://github.com/gfwilliams/tiny-js) --- Aims to be an extremely simple (~2000 line) JavaScript interpreter.
+
+136. [JavaScript and TypeScript tooling overview](https://github.com/slikts/tooling)
+
+137. [Seafox](https://github.com/KFlash/seafox) --- Blazing fast 100% spec compliant, self-hosted javascript parser written in Typescript.
+
+138. [Awesome JavaScript Learning](https://github.com/micromata/awesome-javascript-learning)
+
+139. [Awesome Promises](https://github.com/wbinnssmith/awesome-promises)
+
+140. [jscodeshift](https://github.com/facebook/jscodeshift) --- Toolkit for running codemods over multiple JavaScript or TypeScript files.
+
+141. [React Workout: Reducers with Cassidy Williams (2020)](https://www.youtube.com/watch?v=sf4spiPynBE)
+
+142. [JavaScript: The First 20 Years (2020)](http://www.wirfs-brock.com/allen/posts/866)
+
+143. [Awesome Storybook](https://github.com/lauthieb/awesome-storybook)
+
+144. [QuickJS](https://github.com/bellard/quickjs) --- Small and embeddable Javascript engine. ([Web](https://bellard.org/quickjs/)) ([HN](https://news.ycombinator.com/item?id=24867103))
+
+145. [Test262: Official ECMAScript Conformance Test Suite](https://github.com/tc39/test262)
+
+146. [Hegel](https://github.com/JSMonk/hegel) --- Advanced static type checker. ([Web](https://hegel.js.org/)) ([Intro to Hegel](https://blog.logrocket.com/introduction-to-hegel/))
+
+147. [NectarJS](https://github.com/NectarJS/nectarjs) --- JS God mode. No VM. No Bytecode. No Garbage Collector. Full Compiled and Native binaries.
+
+148. [Eloquent JavaScript book (2018)](https://eloquentjavascript.net/) ([HN](https://news.ycombinator.com/item?id=22990926))
+
+149. [JS.coach](https://js.coach/) --- Manually curated list of packages related to React, Vue, Webpack, Babel and PostCSS. ([Code](https://github.com/jscoach/client))
+
+150. [How to create a reactive state-based UI component with vanilla JS Proxies (2020)](https://gomakethings.com/how-to-create-a-reactive-state-based-ui-component-with-vanilla-js-proxies/)
+
+151. [Kite Autocomplete for JavaScript](https://www.kite.com/javascript/) ([Article](https://www.kite.com/blog/product/kite-launches-ai-powered-javascript-completions/))
+
+152. [Excalidraw: Cool JS Tricks Behind the Scenes --- Christopher Chedeau (2020)](https://www.youtube.com/watch?v=fix2-SynPGE)
+
+153. [Cleaner async JavaScript code without the try/catch mess (2020)](https://davidwells.io/blog/cleaner-async-await-code-without-try-catch)
+
+154. [Shifty](https://github.com/jeremyckahn/shifty) --- Tweening engine for JavaScript. It is a lightweight library meant to be encapsulated by higher level tools.
+
+155. [jspm](https://github.com/jspm/jspm-cli) --- Package management CLI.
+
+156. [JS Bits](https://github.com/vasanthk/js-bits) --- JavaScript concepts explained with code.
+
+157. [Binary-parser](https://github.com/keichi/binary-parser) --- Parser builder for JavaScript that enables you to write efficient binary parsers in a simple and declarative manner.
+
+158. [estrella](https://github.com/rsms/estrella) --- Light-weight runner for the esbuild compiler.
+
+159. [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus) --- JavaScript parser written in Rust.
+
+160. [Callbag](https://github.com/callbag/callbag) --- Standard for JS callbacks that enables lightweight observables and iterables. ([Wiki](https://github.com/callbag/callbag/wiki))
+
+161. [JavaScript Standard Style](https://standardjs.com/) --- JavaScript style guide, linter, and formatter. ([Code](https://github.com/standard/standard))
+
+162. [Boa](https://github.com/boa-dev/boa) --- Experimental Javascript lexer, parser and compiler written in Rust.
+
+163. [Understanding JavaScript Execution Context like never before (2020)](https://blog.greenroots.info/understanding-javascript-execution-context-like-never-before-ckb8x246k00f56hs1nefzpysq)
+
+164. [Causes of Memory Leaks in JavaScript and How to Avoid Them (2020)](https://www.ditdot.hr/en/causes-of-memory-leaks-in-javascript-and-how-to-avoid-them) ([Lobsters](https://lobste.rs/s/ar5avz/causes_memory_leaks_javascript_how_avoid))
+
+165. [UI.dev](https://ui.dev/) --- Master the JavaScript Ecosystem.
+
+166. [Do Not Follow JavaScript Trends (2020)](https://pragmaticpineapple.com/do-not-follow-javascript-trends/) ([Lobsters](https://lobste.rs/s/wb3ma8/do_not_follow_javascript_trends)) ([HN](https://news.ycombinator.com/item?id=23538473))
+
+167. [Some things that can be avoided in JS for clearer code (2020)](https://twitter.com/buildsghost/status/1274042818219044864)
+
+168. [JS fundamentals and resources to learn them (2020)](https://twitter.com/Madisonkanna/status/1274424134139666432)
+
+169. [A little bit of plain JavaScript can do a lot (2020)](https://jvns.ca/blog/2020/06/19/a-little-bit-of-plain-javascript-can-do-a-lot/) ([Lobsters](https://lobste.rs/s/6umqjn/little_bit_plain_javascript_can_do_lot)) ([HN](https://news.ycombinator.com/item?id=23578319))
+
+170. [Memoization: What, Why, and How (2020)](https://kyleshevlin.com/memoization)
+
+171. [An Open Source Maintainer's Guide to Publishing npm Packages (2020)](https://formidable.com/blog/2020/publish-npm-packages/)
+
+172. [Robust Client-Side JavaScript (2020)](https://molily.de/robust-javascript/) ([HN](https://news.ycombinator.com/item?id=23612184))
+
+173. [Visualization of npm dependencies](https://npm.anvaka.com/#!/)
+
+174. [How to Learn JavaScript](https://sivers.org/learn-js) ([HN](https://news.ycombinator.com/item?id=23659531))
+
+175. [Google Closure Compiler](https://github.com/google/closure-compiler) --- Tool for making JavaScript download and run faster.
+
+176. [JSConf](https://jsconf.com/) --- Conferences for the JavaScript Community.
+
+177. [The history of Promises](https://samsaccone.com/posts/history-of-promises.html)
+
+178. [Skypack](https://www.skypack.dev/) --- New kind of JavaScript delivery network. ([HN](https://news.ycombinator.com/item?id=23825798)) ([Introducing Skypack Discover](https://www.skypack.dev/blog/2020/10/introducing-skypack-discover/)) ([Docs](https://docs.skypack.dev/))
+
+179. [Openbase](https://openbase.io/) --- Help developers choose the right JS package for any task --- through user reviews and insights about packages' popularity, reliability, activity and more. ([HN](https://news.ycombinator.com/item?id=23833441))
+
+180. [Basho](https://github.com/bashojs/basho) --- Shell Automation with Plain JavaScript. ([Docs](https://bashojs.org/))
+
+181. [What is the JS Event Loop and Call Stack?](https://gist.github.com/jesstelford/9a35d20a2aa044df8bf241e00d7bc2d0)
+
+182. [Starving the Event Loop with microtasks](https://gist.github.com/jesstelford/bbb30b983bddaa6e5fef2eb867d37678)
+
+183. [GPU.js](https://gpu.rocks/#/) --- GPU accelerated JavaScript. ([HN](https://news.ycombinator.com/item?id=24027487))
+
+184. [The JavaScript Promise Tutorial (2020)](https://adrianmejia.com/promises-tutorial-concurrency-in-javascript-node/)
+
+185. [Underrated JS array methods (2020)](https://dev.to/assuncaocharles/underrated-array-methods-2mdj)
+
+186. [Javascript Generators, Meet XPath (2020)](https://jack.wrenn.fyi/blog/xpath-for-2020/) ([Lobsters](https://lobste.rs/s/5fsljg/javascript_generators_meet_xpath))
+
+187. [goja](https://github.com/dop251/goja) --- ECMAScript 5.1(+) implementation in Go.
+
+188. [Guide to unit testing in JavaScript](https://github.com/mawrkus/js-unit-testing-guide)
+
+189. [How I wrote the fastest JavaScript memoization library (2017)](https://community.risingstack.com/the-worlds-fastest-javascript-memoization-library/)
+
+190. [JavaScript Playgrounds](https://unpkg.com/javascript-playgrounds@%5E1.0.0/public/index.html) --- Interactive JavaScript sandbox. ([Code](https://github.com/dabbott/javascript-playgrounds))
+
+191. [Speakeasy JS](https://speakeasyjs.com/) --- Weekly JavaScript meetup.
+
+192. [Elsa](https://github.com/elsaland/elsa) --- Minimal, fast and secure QuickJS wrapper written in Go. ([HN](https://news.ycombinator.com/item?id=24626655))
+
+193. [quickjs-rs](https://github.com/theduke/quickjs-rs) --- Rust wrapper for QuickJS.
+
+194. [RSLint](https://github.com/RDambrosio016/RSLint) --- JavaScript linter written in Rust designed to be as fast as possible, customizable, and easy to use.
+
+195. [Beginner's Series to: JavaScript by Microsoft](https://www.youtube.com/playlist?list=PLlrxD0HtieHhW0NCG7M536uHGOtJ95Ut2) ([Code](https://github.com/microsoft/beginners-intro-javascript-node))
+
+196. [Please stop using CDNs for external Javascript libraries (2020)](https://shkspr.mobi/blog/2020/10/please-stop-using-cdns-for-external-javascript-libraries/) ([Lobsters](https://lobste.rs/s/mpznhm/please_stop_using_cdns_for_external)) ([HN](https://news.ycombinator.com/item?id=24745194))
+
+197. [ESM Hot Module Replacement (ESM-HMR) Spec](https://github.com/pikapkg/esm-hmr)
+
+198. [esbuild-js](https://github.com/marvinhagemeister/esbuild-js) --- es-build implemented in JS.
+
+199. [Visual Guide to References in JavaScript (2020)](https://daveceddia.com/javascript-references/)
+
+200. [Modern JavaScript features you may have missed (2019)](https://www.breck-mckye.com/blog/2019/10/modern-javascript-features-you-may-have-missed/)
+
+201. [RegPack](https://github.com/Siorki/RegPack) --- Self-contained packer for size-constrained JS code.
+
+202. [ElectronJS alternative: SciterJS --- HTML/CSS/JS in 4.5 MB executable](https://github.com/c-smile/sciter-js-sdk) ([HN](https://news.ycombinator.com/item?id=24797423))
+
+203. [ESTree Spec](https://github.com/estree/estree) --- Manipulate JavaScript source code.
+
+204. [Pattern Matching in JavaScript (2020)](https://kyleshevlin.com/pattern-matching)
+
+205. [How to chain methods in JS in order to write concise and readable code (2020)](https://medium.com/@laflamablanc/method-chaining-and-javascript-7d840d6e3687)
+
+206. [npmview](https://npmview.now.sh/) --- Web application to view npm package files. ([Code](https://github.com/pd4d10/npmview))
+
+207. [Metadata Reflection API for JS](https://github.com/rbuckton/reflect-metadata)
+
+208. [SurviveJS](https://survivejs.com/) --- Learn JavaScript. From apprentice to master.
+
+209. [Composing Closures and Callbacks in JavaScript (2020)](https://egghead.io/playlists/composing-closures-and-callbacks-in-javascript-1223)
+
+210. [CJS Module Lexer](https://github.com/guybedford/cjs-module-lexer) --- Fast lexer to extract named exports via analysis from CommonJS modules.
+
+211. [JavaScript minification (2019)](http://neugierig.org/software/blog/2019/04/js-minifiers.html)
+
+212. [export-size](https://github.com/antfu/export-size) --- Analysis bundle cost for each export of an ESM package.
+
+213. [ESM](https://github.com/postui/esm.sh) --- Fast, global content delivery network ES Modules.
+
+214. [Benny](https://github.com/caderek/benny) --- Dead simple benchmarking framework for JS/TS libs.
+
+215. [Functional Programming in JS --- Composition (Currying, Lodash and Ramda) (2020)](https://11sigma.com/blog/functional-programming-in-js-part-i-composition)
+
+216. [Understanding Modules, Import and Export in JavaScript (2020)](https://www.taniarascia.com/javascript-modules-import-export/)
+
+217. [Intent to stop using 'null' in my JS code](https://github.com/sindresorhus/meta/issues/7) ([HN](https://news.ycombinator.com/item?id=24956156))
+
+218. [What Makes JavaScript JavaScript? Prototypal Inheritance (2020)](https://dmitripavlutin.com/javascript-prototypal-inheritance/)
+
+219. [ni](https://github.com/antfu/ni) --- Use the right package manager. Detect whether to use npm/yarn/pnpm.
+
+220. [Making a modern JS library in 2020](https://pitayan.com/posts/modernest-lib-hello-world/)
+
+221. [JavaScript Interview Questions & Answers](https://github.com/sudheerj/javascript-interview-questions)
+
+222. [JS Operator Lookup](https://joshwcomeau.com/operator-lookup/) --- Search JavaScript Operators.
+
+223. [The state of JavaScript at the end of 2020](https://www.ideamotive.co/javascript-business-guide) ([HN](https://news.ycombinator.com/item?id=25046293))
+
+224. [What the fuck JavaScript](https://github.com/denysdovhan/wtfjs) --- List of funny and tricky JavaScript examples.
+
+225. [1loc](https://1loc.dev/) --- JavaScript Utilities in 1 LOC.
+
+226. [Component Driven User Interfaces](https://www.componentdriven.org/) --- Open standard for UI component examples based on JavaScript ES6 modules. ([Code](https://github.com/ComponentDriven/csf))
+
+227. [JavaScript Modern Interview Code Challenges](https://github.com/sadanandpai/javascript-code-challenges)
+
+228. [Building a Promise from Scratch (2020)](https://www.youtube.com/watch?v=CVzx-6fu0d8)
+
+229. ​[Tips and tricks for working with types in JavaScript](https://github.com/voxpelli/types-in-js)​
+
+230. ​[Astring](https://github.com/davidbonnet/astring) --- Tiny and fast JavaScript code generator from an ESTree-compliant AST.
+
+231. ​[EStimator.dev](https://estimator.dev/) --- Calculate the size and performance impact of switching to modern JavaScript syntax. ([Code](https://github.com/GoogleChromeLabs/estimator.dev))
+
+232. ​[Publish, ship, and install modern JavaScript for faster applications (2020)](https://web.dev/publish-modern-javascript/)​
+
+233. ​[Universal JavaScript Build and Packaging](https://github.com/mikeal/ipjs)​
+
+234. ​[Maybe you don't need Rust and WASM to speed up your JS (2018)](https://mrale.ph/blog/2018/02/03/maybe-you-dont-need-rust-to-speed-up-your-js.html)​
+
+235. ​[lage](https://github.com/microsoft/lage) --- Task runner in JS monorepos. ([Web](https://microsoft.github.io/lage/))
+
+236. ​[Module Server](https://github.com/google/module-server) --- System for efficient serving of CommonJS modules to web browsers.
+
+237. ​[How JavaScript works: exceptions + best practices for synchronous and asynchronous code (2021)](https://blog.sessionstack.com/how-javascript-works-exceptions-best-practices-for-synchronous-and-asynchronous-environments-39f66b59f012)​
+
+238. ​[Source Map Visualization](http://evanw.github.io/source-map-visualization/) --- Visualization of JavaScript source map data, which is useful for debugging problems with generated source maps. ([Code](https://github.com/evanw/source-map-visualization))
+
+239. ​[Manypkg](https://github.com/Thinkmill/manypkg) --- Linter for package.json files in Yarn, Bolt or pnpm monorepos.
+
+240. ​[Putout](https://github.com/coderaiser/putout) --- Pluggable and configurable code transformer with built-in eslint, babel plugins and jscodeshift codemods support. ([Editor](https://putout.cloudcmd.io/))
+
+241. ​[Prettier Plugin: Organize Imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports)​
+
+242. ​[A mostly complete guide to error handling in JavaScript (2020)](https://www.valentinog.com/blog/error/)​
+
+243. ​[Awesome FP JS](https://github.com/stoeffel/awesome-fp-js)​
+
+244. ​[Perflink](https://perf.link/) --- JS Benchmarks.
+
+245. ​[Element Worklet (2021)](https://jasonformat.com/element-worklet/)​
+
+246. [MDN JS Code Examples](https://github.com/mdn/js-examples)​
+
+247. ​[Understanding Hoisting in JavaScript (2021)](https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript)​
+
+248. ​[JavaScript, the Good Parts Notes](https://github.com/ahmaazouzi/js_good_parts)​
+
+249. ​[A Model for Reasoning About JavaScript Promises (2017)](http://www.franktip.org/pubs/oopsla2017promises.pdf)​
+
+250. ​[JavaScript Minification Benchmarks](https://github.com/privatenumber/minification-benchmarks) ([HN](https://news.ycombinator.com/item?id=26048291))
+
+251. ​[Faster JavaScript Calls (2021)](https://v8.dev/blog/adaptor-frame) ([HN](https://news.ycombinator.com/item?id=26143648))
+
+252. ​[Streams --- The definitive guide (2021)](https://web.dev/streams/)​
+
+253. ​[Awesome JavaScript](https://github.com/sorrycc/awesome-javascript)
+
+NODE:
+=====
+
+Authentication
+==============
+
+-   [Authenticating your single page apps using JSON Web Tokens](https://www.mydevsecops.io/post/knock-knock-who-s-there-authenticating-your-single-page-apps-using-json-web-tokens)
+
+-   [The parts of JWT security nobody talks about](https://pragmaticwebsecurity.com/talks/jwtsecurity.html)
+
+-   [Introduction to OAuth 2.0 and OpenID Connect](https://pragmaticwebsecurity.com/talks/introductionoauth.html)
+
+-   [Passwords are so 1990 by Sam Bellen](https://www.youtube.com/watch?v=PQnpAO2yD5c)
+
+-   [Authentication fundamentals: The basics | Azure Active Directory](https://youtu.be/fbSVgC8nGz4)
+
+-   [The best website that teaches the value/need of 2FA to beginners](https://twitter.com/rauchg/status/1206662873776132096)
+
+-   <https://scotch.io/tutorials/build-a-weight-tracker-app-with-nodejs-and-postgresql>
+
+-   <https://github.com/adrianhajdin/project_mern_memories> + <https://www.youtube.com/playlist?list=PL6QREj8te1P7VSwhrMf3D3Xt4V6_SRkhu>
+
+-   <https://www.slideshare.net/2botech/nordic-apis-platform-summit-oauth-and-openid-connect-for-microservices> + <https://nordicapis.com/how-to-control-user-identity-within-microservices>
+
+-   <https://www.slideshare.net/2botech/the-jsonbased-identity-protocol-suite> + <https://auth0.com/resources/ebooks/jwt-handbook>
+
+-   <https://thehftguy.com/2020/02/18/jwt-is-awesome-heres-why> + <https://news.ycombinator.com/item?id=22354534>
+
+-   <https://levelup.gitconnected.com/secure-jwts-with-backend-for-frontend-9b7611ad2afb> + <https://gist.github.com/h3yduck/ff401b32b92c14ef66879c52135b11d7>
+
+-   <https://dreith.com/blog/an-approach-to-JWT-authentication>
+
+-   [Refreshing tokens with JWT](https://gist.github.com/ziluvatar/a3feb505c4c0ec37059054537b38fc48)
+
+-   [The Nuts and Bolts of OAuth 2.0](https://aaronparecki.com/2020/12/22/14/oauth)
+
+-   <https://app.pluralsight.com/library/courses/oauth-2-getting-started>
+
+-   <https://www.scottbrady91.com/OAuth/OAuth-is-Not-Authentication> + <https://www.scottbrady91.com/OAuth/OAuth-is-Not-User-Authorization>
+
+-   [Authentication system using NextJS, GraphQL, Apollo Client, Apollo Server, MongoDB, Nginx, Docker, Docker-Compose and Kubernetes](https://github.com/nreoch25/nextjs-graphql-auth)
+
+API
+===
+
+-   <https://www.manning.com/books/understanding-api-security>
+
+-   <https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api>
+
+-   <https://github.com/tlhunter/consumer-centric-api-design>
+
+-   <https://github.com/Developer-Y/Scalable-Software-Architecture#api-design>
+
+-   [Common API security pitfalls](https://pragmaticwebsecurity.com/talks/commonapisecuritypitfalls)
+
+-   [Mirage for mocking APIs](https://twitter.com/RomanSndlr/status/1207551729224605697)
+
+-   <https://www.freecodecamp.org/news/apis-for-beginners-full-course/>
+
+-   [Apollo REST Data Sources with the Countries API](https://github.com/MoonHighway/countries-datasources)
+
+-   Hands-on Application Building with GraphQL: [repo](https://github.com/lowsky/-Hands-on-Application-Building-with-GraphQL) + [video course](https://learning.oreilly.com/videos/hands-on-application-building/9781788991865)
+
+-   Scaling Your GraphQL Client: [tweet](https://twitter.com/mahoneymattj/status/1163276557546414081) + [slides](https://speakerdeck.com/mjmahone/scaling-your-graphql-client)
+
+-   [Node scrapper for http://ctpcj.ro](https://github.com/Utwo/ctpcj-scraper)
+
+-   [TEACH ME ANYTHING --- Wrapping and Securing a Rest API in GraphQL](https://youtu.be/B7aBnxaxsfU)
+
+-   [https://github.com/dexteryy/spellbook-of-modern-webdev#microservices--api-services-nodejs](https://github.com/dexteryy/spellbook-of-modern-webdev#microservices%E2%80%93api-services-nodejs)
+
+-   <https://legacy.gitbook.com/book/geemus/http-api-design/details>
+
+-   <https://obem.be/2020/02/18/mining-my-mailbox-for-top-email-service-providers.html>
+
+-   [The Web API Design Guidelines for Happy Developers](https://leanpub.com/thewebapinntux/read_full)
+
+-   [An easy, promise based, way to test passwords securely against the Pwned Passwords API v2 in Node.](https://speakerdeck.com/philnash/fantastic-passwords-and-where-to-find-them-at-wfhconf?slide=38) + <https://github.com/philnash/pwned.js>
+
+-   [Extracts subdomains from a specified domain using api.recon.de](https://github.com/JR0ch17/ardse)
+
+-   [Suggestions for books about API design?](https://news.ycombinator.com/item?id=24383180)
+
+-   <https://lucjan.medium.com/free-url-shortener-with-cloudflare-workers-125eaf87b1ec>
+
+-   [An experimental blogging application developed with Docker, Deno, Oak and MySQL](https://github.com/fhsinchy/deno-blog)
+
+-   <https://www.freecodecamp.org/news/what-is-an-api-and-how-to-test-it>
+
+-   [API library for Node.js that interacts with the Philips Hue Bridge to control Lights, schedules, sensors and the various other features of the Hue Bridge.](https://github.com/peter-murray/node-hue-api)
+
+-   [A serverless wrapper for the private Notion API. It provides fast and easy access to your Notion content. Ideal to make Notion your CMS.](https://github.com/splitbee/notion-api-worker)
+
+-   <https://github.com/afteracademy/nodejs-backend-architecture-typescript>
+
+-   [Microsoft REST API Guidelines](https://github.com/microsoft/api-guidelines)
+
+-   <https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design> + <https://news.ycombinator.com/item?id=26225373>
+
+-   [Instagram clone made with NodeJS & Express & Prisma](https://github.com/filippobarcellos/instagram-clone-api)
+
+-   [Why Bedrock uses Prisma as its ORM](https://bedrock.mxstbr.com/tools/prisma)
+
+-   <https://medium.com/pipedrive-engineering/maintaining-rest-api-documentation-with-node-js-part-i-65e9700e3b30>
+
+-   <https://dev.to/noclat/build-a-full-api-with-next-js-1ke>
+
+Book
+====
+
+-   [An introduction to software architecture & design principles with Node.js & TypeScript](https://solidbook.io/)
+
+-   <https://leanpub.com/implementing-ddd-cqrs-and-event-sourcing-in-nodejs>
+
+-   <https://twitter.com/loige/status/1312531675109232640>
+
+-   <https://github.com/PacktPublishing/Node.js-Design-Patterns-Third-Edition>
+
+Bot
+===
+
+-   [This is my new favorite (free) programming tool --- GitHub Actions Tutorial](https://www.bytesized.xyz/github-actions-tutorial)
+
+-   <https://jasonet.co/posts/build-your-own-probot>
+
+-   <https://github.com/srepollock/quote-bot-twitter> + <https://medium.com/swlh/how-i-built-a-serverless-aws-lambda-twitter-bot-in-nodejs-in-a-single-day-6901f8df13f0>
+
+-   [A bitcoin trading bot written in node](https://github.com/askmike/gekko)
+
+-   <https://github.com/ccnokes/ron-swanson-quotes-slack-bot>
+
+-   <https://github.com/gulzar1996/auto-like-my-gf-insta-pic>
+
+Boilerplate
+===========
+
+-   <https://github.com/microsoft/nodejs-guidelines>
+
+-   <https://github.com/microsoft/TypeScript-Node-Starter>
+
+-   <https://github.com/juicycleff/ultimate-backend>
+
+-   [How to start a Node.js project](https://philna.sh/blog/2019/01/10/how-to-start-a-node-js-project/)
+
+-   [Open-source YouTube alternative that also supports image and audio uploads.](https://github.com/mayeaux/nodetube)
+
+-   <https://blog.risingstack.com/node-hero-node-js-project-structure-tutorial>
+
+-   <https://github.com/sahat/hackathon-starter>
+
+-   <https://github.com/Jiratech/boilerplates-express-typescript-openapi>
+
+-   <https://github.com/guidesmiths/microservice-typescript-boilerplate>
+
+-   <https://github.com/mddanishyusuf/gumroad-coffee-template>
+
+-   <https://github.com/ryands17/fastify-prisma>
+
+-   <https://github.com/timsuchanek/covid19-vaccinations-prisma>
+
+-   [A setup for a node express api with typescript](https://github.com/tommarien/ts-node-api-2019)
+
+-   <https://github.com/vagr9k/gatsby-advanced-starter>
+
+-   <https://github.com/focusaurus/express_code_structure>
+
+-   <https://github.com/Nilomiranda/relay-social> + <https://twitter.com/Nilomiranda/status/1241465671608918017>
+
+-   <https://github.com/covidgreen/covid-green-backend-api> + [Can anyone recommend some beginner friendly @fastifyjs ](<https://twitter.com/simonplend/status/1347482545831731203>)
+
+Cinema
+======
+
+-   [MNUG --- Munich NodeJS User Group](http://mnug.de/videos.html)
+
+-   <https://github.com/ErickWendel/10-tips-js-perf-jsfest-ukraine>
+
+-   <https://twitter.com/MaksymRybak/status/1219313534670077952>
+
+-   [Deno --- TypeWithMe](https://www.youtube.com/playlist?list=PLlYJBXwGoczE6l8lm0AaFe62EtI3th41L)
+
+-   <https://www.slideshare.net/tshemsedinov/presentations>
+
+-   [Fullstack Code Challenge with Node, GraphQL and Relay](https://www.youtube.com/playlist?list=PLgzzeV46F4nMW3HSrx1hRSwD9-bgYVuO7)
+
+-   [Node JS Performance Optimizations](https://www.youtube.com/playlist?list=PLISqeoHsXJYAIfu4-mgNY0tloWz2uut1t)
+
+Course
+======
+
+-   <https://www.udemy.com/course/react-nodejs-express-mongodb-the-mern-fullstack-guide>
+
+-   <https://www.udemy.com/course/nestjs-zero-to-hero/>
+
+-   <https://www.udemy.com/course/nestjs-course/>
+
+-   [Serverless Framework Bootcamp: Node.js, AWS & Microservices](https://www.udemy.com/course/serverless-framework)
+
+-   <https://www.udemy.com/course/learning-koajs-by-building-rest-apis>
+
+-   [TypeScript with Node.js by Zaiste](https://www.youtube.com/playlist?list=PLhXZp00uXBk72m_G7E2Bshzd7PDpaInE1)
+
+-   <https://khalilstemmler.com/articles/domain-driven-design-intro> + <https://github.com/stemmlerjs/white-label>
+
+-   <https://www.freecodecamp.org/news/learn-the-pern-stack-full-course>
+
+-   <https://github.com/cmda-bt/be-course-17-18>
+
+-   <https://jamesqquick.hashnode.dev/build-an-authenticated-jamstack-app-with-nextjs-airtable-tailwind-css-and-auth0>
+
+-   [7-month web development program covering HTML, CSS, Javascript, Node, and React!](https://github.com/HackYourFuture/curriculum)
+
+-   [Rapid API Development with NodeJS, Fastify, Postgresql, and Swagger ~ Jay Wolfe](https://www.youtube.com/playlist?list=PLU_22oKqONin7yagFMm3x1tJihYaIVVwa) + <https://jaywolfe.dev/blog/rapidly-build-a-nodejs-rest-api-with-fastify-postgresql-and-swagger-documentation>
+
+-   [A workshop for security experts who like JavaScript and javascripters who like (in)security.](https://github.com/jesusprubio/node-for-ninjas)
+
+-   <https://github.com/sodium-friends/learntocrypto>
+
+Cheat sheets
+============
+
+-   <https://github.com/aliyr/Nodejs-Developer-Roadmap>
+
+-   <https://github.com/dexteryy/spellbook-of-modern-webdev#nodejs>
+
+-   <https://github.com/ArturJS/nodejs-certification-preparation>
+
+-   <https://robertheaton.com/2020/04/06/systems-design-for-advanced-beginners>
+
+-   <https://github.com/kryz81/awesome-nodejs-learning>
+
+Debugging
+=========
+
+-   [Interested in debugging #nodejs in production?](https://twitter.com/mhdawson1/status/1216761321452163072)
+
+-   <https://evilpacket.net/2019/leveraging-javascript-debuggers>
+
+-   <https://github.com/tj/node-blocked>
+
+-   <https://nodesource.com/blog/memory-leaks-demystified>
+
+-   <https://gioyik.com/s/memory-chronicles-manage-trace-fix-memory-leaks>
+
+-   <https://www.joyent.com/blog/walmart-node-js-memory-leak>
+
+-   [Profile & Analyze Node.js Applications.](https://gioyik.com/s/profile-analyze-nodejs-applications)
+
+-   [JS Memory Analysor is a tool to detect memory leaks for Javascript/NodeJS.](https://github.com/alibaba/JS-Memory-Analysor)
+
+-   <https://github.com/lrlna/sketchin/blob/master/guides/tracing.md>
+
+-   <https://bhattsameer.github.io/2021/01/01/client-side-encryption-bypass-part-1.html>
+
+-   <https://www.jackhoy.com/web-applications/2020/10/21/debugging-memory-leaks-in-nodejs.html>
+
+-   <https://pawelgrzybek.com/from-express-to-fastify-in-node-js>
+
+TIL
+===
+
+-   [20 ways to become a better Node.js developer in 2020](https://medium.com/@me_37286/20-ways-to-become-a-better-node-js-developer-in-2020-d6bd73fcf424)
+
+-   [How do you sync .env files (project specific) that are git-ignored between different computers?](https://twitter.com/thekitze/status/1207718292149952512)
+
+-   [nvm install node --reinstall-packages-from=node](https://twitter.com/mtliendo/status/1215382381026316290)
+
+-   <https://www.heroku.com/podcasts/codeish/51-best-practices-in-error-handling>
+
+-   <https://www.stefanjudis.com/today-i-learned/npm-init-uses-npx-under-the-hood>
+
+-   <https://joshtronic.com/2021/01/17/recursively-create-directories-with-nodejs>
+
+Internals
+=========
+
+-   [Project for learning Node.js internals](https://github.com/danbev/learning-nodejs)
+
+-   <https://blog.s1h.org/inside-node-executing-a-script>
+
+-   <https://blog.logrocket.com/node-js-crypto-module-a-tutorial>
+
+-   [fs.promises.readFile is 40% slower than fs.readFile](https://github.com/nodejs/node/issues/37583)
+
+-   <https://github.com/ejdaly/node-threads-example>
+
+-   [How to create full path with node's fs.mkdirSync?](https://stackoverflow.com/a/40686853/1904223)
+
+Event loop
+==========
+
+-   <https://davidhettler.net/blog/event-loop-lag>
+
+-   <https://github.com/lrlna/sketchin/blob/master/zines/js-event-loop.md>
+
+Stream
+======
+
+-   [Stream into the Future --- Matteo Collina, NearForm](https://youtu.be/dEFdt_6fW-0)
+
+-   <https://twitter.com/djgrant_/status/1296395202056327172>
+
+-   <https://github.com/lrlna/sketchin/blob/master/guides/node-streams.md>
+
+-   <https://developer.mongodb.com/how-to/capturing-hacker-news-mentions-nodejs-mongodb>
+
+-   <https://2ality.com/2019/11/nodejs-streams-async-iteration.html>
+
+-   <https://github.com/lmammino/streams-examples>
+
+-   [Turn Node.js Events into Async Iterables.](https://github.com/danstarns/for-emit-of)
+
+-   <https://blog.logrocket.com/online-radio-server-pure-node-js>
+
+-   <https://www.smashingmagazine.com/2021/04/building-video-streaming-app-nuxtjs-node-express>
+
+Promise
+=======
+
+-   <https://www.nearform.com/blog/broked-promises-james-snell-tech-talk-video>
+
+async
+=====
+
+-   <https://simonplend.com/are-you-using-promises-and-async-await-safely-in-node-js>
+
+Thread
+======
+
+-   <https://dev.to/johnjardincodes/managing-multiple-threads-in-node-js-3mpc>
+
+Tools
+=====
+
+-   [SSH2 client and server modules written in pure JavaScript for node.js](https://github.com/mscdex/ssh2)
+
+-   [Displays JSON files in a flat format.](https://github.com/soheilpro/catj)
+
+-   [A tinyURL service powered by node.js, express.js and a reddis database.](https://github.com/shahzeb1/nodejs-tinyURL)
+
+-   [Authoring, publishing and working with commonjs and esm.](https://github.com/manuelbieh/authoring-modules-in-node)
+
+-   [Create graphs from your CommonJS, AMD or ES6 module dependencies.](https://github.com/pahen/madge)
+
+-   [Packages and resources that work really well with https://github.com/zkat/npx](https://github.com/junosuarez/awesome-npx)
+
+-   [Access the system clipboard (copy/paste) --- cross-platform](https://github.com/sindresorhus/clipboard-cli)
+
+-   [Get details and download apps from https://play.google.com by emulating an Android (Nexus 5X) device by default.](https://github.com/dweinstein/node-google-play)
+
+-   [Download a web page to a local directory.](https://github.com/papandreou/bringhome)
+
+-   A command that will copy files from one directory to another and if there are two files with the same name it will rename it: [tweet](https://twitter.com/kentcdodds/status/1215785900413599744) + [gist](https://gist.github.com/kentcdodds/59daa81d46ba51b926a6a2f044aa5ad6)
+
+-   [Make the default export of a file executable in in Node.js!](https://github.com/jonnyburger/xns)
+
+-   <https://github.com/przemyslawpluta/node-youtube-dl>
+
+-   [Node Task List: Interactive cli to list and run package.json scripts.](https://github.com/ruyadorno/ntl)
+
+-   [Visualization of npm shows dependency graph of an npm package.](https://github.com/anvaka/npmgraph.an)
+
+-   [CLI utility for displaying current network utilization by process, connection and remote IP/hostname.](https://twitter.com/mikeal/status/1217554555350798339)
+
+-   <https://github.com/justjavac/awesome-node-utils>
+
+-   <https://github.com/bcoe/awesome-cross-platform-nodejs> + <https://github.com/ehmicky/cross-platform-node-guide>
+
+-   Zero-dependency HTTP responders: [tweet](https://twitter.com/juliangruber/status/1222120717367611392) + [repo](https://github.com/juliangruber/http-responders)
+
+-   [Prefer cwd instead of __dirname when configuring your Webpack.](https://twitter.com/sseraphini/status/1232667049949880320)
+
+-   [Node.js library to bypass cloudflare's anti-ddos page.](https://github.com/codemanki/cloudscraper)
+
+-   [Search your starred repositories on GitHub for a keyword.](https://github.com/Link-/starred_search)
+
+-   <https://maximorlov.com/pm2-to-docker-automatic-restarts>
+
+-   <https://blog.bitsrc.io/npm-clients-that-are-better-than-the-original-cd54ed0f5fe7>
+
+-   <https://adambard.com/blog/self-hosted-readability-on-heroku-with-nodejs>
+
+-   [A Node.js module for sending notifications on native Mac, Windows and Linux (or Growl as fallback)](https://github.com/mikaelbr/node-notifier)
+
+-   [Free Modern URL Shortener.](https://github.com/thedevs-network/kutt)
+
+-   [Vantage = CLI + SSH + REPL for your live node app](https://github.com/dthree/vantage)
+
+-   [A simple, distributed task scheduler and runner with a web based UI.](https://github.com/jhuckaby/Cronicle)
+
+-   [a very small v8 javascript runtime for linux only](https://github.com/just-js/just)
+
+-   [PNG image decoder and encoder written entirely in JavaScript](https://github.com/image-js/fast-png)
+
+-   [Convert javascript fetch requests to curl](https://github.com/leoek/fetch-to-curl)
+
+-   [Convert email newsletters into Atom feeds](https://github.com/leafac/kill-the-newsletter)
+
+-   [Ultra-fast MessagePack implementation with extension for record and structural cloning](https://github.com/kriszyp/msgpackr) + <https://dev.doctorevidence.com/building-the-fastest-js-de-serializer-a413a2b4fb72>
+
+-   [A express package to list all registered endoints and its verbs](https://github.com/AlbertoFdzM/express-list-endpoints)
+
+-   [Express view helper inspired by PHP's var_dump()](https://github.com/alessioalex/express-var-dump)
+
+-   [A modern, minimalist, and lightweight URL shortener using Node.js and Redis](https://github.com/dotzero/node-url-shortener)
+
+-   [A youtube downloader written in Javascript.](https://github.com/fent/node-ytdl)
+
+-   <https://github.com/jesusprubio/awesome-nodejs-pentest>
+
+-   [Check the TLS protocol support of one or more web servers](https://github.com/styfle/tls-check)
+
+-   [Capture website screenshots](https://github.com/sindresorhus/pageres)
+
+-   <https://maecapozzi.com/how-to-locally-test-an-npm-package>
+
+Testing
+=======
+
+-   <https://github.com/doppelganger9/fruit-basket>
+
+-   <https://engineering.klarna.com/6-lessons-learned-from-optimizing-the-performance-of-a-node-js-service-f163cac20473>
+
+-   <https://github.com/giltayar/microservices-are-made-for-testing>
+
+Web servers
+===========
+
+-   <https://gist.github.com/willurd/5720255#gistcomment-3142965>
+
+-   <https://www.slideshare.net/Codemotion/paulo-lopes-10-things-i-learned-making-the-fastest-js-server-runtime-in-the-world-codemotion-amsterdam-2019>
+
+-   [MyDrive is an Open Source Cloud Server (Similar To Google Drive), built with Node.JS, Express, React, and MongoDB.](https://github.com/subnub/myDrive)
+
+-   [Visualizing data from your Node JS app with Prometheus + Grafana](https://sergeypotekhin.com/visualizing-data-from-the-node-js-app)
+
+-   <https://dev.to/mattkrick/replacing-express-with-uwebsockets-48ph>
+
+-   [Osgood is a secure, fast, and simple platform for running JavaScript HTTP servers.](https://github.com/IntrinsicLabs/osgood)
+
+-   [A state-of-the-art user-space network driver written in idiomatic JavaScript.](https://github.com/ixy-languages/ixy.js)
+
+-   <https://github.com/justincampbell/url-shorteners>
+
+-   <https://realtalkjavascript.simplecast.com/episodes/episode-96-expressway-to-fastify-with-matteo-collina>
+
+-   <https://futurestud.io/learningpaths/learn-hapi>
+
+-   <https://dev.to/justincy/blue-green-node-js-deploys-with-nginx-bkc>
+
+-   <https://github.com/simonplend/talks/tree/main/make-the-most-of-modern-javascript-with-fastify>
+
+-   [LeonAI has migrated from Express.js to @fastifyjs](<https://twitter.com/louistiti_fr/status/1374978615696183296>)
+
+-   <https://www.freecodecamp.org/news/free-8-hour-node-express-course>
+
+-   <https://www.freecodecamp.org/news/the-nginx-handbook>
+
+Scrapping
+=========
+
+-   <https://www.scrapingbee.com/blog/web-scraping-javascript>
+
+-   <https://levelup.gitconnected.com/anonymous-web-scrapping-with-node-js-tor-apify-and-cheerio-3b36ec6a45dc>
+
+-   <https://www.twilio.com/blog/4-tools-for-web-scraping-in-node-js>
+
+-   [Scrapes the web serial Worm and its sequel Ward into an eBook format.](https://github.com/domenic/worm-scraper)
+
+-   <https://www.openfaas.com/blog/puppeteer-scraping>
+
+-   <https://github.com/TwilioDevEd/webhooks-course> + <https://www.freecodecamp.org/news/the-ultimate-webhooks-course-for-beginners>
+
+-   <https://github.com/known-css/known-css-properties>
+
+-   <https://github.com/BruceDone/awesome-crawler#javascript>
+
+-   <https://github.com/JonasCz/How-To-Prevent-Scraping>
+
+-   <https://github.com/adamschwartz/web.scraper.workers.dev>
+
+-   <https://github.com/microsoft/TypeScript-DOM-lib-generator>
+
+-   <https://github.com/facundoolano/google-play-scraper>
+
+-   <https://github.com/mathieudutour/medium-to-own-blog>
+
+Micro services
+==============
+
+-   <https://github.com/stemmlerjs/solid-email-microservice>
+
+-   [A micro service development architecture based on nest.js.](https://github.com/notadd/notadd)
+
+-   [Flatend --- Quickly build microservices using P2P networking in Node/Go](https://news.ycombinator.com/item?id=23561904)
+
+-   <https://hackernoon.com/learn-how-to-use-webhooks-by-connecting-nodejs-ifttt-and-twitter-k0w3121>
+
+-   [cote lets you write zero-configuration microservices in Node.js without nginx, haproxy, redis, rabbitmq or anything else.](https://github.com/dashersw/cote)
+
+-   [If you ever wanted to gain atomicity for a series of service calls, sagas may be the right choice.](https://twitter.com/AndreyPechkurov/status/1375877582315458569) + <https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf>
+
+Design patterns
+===============
+
+-   [Hacker news-inspired forum app built with TypeScript & DDD from solidbook.io.](https://github.com/stemmlerjs/ddd-forum)
+
+Security
+========
+
+-   [A Road Map for Node.js Security](https://nodesecroadmap.fyi/)
+
+-   <https://github.com/lirantal/awesome-nodejs-security>
+
+-   [Security design pattern support for Node.js](https://github.com/mikesamuel/node-sec-patterns)
+
+-   <https://github.com/ChALkeR/notes>
+
+-   <https://github.com/a0viedo/can-you-tell-if-your-node-app-is-healthy>
+
+-   <https://github.com/wahengchang/nodejs-security-must-know>
+
+-   [BLAKE3 hashing for JavaScript: native Node bindings (where available) and WebAssembly.](https://github.com/connor4312/blake3)
+
+-   <https://julienrenaux.fr/2019/12/20/github-actions-security-risk>
+
+-   [Performs secure device firmware updated over-the-air via Web-Bluetooth.](https://github.com/NordicPlayground/secure-dfu-web-bluetooth)
+
+-   <https://github.com/Lemoncode/web-security-fundamentals>
+
+-   <https://snyk.io/blog/5-ways-to-prevent-code-injection-in-javascript-and-node-js>
+
+-   [A step by step workshop to exploit various vulnerabilities in Node.js and Java applications](https://github.com/snyk/exploit-workshop)
+
+-   [Express.js web security challenge](https://twitter.com/gynvael/status/1260499214225809409) + <https://oshogbo.vexillium.org/blog/76>
+
+-   <https://github.com/adamtlangley/Data-Over-DNS>
+
+-   [Hacking with Environment Variables](https://www.elttam.com/blog/env)
+
+-   <https://www.loginradius.com/engineering/blog/using-pgp-encryption-with-nodejs>
+
+-   <https://github.com/ukncsc/zero-trust-architecture>
+
+-   <https://blog.shoebpatel.com/2021/01/23/The-Secret-Parameter-LFR-and-Potential-RCE-in-NodeJS-Apps> + <https://twitter.com/albinowax/status/1353631953703100416>
+
+-   [Dependency Confusion](https://twitter.com/bradleymeck/status/1359882487674077189) + <https://twitter.com/alxbrsn/status/1359852094950436866> + <https://twitter.com/alxbrsn/status/1359200840876257287> + <https://www.kernelcrypt.com/posts/depedency-confusion-explained> + <https://github.blog/2021-02-12-avoiding-npm-substitution-attacks>
+
+-   <https://www.slideshare.net/madhuakula/node-js-reverse-shell>
+
+-   [More than 100 security checks for your Node.js API](https://github.com/jesusprubio/strong-node)
+
+Static site generator
+=====================
+
+-   <https://tatianamac.com/tags/Eleventy>
+
+-   <https://sgolem.com/building-an-easy-on-the-eyes-ikea-style-blog-in-no-time-for-free-again>
+
+-   [Dynamic from Static with Smart Deployment.](https://slides.com/mayashavin/deck-44de00/fullscreen#/) + <https://twitter.com/cloudinary/status/1208172092312543232>
+
+-   [Markdown-based static site generator that works well with monorepos](https://twitter.com/captainsafia/status/1207459107004801024)
+
+-   [Personal blog of Fotis Papadogeorgopoulos, built with Eleventy.](https://github.com/fpapado/fotis.xyz)
+
+-   <https://medium.com/@WebReflection/how-to-send-emails-from-static-websites-9a34ceb9416c>
+
+-   [Various ways to include comments on your static site.](https://darekkay.com/blog/static-site-comments)
+
+-   A statically generated blog example using Next.js and Markdown: [repo](https://github.com/zeit/next.js/tree/canary/examples/blog-starter) + [tweet](https://twitter.com/timneutkens/status/1240277123451047936)
+
+-   <https://kezzbracey.com/posts/2020/01/19/eleventy-plus-vscode-plus-gitlab-plus-cloudways>
+
+-   <https://github.com/accessible-app/accessible-app_com>
+
+-   <https://www.freecodecamp.org/news/develop-deploy-first-fullstack-web-app>
+
+-   [A Next.js site using new SSG support with a Notion backed blog](https://github.com/ijjk/notion-blog)
+
+-   [A new Node.js resource built using Gatsby.js with React.js, TypeScript, and Remark](https://github.com/nodejs/nodejs.dev)
+
+-   [Building a Static Gatsby-based Website with TypeScript](https://jeffrafter.com/gatsby-with-typescript)
+
+-   <https://github.com/erikkroes/corona-roadmap>
+
+-   <https://github.com/google/eleventy-high-performance-blog>
+
+-   [Source code for mxb.dev, built with Eleventy.](https://github.com/maxboeck/mxb)
+
+-   <https://jaywolfe.dev/blog/how-i-quickly-create-static-website-hosting-using-only-an-aws-s3-bucket>
+
+-   <https://github.com/leandrotk/publisher> + <https://www.freecodecamp.org/news/automating-my-blog-posts-publishing-process-with-typescript>
+
+-   [‎Personal website running on Gatsby, React, and Node](https://github.com/taniarascia/taniarascia.com)
+
+-   <https://github.com/colinhemphill/nextjs-resume>
+
+-   <https://www.hawksworx.com/blog/eleventail-a-helper-for-tailwindcss-and-eleventy>
+
+-   <https://github.com/jakearchibald/jakearchibald.com> + <https://twitter.com/jaffathecake/status/1263371682313654273>
+
+Serverless
+==========
+
+-   [Building and deploying modern websites and apps --- GitHub Universe 2019](https://youtu.be/KlO5Ksk7baQ)
+
+-   [Would someone be willing to teach me how @netlify or @zeithq's deploy preview feature works?](<https://twitter.com/TejasKumar_/status/1208378475771506688>)
+
+-   <https://www.freecodecamp.org/news/complete-back-end-system-with-serverless>
+
+-   [Firebase Hosting in 6 steps.](https://twitter.com/rwieruch/status/1212773598492004352)
+
+-   [How to make simple Geolocation service using Cloudflare Workers.](https://maxkostinevich.com/blog/serverless-geolocation)
+
+-   <https://www.raymondcamden.com/2020/08/16/migrating-from-node-and-express-to-the-jamstack-part-3>
+
+-   <https://medium.com/lambda-store/terminal-chat-application-using-serverless-redis-1feec78cbfa>
+
+Miscellaneous
+=============
+
+-   <https://github.com/shuhei/knowledge/blob/master/nodejs.md>
+
+-   <https://github.com/ElemeFE/node-interview>
+
+-   <https://github.com/dexteryy/spellbook-of-modern-webdev#server-side-libraries-nodejs>
+
+-   <https://learn-anything.xyz/web-development/backend/nodejs>
+
+-   [How I write backends.](https://github.com/fpereiro/backendlore)
+
+-   <https://github.com/IonicaBizau/learning-nodejs>
+
+-   [System Design --- Gaurav Sen](https://www.youtube.com/playlist?list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX) + <https://www.youtube.com/c/TechDummiesNarendraL/playlists>
+
+-   [Scripting Languages I: Node.js, Python, PHP, Ruby](https://hyperpolyglot.org/scripting)
+
+-   <https://quanticdev.com/articles/automating-my-youtube-uploads-using-nodejs>
+
+-   <https://github.com/snipcart/node-js-ecommerce-koajs>
+
+-   <https://simonplend.com/talk-at-js-monthly-london-make-the-most-of-modern-javascript-with-fastify>
+
+-   <https://jg.gg/2020/09/30/choosing-your-tech-stack-2020-edition-2/>
+
+-   <https://github.com/wolfejw86/architecture-learning-path>
+
+-   [Geographical forum app for groups and teams to share and discuss locations](https://github.com/axelpale/georap)
+
+-   <https://github.com/feross/awesome-mad-science>
+
+
+
