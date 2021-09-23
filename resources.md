@@ -2971,3 +2971,10 @@ Miscellaneous
 
 
 
+---
+---
+
+
+# Static Site Resources:
+
+
