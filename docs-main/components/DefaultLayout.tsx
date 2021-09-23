@@ -11,7 +11,8 @@ import { useTranslation } from './hooks/useTranslation'
 
 type Props = { children?: React.ReactNode }
 export const DefaultLayout = (props: Props) => {
-  const { page, error, isHomepageVersion, currentPathWithoutLanguage, fullUrl, status } = useMainContext()
+  const { page, error, isHomepageVersion, currentPathWithoutLanguage, fullUrl, status } =
+    useMainContext()
   const { t } = useTranslation('errors')
   return (
     <div className="d-lg-flex">

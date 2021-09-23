@@ -14,7 +14,7 @@ Thanks again!
 
 Closes [issue link]
 
-<!-- 
+<!--
 - If there's an existing issue for your change, please link to it.
 - If there's _not_ an existing issue, please open one first to make it more likely that this update will be accepted: https://github.com/github/docs/issues/new/choose. -->
 

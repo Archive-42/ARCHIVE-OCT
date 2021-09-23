@@ -11,27 +11,32 @@ If you aren't comfortable going through the steps alone, sync up with a docs eng
   - [ ] Prepend the new release number to the `supported` array.
   - [ ] Increment the `next` variable above the `supported` array (e.g., new release number + `.1`)
 - [ ] Update the GHES dates file:
+
   - [ ] Make sure you have a `.env` file at the root directory of your local checkout, and that it contains a PAT in the format of `GITHUB_TOKEN=<token>`.
   - [ ] Run the script to update the dates file:
 
     ```
     script/update-enterprise-dates.js
     ```
+
 - [ ] Create REST files based on previous version:
 
   ```
   script/enterprise-server-releases/create-rest-files.js --oldVersion <PLAN@RELEASE> --newVersion <PLAN@RELEASE>
   ```
+
 - [ ] Create GraphQL files based on previous version:
 
   ```
   script/enterprise-server-releases/create-graphql-files.js --oldVersion <PLAN@RELEASE> --newVersion <PLAN@RELEASE>
   ```
+
 - [ ] Create webhook files based on previous version:
 
   ```
   script/enterprise-server-releases/create-webhook-files.js --oldVersion <PLAN@RELEASE> --newVersion <PLAN@RELEASE>
   ```
+
 - [ ] Create a placeholder release notes file called `data/release-notes/<PRODUCT>/<RELEASE NUMBER>/PLACEHOLDER.yml`. For example `data/release-notes/3-1/PLACEHOLDER.yml`. Add the following placeholder content to the file:
 
   ```
@@ -78,7 +83,7 @@ If you aren't comfortable going through the steps alone, sync up with a docs eng
 
 If the `OpenAPI dev mode check / check-schema-versions` check fails with the following message:
 
->  :construction::warning: Your decorated and dereferenced schema files don't match. Ensure you're using decorated and dereferenced schemas from the automatically created pull requests by the 'github-openapi-bot' user. For more information, see 'script/rest/README.md'
+> :construction::warning: Your decorated and dereferenced schema files don't match. Ensure you're using decorated and dereferenced schemas from the automatically created pull requests by the 'github-openapi-bot' user. For more information, see 'script/rest/README.md'
 
 - run `git checkout origin/main lib/rest/static/*`
 - run `script/enterprise-server-releases/create-rest-files.js --oldVersion enterprise-server@<LATEST PUBLIC RELEASE NUMBER> --newVersion enterprise-server@<NEW RELEASE NUMBER>`
@@ -95,7 +100,7 @@ This file should be automatically updated, but you can also run `script/update-e
 ### Before shipping the release branch
 
 - [ ] Add the GHES release notes to `data/release-notes/` and update the versioning frontmatter in `content/admin/release-notes.md` to `enterprise-server: '<=<RELEASE>'`
-- [ ] Alert the Neon Squad (formally docs-ecosystem team)  1-2 days before the release to deploy to `github/github`. A PR should already be open in `github/github`, to change `published` to `true` in  `app/api/description/config/releases/ghes-<NEXT RELEASE NUMBER>.yaml`. They will need to:
+- [ ] Alert the Neon Squad (formally docs-ecosystem team) 1-2 days before the release to deploy to `github/github`. A PR should already be open in `github/github`, to change `published` to `true` in `app/api/description/config/releases/ghes-<NEXT RELEASE NUMBER>.yaml`. They will need to:
   - [ ] Get the required approval from `@github/ecosystem-api-reviewers` then deploy the PR to dotcom. This process generally takes 30-90 minutes.
   - [ ] Once the PR merges, make sure that the auto-generated PR titled "Update OpenAPI Descriptions" in doc-internal contains both the derefrenced and decorated JSON files for the new GHES release. If everything looks good, merge the "Update OpenAPI Description" PR into the GHES release megabranch.
   - [ ] Add a blocking review to the auto-generated "Update OpenAPI Descriptions" PR in the public REST API description. (Remove this blocking review once the GHES release ships.)
