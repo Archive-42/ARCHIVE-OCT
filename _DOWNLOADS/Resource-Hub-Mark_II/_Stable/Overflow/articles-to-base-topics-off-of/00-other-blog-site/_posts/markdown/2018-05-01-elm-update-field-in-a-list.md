@@ -19,7 +19,6 @@ tags: elm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -50,8 +49,7 @@ type alias Model =
   { items : List Item }
 ```
 
-In view 
-
+In view
 
 ```elm
 view : Model -> Html Msg
@@ -82,8 +80,8 @@ viewItem item =
 Now if when user edits an item, we should make sure we are updating the correct Item in the store.
 For this the `UpdateDescription` message should accept `id` of the item and the input value.
 
-Since our data structure uses list, we don't have index to update the item in list. 
-Instead we have to map through each item and match the id and if id matches we will update the field. 
+Since our data structure uses list, we don't have index to update the item in list.
+Instead we have to map through each item and match the id and if id matches we will update the field.
 
 ```elm
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -101,7 +99,7 @@ update msg model =
           List.map updateDescription model.items
       in
         ( { model | items = items }, Cmd.none )
-``` 
+```
 
 As of now this is pretty simple and no confusion, But gets complicated when we decide to move the `ItemView` to a seperate module. We see that in the [next blog post][part_2].
 
@@ -112,7 +110,5 @@ As of now this is pretty simple and no confusion, But gets complicated when we d
     |      ELM         |  0.18.0 |
 
 if you have any feedback, please drop a comment below.
-
-
 
 [part_2]: /2018/05/elm-message-passing-between-modules.html

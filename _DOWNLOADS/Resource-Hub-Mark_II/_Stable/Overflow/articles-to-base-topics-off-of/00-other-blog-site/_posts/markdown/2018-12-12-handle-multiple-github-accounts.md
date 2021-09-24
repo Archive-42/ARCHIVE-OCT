@@ -19,7 +19,6 @@ tags: git, github
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,15 +31,15 @@ tags: git, github
 
 <body>
 
-Have you ever came into a situation where you have to separate the work and personal github accounts and find it difficult to switch between those on same machine in a busy working day? This post is for **YOU!**. 
+Have you ever came into a situation where you have to separate the work and personal github accounts and find it difficult to switch between those on same machine in a busy working day? This post is for **YOU!**.
 
 Recently when I started with my new client, they had a demand that we can't use our existing (personal) `github.com` account for work. We have to create a new github account with the new clients email address and use it. But github didn't allow to add same ssh key in the new account. We have to generate new ssh key.
 
 Considering we have generated new ssh key and added to new github account there are couple of challenges.
 
-* We have to use the new ssh key for anything related to client projects
-* the committer and author email should be set to client email address
-* if you are using [hub][hub], hub should be able to use the token from the new github account. 
+- We have to use the new ssh key for anything related to client projects
+- the committer and author email should be set to client email address
+- if you are using [hub][hub], hub should be able to use the token from the new github account.
 
 # <a class="anchor" name="per-repo" href="#per-repo"><i class="anchor-icon"></i></a>Settings per repo
 
@@ -54,7 +53,6 @@ git config --local core.sshCommand "ssh -i ~/.ssh/id_client"
 
 Use [user.email][git_config_user_email] and [user.name][git_config_user_name] configs to override the committer email/name and author email/name.
 
-
 ```sh
 git config --local user.email "email@client.com"
 git config --local user.name "Your name"
@@ -65,13 +63,13 @@ As of now **hub** won't allow to override the config on [per repo basis][hub_per
 # <a class="anchor" name="multi-repo" href="#multi-repo"><i class="anchor-icon"></i></a>Settings for multi repo
 
 Overriding the git settings per repo will be an issue if you have multiple client repos. When you clone a new repo you have to
-remember to run these commands. 
+remember to run these commands.
 
 To fix this we can utilize the **Environment variables** to override the settings.
 
 [GIT_SSH_COMMAND][git_env_ssh] instead of `core.sshCommand`  
 [GIT_AUTHOR_NAME][git_env_author_name] **/** `GIT_COMMITTER_NAME` instead of `user.name`  
-`GIT_COMMITTER_EMAIL` **/** `GIT_AUTHOR_EMAIL` **/** `EMAIL` instead of `user.email`  
+`GIT_COMMITTER_EMAIL` **/** `GIT_AUTHOR_EMAIL` **/** `EMAIL` instead of `user.email`
 
 But setting these `ENV` variables for every git command is not possible. [direnv][direnv] to save us from this issue.
 
@@ -99,17 +97,17 @@ export GIT_COMMITTER_EMAIL='email@client.com'
 export EMAIL='email@client.com'
 ```
 
-Once the `.envrc` is created run the command `dotenv allow .` in the folder to load the `ENV` variables. This is needed only once after you update the `.envrc` rest all when you change directory the `clientProject` or to any child folder these `ENV` variables will get loaded. 
+Once the `.envrc` is created run the command `dotenv allow .` in the folder to load the `ENV` variables. This is needed only once after you update the `.envrc` rest all when you change directory the `clientProject` or to any child folder these `ENV` variables will get loaded.
 
 Now if you run any `git` command inside this `clientProjects` folder at any level, `git` will take up the values from these
 `ENV` variables.
 
 # <a class="anchor" name="configure-hub" href="#configure-hub"><i class="anchor-icon"></i></a>Configure hub
 
-If you are a [hub][hub] user and you already have the hub config (personal account) on the machine, all the above config won't help to use hub specific 
+If you are a [hub][hub] user and you already have the hub config (personal account) on the machine, all the above config won't help to use hub specific
 commands like `pull-request` etc to work with new client specific github account.
 
-To do that, let's move the existing `hub` config from `$HOME/.config/hub` to `$HOME/.config/hub-personal` and add 
+To do that, let's move the existing `hub` config from `$HOME/.config/hub` to `$HOME/.config/hub-personal` and add
 
 ```
 export HUB_CONFIG="$HOME/.config/hub-personal"

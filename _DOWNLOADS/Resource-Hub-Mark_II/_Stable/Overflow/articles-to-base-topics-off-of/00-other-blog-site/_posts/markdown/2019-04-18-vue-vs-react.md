@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-v
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -33,15 +32,16 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-v
 
 <body>
 
-> **Disclaimer**   
-> * This post not a comparision between Vue & React features.  
-> * This doesn't recommend which one to use in your next project.  
-> * This was expected to publish in `November 2018`, but couldn't. Publishing this now just for records.
+> **Disclaimer**
+>
+> - This post not a comparision between Vue & React features.
+> - This doesn't recommend which one to use in your next project.
+> - This was expected to publish in `November 2018`, but couldn't. Publishing this now just for records.
 
 ![](https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-vue/jyotirmoy-gupta-527306-unsplash-850.jpg){: width="100%"}
 
 `October 2018` when I started my new consulting work, the initial days itself I was pulled into the debate of `Vue` v/s `React`.
-2 years before we have done some react for the same company. 
+2 years before we have done some react for the same company.
 But this time when I went to this company most of the projects where using `Vue`. I took up this work thinking I will be working with `Vue`,
 but I didn't know that there where some discussion happening on switching back to `React`. Soon I became part of this heated debate.
 
@@ -53,8 +53,8 @@ By this time I got a chance to take a look into some vue projects in the company
 Almost in first week of `Nov 2018` when we had another discussion and same feature listing started, I intervened and made them stop
 and asked 2 questions.
 
-* Why we moved to Vue from React?
-* Why are we again considering moving to React?
+- Why we moved to Vue from React?
+- Why are we again considering moving to React?
 
 for both these I didn't got any satisfactory explanation other than Vue is beginner friendly and other normal arguments.
 
@@ -66,19 +66,19 @@ In the rest of the blog post I will try to explain why we made this decision.
 Many famous and daily used web application where using React
 for Eg.
 
-* Facebook (of course the creator)
-* Slack
-* Reddit
-* Twitter
-* Microsoft
-* Flipkart
-* Paypal
+- Facebook (of course the creator)
+- Slack
+- Reddit
+- Twitter
+- Microsoft
+- Flipkart
+- Paypal
 
 Where on the side of `Vue`
 
-* Gitlab
-* Ola
-* Zoomcar
+- Gitlab
+- Ola
+- Zoomcar
 
 can be more but didn't see much major players.
 Also one of my friend's team started moving to `React` from `Vue` to various reasons similar to this.
@@ -88,8 +88,8 @@ Also one of my friend's team started moving to `React` from `Vue` to various rea
 Since `React` is used by large corporations and they contribute back in the form of some useful modules
 Modules like
 
-* `downshift`, `react-testing-library` by Kent C Dodds from **Paypal**
-* React router, reach router by **React Training**
+- `downshift`, `react-testing-library` by Kent C Dodds from **Paypal**
+- React router, reach router by **React Training**
 
 Support for the `CSS-in-JS` libraries like `glamour`, `emotion` etc.
 
@@ -97,7 +97,6 @@ When it comes to tooling, `babel` officially supports it.
 
 When we look into vue, I couldn't see much modules which are community supported and continued maintenance other than official Vue components.
 So we concluded the availability and community support of modules is much better in react ecosystem than Vue.
-
 
 # <a class="anchor" name="community" href="#community"><i class="anchor-icon"></i></a>3. Better community in town
 

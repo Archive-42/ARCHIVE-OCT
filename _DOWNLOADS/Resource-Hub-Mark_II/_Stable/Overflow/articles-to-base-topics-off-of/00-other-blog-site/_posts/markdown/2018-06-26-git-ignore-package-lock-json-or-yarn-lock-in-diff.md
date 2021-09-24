@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/git-dif
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,7 +31,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/git-dif
 </head>
 
 <body>
-
 
 Git diff with `package-lock.json`/`yarn.lock` is difficult since you need to scoll though too much noice, but we can't git ignore those as well. Those files are suppose to be checked into the repository.
 
@@ -58,6 +56,5 @@ Comments are welcome.
     | Library/Language  | Version |
     | ----------------- |---------|
     |      Git          |  2.17.1 |
-
 
 [git_diff]: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/git-diff/git-diff-package-lock.png

@@ -19,7 +19,6 @@ tags: reactjs
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -42,96 +41,88 @@ While using `context` we need to know three things, `getChildContext`, `childCon
 
 we need to specify `getChildContext` method in top component and return an object with data which we wish to pass via `context`.
 
-~~~ js
-const {PropTypes, Component} = React;
-const {render} = ReactDOM;
+```js
+const { PropTypes, Component } = React;
+const { render } = ReactDOM;
 
 class App extends Component {
   getChildContext() {
-    return {items: ['A', 'B', 'C']};
+    return { items: ["A", "B", "C"] };
   }
   render() {
-    return (
-      <List />
-    );
+    return <List />;
   }
 }
 
 App.childContextTypes = {
-  items: PropTypes.array
-}
-~~~
+  items: PropTypes.array,
+};
+```
 
 Also we need to specify the what all data we are passing through `context` need to be specified in `childContextTypes` of top component. If we miss specifying in `childContextTypes` the child won't be able to receive those data.
 
 Now in the child component where we need to receive data we need to specify all data need to receive in `contextTypes`. Once that this done, we can access data in child component using `this.context`.
 
-In the above example you can see that I am missing the `<List />` component (which we will fill in next example) and also you can see I am not passing any props to `<List />`. 
+In the above example you can see that I am missing the `<List />` component (which we will fill in next example) and also you can see I am not passing any props to `<List />`.
 
-~~~ js
+```js
 // imports from above example
 
 class List extends Component {
   render() {
     return (
       <ul>
-        {
-          this.context.items.map((item) => {
-            return <li>{item}</li>;
-          })
-        }
+        {this.context.items.map((item) => {
+          return <li>{item}</li>;
+        })}
       </ul>
-    )
+    );
   }
 }
 
 List.contextTypes = {
-  items: PropTypes.array
-}
+  items: PropTypes.array,
+};
 
 // app component from above example
-~~~
+```
 
 Now the code snippet looks like
 
-~~~ js
-const {PropTypes, Component} = React;
-const {render} = ReactDOM;
+```js
+const { PropTypes, Component } = React;
+const { render } = ReactDOM;
 
 class List extends Component {
   render() {
     return (
       <ul>
-        {
-          this.context.items.map((item) => {
-            return <li>{item}</li>;
-          })
-        }
+        {this.context.items.map((item) => {
+          return <li>{item}</li>;
+        })}
       </ul>
-    )
-  }
-}
-
-List.contextTypes = {
-  items: PropTypes.array
-}
-
-class App extends Component {
-  getChildContext() {
-    return {items: ['A', 'B', 'C']};
-  }
-  render() {
-    return (
-      <List />
     );
   }
 }
 
-App.childContextTypes = {
-  items: PropTypes.array
+List.contextTypes = {
+  items: PropTypes.array,
+};
+
+class App extends Component {
+  getChildContext() {
+    return { items: ["A", "B", "C"] };
+  }
+  render() {
+    return <List />;
+  }
 }
 
-render(<App />, document.getElementById('mount'));
-~~~
+App.childContextTypes = {
+  items: PropTypes.array,
+};
+
+render(<App />, document.getElementById("mount"));
+```
 
 You can find an [working example](https://jsbin.com/bivile/edit?js,output) in jsbin.

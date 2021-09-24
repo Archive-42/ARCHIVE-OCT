@@ -20,7 +20,6 @@ image: /assets/images/gitlab-ci-heroku/variables.png
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -38,7 +37,7 @@ As of now, Heroku doesn't support auto-deploy from GitLab. So we have to use Git
 For this blog post, we will take a rails app with a Postgres database. We need Gitlab to run the unit tests and deploy to staging and then later to production.
 
 For staging and production, we will keep different branches to make things simpler. It will also make it easier for us to push a hotfix.
- 
+
 # <a class="anchor" name="setting-up-gitlab-ci" href="#setting-up-gitlab-ci"><i class="anchor-icon"></i></a>Setting up Gitlab CI
 
 First, we have to set up our project to run the tests using Gitlab CI.
@@ -46,7 +45,7 @@ You can add new `.gitlab-ci.yml` file using the templates available in Gitlab we
 
 ```yml
 # .gitlab-ci.yml
-image: 'ruby:2.7.1'
+image: "ruby:2.7.1"
 ```
 
 Then add the services section to support postgres db for the rails app.
@@ -61,7 +60,7 @@ variables:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   POSTGRES_HOST_AUTH_METHOD: trust
-  DATABASE_URL: 'postgres://postgres:postgres@postgres:5432/app_test'
+  DATABASE_URL: "postgres://postgres:postgres@postgres:5432/app_test"
 ```
 
 Next, let's add cache to make the build faster. We can cache the ruby gems, node modules etc
@@ -108,27 +107,27 @@ test:
 Before we configure the deployment, we need to add the ENV variables to Gitlab's project configuration.
 To add these navigate to `Variables` section in `CI / CD Settings` of the project.
 
-We require the following ENV variables. 
+We require the following ENV variables.
 
-* $HEROKU_PRODUCTION_KEY
-* $HEROKU_APP_NAME
-* $HEROKU_STAGING_APP_NAME
+- $HEROKU_PRODUCTION_KEY
+- $HEROKU_APP_NAME
+- $HEROKU_STAGING_APP_NAME
 
 {: style="text-align: center"}
 ![Gitlab Variables][gitlab_variables]
 
 We can mark the variables `Protected` & `Masked` depending on our setup.
-**The protected variables will be exported only in protected branches.**  
+**The protected variables will be exported only in protected branches.**
 
-We can configure different environments for the project in `Operations -> Environments`.  
+We can configure different environments for the project in `Operations -> Environments`.
 
 # <a class="anchor" name="deploy" href="#deploy"><i class="anchor-icon"></i></a>Deploy
 
 Once the tests are passing, we can configure the deployments in the next stage.
-The deployments to run only from particular branches, ie., 
+The deployments to run only from particular branches, ie.,
 
-* from `develop` branch, deploy to staging
-* from `master` branch, deploy to production
+- from `develop` branch, deploy to staging
+- from `master` branch, deploy to production
 
 The deployments will be processed with the help of [dpl](https://github.com/travis-ci/dpl/tree/v1.10.15) gem.
 Since we are deploying to Heroku that requires us to run migration manually after each deployment, we should install Heroku CLI before the deploy stage.
@@ -168,7 +167,7 @@ staging:
 
 The `.before_script_deploy` template will help us to share the `before_script` between the production & staging.
 
-While writing this blog post the version of stable `dpl` gem was `1.10.15` & the master branch was pointing to new work in progress 2.0 version. 
+While writing this blog post the version of stable `dpl` gem was `1.10.15` & the master branch was pointing to new work in progress 2.0 version.
 When you are reading the documentation of `dpl` please pay attention to the version.
 
 [gitlab_variables]: /assets/images/gitlab-ci-heroku/variables.png

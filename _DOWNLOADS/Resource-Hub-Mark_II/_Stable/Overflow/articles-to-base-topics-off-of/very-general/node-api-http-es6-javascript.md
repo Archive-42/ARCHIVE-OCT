@@ -420,12 +420,11 @@ From here, start building your own Node applications, read the Node documentatio
 
 #### Further Reading on SmashingMag:
 
-*   [Understanding And Using REST APIs](https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/ "Read 'Understanding And Using REST APIs'")
-*   [New JavaScript Features That Will Change How You Write Regex](https://www.smashingmagazine.com/2019/02/regexp-features-regular-expressions/ "Read 'New JavaScript Features That Will Change How You Write Regex'")
-*   [Keeping Node.js Fast: Tools, Techniques, And Tips For Making High-Performance Node.js Servers](https://www.smashingmagazine.com/2018/06/nodejs-tools-techniques-performance-servers/ "Read 'Keeping Node.js Fast: Tools, Techniques, And Tips For Making High-Performance Node.js Servers'")
-*   [Building A Simple AI Chatbot With Web Speech API And Node.js](https://www.smashingmagazine.com/2017/08/ai-chatbot-web-speech-api-node-js/ "Read 'Building A Simple AI Chatbot With Web Speech API And Node.js'")
+- [Understanding And Using REST APIs](https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/ "Read 'Understanding And Using REST APIs'")
+- [New JavaScript Features That Will Change How You Write Regex](https://www.smashingmagazine.com/2019/02/regexp-features-regular-expressions/ "Read 'New JavaScript Features That Will Change How You Write Regex'")
+- [Keeping Node.js Fast: Tools, Techniques, And Tips For Making High-Performance Node.js Servers](https://www.smashingmagazine.com/2018/06/nodejs-tools-techniques-performance-servers/ "Read 'Keeping Node.js Fast: Tools, Techniques, And Tips For Making High-Performance Node.js Servers'")
+- [Building A Simple AI Chatbot With Web Speech API And Node.js](https://www.smashingmagazine.com/2017/08/ai-chatbot-web-speech-api-node-js/ "Read 'Building A Simple AI Chatbot With Web Speech API And Node.js'")
 
 ![Smashing Editorial](https://www.smashingmagazine.com/images/logo/logo--red.png) (dm, ra, il)
-
 
 [Source](https://www.smashingmagazine.com/2019/02/node-api-http-es6-javascript/)

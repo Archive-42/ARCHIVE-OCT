@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/elm-htt
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -43,7 +42,7 @@ For the purpose of demo we will fetch `posts` from [jsonplaceholder][jsonplaceho
 
 Lets start with defining model for the application.
 Our `Post` model will have `id`,`title` & `body` fields and
-main `Model` will contain the list of `Post`s the `uiState` to show the state of request and `error` to store the error message. 
+main `Model` will contain the list of `Post`s the `uiState` to show the state of request and `error` to store the error message.
 
 ```elm
 type UiState
@@ -143,10 +142,9 @@ when data is received.
 
 ## <a class="anchor" name="view" href="#view"><i class="anchor-icon"></i></a>Rendering the view
 
-In view we will have a button which will initiate the xhr request and the render the data as per the 
+In view we will have a button which will initiate the xhr request and the render the data as per the
 xhr status. Once the xhr is initiated we will show the text `Loading...` as the loading indicator and
 later change it to either error message or the list of titles as per the status of xhr request.
-
 
 ```elm
 renderItem : Post -> Html Msg
@@ -193,7 +191,6 @@ The Running version is available on [ellie-app][code_snippet].
     |   elm/http       |  2.0.0  |
 
 <iframe src="https://ellie-app.com/embed/5rmGSL6kbB4a1" style="width:100%; height:400px; border:0; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-
 
 [decode_json]: /2018/06/elm-decoding-json.html
 [jsonplaceholder]: https://jsonplaceholder.typicode.com/

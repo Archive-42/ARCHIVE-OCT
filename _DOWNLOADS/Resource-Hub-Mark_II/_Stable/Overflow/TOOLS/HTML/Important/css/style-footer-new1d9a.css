@@ -11,7 +11,7 @@
 
 #footer #web-subscribe #web-subscribe-title {
   font-size: 24px;
-  font-family: 'Raleway', Ubuntu, Helvetica, sans-serif;
+  font-family: "Raleway", Ubuntu, Helvetica, sans-serif;
   text-decoration: none;
   margin-bottom: 10px;
 }
@@ -112,7 +112,7 @@
 }
 
 #footer #footer-links .link a:hover {
-  color: #383F40;
+  color: #383f40;
 }
 
 #footer #footer-links .sep {
@@ -165,7 +165,8 @@
   color: gray;
 }
 
-#footer #footer-copyright-legal-part-of #hf {}
+#footer #footer-copyright-legal-part-of #hf {
+}
 
 #footer #footer-copyright-legal-part-of #hf a {
   text-decoration: none;
@@ -174,7 +175,7 @@
 
 #footer #footer-copyright-legal-part-of #hf-text {
   font-weight: bold;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 #footer #footer-copyright-legal-part-of #hf-slash {

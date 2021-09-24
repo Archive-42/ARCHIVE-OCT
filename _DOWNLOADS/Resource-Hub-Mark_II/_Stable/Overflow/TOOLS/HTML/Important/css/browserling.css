@@ -51,7 +51,7 @@ body {
   padding: 7px 13px;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border: 1px solid #78ACE8;
+  border: 1px solid #78ace8;
   border-radius: 3px;
   background: #3498db;
   background-image: linear-gradient(to bottom, #3498db, #2980b9);
@@ -70,7 +70,7 @@ body {
 
 #footer {
   text-align: right;
-  color: #ABA8A8;
+  color: #aba8a8;
   margin-top: 15px;
   font-size: 12px;
   font-family: "Open Sans", sans-serif;

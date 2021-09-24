@@ -47,7 +47,7 @@ Databases are too common and too useful to ignore. It’s useful to understand t
 Thanks for reading this article I hope its helpful to you all ! Keep up the learning, and if you would like more computer science, programming and algorithm analysis videos please visit and subscribe to my [YouTube](https://www.youtube.com/channel/UCaV_0qp2NZd319K4_K8Z5SQ) channels ([randerson112358](https://www.youtube.com/channel/UCaV_0qp2NZd319K4_K8Z5SQ) & [compsci112358](https://www.youtube.com/channel/UCbmb5IoBtHZTpYZCDBOC1CA) )
 
 **YouTube Channel:**  
-_randerson112358:_ [https://www.youtube.com/channel/UCaV\_0qp2NZd319K4\_K8Z5SQ](https://www.youtube.com/channel/UCaV_0qp2NZd319K4_K8Z5SQ)
+_randerson112358:_ [https://www.youtube.com/channel/UCaV_0qp2NZd319K4_K8Z5SQ](https://www.youtube.com/channel/UCaV_0qp2NZd319K4_K8Z5SQ)
 
 _compsci112358:_  
 [https://www.youtube.com/channel/UCbmb5IoBtHZTpYZCDBOC1CA](https://www.youtube.com/channel/UCbmb5IoBtHZTpYZCDBOC1CA)
@@ -70,12 +70,6 @@ _compsci112358:_
 
 ![Image for post](https://miro.medium.com/max/1024/0*lhSpRvc4VZbLLT3T.png)
 
-
-
-
-
-
-
 ](https://www.youtube.com/channel/UCaV_0qp2NZd319K4_K8Z5SQ)
 
 [
@@ -83,12 +77,6 @@ _compsci112358:_
 ![Image for post](https://miro.medium.com/max/60/0*oKT63rANbMUACDzw.jpg?q=20)
 
 ![Image for post](https://miro.medium.com/max/1800/0*oKT63rANbMUACDzw.jpg)
-
-
-
-
-
-
 
 ](http://everythingcomputerscience.com/)
 
@@ -98,13 +86,6 @@ _compsci112358:_
 
 ![Image for post](https://miro.medium.com/max/1600/0*BKaxieSoLAMOACfO.png)
 
-
-
-
-
-
-
 ](https://www.udemy.com/algorithm-analysis/)
-
 
 [Source](https://randerson112358.medium.com/what-every-computer-science-major-should-know-713d530fcdfc)

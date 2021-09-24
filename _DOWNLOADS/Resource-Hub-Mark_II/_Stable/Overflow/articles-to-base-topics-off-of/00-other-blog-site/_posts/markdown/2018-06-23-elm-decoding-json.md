@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/elm-jso
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -36,7 +35,7 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/elm-jso
 In ELM understanding decoding JSON will take a bit of time. We can define a `Decoder` as a spec on how to perform the translation from JSON
 to ELM types.
 
-In this post we will try to understand the how to decode a JSON string to ELM types. For limiting the scope we Will cover 
+In this post we will try to understand the how to decode a JSON string to ELM types. For limiting the scope we Will cover
 decoding `Simple Object` in this post and the others complex ones like decoding `List of Objects`, decoding `Union Types`, decoding `JSON with optional keys` will cover in other posts.
 
 We will use [Json.Decode][json_decode] package from ELM core to do the decoding.
@@ -55,17 +54,17 @@ this json should decode into.
 ```elm
 import Json.Decode
 
-type alias Obj = 
+type alias Obj =
     { a: Int, b: String }
 
-json = 
+json =
     """
     {"a": 10, "b": "abc"}
     """
 ```
 
 Next lets define a custom decoder function called `decodeObjValue`, which is composed from the different methods available in `Json.Decode` library.
-This will defined as per the structure of our `json` and `Obj`. 
+This will defined as per the structure of our `json` and `Obj`.
 
 ```elm
 decodeObjValue : Json.Decode.Decoder Obj
@@ -112,9 +111,9 @@ You can see the decode in action on [ellie-app][ellie_link]
     |      core        |  5.1.1  |
 
 [json_card]: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/elm-json-decoder/3762360637_6b851c9478.jpg
-[json_card_src]:http://www.flickr.com/photos/44792728@N00/3762360637
+[json_card_src]: http://www.flickr.com/photos/44792728@N00/3762360637
 [json_decode]: http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Json-Decode
 [decode_string]: http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Json-Decode#decodeString
 [ellie_link]: https://ellie-app.com/yghR44wmJda1
 [photopin]: http://photopin.com
-[cc_license]:https://creativecommons.org/licenses/by-nc-sa/2.0/
+[cc_license]: https://creativecommons.org/licenses/by-nc-sa/2.0/

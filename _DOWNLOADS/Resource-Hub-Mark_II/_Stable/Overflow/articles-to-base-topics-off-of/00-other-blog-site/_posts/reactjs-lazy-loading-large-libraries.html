@@ -1,57 +1,76 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>We tend to use different external libraries for various purposes. The size of those libraries varies from
-      small/medium/large. What happens when you want to use a large library only for a particular route?</p>
-    <p>It doesn’t make any sense to load that library along with the initial bundle or with the vendor. Such large
-      libraries are needed only when a user navigates to that particular route.</p>
-    <p>This blog post will discuss how we can achieve this in a ReactJS application</p>
+    <p>
+      We tend to use different external libraries for various purposes. The size
+      of those libraries varies from small/medium/large. What happens when you
+      want to use a large library only for a particular route?
+    </p>
+    <p>
+      It doesn’t make any sense to load that library along with the initial
+      bundle or with the vendor. Such large libraries are needed only when a
+      user navigates to that particular route.
+    </p>
+    <p>
+      This blog post will discuss how we can achieve this in a ReactJS
+      application
+    </p>
     <img
       src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/stijn-swinnen-145895-unsplash.resized.jpg"
-      alt="React lazy load heavy libraries" />{: width=“100%”}
+      alt="React lazy load heavy libraries"
+    />{: width=“100%”}
     <center>
-      Image by <a
-        href="https://unsplash.com/@stijnswinnen?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">Stijn
-        Swinnen</a>
+      Image by
+      <a
+        href="https://unsplash.com/@stijnswinnen?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+        >Stijn Swinnen</a
+      >
     </center>
     <p>For this blog post, let’s take the highcharts as the heavy library.</p>
-    <h2 id="without-lazy-load"><a class="anchor" name="without-lazy-load" href="#without-lazy-load"><i
-          class="anchor-icon"></i></a>Without Lazy load</h2>
-    <p>If you add basic <code>highcharts</code> it will be ~150KB (gzipped). So without lazyload, you will be shipping
-      this 150KB in the main bundle itself. You can see this in action on <a
-        href="https://withoutlazyload.rsknow.now.sh/">now.sh</a> and code is on <a
-        href="https://github.com/revathskumar/react-lazy-load/tree/master/without-lazy-load">github</a>.</p>
-    <p>In this, we wrote <code>Chart</code> component which will be used for any highcharts usage in the project. This
-      component is already set with default options needed for the Charts for the whole project.</p>
+    <h2 id="without-lazy-load">
+      <a class="anchor" name="without-lazy-load" href="#without-lazy-load"
+        ><i class="anchor-icon"></i></a
+      >Without Lazy load
+    </h2>
+    <p>
+      If you add basic <code>highcharts</code> it will be ~150KB (gzipped). So
+      without lazyload, you will be shipping this 150KB in the main bundle
+      itself. You can see this in action on
+      <a href="https://withoutlazyload.rsknow.now.sh/">now.sh</a> and code is on
+      <a
+        href="https://github.com/revathskumar/react-lazy-load/tree/master/without-lazy-load"
+        >github</a
+      >.
+    </p>
+    <p>
+      In this, we wrote <code>Chart</code> component which will be used for any
+      highcharts usage in the project. This component is already set with
+      default options needed for the Charts for the whole project.
+    </p>
     <pre class="jsx"><code>// Chart.jsx
 import React from &#39;react&#39;;
 
@@ -87,7 +106,9 @@ class Chart extends React.Component {
 }
 
 export default Chart;</code></pre>
-    <p>Now when we need a <code>PieChart</code> we will use this <code>Chart</code> component and override the options.
+    <p>
+      Now when we need a <code>PieChart</code> we will use this
+      <code>Chart</code> component and override the options.
     </p>
     <pre class="jsx"><code>// PieChart.jsx
 import React from &#39;react&#39;;
@@ -131,20 +152,36 @@ class PieChart extends React.Component {
 }
 
 export default PieChart;</code></pre>
-    <p><img
+    <p>
+      <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/without-lazy-load-bundles.png"
-        alt="bundle without lazy load" />{: width=“100%”}</p>
-    <p>And when you look into the network tab the whole bundle is downloaded even though it is not required.</p>
-    <p><img
+        alt="bundle without lazy load"
+      />{: width=“100%”}
+    </p>
+    <p>
+      And when you look into the network tab the whole bundle is downloaded even
+      though it is not required.
+    </p>
+    <p>
+      <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/without-lazy-load-network.png"
-        alt="network without lazy load" />{: width=“100%”}</p>
-    <h2 id="with-lazy-load"><a class="anchor" name="with-lazy-load" href="#with-lazy-load"><i
-          class="anchor-icon"></i></a>With Lazy load</h2>
-    <p>Next we will be converting this to lazyload the chart component. To do this we don’t have to change anything in
-      <code>Chart.jsx</code>.</p>
+        alt="network without lazy load"
+      />{: width=“100%”}
+    </p>
+    <h2 id="with-lazy-load">
+      <a class="anchor" name="with-lazy-load" href="#with-lazy-load"
+        ><i class="anchor-icon"></i></a
+      >With Lazy load
+    </h2>
+    <p>
+      Next we will be converting this to lazyload the chart component. To do
+      this we don’t have to change anything in <code>Chart.jsx</code>.
+    </p>
     <p>The only change will be in <code>PieChart.jsx</code></p>
     <div class="sourceCode" id="cb3">
-      <pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb3-1" title="1">// PieChart.jsx</a>
+      <pre
+        class="sourceCode diff"
+      ><code class="sourceCode diff"><a class="sourceLine" id="cb3-1" title="1">// PieChart.jsx</a>
 <a class="sourceLine" id="cb3-2" title="2">import React from &quot;react&quot;;</a>
 <a class="sourceLine" id="cb3-3" title="3"></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="st">-import Chart from &quot;./Chart&quot;;</span></a>
@@ -199,28 +236,54 @@ export default PieChart;</code></pre>
 <a class="sourceLine" id="cb3-53" title="53"></a>
 <a class="sourceLine" id="cb3-54" title="54">export default PieChart;</a></code></pre>
     </div>
-    <p>The two main changes in the above code is * <code>React.lazy</code> to load the dynamic import of
-      <code>Chart.jsx</code> * <code>React.Suspense</code> to load and render the component. while it loads library it
-      will show the <code>&lt;loader/&gt;</code> given in <code>fallback</code> option.</p>
+    <p>
+      The two main changes in the above code is * <code>React.lazy</code> to
+      load the dynamic import of <code>Chart.jsx</code> *
+      <code>React.Suspense</code> to load and render the component. while it
+      loads library it will show the <code>&lt;loader/&gt;</code> given in
+      <code>fallback</code> option.
+    </p>
     <p>Lets see the different in the bundle sizes and how they gets loaded.</p>
-    <p><img
+    <p>
+      <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/withlazyload-bundles.png"
-        alt="bundle with lazy load" />{: width=“100%”}</p>
-    <p>In the network tab when we are in <code>Home</code> route it loads only initial bundle.</p>
-    <p><img
+        alt="bundle with lazy load"
+      />{: width=“100%”}
+    </p>
+    <p>
+      In the network tab when we are in <code>Home</code> route it loads only
+      initial bundle.
+    </p>
+    <p>
+      <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/withlazyload-initial-network.png"
-        alt="network (initial) with lazy load" />{: width=“100%”}</p>
-    <p>And then we me navigates to <code>Chart</code> route it loads the highcharts the heavy library.</p>
-    <p><img
+        alt="network (initial) with lazy load"
+      />{: width=“100%”}
+    </p>
+    <p>
+      And then we me navigates to <code>Chart</code> route it loads the
+      highcharts the heavy library.
+    </p>
+    <p>
+      <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/withlazyload-network.png"
-        alt="network with lazy load" />{: width=“100%”}</p>
-    <p>{: style=“text-align:center”} <img
+        alt="network with lazy load"
+      />{: width=“100%”}
+    </p>
+    <p>
+      {: style=“text-align:center”}
+      <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/react-large-libraries/lazyload.gif"
-        alt="lazy load chart" /></p>
-    <p>See this in action on <a href="https://withlazyload.rsknow.now.sh/">now.sh</a> and code is on <a
-        href="https://github.com/revathskumar/react-lazy-load/tree/master/with-lazy-load">github</a>.</p>
-
+        alt="lazy load chart"
+      />
+    </p>
+    <p>
+      See this in action on
+      <a href="https://withlazyload.rsknow.now.sh/">now.sh</a> and code is on
+      <a
+        href="https://github.com/revathskumar/react-lazy-load/tree/master/with-lazy-load"
+        >github</a
+      >.
+    </p>
   </body>
-
-  
 </html>

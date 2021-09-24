@@ -19,7 +19,6 @@ tags: elm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -55,7 +54,7 @@ view : Model -> Html Action
 update : Action -> Model -> (Model -> Cmd Action)
 update action model ->
   case action of
-    NoOp -> 
+    NoOp ->
       (model, Cmd.none)
 
 init : (Model -> Cmd Action)
@@ -75,8 +74,8 @@ main =
 And the bootup will be
 
 ```js
-import { Main } from './Main.elm'
-var app = Main.embed(document.getElementById('elm-app'));
+import { Main } from "./Main.elm";
+var app = Main.embed(document.getElementById("elm-app"));
 ```
 
 In the above app we don't have any way to pass the initial value for the name.
@@ -116,9 +115,9 @@ init flags =
 Now our app is ready to accept the name on startup. Let's pass the value to our elm program.
 
 ```js
-import { Main } from './Main.elm'
-var app = Main.embed(document.getElementById('elm-app'), { 
-  name: 'ELM' 
+import { Main } from "./Main.elm";
+var app = Main.embed(document.getElementById("elm-app"), {
+  name: "ELM",
 });
 ```
 
@@ -150,7 +149,7 @@ view model =
 update : Action -> Model -> (Model -> Cmd Action)
 update action model ->
   case action of
-    NoOp -> 
+    NoOp ->
       (model, Cmd.none)
 
 init : Flags -> (Model -> Cmd Action)

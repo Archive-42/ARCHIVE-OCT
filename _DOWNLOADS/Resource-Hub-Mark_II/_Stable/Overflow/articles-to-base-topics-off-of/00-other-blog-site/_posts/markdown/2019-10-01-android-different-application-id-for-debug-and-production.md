@@ -95,4 +95,3 @@ and for debug the title will be picked from `debug/res/values/string.xml`
     <string name="app_name">Reminder β</string>
 </resources>
 ```
-

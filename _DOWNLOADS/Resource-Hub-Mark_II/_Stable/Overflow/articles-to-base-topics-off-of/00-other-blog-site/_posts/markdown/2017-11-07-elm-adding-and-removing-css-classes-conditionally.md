@@ -19,7 +19,6 @@ tags: elm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,7 +31,7 @@ tags: elm
 
 <body>
 
-In the react ecosystem, [classnames](https://www.npmjs.com/package/classnames) modules is everyones favorite to conditionally add and remove css classes. 
+In the react ecosystem, [classnames](https://www.npmjs.com/package/classnames) modules is everyones favorite to conditionally add and remove css classes.
 
 ELM, provide built in support for the same by [classList](http://package.elm-lang.org/packages/elm-lang/html/2.0.0/Html-Attributes#classList) in `Html.Attributes`
 

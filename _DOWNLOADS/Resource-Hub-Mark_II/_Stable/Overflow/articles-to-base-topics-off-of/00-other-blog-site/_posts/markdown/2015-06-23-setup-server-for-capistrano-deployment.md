@@ -19,7 +19,6 @@ tags: php, capistrano, deployment
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,7 +31,7 @@ tags: php, capistrano, deployment
 
 <body>
 
-When I was Rails developer I used to deploy using capistrano with a single command 
+When I was Rails developer I used to deploy using capistrano with a single command
 
 ```sh
 cap production deploy
@@ -49,15 +48,15 @@ Since I was a ruby developer all the ruby and capistrano setup was already there
 First step to setting up server for cap deployment is install ruby and git. I usually install ruby using [Ruby Version Manager (rvm)](http://rvm.io). It helps me to manage the ruby versions.
 
 ```sh
-apt-get install -y build-essential git-core libyaml-dev 
- 
+apt-get install -y build-essential git-core libyaml-dev
+
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -L get.rvm.io | bash -s stable
- 
+
 source /home/lookup/.rvm/scripts/rvm
 rvm reload
 rvm install 2.2.2
- 
+
 gem install capistrano --no-ri --no-rdoc
 ```
 
@@ -70,6 +69,7 @@ sudo addgroup www # create a new usergroup
 sudo adduser deploy # create a new user
 sudo adduser deploy www # add deploy user to www group
 ```
+
 Since apache will run as `www-data` user we need to add `www-data` to our newly created user group.
 
 ```sh
@@ -82,15 +82,16 @@ Now we need to give appropriate permission for the usergroup. Open `/etc/sudoers
 # open /etc/sudoers
 deploy ALL=(ALL:ALL) ALL
 ```
+
 and run the following commands to set the permissions of deploy directory in my case `/var/www` for `deploy` user.
 
 ```sh
 # Set the ownership of the folder to members of `www` group
 sudo chown -R :www  /var/www
- 
+
 # Set folder permissions recursively
 sudo chmod -R g+rwX /var/www
- 
+
 # Ensure permissions will affect future sub-directories etc.
 sudo chmod g+s /var/www
 ```

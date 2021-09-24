@@ -19,7 +19,6 @@ tags: nodejs, telegram, bots
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,8 +31,8 @@ tags: nodejs, telegram, bots
 
 <body>
 
-[Telegram bots][telegram_bot] helps to add you own custom functionality to telegram by running your own third party applications. It can 
-help to [communicate][gifs_bot] or share information, do some fun/informative tasks with in the telegram, can help groups to avoid spam messages or may be 
+[Telegram bots][telegram_bot] helps to add you own custom functionality to telegram by running your own third party applications. It can
+help to [communicate][gifs_bot] or share information, do some fun/informative tasks with in the telegram, can help groups to avoid spam messages or may be
 take a poll in the group.
 
 In this tutorial we will look into [inline mode][inline_mode] bots which users can use them in the text field itself.
@@ -41,7 +40,7 @@ In this tutorial we will look into [inline mode][inline_mode] bots which users c
 ### <a class="anchor" name="register-bot" href="#register-bot"><i class="anchor-icon"></i></a>Register bot
 
 Writing an telegram bot starts with the simple task of registering your bot with [@BotFather][bot_father] and get the bot token.
-You can create a new bot by sending the command `/newbot` to BotFather.Then BotFather will take you though a interactive chat 
+You can create a new bot by sending the command `/newbot` to BotFather.Then BotFather will take you though a interactive chat
 to set the username, description etc and give back the bot token. Once you have the bot token keep it confidential and don't share it with anyone.
 In this blog post we are creating an `Inline mode` bot. For this we have to enable inline mode by sending `/setinline` command to BotFather and provide a placeholder text.
 
@@ -54,41 +53,41 @@ and install the first and main package [telegram-node-bot][telegram-node-bot] us
 npm i telegram-node-bot
 ```
 
-This package uses MVC kind of architecture with router, controller etc. 
+This package uses MVC kind of architecture with router, controller etc.
 
 Then setup your main controller and router. For inline mode bot the contoller should extend from `Telegram.TelegramBaseInlineQueryController`.
 
 ```js
-'use strict'
+"use strict";
 
-const Telegram = require('telegram-node-bot')
+const Telegram = require("telegram-node-bot");
 
-const TelegramBaseInlineQueryController = Telegram.TelegramBaseInlineQueryController
+const TelegramBaseInlineQueryController =
+  Telegram.TelegramBaseInlineQueryController;
 const tg = new Telegram.Telegram(process.env.TELEGRAM_BOT_TOKEN, {
-    workers: 1
-})
+  workers: 1,
+});
 
 class DuckController extends TelegramBaseInlineQueryController {
-    handle($) {
-        // handle the query
-    }
+  handle($) {
+    // handle the query
+  }
 }
 
-tg.router
-    .inlineQuery(new DuckController())
+tg.router.inlineQuery(new DuckController());
 ```
 
 By default `telegram-node-bot` uses long-polling to get the updates. If you want to setup the webhook, you can use the option `webhook` along with `workers` option.
 
 ```js
 const tg = new Telegram.Telegram(process.env.TELEGRAM_BOT_TOKEN, {
-    workers: 1,
-    webhook: {
-        url: process.env.WEBHOOK_URL,
-        port: process.env.PORT || 3000,
-        host: process.env.WEBHOOK_HOST || 'localhost'
-    }
-})
+  workers: 1,
+  webhook: {
+    url: process.env.WEBHOOK_URL,
+    port: process.env.PORT || 3000,
+    host: process.env.WEBHOOK_HOST || "localhost",
+  },
+});
 ```
 
 In my opinion, `webhook` is needed only on `production`. If you want to use `webhook` in development, then you need to expose the local webserver to internet via [ngrok][ngrok] or some other similar services.
@@ -100,25 +99,28 @@ For this demo we will convert the user query into [duckduckgo.com][duck] search 
 
 ```js
 class DuckController extends TelegramBaseInlineQueryController {
-    handle($) {
-        const query = $._inlineQuery.query;
-        let results = [];
-        if (query) {
-            results = [{
-                id: Math.random().toString(36).substring(7),
-                type:'article',
-                message_text: `https://duckduckgo.com/?q=${encodeURIComponent(query)}`,
-                title: 'Duck It',
-                description: `${query}`
-            }];
-        }
-        $.answer(results, {}, function(result) {
-        });
+  handle($) {
+    const query = $._inlineQuery.query;
+    let results = [];
+    if (query) {
+      results = [
+        {
+          id: Math.random().toString(36).substring(7),
+          type: "article",
+          message_text: `https://duckduckgo.com/?q=${encodeURIComponent(
+            query
+          )}`,
+          title: "Duck It",
+          description: `${query}`,
+        },
+      ];
     }
+    $.answer(results, {}, function (result) {});
+  }
 }
 ```
 
-The `handle` method will be called with first argument (`$`) which has the context of message like, what's the user query, who is the user and other details. 
+The `handle` method will be called with first argument (`$`) which has the context of message like, what's the user query, who is the user and other details.
 In our case we need only the query send by the user which we can get from `$._inlineQuery.query`.
 
 Next, constuct the results array using appropriate [inline query result type][query_result_type], In this case [article][result_type_article].
@@ -139,15 +141,15 @@ You can optionally add start command (`node index.js`) to npm scripts.
 You can use any hosting provider to host our bot. For me the easiest to host node project is [heroku][heroku].
 You can setup a new project there and get the public url. like `https://yourbot.herokuapp.com` and then setup the `ENV` variable in the project settings.
 
-In this make sure you provide 
+In this make sure you provide
 
-* `WEBHOOK_HOST` as `0.0.0.0` and 
-* `WEBHOOK_URL` as `https://yourbot.herokuapp.com`
+- `WEBHOOK_HOST` as `0.0.0.0` and
+- `WEBHOOK_URL` as `https://yourbot.herokuapp.com`
 
 ![heroku env vars][heroku_env_vars]
 
-After this go to **BotFather** and set webhookurl using the command `/setwebhookurl` or 
-use the api url 
+After this go to **BotFather** and set webhookurl using the command `/setwebhookurl` or
+use the api url
 
 ```
 https://api.telegram.org/bot<bot token>/setwebhook?url=https://yourbot.herokuapp.com
@@ -156,7 +158,6 @@ https://api.telegram.org/bot<bot token>/setwebhook?url=https://yourbot.herokuapp
 This bot is available as [@lmdtfy_bot][lmdtfy_bot] for telegram users and code on [github][lmdtfy_bot_github]
 
 Hope it helped.
-
 
     Versions of Language/packages used in this post.
 

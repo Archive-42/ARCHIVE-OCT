@@ -36,7 +36,7 @@
 
 #support-left #links a {
   text-decoration: none;
-  color: #407EE3;
+  color: #407ee3;
 }
 
 #support-left #search {
@@ -56,7 +56,7 @@
 #support-left #ask .field label,
 #support-left #answer .field label {
   display: block;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
@@ -115,13 +115,14 @@
 
 #support-left .question-details {
   float: left;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-#support-left .question-details .question-title {}
+#support-left .question-details .question-title {
+}
 
 #support-left .question-details .question-title a {
-  color: #4A4646;
+  color: #4a4646;
   font-weight: 600;
   text-decoration: none;
   font-size: 18px;
@@ -132,11 +133,11 @@
   font-weight: 600;
   margin-left: 5px;
   text-transform: uppercase;
-  color: #4B8130;
+  color: #4b8130;
 }
 
 #support-left .question-details .question-info {
-  color: #7E7979;
+  color: #7e7979;
   font-size: 14px;
   font-weight: 400;
 }
@@ -151,9 +152,9 @@
 }
 
 #support-left #answers #answers-title {
-  background-color: #EDEDED;
+  background-color: #ededed;
   margin-bottom: 10px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -165,7 +166,7 @@
 
 #support-left #please-signin {
   font-size: 20px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin-top: 20px;
 }
 

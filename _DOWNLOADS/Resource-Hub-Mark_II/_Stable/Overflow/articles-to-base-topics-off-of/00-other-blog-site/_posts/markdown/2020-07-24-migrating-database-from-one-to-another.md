@@ -56,6 +56,3 @@ I used `sequel` because I had a ruby development environment already set up on m
 If you are a python dev, you can take a look into [pgloader](https://pgloader.readthedocs.io/en/latest/) for the same.
 
 If you have found any other way or found any issue on migrating, please let me know via comments.
-
-
-

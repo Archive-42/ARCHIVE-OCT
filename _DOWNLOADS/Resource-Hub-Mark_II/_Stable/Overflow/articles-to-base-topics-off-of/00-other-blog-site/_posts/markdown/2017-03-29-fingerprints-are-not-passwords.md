@@ -19,7 +19,6 @@ tags: password, security
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -41,7 +40,7 @@ Now consider your Gmail and Facebook is protected with your fingerprint.
 Now when they those accounts are compromised, are you going to get more new fingers?
 
 Passwords are something which the users will be able to change and keep it secret.
-You have seen that most bank portals will force users to change the passwords after a interval. 
+You have seen that most bank portals will force users to change the passwords after a interval.
 And they insist that never reuse the password which you used some where else.
 
 Now when you lock you phone, apps and payments using fingerprint, it means you are using the same password
@@ -52,27 +51,27 @@ in all the places and this password which you chose can't change.
 For the sake of argument, you can say that finger print can't be faked, but reality wont agree.
 Locking you phone with fingerprint is like keeping a written pass code along with the phone.
 
-We have already saw that [Hackers fakes German minister's fingerprints using photos of her hands](https://www.theguardian.com/technology/2014/dec/30/hacker-fakes-german-ministers-fingerprints-using-photos-of-her-hands). 
+We have already saw that [Hackers fakes German minister's fingerprints using photos of her hands](https://www.theguardian.com/technology/2014/dec/30/hacker-fakes-german-ministers-fingerprints-using-photos-of-her-hands).
 
 May that was a great work by some hackers, but in India fingerprints where [faked by sim card sales people](https://twitter.com/no2uid/status/832871156969410561) to show high sales.
 
 ![fake fingerprint](https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2017/fingerprints/jio-fingerprintsales.png)
 
 Fingerprint is something which we leave everywhere when you touch your phone, wallet, door
-handle you name it, that means you are advertising that here is my password everywhere and 
+handle you name it, that means you are advertising that here is my password everywhere and
 use the same to secure everything.
 
 ## You don't need to be conscious or alive
 
-For an attacker, who trying to get into you system which secured with fingerprint, its 
-easy for them that you don't need to be conscious or alive. They make you unconscious and 
+For an attacker, who trying to get into you system which secured with fingerprint, its
+easy for them that you don't need to be conscious or alive. They make you unconscious and
 authenticate using your system using your fingers, but if you chose to use password
 attacker needs you to be conscious and alive to break in.
 
 Even your friend/roommate can get access into your phone/system while you are asleep or
 passed out.
 
-## What Google says about fingerprint security? 
+## What Google says about fingerprint security?
 
 In the [help of pixel phone](https://support.google.com/pixelphone/answer/6300638) Google warn users
 that `fingerprint may be less secure than a strong PIN, pattern or password`.

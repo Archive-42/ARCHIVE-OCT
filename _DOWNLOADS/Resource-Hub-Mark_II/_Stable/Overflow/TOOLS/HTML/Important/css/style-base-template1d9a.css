@@ -31,7 +31,8 @@ body {
   src: local("Material Icons"), local("MaterialIcons-Regular"),
     url(https://www.broowserools.com/fonts/material-icons.woff2) format("woff2"),
     url(https://www.broowserools.com/fonts/material-icons.woff) format("woff"),
-    url(https://www.broowserools.com/fonts/material-icons.ttf) format("truetype");
+    url(https://www.broowserools.com/fonts/material-icons.ttf)
+      format("truetype");
 }
 
 i.icon {

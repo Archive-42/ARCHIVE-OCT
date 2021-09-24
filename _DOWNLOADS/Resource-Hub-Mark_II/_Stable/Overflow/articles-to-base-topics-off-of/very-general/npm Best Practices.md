@@ -10,8 +10,7 @@ In the first chapter of **Node.js at Scale** you are going to learn the best pra
 
 **Click to see all chapters of Node.js at Scale:**
 
-npm Best Practices
-------------------
+## npm Best Practices
 
 `npm install` is the most common way of using the npm cli - but it has a lot more to offer! In this chapter of **Node.js at Scale** you will learn how npm can help you during the full lifecycle of your application - from starting a new project through development and deployment.
 
@@ -25,7 +24,6 @@ To get the version of the npm cli you are actively using, you can do the followi
 
     $ npm --version
     2.13.2
-    
 
 npm can return a lot more than just its own version - it can return the version of the current package, the Node.js version you are using and OpenSSL or V8 versions:
 
@@ -41,7 +39,6 @@ npm can return a lot more than just its own version - it can return the version 
       uv: '1.8.0',
       v8: '4.5.103.35',
       zlib: '1.2.8' }
-    
 
 #### npm help
 
@@ -50,31 +47,27 @@ As most cli toolkits, npm has a great built-in help functionality as well. Descr
     $ npm help test
     NAME
            npm-test - Test a package
-    
+
     SYNOPSIS
                npm test [-- <args>]
-    
+
                aliases: t, tst
-    
+
     DESCRIPTION
            This runs a package's "test" script, if one was provided.
-    
+
            To run tests as a condition of installation, set the npat config to true.
-    
-    
 
 ### #1 Start new projects with `npm init`
 
 When starting a new project `npm init` can help you a lot by interactively creating a `package.json` file. This will prompt questions for example on the project's name or description. However, there is a quicker solution!
 
     $ npm init --yes
-    
 
 If you use `npm init --yes`, it won't prompt for anything, just create a `package.json` with your defaults. To set these defaults, you can use the following commands:
 
     npm config set init.author.name YOUR_NAME
     npm config set init.author.email YOUR_EMAIL
-    
 
 ### #2 Finding npm packages
 
@@ -91,17 +84,14 @@ Once we picked our module (which will be the `request` module in our example), w
 If you'd like to open the homepage of the module from the cli you can do:
 
     $ npm home request
-    
 
 To check open issues or the publicly available roadmap (if there’s any), you can try this:
 
     $ npm bugs request
-    
 
 Alternatively, if you'd just like to check a module's git repository, type this:
 
     $ npm repo request
-    
 
 ### #4 Saving dependencies
 
@@ -110,17 +100,14 @@ Once you found the package you want to include in your project, you have to inst
 If you'd like to take that one step forward and automatically add it to your package.json file, you can do:
 
     $ npm install request --save
-    
 
 npm will save your dependencies with the `^` prefix by default. It means that during the next `npm install` the latest module without a major version bump will be installed. To change this behaviour, you can:
 
     $ npm config set save-prefix='~'
-    
 
 In case you'd like to save the exact version, you can try:
 
     $ npm config set save-exact true
-    
 
 ### #5 Lock down dependencies
 
@@ -139,7 +126,6 @@ To check for outdated dependencies, npm comes with a built-in tool method the `n
     eslint-config-standard    4.4.0   4.4.0   6.0.1  @risingstack/docker-node
     eslint-plugin-standard    1.3.1   1.3.1   2.0.0  @risingstack/docker-node
     rimraf                    2.5.1   2.5.1   2.5.4  @risingstack/docker-node
-    
 
 Once you maintain more projects, it can become an overwhelming task to keep all your dependencies up to date in each of your projects. To automate this task, you can use [Greenkeeper](http://greenkeeper.io/) which will automatically send pull requests to your repositories once a dependency is updated.
 
@@ -150,12 +136,10 @@ Development dependencies are called development dependencies for a reason - you 
 To install production dependencies only, run this:
 
     $ npm install --production
-    
 
 Alternatively, you can set the `NODE_ENV` environment variable to production:
 
     $ NODE_ENV=production npm install
-    
 
 ### #8 Secure your projects and tokens
 
@@ -173,22 +157,15 @@ You can run `npm link package-name` from another location, to create a symbolic 
 
 Let's see it in action!
 
-    
     /projects/request $ npm link
-    
-    
-    /projects/my-server $ npm link request
-    
-    
-    
-    
 
-Next up on Node.js at Scale: SemVer and Module Publishing
----------------------------------------------------------
+
+    /projects/my-server $ npm link request
+
+## Next up on Node.js at Scale: SemVer and Module Publishing
 
 The next article in the Node.js at Scale series will be a [SemVer deep dive with how to publish Node.js modules](chrome-extension://cjedbglnccaioiolemnfhjncicchinao/nodejs-at-scale-npm-publish-tutorial).
 
 Let me know if you have any questions in the comments!
-
 
 [Source](https://blog.risingstack.com/nodejs-at-scale-npm-best-practices/)

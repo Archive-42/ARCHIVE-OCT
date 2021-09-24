@@ -11,7 +11,7 @@
 
 #footer #web-subscribe #web-subscribe-title {
   font-size: 24px;
-  font-family: 'Raleway', Ubuntu, Helvetica, sans-serif;
+  font-family: "Raleway", Ubuntu, Helvetica, sans-serif;
   text-decoration: none;
   margin-bottom: 10px;
 }
@@ -89,7 +89,7 @@
     float: none;
     margin-left: 0;
     text-align: center;
-  }  
+  }
 
   #footer #footer-links {
     float: none;
@@ -97,7 +97,7 @@
     margin-bottom: 45px;
     margin-top: 20px;
     text-align: center;
-  }  
+  }
 }
 
 #footer #footer-links .footer-col {
@@ -112,7 +112,7 @@
 }
 
 #footer #footer-links .link a:hover {
-  color: #383F40;
+  color: #383f40;
 }
 
 #footer #footer-links .sep {
@@ -175,7 +175,7 @@
 
 #footer #footer-copyright-legal-part-of #hf-text {
   font-weight: bold;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 #footer #footer-copyright-legal-part-of #hf-slash {
@@ -206,12 +206,11 @@
     margin-left: 0;
     margin-bottom: 20px;
     text-align: center;
-  }  
+  }
 
   #footer #footer-copyright-legal-part-of #hf {
     float: none;
     margin-right: 0;
     text-align: center;
-  }  
+  }
 }
-

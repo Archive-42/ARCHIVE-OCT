@@ -87,7 +87,7 @@ q:after {
 
 blockquote,
 q {
-  quotes: """";
+  quotes: "" "";
 }
 
 a img {

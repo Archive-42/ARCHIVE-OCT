@@ -17,7 +17,6 @@ categories: opinion
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -30,13 +29,13 @@ categories: opinion
 
 <body>
 
-If your team member is 
+If your team member is
 
-* waiting for your review on his/her pull request 
-* waiting for data modeling
-* waiting for suggestion on the approach
+- waiting for your review on his/her pull request
+- waiting for data modeling
+- waiting for suggestion on the approach
 
-your priority should be on those, realizing someone is blocked on you and he/she can't work on anything 
+your priority should be on those, realizing someone is blocked on you and he/she can't work on anything
 unless we unblock them.
 
 So instead of moving these things into a list saying will do in while, try to finish then and there.

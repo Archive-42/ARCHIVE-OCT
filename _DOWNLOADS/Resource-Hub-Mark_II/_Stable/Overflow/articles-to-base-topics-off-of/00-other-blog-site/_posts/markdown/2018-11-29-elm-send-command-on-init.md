@@ -19,7 +19,6 @@ tags: elm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -50,7 +49,7 @@ init flags =
 Just replacing `Cmd.none` with `FindRandom` won't work since `FindRandom` is a `Msg` and as per init type signature it needs `Cmd Msg`.
 Thats where the [elm/Task][elm_task] comes in. As per the elm doc a Task can be described as
 
-   asynchronous operations that may fail, like HTTP requests or writing to a database.
+asynchronous operations that may fail, like HTTP requests or writing to a database.
 
 In our case we can use this to convert the `Msg` into `Cmd Msg` using [Task.succeed][task_succeed] & [Task.perform][task_perform].
 
@@ -80,7 +79,7 @@ The updated running sample is on [ellie-app][code_snippet]
 
 ## <a class="anchor" name="multiple-cmd" href="#multiple-cmd"><i class="anchor-icon"></i></a>Multiple Cmd
 
-Last section we saw how to perform a `Cmd msg` on `init`, but in some cases we might need to perform more than one `Cmd  msg` on `init`.
+Last section we saw how to perform a `Cmd msg` on `init`, but in some cases we might need to perform more than one `Cmd msg` on `init`.
 For this we can use `Cmd.batch` to do this.
 
 ```elm
@@ -96,8 +95,6 @@ init flags =
 
 The above example is taken from [revathskumar/estimate-helper][estimate_helper_batch]
 
-
-
 [pick_random_item_post]: /2018/11/elm-pick-random-item-from-list.html
 [code_snippet]: https://ellie-app.com/42gtyJ7cnLha1
 [elm_task]: https://package.elm-lang.org/packages/elm/core/latest/Task
@@ -105,4 +102,3 @@ The above example is taken from [revathskumar/estimate-helper][estimate_helper_b
 [task_perform]: https://package.elm-lang.org/packages/elm/core/latest/Task#perform
 [msg_to_cmd_msg]: https://medium.com/elm-shorts/how-to-turn-a-msg-into-a-cmd-msg-in-elm-5dd095175d84
 [estimate_helper_batch]: https://github.com/revathskumar/estimate-helper/blob/9a33c0a6cf2ec12d2b1b76600a148bfc60321195/src/Main.elm#L49-L54
-

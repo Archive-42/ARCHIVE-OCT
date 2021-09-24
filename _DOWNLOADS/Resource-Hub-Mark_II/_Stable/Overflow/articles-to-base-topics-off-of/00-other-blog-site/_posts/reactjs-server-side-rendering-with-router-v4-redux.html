@@ -1,85 +1,122 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>This is post is originally published on <a
-        href="http://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/">crypt.codemancers.com</a>.
+    <p>
+      This is post is originally published on
+      <a
+        href="http://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/"
+        >crypt.codemancers.com</a
+      >.
     </p>
     <hr />
-    <p>When I wrote <a href="http://crypt.codemancers.com/posts/2016-09-16-react-server-side-rendering/">React.js:
-        Server side rendering</a> a few months back, I used react router v3.0.2. But ever since react router released
-      v4, which is a total rewrite into a declarative format, the old blog post won’t work with react router v4. So I
-      decided to write a new blog as 2nd part of it which uses <a
-        href="https://github.com/ReactTraining/react-router/tree/v4.1.1">react router v4</a> along with <a
-        href="http://redux.js.org/">redux</a>.</p>
-    <p>Since we already have a blog post explaining the initial setup, I will be skipping the repeated steps needed here
-      but will add the new updates need to use the new router.</p>
+    <p>
+      When I wrote
+      <a
+        href="http://crypt.codemancers.com/posts/2016-09-16-react-server-side-rendering/"
+        >React.js: Server side rendering</a
+      >
+      a few months back, I used react router v3.0.2. But ever since react router
+      released v4, which is a total rewrite into a declarative format, the old
+      blog post won’t work with react router v4. So I decided to write a new
+      blog as 2nd part of it which uses
+      <a href="https://github.com/ReactTraining/react-router/tree/v4.1.1"
+        >react router v4</a
+      >
+      along with <a href="http://redux.js.org/">redux</a>.
+    </p>
+    <p>
+      Since we already have a blog post explaining the initial setup, I will be
+      skipping the repeated steps needed here but will add the new updates need
+      to use the new router.
+    </p>
     <h3 id="major-router-updates">Major Router Updates</h3>
     <p>Major changes in React Router v4 are</p>
     <ul>
       <li>Declarative routing</li>
       <li>No more central routes config</li>
       <li>Separate packages for web &amp; native</li>
-      <li>No <code>onEnter</code> or <code>onChange</code> hooks/callbacks, instead use component lifecycle hooks</li>
+      <li>
+        No <code>onEnter</code> or <code>onChange</code> hooks/callbacks,
+        instead use component lifecycle hooks
+      </li>
     </ul>
-    <h3 id="adding-react-router-v4-to-our-application">Adding React Router v4 to our application</h3>
-    <p>Since react router has separate packages for web and native, let go with installing the package needed for the
-      web.</p>
+    <h3 id="adding-react-router-v4-to-our-application">
+      Adding React Router v4 to our application
+    </h3>
+    <p>
+      Since react router has separate packages for web and native, let go with
+      installing the package needed for the web.
+    </p>
     <div class="sourceCode" id="cb1">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">npm</span> i --save react-router-dom react-router-config</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">npm</span> i --save react-router-dom react-router-config</a></code></pre>
     </div>
-    <p><code>react-router-config</code> package will have configuration helpers to use with <code>StaticRouter</code>
-      for server side rendering. If your application already has <code>react-router</code> package, I recommend you to
-      remove it and use only the above ones.</p>
-    <h3 id="adding-redux-to-our-application">Adding Redux to our application</h3>
-    <p>Let add the redux packages need for our application. Since this demo contains async actions we will add
-      <code>redux-thunk</code> package as well.
+    <p>
+      <code>react-router-config</code> package will have configuration helpers
+      to use with <code>StaticRouter</code> for server side rendering. If your
+      application already has <code>react-router</code> package, I recommend you
+      to remove it and use only the above ones.
+    </p>
+    <h3 id="adding-redux-to-our-application">
+      Adding Redux to our application
+    </h3>
+    <p>
+      Let add the redux packages need for our application. Since this demo
+      contains async actions we will add <code>redux-thunk</code> package as
+      well.
     </p>
     <div class="sourceCode" id="cb2">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">npm</span> i --save redux react-redux redux-thunk</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">npm</span> i --save redux react-redux redux-thunk</a></code></pre>
     </div>
-    <p>If you are not familiar with the redux setup you can follow my previous blog on <a
-        href="http://blog.revathskumar.com/2016/02/redux.html">Getting started with redux</a>.</p>
-    <p>Also, let’s install <code>isomorphic-fetch</code> so we can use <code>fetch</code> on both server and client.</p>
+    <p>
+      If you are not familiar with the redux setup you can follow my previous
+      blog on
+      <a href="http://blog.revathskumar.com/2016/02/redux.html"
+        >Getting started with redux</a
+      >.
+    </p>
+    <p>
+      Also, let’s install <code>isomorphic-fetch</code> so we can use
+      <code>fetch</code> on both server and client.
+    </p>
     <div class="sourceCode" id="cb3">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">npm</span> i --save isomorphic-fetch</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">npm</span> i --save isomorphic-fetch</a></code></pre>
     </div>
     <h3 id="setup-react-router">Setup React Router</h3>
     <p>Setting up the Router will start with defining the routes.</p>
     <div class="sourceCode" id="cb4">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// client/routes.js</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// client/routes.js</span></a>
 <a class="sourceLine" id="cb4-2" title="2"></a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="im">import</span> AppRoot <span class="im">from</span> <span class="st">&#39;./app-root&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="im">import</span> Home <span class="im">from</span> <span class="st">&#39;./home&#39;</span><span class="op">;</span></a>
@@ -107,7 +144,8 @@
     <p>And load the routes on client side like</p>
     <div class="sourceCode" id="cb5">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// client/app.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// client/app.jsx</span></a>
 <a class="sourceLine" id="cb5-2" title="2"></a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="im">import</span> <span class="op">{</span>render<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-dom&#39;</span><span class="op">;</span></a>
@@ -138,18 +176,25 @@
 <a class="sourceLine" id="cb5-29" title="29"></a>
 <a class="sourceLine" id="cb5-30" title="30"><span class="at">render</span>(<span class="op">&lt;</span>AppRouter /<span class="op">&gt;,</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;#app&#39;</span>))<span class="op">;</span></a></code></pre>
     </div>
-    <p>Here <code>&lt;BrowserRouter&gt;</code> is a new component provided by react router which uses HTML5 history API.
-      The above setup is used only on client side. For server side rendering we will be using
+    <p>
+      Here <code>&lt;BrowserRouter&gt;</code> is a new component provided by
+      react router which uses HTML5 history API. The above setup is used only on
+      client side. For server side rendering we will be using
       <code>&lt;StaticRouter&gt;</code> component.
     </p>
-    <h3 id="render-static-component-on-server">Render static component on Server</h3>
-    <p>As same as PART 1, we have a <code>/home</code> route which will render some HTML. No dynamic content or data
-      from API. Even though our <code>Home</code> component is same, we have a different setup on
+    <h3 id="render-static-component-on-server">
+      Render static component on Server
+    </h3>
+    <p>
+      As same as PART 1, we have a <code>/home</code> route which will render
+      some HTML. No dynamic content or data from API. Even though our
+      <code>Home</code> component is same, we have a different setup on
       <code>routes/index.jsx</code>.
     </p>
     <div class="sourceCode" id="cb6">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// routes/index.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// routes/index.jsx</span></a>
 <a class="sourceLine" id="cb6-2" title="2"></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="im">import</span> express <span class="im">from</span> <span class="st">&#39;express&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="im">import</span> request <span class="im">from</span> <span class="st">&#39;request&#39;</span><span class="op">;</span></a>
@@ -177,14 +222,25 @@
 <a class="sourceLine" id="cb6-26" title="26"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> router<span class="op">;</span></a></code></pre>
     </div>
     <h3 id="render-component-with-data">Render component with data</h3>
-    <p>Now when it comes to rendering component with data, we need to make some changes to the express route, setup
-      redux store and add static method on a component to fetch the data and update the store.</p>
-    <p>Since we are using <code>redux</code> we need to setup <code>reducer</code> &amp; <code>action</code> to fetch
-      the user details from API. Here I will be using <a
-        href="https://github.com/erikras/ducks-modular-redux">erikras/ducks-modular-redux</a> pattern, so the constants,
-      reducer &amp; actions will be available in a single file.</p>
+    <p>
+      Now when it comes to rendering component with data, we need to make some
+      changes to the express route, setup redux store and add static method on a
+      component to fetch the data and update the store.
+    </p>
+    <p>
+      Since we are using <code>redux</code> we need to setup
+      <code>reducer</code> &amp; <code>action</code> to fetch the user details
+      from API. Here I will be using
+      <a href="https://github.com/erikras/ducks-modular-redux"
+        >erikras/ducks-modular-redux</a
+      >
+      pattern, so the constants, reducer &amp; actions will be available in a
+      single file.
+    </p>
     <div class="sourceCode" id="cb7">
-      <pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// client/modules/users.js</span></a>
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// client/modules/users.js</span></a>
 <a class="sourceLine" id="cb7-2" title="2"></a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="im">import</span> <span class="st">&#39;isomorphic-fetch&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb7-4" title="4"></a>
@@ -217,12 +273,15 @@
 <a class="sourceLine" id="cb7-31" title="31">    <span class="op">}</span>)</a>
 <a class="sourceLine" id="cb7-32" title="32"><span class="op">}</span></a></code></pre>
     </div>
-    <p>Now let’s modify the <code>List</code> component to use the <code>fetchUsers</code> action and also add a
+    <p>
+      Now let’s modify the <code>List</code> component to use the
+      <code>fetchUsers</code> action and also add a
       <code>fetchData</code> static method which can be used on the server.
     </p>
     <div class="sourceCode" id="cb8">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// client/list.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// client/list.jsx</span></a>
 <a class="sourceLine" id="cb8-2" title="2"></a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="im">import</span> React<span class="op">,</span> <span class="op">{</span>Component<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-4" title="4"><span class="im">import</span> PropTypes <span class="im">from</span> <span class="st">&#39;prop-types&#39;</span><span class="op">;</span></a>
@@ -266,7 +325,8 @@
     <p>Now the updates for the express route.</p>
     <div class="sourceCode" id="cb9">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// routes/index.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// routes/index.jsx</span></a>
 <a class="sourceLine" id="cb9-2" title="2"></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="im">import</span> express <span class="im">from</span> <span class="st">&#39;express&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="im">import</span> request <span class="im">from</span> <span class="st">&#39;request&#39;</span><span class="op">;</span></a>
@@ -311,21 +371,33 @@
 <a class="sourceLine" id="cb9-43" title="43"></a>
 <a class="sourceLine" id="cb9-44" title="44"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> router<span class="op">;</span></a></code></pre>
     </div>
-    <p>In the above snippet, <code>matchRoutes</code> will filter the routes and components needed to render the given
-      URL. Once we have the list of routes for the given URL, we can map through each and check whether it has a static
-      method named <code>fetchData</code>. If the component has the fetchData method, then execute those else return a
-      null promise.</p>
-    <p>Once we collect all the promises, executed and updated the store, we can render the component using
-      <code>&lt;StaticRouter&gt;</code> component and return the <code>data</code> and compiled HTML to the client.
+    <p>
+      In the above snippet, <code>matchRoutes</code> will filter the routes and
+      components needed to render the given URL. Once we have the list of routes
+      for the given URL, we can map through each and check whether it has a
+      static method named <code>fetchData</code>. If the component has the
+      fetchData method, then execute those else return a null promise.
     </p>
-    <p>Now when we navigate to <code>/list</code>, the route we can see the list of users rendered from the server.</p>
+    <p>
+      Once we collect all the promises, executed and updated the store, we can
+      render the component using <code>&lt;StaticRouter&gt;</code> component and
+      return the <code>data</code> and compiled HTML to the client.
+    </p>
+    <p>
+      Now when we navigate to <code>/list</code>, the route we can see the list
+      of users rendered from the server.
+    </p>
     <h3 id="handling-404">Handling 404</h3>
-    <p>Next, let’s see how to handle the 404. In this case just rendering the <code>NotFound</code> component is not
-      enough, we have to return back appropriate status code to the client as well.</p>
+    <p>
+      Next, let’s see how to handle the 404. In this case just rendering the
+      <code>NotFound</code> component is not enough, we have to return back
+      appropriate status code to the client as well.
+    </p>
     <p>Let’s start with adding <code>NotFound</code> component</p>
     <div class="sourceCode" id="cb10">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// client/notfound.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// client/notfound.jsx</span></a>
 <a class="sourceLine" id="cb10-2" title="2"></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="im">import</span> <span class="op">{</span> Route <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router-dom&#39;</span><span class="op">;</span></a>
@@ -347,15 +419,22 @@
 <a class="sourceLine" id="cb10-20" title="20"></a>
 <a class="sourceLine" id="cb10-21" title="21"><span class="im">export</span> <span class="im">default</span> NotFound<span class="op">;</span></a></code></pre>
     </div>
-    <p>In <code>NotFound</code> component, rendering some 404 message is not enough. We should be setting the status on
-      <code>staticContext</code> so that when rendering on the server we can access the status on the
+    <p>
+      In <code>NotFound</code> component, rendering some 404 message is not
+      enough. We should be setting the status on <code>staticContext</code> so
+      that when rendering on the server we can access the status on the
       <code>context</code> object we passed.
     </p>
-    <p>Remember <code>staticContext</code> will be available only on the server, so make sure we guard the setting of
-      status with <code>if</code> condition.</p>
+    <p>
+      Remember <code>staticContext</code> will be available only on the server,
+      so make sure we guard the setting of status with
+      <code>if</code> condition.
+    </p>
     <p>next, we add the route to handle 404.</p>
     <div class="sourceCode" id="cb11">
-      <pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb11-1" title="1">// client/routes.js</a>
+      <pre
+        class="sourceCode diff"
+      ><code class="sourceCode diff"><a class="sourceLine" id="cb11-1" title="1">// client/routes.js</a>
 <a class="sourceLine" id="cb11-2" title="2"></a>
 <a class="sourceLine" id="cb11-3" title="3">import AppRoot from &#39;./app-root&#39;;</a>
 <a class="sourceLine" id="cb11-4" title="4">import Home from &#39;./home&#39;;</a>
@@ -385,9 +464,14 @@
 <a class="sourceLine" id="cb11-28" title="28"></a>
 <a class="sourceLine" id="cb11-29" title="29">export default routes;</a></code></pre>
     </div>
-    <p>Now we need to update the <code>express</code> routes to set the response status as 404.</p>
+    <p>
+      Now we need to update the <code>express</code> routes to set the response
+      status as 404.
+    </p>
     <div class="sourceCode" id="cb12">
-      <pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb12-1" title="1">// routes/index.jsx</a>
+      <pre
+        class="sourceCode diff"
+      ><code class="sourceCode diff"><a class="sourceLine" id="cb12-1" title="1">// routes/index.jsx</a>
 <a class="sourceLine" id="cb12-2" title="2"></a>
 <a class="sourceLine" id="cb12-3" title="3">import express from &#39;express&#39;;</a>
 <a class="sourceLine" id="cb12-4" title="4">import request from &#39;request&#39;;</a>
@@ -434,15 +518,21 @@
 <a class="sourceLine" id="cb12-45" title="45">module.exports = router;</a></code></pre>
     </div>
     <h3 id="handling-redirects">Handling Redirects</h3>
-    <p>After handling 404, now we can handle redirects in a similar way. For redirects, we will be using
-      <code>&lt;Redirect&gt;</code> component from react router. To show the redirection we will be redirecting
-      <code>/list</code> route to a new route <code>/users</code> where we will list the users from API.
+    <p>
+      After handling 404, now we can handle redirects in a similar way. For
+      redirects, we will be using <code>&lt;Redirect&gt;</code> component from
+      react router. To show the redirection we will be redirecting
+      <code>/list</code> route to a new route <code>/users</code> where we will
+      list the users from API.
     </p>
-    <p>For this, we will define a new component <code>ListToUsers</code> which utilises <code>&lt;Redirect&gt;</code>.
+    <p>
+      For this, we will define a new component <code>ListToUsers</code> which
+      utilises <code>&lt;Redirect&gt;</code>.
     </p>
     <div class="sourceCode" id="cb13">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// client/listtousers.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// client/listtousers.jsx</span></a>
 <a class="sourceLine" id="cb13-2" title="2"></a>
 <a class="sourceLine" id="cb13-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb13-4" title="4"><span class="im">import</span> <span class="op">{</span> Route<span class="op">,</span> Redirect <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router-dom&#39;</span><span class="op">;</span></a>
@@ -460,12 +550,17 @@
 <a class="sourceLine" id="cb13-16" title="16"></a>
 <a class="sourceLine" id="cb13-17" title="17"><span class="im">export</span> <span class="im">default</span> ListToUsers<span class="op">;</span></a></code></pre>
     </div>
-    <p>As we did in handling <code>404</code>, here as well we need to set the status on <code>staticContext</code> to
-      <strong>302</strong> or <strong>301</strong> as per your need. Here I am using <strong>302</strong>.
+    <p>
+      As we did in handling <code>404</code>, here as well we need to set the
+      status on <code>staticContext</code> to <strong>302</strong> or
+      <strong>301</strong> as per your need. Here I am using
+      <strong>302</strong>.
     </p>
     <p>Now let’s update the <code>routes</code>.</p>
     <div class="sourceCode" id="cb14">
-      <pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb14-1" title="1">// client/routes.js</a>
+      <pre
+        class="sourceCode diff"
+      ><code class="sourceCode diff"><a class="sourceLine" id="cb14-1" title="1">// client/routes.js</a>
 <a class="sourceLine" id="cb14-2" title="2"></a>
 <a class="sourceLine" id="cb14-3" title="3">import AppRoot from &#39;./app-root&#39;;</a>
 <a class="sourceLine" id="cb14-4" title="4">import Home from &#39;./home&#39;;</a>
@@ -499,9 +594,14 @@
 <a class="sourceLine" id="cb14-32" title="32"></a>
 <a class="sourceLine" id="cb14-33" title="33">export default routes;</a></code></pre>
     </div>
-    <p>Next, make necessary changes for express routes so it will perform redirect</p>
+    <p>
+      Next, make necessary changes for express routes so it will perform
+      redirect
+    </p>
     <div class="sourceCode" id="cb15">
-      <pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb15-1" title="1">// routes/index.jsx</a>
+      <pre
+        class="sourceCode diff"
+      ><code class="sourceCode diff"><a class="sourceLine" id="cb15-1" title="1">// routes/index.jsx</a>
 <a class="sourceLine" id="cb15-2" title="2"></a>
 <a class="sourceLine" id="cb15-3" title="3">// All neeeded imports</a>
 <a class="sourceLine" id="cb15-4" title="4"></a>
@@ -525,11 +625,14 @@
 <a class="sourceLine" id="cb15-22" title="22">module.exports = router;</a></code></pre>
     </div>
     <p>Now we have a fully functional server rendered react application.</p>
-    <p>The demo app is available on <a
-        href="https://github.com/revathskumar/react-server-render/tree/react-router-v4-redux">github</a> and working
-      demo can be found in <a href="https://server-render-hzoyerpkgh.now.sh">now.sh</a></p>
-
+    <p>
+      The demo app is available on
+      <a
+        href="https://github.com/revathskumar/react-server-render/tree/react-router-v4-redux"
+        >github</a
+      >
+      and working demo can be found in
+      <a href="https://server-render-hzoyerpkgh.now.sh">now.sh</a>
+    </p>
   </body>
-
-  
 </html>

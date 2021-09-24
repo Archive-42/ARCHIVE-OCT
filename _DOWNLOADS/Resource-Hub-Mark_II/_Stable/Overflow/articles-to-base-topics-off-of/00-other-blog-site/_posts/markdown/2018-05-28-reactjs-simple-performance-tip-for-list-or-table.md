@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2017/react-t
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -75,12 +74,12 @@ class Table extends React.Component {
           {
             users.map((user) => {
               return (
-                  <TableRow 
-                    key={user.id} 
-                    id={user.id} 
-                    name={user.name}  
-                    selected={this.state.selected[user.id]} 
-                    handleSelect={this.handleSelect} 
+                  <TableRow
+                    key={user.id}
+                    id={user.id}
+                    name={user.name}
+                    selected={this.state.selected[user.id]}
+                    handleSelect={this.handleSelect}
                   />;
               );
             })
@@ -92,7 +91,7 @@ class Table extends React.Component {
 }
 ```
 
-And the `TableRow` component 
+And the `TableRow` component
 
 ```jsx
 const TableRow = ({ selected, id, name, handleSelect }) => {
@@ -100,25 +99,25 @@ const TableRow = ({ selected, id, name, handleSelect }) => {
   return (
     <tr>
       <td>
-        <input 
-          name={id} 
-          type="checkbox" 
-          checked={selected} 
-          onChange={handleSelect} 
+        <input
+          name={id}
+          type="checkbox"
+          checked={selected}
+          onChange={handleSelect}
         />
       </td>
       <td>{id}</td>
       <td>{name}</td>
     </tr>
   );
-}
+};
 
 TableRow.defaultProps = {
-  selected: false
-}
+  selected: false,
+};
 ```
 
-The `TableRow` component have a `console.log` which will log the `id` & `name` when ever the component renders. This will help us to know which all rows are getting rerendered. 
+The `TableRow` component have a `console.log` which will log the `id` & `name` when ever the component renders. This will help us to know which all rows are getting rerendered.
 
 Now when the user select one of row, all the rows get rerendered in the above example. You can see `console.log` for all the items in the data source.
 
@@ -138,8 +137,8 @@ The simple and effective optimisation we can do here is convert the `TableRow` c
 ```jsx
 class TableRow extends React.PureComponent {
   defaultProps = {
-    selected: false
-  }
+    selected: false,
+  };
 
   render() {
     const { selected, id, name, handleSelect } = this.props;
@@ -147,11 +146,11 @@ class TableRow extends React.PureComponent {
     return (
       <tr>
         <td>
-          <input 
-            name={id} 
-            type="checkbox" 
-            checked={selected} 
-            onChange={handleSelect} 
+          <input
+            name={id}
+            type="checkbox"
+            checked={selected}
+            onChange={handleSelect}
           />
         </td>
         <td>{id}</td>
@@ -166,23 +165,23 @@ Now lets try selecting one of the row and see the improvement.
 
 ![react-before-optimised-table](https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2017/react-table-perf/react-optimised-table.gif)
 
-Now when we select a row, only that row rerenders. [PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent) has implemented 
+Now when we select a row, only that row rerenders. [PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent) has implemented
 `shouldComponentUpdate` which does a **shallow compare** of props and do rerenders only if it differs.
 
 You can see the live version in [jsbin](https://jsbin.com/zubihot/edit?console,output)
 
 <a class="jsbin-embed" href="http://jsbin.com/zubihot/embed?console,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.1.4"></script>
 
-In the demo, the using of `PureComponent` was possible because the props where `number` & `string`. If the props are `Array` or `Object` we won't be 
-able to use `PureComponent` since the **shallow compare** of `PureComponent` might lead to false positives. 
+In the demo, the using of `PureComponent` was possible because the props where `number` & `string`. If the props are `Array` or `Object` we won't be
+able to use `PureComponent` since the **shallow compare** of `PureComponent` might lead to false positives.
 
-In such cases we can implement write our own parent component which implements deep compare in `shouldComponentUpdate`. 
+In such cases we can implement write our own parent component which implements deep compare in `shouldComponentUpdate`.
 
 ```js
 class PerfComponent extends Component {
   shouldComponentUpdate(nextProps) {
     // implement/ use deep compare functionality
-    if(!deepEqual) {
+    if (!deepEqual) {
       return true;
     }
     return false;
@@ -194,12 +193,11 @@ export default PerfComponent;
 
 and inherit `TableRow` from `PerfComponent`.
 
-
 ```jsx
 class TableRow extends PerfComponent {
   defaultProps = {
-    selected: false
-  }
+    selected: false,
+  };
 
   render() {
     const { selected, user, handleSelect } = this.props;
@@ -207,11 +205,11 @@ class TableRow extends PerfComponent {
     return (
       <tr>
         <td>
-          <input 
-            name={user.id} 
-            type="checkbox" 
-            checked={selected} 
-            onChange={handleSelect} 
+          <input
+            name={user.id}
+            type="checkbox"
+            checked={selected}
+            onChange={handleSelect}
           />
         </td>
         <td>{user.id}</td>
@@ -223,7 +221,6 @@ class TableRow extends PerfComponent {
 ```
 
 Hope it helped.
-
 
     Versions of Language/packages used in this post.
 

@@ -19,7 +19,6 @@ tags: elm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,16 +31,16 @@ tags: elm
 
 <body>
 
-In the last blog we saw [how to update a field in the list of items][part_1]. In that we had only one module `Main`. 
-In this we will see what are the changes need when we plan to move the `viewItem` into a child module and 
+In the last blog we saw [how to update a field in the list of items][part_1]. In that we had only one module `Main`.
+In this we will see what are the changes need when we plan to move the `viewItem` into a child module and
 how the message passing works between the modules.
 
-If you are planning to seperate module, 
+If you are planning to seperate module,
 
-* Parent should have a message to convert the parent message to child message
-* This message will take care of conversion of all the messages related to child module.
-* Same may we have to convert the `Cmd` from child module to parent one.
-* Use `.map` function to convert one message to another  
+- Parent should have a message to convert the parent message to child message
+- This message will take care of conversion of all the messages related to child module.
+- Same may we have to convert the `Cmd` from child module to parent one.
+- Use `.map` function to convert one message to another
 
 From the last post the whole code will look like
 
@@ -141,9 +140,9 @@ type Msg = UpdateItem Int Item.Msg
 
 Next lets make changes to the `update`, Now the update function should do the following tasks
 
-* Find the Item which need updation
-* Call `Item.update` with the item found
-* get back the updated Item and update the Item list.
+- Find the Item which need updation
+- Call `Item.update` with the item found
+- get back the updated Item and update the Item list.
 
 Since we are using `List` we can't easily get the Item at a particular index, or update and Item at particular index.
 We will use [List.Extra][package_list_extra] package which give some handy method like [findIndex][find_index_function], [getAt][get_at] and [setAt][set_at].
@@ -155,8 +154,8 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
     UpdateItem id itemMsg ->
-        case itemMsg of 
-            Item.UpdateDescription -> 
+        case itemMsg of
+            Item.UpdateDescription ->
                 let
                     mayBeIndex = (List.Extra.findIndex (\item -> item.id == id) model.items)
                     index =
@@ -205,7 +204,6 @@ we successfully moved `Item` into a separate module and started passing messages
     | ---------------- |---------|
     |      ELM         |  0.18.0 |
     |    List.Extra    |  7.1.0  |
-
 
 [part_1]: /2018/05/elm-update-field-in-a-list.html
 [package_list_extra]: http://package.elm-lang.org/packages/elm-community/list-extra/7.1.0

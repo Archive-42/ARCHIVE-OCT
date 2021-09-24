@@ -19,7 +19,6 @@ tags: javascript, react, testing, ava
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -69,18 +68,18 @@ For this we need to use specia keyword `inherit` in ava's babel config.
 Unlike other libraries React need browser enviornment for `ReactDOM.render` and simulate events.
 We will use `browser-env` to add mocked browser envionment. `browser-env` will add variables like `window`, `document` etc to the global namespace.
 
-Install the `browser-env` using 
+Install the `browser-env` using
 
 ```
 npm i --save-dev browser-env
 ```
 
-and add a helper file to load the needed browser global variables. 
+and add a helper file to load the needed browser global variables.
 
 ```js
 // tests/helpers/browser-env.js
-import browserEnv from 'browser-env';
-browserEnv(['window', 'document']);
+import browserEnv from "browser-env";
+browserEnv(["window", "document"]);
 ```
 
 By default, `browserEnv()` add all global browser variables to global scope, which not a good idea. `browserEnv(['window', 'document'])` will expose the needed ones.
@@ -98,11 +97,8 @@ Now we need to specify `babel-register` & browser-env helper we wrote in ava's r
 {
   "ava": {
     "babel": "inherit",
-    "register": [
-      "babel-register",
-      "./test/helpers/browser-env.js"
-    ]
-  } 
+    "register": ["babel-register", "./test/helpers/browser-env.js"]
+  }
 }
 ```
 
@@ -110,7 +106,6 @@ Now we need to specify `babel-register` & browser-env helper we wrote in ava's r
 
 Now if we try to run tests for the components which import any css or images, the nodejs will throw an error since they are not valid JavaScript.
 We can fix this issue by using [ignore-styles][ignore_styles].
-
 
 ```
 npm i --save-dev ignore-styles
@@ -129,28 +124,28 @@ Now we can load this in ava's register hook.
       "./test/helpers/browser-env.js",
       "ignore-styles"
     ]
-  } 
+  }
 }
 ```
 
-Now we are ready to our first test case. 
+Now we are ready to our first test case.
 
 ## First unit test
 
 Now lets write our first test case
 
 ```js
-import test from 'ava';
+import test from "ava";
 
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
 
-import HelloWorld from '../src/HelloWorld';
+import HelloWorld from "../src/HelloWorld";
 
-test('it renders', (t) => {
-  const wrapper = shallow(<HelloWorld title="Title" desc="desc"/>);
-  t.true(wrapper.hasClass('hello-world'));
-})
+test("it renders", (t) => {
+  const wrapper = shallow(<HelloWorld title="Title" desc="desc" />);
+  t.true(wrapper.hasClass("hello-world"));
+});
 ```
 
 Now when we run the command `ava`,
@@ -162,15 +157,13 @@ Now when we run the command `ava`,
 Snapshot testing is introduced with jest, to compare and make sure UI didn't changed unexpectedly. Ava supports snapshot testing using `snapshot` assetion method.
 
 ```js
-import test from 'ava';
-import render from 'react-test-renderer';
+import test from "ava";
+import render from "react-test-renderer";
 
-import HelloWorld from '../src/HelloWorld';
+import HelloWorld from "../src/HelloWorld";
 
-test('HelloWorld snapshot', t => {
-  const tree = render.create(
-    <HelloWorld title="Title" desc="desc"/>
-  ).toJSON();
+test("HelloWorld snapshot", (t) => {
+  const tree = render.create(<HelloWorld title="Title" desc="desc" />).toJSON();
   t.snapshot(tree);
 });
 ```

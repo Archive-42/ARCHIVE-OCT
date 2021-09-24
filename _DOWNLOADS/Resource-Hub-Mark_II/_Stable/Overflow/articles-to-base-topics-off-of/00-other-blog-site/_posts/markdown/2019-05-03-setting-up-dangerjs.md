@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/dangerj
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -33,12 +32,11 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/dangerj
 
 <body>
 
-Ever felt like you are repeating the same comment over and over in many PR's during the code review? Then this post is for you. 
+Ever felt like you are repeating the same comment over and over in many PR's during the code review? Then this post is for you.
 
 Even though this can't be avoided 100%, you can automate some of these by offloading to [dangerjs][dangerjs].
 
 ![danger logo](https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2019/dangerjs/danger-logo.png){: width="100%"}
-
 
 ## <a class="anchor" name="Introduction" href="#Introduction"><i class="anchor-icon"></i></a>Introduction
 
@@ -46,12 +44,11 @@ If you never heard about `dangerjs` before, it's a small tool which can run task
 
 You can use this to automate the common code issues like
 
-* new package added to `package.json` but changes for `package-lock.json` or `yarn.lock` is missing
-* missing `@flow` in the new files
-* `console.log` which forgot to remove.
+- new package added to `package.json` but changes for `package-lock.json` or `yarn.lock` is missing
+- missing `@flow` in the new files
+- `console.log` which forgot to remove.
 
 `dangerjs` can look for these kind of issues and alert the author of PR by a comment.
-
 
 ## <a class="anchor" name="installing" href="#installing"><i class="anchor-icon"></i></a>Installing
 
@@ -61,29 +58,28 @@ You can get started by installing `dangerjs` from npm.
 npm install -D danger
 ```
 
-
 ## <a class="anchor" name="setup" href="#setup"><i class="anchor-icon"></i></a>setup
 
 Once we have `dangerjs` installed we can setup by adding `dangerfile.js` to the root directory of the project.
 
 ```js
 // dangerfile.js
-import {danger, warn} from "danger"
-
+import { danger, warn } from "danger";
 
 const changes = danger.git.modified_files.reduce((prev, filePath) => {
-  if(!prev.package) {
+  if (!prev.package) {
     prev.package = filePath.includes("package.json");
   }
-  if(!prev.lock) {
-    prev.lock = filePath.includes("package-lock.json")
+  if (!prev.lock) {
+    prev.lock = filePath.includes("package-lock.json");
   }
   return prev;
 }, {});
 
 if (changes.package && !changes.lock) {
-  const message = 'Changes were made to package.json, but not to package-lock.json';
-  const idea = 'Perhaps you need to run `npm install`?';
+  const message =
+    "Changes were made to package.json, but not to package-lock.json";
+  const idea = "Perhaps you need to run `npm install`?";
   warn(`${message} - <i>${idea}</i>`);
 }
 ```

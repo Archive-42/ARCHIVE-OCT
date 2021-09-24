@@ -19,7 +19,6 @@ tags: elm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,10 +31,10 @@ tags: elm
 
 <body>
 
-Generating random number in `ELM` is tricky. We can't call a function `Math.random()` like in JavaScript. 
-ELM by design support pure functions only. If you need to do anything impure you have to 
-use `Cmd`, `Msg` and `Update` means you have to use ELM runtime to the impure job. 
-To make our life easier ELM 0.19 comes with [elm/random][elm_random] package. 
+Generating random number in `ELM` is tricky. We can't call a function `Math.random()` like in JavaScript.
+ELM by design support pure functions only. If you need to do anything impure you have to
+use `Cmd`, `Msg` and `Update` means you have to use ELM runtime to the impure job.
+To make our life easier ELM 0.19 comes with [elm/random][elm_random] package.
 
 `elm/random` gives a `Generator` which ask ELM runtime to generate a random number and pass back as `Update` `Msg`.
 `Random.generate` will accept the `Msg` with 1 argument and a function with describe the type and range of the random.
@@ -60,10 +59,10 @@ update msg model ->
 Lets consider we have a list of items and we need to pick item randomly from this list.
 
 ```elm
-type alias Char = 
+type alias Char =
     { text: String }
 
-type alias Flags = 
+type alias Flags =
     {  }
 
 
@@ -80,7 +79,7 @@ initialModel =
         ,{text = "C"}
         ,{text= "D"}
         ,{text= "E"}
-      ] 
+      ]
     }
 ```
 
@@ -90,7 +89,7 @@ For this post let pick the random item on a `button click`.
 ```elm
 renderText : Maybe Char -> Html Msg
 renderText selected =
-    case selected of 
+    case selected of
         Just char ->
             text char.text
         Nothing ->
@@ -105,7 +104,7 @@ view model =
         ]
 ```
 
-Now we have a button with `Random` text which will send Cmd `FindRandom`. 
+Now we have a button with `Random` text which will send Cmd `FindRandom`.
 Next lets handle the `FindRandom` in the update.
 
 ```elm
@@ -123,7 +122,6 @@ update msg model =
 Once the update method receive the `Msg` `FindRandom` it will trigger the `Random.generate` with boundary 0 & no.of item in the list.
 ELM runtime generate random number in the given boundary and will send the Msg `RandomNumber` with the generated number.
 Next lets handle that. The above code will become,
-
 
 ```elm
 type Msg
@@ -158,10 +156,10 @@ import Html.Events exposing (onClick)
 import Random
 import Array
 
-type alias Char = 
+type alias Char =
     { text: String }
 
-type alias Flags = 
+type alias Flags =
     {  }
 
 
@@ -178,7 +176,7 @@ initialModel =
         ,{text = "C"}
         ,{text= "D"}
         ,{text= "E"}
-      ] 
+      ]
     }
 
 
@@ -201,7 +199,7 @@ update msg model =
 
 renderText : Maybe Char -> Html Msg
 renderText selected =
-    case selected of 
+    case selected of
         Just char ->
             text char.text
         Nothing ->
@@ -214,7 +212,7 @@ view model =
         [ button [ onClick FindRandom ] [ text "Random" ]
         , div [] [ (renderText model.selected) ]
         ]
-        
+
 init : Flags -> (Model, Cmd Msg)
 init flags =
     (initialModel, FindRandom)
@@ -230,7 +228,7 @@ main =
         }
 ```
 
-This is an extracted version which used in [random gstin][random_gstin] app and its source is available on [github.com/revathskumar/random-gstin][random_gstin_source] 
+This is an extracted version which used in [random gstin][random_gstin] app and its source is available on [github.com/revathskumar/random-gstin][random_gstin_source]
 
 The Running version is available on [ellie-app][code_snippet].
 

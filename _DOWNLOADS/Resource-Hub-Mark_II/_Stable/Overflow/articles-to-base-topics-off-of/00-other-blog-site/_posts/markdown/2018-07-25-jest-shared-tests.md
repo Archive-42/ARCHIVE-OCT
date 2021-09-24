@@ -19,7 +19,6 @@ tags: jest, testing
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -37,7 +36,7 @@ We are tend to follow `DRY` while writing business logic, like we tend to move t
 Consider we have two React components which has similar functionality. First let see `FormA` which has 2 fields `name` & `age` which uses internal state and on submit of the form it will validates the input. Nice and simple component.
 
 ```jsx
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 class FormA extends Component {
   constructor() {
@@ -53,20 +52,20 @@ class FormA extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.setState({errors: {}});
+    this.setState({ errors: {} });
     let errors = {};
     if (!this.state.fields.name) {
-      errors = {name: 'Name is Required'};
+      errors = { name: "Name is Required" };
     }
     if (!this.state.fields.age) {
-      errors = {...errors, age: 'Age is Required'};
+      errors = { ...errors, age: "Age is Required" };
     }
-    this.setState({errors});
+    this.setState({ errors });
   }
 
   onChange(e) {
-    const fields = {...this.state.fields, [e.target.name]: e.target.value};
-    this.setState({fields});
+    const fields = { ...this.state.fields, [e.target.name]: e.target.value };
+    this.setState({ fields });
   }
 
   render() {
@@ -100,52 +99,55 @@ class FormA extends Component {
 Now let's write some tests to make sure our validation is working fine and error messages are rendering in UI. Also, we can add another test suite to make sure whether the input updates are updating the correct fields in state.
 
 ```js
-import React from 'react';
-import {shallow} from 'enzyme';
-import fakeEvent from 'fake-event';
+import React from "react";
+import { shallow } from "enzyme";
+import fakeEvent from "fake-event";
 
-describe('<FormA />', () => {
+describe("<FormA />", () => {
   beforeEach(() => {
     this.commonProps = {};
   });
 
-  describe('render error messages', () => {
-    test('render name error message', () => {
+  describe("render error messages", () => {
+    test("render name error message", () => {
       const component = shallow(<FormA {...this.commonProps} />);
-      component.setState({fields: {age: 12}});
-      component.find('button').simulate('click');
+      component.setState({ fields: { age: 12 } });
+      component.find("button").simulate("click");
       component.update();
       expect(component.text()).toEqual(
-        expec.stringContaining('Name is Required')
+        expec.stringContaining("Name is Required")
       );
     });
 
-    test('render age error message', () => {
+    test("render age error message", () => {
       const component = shallow(<FormA {...this.commonProps} />);
-      component.setState({fields: {name: 'Name'}});
-      component.find('button').simulate('click');
+      component.setState({ fields: { name: "Name" } });
+      component.find("button").simulate("click");
       component.update();
       expect(component.text()).toEqual(
-        expec.stringContaining('Age is Required')
+        expec.stringContaining("Age is Required")
       );
     });
   });
 
-  describe('change events update states', () => {
-    test('update name state', () => {
+  describe("change events update states", () => {
+    test("update name state", () => {
       const component = shallow(<Form {...this.commonProps} />);
       component
         .find('input[name="name"]')
-        .simulate('change', fakeEvent({target: {name: 'name', value: 'Name'}}));
-      expect(component.state('fields').name).toEqual('Name');
+        .simulate(
+          "change",
+          fakeEvent({ target: { name: "name", value: "Name" } })
+        );
+      expect(component.state("fields").name).toEqual("Name");
     });
 
-    test('update age state', () => {
+    test("update age state", () => {
       const component = shallow(<Form {...this.commonProps} />);
       component
         .find('input[name="age"]')
-        .simulate('change', fakeEvent({target: {name: 'age', value: 20}}));
-      expect(component.state('fields').age).toEqual(20);
+        .simulate("change", fakeEvent({ target: { name: "age", value: 20 } }));
+      expect(component.state("fields").age).toEqual(20);
     });
   });
 });
@@ -191,24 +193,27 @@ and the tests for gender field.
 
 // test cases from above example
 
-test('render age error message', () => {
+test("render age error message", () => {
   const component = shallow(<FormB {...this.commonProps} />);
-  component.setState({fields: {name: 'Name', age: 12}});
-  component.find('form').simulate('submit', fakeEvent());
+  component.setState({ fields: { name: "Name", age: 12 } });
+  component.find("form").simulate("submit", fakeEvent());
   expect(component.text()).toEqual(
-    expect.stringContaining('Gender is Required')
+    expect.stringContaining("Gender is Required")
   );
 });
 
-describe('change events update states', () => {
+describe("change events update states", () => {
   // test cases from aboove example
 
-  test('update Gender state', () => {
+  test("update Gender state", () => {
     const component = shallow(<FormB {...this.commonProps} />);
     component
       .find('input[name="gender"]')
-      .simulate('change', fakeEvent({target: {name: 'gender', value: 'male'}}));
-    expect(component.state('fields').gender).toEqual('male');
+      .simulate(
+        "change",
+        fakeEvent({ target: { name: "gender", value: "male" } })
+      );
+    expect(component.state("fields").gender).toEqual("male");
   });
 });
 ```
@@ -227,25 +232,25 @@ Lets take the rendering errors first.
 
 ```js
 // shouldBehaveLikeForm.js
-import React from 'react';
-import {shallow} from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
 
-export const commonFormValidation = function(Form) {
-  test('render name error message', () => {
+export const commonFormValidation = function (Form) {
+  test("render name error message", () => {
     const component = shallow(<Form {...this.commonProps} />);
-    component.setState({fields: {age: 12, gender: 'male'}});
-    component.find('form').simulate('submit', fakeEvent());
+    component.setState({ fields: { age: 12, gender: "male" } });
+    component.find("form").simulate("submit", fakeEvent());
     expect(component.text()).toEqual(
-      expect.stringContaining('Name is Required')
+      expect.stringContaining("Name is Required")
     );
   });
 
-  test('render age error message', () => {
+  test("render age error message", () => {
     const component = shallow(<Form {...this.commonProps} />);
-    component.setState({fields: {name: 'Name', gender: 'male'}});
-    component.find('form').simulate('submit', fakeEvent());
+    component.setState({ fields: { name: "Name", gender: "male" } });
+    component.find("form").simulate("submit", fakeEvent());
     expect(component.text()).toEqual(
-      expect.stringContaining('Age is Required')
+      expect.stringContaining("Age is Required")
     );
   });
 };
@@ -254,15 +259,15 @@ export const commonFormValidation = function(Form) {
 we will export the `commonFormValidation` from `shouldBehaveLikeForm.js` with the two test cases for rendering error message. Now let go back to `FormA.test.js` and make necessary changes to make use of this `commonFormValidation`.
 
 ```js
-import FormA from '../FormA';
-import {commonFormValidation} from '../test/shared/shouldBehaveLikeForm';
+import FormA from "../FormA";
+import { commonFormValidation } from "../test/shared/shouldBehaveLikeForm";
 
-describe('<FormA />', () => {
+describe("<FormA />", () => {
   beforeEach(() => {
     this.commonProps = {};
   });
 
-  describe('render error messages', () => {
+  describe("render error messages", () => {
     commonFormValidation.bind(this)(FormA);
   });
 
@@ -273,27 +278,27 @@ describe('<FormA />', () => {
 Now use the same `commonFormValidation` in `FormB.test.js`
 
 ```js
-import React from 'react';
-import {shallow} from 'enzyme';
-import fakeEvent from 'fake-event';
+import React from "react";
+import { shallow } from "enzyme";
+import fakeEvent from "fake-event";
 
-import FormB from '../FormB';
-import {commonFormValidation} from '../test/shared/shouldBehaveLikeForm';
+import FormB from "../FormB";
+import { commonFormValidation } from "../test/shared/shouldBehaveLikeForm";
 
-describe('<FormB />', () => {
+describe("<FormB />", () => {
   beforeEach(() => {
     this.commonProps = {};
   });
 
-  describe('render error messages', () => {
+  describe("render error messages", () => {
     commonFormValidation.bind(this)(FormB);
 
-    test('render age error message', () => {
+    test("render age error message", () => {
       const component = shallow(<FormB {...this.commonProps} />);
-      component.setState({fields: {name: 'Name', age: 12}});
-      component.find('form').simulate('submit', fakeEvent());
+      component.setState({ fields: { name: "Name", age: 12 } });
+      component.find("form").simulate("submit", fakeEvent());
       expect(component.text()).toEqual(
-        expect.stringContaining('Gender is Required')
+        expect.stringContaining("Gender is Required")
       );
     });
   });
@@ -306,24 +311,27 @@ Same as above lets create another function `commonFormOnUpdate` in `shouldBehave
 
 ```js
 // shouldBehaveLikeForm.js
-import React from 'react';
-import {shallow} from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
 
-export const commonFormOnUpdate = function(Form) {
-  test('update name state', () => {
+export const commonFormOnUpdate = function (Form) {
+  test("update name state", () => {
     const component = shallow(<Form {...this.commonProps} />);
     component
       .find('input[name="name"]')
-      .simulate('change', fakeEvent({target: {name: 'name', value: 'Name'}}));
-    expect(component.state('fields').name).toEqual('Name');
+      .simulate(
+        "change",
+        fakeEvent({ target: { name: "name", value: "Name" } })
+      );
+    expect(component.state("fields").name).toEqual("Name");
   });
 
-  test('update age state', () => {
+  test("update age state", () => {
     const component = shallow(<Form {...this.commonProps} />);
     component
       .find('input[name="age"]')
-      .simulate('change', fakeEvent({target: {name: 'age', value: 20}}));
-    expect(component.state('fields').age).toEqual(20);
+      .simulate("change", fakeEvent({ target: { name: "age", value: 20 } }));
+    expect(component.state("fields").age).toEqual(20);
   });
 };
 ```
@@ -332,22 +340,22 @@ and can be used in same way.
 
 ```js
 // FormA.test.js
-import FormA from '../FormA';
+import FormA from "../FormA";
 import {
   commonFormValidation,
   commonFormOnUpdate,
-} from '../test/shared/shouldBehaveLikeForm';
+} from "../test/shared/shouldBehaveLikeForm";
 
-describe('<FormA />', () => {
+describe("<FormA />", () => {
   beforeEach(() => {
     this.commonProps = {};
   });
 
-  describe('render error messages', () => {
+  describe("render error messages", () => {
     commonFormValidation.bind(this)(FormA);
   });
 
-  describe('change events update states', () => {
+  describe("change events update states", () => {
     commonFormOnUpdate.bind(this)(FormA);
   });
 });
@@ -358,46 +366,46 @@ same shared test will be used in `FormB.test.js`.
 ```js
 // FormB.test.js
 
-import React from 'react';
-import {shallow} from 'enzyme';
-import fakeEvent from 'fake-event';
+import React from "react";
+import { shallow } from "enzyme";
+import fakeEvent from "fake-event";
 
-import FormB from '../FormB';
+import FormB from "../FormB";
 import {
   commonFormValidation,
   commonFormOnUpdate,
-} from '../test/shared/shouldBehaveLikeForm';
+} from "../test/shared/shouldBehaveLikeForm";
 
-describe('<FormB />', () => {
+describe("<FormB />", () => {
   beforeEach(() => {
     this.commonProps = {};
   });
 
-  describe('render error messages', () => {
+  describe("render error messages", () => {
     commonFormValidation.bind(this)(FormB);
 
-    test('render age error message', () => {
+    test("render age error message", () => {
       const component = shallow(<FormB {...this.commonProps} />);
-      component.setState({fields: {name: 'Name', age: 12}});
-      component.find('form').simulate('submit', fakeEvent());
+      component.setState({ fields: { name: "Name", age: 12 } });
+      component.find("form").simulate("submit", fakeEvent());
       expect(component.text()).toEqual(
-        expect.stringContaining('Gender is Required')
+        expect.stringContaining("Gender is Required")
       );
     });
   });
 
-  describe('change events update states', () => {
+  describe("change events update states", () => {
     commonFormOnUpdate.bind(this)(FormB);
 
-    test('update Gender state', () => {
+    test("update Gender state", () => {
       const component = shallow(<FormB {...this.commonProps} />);
       component
         .find('input[name="gender"]')
         .simulate(
-          'change',
-          fakeEvent({target: {name: 'gender', value: 'male'}})
+          "change",
+          fakeEvent({ target: { name: "gender", value: "male" } })
         );
-      expect(component.state('fields').gender).toEqual('male');
+      expect(component.state("fields").gender).toEqual("male");
     });
   });
 });

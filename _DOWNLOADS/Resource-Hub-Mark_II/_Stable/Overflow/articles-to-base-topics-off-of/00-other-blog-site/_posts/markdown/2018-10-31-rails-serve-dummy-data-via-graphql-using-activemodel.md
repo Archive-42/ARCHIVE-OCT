@@ -19,7 +19,6 @@ tags: rails, graphql
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -32,39 +31,39 @@ tags: rails, graphql
 
 <body>
 
-`Graphql` is a alternative to REST architecure which allows client to request the data in particular stucture and it returs data in thbe same 
-structure. 
+`Graphql` is a alternative to REST architecure which allows client to request the data in particular stucture and it returs data in thbe same
+structure.
 
-When you work as a `Frontend` and `Backend` team, you might need to setup a server to serve dummy data so that `Frontend` team can work in parallel.  
+When you work as a `Frontend` and `Backend` team, you might need to setup a server to serve dummy data so that `Frontend` team can work in parallel.
 
 This post assumes that we already have a bootstrapped project with rails and `graphql-ruby`. Consider we have some data of users
 
 ```json
 [
-    {
-        "id":1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz"
-    },
-    {
-        "id": 2,
-        "name": "Ervin Howell",
-        "username": "Antonette",
-        "email": "Shanna@melissa.tv"
-    },
-    {
-        "id": 3,
-        "name": "Clementine Bauch",
-        "username": "Samantha",
-        "email": "Nathan@yesenia.net"
-    },
-    {
-        "id": 4,
-        "name": "Patricia Lebsack",
-        "username": "Karianne",
-        "email": "Julianne.OConner@kory.org"
-    }
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz"
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv"
+  },
+  {
+    "id": 3,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net"
+  },
+  {
+    "id": 4,
+    "name": "Patricia Lebsack",
+    "username": "Karianne",
+    "email": "Julianne.OConner@kory.org"
+  }
 ]
 ```
 
@@ -92,13 +91,13 @@ class User
   include ActiveModel::Serializers::JSON
 
   attr_accessor :name, :id, :username, :email
-  
+
   def attributes=(hash)
     hash.each do |key, value|
       send("#{key}=", value)
     end
   end
-  
+
   def attributes
     instance_values
   end
@@ -120,7 +119,7 @@ module Types
     field :users, [UserType], null: false, resolve: -> (obj, args, ctx) {
         file = File.read File.join(File.dirname(__FILE__), "../data/users.json")
         data = JSON.parse(file)
-    
+
         data.map do |user|
           g = User.new
           g.from_json(user.to_json)
@@ -130,12 +129,12 @@ module Types
 end
 ```
 
-Now in your `/graphiql` interface when you query for 
+Now in your `/graphiql` interface when you query for
 
 ```graphql
 {
   users {
-    id,
+    id
     name
   }
 }
@@ -167,7 +166,7 @@ module Types
           end.first
           user = User.new
           user.from_json(selectedUser.to_json)
-          
+
         } do
           argument :id, Int, required: true
     end

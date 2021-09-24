@@ -20,7 +20,6 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/vue-htm
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -34,12 +33,11 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/vue-htm
 <body>
 
 Handling client side validation using the HTML5 validation api is getting easier due to the wide support on modern browsers.
-With HTML validation api you don't have install any new package and learn its api. 
+With HTML validation api you don't have install any new package and learn its api.
 
 Remember this might not be apt for your application and use case. Read the detailed incompatibility issues [here][quirkmode].
 
 This post doesn't intent to cover all the use cases and corner cases, but to give intro to using HTML5 apis in a `Vue` app.
-
 
 # <a class="anchor" name="basic" href="#basic"><i class="anchor-icon"></i></a>Basic implementation
 
@@ -57,7 +55,12 @@ For the basic version we don't have to do anything specific to vue. Just need to
             <div class="field">
               <label class="label">Name</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Text input" required>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Text input"
+                  required
+                />
               </div>
             </div>
             <div class="field is-grouped">
@@ -73,14 +76,12 @@ For the basic version we don't have to do anything specific to vue. Just need to
 </template>
 
 <script>
-export default {
-  name: "SimpleForm",
-  methods: {
-    handleSubmit() {
-
-    }
-  }
-}
+  export default {
+    name: "SimpleForm",
+    methods: {
+      handleSubmit() {},
+    },
+  };
 </script>
 ```
 
@@ -129,22 +130,22 @@ before the form submission. In such cases we have to trigger the validation and 
 </template>
 
 <script>
-export default {
-  name: "MultipleButton",
-  methods: {
-    handleSubmit(e) {
-      console.log("submit");
+  export default {
+    name: "MultipleButton",
+    methods: {
+      handleSubmit(e) {
+        console.log("submit");
+      },
+      handleSignup() {
+        console.log("do task before submit");
+        if (this.$refs.form.checkValidity()) {
+          this.handleSubmit();
+        } else {
+          this.$refs.form.reportValidity();
+        }
+      },
     },
-    handleSignup() {
-      console.log("do task before submit");
-      if (this.$refs.form.checkValidity()) {
-        this.handleSubmit();
-      } else {
-        this.$refs.form.reportValidity();
-      }
-    }
-  }
-};
+  };
 </script>
 ```
 
@@ -173,7 +174,7 @@ In such case we have to bind callback to [form invalid][invalid_mdn] event, to c
                 <label class="label">Username</label>
                 <div class="control has-icons-left has-icons-right">
                   <input
-                    class="input" 
+                    class="input"
                     :class="errorClass('username')"
                     type="text"
                     placeholder="Name"
@@ -183,11 +184,16 @@ In such case we have to bind callback to [form invalid][invalid_mdn] event, to c
                   <span class="icon is-small is-left">
                     <i class="fas fa-user" />
                   </span>
-                  <span v-if="fieldErrors.username" class="icon is-small is-right">
+                  <span
+                    v-if="fieldErrors.username"
+                    class="icon is-small is-right"
+                  >
                     <i class="fas fa-exclamation-triangle" />
                   </span>
                 </div>
-                <p v-if="fieldErrors.username" class="help is-danger">{{fieldErrors.username}}</p>
+                <p v-if="fieldErrors.username" class="help is-danger">
+                  {{fieldErrors.username}}
+                </p>
               </div>
               <div class="field">
                 <label class="label">Email</label>
@@ -207,7 +213,9 @@ In such case we have to bind callback to [form invalid][invalid_mdn] event, to c
                     <i class="fas fa-exclamation-triangle" />
                   </span>
                 </div>
-                <p v-if="fieldErrors.email" class="help is-danger">{{fieldErrors.email}}</p>
+                <p v-if="fieldErrors.email" class="help is-danger">
+                  {{fieldErrors.email}}
+                </p>
               </div>
               <div class="field">
                 <label class="label">Message</label>
@@ -220,7 +228,9 @@ In such case we have to bind callback to [form invalid][invalid_mdn] event, to c
                     name="message"
                   />
                 </div>
-                <p v-if="fieldErrors.message" class="help is-danger">{{fieldErrors.message}}</p>
+                <p v-if="fieldErrors.message" class="help is-danger">
+                  {{fieldErrors.message}}
+                </p>
               </div>
               <div class="field">
                 <div class="control">
@@ -228,7 +238,9 @@ In such case we have to bind callback to [form invalid][invalid_mdn] event, to c
                     <input type="checkbox" required name="toc" />
                     I agree to the <a href="#">terms and conditions</a>
                   </label>
-                  <p v-if="fieldErrors.toc" class="help is-danger">{{fieldErrors.toc}}</p>
+                  <p v-if="fieldErrors.toc" class="help is-danger">
+                    {{fieldErrors.toc}}
+                  </p>
                 </div>
               </div>
               <div class="field is-grouped">
@@ -245,36 +257,34 @@ In such case we have to bind callback to [form invalid][invalid_mdn] event, to c
 </template>
 
 <script>
-export default {
-  name: "CustomDesign",
-  data() {
-    return {
-      fieldErrors: {}
-    }
-  },
-  methods: {
-    handleSubmit() {
-      
-    },
-    handleChange(evt) {
-      console.log('handleChange :: ', evt.target.name);
-      this.fieldErrors = {
-        ...this.fieldErrors,
-        [evt.target.name]: ""
+  export default {
+    name: "CustomDesign",
+    data() {
+      return {
+        fieldErrors: {},
       };
     },
-    handleInvalid(evt) {
-      console.log('handleInvalid :: ', evt.target.name);
-      this.fieldErrors = {
-        ...this.fieldErrors,
-        [evt.target.name]: evt.target.validationMessage
-      };
+    methods: {
+      handleSubmit() {},
+      handleChange(evt) {
+        console.log("handleChange :: ", evt.target.name);
+        this.fieldErrors = {
+          ...this.fieldErrors,
+          [evt.target.name]: "",
+        };
+      },
+      handleInvalid(evt) {
+        console.log("handleInvalid :: ", evt.target.name);
+        this.fieldErrors = {
+          ...this.fieldErrors,
+          [evt.target.name]: evt.target.validationMessage,
+        };
+      },
+      errorClass(field) {
+        return this.fieldErrors[field] ? "is-danger" : "";
+      },
     },
-    errorClass(field) {
-      return this.fieldErrors[field] ? "is-danger" : ""
-    }
-  },
-}
+  };
 </script>
 ```
 
@@ -282,10 +292,8 @@ In this make sure to use `capture` [modifier][vue_capture] like `@invalid.captur
 
 The working sample is available on [codesandbox][working_sample]
 
-
 {: style="text-align: center"}
 ![Vue HTML5 validation][screenshot]
-
 
     Versions of Language/packages used in this post.
 

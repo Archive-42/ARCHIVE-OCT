@@ -12,7 +12,7 @@ image: https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2017/elm-web
 ---
 [ELM lang](http://elm-lang.org) is a new language to write reliable web apps which will generate javascript with performance in focus and no runtime exceptions. To get started we need to go through the [The Elm Architecture](https://guide.elm-lang.org/architecture/) and understand the basic pattern of `Model`, `Update` and `View`.
 
-Once we were done we can start with playing with some snippets. In this post, we will cover 
+Once we were done we can start with playing with some snippets. In this post, we will cover
 * How to setup ELM
 * How to start playing with a **Hello world** example.
 * How to bundle your app with webpack.
@@ -79,7 +79,7 @@ Now, let's run `elm reactor` and open `http://localhost:8000/` see its running i
 
 We can run `elm live` if we need the live reload for our development.
 
-The hello world example have on `View` part in the basic ELM pattern. Let's look into another example 
+The hello world example have on `View` part in the basic ELM pattern. Let's look into another example
 which has a `Model` & `Update`.
 
 ~~~elm
@@ -137,7 +137,7 @@ We will start with setting up a `index.html` & the entry point `index.js`
   <head>
     <title>ELM Counter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
 
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
@@ -159,46 +159,44 @@ The above snippet will assume that our webpack config will compile the ELM to `a
 Now the entry point `index.js` need to take care of requiring `counter.elm` and mounting the ELM app
 in the `div#elm-app`.
 
-~~~js
+```js
 // index.js
-'use strict';
+"use strict";
 
-var Elm = require('./counter.elm');
-var mountNode = document.getElementById('elm-app');
+var Elm = require("./counter.elm");
+var mountNode = document.getElementById("elm-app");
 
 // The third value on embed are the initial values for incomming ports into Elm
 var app = Elm.Main.embed(mountNode);
-~~~
+```
 
-### Installing & configuring webpack 
+### Installing & configuring webpack
 
 Let's create a `package.json` using `npm init` command and then install the webpack and other dependencies.
 
-~~~sh
+```sh
 npm install --save elm-webpack-loader webpack webpack-dev-server
-~~~
+```
 
 Now let's configure the webapack with `elm-webpack-loader`.
 
-~~~js
+```js
 // webpack.config.js
 module.exports = {
   entry: {
-    app: [
-      './index.js'
-    ]
+    app: ["./index.js"],
   },
 
   output: {
-    filename: '[name].js',
+    filename: "[name].js",
   },
 
   module: {
     loaders: [
       {
-        test:    /\.elm$/,
+        test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader:  'elm-webpack-loader?verbose=true&warn=true',
+        loader: "elm-webpack-loader?verbose=true&warn=true",
       },
     ],
 
@@ -208,15 +206,15 @@ module.exports = {
   devServer: {
     inline: true,
     stats: { colors: true },
-  }
+  },
 };
-~~~
+```
 
 Now we are done with configuring webpack with elm loader, Let's see this in action by executing the command
 
-~~~sh
+```sh
 ./node_modules/.bin/webpack-dev-server
-~~~
+```
 
 and open the `http://localhost:8081/` in the browser.
 

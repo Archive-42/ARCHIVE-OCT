@@ -17,7 +17,6 @@ categories: nodejs, aws
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -35,29 +34,30 @@ When we use [aws-sdk][aws-sdk] to [list objects][api-list-objects] in s3 bucket 
 Use `Delimiter` as `/` will result in list of `CommonPrefixes` in the response.
 
 ```js
-var AwsS3 = require ('aws-sdk/clients/s3');
-const s3 = new AwsS3 ({
-  accessKeyId: '',
-  secretAccessKey: '',
-  region: 'ap-south-1',
+var AwsS3 = require("aws-sdk/clients/s3");
+const s3 = new AwsS3({
+  accessKeyId: "",
+  secretAccessKey: "",
+  region: "ap-south-1",
 });
 
-const listDirectories = params => {
-  return new Promise ((resolve, reject) => {
+const listDirectories = (params) => {
+  return new Promise((resolve, reject) => {
     const s3params = {
-      Bucket: 'bucket-name',
+      Bucket: "bucket-name",
       MaxKeys: 20,
-      Delimiter: '/',
+      Delimiter: "/",
     };
-    s3.listObjectsV2 (s3params, (err, data) => {
+    s3.listObjectsV2(s3params, (err, data) => {
       if (err) {
-        reject (err);
+        reject(err);
       }
-      resolve (data);
+      resolve(data);
     });
   });
 };
 ```
+
 The above code will list the directories in the bucket root.
 The sample response will look like
 
@@ -90,19 +90,19 @@ The sample response will look like
 If we want to list the directories inside the one of the listed directory, Pass the directory name as `Prefix`.
 
 ```js
-const listDirectories = params => {
-  return new Promise ((resolve, reject) => {
+const listDirectories = (params) => {
+  return new Promise((resolve, reject) => {
     const s3params = {
-      Bucket: 'bucket-name',
+      Bucket: "bucket-name",
       MaxKeys: 20,
-      Delimiter: '/',
-      Prefix: 'directory-1/'
+      Delimiter: "/",
+      Prefix: "directory-1/",
     };
-    s3.listObjectsV2 (s3params, (err, data) => {
+    s3.listObjectsV2(s3params, (err, data) => {
       if (err) {
-        reject (err);
+        reject(err);
       }
-      resolve (data);
+      resolve(data);
     });
   });
 };

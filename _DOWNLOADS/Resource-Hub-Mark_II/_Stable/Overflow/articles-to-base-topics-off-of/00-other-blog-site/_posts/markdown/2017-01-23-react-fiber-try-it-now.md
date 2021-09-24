@@ -20,7 +20,6 @@ image: 'http://i653.photobucket.com/albums/uu253/revathskumar/Coderepo/2017/reac
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -33,9 +32,9 @@ image: 'http://i653.photobucket.com/albums/uu253/revathskumar/Coderepo/2017/reac
 
 <body>
 
-> Disclaimer : **React Fiber** is experimental and do not use it for production. 
+> Disclaimer : **React Fiber** is experimental and do not use it for production.
 
-**React Fiber** is the new experimental version of `react` with new reconciliation algorithm 
+**React Fiber** is the new experimental version of `react` with new reconciliation algorithm
 to diff one tree with another.
 
 It take advantage of scheduling, and set priority for each fibers. A unit of work to be done is called a `fiber`.
@@ -45,24 +44,24 @@ It uses [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/W
 
 If we want we can give a try, But it not available on npm as of now. So we need to clone the [react](https://github.com/facebook/react/) from github.
 
-``` sh
+```sh
 git clone https://github.com/facebook/react.git
 ```
 
 Once the clone is complete, you can install the npm dependencies.
 
-``` sh
+```sh
 cd react
 npm i
 ```
 
 Now you can run gulp to build packages from the repo
 
-``` sh
+```sh
 gulp
 ```
 
-If you are getting any warnings, 
+If you are getting any warnings,
 
 ```
 Error message "Missing owner for string ref %s" cannot be found. The current React version and the error map are probably out of sync. Please run `gulp react:extract-errors` before building React.
@@ -82,14 +81,14 @@ Now all the packages are build, and available in `build/packages` directory.
 
 Once the package builds are ready, you can navigate into the those directories and run `npm link`.
 
-``` sh
+```sh
 cd build/packages/react
 npm link
 ```
 
 Next link the `react-dom`
 
-``` sh
+```sh
 cd build/packages/react-dom
 npm link
 ```
@@ -104,15 +103,15 @@ npm link react-dom
 Now your project bundler can use the latest react from github master. But still it didn't started using the fiber.
 For that one last step need to be done. Replace your `react-dom` imports with
 
-``` js
-import { render } from 'react-dom/fiber';
+```js
+import { render } from "react-dom/fiber";
 ```
 
 Thats it, Now you project will be using **React Fiber**.
 
 ### Resources :
 
-* [Andrew Clark: What's Next for React — ReactNext 2016](https://www.youtube.com/watch?v=aV1271hd9ew)
-* [React Fiber Architecture (Unofficial)](https://github.com/acdlite/react-fiber-architecture)
+- [Andrew Clark: What's Next for React — ReactNext 2016](https://www.youtube.com/watch?v=aV1271hd9ew)
+- [React Fiber Architecture (Unofficial)](https://github.com/acdlite/react-fiber-architecture)
 
 > Please note that **React Fiber** is experimental and do not use it for production. If you found any bugs, you can file an issue on [github issues](https://github.com/facebook/react/issues).

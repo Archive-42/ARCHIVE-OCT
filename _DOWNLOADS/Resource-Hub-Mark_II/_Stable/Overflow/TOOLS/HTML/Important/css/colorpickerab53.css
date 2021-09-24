@@ -41,7 +41,6 @@ License: MIT
   right: 20%;
 }
 
-
 .sp-clear-enabled .sp-hue {
   top: 33px;
   height: 77.5%;
@@ -71,7 +70,7 @@ License: MIT
   cursor: pointer;
   border: 1px solid black;
   background: white;
-  opacity: .8;
+  opacity: 0.8;
 }
 .sp-alpha {
   display: none;
@@ -137,11 +136,16 @@ License: MIT
   display: none;
 }
 
-
 /* Gradients for hue, saturation and value instead of images.  Not pretty... but it works */
 .sp-sat {
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#FFF), to(rgba(204, 154, 129, 0)));
-  background-image: -webkit-linear-gradient(left, #FFF, rgba(204, 154, 129, 0));
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    100% 0,
+    from(#fff),
+    to(rgba(204, 154, 129, 0))
+  );
+  background-image: -webkit-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
   background-image: -moz-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
   background-image: -o-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
   background-image: -ms-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
@@ -150,8 +154,18 @@ License: MIT
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr="#FFFFFFFF", endColorstr="#00CC9A81");
 }
 .sp-val {
-  background-image: -webkit-gradient(linear, 0 100%, 0 0, from(#000000), to(rgba(204, 154, 129, 0)));
-  background-image: -webkit-linear-gradient(bottom, #000000, rgba(204, 154, 129, 0));
+  background-image: -webkit-gradient(
+    linear,
+    0 100%,
+    0 0,
+    from(#000000),
+    to(rgba(204, 154, 129, 0))
+  );
+  background-image: -webkit-linear-gradient(
+    bottom,
+    #000000,
+    rgba(204, 154, 129, 0)
+  );
   background-image: -moz-linear-gradient(bottom, #000, rgba(204, 154, 129, 0));
   background-image: -o-linear-gradient(bottom, #000, rgba(204, 154, 129, 0));
   background-image: -ms-linear-gradient(bottom, #000, rgba(204, 154, 129, 0));
@@ -161,12 +175,68 @@ License: MIT
 }
 
 .sp-hue {
-  background: -moz-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-  background: -ms-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-  background: -o-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-  background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), color-stop(0.17, #ffff00), color-stop(0.33, #00ff00), color-stop(0.5, #00ffff), color-stop(0.67, #0000ff), color-stop(0.83, #ff00ff), to(#ff0000));
-  background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-  background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+  background: -moz-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ff0000),
+    color-stop(0.17, #ffff00),
+    color-stop(0.33, #00ff00),
+    color-stop(0.5, #00ffff),
+    color-stop(0.67, #0000ff),
+    color-stop(0.83, #ff00ff),
+    to(#ff0000)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
 }
 
 .sp-hidden {
@@ -193,7 +263,7 @@ License: MIT
   right: -1px;
   border: 1px solid #000;
   background: white;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 /*
@@ -204,8 +274,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .sp-container {
   border-radius: 0;
-  background-color: #ECECEC;
-  border: solid 1px #f0c49B;
+  background-color: #ececec;
+  border: solid 1px #f0c49b;
   padding: 0;
 }
 
@@ -301,7 +371,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .sp-replacer:hover,
 .sp-replacer.sp-active {
-  border-color: #F0C49B;
+  border-color: #f0c49b;
   color: #111;
 }
 .sp-replacer.sp-disabled {
@@ -340,7 +410,6 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 .sp-container {
   padding-bottom: 0;
 }
-
 
 /* Buttons: http://hellohappy.org/css3-buttons/ */
 .sp-container button {
@@ -390,13 +459,11 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   margin-right: 5px;
   vertical-align: middle;
   text-decoration: none;
-
 }
 .sp-cancel:hover {
   color: #d93f3f !important;
   text-decoration: underline;
 }
-
 
 .sp-palette span:hover,
 .sp-palette span.sp-thumb-active {
