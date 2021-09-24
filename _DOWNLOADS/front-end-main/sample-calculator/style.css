@@ -1,0 +1,43 @@
+* {
+	font-family: "Source Sans Pro", "sans-serif";
+}
+
+.btn-pad {
+	border: 2px solid black;
+	text-align: center;
+}
+
+.btn-pad:hover {
+	cursor: pointer;
+}
+
+.btn-pad:active {
+	cursor: default;
+	border-color: grey;
+}
+
+#calculator-box {
+	background-image: linear-gradient(to right, #154360, #1A5276);
+	box-shadow: 1px 1px 30px black;
+	border: 2px solid black;
+}
+
+#display {
+	border: 2px solid black;
+}
+
+#eql-btn {
+	background-image: linear-gradient(to right, #186A3B, #1D8348);
+}
+
+#ca-btn {
+	background-image: linear-gradient(to right, #B71C1C, #C62828);
+}
+
+#c-btn {
+	background-image: linear-gradient(to right, #E65100, #EF6C00);
+}
+
+#display-warning {
+	visibility: hidden;
+}
