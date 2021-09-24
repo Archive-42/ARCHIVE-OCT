@@ -1,43 +1,47 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>When ever I read about reactjs, I heard that “Its needs a different thinking”. I understood that statement When I
-      worked on a simple form with loading indicator in reactjs. In usual case I used to add loading class in
-      <code>beforeSend</code> and remove it when <code>$.ajax</code> is <code>done</code>/<code>fail</code>.
+    <p>
+      When ever I read about reactjs, I heard that “Its needs a different
+      thinking”. I understood that statement When I worked on a simple form with
+      loading indicator in reactjs. In usual case I used to add loading class in
+      <code>beforeSend</code> and remove it when <code>$.ajax</code> is
+      <code>done</code>/<code>fail</code>.
     </p>
-    <p>But I came to reactjs, first I tried to do the same, but later I understood it should go to <code>state</code>.
-      Here below the code for simple reactjs form. I used <code>loading</code> state to to render loading indicator.</p>
+    <p>
+      But I came to reactjs, first I tried to do the same, but later I
+      understood it should go to <code>state</code>. Here below the code for
+      simple reactjs form. I used <code>loading</code> state to to render
+      loading indicator.
+    </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="va">App</span>.<span class="va">Users</span>.<span class="at">Add</span> <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="va">App</span>.<span class="va">Users</span>.<span class="at">Add</span> <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="dt">getInitialState</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-3" title="3">    <span class="cf">return</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-4" title="4">      <span class="dt">username</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
@@ -181,15 +185,21 @@
 <a class="sourceLine" id="cb1-142" title="142">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb1-143" title="143"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>So in the above component, I save the value entered in the text boxes into the <code>state</code> and validate
-      which submiting the form. Once I validation is success then I initialte an ajax request. In the
-      <code>beforeSend</code> of I set the <code>loading</code> state to <code>true</code> and whether its fail or
-      success I set the loading state to <code>false</code>. So when the loading state is <code>true</code> it will
-      render the loading component with <a href="http://fontawesome.io/">fontawesome</a> CSS classes.
+    <p>
+      So in the above component, I save the value entered in the text boxes into
+      the <code>state</code> and validate which submiting the form. Once I
+      validation is success then I initialte an ajax request. In the
+      <code>beforeSend</code> of I set the <code>loading</code> state to
+      <code>true</code> and whether its fail or success I set the loading state
+      to <code>false</code>. So when the loading state is <code>true</code> it
+      will render the loading component with
+      <a href="http://fontawesome.io/">fontawesome</a> CSS classes.
     </p>
     <p>I extracted the loading component to reuse as much as I can.</p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="va">App</span>.<span class="at">Loading</span> <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="va">App</span>.<span class="at">Loading</span> <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="dt">render</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-3" title="3">    <span class="cf">if</span> (<span class="op">!</span><span class="kw">this</span>.<span class="va">props</span>.<span class="at">loading</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-4" title="4">      <span class="cf">return</span> <span class="op">&lt;</span>span<span class="op">&gt;</span>&lt;/span<span class="op">&gt;;</span></a>
@@ -201,12 +211,12 @@
     <p>Now I can render this <code>App.Users.Add</code> component anywhere.</p>
     <div class="sourceCode" id="cb3">
       <pre
-        class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="va">React</span>.<span class="at">render</span>(<span class="op">&lt;</span><span class="va">App</span>.<span class="va">Users</span>.<span class="at">Add</span> /<span class="op">&gt;,</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;container&quot;</span>))<span class="op">;</span></a></code></pre>
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="va">React</span>.<span class="at">render</span>(<span class="op">&lt;</span><span class="va">App</span>.<span class="va">Users</span>.<span class="at">Add</span> /<span class="op">&gt;,</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;container&quot;</span>))<span class="op">;</span></a></code></pre>
     </div>
-    <p>I store all the validation errors in the state as well. So when ever the error occurs the reactjs will take care
-      of rending it.</p>
-
+    <p>
+      I store all the validation errors in the state as well. So when ever the
+      error occurs the reactjs will take care of rending it.
+    </p>
   </body>
-
-  
 </html>

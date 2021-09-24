@@ -1,44 +1,49 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>One of the best thing about React is, it helps to componentize the whole app. We will divide the whole app into
-      chunks of small components. But when we divide in components then a new issue will arise, communication between
-      different components.</p>
-    <p>As a reactjs beginner one of the things you should know is communication between different components of the
-      React.js app.</p>
+    <p>
+      One of the best thing about React is, it helps to componentize the whole
+      app. We will divide the whole app into chunks of small components. But
+      when we divide in components then a new issue will arise, communication
+      between different components.
+    </p>
+    <p>
+      As a reactjs beginner one of the things you should know is communication
+      between different components of the React.js app.
+    </p>
     <h2 id="parent-communicating-to-child">#1 Parent communicating to child</h2>
-    <p>If the want to pass data from parent component to child one, you can pass the data as props.</p>
+    <p>
+      If the want to pass data from parent component to child one, you can pass
+      the data as props.
+    </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> Holder <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> Holder <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="dt">render</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-3" title="3">    <span class="cf">return</span> <span class="op">&lt;</span>span<span class="op">&gt;{</span><span class="kw">this</span>.<span class="va">props</span>.<span class="at">count</span><span class="op">}</span>&lt;/span<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb1-4" title="4">  <span class="op">},</span></a>
@@ -62,16 +67,30 @@
 <a class="sourceLine" id="cb1-22" title="22">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb1-23" title="23"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>In the above example the <code>Incrementer</code> component is the parent component and <code>Holder</code> is
-      the child component. So we can easily pass the data from parent to child with <code>props</code>.</p>
-    <h2 id="without-parent-child-relationship">#2 Without parent-child relationship</h2>
-    <p>Sometimes the components which are not in parent-child relationship might need to communicate, In this case we
-      need to depend on global event system. You can use any pubsub library as you like. Since most project have jQuery,
-      we can use <code>$.trigger</code> and <code>$.on</code> to setup global event system.</p>
-    <p>In this each component can subscribe to event in <code>componentDidMount</code> lifecycle method and unsubscribe
-      in <code>componentWillUnmount</code> method.</p>
+    <p>
+      In the above example the <code>Incrementer</code> component is the parent
+      component and <code>Holder</code> is the child component. So we can easily
+      pass the data from parent to child with <code>props</code>.
+    </p>
+    <h2 id="without-parent-child-relationship">
+      #2 Without parent-child relationship
+    </h2>
+    <p>
+      Sometimes the components which are not in parent-child relationship might
+      need to communicate, In this case we need to depend on global event
+      system. You can use any pubsub library as you like. Since most project
+      have jQuery, we can use <code>$.trigger</code> and <code>$.on</code> to
+      setup global event system.
+    </p>
+    <p>
+      In this each component can subscribe to event in
+      <code>componentDidMount</code> lifecycle method and unsubscribe in
+      <code>componentWillUnmount</code> method.
+    </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">var</span> APP <span class="op">=</span> <span class="op">{};</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">var</span> APP <span class="op">=</span> <span class="op">{};</span></a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="kw">var</span> Holder <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb2-4" title="4">  <span class="dt">getInitialState</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
@@ -122,6 +141,5 @@
 <a class="sourceLine" id="cb2-49" title="49"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
   </body>
-
-  </html>
-  $
+</html>
+$

@@ -1,43 +1,48 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>When I was looking for samples of WebSocket Server in NodeJS most results where using <a
-        href="http://socket.io">socket.io</a>. But since I was learning I needed some more basic one. First I thought of
-      using simple <code>net.Socket</code>, later I came to know that its just a TCP socket and WebSocket won’t works
-      with it unless you use <a href="https://github.com/kanaka/websockify">websockify</a> to bridge in between.</p>
-    <p>Then I found <a href="https://github.com/websockets/ws">ws</a>, a basic WebSocket implementation. So I build a
-      simple websocket server using <code>ws</code>.</p>
+    <p>
+      When I was looking for samples of WebSocket Server in NodeJS most results
+      where using <a href="http://socket.io">socket.io</a>. But since I was
+      learning I needed some more basic one. First I thought of using simple
+      <code>net.Socket</code>, later I came to know that its just a TCP socket
+      and WebSocket won’t works with it unless you use
+      <a href="https://github.com/kanaka/websockify">websockify</a> to bridge in
+      between.
+    </p>
+    <p>
+      Then I found <a href="https://github.com/websockets/ws">ws</a>, a basic
+      WebSocket implementation. So I build a simple websocket server using
+      <code>ws</code>.
+    </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// server.js</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// server.js</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">var</span> Server <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;ws&quot;</span>).<span class="at">Server</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="kw">var</span> port <span class="op">=</span> <span class="va">process</span>.<span class="va">env</span>.<span class="at">PORT</span> <span class="op">||</span> <span class="dv">9030</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="kw">var</span> ws <span class="op">=</span> <span class="kw">new</span> <span class="at">Server</span>(<span class="op">{</span> <span class="dt">port</span><span class="op">:</span> port <span class="op">}</span>)<span class="op">;</span></a>
@@ -55,7 +60,8 @@
     <p>Now this server can accept connection. Next we need a client.</p>
     <div class="sourceCode" id="cb2">
       <pre
-        class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">var</span> connection <span class="op">=</span> <span class="kw">new</span> <span class="at">WebSocket</span>(<span class="st">&quot;ws://localhost:9030&quot;</span>)<span class="op">;</span></a>
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">var</span> connection <span class="op">=</span> <span class="kw">new</span> <span class="at">WebSocket</span>(<span class="st">&quot;ws://localhost:9030&quot;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="va">connection</span>.<span class="at">onopen</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{};</span></a>
 <a class="sourceLine" id="cb2-4" title="4"></a>
@@ -70,28 +76,37 @@
     <p>Now we can send message via WebSocket from server to client and back.</p>
     <div class="sourceCode" id="cb3">
       <pre
-        class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="va">w</span>.<span class="at">on</span>(<span class="st">&quot;message&quot;</span><span class="op">,</span> <span class="kw">function</span> (msg) <span class="op">{</span></a>
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="va">w</span>.<span class="at">on</span>(<span class="st">&quot;message&quot;</span><span class="op">,</span> <span class="kw">function</span> (msg) <span class="op">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;message from client :: &quot;</span><span class="op">,</span> msg)<span class="op">;</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb3-4" title="4"></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="va">w</span>.<span class="at">send</span>(<span class="st">&quot;message to client&quot;</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>And I in client I received it message in <code>onmessage</code> event and from client I can send the message
-      using <code>send</code> method.</p>
+    <p>
+      And I in client I received it message in <code>onmessage</code> event and
+      from client I can send the message using <code>send</code> method.
+    </p>
     <div class="sourceCode" id="cb4">
       <pre
-        class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Log messages from the server</span></a>
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Log messages from the server</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="va">connection</span>.<span class="at">onmessage</span> <span class="op">=</span> <span class="kw">function</span> (e) <span class="op">{</span></a>
 <a class="sourceLine" id="cb4-3" title="3">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;message from server&quot;</span><span class="op">,</span> <span class="va">e</span>.<span class="at">data</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="op">};</span></a>
 <a class="sourceLine" id="cb4-5" title="5"></a>
 <a class="sourceLine" id="cb4-6" title="6"><span class="va">connection</span>.<span class="at">send</span>(<span class="st">&quot;hello from client&quot;</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Now when I need to send some message to individual client, I want to keep some reference/indetifier to each
-      client. So I used <code>sec-websocket-key</code> in header. when each client gets connected I keep the object of
-      connection in an array.</p>
+    <p>
+      Now when I need to send some message to individual client, I want to keep
+      some reference/indetifier to each client. So I used
+      <code>sec-websocket-key</code> in header. when each client gets connected
+      I keep the object of connection in an array.
+    </p>
     <div class="sourceCode" id="cb5">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">var</span> Server <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;ws&quot;</span>).<span class="at">Server</span><span class="op">;</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">var</span> Server <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;ws&quot;</span>).<span class="at">Server</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="kw">var</span> port <span class="op">=</span> <span class="va">process</span>.<span class="va">env</span>.<span class="at">PORT</span> <span class="op">||</span> <span class="dv">9030</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="kw">var</span> ws <span class="op">=</span> <span class="kw">new</span> <span class="at">Server</span>(<span class="op">{</span> <span class="dt">port</span><span class="op">:</span> port <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4"></a>
@@ -118,18 +133,19 @@
 <a class="sourceLine" id="cb5-25" title="25">  sockets[id] <span class="op">=</span> w<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-26" title="26"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>And for client I just I send a JSON with info whome this message should be delivered like</p>
+    <p>
+      And for client I just I send a JSON with info whome this message should be
+      delivered like
+    </p>
     <div class="sourceCode" id="cb6">
       <pre
-        class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">var</span> data <span class="op">=</span> <span class="op">{</span></a>
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">var</span> data <span class="op">=</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;sec-websocket-identifier&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb6-3" title="3">  <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;hello from client 1&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="op">};</span></a>
 <a class="sourceLine" id="cb6-5" title="5"><span class="va">connection</span>.<span class="at">send</span>(<span class="va">JSON</span>.<span class="at">stringify</span>(data))<span class="op">;</span></a></code></pre>
     </div>
     <p>I think this is the base of 1-1 chat application.</p>
-
   </body>
-
-  
 </html>

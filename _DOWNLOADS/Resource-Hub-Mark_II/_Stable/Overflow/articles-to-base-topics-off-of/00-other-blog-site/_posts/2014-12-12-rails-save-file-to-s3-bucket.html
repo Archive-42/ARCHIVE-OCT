@@ -1,65 +1,84 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>In my last blog post I explained how to <a href="/2014/12/rails-ajax-file-upload-using-remotipart.html">upload
-        file via ajax</a>. In that the file is store in the application server itself. But what if we want to store file
-      in our s3 bucket. We can use <code>aws-sdk</code> gem to do it.</p>
+    <p>
+      In my last blog post I explained how to
+      <a href="/2014/12/rails-ajax-file-upload-using-remotipart.html"
+        >upload file via ajax</a
+      >. In that the file is store in the application server itself. But what if
+      we want to store file in our s3 bucket. We can use
+      <code>aws-sdk</code> gem to do it.
+    </p>
     <h2 id="add-gem-to-gemfile">Add gem to Gemfile</h2>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Gemfile</span></a>
+      <pre
+        class="sourceCode rb"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Gemfile</span></a>
 <a class="sourceLine" id="cb1-2" title="2">gem <span class="st">&#39;aws-sdk&#39;</span></a></code></pre>
     </div>
-    <p>As usual after adding gem to <code>Gemfile</code> do <code>bundle install</code>.</p>
+    <p>
+      As usual after adding gem to <code>Gemfile</code> do
+      <code>bundle install</code>.
+    </p>
     <h2 id="configure-aws">Configure AWS</h2>
-    <p>To authorize your app to access s3 bucket you can pass the <code>key</code> and <code>secret</code> to
-      <code>AWS#config</code> method. To do this authorization on our application startup we can add a new file in
+    <p>
+      To authorize your app to access s3 bucket you can pass the
+      <code>key</code> and <code>secret</code> to
+      <code>AWS#config</code> method. To do this authorization on our
+      application startup we can add a new file in
       <code>config/initializers</code> folder.
     </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># config/initializers/s3.rb</span></a>
+      <pre
+        class="sourceCode rb"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># config/initializers/s3.rb</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="dt">AWS</span>.config(</a>
 <a class="sourceLine" id="cb2-3" title="3">  <span class="st">:access_key_id</span> =&gt; <span class="st">&#39;key&#39;</span>,</a>
 <a class="sourceLine" id="cb2-4" title="4">  <span class="st">:secret_access_key</span> =&gt; <span class="st">&#39;secret&#39;</span></a>
 <a class="sourceLine" id="cb2-5" title="5">)</a></code></pre>
     </div>
-    <p>You can either specify your <code>key</code> and <code>secret</code> in <code>s3.rb</code> or load it from <a
-        href="/2012/06/rails-loading-configuration-from-custom.html">custom configuration file</a>. The latter one is
-      recommended.</p>
+    <p>
+      You can either specify your <code>key</code> and <code>secret</code> in
+      <code>s3.rb</code> or load it from
+      <a href="/2012/06/rails-loading-configuration-from-custom.html"
+        >custom configuration file</a
+      >. The latter one is recommended.
+    </p>
     <h2 id="upload-to-s3">Upload to s3</h2>
-    <p>Now we have configured and authorized our application to access s3 buckets. Now we can start working on uploading
-      files. Since uploading to s3 can be from any controller, I like to move the functionality to <code>lib</code>
-      folder as a separate custom library.</p>
+    <p>
+      Now we have configured and authorized our application to access s3
+      buckets. Now we can start working on uploading files. Since uploading to
+      s3 can be from any controller, I like to move the functionality to
+      <code>lib</code> folder as a separate custom library.
+    </p>
     <div class="sourceCode" id="cb3">
-      <pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1"><span class="co">#  lib/s3_store.rb</span></a>
+      <pre
+        class="sourceCode rb"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1"><span class="co">#  lib/s3_store.rb</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw">class</span> <span class="dt">S3Store</span></a>
 <a class="sourceLine" id="cb3-3" title="3">  <span class="dt">BUCKET</span> = <span class="st">&quot;app-uploads&quot;</span>.freeze</a>
 <a class="sourceLine" id="cb3-4" title="4"></a>
@@ -85,15 +104,24 @@
 <a class="sourceLine" id="cb3-24" title="24">  <span class="kw">end</span></a>
 <a class="sourceLine" id="cb3-25" title="25"><span class="kw">end</span></a></code></pre>
     </div>
-    <p>Now we have separate <code>s3_store</code> library to do task related to s3 bucket. Since our library is in
-      <code>lib</code> folder, rails by default won’t load it. To reload the <code>s3_store.rb</code> in development we
-      need to add <code>lib</code> folder to <a href="/2013/04/rails-make-custom-libraries-autoloadable.html">autoload
-        paths</a>. This will also ensure that rails will autoload our library and we don’t need to write a separate
-      <code>require</code> for it.
+    <p>
+      Now we have separate <code>s3_store</code> library to do task related to
+      s3 bucket. Since our library is in <code>lib</code> folder, rails by
+      default won’t load it. To reload the <code>s3_store.rb</code> in
+      development we need to add <code>lib</code> folder to
+      <a href="/2013/04/rails-make-custom-libraries-autoloadable.html"
+        >autoload paths</a
+      >. This will also ensure that rails will autoload our library and we don’t
+      need to write a separate <code>require</code> for it.
     </p>
-    <p>ok, go ahead and use the library in our controller, to upload files to s3 bucket.</p>
+    <p>
+      ok, go ahead and use the library in our controller, to upload files to s3
+      bucket.
+    </p>
     <div class="sourceCode" id="cb4">
-      <pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># app/controllers/some_controller.rb</span></a>
+      <pre
+        class="sourceCode rb"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># app/controllers/some_controller.rb</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="kw">def</span> image</a>
 <a class="sourceLine" id="cb4-3" title="3">  <span class="kw">begin</span></a>
 <a class="sourceLine" id="cb4-4" title="4">    image = <span class="dt">S3Store</span>.new(params[<span class="st">:upload</span>][<span class="st">:image</span>]).store</a>
@@ -103,10 +131,10 @@
 <a class="sourceLine" id="cb4-8" title="8">  <span class="kw">end</span></a>
 <a class="sourceLine" id="cb4-9" title="9"><span class="kw">end</span></a></code></pre>
     </div>
-    <p>Since we return <code>self</code> from store method, you can use <code>image.url</code> to get the public url of
-      the file uploaded. This can be used to store to db for reference.</p>
-
+    <p>
+      Since we return <code>self</code> from store method, you can use
+      <code>image.url</code> to get the public url of the file uploaded. This
+      can be used to store to db for reference.
+    </p>
   </body>
-
-  
 </html>

@@ -1,55 +1,68 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>As of now, Heroku doesn’t support auto-deploy from GitLab. So we have to use Gitlab CI to deploy to Heroku. This
-      post will help you to set up auto deploy to Heroku.</p>
-    <p>For this blog post, we will take a rails app with a Postgres database. We need Gitlab to run the unit tests and
-      deploy to staging and then later to production.</p>
-    <p>For staging and production, we will keep different branches to make things simpler. It will also make it easier
-      for us to push a hotfix.</p>
-    <h1 id="setting-up-gitlab-ci"><a class="anchor" name="setting-up-gitlab-ci" href="#setting-up-gitlab-ci"><i
-          class="anchor-icon"></i></a>Setting up Gitlab CI</h1>
-    <p>First, we have to set up our project to run the tests using Gitlab CI. You can add new
-      <code>.gitlab-ci.yml</code> file using the templates available in Gitlab web UI. If you prefer to add it manually
-      you can add the following section to set up.</p>
+    <p>
+      As of now, Heroku doesn’t support auto-deploy from GitLab. So we have to
+      use Gitlab CI to deploy to Heroku. This post will help you to set up auto
+      deploy to Heroku.
+    </p>
+    <p>
+      For this blog post, we will take a rails app with a Postgres database. We
+      need Gitlab to run the unit tests and deploy to staging and then later to
+      production.
+    </p>
+    <p>
+      For staging and production, we will keep different branches to make things
+      simpler. It will also make it easier for us to push a hotfix.
+    </p>
+    <h1 id="setting-up-gitlab-ci">
+      <a class="anchor" name="setting-up-gitlab-ci" href="#setting-up-gitlab-ci"
+        ><i class="anchor-icon"></i></a
+      >Setting up Gitlab CI
+    </h1>
+    <p>
+      First, we have to set up our project to run the tests using Gitlab CI. You
+      can add new <code>.gitlab-ci.yml</code> file using the templates available
+      in Gitlab web UI. If you prefer to add it manually you can add the
+      following section to set up.
+    </p>
     <div class="sourceCode" id="cb1">
       <pre
-        class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># .gitlab-ci.yml</span></a>
+        class="sourceCode yml"
+      ><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># .gitlab-ci.yml</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="fu">image:</span><span class="at"> </span><span class="st">&#39;ruby:2.7.1&#39;</span></a></code></pre>
     </div>
-    <p>Then add the services section to support postgres db for the rails app.</p>
+    <p>
+      Then add the services section to support postgres db for the rails app.
+    </p>
     <div class="sourceCode" id="cb2">
       <pre
-        class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">services:</span></a>
+        class="sourceCode yml"
+      ><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">services:</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="kw">-</span> postgres:11.7</a>
 <a class="sourceLine" id="cb2-3" title="3"></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="fu">variables:</span></a>
@@ -60,23 +73,43 @@
 <a class="sourceLine" id="cb2-9" title="9">  <span class="fu">POSTGRES_HOST_AUTH_METHOD:</span><span class="at"> trust</span></a>
 <a class="sourceLine" id="cb2-10" title="10">  <span class="fu">DATABASE_URL:</span><span class="at"> </span><span class="st">&#39;postgres://postgres:postgres@postgres:5432/app_test&#39;</span></a></code></pre>
     </div>
-    <p>Next, let’s add cache to make the build faster. We can cache the ruby gems, node modules etc</p>
+    <p>
+      Next, let’s add cache to make the build faster. We can cache the ruby
+      gems, node modules etc
+    </p>
     <div class="sourceCode" id="cb3">
-      <pre class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Cache gems in between builds</span></a>
+      <pre
+        class="sourceCode yml"
+      ><code class="sourceCode yaml"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Cache gems in between builds</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="fu">cache:</span></a>
 <a class="sourceLine" id="cb3-3" title="3">  <span class="fu">paths:</span></a>
 <a class="sourceLine" id="cb3-4" title="4">    <span class="kw">-</span> node_modules</a>
 <a class="sourceLine" id="cb3-5" title="5">    <span class="kw">-</span> .yarn</a>
 <a class="sourceLine" id="cb3-6" title="6">    <span class="kw">-</span> vendor/ruby</a></code></pre>
     </div>
-    <p>Once the basic config is done, let us configure the gitlab ci to run the test cases.</p>
-    <h1 id="tests"><a class="anchor" name="tests" href="#tests"><i class="anchor-icon"></i></a>Tests</h1>
-    <p>To run the test cases, we have to first install the missing dependencies like <code>nodejs</code>,
-      <code>postgresql-client</code> (to run migrations), <code>yarn</code> etc. All these installations can be done as
-      part of the <code>before_script</code>.</p>
-    <p>You can give a name for the stage using <code>stage</code> config in the test block.</p>
+    <p>
+      Once the basic config is done, let us configure the gitlab ci to run the
+      test cases.
+    </p>
+    <h1 id="tests">
+      <a class="anchor" name="tests" href="#tests"
+        ><i class="anchor-icon"></i></a
+      >Tests
+    </h1>
+    <p>
+      To run the test cases, we have to first install the missing dependencies
+      like <code>nodejs</code>, <code>postgresql-client</code> (to run
+      migrations), <code>yarn</code> etc. All these installations can be done as
+      part of the <code>before_script</code>.
+    </p>
+    <p>
+      You can give a name for the stage using <code>stage</code> config in the
+      test block.
+    </p>
     <div class="sourceCode" id="cb4">
-      <pre class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">test:</span></a>
+      <pre
+        class="sourceCode yml"
+      ><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">test:</span></a>
 <a class="sourceLine" id="cb4-2" title="2">  <span class="fu">stage:</span><span class="at"> tests</span></a>
 <a class="sourceLine" id="cb4-3" title="3">  <span class="fu">before_script:</span></a>
 <a class="sourceLine" id="cb4-4" title="4">    <span class="kw">-</span> ruby -v <span class="co"># Print out ruby version for debugging</span></a>
@@ -94,34 +127,69 @@
 <a class="sourceLine" id="cb4-16" title="16">  <span class="fu">script:</span></a>
 <a class="sourceLine" id="cb4-17" title="17">    <span class="kw">-</span> bundle exec rails test</a></code></pre>
     </div>
-    <h1 id="add-environment-variables"><a class="anchor" name="add-environment-variables"
-        href="#add-environment-variables"><i class="anchor-icon"></i></a>Add Environment variables</h1>
-    <p>Before we configure the deployment, we need to add the ENV variables to Gitlab’s project configuration. To add
-      these navigate to <code>Variables</code> section in <code>CI / CD Settings</code> of the project.</p>
+    <h1 id="add-environment-variables">
+      <a
+        class="anchor"
+        name="add-environment-variables"
+        href="#add-environment-variables"
+        ><i class="anchor-icon"></i></a
+      >Add Environment variables
+    </h1>
+    <p>
+      Before we configure the deployment, we need to add the ENV variables to
+      Gitlab’s project configuration. To add these navigate to
+      <code>Variables</code> section in <code>CI / CD Settings</code> of the
+      project.
+    </p>
     <p>We require the following ENV variables.</p>
     <ul>
       <li>$HEROKU_PRODUCTION_KEY</li>
       <li>$HEROKU_APP_NAME</li>
       <li>$HEROKU_STAGING_APP_NAME</li>
     </ul>
-    <p>{: style=“text-align: center”} <img src="/assets/images/gitlab-ci-heroku/variables.png" alt="Gitlab Variables" />
+    <p>
+      {: style=“text-align: center”}
+      <img
+        src="/assets/images/gitlab-ci-heroku/variables.png"
+        alt="Gitlab Variables"
+      />
     </p>
-    <p>We can mark the variables <code>Protected</code> &amp; <code>Masked</code> depending on our setup. <strong>The
-        protected variables will be exported only in protected branches.</strong></p>
-    <p>We can configure different environments for the project in <code>Operations -&gt; Environments</code>.</p>
-    <h1 id="deploy"><a class="anchor" name="deploy" href="#deploy"><i class="anchor-icon"></i></a>Deploy</h1>
-    <p>Once the tests are passing, we can configure the deployments in the next stage. The deployments to run only from
-      particular branches, ie.,</p>
+    <p>
+      We can mark the variables <code>Protected</code> &amp;
+      <code>Masked</code> depending on our setup.
+      <strong
+        >The protected variables will be exported only in protected
+        branches.</strong
+      >
+    </p>
+    <p>
+      We can configure different environments for the project in
+      <code>Operations -&gt; Environments</code>.
+    </p>
+    <h1 id="deploy">
+      <a class="anchor" name="deploy" href="#deploy"
+        ><i class="anchor-icon"></i></a
+      >Deploy
+    </h1>
+    <p>
+      Once the tests are passing, we can configure the deployments in the next
+      stage. The deployments to run only from particular branches, ie.,
+    </p>
     <ul>
       <li>from <code>develop</code> branch, deploy to staging</li>
       <li>from <code>master</code> branch, deploy to production</li>
     </ul>
-    <p>The deployments will be processed with the help of <a
-        href="https://github.com/travis-ci/dpl/tree/v1.10.15">dpl</a> gem. Since we are deploying to Heroku that
-      requires us to run migration manually after each deployment, we should install Heroku CLI before the deploy stage.
+    <p>
+      The deployments will be processed with the help of
+      <a href="https://github.com/travis-ci/dpl/tree/v1.10.15">dpl</a> gem.
+      Since we are deploying to Heroku that requires us to run migration
+      manually after each deployment, we should install Heroku CLI before the
+      deploy stage.
     </p>
     <div class="sourceCode" id="cb5">
-      <pre class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">.before_script_deploy:</span></a>
+      <pre
+        class="sourceCode yml"
+      ><code class="sourceCode yaml"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">.before_script_deploy:</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="fu">before_script:</span></a>
 <a class="sourceLine" id="cb5-3" title="3">    <span class="kw">-</span> curl https://cli-assets.heroku.com/install-ubuntu.sh | sh</a>
 <a class="sourceLine" id="cb5-4" title="4">    <span class="kw">-</span> gem install dpl</a>
@@ -152,13 +220,15 @@
 <a class="sourceLine" id="cb5-29" title="29">  <span class="fu">only:</span></a>
 <a class="sourceLine" id="cb5-30" title="30">    <span class="kw">-</span> develop</a></code></pre>
     </div>
-    <p>The <code>.before_script_deploy</code> template will help us to share the <code>before_script</code> between the
-      production &amp; staging.</p>
-    <p>While writing this blog post the version of stable <code>dpl</code> gem was <code>1.10.15</code> &amp; the master
-      branch was pointing to new work in progress 2.0 version. When you are reading the documentation of
-      <code>dpl</code> please pay attention to the version.</p>
-
+    <p>
+      The <code>.before_script_deploy</code> template will help us to share the
+      <code>before_script</code> between the production &amp; staging.
+    </p>
+    <p>
+      While writing this blog post the version of stable <code>dpl</code> gem
+      was <code>1.10.15</code> &amp; the master branch was pointing to new work
+      in progress 2.0 version. When you are reading the documentation of
+      <code>dpl</code> please pay attention to the version.
+    </p>
   </body>
-
-  
 </html>

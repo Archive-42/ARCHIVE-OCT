@@ -1,41 +1,42 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>We are tend to follow <code>DRY</code> while writing business logic, like we tend to move the block into a
-      function, component etc. But I didn’t see much people follow <code>DRY</code> while writing tests. In this post I
-      will try explain how to share tests cases.</p>
-    <p>Consider we have two React components which has similar functionality. First let see <code>FormA</code> which has
-      2 fields <code>name</code> &amp; <code>age</code> which uses internal state and on submit of the form it will
-      validates the input. Nice and simple component.</p>
+    <p>
+      We are tend to follow <code>DRY</code> while writing business logic, like
+      we tend to move the block into a function, component etc. But I didn’t see
+      much people follow <code>DRY</code> while writing tests. In this post I
+      will try explain how to share tests cases.
+    </p>
+    <p>
+      Consider we have two React components which has similar functionality.
+      First let see <code>FormA</code> which has 2 fields
+      <code>name</code> &amp; <code>age</code> which uses internal state and on
+      submit of the form it will validates the input. Nice and simple component.
+    </p>
     <pre class="jsx"><code>import React, {Component} from &#39;react&#39;;
 
 class FormA extends Component {
@@ -94,11 +95,16 @@ class FormA extends Component {
     );
   }
 }</code></pre>
-    <p>Now let’s write some tests to make sure our validation is working fine and error messages are rendering in UI.
-      Also, we can add another test suite to make sure whether the input updates are updating the correct fields in
-      state.</p>
+    <p>
+      Now let’s write some tests to make sure our validation is working fine and
+      error messages are rendering in UI. Also, we can add another test suite to
+      make sure whether the input updates are updating the correct fields in
+      state.
+    </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="im">import</span> <span class="op">{</span>shallow<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;enzyme&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="im">import</span> fakeEvent <span class="im">from</span> <span class="st">&#39;fake-event&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb2-4" title="4"></a>
@@ -148,12 +154,18 @@ class FormA extends Component {
 <a class="sourceLine" id="cb2-48" title="48">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-49" title="49"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Let’s run the tests.<br />
-      Hooray. All are green. 🕺</p>
-    <p>After a while we get another requirement which leads to a new component <code>FormB</code>.<br />
-      <code>FormA</code> and <code>FormB</code> component differs only on the <code>gender</code> field. We already have
-      test cases for <code>FormA</code> and considering to write for <code>FormB</code>. We can easily duplicate the
-      <code>FormA</code> tests and add tests for the gender field. Now we have test coverage for both components.
+    <p>
+      Let’s run the tests.<br />
+      Hooray. All are green. 🕺
+    </p>
+    <p>
+      After a while we get another requirement which leads to a new component
+      <code>FormB</code>.<br />
+      <code>FormA</code> and <code>FormB</code> component differs only on the
+      <code>gender</code> field. We already have test cases for
+      <code>FormA</code> and considering to write for <code>FormB</code>. We can
+      easily duplicate the <code>FormA</code> tests and add tests for the gender
+      field. Now we have test coverage for both components.
     </p>
     <p>Below are the changes for <code>FormB</code> component</p>
     <pre class="jsx"><code>// FormB.js
@@ -180,7 +192,9 @@ class FormB extends Component
 }</code></pre>
     <p>and the tests for gender field.</p>
     <div class="sourceCode" id="cb4">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// FormB.test.js</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// FormB.test.js</span></a>
 <a class="sourceLine" id="cb4-2" title="2"></a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="co">// test cases from above example</span></a>
 <a class="sourceLine" id="cb4-4" title="4"></a>
@@ -205,18 +219,35 @@ class FormB extends Component
 <a class="sourceLine" id="cb4-23" title="23">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb4-24" title="24"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Let’s run the tests again.<br />
-      All looks fine and tests are back on green.</p>
-    <p>But when we look there are too much duplication in the test cases. Can we do better by <code>DRY</code> principle
-      and sharing tests between these two components?</p>
-    <h1 id="refactor-to-share-tests"><a class="anchor" name="refactor-to-share-tests" href="#refactor-to-share-tests"><i
-          class="anchor-icon"></i></a>Refactor to share tests</h1>
-    <p>Lets start with creating a directory called <code>test/shared</code> and add file
-      <code>shouldBehaveLikeForm.js</code>. All the shared cases for this Form will go into this. When we go back and
-      check the tests we can see there are two test suits cases which can be shared between these components.</p>
+    <p>
+      Let’s run the tests again.<br />
+      All looks fine and tests are back on green.
+    </p>
+    <p>
+      But when we look there are too much duplication in the test cases. Can we
+      do better by <code>DRY</code> principle and sharing tests between these
+      two components?
+    </p>
+    <h1 id="refactor-to-share-tests">
+      <a
+        class="anchor"
+        name="refactor-to-share-tests"
+        href="#refactor-to-share-tests"
+        ><i class="anchor-icon"></i></a
+      >Refactor to share tests
+    </h1>
+    <p>
+      Lets start with creating a directory called <code>test/shared</code> and
+      add file <code>shouldBehaveLikeForm.js</code>. All the shared cases for
+      this Form will go into this. When we go back and check the tests we can
+      see there are two test suits cases which can be shared between these
+      components.
+    </p>
     <p>Lets take the rendering errors first.</p>
     <div class="sourceCode" id="cb5">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// shouldBehaveLikeForm.js</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// shouldBehaveLikeForm.js</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> <span class="op">{</span>shallow<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;enzyme&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4"></a>
@@ -240,11 +271,16 @@ class FormB extends Component
 <a class="sourceLine" id="cb5-22" title="22">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-23" title="23"><span class="op">};</span></a></code></pre>
     </div>
-    <p>we will export the <code>commonFormValidation</code> from <code>shouldBehaveLikeForm.js</code> with the two test
-      cases for rendering error message. Now let go back to <code>FormA.test.js</code> and make necessary changes to
-      make use of this <code>commonFormValidation</code>.</p>
+    <p>
+      we will export the <code>commonFormValidation</code> from
+      <code>shouldBehaveLikeForm.js</code> with the two test cases for rendering
+      error message. Now let go back to <code>FormA.test.js</code> and make
+      necessary changes to make use of this <code>commonFormValidation</code>.
+    </p>
     <div class="sourceCode" id="cb6">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> FormA <span class="im">from</span> <span class="st">&#39;../FormA&#39;</span><span class="op">;</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> FormA <span class="im">from</span> <span class="st">&#39;../FormA&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="im">import</span> <span class="op">{</span>commonFormValidation<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;../test/shared/shouldBehaveLikeForm&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb6-3" title="3"></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="at">describe</span>(<span class="st">&#39;&lt;FormA /&gt;&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
@@ -259,9 +295,14 @@ class FormB extends Component
 <a class="sourceLine" id="cb6-13" title="13">  <span class="co">// tests cases for onChange</span></a>
 <a class="sourceLine" id="cb6-14" title="14"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Now use the same <code>commonFormValidation</code> in <code>FormB.test.js</code></p>
+    <p>
+      Now use the same <code>commonFormValidation</code> in
+      <code>FormB.test.js</code>
+    </p>
     <div class="sourceCode" id="cb7">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="im">import</span> <span class="op">{</span>shallow<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;enzyme&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="im">import</span> fakeEvent <span class="im">from</span> <span class="st">&#39;fake-event&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb7-4" title="4"></a>
@@ -289,10 +330,16 @@ class FormB extends Component
 <a class="sourceLine" id="cb7-26" title="26">  <span class="co">// tests cases for onChange</span></a>
 <a class="sourceLine" id="cb7-27" title="27"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Same as above lets create another function <code>commonFormOnUpdate</code> in
-      <code>shouldBehaveLikeForm.js</code> which has the common test cases for <code>onChange</code>.</p>
+    <p>
+      Same as above lets create another function
+      <code>commonFormOnUpdate</code> in
+      <code>shouldBehaveLikeForm.js</code> which has the common test cases for
+      <code>onChange</code>.
+    </p>
     <div class="sourceCode" id="cb8">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// shouldBehaveLikeForm.js</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// shouldBehaveLikeForm.js</span></a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="im">import</span> <span class="op">{</span>shallow<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;enzyme&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-4" title="4"></a>
@@ -316,7 +363,9 @@ class FormB extends Component
     </div>
     <p>and can be used in same way.</p>
     <div class="sourceCode" id="cb9">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// FormA.test.js</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// FormA.test.js</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="im">import</span> FormA <span class="im">from</span> <span class="st">&#39;../FormA&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="im">import</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb9-4" title="4">  commonFormValidation<span class="op">,</span></a>
@@ -339,7 +388,9 @@ class FormB extends Component
     </div>
     <p>same shared test will be used in <code>FormB.test.js</code>.</p>
     <div class="sourceCode" id="cb10">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// FormB.test.js</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// FormB.test.js</span></a>
 <a class="sourceLine" id="cb10-2" title="2"></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="im">import</span> <span class="op">{</span>shallow<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;enzyme&#39;</span><span class="op">;</span></a>
@@ -389,26 +440,47 @@ class FormB extends Component
     <figure>
       <img
         src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/jest-shared-tests/jest-shared-example-2.png"
-        alt="shared tests running" />
+        alt="shared tests running"
+      />
       <figcaption>shared tests running</figcaption>
     </figure>
-    <h1 id="this-is-undefined-error"><a class="anchor" name="this-is-undefined-error" href="#this-is-undefined-error"><i
-          class="anchor-icon"></i></a><code>this</code> is undefined error</h1>
-    <p>One issue I face during the shared tests are <code>this</code> is undefined error, especially when I need to use
-      the <code>this.commonProps</code> in the shared tests. This can be fixed in two ways.</p>
+    <h1 id="this-is-undefined-error">
+      <a
+        class="anchor"
+        name="this-is-undefined-error"
+        href="#this-is-undefined-error"
+        ><i class="anchor-icon"></i></a
+      ><code>this</code> is undefined error
+    </h1>
+    <p>
+      One issue I face during the shared tests are <code>this</code> is
+      undefined error, especially when I need to use the
+      <code>this.commonProps</code> in the shared tests. This can be fixed in
+      two ways.
+    </p>
     <ol type="1">
       <li>
-        <p>Avoid using <code>arrow</code> function for outer most <code>describe</code></p>
-        <p>replace <code>describe('&lt;FormB /&gt;', () =&gt; {</code> with <code>describe('&lt;FormB /&gt;', function
-            () {</code></p>
+        <p>
+          Avoid using <code>arrow</code> function for outer most
+          <code>describe</code>
+        </p>
+        <p>
+          replace <code>describe('&lt;FormB /&gt;', () =&gt; {</code> with
+          <code>describe('&lt;FormB /&gt;', function () {</code>
+        </p>
       </li>
       <li>
-        <p>Use <code>{ "allowTopLevelThis": true }</code> as option for <code>transform-es2015-modules-commonjs</code>
-          in <strong>.babelrc</strong></p>
+        <p>
+          Use <code>{ "allowTopLevelThis": true }</code> as option for
+          <code>transform-es2015-modules-commonjs</code> in
+          <strong>.babelrc</strong>
+        </p>
       </li>
     </ol>
     <div class="sourceCode" id="cb11">
-      <pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">{</span></a>
+      <pre
+        class="sourceCode json"
+      ><code class="sourceCode json"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb11-2" title="2">  <span class="dt">&quot;presets&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;react&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb11-3" title="3">  <span class="dt">&quot;plugins&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
 <a class="sourceLine" id="cb11-4" title="4">    <span class="ot">[</span></a>
@@ -420,11 +492,17 @@ class FormB extends Component
 <a class="sourceLine" id="cb11-10" title="10">  <span class="ot">]</span></a>
 <a class="sourceLine" id="cb11-11" title="11"><span class="fu">}</span></a></code></pre>
     </div>
-    <p>The example code is available on <a
-        href="https://gitlab.com/revathskumar/jest-shared-test-example">gitlab.com/revathskumar/jest-shared-test-example</a>
-      and see the commit of refactoring part as nice <a
-        href="https://gitlab.com/revathskumar/jest-shared-test-example/commit/d9031be27747cd60cc2ee70282d52c9f7f45345c">gitlab
-        diff</a>.</p>
+    <p>
+      The example code is available on
+      <a href="https://gitlab.com/revathskumar/jest-shared-test-example"
+        >gitlab.com/revathskumar/jest-shared-test-example</a
+      >
+      and see the commit of refactoring part as nice
+      <a
+        href="https://gitlab.com/revathskumar/jest-shared-test-example/commit/d9031be27747cd60cc2ee70282d52c9f7f45345c"
+        >gitlab diff</a
+      >.
+    </p>
     <pre><code>Versions of Language/packages used in this post.
 
 | Library/Language | Version |
@@ -432,11 +510,12 @@ class FormB extends Component
 |      react       |  16.4.1 |
 |      jest        |  23.3.0 |
 |    babel-jest    |  23.2.0 |</code></pre>
-    <p>More details on the packages and version on <a
-        href="https://gitlab.com/revathskumar/jest-shared-test-example/blob/3721550f041652022de656279c90817496bba79e/package.json">package.json</a>
+    <p>
+      More details on the packages and version on
+      <a
+        href="https://gitlab.com/revathskumar/jest-shared-test-example/blob/3721550f041652022de656279c90817496bba79e/package.json"
+        >package.json</a
+      >
     </p>
-
   </body>
-
-  
 </html>

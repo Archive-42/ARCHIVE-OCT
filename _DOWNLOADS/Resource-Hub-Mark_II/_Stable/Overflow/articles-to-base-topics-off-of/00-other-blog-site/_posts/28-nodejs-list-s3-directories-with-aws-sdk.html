@@ -1,43 +1,48 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>When we use <a href="https://www.npmjs.com/package/aws-sdk">aws-sdk</a> to <a
-        href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property">list objects</a>
-      in s3 bucket it will list objects without any seperation between <code>directories</code> and <code>files</code>.
-      The easy way to list all directories is to use <code>Delimiter</code> option.</p>
-    <p>Use <code>Delimiter</code> as <code>/</code> will result in list of <code>CommonPrefixes</code> in the response.
+    <p>
+      When we use <a href="https://www.npmjs.com/package/aws-sdk">aws-sdk</a> to
+      <a
+        href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property"
+        >list objects</a
+      >
+      in s3 bucket it will list objects without any seperation between
+      <code>directories</code> and <code>files</code>. The easy way to list all
+      directories is to use <code>Delimiter</code> option.
+    </p>
+    <p>
+      Use <code>Delimiter</code> as <code>/</code> will result in list of
+      <code>CommonPrefixes</code> in the response.
     </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> AwsS3 <span class="op">=</span> <span class="at">require</span> (<span class="st">&#39;aws-sdk/clients/s3&#39;</span>)<span class="op">;</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> AwsS3 <span class="op">=</span> <span class="at">require</span> (<span class="st">&#39;aws-sdk/clients/s3&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">const</span> s3 <span class="op">=</span> <span class="kw">new</span> <span class="at">AwsS3</span> (<span class="op">{</span></a>
 <a class="sourceLine" id="cb1-3" title="3">  <span class="dt">accessKeyId</span><span class="op">:</span> <span class="st">&#39;&#39;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb1-4" title="4">  <span class="dt">secretAccessKey</span><span class="op">:</span> <span class="st">&#39;&#39;</span><span class="op">,</span></a>
@@ -60,9 +65,14 @@
 <a class="sourceLine" id="cb1-21" title="21">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb1-22" title="22"><span class="op">};</span></a></code></pre>
     </div>
-    <p>The above code will list the directories in the bucket root. The sample response will look like</p>
+    <p>
+      The above code will list the directories in the bucket root. The sample
+      response will look like
+    </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
+      <pre
+        class="sourceCode json"
+      ><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="dt">&quot;IsTruncated&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb2-3" title="3">  <span class="dt">&quot;Contents&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb2-4" title="4">  <span class="dt">&quot;Name&quot;</span><span class="fu">:</span> <span class="st">&quot;bucket-name&quot;</span><span class="fu">,</span></a>
@@ -86,11 +96,14 @@
 <a class="sourceLine" id="cb2-22" title="22">  <span class="dt">&quot;KeyCount&quot;</span><span class="fu">:</span> <span class="dv">4</span></a>
 <a class="sourceLine" id="cb2-23" title="23"><span class="fu">}</span></a></code></pre>
     </div>
-    <p>If we want to list the directories inside the one of the listed directory, Pass the directory name as
-      <code>Prefix</code>.
+    <p>
+      If we want to list the directories inside the one of the listed directory,
+      Pass the directory name as <code>Prefix</code>.
     </p>
     <div class="sourceCode" id="cb3">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> listDirectories <span class="op">=</span> params <span class="kw">=&gt;</span> <span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> listDirectories <span class="op">=</span> params <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span> ((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb3-3" title="3">    <span class="kw">const</span> s3params <span class="op">=</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb3-4" title="4">      <span class="dt">Bucket</span><span class="op">:</span> <span class="st">&#39;bucket-name&#39;</span><span class="op">,</span></a>
@@ -107,10 +120,9 @@
 <a class="sourceLine" id="cb3-15" title="15">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb3-16" title="16"><span class="op">};</span></a></code></pre>
     </div>
-    <p>Hope it helped.<br />
-      Let me know if you have any feedback or corrections via comments</p>
-
+    <p>
+      Hope it helped.<br />
+      Let me know if you have any feedback or corrections via comments
+    </p>
   </body>
-
-  
 </html>

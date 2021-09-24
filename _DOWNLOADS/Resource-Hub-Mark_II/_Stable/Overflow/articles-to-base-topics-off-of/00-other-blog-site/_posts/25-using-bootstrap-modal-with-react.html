@@ -1,43 +1,47 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>When I first tried to use <a href="http://getbootstrap.com/javascript/#modals">bootstrap modal</a> with my react
-      web app, I tried to initiate via data-attributes and didn’t worked. So I tried to place the hidden content outside
-      my react app container and use <code>React.render</code> to render the modal and initiate via JavaScript. But it
-      failed as well.</p>
-    <p>The only thing worked for me is rendering the hidden modal conent along with the react component and initiate it
-      while clicking on the trigger button.</p>
+    <p>
+      When I first tried to use
+      <a href="http://getbootstrap.com/javascript/#modals">bootstrap modal</a>
+      with my react web app, I tried to initiate via data-attributes and didn’t
+      worked. So I tried to place the hidden content outside my react app
+      container and use <code>React.render</code> to render the modal and
+      initiate via JavaScript. But it failed as well.
+    </p>
+    <p>
+      The only thing worked for me is rendering the hidden modal conent along
+      with the react component and initiate it while clicking on the trigger
+      button.
+    </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> ModalHeader <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> ModalHeader <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="dt">render</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-3" title="3">    <span class="cf">return</span> (</a>
 <a class="sourceLine" id="cb1-4" title="4">      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;modal-header&quot;</span><span class="op">&gt;</span></a>
@@ -89,11 +93,14 @@
 <a class="sourceLine" id="cb1-50" title="50">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb1-51" title="51"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Thus I had the hidden modal content as the react components. Now I need to initiate the modal with a trigger
-      button component.</p>
+    <p>
+      Thus I had the hidden modal content as the react components. Now I need to
+      initiate the modal with a trigger button component.
+    </p>
     <div class="sourceCode" id="cb2">
       <pre
-        class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">var</span> Button <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">var</span> Button <span class="op">=</span> <span class="va">React</span>.<span class="at">createClass</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="dt">showModal</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-3" title="3">    <span class="at">$</span>(<span class="kw">this</span>.<span class="va">refs</span>.<span class="va">modal</span>.<span class="at">getDOMNode</span>()).<span class="at">modal</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-4" title="4">  <span class="op">},</span></a>
@@ -111,6 +118,13 @@
 <a class="sourceLine" id="cb2-16" title="16"></a>
 <a class="sourceLine" id="cb2-17" title="17"><span class="va">React</span>.<span class="at">render</span>(<span class="op">&lt;</span>Button /<span class="op">&gt;,</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;container&quot;</span>))<span class="op">;</span></a></code></pre>
     </div>
-    <p>Here is the demo in <a href="http://jsbin.com/rupive/edit?js,output">jsbin</a>.</p>
-    <a class="jsbin-embed" href="http://jsbin.com/rupive/embed?output">JS Bin on jsbin.com</a>
+    <p>
+      Here is the demo in
+      <a href="http://jsbin.com/rupive/edit?js,output">jsbin</a>.
+    </p>
+    <a class="jsbin-embed" href="http://jsbin.com/rupive/embed?output"
+      >JS Bin on jsbin.com</a
+    >
     <script src="http://static.jsbin.com/js/embed.js"></script>
+  </body>
+</html>

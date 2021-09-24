@@ -1,44 +1,49 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>Recently when I was writing a PHP API wrapper for a external service, I thought of writing it as independent
-      module which can be plugged into any PHP application. Everything went nice but when I need to do some logging I
-      was forced to depended on application.</p>
-    <p>So I thought of plug in a logger. Then I came to know about <a
-        href="http://www.php.net/manual/en/functions.anonymous.php">PHP Anonymous functions (Closures)</a> which can be
-      used to pass a function as a callback to another function like in JavaScript.</p>
+    <p>
+      Recently when I was writing a PHP API wrapper for a external service, I
+      thought of writing it as independent module which can be plugged into any
+      PHP application. Everything went nice but when I need to do some logging I
+      was forced to depended on application.
+    </p>
+    <p>
+      So I thought of plug in a logger. Then I came to know about
+      <a href="http://www.php.net/manual/en/functions.anonymous.php"
+        >PHP Anonymous functions (Closures)</a
+      >
+      which can be used to pass a function as a callback to another function
+      like in JavaScript.
+    </p>
     <p>So I modified my Api wrapper like</p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode php"><code class="sourceCode php"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;?php</span></a>
+      <pre
+        class="sourceCode php"
+      ><code class="sourceCode php"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;?php</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">Class</span> Api {</a>
 <a class="sourceLine" id="cb1-3" title="3">    <span class="kw">private</span> <span class="kw">static</span> <span class="kw">$log</span><span class="ot">;</span></a>
 <a class="sourceLine" id="cb1-4" title="4"></a>
@@ -58,10 +63,14 @@
 <a class="sourceLine" id="cb1-18" title="18"></a>
 <a class="sourceLine" id="cb1-19" title="19"><span class="kw">?&gt;</span></a></code></pre>
     </div>
-    <p>Now when we use it, I can set my logger to application logger without any issues and still my wrapper is totally
-      independent of my application.</p>
+    <p>
+      Now when we use it, I can set my logger to application logger without any
+      issues and still my wrapper is totally independent of my application.
+    </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode php"><code class="sourceCode php"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;?php</span></a>
+      <pre
+        class="sourceCode php"
+      ><code class="sourceCode php"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;?php</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="kw">Class</span> Logger {</a>
 <a class="sourceLine" id="cb2-3" title="3">    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> <span class="fu">log</span><span class="ot">(</span><span class="kw">$statement</span><span class="ot">)</span> {</a>
 <a class="sourceLine" id="cb2-4" title="4">        <span class="fu">printf</span><span class="ot">(</span><span class="st">&quot;%s </span><span class="kw">\r\n</span><span class="st">&quot;</span><span class="ot">,</span> <span class="kw">$statement</span><span class="ot">);</span></a>
@@ -77,11 +86,10 @@
 <a class="sourceLine" id="cb2-14" title="14"></a>
 <a class="sourceLine" id="cb2-15" title="15"><span class="kw">?&gt;</span></a></code></pre>
     </div>
-    <p>So now in my Api wrapper, when I call <code>self::errorLog</code> the error will be logged into the application
-      log itself.</p>
+    <p>
+      So now in my Api wrapper, when I call <code>self::errorLog</code> the
+      error will be logged into the application log itself.
+    </p>
     <p>If you have a better suggestion, please drop a comment. Thank You.</p>
-
   </body>
-
-  
 </html>

@@ -1,44 +1,48 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>When you want to communicate between two processes, one of the popular approch is <code>sockets</code>. So when I
-      need a notification system I thought of writing as a seperate service and pass data from my main web application
-      to this notifier via a UDP socket.</p>
-    <p>So I wrote a nodejs app for the UDP server to accept data from my client (webapp) and notifiy the other clients
-      using websockets.</p>
-    <p>To write a server which accepts UDP connections you can use <a href="https://nodejs.org/api/dgram.html">dgram</a>
-      module in nodejs.</p>
+    <p>
+      When you want to communicate between two processes, one of the popular
+      approch is <code>sockets</code>. So when I need a notification system I
+      thought of writing as a seperate service and pass data from my main web
+      application to this notifier via a UDP socket.
+    </p>
+    <p>
+      So I wrote a nodejs app for the UDP server to accept data from my client
+      (webapp) and notifiy the other clients using websockets.
+    </p>
+    <p>
+      To write a server which accepts UDP connections you can use
+      <a href="https://nodejs.org/api/dgram.html">dgram</a> module in nodejs.
+    </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> dgram <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;dgram&quot;</span>)<span class="op">;</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">var</span> dgram <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;dgram&quot;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">var</span> udpPort <span class="op">=</span> <span class="va">process</span>.<span class="va">env</span>.<span class="at">UDPPORT</span> <span class="op">||</span> <span class="dv">3000</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"></a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="kw">var</span> server <span class="op">=</span> <span class="va">dgram</span>.<span class="at">createSocket</span>(<span class="st">&quot;udp4&quot;</span>)<span class="op">;</span></a>
@@ -58,11 +62,16 @@
 <a class="sourceLine" id="cb1-18" title="18">  <span class="co">// handle error</span></a>
 <a class="sourceLine" id="cb1-19" title="19"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>You can bind to <code>lisening</code> event to task after the server is up and for startup message. To recieve
-      message from the clients you need to bind <code>message</code> event.</p>
+    <p>
+      You can bind to <code>lisening</code> event to task after the server is up
+      and for startup message. To recieve message from the clients you need to
+      bind <code>message</code> event.
+    </p>
     <p>Now if you are using PHP to send data to UDP port then</p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode php"><code class="sourceCode php"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;?php</span></a>
+      <pre
+        class="sourceCode php"
+      ><code class="sourceCode php"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;?php</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="kw">$socket</span> = <span class="fu">socket_create</span><span class="ot">(</span><span class="kw">AF_INET</span><span class="ot">,</span> <span class="kw">SOCK_DGRAM</span><span class="ot">,</span> <span class="kw">SOL_UDP</span><span class="ot">);</span></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="kw">if</span><span class="ot">(</span>!<span class="fu">socket_connect</span><span class="ot">(</span><span class="kw">$socket</span><span class="ot">,</span> <span class="st">&#39;localhost&#39;</span><span class="ot">,</span> <span class="st">&#39;3000&#39;</span><span class="ot">))</span> {</a>
 <a class="sourceLine" id="cb2-4" title="4">    <span class="kw">echo</span> <span class="st">&quot;socket connection error&quot;</span><span class="ot">;</span></a>
@@ -75,6 +84,5 @@
 <a class="sourceLine" id="cb2-11" title="11"><span class="kw">?&gt;</span></a></code></pre>
     </div>
   </body>
-
-  </html>
-  $
+</html>
+$

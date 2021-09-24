@@ -1,48 +1,52 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>I was working for a long time to dockernize my applications, but never happened. But today after I working on a
-      <a href="/2015/09/udp-sever-in-nodejs.html">UDP server in NodeJS</a> I dockernized it without much hassle.
+    <p>
+      I was working for a long time to dockernize my applications, but never
+      happened. But today after I working on a
+      <a href="/2015/09/udp-sever-in-nodejs.html">UDP server in NodeJS</a> I
+      dockernized it without much hassle.
     </p>
-    <p>I think I achieved this easily because it doesn’t have any DB or any other dependencies. So I setup my docker
-      file to setup and install node on a ubuntu.</p>
+    <p>
+      I think I achieved this easily because it doesn’t have any DB or any other
+      dependencies. So I setup my docker file to setup and install node on a
+      ubuntu.
+    </p>
     <pre><code># Dockerfile
 
 FROM ubuntu
 RUN apt-get install -y wget make gcc
 RUN wget http://nodejs.org/dist/v4.1.0/node-v4.1.0-linux-x64.tar.gz
 RUN tar -zxf node-v4.1.0-linux-x64.tar.gz</code></pre>
-    <p>So now I setup my Dockerfile to install nodejs. Now I need to install the depndencies, copy my sourcecode, port
-      forwarding and running application. So I updated my <code>Dockerfile</code> to</p>
+    <p>
+      So now I setup my Dockerfile to install nodejs. Now I need to install the
+      depndencies, copy my sourcecode, port forwarding and running application.
+      So I updated my <code>Dockerfile</code> to
+    </p>
     <pre><code># Dockerfile
 
 FROM ubuntu
@@ -58,19 +62,24 @@ CMD [&quot;/node-v4.1.0-linux-x64/bin/node&quot;, &quot;/src/index.js&quot;]</co
     <p>then I build the docker image.</p>
     <div class="sourceCode" id="cb3">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">docker</span> build -t revathskumar/ubuntu-node .</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">docker</span> build -t revathskumar/ubuntu-node .</a></code></pre>
     </div>
     <p>Now I can run the docker container using command</p>
     <div class="sourceCode" id="cb4">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">docker</span> run -p 9030:9030 -p 3000:3000/udp -d revathskumar/ubuntu-node</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">docker</span> run -p 9030:9030 -p 3000:3000/udp -d revathskumar/ubuntu-node</a></code></pre>
     </div>
-    <p>Since docker have <a href="http://docs.docker.com/compose/">docker-compose</a> now, I added
+    <p>
+      Since docker have
+      <a href="http://docs.docker.com/compose/">docker-compose</a> now, I added
       <code>docker-compose.yml</code> so that I can start my container easily.
     </p>
     <div class="sourceCode" id="cb5">
       <pre
-        class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># docker-compose.yml</span></a>
+        class="sourceCode yaml"
+      ><code class="sourceCode yaml"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># docker-compose.yml</span></a>
 <a class="sourceLine" id="cb5-2" title="2"></a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="fu">notifier:</span></a>
 <a class="sourceLine" id="cb5-4" title="4">  <span class="fu">build:</span><span class="at"> .</span></a>
@@ -83,12 +92,12 @@ CMD [&quot;/node-v4.1.0-linux-x64/bin/node&quot;, &quot;/src/index.js&quot;]</co
     <p>Now instead of long <code>docker run</code> command I can use</p>
     <div class="sourceCode" id="cb6">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">docker-compose</span> up</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">docker-compose</span> up</a></code></pre>
     </div>
-    <p>docker-compose is helpful when you need more than one container for your application. Thats it. Now I run my
-      notifier application on docker.</p>
-
+    <p>
+      docker-compose is helpful when you need more than one container for your
+      application. Thats it. Now I run my notifier application on docker.
+    </p>
   </body>
-
-  
 </html>

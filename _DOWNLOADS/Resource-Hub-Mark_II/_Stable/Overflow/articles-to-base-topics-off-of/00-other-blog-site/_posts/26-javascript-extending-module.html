@@ -1,49 +1,57 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>I like to write independent, decoupled modules, so we can add or remove modules as we like and don’t want to care
-      about effect on other modules. Initially when I started working with <a
-        href="http://whatznear.com/">whatznear</a>, I used contructor patten for modules, but when the requirements
-      started getting complicated I understood that the constructor pattern was not enough. I want something more to
-      make the modules decoupled and thus I introduced module pattern along with mediator pattern.</p>
-    <p>In module pattern we can have public and private methods with the help of cloures. So I wrote a module for
-      product review with init method as the only public method. It worked fine, until I need to add reviews for stores.
+    <p>
+      I like to write independent, decoupled modules, so we can add or remove
+      modules as we like and don’t want to care about effect on other modules.
+      Initially when I started working with
+      <a href="http://whatznear.com/">whatznear</a>, I used contructor patten
+      for modules, but when the requirements started getting complicated I
+      understood that the constructor pattern was not enough. I want something
+      more to make the modules decoupled and thus I introduced module pattern
+      along with mediator pattern.
     </p>
-    <p>Store review was pretty much similar, except loading of reviews, so I thought of extending
-      <code>ProductReview</code> module. Then I came to understand that if I want to override a method in module pattern
-      then the method should be public. That made me change the visibility of <code>load</code> method to public.
+    <p>
+      In module pattern we can have public and private methods with the help of
+      cloures. So I wrote a module for product review with init method as the
+      only public method. It worked fine, until I need to add reviews for
+      stores.
+    </p>
+    <p>
+      Store review was pretty much similar, except loading of reviews, so I
+      thought of extending <code>ProductReview</code> module. Then I came to
+      understand that if I want to override a method in module pattern then the
+      method should be public. That made me change the visibility of
+      <code>load</code> method to public.
     </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">ProductReview <span class="op">=</span> (<span class="kw">function</span> () <span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">ProductReview <span class="op">=</span> (<span class="kw">function</span> () <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="kw">var</span> _el <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"></a>
 <a class="sourceLine" id="cb1-4" title="4">  <span class="kw">var</span> init <span class="op">=</span> <span class="kw">function</span> (options) <span class="op">{</span></a>
@@ -86,12 +94,18 @@
 <a class="sourceLine" id="cb1-41" title="41">  <span class="op">};</span></a>
 <a class="sourceLine" id="cb1-42" title="42"><span class="op">}</span>)()<span class="op">;</span></a></code></pre>
     </div>
-    <p>Thus my <code>ProductReview</code> module works fine with new changes and now I need to extend this for the store
-      review and I only need to update the load method and its success and error callbacks. Since I need all event binds
-      as it is in <code>ProductReview</code> and I don’t want to duplicate any code, So I just used <code>init</code>
-      method of <code>ProductReview</code> itself.</p>
+    <p>
+      Thus my <code>ProductReview</code> module works fine with new changes and
+      now I need to extend this for the store review and I only need to update
+      the load method and its success and error callbacks. Since I need all
+      event binds as it is in <code>ProductReview</code> and I don’t want to
+      duplicate any code, So I just used <code>init</code> method of
+      <code>ProductReview</code> itself.
+    </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">StoreReview <span class="op">=</span> (<span class="kw">function</span>() <span class="op">{</span></a>
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">StoreReview <span class="op">=</span> (<span class="kw">function</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3">  <span class="kw">var</span> load <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-4" title="4">    <span class="va">$</span>.<span class="at">ajax</span>(<span class="op">{</span></a>
@@ -120,14 +134,21 @@
 <a class="sourceLine" id="cb2-27" title="27"></a>
 <a class="sourceLine" id="cb2-28" title="28"><span class="op">}</span>)()</a></code></pre>
     </div>
-    <p>If you want more methods to override, you can make those public and overwrite in the child module. In above
-      modules, when I publish event ‘load’, from <code>StoreReview</code> the overriden method will be executed. I will
-      be writing about mediator pattern sometimes later in another blog post.</p>
-    <p>Thus my store review module is ready, just with the change for load and other callback. Since both these module
-      never come on the same page (atleast for now) it works perfectly.</p>
-    <p>If you think this implementation have any problem or issue. please lemme know.</p>
-
+    <p>
+      If you want more methods to override, you can make those public and
+      overwrite in the child module. In above modules, when I publish event
+      ‘load’, from <code>StoreReview</code> the overriden method will be
+      executed. I will be writing about mediator pattern sometimes later in
+      another blog post.
+    </p>
+    <p>
+      Thus my store review module is ready, just with the change for load and
+      other callback. Since both these module never come on the same page
+      (atleast for now) it works perfectly.
+    </p>
+    <p>
+      If you think this implementation have any problem or issue. please lemme
+      know.
+    </p>
   </body>
-
-  
 </html>

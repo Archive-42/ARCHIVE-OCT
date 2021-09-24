@@ -1,67 +1,91 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p>This is post is originally published on <a
-        href="http://crypt.codemancers.com/posts/2016-09-16-react-server-side-rendering/">crypt.codemancers.com</a>.</p>
+    <p>
+      This is post is originally published on
+      <a
+        href="http://crypt.codemancers.com/posts/2016-09-16-react-server-side-rendering/"
+        >crypt.codemancers.com</a
+      >.
+    </p>
     <hr />
-    <p>These days server side rendering has become an important feature for heavy client side applications and now most
-      of the client side frameworks support it. Yesterday I tried a bit of react server rendering along with express.js
-      and react-router.</p>
-    <h2 id="setup-express-js-server-and-dependencies.">Setup Express js server and dependencies.</h2>
-    <p>We can start with scaffolding a new express.js app using <a
-        href="http://expressjs.com/en/starter/generator.html">expressjs-generator</a> and installing all the
-      dependencies. We use <code>webpack</code> for client side bundling.</p>
+    <p>
+      These days server side rendering has become an important feature for heavy
+      client side applications and now most of the client side frameworks
+      support it. Yesterday I tried a bit of react server rendering along with
+      express.js and react-router.
+    </p>
+    <h2 id="setup-express-js-server-and-dependencies.">
+      Setup Express js server and dependencies.
+    </h2>
+    <p>
+      We can start with scaffolding a new express.js app using
+      <a href="http://expressjs.com/en/starter/generator.html"
+        >expressjs-generator</a
+      >
+      and installing all the dependencies. We use <code>webpack</code> for
+      client side bundling.
+    </p>
     <p>We can install all the dependencies by running</p>
     <div class="sourceCode" id="cb1">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">npm</span> i --save react react-dom react-router babel-register</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">npm</span> i --save react react-dom react-router babel-register</a></code></pre>
     </div>
     <p>and development dependencies by running</p>
     <div class="sourceCode" id="cb2">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">npm</span> i --save-dev babel-cli babel-core babel-preset-es2015 babel-preset-react babel-preset-stage-0 webpack babel-loader</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">npm</span> i --save-dev babel-cli babel-core babel-preset-es2015 babel-preset-react babel-preset-stage-0 webpack babel-loader</a></code></pre>
     </div>
-    <h2 id="setup-webpack-babel-for-client.">Setup webpack &amp; babel for client.</h2>
-    <p>We will keep all our client JavaScript and React components in a new folder named <code>client</code> and put all
-      the compiled js in <code>public/javascripts</code>. Also we shall add a <code>.babelrc</code> to load babel
-      presets and configs.</p>
+    <h2 id="setup-webpack-babel-for-client.">
+      Setup webpack &amp; babel for client.
+    </h2>
+    <p>
+      We will keep all our client JavaScript and React components in a new
+      folder named <code>client</code> and put all the compiled js in
+      <code>public/javascripts</code>. Also we shall add a
+      <code>.babelrc</code> to load babel presets and configs.
+    </p>
     <div class="sourceCode" id="cb3">
-      <pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">{</span></a>
+      <pre
+        class="sourceCode json"
+      ><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">    <span class="dt">&quot;presets&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;es2015&quot;</span><span class="ot">,</span> <span class="st">&quot;react&quot;</span><span class="ot">,</span> <span class="st">&quot;stage-0&quot;</span><span class="ot">]</span>  </a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="fu">}</span></a></code></pre>
     </div>
-    <p>Now in <code>webpack.config.js</code>, we will configure the entry point, output directory and babel loader.</p>
+    <p>
+      Now in <code>webpack.config.js</code>, we will configure the entry point,
+      output directory and babel loader.
+    </p>
     <div class="sourceCode" id="cb4">
-      <pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// webpack.config.js</span></a>
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// webpack.config.js</span></a>
 <a class="sourceLine" id="cb4-2" title="2"></a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="kw">var</span> path <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;path&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb4-4" title="4"></a>
@@ -86,23 +110,37 @@
 <a class="sourceLine" id="cb4-23" title="23">  <span class="op">}</span></a>
 <a class="sourceLine" id="cb4-24" title="24"><span class="op">};</span></a></code></pre>
     </div>
-    <p>Now we can run the following to build client JavaScript files in development mode with debug flag turned on, and
-      watch for changes.</p>
+    <p>
+      Now we can run the following to build client JavaScript files in
+      development mode with debug flag turned on, and watch for changes.
+    </p>
     <div class="sourceCode" id="cb5">
       <pre
-        class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">webpack</span> --debug --watch</a></code></pre>
+        class="sourceCode sh"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">webpack</span> --debug --watch</a></code></pre>
     </div>
-    <p>For easier use, we can add the command to <a href="https://docs.npmjs.com/misc/scripts">npm scripts</a> with name
-      <code>webpack:server</code>. Now we just need to run <code>npm run webpack:server</code>.
+    <p>
+      For easier use, we can add the command to
+      <a href="https://docs.npmjs.com/misc/scripts">npm scripts</a> with name
+      <code>webpack:server</code>. Now we just need to run
+      <code>npm run webpack:server</code>.
     </p>
     <h2 id="setup-react-router">Setup react router</h2>
-    <p>Now the basic scaffolding and development setup is finished and time to start building our app. We can start with
-      configuring the router. We are planning mainly for two routes <code>/home</code> to show the rendering of static
-      component and <code>/list</code> to show the server side rendering with some data.</p>
-    <p>First we have to define the entry point which will mount our <code>react-router</code> component to DOM.</p>
+    <p>
+      Now the basic scaffolding and development setup is finished and time to
+      start building our app. We can start with configuring the router. We are
+      planning mainly for two routes <code>/home</code> to show the rendering of
+      static component and <code>/list</code> to show the server side rendering
+      with some data.
+    </p>
+    <p>
+      First we have to define the entry point which will mount our
+      <code>react-router</code> component to DOM.
+    </p>
     <div class="sourceCode" id="cb6">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// client/app.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// client/app.jsx</span></a>
 <a class="sourceLine" id="cb6-2" title="2"></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="im">import</span> <span class="op">{</span>render<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-dom&#39;</span><span class="op">;</span></a>
@@ -114,7 +152,8 @@
     <p>Next, define routes in <code>client/router.jsx</code></p>
     <div class="sourceCode" id="cb7">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// client/router.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// client/router.jsx</span></a>
 <a class="sourceLine" id="cb7-2" title="2"></a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="im">import</span> <span class="op">{</span>Router<span class="op">,</span> browserHistory<span class="op">,</span> Route<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router&#39;</span><span class="op">;</span></a>
@@ -139,7 +178,8 @@
     <p><code>AppRoot</code> is nothing but a simple layout for our app.</p>
     <div class="sourceCode" id="cb8">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// client/app-root.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// client/app-root.jsx</span></a>
 <a class="sourceLine" id="cb8-2" title="2"></a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="im">import</span> React<span class="op">,</span> <span class="op">{</span>Component<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-4" title="4"><span class="im">import</span> <span class="op">{</span>Link<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router&#39;</span><span class="op">;</span></a>
@@ -159,15 +199,20 @@
 <a class="sourceLine" id="cb8-18" title="18"></a>
 <a class="sourceLine" id="cb8-19" title="19"><span class="im">export</span> <span class="im">default</span> AppRoot<span class="op">;</span></a></code></pre>
     </div>
-    <h2 id="setup-express-js-for-server-side-rendering">Setup express js for server side rendering</h2>
-    <p>Since we are using React + ES6 for components, we have to use the <code>babel-register</code> on server side so
-      that we can write express js routes also in ES6 and import the react routes we already wrote. Please note that, we
-      have to require/import the <code>babel-register</code> at the beginning of express js entry point
-      <code>app.js</code>.
+    <h2 id="setup-express-js-for-server-side-rendering">
+      Setup express js for server side rendering
+    </h2>
+    <p>
+      Since we are using React + ES6 for components, we have to use the
+      <code>babel-register</code> on server side so that we can write express js
+      routes also in ES6 and import the react routes we already wrote. Please
+      note that, we have to require/import the <code>babel-register</code> at
+      the beginning of express js entry point <code>app.js</code>.
     </p>
     <div class="sourceCode" id="cb9">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// app.js</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// app.js</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="at">require</span>(<span class="st">&#39;babel-register&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="kw">var</span> express <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;express&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="kw">var</span> path <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;path&#39;</span>)<span class="op">;</span></a>
@@ -175,34 +220,54 @@
 <a class="sourceLine" id="cb9-6" title="6"></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="co">//rest of the express js boilerplate</span></a></code></pre>
     </div>
-    <p>Then we rename the <code>routes/index.js</code> to <code>routes/index.jsx</code>, after this we can use the react
-      routes and react components on server side. For server side rendering we use <code>renderToString</code> method
-      from <code>react-dom/sever</code> package and methods like <code>match</code>, <code>createRoutes</code> and
-      <code>RouterContext</code> from <code>react-router</code>.
+    <p>
+      Then we rename the <code>routes/index.js</code> to
+      <code>routes/index.jsx</code>, after this we can use the react routes and
+      react components on server side. For server side rendering we use
+      <code>renderToString</code> method from
+      <code>react-dom/sever</code> package and methods like <code>match</code>,
+      <code>createRoutes</code> and <code>RouterContext</code> from
+      <code>react-router</code>.
     </p>
-    <p><a
-        href="https://github.com/ReactTraining/react-router/blob/c3cd9675bd8a31368f87da74ac588981cbd6eae7/docs/API.md#match-routes-location-history-options--cb">match</a>
-      function in <code>react-router</code> module will match a set of routes to a location and calls a callback,
-      without rendering. We use <a
-        href="https://github.com/reactjs/react-router/blob/master/docs/API.md#createroutesroutes">createRoutes</a>
+    <p>
+      <a
+        href="https://github.com/ReactTraining/react-router/blob/c3cd9675bd8a31368f87da74ac588981cbd6eae7/docs/API.md#match-routes-location-history-options--cb"
+        >match</a
+      >
+      function in <code>react-router</code> module will match a set of routes to
+      a location and calls a callback, without rendering. We use
+      <a
+        href="https://github.com/reactjs/react-router/blob/master/docs/API.md#createroutesroutes"
+        >createRoutes</a
+      >
       method from <code>react-router</code> to create a set of routes from our
-      <code>client/router.jsx</code>(<code>appRouter</code>) component and provide it to <code>match</code>.
+      <code>client/router.jsx</code>(<code>appRouter</code>) component and
+      provide it to <code>match</code>.
     </p>
     <div class="sourceCode" id="cb10">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// routes/index.jsx</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// routes/index.jsx</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="co">// express and react imports</span></a>
 <a class="sourceLine" id="cb10-3" title="3"></a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="im">import</span> appRouter <span class="im">from</span> <span class="st">&#39;../client/router.jsx&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb10-5" title="5"></a>
 <a class="sourceLine" id="cb10-6" title="6"><span class="kw">const</span> routes <span class="op">=</span> <span class="at">createRoutes</span>(<span class="at">appRouter</span>())<span class="op">;</span></a></code></pre>
     </div>
-    <p>Once we have a match <a
-        href="https://github.com/ReactTraining/react-router/blob/c3cd9675bd8a31368f87da74ac588981cbd6eae7/docs/API.md#routercontext">RouterContext</a>
-      will render the component tree for the given router state and return the component markup as a string with the
-      help of <code>renderToString</code> method.</p>
+    <p>
+      Once we have a match
+      <a
+        href="https://github.com/ReactTraining/react-router/blob/c3cd9675bd8a31368f87da74ac588981cbd6eae7/docs/API.md#routercontext"
+        >RouterContext</a
+      >
+      will render the component tree for the given router state and return the
+      component markup as a string with the help of
+      <code>renderToString</code> method.
+    </p>
     <div class="sourceCode" id="cb11">
-      <pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="co">// Express.js route</span></a>
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="co">// Express.js route</span></a>
 <a class="sourceLine" id="cb11-2" title="2"></a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="va">router</span>.<span class="at">get</span>(<span class="st">&#39;*&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb11-4" title="4">  <span class="at">match</span>(<span class="op">{</span>routes<span class="op">,</span> <span class="dt">location</span><span class="op">:</span> <span class="va">req</span>.<span class="at">url</span><span class="op">},</span> (error<span class="op">,</span> redirectLocation<span class="op">,</span> renderProps) <span class="kw">=&gt;</span> <span class="op">{</span></a>
@@ -212,9 +277,16 @@
 <a class="sourceLine" id="cb11-8" title="8">  <span class="op">}</span>)</a>
 <a class="sourceLine" id="cb11-9" title="9"><span class="op">}</span>)</a></code></pre>
     </div>
-    <p>Now we have the react components rendered as string and we need to pass this to our <a
-        href="https://pugjs.org/api/getting-started.htmlF">pug.js (Previously known as jade)</a> view. The jade view
-      will accept the string in <code>content</code> variable and substitute inside the react app mount point.</p>
+    <p>
+      Now we have the react components rendered as string and we need to pass
+      this to our
+      <a href="https://pugjs.org/api/getting-started.htmlF"
+        >pug.js (Previously known as jade)</a
+      >
+      view. The jade view will accept the string in
+      <code>content</code> variable and substitute inside the react app mount
+      point.
+    </p>
     <pre class="jade"><code>//- views/index.jade
 extends layout
 
@@ -222,12 +294,17 @@ block content
   script(type=&#39;text/javascript&#39;).
     window.__INITIAL_STATE__ = !{JSON.stringify(data)}
   div.container#app!= content</code></pre>
-    <h2 id="rendering-a-static-component-on-server">Rendering a static component on server</h2>
-    <p><code>/home</code> points to a static component called <code>Home</code> which we are going to render from
-      server.</p>
+    <h2 id="rendering-a-static-component-on-server">
+      Rendering a static component on server
+    </h2>
+    <p>
+      <code>/home</code> points to a static component called
+      <code>Home</code> which we are going to render from server.
+    </p>
     <div class="sourceCode" id="cb13">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb13-2" title="2"></a>
 <a class="sourceLine" id="cb13-3" title="3"><span class="kw">const</span> Home <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb13-4" title="4">  <span class="cf">return</span> (</a>
@@ -239,9 +316,14 @@ block content
 <a class="sourceLine" id="cb13-10" title="10"></a>
 <a class="sourceLine" id="cb13-11" title="11"><span class="im">export</span> <span class="im">default</span> Home<span class="op">;</span></a></code></pre>
     </div>
-    <p>and now when we join the dots the <code>routes/index.jsx</code> will look like this</p>
+    <p>
+      and now when we join the dots the <code>routes/index.jsx</code> will look
+      like this
+    </p>
     <div class="sourceCode" id="cb14">
-      <pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="im">import</span> express <span class="im">from</span> <span class="st">&#39;express&#39;</span><span class="op">;</span></a>
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="im">import</span> express <span class="im">from</span> <span class="st">&#39;express&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb14-3" title="3"><span class="im">import</span> <span class="op">{</span>renderToString<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-dom/server&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb14-4" title="4"><span class="im">import</span> <span class="op">{</span>RouterContext<span class="op">,</span> match<span class="op">,</span> createRoutes<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router&#39;</span><span class="op">;</span></a>
@@ -267,13 +349,21 @@ block content
 <a class="sourceLine" id="cb14-24" title="24">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb14-25" title="25"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <h2 id="rendering-component-on-server-with-data">Rendering component on server with data</h2>
-    <p>In this section, we are trying to render a list of users, the data source is not DB but an API for demo purpose.
-      In order to render data, we need to fetch data from the server, pass it to a component via <a
-        href="https://facebook.github.io/react/docs/context.html">context</a>. For this we need to write a Higher Order
-      Component to set the data to context.</p>
+    <h2 id="rendering-component-on-server-with-data">
+      Rendering component on server with data
+    </h2>
+    <p>
+      In this section, we are trying to render a list of users, the data source
+      is not DB but an API for demo purpose. In order to render data, we need to
+      fetch data from the server, pass it to a component via
+      <a href="https://facebook.github.io/react/docs/context.html">context</a>.
+      For this we need to write a Higher Order Component to set the data to
+      context.
+    </p>
     <div class="sourceCode" id="cb15">
-      <pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">import</span> express <span class="im">from</span> <span class="st">&#39;express&#39;</span><span class="op">;</span></a>
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">import</span> express <span class="im">from</span> <span class="st">&#39;express&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb15-2" title="2"><span class="im">import</span> request <span class="im">from</span> <span class="st">&#39;request&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb15-3" title="3"><span class="im">import</span> React<span class="op">,</span> <span class="op">{</span>Component<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb15-4" title="4"><span class="im">import</span> <span class="op">{</span>renderToString<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-dom/server&#39;</span><span class="op">;</span></a>
@@ -300,11 +390,15 @@ block content
 <a class="sourceLine" id="cb15-25" title="25">  <span class="dt">data</span><span class="op">:</span> <span class="va">React</span>.<span class="va">PropTypes</span>.<span class="at">object</span></a>
 <a class="sourceLine" id="cb15-26" title="26"><span class="op">};</span></a></code></pre>
     </div>
-    <p>The above <code>DataProvider</code> will set data to context if we pass it via props named <code>data</code>.</p>
+    <p>
+      The above <code>DataProvider</code> will set data to context if we pass it
+      via props named <code>data</code>.
+    </p>
     <p>The <code>List</code> component will look like,</p>
     <div class="sourceCode" id="cb16">
       <pre
-        class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="im">import</span> React<span class="op">,</span> <span class="op">{</span>Component<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="im">import</span> React<span class="op">,</span> <span class="op">{</span>Component<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb16-2" title="2"></a>
 <a class="sourceLine" id="cb16-3" title="3"><span class="kw">class</span> List <span class="kw">extends</span> Component <span class="op">{</span></a>
 <a class="sourceLine" id="cb16-4" title="4">  <span class="at">constructor</span>(props<span class="op">,</span> context) <span class="op">{</span></a>
@@ -348,13 +442,20 @@ block content
 <a class="sourceLine" id="cb16-42" title="42"></a>
 <a class="sourceLine" id="cb16-43" title="43"><span class="im">export</span> <span class="im">default</span> List<span class="op">;</span></a></code></pre>
     </div>
-    <p>The above list component will look for data in context first, then in global state and later in component level
-      state. While we render it from server, the data will be available in context and component use the data in context
-      to render the initial HTML. Later after loading it in browser the component can fetch again and update the data.
+    <p>
+      The above list component will look for data in context first, then in
+      global state and later in component level state. While we render it from
+      server, the data will be available in context and component use the data
+      in context to render the initial HTML. Later after loading it in browser
+      the component can fetch again and update the data.
     </p>
-    <p>Now we can setup the route to fetch the data and render the component.</p>
+    <p>
+      Now we can setup the route to fetch the data and render the component.
+    </p>
     <div class="sourceCode" id="cb17">
-      <pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="va">router</span>.<span class="at">get</span>(<span class="st">&#39;/list&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="va">router</span>.<span class="at">get</span>(<span class="st">&#39;/list&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb17-2" title="2">  <span class="at">match</span>(<span class="op">{</span>routes<span class="op">,</span> <span class="dt">location</span><span class="op">:</span> <span class="va">req</span>.<span class="at">url</span><span class="op">},</span> (error<span class="op">,</span> redirectLocation<span class="op">,</span> renderProps) <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb17-3" title="3">    <span class="cf">if</span> (error) <span class="op">{</span></a>
 <a class="sourceLine" id="cb17-4" title="4">      <span class="va">res</span>.<span class="at">status</span>(<span class="dv">500</span>).<span class="at">send</span>(<span class="va">error</span>.<span class="at">message</span>)<span class="op">;</span></a>
@@ -372,15 +473,20 @@ block content
 <a class="sourceLine" id="cb17-16" title="16">  <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb17-17" title="17"><span class="op">}</span>)<span class="op">;</span></a></code></pre>
     </div>
-    <p>Thats it. We successfully rendered our react components from server side with and without data, so that user
-      don’t have to wait for another ajax request after loading the page to see the data.</p>
-    <p>Thanks to codemancers team especially <span class="citation"
-        data-cites="emil">[@emil]</span>(https://twitter.com/emilsoman), <span class="citation"
-        data-cites="kashyap">[@kashyap]</span>(https://twitter.com/kgrz) and <span class="citation"
-        data-cites="yuva">[@yuva]</span>(https://twitter.com/iffyuva) for helping to fix spelling and grammer mistakes.
+    <p>
+      Thats it. We successfully rendered our react components from server side
+      with and without data, so that user don’t have to wait for another ajax
+      request after loading the page to see the data.
     </p>
-
+    <p>
+      Thanks to codemancers team especially
+      <span class="citation" data-cites="emil">[@emil]</span
+      >(https://twitter.com/emilsoman),
+      <span class="citation" data-cites="kashyap">[@kashyap]</span
+      >(https://twitter.com/kgrz) and
+      <span class="citation" data-cites="yuva">[@yuva]</span
+      >(https://twitter.com/iffyuva) for helping to fix spelling and grammer
+      mistakes.
+    </p>
   </body>
-
-  
 </html>

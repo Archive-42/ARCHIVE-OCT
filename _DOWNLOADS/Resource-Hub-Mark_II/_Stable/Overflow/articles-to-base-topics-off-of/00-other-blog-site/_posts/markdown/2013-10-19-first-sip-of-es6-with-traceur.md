@@ -17,7 +17,6 @@ categories: es6
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -42,7 +41,7 @@ First thing I done was to setup a boilerplate to run ES6 with traceur.
 <html class="no-js"> <!--<![endif]-->
     <head>
       <title>ES6</title>
-    
+
 
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/bootstrap.grid.css">

@@ -1,43 +1,48 @@
-  <!DOCTYPE html>
-  <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog-Post</title>
     <!--------------------------------(syntax hilighting)------------------------------------->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css" />
-    <link rel="stlyesheet" href="./prism.css">
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/default.min.css"
+    />
+    <link rel="stlyesheet" href="./prism.css" />
     <!-------------------------------------(scripts)------------------------------------------>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
     <script async src="./prism.js"></script>
 
-
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.grid.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css.map">
-    <link rel="stylesheet" href="./css/blog-home.css">
-    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css.map" />
+    <link rel="stylesheet" href="./css/blog-home.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <script async defer src="./css/prism.js"></script>
   </head>
 
   <body>
-
-
-
-
-
-
-    <p><code>Graphql</code> is a alternative to REST architecure which allows client to request the data in particular
-      stucture and it returs data in thbe same structure.</p>
-    <p>When you work as a <code>Frontend</code> and <code>Backend</code> team, you might need to setup a server to serve
-      dummy data so that <code>Frontend</code> team can work in parallel.</p>
-    <p>This post assumes that we already have a bootstrapped project with rails and <code>graphql-ruby</code>. Consider
-      we have some data of users</p>
+    <p>
+      <code>Graphql</code> is a alternative to REST architecure which allows
+      client to request the data in particular stucture and it returs data in
+      thbe same structure.
+    </p>
+    <p>
+      When you work as a <code>Frontend</code> and <code>Backend</code> team,
+      you might need to setup a server to serve dummy data so that
+      <code>Frontend</code> team can work in parallel.
+    </p>
+    <p>
+      This post assumes that we already have a bootstrapped project with rails
+      and <code>graphql-ruby</code>. Consider we have some data of users
+    </p>
     <div class="sourceCode" id="cb1">
-      <pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb1-1" title="1"><span class="ot">[</span></a>
+      <pre
+        class="sourceCode json"
+      ><code class="sourceCode json"><a class="sourceLine" id="cb1-1" title="1"><span class="ot">[</span></a>
 <a class="sourceLine" id="cb1-2" title="2">    <span class="fu">{</span></a>
 <a class="sourceLine" id="cb1-3" title="3">        <span class="dt">&quot;id&quot;</span><span class="fu">:</span><span class="dv">1</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb1-4" title="4">        <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Leanne Graham&quot;</span><span class="fu">,</span></a>
@@ -64,9 +69,14 @@
 <a class="sourceLine" id="cb1-25" title="25">    <span class="fu">}</span></a>
 <a class="sourceLine" id="cb1-26" title="26"><span class="ot">]</span></a></code></pre>
     </div>
-    <p>To serve this through the graphql query first we need to setup the <code>UserType</code>.</p>
+    <p>
+      To serve this through the graphql query first we need to setup the
+      <code>UserType</code>.
+    </p>
     <div class="sourceCode" id="cb2">
-      <pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># app/graphql/types/user_type.rb</span></a>
+      <pre
+        class="sourceCode ruby"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># app/graphql/types/user_type.rb</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="kw">module</span> <span class="dt">Types</span></a>
 <a class="sourceLine" id="cb2-3" title="3">  <span class="kw">class</span> <span class="dt">UserType</span> &lt; <span class="dt">Types</span>::<span class="dt">BaseObject</span></a>
 <a class="sourceLine" id="cb2-4" title="4">    graphql_name <span class="st">&#39;User&#39;</span></a>
@@ -78,9 +88,13 @@
 <a class="sourceLine" id="cb2-10" title="10">  <span class="kw">end</span></a>
 <a class="sourceLine" id="cb2-11" title="11"><span class="kw">end</span></a></code></pre>
     </div>
-    <p>Then lets setup the <code>User</code> model using <code>ActiveModel</code></p>
+    <p>
+      Then lets setup the <code>User</code> model using <code>ActiveModel</code>
+    </p>
     <div class="sourceCode" id="cb3">
-      <pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># app/model/user.rb</span></a>
+      <pre
+        class="sourceCode ruby"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># app/model/user.rb</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw">class</span> <span class="dt">User</span></a>
 <a class="sourceLine" id="cb3-3" title="3">  include <span class="dt">ActiveModel</span>::<span class="dt">Serializers</span>::<span class="dt">JSON</span></a>
 <a class="sourceLine" id="cb3-4" title="4"></a>
@@ -97,11 +111,19 @@
 <a class="sourceLine" id="cb3-15" title="15">  <span class="kw">end</span></a>
 <a class="sourceLine" id="cb3-16" title="16"><span class="kw">end</span></a></code></pre>
     </div>
-    <h2 id="setup-collection-query-type"><a class="anchor" name="setup-for-collection" href="#setup-for-collection"><i
-          class="anchor-icon"></i></a>Setup collection query type</h2>
-    <p>Next, the crucial part on setting the <code>QueryType</code> with custom resolver.</p>
+    <h2 id="setup-collection-query-type">
+      <a class="anchor" name="setup-for-collection" href="#setup-for-collection"
+        ><i class="anchor-icon"></i></a
+      >Setup collection query type
+    </h2>
+    <p>
+      Next, the crucial part on setting the <code>QueryType</code> with custom
+      resolver.
+    </p>
     <div class="sourceCode" id="cb4">
-      <pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># app/graphql/types/query_type.rb</span></a>
+      <pre
+        class="sourceCode ruby"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># app/graphql/types/query_type.rb</span></a>
 <a class="sourceLine" id="cb4-2" title="2"></a>
 <a class="sourceLine" id="cb4-3" title="3">require <span class="st">&#39;json&#39;</span></a>
 <a class="sourceLine" id="cb4-4" title="4"></a>
@@ -129,16 +151,26 @@
 }</code></pre>
     <p>you will receive the response</p>
     <figure>
-      <img src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/graphql-ruby/graphql-1.png"
-        alt="collection response" />
+      <img
+        src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/graphql-ruby/graphql-1.png"
+        alt="collection response"
+      />
       <figcaption>collection response</figcaption>
     </figure>
-    <h2 id="setup-single-record-query-type"><a class="anchor" name="setup-for-record" href="#setup-for-record"><i
-          class="anchor-icon"></i></a>Setup single record query type</h2>
-    <p>Since we already have the <code>UserType</code> and <code>User</code> model we need to add only query type to
-      respond for single record requests.</p>
+    <h2 id="setup-single-record-query-type">
+      <a class="anchor" name="setup-for-record" href="#setup-for-record"
+        ><i class="anchor-icon"></i></a
+      >Setup single record query type
+    </h2>
+    <p>
+      Since we already have the <code>UserType</code> and
+      <code>User</code> model we need to add only query type to respond for
+      single record requests.
+    </p>
     <div class="sourceCode" id="cb6">
-      <pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># app/graphql/types/query_type.rb</span></a>
+      <pre
+        class="sourceCode ruby"
+      ><code class="sourceCode ruby"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># app/graphql/types/query_type.rb</span></a>
 <a class="sourceLine" id="cb6-2" title="2"></a>
 <a class="sourceLine" id="cb6-3" title="3">require <span class="st">&#39;json&#39;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"></a>
@@ -163,12 +195,17 @@
     </div>
     <p>The record response will be</p>
     <figure>
-      <img src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/graphql-ruby/graphql-2.png"
-        alt="record response" />
+      <img
+        src="https://s3.ap-south-1.amazonaws.com/revathskumar-blog-images/2018/graphql-ruby/graphql-2.png"
+        alt="record response"
+      />
       <figcaption>record response</figcaption>
     </figure>
-    <p>The code is available on <a
-        href="https://github.com/revathskumar/rails-graphql-activemodel-json">revathskumar/rails-graphql-activemodel-json</a>
+    <p>
+      The code is available on
+      <a href="https://github.com/revathskumar/rails-graphql-activemodel-json"
+        >revathskumar/rails-graphql-activemodel-json</a
+      >
     </p>
     <pre><code>Versions of Language/packages used in this post.
 
@@ -178,3 +215,5 @@
 |      ruby        |  2.6.0-preview2 |
 |  graphql (gem)   |  1.8.11         |
 |  graphql-rails   |  1.4.11         |</code></pre>
+  </body>
+</html>
