@@ -1,22 +1,21 @@
-A list of all of my articles to link to future posts
-====================================================
+# A list of all of my articles to link to future posts
 
 You should probably skip this one… seriously it’s just for internal use!
 
-------------------------------------------------------------------------
+---
 
 ### All Of My Medium Stories
 
 <figure><img src="https://cdn-images-1.medium.com/max/800/1*yZ41P3YdMYMiyFPAPrzyGw.gif" class="graf-image" /></figure>
 
-------------------------------------------------------------------------
+---
 
 ### This is another backup of all of them!
 
 <a href="https://golden-lobe-519.notion.site/Medium-7b5b9bd642344d60afe3f03fe6431952" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://golden-lobe-519.notion.site/Medium-7b5b9bd642344d60afe3f03fe6431952"><strong>All OF MEDIUM ARTICLES</strong><br />
 <em>2021-02-27_A-Quick-Guide-to-Big-O-Notation--Memoization--Tabulation--and-Sorting-Algorithms-by-Example-803ff193c522…</em>golden-lobe-519.notion.site</a><a href="https://golden-lobe-519.notion.site/Medium-7b5b9bd642344d60afe3f03fe6431952" class="js-mixtapeImage mixtapeImage u-ignoreBlock"></a>
 
-------------------------------------------------------------------------
+---
 
 <a href="https://medium.com/webdevhub/notes-i-wish-i-had-when-i-started-learning-python-16ce4244be12" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://medium.com/webdevhub/notes-i-wish-i-had-when-i-started-learning-python-16ce4244be12"><strong>Notes I Wish I Had When I Started Learning Python</strong><br />
 <em>Plus resources for learning data structures and algorithms in python at the bottom of this article!</em>medium.com</a><a href="https://medium.com/webdevhub/notes-i-wish-i-had-when-i-started-learning-python-16ce4244be12" class="js-mixtapeImage mixtapeImage u-ignoreBlock"></a>
