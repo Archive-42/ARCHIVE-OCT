@@ -1,8 +1,1 @@
-[
-  "/apps",
-  "/hidden",
-  "/marketplace",
-  "/v3",
-  "/v4",
-  "/webhooks"
-]
+["/apps", "/hidden", "/marketplace", "/v3", "/v4", "/webhooks"]

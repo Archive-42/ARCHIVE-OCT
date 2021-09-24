@@ -2,9 +2,9 @@
 
 Docs redirects are complex! Some reasons why:
 
-* Docs URLs have changed many times over the years, whether because docs team members have renamed individual articles or made global changes (e.g., moving all `/articles` to `/github`).
-* Redirects can be hardcoded in frontmatter or generated via code in this directory (or both!).
-* Live docs and archived docs require different redirect handling because they may have differently formatted URLs (e.g., legacy `/enterprise/2.17` vs. modern `/enterprise-server@2.22`).
+- Docs URLs have changed many times over the years, whether because docs team members have renamed individual articles or made global changes (e.g., moving all `/articles` to `/github`).
+- Redirects can be hardcoded in frontmatter or generated via code in this directory (or both!).
+- Live docs and archived docs require different redirect handling because they may have differently formatted URLs (e.g., legacy `/enterprise/2.17` vs. modern `/enterprise-server@2.22`).
 
 Read on for more about how redirects work under the hood.
 
@@ -35,11 +35,11 @@ Starting with Enterprise Server 2.18, we updated the archival process to start p
 
 As a workaround for these lost redirects, we have two files in `lib/redirects/static`:
 
-* `archived-redirects-from-213-to-217.json`
+- `archived-redirects-from-213-to-217.json`
 
   This file contains keys equal to old routes and values equal to new routes (aka snapshots of permalinks at the time) for versions 2.13 to 2.17. (The old routes were generated via `lib/redirects/get-old-paths-from-permalink.js`.)
 
-* `archived-frontmatter-fallbacks.json`
+- `archived-frontmatter-fallbacks.json`
 
   This file contains an array of arrays, where the child arrays are a group of all frontmatter redirects for each content file. This is essentially list of all the historical paths for the articles in old versions. The problem is, we don't know which historical paths correspond to which versions.
 

@@ -1551,12 +1551,8 @@
         "title": "Create content attachments preview",
         "description": "This preview adds support for creating content attachments.",
         "toggled_by": "corsair-preview",
-        "toggled_on": [
-          "Mutation.createContentAttachment"
-        ],
-        "owning_teams": [
-          "@github/feature-lifecycle"
-        ],
+        "toggled_on": ["Mutation.createContentAttachment"],
+        "owning_teams": ["@github/feature-lifecycle"],
         "accept_header": "application/vnd.github.corsair-preview+json",
         "href": "/graphql/overview/schema-previews#create-content-attachments-preview"
       },
@@ -1604,9 +1600,7 @@
           "Mutation.createDeploymentStatus",
           "Mutation.createDeployment"
         ],
-        "owning_teams": [
-          "@github/c2c-actions-service"
-        ],
+        "owning_teams": ["@github/c2c-actions-service"],
         "accept_header": "application/vnd.github.flash-preview+json",
         "href": "/graphql/overview/schema-previews#deployments-preview"
       },
@@ -1662,9 +1656,7 @@
           "Mutation.createDeploymentStatus",
           "Mutation.createDeployment"
         ],
-        "owning_teams": [
-          "@github/c2c-actions-service"
-        ],
+        "owning_teams": ["@github/c2c-actions-service"],
         "accept_header": "application/vnd.github.flash-preview+json",
         "href": "/graphql/overview/schema-previews#deployments-preview"
       },
@@ -1890,9 +1882,7 @@
           "Mutation.deleteLabel",
           "Mutation.updateLabel"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.bane-preview+json",
         "href": "/graphql/overview/schema-previews#labels-preview"
       },
@@ -2384,9 +2374,7 @@
           "Mutation.deleteLabel",
           "Mutation.updateLabel"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.bane-preview+json",
         "href": "/graphql/overview/schema-previews#labels-preview"
       },
@@ -2837,12 +2825,8 @@
         "title": "Import project preview",
         "description": "This preview adds support for importing projects.",
         "toggled_by": "slothette-preview",
-        "toggled_on": [
-          "Mutation.importProject"
-        ],
-        "owning_teams": [
-          "@github/pe-issues-projects"
-        ],
+        "toggled_on": ["Mutation.importProject"],
+        "owning_teams": ["@github/pe-issues-projects"],
         "accept_header": "application/vnd.github.slothette-preview+json",
         "href": "/graphql/overview/schema-previews#import-project-preview"
       },
@@ -5206,9 +5190,7 @@
           "Mutation.deleteLabel",
           "Mutation.updateLabel"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.bane-preview+json",
         "href": "/graphql/overview/schema-previews#labels-preview"
       },
@@ -5497,14 +5479,8 @@
         "title": "Update refs preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/reponauts"
-        ],
+        "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+        "owning_teams": ["@github/reponauts"],
         "accept_header": "application/vnd.github.update-refs-preview+json",
         "href": "/graphql/overview/schema-previews#update-refs-preview"
       },
@@ -5683,9 +5659,7 @@
           "Team.reviewRequestDelegationMemberCount",
           "Team.reviewRequestDelegationNotifyTeam"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.stone-crop-preview+json",
         "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
       },
@@ -5874,9 +5848,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -5907,9 +5879,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -5940,9 +5910,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -11649,9 +11617,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -11682,9 +11648,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -11715,9 +11679,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -13632,9 +13594,7 @@
               "Mutation.createDeploymentStatus",
               "Mutation.createDeployment"
             ],
-            "owning_teams": [
-              "@github/c2c-actions-service"
-            ],
+            "owning_teams": ["@github/c2c-actions-service"],
             "accept_header": "application/vnd.github.flash-preview+json",
             "href": "/graphql/overview/schema-previews#deployments-preview"
           }
@@ -24839,9 +24799,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -24872,9 +24830,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -24905,9 +24861,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -24938,9 +24892,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -34170,9 +34122,7 @@
               "PullRequest.canBeRebased",
               "PullRequest.mergeStateStatus"
             ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
+            "owning_teams": ["@github/pe-pull-requests"],
             "accept_header": "application/vnd.github.merge-info-preview+json",
             "href": "/graphql/overview/schema-previews#merge-info-preview"
           }
@@ -34789,9 +34739,7 @@
               "PullRequest.canBeRebased",
               "PullRequest.mergeStateStatus"
             ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
+            "owning_teams": ["@github/pe-pull-requests"],
             "accept_header": "application/vnd.github.merge-info-preview+json",
             "href": "/graphql/overview/schema-previews#merge-info-preview"
           }
@@ -39529,9 +39477,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -39562,9 +39508,7 @@
               "RemovedFromProjectEvent.project",
               "RemovedFromProjectEvent.projectColumnName"
             ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
+            "owning_teams": ["@github/github-projects"],
             "accept_header": "application/vnd.github.starfox-preview+json",
             "href": "/graphql/overview/schema-previews#project-event-details-preview"
           }
@@ -50049,9 +49993,7 @@
               "Team.reviewRequestDelegationMemberCount",
               "Team.reviewRequestDelegationNotifyTeam"
             ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
+            "owning_teams": ["@github/pe-pull-requests"],
             "accept_header": "application/vnd.github.stone-crop-preview+json",
             "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
           }
@@ -50076,9 +50018,7 @@
               "Team.reviewRequestDelegationMemberCount",
               "Team.reviewRequestDelegationNotifyTeam"
             ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
+            "owning_teams": ["@github/pe-pull-requests"],
             "accept_header": "application/vnd.github.stone-crop-preview+json",
             "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
           }
@@ -50103,9 +50043,7 @@
               "Team.reviewRequestDelegationMemberCount",
               "Team.reviewRequestDelegationNotifyTeam"
             ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
+            "owning_teams": ["@github/pe-pull-requests"],
             "accept_header": "application/vnd.github.stone-crop-preview+json",
             "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
           }
@@ -50130,9 +50068,7 @@
               "Team.reviewRequestDelegationMemberCount",
               "Team.reviewRequestDelegationNotifyTeam"
             ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
+            "owning_teams": ["@github/pe-pull-requests"],
             "accept_header": "application/vnd.github.stone-crop-preview+json",
             "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
           }
@@ -61899,9 +61835,7 @@
           "Team.reviewRequestDelegationMemberCount",
           "Team.reviewRequestDelegationNotifyTeam"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.stone-crop-preview+json",
         "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
       },
@@ -65278,9 +65212,7 @@
           "Mutation.createDeploymentStatus",
           "Mutation.createDeployment"
         ],
-        "owning_teams": [
-          "@github/c2c-actions-service"
-        ],
+        "owning_teams": ["@github/c2c-actions-service"],
         "accept_header": "application/vnd.github.flash-preview+json",
         "href": "/graphql/overview/schema-previews#deployments-preview"
       },
@@ -65377,9 +65309,7 @@
           "Mutation.createDeploymentStatus",
           "Mutation.createDeployment"
         ],
-        "owning_teams": [
-          "@github/c2c-actions-service"
-        ],
+        "owning_teams": ["@github/c2c-actions-service"],
         "accept_header": "application/vnd.github.flash-preview+json",
         "href": "/graphql/overview/schema-previews#deployments-preview"
       },
@@ -65746,9 +65676,7 @@
           "Mutation.deleteLabel",
           "Mutation.updateLabel"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.bane-preview+json",
         "href": "/graphql/overview/schema-previews#labels-preview"
       },
@@ -66370,9 +66298,7 @@
           "Mutation.deleteLabel",
           "Mutation.updateLabel"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.bane-preview+json",
         "href": "/graphql/overview/schema-previews#labels-preview"
       },
@@ -67922,14 +67848,8 @@
         "title": "Update refs preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/reponauts"
-        ],
+        "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+        "owning_teams": ["@github/reponauts"],
         "accept_header": "application/vnd.github.update-refs-preview+json",
         "href": "/graphql/overview/schema-previews#update-refs-preview"
       },
@@ -70296,9 +70216,7 @@
           "Mutation.deleteLabel",
           "Mutation.updateLabel"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.bane-preview+json",
         "href": "/graphql/overview/schema-previews#labels-preview"
       },
@@ -70702,14 +70620,8 @@
         "title": "Update refs preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/reponauts"
-        ],
+        "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+        "owning_teams": ["@github/reponauts"],
         "accept_header": "application/vnd.github.update-refs-preview+json",
         "href": "/graphql/overview/schema-previews#update-refs-preview"
       },
@@ -70976,9 +70888,7 @@
           "Team.reviewRequestDelegationMemberCount",
           "Team.reviewRequestDelegationNotifyTeam"
         ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
+        "owning_teams": ["@github/pe-pull-requests"],
         "accept_header": "application/vnd.github.stone-crop-preview+json",
         "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
       },
@@ -71148,14 +71058,8 @@
         "title": "Update refs preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/reponauts"
-        ],
+        "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+        "owning_teams": ["@github/reponauts"],
         "accept_header": "application/vnd.github.update-refs-preview+json",
         "href": "/graphql/overview/schema-previews#update-refs-preview"
       }
