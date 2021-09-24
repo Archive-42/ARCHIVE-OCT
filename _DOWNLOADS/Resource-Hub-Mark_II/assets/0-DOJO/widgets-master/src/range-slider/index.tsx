@@ -80,7 +80,7 @@ const factory = create({
 	dimensions,
 	focus,
 	icache: createICacheMiddleware<RangeSliderICache>(),
-	theme
+	theme,
 })
 	.properties<RangeSliderProperties>()
 	.children<RangeSliderChildren | undefined>();
@@ -89,7 +89,7 @@ export const RangeSlider = factory(function RangeSlider({
 	children,
 	id,
 	middleware: { dimensions, focus, icache, theme },
-	properties
+	properties,
 }) {
 	const { name = '', max: maxRestraint = 100, min: minRestraint = 0 } = properties();
 
@@ -118,9 +118,9 @@ export const RangeSlider = factory(function RangeSlider({
 		variant,
 		initialValue = {
 			max: maxRestraint,
-			min: minRestraint
+			min: minRestraint,
 		},
-		widgetId = `range-slider-${id}`
+		widgetId = `range-slider-${id}`,
 	} = properties();
 
 	let { value } = properties();
@@ -180,7 +180,7 @@ export const RangeSlider = factory(function RangeSlider({
 		readonly: readOnly,
 		required,
 		step: `${step}`,
-		type: 'range'
+		type: 'range',
 	});
 
 	const onInput = (event: Event, isMinEvent: boolean) => {
@@ -200,7 +200,7 @@ export const RangeSlider = factory(function RangeSlider({
 			key="slider1"
 			value={`${min}`}
 			styles={{
-				clip: `rect(auto, ${Math.round(slider1Size * size.client.width)}px, auto, auto)`
+				clip: `rect(auto, ${Math.round(slider1Size * size.client.width)}px, auto, auto)`,
 			}}
 		/>
 	);
@@ -212,7 +212,7 @@ export const RangeSlider = factory(function RangeSlider({
 			styles={{
 				clip: `rect(auto, auto, auto, ${Math.round(
 					(1 - slider2Size) * size.client.width
-				)}px)`
+				)}px)`,
 			}}
 			value={`${max}`}
 		/>
@@ -229,7 +229,7 @@ export const RangeSlider = factory(function RangeSlider({
 				valid === false ? themeCss.invalid : null,
 				valid === true ? themeCss.valid : null,
 				readOnly ? themeCss.readonly : null,
-				showOutput ? themeCss.hasOutput : null
+				showOutput ? themeCss.hasOutput : null,
 			]}
 		>
 			{label ? (
@@ -272,7 +272,7 @@ export const RangeSlider = factory(function RangeSlider({
 					key="track"
 					styles={{
 						left: Math.round(slider1Percent * 100) + '%',
-						width: Math.round((slider2Percent - slider1Percent) * 100) + '%'
+						width: Math.round((slider2Percent - slider1Percent) * 100) + '%',
 					}}
 				/>
 				<div
@@ -281,10 +281,10 @@ export const RangeSlider = factory(function RangeSlider({
 						themeCss.thumb,
 						themeCss.leftThumb,
 						focus.isFocused('slider1') ? themeCss.focused : undefined,
-						fixedCss.thumbFixed
+						fixedCss.thumbFixed,
 					]}
 					styles={{
-						left: Math.round(slider1Percent * 100) + '%'
+						left: Math.round(slider1Percent * 100) + '%',
 					}}
 				/>
 				<div
@@ -293,10 +293,10 @@ export const RangeSlider = factory(function RangeSlider({
 						themeCss.thumb,
 						themeCss.rightThumb,
 						focus.isFocused('slider2') ? themeCss.focused : undefined,
-						fixedCss.thumbFixed
+						fixedCss.thumbFixed,
 					]}
 					styles={{
-						left: Math.round(slider2Percent * 100) + '%'
+						left: Math.round(slider2Percent * 100) + '%',
 					}}
 				/>
 				{showOutput ? (
@@ -310,7 +310,7 @@ export const RangeSlider = factory(function RangeSlider({
 											(slider1Percent +
 												(slider2Percent - slider1Percent) / 2) *
 												100
-										)}%`
+										)}%`,
 								  }
 								: undefined
 						}

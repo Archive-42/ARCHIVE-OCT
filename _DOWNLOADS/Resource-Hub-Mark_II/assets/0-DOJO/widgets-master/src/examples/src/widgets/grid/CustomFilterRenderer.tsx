@@ -13,21 +13,21 @@ import Example from '../../Example';
 const columnConfig: ColumnConfig[] = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'gender',
 		title: 'Gender',
-		filterable: true
+		filterable: true,
 	},
 	{
 		id: 'firstName',
-		title: 'First Name'
+		title: 'First Name',
 	},
 	{
 		id: 'lastName',
-		title: 'Last Name'
-	}
+		title: 'Last Name',
+	},
 ];
 
 const data = createData();
@@ -109,7 +109,7 @@ export default factory(function CustomFilterRenderer() {
 								{{ label: `Filter by ${title}` }}
 							</TextInput>
 						);
-					}
+					},
 				}}
 			/>
 		</Example>

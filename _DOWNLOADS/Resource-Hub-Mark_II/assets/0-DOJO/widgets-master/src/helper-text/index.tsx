@@ -22,7 +22,7 @@ export default factory(function HelperText({ properties, middleware: { theme } }
 				theme.variant(),
 				themedCss.root,
 				valid === true ? themedCss.valid : null,
-				valid === false ? themedCss.invalid : null
+				valid === false ? themedCss.invalid : null,
 			]}
 		>
 			{text && (

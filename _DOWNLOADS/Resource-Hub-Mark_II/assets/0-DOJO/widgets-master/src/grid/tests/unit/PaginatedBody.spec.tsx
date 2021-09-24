@@ -21,7 +21,7 @@ describe('PaginatedBody', () => {
 				columnConfig: [] as any,
 				fetcher: noop,
 				updater: noop,
-				onScroll: noop
+				onScroll: noop,
 			})
 		);
 
@@ -38,7 +38,7 @@ describe('PaginatedBody', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[v('div', { styles: {} }, [v('div'), ...rows])]
 			)
@@ -63,7 +63,7 @@ describe('PaginatedBody', () => {
 					theme: undefined,
 					onRowSelect: undefined,
 					selected: false,
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 		}
@@ -74,12 +74,12 @@ describe('PaginatedBody', () => {
 				height: 400,
 				pageNumber: 1,
 				pages: {
-					'page-1': page
+					'page-1': page,
 				},
 				columnConfig: [],
 				fetcher: noop,
 				updater: noop,
-				onScroll: noop
+				onScroll: noop,
 			})
 		);
 
@@ -91,7 +91,7 @@ describe('PaginatedBody', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[v('div', { styles: {} }, [v('div'), ...rows])]
 			)
@@ -118,8 +118,8 @@ describe('PaginatedBody', () => {
 					theme: undefined,
 					columnWidths: {
 						id: 400,
-						name: 400
-					}
+						name: 400,
+					},
 				})
 			);
 		}
@@ -131,16 +131,16 @@ describe('PaginatedBody', () => {
 				width: 500,
 				pageNumber: 1,
 				pages: {
-					'page-1': page
+					'page-1': page,
 				},
 				columnConfig: [],
 				columnWidths: {
 					id: 400,
-					name: 400
+					name: 400,
 				},
 				fetcher: noop,
 				updater: noop,
-				onScroll: noop
+				onScroll: noop,
 			})
 		);
 
@@ -152,7 +152,7 @@ describe('PaginatedBody', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px', width: '500px' }
+					styles: { height: '400px', width: '500px' },
 				},
 				[v('div', { styles: { width: '800px' } }, [v('div'), ...rows])]
 			)
@@ -163,8 +163,8 @@ describe('PaginatedBody', () => {
 		const columnConfig = [
 			{
 				id: 'id',
-				title: 'Id'
-			}
+				title: 'Id',
+			},
 		];
 		const rows: any[] = [];
 		const page: any[] = [];
@@ -183,7 +183,7 @@ describe('PaginatedBody', () => {
 					theme: undefined,
 					columnWidths: undefined,
 					onRowSelect: undefined,
-					selected: false
+					selected: false,
 				})
 			);
 		}
@@ -194,12 +194,12 @@ describe('PaginatedBody', () => {
 				height: 400,
 				pageNumber: 1,
 				pages: {
-					'page-1': page
+					'page-1': page,
 				},
 				columnConfig,
 				fetcher: noop,
 				updater: noop,
-				onScroll: noop
+				onScroll: noop,
 			})
 		);
 
@@ -211,7 +211,7 @@ describe('PaginatedBody', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[v('div', { styles: {} }, [v('div'), ...rows])]
 			)
@@ -222,8 +222,8 @@ describe('PaginatedBody', () => {
 		const columnConfig = [
 			{
 				id: 'id',
-				title: 'Id'
-			}
+				title: 'Id',
+			},
 		];
 		const rows: any[] = [];
 		const page: any[] = [];
@@ -242,7 +242,7 @@ describe('PaginatedBody', () => {
 					theme: undefined,
 					columnWidths: undefined,
 					onRowSelect: noop,
-					selected: i === 1 || i === 99
+					selected: i === 1 || i === 99,
 				})
 			);
 		}
@@ -253,14 +253,14 @@ describe('PaginatedBody', () => {
 				height: 400,
 				pageNumber: 1,
 				pages: {
-					'page-1': page
+					'page-1': page,
 				},
 				columnConfig,
 				fetcher: noop,
 				updater: noop,
 				onScroll: noop,
 				onRowSelect: noop,
-				selectedRows: [1, 99]
+				selectedRows: [1, 99],
 			})
 		);
 
@@ -272,7 +272,7 @@ describe('PaginatedBody', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[v('div', { styles: {} }, [v('div'), ...rows])]
 			)

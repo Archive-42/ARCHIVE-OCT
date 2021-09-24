@@ -31,10 +31,10 @@ describe('Form Middleware', () => {
 			id: 'test',
 			middleware: {
 				destroy: sb.stub(),
-				invalidator: invalidatorStub
+				invalidator: invalidatorStub,
 			},
 			properties: () => ({}),
-			children: () => []
+			children: () => [],
 		});
 
 		const { callback } = formMiddleware();
@@ -42,7 +42,7 @@ describe('Form Middleware', () => {
 			id: 'test',
 			middleware: { icache },
 			properties: () => ({}),
-			children: () => []
+			children: () => [],
 		});
 	});
 
@@ -68,7 +68,7 @@ describe('Form Middleware', () => {
 		it('updates multiple field values', () => {
 			form.value({
 				firstName: 'New First Name',
-				lastName: 'New Last Name'
+				lastName: 'New Last Name',
 			});
 
 			const values = form.value();
@@ -114,13 +114,13 @@ describe('Form Middleware', () => {
 
 			form.value({
 				firstName: 'New First Name',
-				lastName: 'New Last Name'
+				lastName: 'New Last Name',
 			});
 			sinonAssert.calledWith(
 				onValue.lastCall,
 				match({
 					firstName: 'New First Name',
-					lastName: 'New Last Name'
+					lastName: 'New Last Name',
 				})
 			);
 		});
@@ -237,32 +237,32 @@ describe('Form Middleware', () => {
 		it('returns values from form', () => {
 			form.value({
 				firstName: 'First Name',
-				middleName: 'Middle Name'
+				middleName: 'Middle Name',
 			});
 
 			form.submit(onSubmit);
 
 			sinonAssert.calledWith(onSubmit, {
 				firstName: 'First Name',
-				middleName: 'Middle Name'
+				middleName: 'Middle Name',
 			});
 		});
 
 		it('returns values from form with defaults', () => {
 			form.value({
 				firstName: 'First Name',
-				middleName: 'Middle Name'
+				middleName: 'Middle Name',
 			});
 
 			form.submit(onSubmit, {
 				firstName: 'Default First Name',
-				lastName: 'Default Last Name'
+				lastName: 'Default Last Name',
 			});
 
 			sinonAssert.calledWith(onSubmit, {
 				firstName: 'First Name',
 				middleName: 'Middle Name',
-				lastName: 'Default Last Name'
+				lastName: 'Default Last Name',
 			});
 		});
 
@@ -270,7 +270,7 @@ describe('Form Middleware', () => {
 			const lastName = form.field('lastName');
 			form.value({
 				firstName: 'First Name',
-				middleName: 'Middle Name'
+				middleName: 'Middle Name',
 			});
 
 			lastName.valid(false, 'Required!');
@@ -286,7 +286,7 @@ describe('Form Middleware', () => {
 			const firstName = form.field('firstName', true);
 			const middleName = form.field('middleName');
 			form.value({
-				firstName: 'First Name'
+				firstName: 'First Name',
 			});
 
 			form.disabled(true);

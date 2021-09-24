@@ -4,5 +4,5 @@ Dojo's `Card` widget provides a simple container for content and actions with a 
 
 ### Features
 
-- Wrap content with a consistent style
-- Include actions with the card
+-   Wrap content with a consistent style
+-   Include actions with the card

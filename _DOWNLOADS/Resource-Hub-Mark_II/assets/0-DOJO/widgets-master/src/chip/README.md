@@ -4,4 +4,4 @@ Dojo's `Chip` widget allows information and user inputs to be displayed as a sin
 
 ## Features
 
-- Displays a label, optional icon, and an optional close icon
+-   Displays a label, optional icon, and an optional close icon

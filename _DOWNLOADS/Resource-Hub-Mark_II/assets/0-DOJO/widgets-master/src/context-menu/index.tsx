@@ -11,11 +11,12 @@ export interface ContextMenuProperties {
 	onSelect(value: ListOption): void;
 }
 
-const factory = create({ theme, resource: createResourceMiddleware<ListOption>() }).properties<
-	ContextMenuProperties
->();
+const factory = create({
+	theme,
+	resource: createResourceMiddleware<ListOption>(),
+}).properties<ContextMenuProperties>();
 
-export const ContextMenu = factory(function({ properties, children, middleware: { theme } }) {
+export const ContextMenu = factory(function ({ properties, children, middleware: { theme } }) {
 	const { resource, onSelect, classes, variant } = properties();
 	return (
 		<ContextPopup>
@@ -26,11 +27,7 @@ export const ContextMenu = factory(function({ properties, children, middleware: 
 						key="menu"
 						height="auto"
 						focus={shouldFocus}
-						theme={theme.compose(
-							menuCss,
-							css,
-							'menu'
-						)}
+						theme={theme.compose(menuCss, css, 'menu')}
 						classes={classes}
 						variant={variant}
 						menu
@@ -42,7 +39,7 @@ export const ContextMenu = factory(function({ properties, children, middleware: 
 							onSelect(value);
 						}}
 					/>
-				)
+				),
 			}}
 		</ContextPopup>
 	);

@@ -21,7 +21,7 @@ const factory = create({ theme })
 export const HeaderCard = factory(function HeaderCard({
 	middleware: { theme },
 	properties,
-	children
+	children,
 }) {
 	const themeCss = theme.classes(css);
 	const { title, subtitle, ...cardProps } = properties();
@@ -38,7 +38,7 @@ export const HeaderCard = factory(function HeaderCard({
 						</div>
 					</div>
 				),
-				...cardChildren
+				...cardChildren,
 			}}
 		</Card>
 	);

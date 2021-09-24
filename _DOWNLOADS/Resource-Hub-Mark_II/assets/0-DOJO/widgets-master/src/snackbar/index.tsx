@@ -22,9 +22,7 @@ export interface SnackbarChildren {
 	actions?: RenderResult;
 }
 
-const factory = create({ theme })
-	.properties<SnackbarProperties>()
-	.children<SnackbarChildren>();
+const factory = create({ theme }).properties<SnackbarProperties>().children<SnackbarChildren>();
 
 export const Snackbar = factory(function Snackbar({ middleware: { theme }, properties, children }) {
 	const { type, open, leading, stacked } = properties();
@@ -41,7 +39,7 @@ export const Snackbar = factory(function Snackbar({ middleware: { theme }, prope
 				open ? themeCss.open : null,
 				type ? themeCss[type] : null,
 				leading ? themeCss.leading : null,
-				stacked ? themeCss.stacked : null
+				stacked ? themeCss.stacked : null,
 			]}
 		>
 			<div key="content" classes={themeCss.content}>

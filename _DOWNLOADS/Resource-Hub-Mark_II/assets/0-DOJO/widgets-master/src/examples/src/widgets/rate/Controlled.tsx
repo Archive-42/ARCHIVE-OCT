@@ -17,7 +17,7 @@ export default factory(function Controlled({ middleware: { icache } }) {
 				}}
 			>
 				{{
-					label: 'Controlled rating'
+					label: 'Controlled rating',
 				}}
 			</Rate>
 		</Example>

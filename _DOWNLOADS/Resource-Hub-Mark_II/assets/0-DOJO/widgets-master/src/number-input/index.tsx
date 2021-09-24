@@ -41,10 +41,7 @@ export default factory(function NumberInput({ properties, children, middleware: 
 			initialValue={initialValue === undefined ? initialValue : `${initialValue}`}
 			onValue={onValueAdapter}
 			type="number"
-			theme={theme.compose(
-				textInputCss,
-				numberInputCss
-			)}
+			theme={theme.compose(textInputCss, numberInputCss)}
 		>
 			{children()[0]}
 		</TextInput>

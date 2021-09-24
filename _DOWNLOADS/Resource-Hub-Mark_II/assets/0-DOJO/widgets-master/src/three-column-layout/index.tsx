@@ -31,22 +31,22 @@ const factory = create({ breakpoint, theme })
 	.properties<ThreeColumnLayoutProperties>()
 	.children<ThreeColumnLayoutChildren>();
 
-export const ThreeColumnLayout = factory(function({
+export const ThreeColumnLayout = factory(function ({
 	properties,
 	children,
-	middleware: { breakpoint, theme }
+	middleware: { breakpoint, theme },
 }) {
 	const {
 		twoColumnBreakpoint = 1024,
 		oneColumnBreakpoint = 600,
-		bias = 'leading'
+		bias = 'leading',
 	} = properties();
 	const [{ leading, center, trailing }] = children();
 	const classes = theme.classes(css);
 	const { breakpoint: currentBreakpoint } = breakpoint.get('root', {
 		LARGE: twoColumnBreakpoint,
 		MEDIUM: oneColumnBreakpoint,
-		SMALL: 0
+		SMALL: 0,
 	}) || { breakpoint: 'LARGE' };
 	const shouldCollapseLeading =
 		currentBreakpoint === 'SMALL' || (currentBreakpoint === 'MEDIUM' && bias === 'trailing');

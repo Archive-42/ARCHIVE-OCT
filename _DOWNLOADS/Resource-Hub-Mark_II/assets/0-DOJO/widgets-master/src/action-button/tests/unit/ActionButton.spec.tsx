@@ -24,7 +24,7 @@ describe('ActionButton', () => {
 			baseTemplate.setProperties(WrappedButton, {
 				onClick: () => {},
 				type: 'submit',
-				variant: 'inherit'
+				variant: 'inherit',
 			})
 		);
 	});

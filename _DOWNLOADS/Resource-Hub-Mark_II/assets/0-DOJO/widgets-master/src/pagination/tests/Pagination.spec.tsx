@@ -8,7 +8,7 @@ import {
 	createHarness,
 	stubEvent,
 	compareResource,
-	createTestResource
+	createTestResource,
 } from '../../common/tests/support/test-helpers';
 import resize from '@dojo/framework/core/middleware/resize';
 import { createResizeMock } from '@dojo/framework/testing/mocks/middleware/resize';
@@ -110,15 +110,15 @@ describe('Pagination', () => {
 		nodeMock(key, {
 			getBoundingClientRect() {
 				return {
-					width
+					width,
 				};
-			}
+			},
 		});
 	}
 
 	beforeEach(() => {
 		sb.stub(global.window.HTMLDivElement.prototype, 'getBoundingClientRect').callsFake(() => ({
-			width: 45
+			width: 45,
 		}));
 		nodeMock = createNodeMock();
 	});
@@ -169,7 +169,12 @@ describe('Pagination', () => {
 			const onPageChange = sinon.stub();
 			const h = harness(
 				() => <Pagination total={20} initialPage={10} onPage={onPageChange} />,
-				{ middleware: [[resize, resizeMock], [node, nodeMock]] }
+				{
+					middleware: [
+						[resize, resizeMock],
+						[node, nodeMock],
+					],
+				}
 			);
 
 			h.expect(visibleAssertion);
@@ -183,7 +188,12 @@ describe('Pagination', () => {
 			const onPageChange = sinon.stub();
 			const h = harness(
 				() => <Pagination total={20} initialPage={10} onPage={onPageChange} />,
-				{ middleware: [[resize, resizeMock], [node, nodeMock]] }
+				{
+					middleware: [
+						[resize, resizeMock],
+						[node, nodeMock],
+					],
+				}
 			);
 
 			h.expect(visibleAssertion);
@@ -196,7 +206,10 @@ describe('Pagination', () => {
 			mockWidth('links', 1000);
 			const onPageChange = sinon.stub();
 			const h = harness(() => <Pagination total={20} page={10} onPage={onPageChange} />, {
-				middleware: [[resize, resizeMock], [node, nodeMock]]
+				middleware: [
+					[resize, resizeMock],
+					[node, nodeMock],
+				],
 			});
 
 			h.expect(visibleAssertion);
@@ -208,7 +221,10 @@ describe('Pagination', () => {
 	it('renders without "prev" button when there is no prev', () => {
 		mockWidth('links', 1000);
 		const h = harness(() => <Pagination total={3} initialPage={1} onPage={noop} />, {
-			middleware: [[resize, resizeMock], [node, nodeMock]]
+			middleware: [
+				[resize, resizeMock],
+				[node, nodeMock],
+			],
 		});
 
 		h.expect(
@@ -229,7 +245,10 @@ describe('Pagination', () => {
 	it('renders without "next" button when there is no next', () => {
 		mockWidth('links', 10000);
 		const h = harness(() => <Pagination total={3} initialPage={3} onPage={noop} />, {
-			middleware: [[resize, resizeMock], [node, nodeMock]]
+			middleware: [
+				[resize, resizeMock],
+				[node, nodeMock],
+			],
 		});
 
 		h.expect(
@@ -251,7 +270,12 @@ describe('Pagination', () => {
 		mockWidth('links', 1000);
 		const h = harness(
 			() => <Pagination total={20} initialPage={10} siblingCount={5} onPage={noop} />,
-			{ middleware: [[resize, resizeMock], [node, nodeMock]] }
+			{
+				middleware: [
+					[resize, resizeMock],
+					[node, nodeMock],
+				],
+			}
 		);
 
 		h.expect(
@@ -262,7 +286,7 @@ describe('Pagination', () => {
 					10
 				</div>,
 				...makeLinks(11, 15),
-				next
+				next,
 			])
 		);
 	});
@@ -277,7 +301,7 @@ describe('Pagination', () => {
 					onValue={noop}
 					value={undefined}
 				/>
-			</div>
+			</div>,
 		]);
 		const pageSizes = [10, 20];
 
@@ -293,7 +317,12 @@ describe('Pagination', () => {
 						pageSizes={pageSizes}
 					/>
 				),
-				{ middleware: [[resize, resizeMock], [node, nodeMock]] }
+				{
+					middleware: [
+						[resize, resizeMock],
+						[node, nodeMock],
+					],
+				}
 			);
 			h.expect(sizeSelectorAssertion);
 		});
@@ -312,7 +341,12 @@ describe('Pagination', () => {
 						pageSizes={pageSizes}
 					/>
 				),
-				{ middleware: [[resize, resizeMock], [node, nodeMock]] }
+				{
+					middleware: [
+						[resize, resizeMock],
+						[node, nodeMock],
+					],
+				}
 			);
 			h.expect(sizeSelectorAssertion);
 
@@ -334,7 +368,12 @@ describe('Pagination', () => {
 						pageSizes={pageSizes}
 					/>
 				),
-				{ middleware: [[resize, resizeMock], [node, nodeMock]] }
+				{
+					middleware: [
+						[resize, resizeMock],
+						[node, nodeMock],
+					],
+				}
 			);
 			h.expect(
 				sizeSelectorAssertion
@@ -353,7 +392,10 @@ describe('Pagination', () => {
 			const h = harness(
 				() => <Pagination total={20} initialPage={10} siblingCount={3} onPage={noop} />,
 				{
-					middleware: [[resize, resizeMock], [node, nodeMock]]
+					middleware: [
+						[resize, resizeMock],
+						[node, nodeMock],
+					],
 				}
 			);
 			h.expect(
@@ -364,7 +406,7 @@ describe('Pagination', () => {
 						10
 					</div>,
 					...makeLinks(11, 13),
-					next
+					next,
 				])
 			);
 		});
@@ -376,13 +418,16 @@ describe('Pagination', () => {
 			mockWidth('links', 400);
 
 			const h = harness(() => <Pagination total={20} initialPage={10} onPage={noop} />, {
-				middleware: [[resize, resizeMock], [node, nodeMock]]
+				middleware: [
+					[resize, resizeMock],
+					[node, nodeMock],
+				],
 			});
 
 			h.expect(
 				visibleAssertion
 					.setProperty('@links', 'styles', {
-						opacity: '1'
+						opacity: '1',
 					})
 					.setChildren('@links', [
 						prev,
@@ -391,7 +436,7 @@ describe('Pagination', () => {
 							10
 						</div>,
 						...makeLinks(11, 12),
-						next
+						next,
 					])
 			);
 		});
@@ -404,7 +449,10 @@ describe('Pagination', () => {
 			mockWidth('links', 400);
 
 			const h = harness(() => <Pagination total={10} initialPage={2} onPage={noop} />, {
-				middleware: [[resize, resizeMock], [node, nodeMock]]
+				middleware: [
+					[resize, resizeMock],
+					[node, nodeMock],
+				],
 			});
 
 			h.expect(
@@ -415,7 +463,7 @@ describe('Pagination', () => {
 						2
 					</div>,
 					...makeLinks(3, 6),
-					next
+					next,
 				])
 			);
 		});

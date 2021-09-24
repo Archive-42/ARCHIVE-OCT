@@ -9,7 +9,7 @@ export default factory(function Error() {
 		<Example>
 			<Snackbar type="error" open={true}>
 				{{
-					message: 'Error Snackbar'
+					message: 'Error Snackbar',
 				}}
 			</Snackbar>
 		</Example>

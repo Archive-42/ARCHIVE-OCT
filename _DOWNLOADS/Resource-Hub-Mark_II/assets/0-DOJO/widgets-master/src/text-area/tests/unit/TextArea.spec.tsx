@@ -16,7 +16,7 @@ import {
 	compareTheme,
 	createHarness,
 	noop,
-	stubEvent
+	stubEvent,
 } from '../../../common/tests/support/test-helpers';
 import HelperText from '../../../helper-text/index';
 import validity from '@dojo/framework/core/middleware/validity';
@@ -31,7 +31,7 @@ interface States {
 	focused?: boolean;
 }
 
-const expected = function(
+const expected = function (
 	label = false,
 	inputOverrides = {},
 	states: States = {},
@@ -61,7 +61,7 @@ const expected = function(
 					valid === true ? css.valid : null,
 					readOnly ? css.readonly : null,
 					required ? css.required : null,
-					focused ? css.focused : null
+					focused ? css.focused : null,
 				]}
 			>
 				{label ? (
@@ -209,7 +209,7 @@ registerSuite('Textarea', {
 					placeholder: 'baz',
 					rows: 42,
 					value: 'qux',
-					wrap: 'soft'
+					wrap: 'soft',
 				})
 			);
 		},
@@ -231,7 +231,7 @@ registerSuite('Textarea', {
 				valid: { valid: false },
 				disabled: true,
 				readOnly: true,
-				required: true
+				required: true,
 			};
 
 			const h = harness(() => <TextArea {...properties} />);
@@ -245,7 +245,7 @@ registerSuite('Textarea', {
 						null,
 						css.readonly,
 						css.required,
-						null
+						null,
 					])
 					.setProperty('@input', 'aria-invalid', 'true')
 					.setProperty('@input', 'aria-readonly', 'true')
@@ -259,7 +259,7 @@ registerSuite('Textarea', {
 				valid: undefined,
 				disabled: false,
 				readOnly: false,
-				required: false
+				required: false,
 			};
 			h.expect(
 				baseAssertion
@@ -270,7 +270,7 @@ registerSuite('Textarea', {
 						null,
 						null,
 						null,
-						null
+						null,
 					])
 					.setProperty('@input', 'aria-invalid', undefined)
 					.setProperty('@input', 'aria-readonly', undefined)
@@ -329,7 +329,7 @@ registerSuite('Textarea', {
 					placeholder: 'baz',
 					rows: 42,
 					value: 'qux',
-					wrap: 'soft'
+					wrap: 'soft',
 				})
 			);
 
@@ -345,7 +345,7 @@ registerSuite('Textarea', {
 					placeholder: 'baz',
 					rows: 42,
 					value: 'newvalue',
-					wrap: 'soft'
+					wrap: 'soft',
 				})
 			);
 		},
@@ -377,7 +377,7 @@ registerSuite('Textarea', {
 					placeholder: 'baz',
 					rows: 42,
 					value: 'qux',
-					wrap: 'soft'
+					wrap: 'soft',
 				});
 			h.expect(assertion);
 
@@ -393,7 +393,7 @@ registerSuite('Textarea', {
 			mockValidity('input', { valid: false, message: 'test' });
 
 			let h = harness(() => <TextArea initialValue="test value" onValidate={validateSpy} />, {
-				middleware: [[validity, mockValidity]]
+				middleware: [[validity, mockValidity]],
 			});
 
 			h.expect(valueAssertion);
@@ -402,7 +402,7 @@ registerSuite('Textarea', {
 			mockValidity = createValidityMock();
 
 			h = harness(() => <TextArea initialValue="test value" onValidate={validateSpy} />, {
-				middleware: [[validity, mockValidity]]
+				middleware: [[validity, mockValidity]],
 			});
 			mockValidity('input', { valid: true, message: 'test' });
 			h.expect(valueAssertion);
@@ -418,7 +418,7 @@ registerSuite('Textarea', {
 			mockValidity('input', { valid: false, message: 'test' });
 
 			let h = harness(() => <TextArea value="test value" onValidate={validateSpy} />, {
-				middleware: [[validity, mockValidity]]
+				middleware: [[validity, mockValidity]],
 			});
 
 			h.expect(valueAssertion);
@@ -427,7 +427,7 @@ registerSuite('Textarea', {
 			mockValidity = createValidityMock();
 
 			h = harness(() => <TextArea value="test value" onValidate={validateSpy} />, {
-				middleware: [[validity, mockValidity]]
+				middleware: [[validity, mockValidity]],
 			});
 			mockValidity('input', { valid: true, message: 'test' });
 			h.expect(valueAssertion);
@@ -441,7 +441,7 @@ registerSuite('Textarea', {
 			let validateSpy = sinon.spy();
 
 			let h = harness(() => <TextArea onValidate={validateSpy} />, {
-				middleware: [[validity, mockValidity]]
+				middleware: [[validity, mockValidity]],
 			});
 
 			h.expect(baseAssertion.setProperty('@helperText', 'valid', undefined));
@@ -463,7 +463,7 @@ registerSuite('Textarea', {
 					/>
 				),
 				{
-					middleware: [[validity, mockValidity]]
+					middleware: [[validity, mockValidity]],
 				}
 			);
 
@@ -486,7 +486,7 @@ registerSuite('Textarea', {
 					/>
 				),
 				{
-					middleware: [[validity, mockValidity]]
+					middleware: [[validity, mockValidity]],
 				}
 			);
 
@@ -509,7 +509,7 @@ registerSuite('Textarea', {
 					/>
 				),
 				{
-					middleware: [[validity, mockValidity]]
+					middleware: [[validity, mockValidity]],
 				}
 			);
 
@@ -536,13 +536,13 @@ registerSuite('Textarea', {
 					/>
 				),
 				{
-					middleware: [[validity, mockValidity]]
+					middleware: [[validity, mockValidity]],
 				}
 			);
 
 			h.expect(valueAssertion);
 
 			assert.isTrue(validateSpy.calledWith(false, 'custom message'));
-		}
-	}
+		},
+	},
 });

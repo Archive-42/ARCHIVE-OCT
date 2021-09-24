@@ -5,7 +5,7 @@ import Example from '../../Example';
 
 const factory = create({ icache });
 
-export default factory(function({ middleware: { icache } }) {
+export default factory(function ({ middleware: { icache } }) {
 	return (
 		<Example>
 			<TextInput

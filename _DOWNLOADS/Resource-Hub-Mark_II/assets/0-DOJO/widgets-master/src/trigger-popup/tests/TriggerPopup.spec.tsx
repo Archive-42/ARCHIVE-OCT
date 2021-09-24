@@ -35,11 +35,11 @@ describe('TriggerPopup', () => {
 	before(() => {
 		Object.defineProperty(document.documentElement, 'scrollTop', {
 			value: 0,
-			configurable: true
+			configurable: true,
 		});
 		Object.defineProperty(document.documentElement, 'clientHeight', {
 			value: 1000,
-			configurable: true
+			configurable: true,
 		});
 	});
 
@@ -48,12 +48,12 @@ describe('TriggerPopup', () => {
 			<TriggerPopup>
 				{{
 					trigger: (onToggleOpen) => <button onclick={onToggleOpen} />,
-					content: () => 'hello world'
+					content: () => 'hello world',
 				}}
 			</TriggerPopup>
 		));
 		const triggerTemplate = baseTemplate.setChildren('@trigger', () => [
-			<button onclick={() => {}} />
+			<button onclick={() => {}} />,
 		]);
 		h.expect(triggerTemplate);
 	});
@@ -65,13 +65,13 @@ describe('TriggerPopup', () => {
 			<TriggerPopup onOpen={onOpen} onClose={onClose}>
 				{{
 					trigger: (onToggleOpen) => <button onclick={onToggleOpen} />,
-					content: () => 'hello world'
+					content: () => 'hello world',
 				}}
 			</TriggerPopup>
 		));
 
 		const triggerTemplate = baseTemplate.setChildren('@trigger', () => [
-			<button onclick={() => {}} />
+			<button onclick={() => {}} />,
 		]);
 		h.trigger('@trigger button', 'onclick');
 		assert.isTrue(onOpen.calledOnce);
@@ -92,9 +92,9 @@ describe('TriggerPopup', () => {
 					top: 50,
 					right: 0,
 					width: 150,
-					height: 50
+					height: 50,
 				};
-			}
+			},
 		};
 
 		mockNode('trigger', trigger);
@@ -105,7 +105,7 @@ describe('TriggerPopup', () => {
 				<TriggerPopup>
 					{{
 						trigger: () => undefined,
-						content: () => 'hello world'
+						content: () => 'hello world',
 					}}
 				</TriggerPopup>
 			),
@@ -132,7 +132,7 @@ describe('TriggerPopup', () => {
 			<TriggerPopup matchWidth={false}>
 				{{
 					trigger: () => undefined,
-					content: () => 'hello world'
+					content: () => 'hello world',
 				}}
 			</TriggerPopup>
 		));
@@ -154,7 +154,7 @@ describe('TriggerPopup', () => {
 			<TriggerPopup underlayVisible>
 				{{
 					trigger: () => undefined,
-					content: () => 'hello world'
+					content: () => 'hello world',
 				}}
 			</TriggerPopup>
 		));
@@ -169,7 +169,7 @@ describe('TriggerPopup', () => {
 			<TriggerPopup>
 				{{
 					trigger: () => undefined,
-					content: onContent
+					content: onContent,
 				}}
 			</TriggerPopup>
 		));

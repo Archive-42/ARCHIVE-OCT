@@ -5,7 +5,7 @@ import Select from '@dojo/widgets/select';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { ListOption } from '@dojo/widgets/list';
 
@@ -15,7 +15,7 @@ const options = [
 	{ value: 'top', label: 'Top' },
 	{ value: 'left', label: 'Left' },
 	{ value: 'right', label: 'Right' },
-	{ value: 'bottom', label: 'Bottom' }
+	{ value: 'bottom', label: 'Bottom' },
 ];
 
 const template = createMemoryResourceTemplate<ListOption>();
@@ -27,7 +27,7 @@ export default factory(function ButtonAlignment({ id, middleware: { icache, reso
 		{ name: 'Tab One' },
 		{ name: 'Tab Two' },
 		{ name: 'Tab Three' },
-		{ name: 'Tab Four' }
+		{ name: 'Tab Four' },
 	];
 
 	return (

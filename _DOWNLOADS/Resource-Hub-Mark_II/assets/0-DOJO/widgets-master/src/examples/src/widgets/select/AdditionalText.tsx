@@ -4,7 +4,7 @@ import icache from '@dojo/framework/core/middleware/icache';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { ListOption } from '@dojo/widgets/list';
 
@@ -13,7 +13,7 @@ const factory = create({ icache, resource });
 const options = [
 	{ value: '1', label: 'cat' },
 	{ value: '2', label: 'dog' },
-	{ value: '3', label: 'fish' }
+	{ value: '3', label: 'fish' },
 ];
 
 const template = createMemoryResourceTemplate<ListOption>();
@@ -30,7 +30,7 @@ export default factory(function AdditionalText({ id, middleware: { icache, resou
 				placeholder="I am a placeholder"
 			>
 				{{
-					label: 'Additional Text'
+					label: 'Additional Text',
 				}}
 			</Select>
 			<pre>{JSON.stringify(icache.getOrSet('value', ''))}</pre>

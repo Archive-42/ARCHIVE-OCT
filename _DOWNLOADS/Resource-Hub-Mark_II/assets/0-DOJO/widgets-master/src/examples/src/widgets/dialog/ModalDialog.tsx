@@ -27,7 +27,7 @@ export default factory(function ModalDialog({ middleware: { icache } }) {
 								purus ipsum. Aenean ac purus purus. Nam sollicitudin varius augue,
 								sed lacinia felis tempor in.
 							</virtual>
-						)
+						),
 					}}
 				</Dialog>
 			</div>

@@ -43,7 +43,7 @@ describe('RangeSlider', () => {
 						required={undefined}
 						step="1"
 						styles={{
-							clip: `rect(auto, 0px, auto, auto)`
+							clip: `rect(auto, 0px, auto, auto)`,
 						}}
 						type="range"
 						value="0"
@@ -69,7 +69,7 @@ describe('RangeSlider', () => {
 						required={undefined}
 						step="1"
 						styles={{
-							clip: `rect(auto, auto, auto, 0px)`
+							clip: `rect(auto, auto, auto, 0px)`,
 						}}
 						type="range"
 						value="100"
@@ -82,7 +82,7 @@ describe('RangeSlider', () => {
 						key="track"
 						styles={{
 							left: '0%',
-							width: '100%'
+							width: '100%',
 						}}
 					/>
 					<div
@@ -91,10 +91,10 @@ describe('RangeSlider', () => {
 							themeCss.thumb,
 							themeCss.leftThumb,
 							undefined,
-							fixedCss.thumbFixed
+							fixedCss.thumbFixed,
 						]}
 						styles={{
-							left: '0%'
+							left: '0%',
 						}}
 					/>
 					<div
@@ -103,10 +103,10 @@ describe('RangeSlider', () => {
 							themeCss.thumb,
 							themeCss.rightThumb,
 							undefined,
-							fixedCss.thumbFixed
+							fixedCss.thumbFixed,
 						]}
 						styles={{
-							left: '100%'
+							left: '100%',
 						}}
 					/>
 				</div>
@@ -137,7 +137,7 @@ describe('RangeSlider', () => {
 				widgetId="range-slider-test-label"
 			>
 				label
-			</Label>
+			</Label>,
 		]);
 		h.expect(testTemplate);
 	});
@@ -187,7 +187,7 @@ describe('RangeSlider', () => {
 				null,
 				null,
 				null,
-				themeCss.hasOutput
+				themeCss.hasOutput,
 			])
 			.insertAfter('@rightThumb', () => [
 				<output
@@ -197,7 +197,7 @@ describe('RangeSlider', () => {
 					tabIndex={-1}
 				>
 					0, 100
-				</output>
+				</output>,
 			]);
 		h.expect(testTemplate);
 	});
@@ -213,19 +213,19 @@ describe('RangeSlider', () => {
 				null,
 				null,
 				null,
-				themeCss.hasOutput
+				themeCss.hasOutput,
 			])
 			.insertAfter('@rightThumb', () => [
 				<output
 					classes={[themeCss.output, themeCss.outputTooltip]}
 					for="range-slider-test"
 					styles={{
-						left: '50%'
+						left: '50%',
 					}}
 					tabIndex={-1}
 				>
 					0, 100
-				</output>
+				</output>,
 			]);
 		h.expect(testTemplate);
 	});
@@ -239,7 +239,7 @@ describe('RangeSlider', () => {
 			null,
 			null,
 			null,
-			null
+			null,
 		]);
 
 		const h = harness(() => <RangeSlider />);

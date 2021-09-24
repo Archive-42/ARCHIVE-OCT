@@ -25,7 +25,7 @@ export default factory(function Collapsing({ middleware: { icache } }) {
 								>
 									This is the trailing content
 								</div>
-							)
+							),
 						}}
 					</TwoColumnLayout>
 				</div>

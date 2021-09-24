@@ -4,5 +4,5 @@ Dojo's `Form` widget provides an opinionated way to use a group of inputs in a f
 
 ## Features
 
-- Provides a custom renderer allowing the user to define the form's inputs
-- Provides a middleware for custom use
+-   Provides a custom renderer allowing the user to define the form's inputs
+-   Provides a middleware for custom use

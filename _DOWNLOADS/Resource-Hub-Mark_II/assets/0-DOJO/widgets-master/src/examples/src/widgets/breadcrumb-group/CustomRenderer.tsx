@@ -7,12 +7,12 @@ import Example from '../../Example';
 
 const factory = create();
 
-const App = factory(function() {
+const App = factory(function () {
 	const items = [
 		{ completed: true, key: 'step1', label: 'Step 1' },
 		{ completed: true, key: 'step2', label: 'Step 2' },
 		{ completed: false, current: true, key: 'step3', label: 'Step 3' },
-		{ completed: false, key: 'step4', label: 'Step 4' }
+		{ completed: false, key: 'step4', label: 'Step 4' },
 	];
 
 	return (
@@ -31,8 +31,8 @@ const App = factory(function() {
 								key={`${item.key}`}
 								classes={{
 									'@dojo/widgets/breadcrumb-group': {
-										breadcrumb: [item.current ? css.current : undefined]
-									}
+										breadcrumb: [item.current ? css.current : undefined],
+									},
 								}}
 								current={item.current ? 'step' : undefined}
 								href={item.href}

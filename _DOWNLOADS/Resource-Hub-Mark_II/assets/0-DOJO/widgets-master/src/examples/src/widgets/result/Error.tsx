@@ -16,7 +16,7 @@ export default factory(function Error() {
 							<Button>Go Back</Button>
 							<Button>Try Again</Button>
 						</virtual>
-					)
+					),
 				}}
 			</Result>
 		</Example>

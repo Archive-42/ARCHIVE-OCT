@@ -24,11 +24,11 @@ registerSuite('util', {
 
 		const aria = {
 			describedBy: 'foo',
-			controls: 'bar'
+			controls: 'bar',
 		};
 		const formattedAria = formatAriaProperties(aria);
 		assert.strictEqual(Object.keys(formattedAria).length, 2);
 		assert.strictEqual(formattedAria['aria-describedby'], 'foo');
 		assert.strictEqual(formattedAria['aria-controls'], 'bar');
-	}
+	},
 });

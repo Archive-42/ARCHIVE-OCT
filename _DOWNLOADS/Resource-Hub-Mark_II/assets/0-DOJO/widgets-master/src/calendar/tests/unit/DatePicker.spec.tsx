@@ -17,7 +17,7 @@ import {
 	stubEvent,
 	noop,
 	createHarness,
-	compareTheme
+	compareTheme,
 } from '../../../common/tests/support/test-helpers';
 
 const harness = createHarness([compareTheme]);
@@ -26,27 +26,27 @@ const requiredProps = {
 	labels: bundle.messages,
 	month: testDate.getMonth(),
 	monthNames: DEFAULT_MONTHS,
-	year: testDate.getFullYear()
+	year: testDate.getFullYear(),
 };
 let customProps: any = {};
 
 const compareKey = {
 	selector: 'label,input',
 	property: 'key',
-	comparator: (property: any) => typeof property === 'string'
+	comparator: (property: any) => typeof property === 'string',
 };
 const compareFor = {
 	selector: 'label',
 	property: 'for',
-	comparator: (property: any) => typeof property === 'string'
+	comparator: (property: any) => typeof property === 'string',
 };
 const compareName = {
 	selector: 'input',
 	property: 'name',
-	comparator: (property: any) => typeof property === 'string'
+	comparator: (property: any) => typeof property === 'string',
 };
 
-const monthRadios = function(open?: boolean) {
+const monthRadios = function (open?: boolean) {
 	return DEFAULT_MONTHS.map((monthName, i) => (
 		<label
 			key=""
@@ -74,7 +74,7 @@ const monthRadios = function(open?: boolean) {
 	));
 };
 
-const yearRadios = function(
+const yearRadios = function (
 	open?: boolean,
 	yearStart = 2000,
 	yearEnd = 2020,
@@ -111,7 +111,7 @@ const yearRadios = function(
 	return radios;
 };
 
-const expectedMonthPopup = function(open: boolean) {
+const expectedMonthPopup = function (open: boolean) {
 	return (
 		<div
 			id=""
@@ -129,7 +129,7 @@ const expectedMonthPopup = function(open: boolean) {
 	);
 };
 
-const expectedYearPopup = function(
+const expectedYearPopup = function (
 	open: boolean,
 	yearStart?: number,
 	yearEnd?: number,
@@ -153,7 +153,7 @@ const expectedYearPopup = function(
 	);
 };
 
-const expectedControls = function(open: boolean) {
+const expectedControls = function (open: boolean) {
 	return (
 		<div classes={css.controls}>
 			<button
@@ -189,7 +189,7 @@ interface ExpectedOptions {
 	yearTriggerFocus?: () => any;
 }
 
-const expected = function(monthOpen = false, yearOpen = false, options: ExpectedOptions = {}) {
+const expected = function (monthOpen = false, yearOpen = false, options: ExpectedOptions = {}) {
 	const {
 		yearStart,
 		yearEnd,
@@ -197,7 +197,7 @@ const expected = function(monthOpen = false, yearOpen = false, options: Expected
 		minDate,
 		maxDate,
 		monthTriggerFocus,
-		yearTriggerFocus
+		yearTriggerFocus,
 	} = options;
 	return (
 		<div classes={css.datePicker}>
@@ -259,14 +259,17 @@ const expected = function(monthOpen = false, yearOpen = false, options: Expected
 registerSuite('Calendar DatePicker', {
 	tests: {
 		'Popup should render with default properties'() {
-			const h = harness(() => <DatePicker {...requiredProps} />, [
-				compareId,
-				compareAriaLabelledBy,
-				compareAriaControls,
-				compareKey,
-				compareFor,
-				compareName
-			]);
+			const h = harness(
+				() => <DatePicker {...requiredProps} />,
+				[
+					compareId,
+					compareAriaLabelledBy,
+					compareAriaControls,
+					compareKey,
+					compareFor,
+					compareName,
+				]
+			);
 
 			h.expect(() => expected());
 		},
@@ -276,7 +279,7 @@ registerSuite('Calendar DatePicker', {
 				labelId: 'foo',
 				yearRange: 25,
 				minDate: new Date('Oct 5, 2001'),
-				maxDate: new Date('March 14, 2019')
+				maxDate: new Date('March 14, 2019'),
 			};
 
 			const h = harness(
@@ -295,7 +298,7 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 
@@ -305,28 +308,31 @@ registerSuite('Calendar DatePicker', {
 					yearEnd: 2025,
 					monthLabel: 'bar',
 					minDate: customProps.minDate,
-					maxDate: customProps.maxDate
+					maxDate: customProps.maxDate,
 				})
 			);
 		},
 
 		'Year below 2000 calculates correctly'() {
 			let properties = {
-				...requiredProps
+				...requiredProps,
 			};
-			const h = harness(() => <DatePicker {...properties} />, [
-				compareKey,
-				compareFor,
-				compareName,
-				compareId,
-				compareAriaLabelledBy,
-				compareAriaControls
-			]);
+			const h = harness(
+				() => <DatePicker {...properties} />,
+				[
+					compareKey,
+					compareFor,
+					compareName,
+					compareId,
+					compareAriaLabelledBy,
+					compareAriaControls,
+				]
+			);
 			h.expect(expected);
 
 			properties = {
 				...requiredProps,
-				year: 1997
+				year: 1997,
 			};
 
 			h.expect(() => (
@@ -389,7 +395,7 @@ registerSuite('Calendar DatePicker', {
 									key=""
 									classes={[
 										css.monthRadio,
-										i === 5 ? css.monthRadioChecked : null
+										i === 5 ? css.monthRadioChecked : null,
 									]}
 									onmouseup={noop}
 								>
@@ -520,7 +526,7 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 			h.expect(() => expected(false, false));
@@ -551,7 +557,7 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 			h.expect(() => expected(false, false));
@@ -562,7 +568,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(true, false));
 			h.trigger(`.${css.monthGrid} fieldset`, 'onkeydown', {
 				which: Keys.Escape,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, false, { monthTriggerFocus: noop }));
 			assert.isFalse(isOpen, 'Should close on escape key press');
@@ -572,7 +578,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(true, false));
 			h.trigger(`.${css.monthGrid} fieldset`, 'onkeydown', {
 				which: Keys.Enter,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, false, { monthTriggerFocus: noop }));
 			assert.isFalse(isOpen, 'Should close on enter key press');
@@ -582,7 +588,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(true, false));
 			h.trigger(`.${css.monthGrid} fieldset`, 'onkeydown', {
 				which: Keys.Space,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, false, { monthTriggerFocus: noop }));
 			assert.isFalse(isOpen, 'Should close on space key press');
@@ -592,7 +598,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(true, false));
 			h.trigger(`.${css.monthGrid} fieldset`, 'onkeydown', {
 				which: Keys.PageDown,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(true, false));
 			assert.isTrue(isOpen, "Other keys don't close popup");
@@ -615,7 +621,7 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 			h.expect(() => expected(false, false));
@@ -626,7 +632,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(false, true));
 			h.trigger(`.${css.yearGrid} fieldset`, 'onkeydown', {
 				which: Keys.Escape,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, false, { yearTriggerFocus: noop }));
 			assert.isFalse(isOpen, 'Should close on escape key press');
@@ -636,7 +642,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(false, true));
 			h.trigger(`.${css.yearGrid} fieldset`, 'onkeydown', {
 				which: Keys.Enter,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, false, { yearTriggerFocus: noop }));
 			assert.isFalse(isOpen, 'Should close on enter key press');
@@ -646,7 +652,7 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(false, true));
 			h.trigger(`.${css.yearGrid} fieldset`, 'onkeydown', {
 				which: Keys.Space,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, false, { yearTriggerFocus: noop }));
 			assert.isFalse(isOpen, 'Should close on space key press');
@@ -656,21 +662,24 @@ registerSuite('Calendar DatePicker', {
 			h.expect(() => expected(false, true));
 			h.trigger(`.${css.yearGrid} fieldset`, 'onkeydown', {
 				which: Keys.PageDown,
-				...stubEvent
+				...stubEvent,
 			});
 			h.expect(() => expected(false, true));
 			assert.isTrue(isOpen, "Other keys don't close popup");
 		},
 
 		'Clicking buttons changes year page'() {
-			const h = harness(() => <DatePicker {...requiredProps} />, [
-				compareId,
-				compareAriaLabelledBy,
-				compareAriaControls,
-				compareKey,
-				compareFor,
-				compareName
-			]);
+			const h = harness(
+				() => <DatePicker {...requiredProps} />,
+				[
+					compareId,
+					compareAriaLabelledBy,
+					compareAriaControls,
+					compareKey,
+					compareFor,
+					compareName,
+				]
+			);
 			h.trigger('@year-button', 'onclick', stubEvent);
 			h.expect(() => expected(false, true));
 
@@ -702,7 +711,7 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 
@@ -711,7 +720,7 @@ registerSuite('Calendar DatePicker', {
 
 			h.trigger(`.${css.monthRadio}:nth-of-type(7) input`, 'onchange', {
 				...stubEvent,
-				target: { value: 6 }
+				target: { value: 6 },
 			});
 			assert.strictEqual(currentMonth, 6, 'Change event on July sets month value');
 
@@ -740,7 +749,7 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 
@@ -749,7 +758,7 @@ registerSuite('Calendar DatePicker', {
 
 			h.trigger(`.${css.yearRadio}:nth-of-type(2) input`, 'onchange', {
 				...stubEvent,
-				target: { value: 2001 }
+				target: { value: 2001 },
 			});
 			assert.strictEqual(
 				currentYear,
@@ -788,14 +797,14 @@ registerSuite('Calendar DatePicker', {
 					compareAriaControls,
 					compareKey,
 					compareFor,
-					compareName
+					compareName,
 				]
 			);
 
 			h.trigger('@year-button', 'onclick', stubEvent);
 			h.trigger(`.${css.yearRadio}:nth-of-type(17) input`, 'onchange', {
 				...stubEvent,
-				target: { value: 2016 }
+				target: { value: 2016 },
 			});
 			assert.strictEqual(currentMonth, 10, 'Change event changed the month to November');
 			assert.strictEqual(
@@ -808,7 +817,7 @@ registerSuite('Calendar DatePicker', {
 			h.trigger('@year-button', 'onclick', stubEvent);
 			h.trigger(`.${css.yearRadio}:nth-of-type(19) input`, 'onchange', {
 				...stubEvent,
-				target: { value: 2018 }
+				target: { value: 2018 },
 			});
 			assert.strictEqual(currentMonth, 1, 'Change event changed the month to February');
 			assert.strictEqual(
@@ -819,6 +828,6 @@ registerSuite('Calendar DatePicker', {
 			h.trigger(`.${css.yearRadio}:nth-of-type(19) input`, 'onmouseup', stubEvent);
 
 			assert.isFalse(isOpen, 'Clicking radios closes popup');
-		}
-	}
+		},
+	},
 });

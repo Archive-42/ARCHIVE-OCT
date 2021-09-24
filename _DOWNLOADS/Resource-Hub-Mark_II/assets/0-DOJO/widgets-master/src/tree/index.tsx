@@ -56,7 +56,7 @@ const factory = create({ theme, icache, diffProperty, focus, resource })
 export default factory(function Tree({
 	middleware: { theme, icache, diffProperty, resource },
 	properties,
-	children
+	children,
 }) {
 	diffProperty('value', properties, ({ value: current }, { value: next }) => {
 		if ((current || next) && current !== next) {
@@ -96,7 +96,7 @@ export default factory(function Tree({
 		parentSelection = false,
 		theme: themeProp,
 		classes,
-		variant
+		variant,
 	} = properties();
 	const themedCss = theme.classes(css);
 	const defaultRenderer = (n: TreeNodeOption) => n.value;
@@ -242,7 +242,7 @@ export default factory(function Tree({
 				classes={[
 					nodeId === 'root' ? themedCss.root : null,
 					themedCss.nodeParent,
-					theme.variant()
+					theme.variant(),
 				]}
 				onkeydown={onKeyDown}
 				tabIndex={0}
@@ -256,7 +256,7 @@ export default factory(function Tree({
 								themedCss.node,
 								node.hasChildren && themedCss.leaf,
 								selectable && themedCss.selectable,
-								node.id === selectedNode && themedCss.selected
+								node.id === selectedNode && themedCss.selected,
 							]}
 							role={'treeitem'}
 						>
@@ -325,7 +325,7 @@ const treeNodeFactory = create({ theme })
 export const TreeNode = treeNodeFactory(function TreeNode({
 	middleware: { theme },
 	properties,
-	children
+	children,
 }) {
 	const {
 		node,
@@ -343,7 +343,7 @@ export const TreeNode = treeNodeFactory(function TreeNode({
 		parentSelection,
 		theme: themeProp,
 		classes,
-		variant
+		variant,
 	} = properties();
 	const [itemRenderer] = children();
 	const themedCss = theme.classes(css);

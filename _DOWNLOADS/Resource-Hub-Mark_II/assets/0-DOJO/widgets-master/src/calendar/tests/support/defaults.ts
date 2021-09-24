@@ -7,11 +7,11 @@ export const DEFAULT_WEEKDAYS = [
 	'wednesday',
 	'thursday',
 	'friday',
-	'saturday'
+	'saturday',
 ].map((weekday) => {
 	return {
 		short: (<any>bundle.messages)[weekday.slice(0, 3) + 'Short'],
-		long: (<any>bundle.messages)[weekday]
+		long: (<any>bundle.messages)[weekday],
 	};
 });
 
@@ -27,10 +27,10 @@ export const DEFAULT_MONTHS = [
 	'september',
 	'october',
 	'november',
-	'december'
+	'december',
 ].map((month) => {
 	return {
 		short: (<any>bundle.messages)[month.slice(0, 3) + 'Short'],
-		long: (<any>bundle.messages)[month]
+		long: (<any>bundle.messages)[month],
 	};
 });

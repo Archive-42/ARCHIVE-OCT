@@ -7,7 +7,7 @@ import { renderer, assertion, wrap } from '@dojo/framework/testing/renderer';
 import {
 	createMemoryResourceTemplate,
 	createResourceTemplate,
-	defaultFind
+	defaultFind,
 } from '@dojo/framework/core/middleware/resources';
 
 import { Keys } from '../../../common/util';
@@ -38,7 +38,7 @@ const defaultNodeProps = {
 	onActive: noop,
 	onValue: noop,
 	onCheck: noop,
-	onExpand: noop
+	onExpand: noop,
 };
 const baseAssertion = assertion(() => (
 	<WrappedRoot
@@ -71,7 +71,7 @@ const simpleTreeAssertion = baseAssertion.replaceChildren(WrappedRoot, () => [
 		>
 			{() => 'node-2'}
 		</WrappedNode2>
-	</WrappedListItem2>
+	</WrappedListItem2>,
 ]);
 
 describe('Tree', () => {
@@ -79,8 +79,8 @@ describe('Tree', () => {
 
 	const emptyDataProps = {
 		resource: {
-			template: { template, id: 'test', initOptions: { data: [], id: 'test' } }
-		}
+			template: { template, id: 'test', initOptions: { data: [], id: 'test' } },
+		},
 	};
 
 	beforeEach(() => {
@@ -100,8 +100,8 @@ describe('Tree', () => {
 					template: {
 						template,
 						id: 'test',
-						initOptions: { data: simpleTree, id: 'test' } as any
-					}
+						initOptions: { data: simpleTree, id: 'test' } as any,
+					},
 				}}
 			/>
 		));
@@ -119,8 +119,8 @@ describe('Tree', () => {
 					template: {
 						template,
 						id: 'test',
-						initOptions: { data: simpleTree, id: 'test' } as any
-					}
+						initOptions: { data: simpleTree, id: 'test' } as any,
+					},
 				}}
 				disabledIds={disabledNodes}
 			/>
@@ -142,8 +142,8 @@ describe('Tree', () => {
 					template: {
 						template,
 						id: 'test',
-						initOptions: { data: [...simpleTree], id: 'test' } as any
-					}
+						initOptions: { data: [...simpleTree], id: 'test' } as any,
+					},
 				}}
 			/>
 		));
@@ -226,7 +226,7 @@ describe('Tree', () => {
 			const expandedNodes = [simpleTree[0].id];
 			const nodeProps = {
 				...defaultNodeProps,
-				expanded: false
+				expanded: false,
 			};
 			const r = renderer(() => (
 				<Tree
@@ -234,8 +234,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					expandedIds={expandedNodes}
 				/>
@@ -278,7 +278,7 @@ describe('Tree', () => {
 			const expandedNodes = [simpleTree[0].id];
 			const nodeProps = {
 				...defaultNodeProps,
-				expanded: false
+				expanded: false,
 			};
 			const r = renderer(() => (
 				<Tree
@@ -286,8 +286,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					initialExpanded={expandedNodes}
 				/>
@@ -334,8 +334,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					onExpand={onExpand}
 				/>
@@ -372,8 +372,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					onExpand={onExpand}
 				/>
@@ -423,8 +423,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					onExpand={onExpand}
 					expandedIds={['parent-1']}
@@ -468,8 +468,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					checkable={true}
 				/>
@@ -488,8 +488,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					checkable={true}
 					checkedIds={checkedNodes}
@@ -513,8 +513,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					checkable={true}
 					initialChecked={checkedNodes}
@@ -538,8 +538,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					checkable={true}
 					onCheck={onCheck}
@@ -588,8 +588,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					selectable={true}
 				/>
@@ -608,8 +608,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					selectable={true}
 					value={selectedNode}
@@ -624,7 +624,7 @@ describe('Tree', () => {
 						css.node,
 						css.leaf,
 						css.selectable,
-						css.selected
+						css.selected,
 					])
 					.setProperty(WrappedNode1, 'value', selectedNode)
 					.setProperty(WrappedNode2, 'value', selectedNode)
@@ -640,8 +640,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					selectable={true}
 					onValue={onValue}
@@ -664,7 +664,7 @@ describe('Tree', () => {
 						css.node,
 						css.leaf,
 						css.selectable,
-						css.selected
+						css.selected,
 					])
 					.setProperty(WrappedNode1, 'value', selectedNode)
 					.setProperty(WrappedNode2, 'value', selectedNode)
@@ -679,8 +679,8 @@ describe('Tree', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 					selectable={true}
 				/>
@@ -710,7 +710,7 @@ describe('Tree', () => {
 						css.node,
 						false,
 						css.selectable,
-						css.selected
+						css.selected,
 					])
 					.setProperty(WrappedNode1, 'value', nodeId)
 					.setProperty(WrappedNode2, 'value', nodeId)
@@ -735,7 +735,7 @@ describe('Tree', () => {
 				read: async (request, { put, get }) => {
 					const data = await dataPromise;
 					put({ data, total: simpleTree.length }, request);
-				}
+				},
 			});
 			const r = renderer(() => (
 				<Tree
@@ -743,8 +743,8 @@ describe('Tree', () => {
 						template: {
 							template: loadingTemplate,
 							id: 'test',
-							initOptions: { data: simpleTree, id: 'test' } as any
-						}
+							initOptions: { data: simpleTree, id: 'test' } as any,
+						},
 					}}
 				/>
 			));

@@ -15,17 +15,17 @@ import {
 	compareForId,
 	createHarness,
 	noop,
-	stubEvent
+	stubEvent,
 } from '../../../common/tests/support/test-helpers';
 
 const compareFor = {
 	selector: '*',
 	property: 'for',
-	comparator: (property: any) => typeof property === 'string'
+	comparator: (property: any) => typeof property === 'string',
 };
 const harness = createHarness([compareId, compareForId, compareFor]);
 
-const expected = function(
+const expected = function (
 	label = false,
 	tooltip = false,
 	overrides = {},
@@ -47,7 +47,7 @@ const expected = function(
 				null,
 				null,
 				vertical ? css.vertical : null,
-				fixedCss.rootFixed
+				fixedCss.rootFixed,
 			]}
 		>
 			{label ? (
@@ -149,7 +149,7 @@ registerSuite('Slider', {
 					initialValue={35}
 				>
 					{{
-						output: () => 'tribbles'
+						output: () => 'tribbles',
 					}}
 				</Slider>
 			));
@@ -165,7 +165,7 @@ registerSuite('Slider', {
 						min: '10',
 						name: 'bar',
 						step: '5',
-						value: '35'
+						value: '35',
 					},
 					'tribbles',
 					'50%'
@@ -184,7 +184,7 @@ registerSuite('Slider', {
 			focusMock('input', true);
 
 			const h = harness(() => <Slider />, {
-				middleware: [[focus, focusMock]]
+				middleware: [[focus, focusMock]],
 			});
 
 			h.expect(expected(false, false, {}, '0', '0%', true));
@@ -222,7 +222,7 @@ registerSuite('Slider', {
 						.setProperty('~output', 'styles', { top: '80%' })
 						.setChildren('~output', ['6'])
 				);
-			}
+			},
 		},
 
 		'max value should be respected'() {
@@ -318,7 +318,7 @@ registerSuite('Slider', {
 
 				h.trigger('@input', 'onpointerleave', stubEvent);
 				assert.isTrue(onOut.called, 'onOut called');
-			}
+			},
 		},
 
 		label() {
@@ -340,7 +340,7 @@ registerSuite('Slider', {
 				valid: false,
 				disabled: true,
 				readOnly: true,
-				required: true
+				required: true,
 			};
 			const h = harness(() => <Slider {...properties} />);
 
@@ -355,7 +355,7 @@ registerSuite('Slider', {
 						null,
 						css.readonly,
 						null,
-						fixedCss.rootFixed
+						fixedCss.rootFixed,
 					])
 					.setProperty('@input', 'aria-invalid', 'true')
 					.setProperty('@input', 'aria-readonly', 'true')
@@ -368,7 +368,7 @@ registerSuite('Slider', {
 				valid: true,
 				disabled: false,
 				readOnly: false,
-				required: false
+				required: false,
 			};
 
 			h.expect(
@@ -382,7 +382,7 @@ registerSuite('Slider', {
 						css.valid,
 						null,
 						null,
-						fixedCss.rootFixed
+						fixedCss.rootFixed,
 					])
 					.setProperty('@input', 'readOnly', false)
 					.setProperty('@input', 'required', false)
@@ -421,6 +421,6 @@ registerSuite('Slider', {
 
 			h.trigger('@input', 'onpointerleave', stubEvent);
 			assert.isTrue(onOut.called, 'onOut called');
-		}
-	}
+		},
+	},
 });

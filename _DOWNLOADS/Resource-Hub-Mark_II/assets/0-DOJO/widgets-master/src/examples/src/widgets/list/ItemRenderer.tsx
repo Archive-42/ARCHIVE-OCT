@@ -5,7 +5,7 @@ import icache from '@dojo/framework/core/middleware/icache';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -19,7 +19,7 @@ export default factory(function ItemRenderer({ id, middleware: { icache, resourc
 				resource={resource({
 					template,
 					transform: { value: 'value', label: 'value' },
-					initOptions: { id, data: states }
+					initOptions: { id, data: states },
 				})}
 				onValue={(value) => {
 					icache.set('value', value);

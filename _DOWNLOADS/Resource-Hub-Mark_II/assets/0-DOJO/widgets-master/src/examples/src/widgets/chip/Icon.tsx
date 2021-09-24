@@ -11,7 +11,7 @@ const App = factory(function IconExample() {
 			<Chip>
 				{{
 					label: 'Icon Example',
-					icon: () => <Icon type="alertIcon" />
+					icon: () => <Icon type="alertIcon" />,
 				}}
 			</Chip>
 		</Example>

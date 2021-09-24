@@ -54,7 +54,7 @@ export const Radio = factory(function Radio({
 	properties,
 	id,
 	children,
-	middleware: { focus, theme }
+	middleware: { focus, theme },
 }) {
 	const {
 		aria = {},
@@ -74,7 +74,7 @@ export const Radio = factory(function Radio({
 		valid,
 		value,
 		variant,
-		widgetId
+		widgetId,
 	} = properties();
 
 	const themeCss = theme.classes(css);
@@ -94,7 +94,7 @@ export const Radio = factory(function Radio({
 				valid === false ? themeCss.invalid : null,
 				valid === true ? themeCss.valid : null,
 				readOnly ? themeCss.readonly : null,
-				required ? themeCss.required : null
+				required ? themeCss.required : null,
 			]}
 		>
 			<div classes={themeCss.inputWrapper}>

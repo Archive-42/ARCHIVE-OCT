@@ -47,7 +47,7 @@ const breadcrumbFactory = create({ theme }).properties<BreadcrumbProperties>();
 export const Breadcrumb = breadcrumbFactory(function Breadcrumb({
 	children,
 	middleware: { theme },
-	properties
+	properties,
 }) {
 	const { current, href, title } = properties();
 	const themeCss = theme.classes(css);
@@ -82,7 +82,7 @@ const factory = create({ theme })
 export const BreadcrumbGroup = factory(function BreadcrumbGroup({
 	children,
 	properties,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const { items, label, classes, theme: themeProp, variant } = properties();
 	const themeCss = theme.classes(css);

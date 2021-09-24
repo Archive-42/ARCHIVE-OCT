@@ -19,9 +19,7 @@ export type HeaderChildren = {
 	trailing?: RenderResult;
 };
 
-const factory = create({ theme })
-	.properties<HeaderProperties>()
-	.children<HeaderChildren>();
+const factory = create({ theme }).properties<HeaderProperties>().children<HeaderChildren>();
 
 export const Header = factory(function Header({ children, properties, middleware: { theme } }) {
 	const classes = theme.classes(css);

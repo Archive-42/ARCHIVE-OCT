@@ -114,7 +114,7 @@ const factory = create({
 	validity,
 	focus,
 	diffProperty,
-	invalidator
+	invalidator,
 })
 	.properties<TextInputProperties>()
 	.children<TextInputChildren | undefined>();
@@ -123,7 +123,7 @@ export const TextInput = factory(function TextInput({
 	middleware: { icache, theme, validity, focus, diffProperty, invalidator },
 	properties,
 	children,
-	id
+	id,
 }) {
 	diffProperty('pattern', (previous: TextInputProperties, next: TextInputProperties) => {
 		const value = next.pattern instanceof RegExp ? next.pattern.source : next.pattern;
@@ -167,7 +167,7 @@ export const TextInput = factory(function TextInput({
 		initialValue,
 		valid: validValue = { valid: undefined, message: '' },
 		widgetId = `text-input-${id}`,
-		variant
+		variant,
 	} = properties();
 
 	let { value } = properties();
@@ -238,7 +238,7 @@ export const TextInput = factory(function TextInput({
 					required ? themeCss.required : null,
 					leading ? themeCss.hasLeading : null,
 					trailing ? themeCss.hasTrailing : null,
-					!label || labelHidden ? themeCss.noLabel : null
+					!label || labelHidden ? themeCss.noLabel : null,
 				]}
 				role="presentation"
 			>
@@ -263,7 +263,7 @@ export const TextInput = factory(function TextInput({
 					key="inputWrapper"
 					classes={[
 						themeCss.inputWrapper,
-						inputFocused ? themeCss.inputWrapperFocused : undefined
+						inputFocused ? themeCss.inputWrapperFocused : undefined,
 					]}
 					role="presentation"
 				>
@@ -339,7 +339,7 @@ export interface AddonProperties {
 }
 
 const addonFactory = create({
-	theme
+	theme,
 }).properties<AddonProperties>();
 
 export const Addon = addonFactory(function Addon({ middleware: { theme }, properties, children }) {

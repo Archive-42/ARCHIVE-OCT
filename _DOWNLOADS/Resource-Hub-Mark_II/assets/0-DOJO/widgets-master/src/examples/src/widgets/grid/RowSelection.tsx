@@ -9,24 +9,24 @@ import Example from '../../Example';
 const columnConfig = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'firstName',
-		title: 'First Name'
+		title: 'First Name',
 	},
 	{
 		id: 'middleName',
-		title: 'Middle Name'
+		title: 'Middle Name',
 	},
 	{
 		id: 'lastName',
-		title: 'Last Name'
+		title: 'Last Name',
 	},
 	{
 		id: 'otherName',
-		title: 'Other Name'
-	}
+		title: 'Other Name',
+	},
 ];
 
 const fetcher = createFetcher(createData());

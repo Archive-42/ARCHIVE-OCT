@@ -11,7 +11,7 @@ import Example from '../../Example';
 const columnConfig: ColumnConfig[] = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'firstName',
@@ -28,12 +28,12 @@ const columnConfig: ColumnConfig[] = [
 					</a>
 				</div>
 			);
-		}
+		},
 	},
 	{
 		id: 'lastName',
-		title: 'Last Name'
-	}
+		title: 'Last Name',
+	},
 ];
 
 const fetcher = createFetcher(createData());

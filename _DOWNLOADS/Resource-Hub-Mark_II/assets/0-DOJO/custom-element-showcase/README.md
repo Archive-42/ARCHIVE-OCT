@@ -2,11 +2,11 @@
 
 A demo implementation of [@dojo/widgets](https://github.com/dojo/widgets) used as custom elements.
 
--   [Pre-requisites](#pre-requisites)
--   [Usage](#usage)
--   [How do I contribute?](#how-do-i-contribute)
-    -   [Installation](#installation)
--   [Licensing information](#licensing-information)
+- [Pre-requisites](#pre-requisites)
+- [Usage](#usage)
+- [How do I contribute?](#how-do-i-contribute)
+  - [Installation](#installation)
+- [Licensing information](#licensing-information)
 
 ## Usage
 

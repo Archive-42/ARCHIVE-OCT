@@ -24,7 +24,7 @@ registerSuite('Label', {
 						null,
 						null,
 						null,
-						null
+						null,
 					]}
 					for="undefined"
 					id="label-test"
@@ -67,7 +67,7 @@ registerSuite('Label', {
 						css.required,
 						css.secondary,
 						css.active,
-						null
+						null,
 					]}
 					for="foo"
 					id="foo-id"
@@ -93,7 +93,7 @@ registerSuite('Label', {
 						null,
 						null,
 						null,
-						baseCss.visuallyHidden
+						baseCss.visuallyHidden,
 					]}
 					for="undefined"
 					id="label-test"
@@ -101,6 +101,6 @@ registerSuite('Label', {
 					baz
 				</label>
 			));
-		}
-	}
+		},
+	},
 });

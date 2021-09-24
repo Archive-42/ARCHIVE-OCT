@@ -5,7 +5,7 @@ import Icon from '@dojo/widgets/icon';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { data, Data } from '../../data';
 import { ListOption } from '@dojo/widgets/list';
@@ -23,13 +23,13 @@ export default factory(function Controlled({ id, middleware: { icache, resource 
 				resource={resource({
 					template,
 					transform: { value: 'id', label: 'product' },
-					initOptions: { id, data }
+					initOptions: { id, data },
 				})}
 				value={icache.getOrSet('value', []).map((value) => value.value)}
 				onValue={(value) => icache.set('value', value)}
 			>
 				{{
-					label: 'Chip Typeahead'
+					label: 'Chip Typeahead',
 				}}
 			</ChipTypeahead>
 			<br />

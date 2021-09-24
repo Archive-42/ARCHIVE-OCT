@@ -12,7 +12,7 @@ export default factory(function MinMaxRangeSlider() {
 				max={100}
 				initialValue={{
 					min: 0,
-					max: 100
+					max: 100,
 				}}
 			/>
 		</Example>

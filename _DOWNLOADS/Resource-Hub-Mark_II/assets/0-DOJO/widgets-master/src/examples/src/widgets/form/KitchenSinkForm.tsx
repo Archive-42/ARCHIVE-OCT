@@ -20,7 +20,7 @@ interface Fields {
 	email?: string;
 }
 
-const App = factory(function({ middleware: { icache } }) {
+const App = factory(function ({ middleware: { icache } }) {
 	const results = icache.get('basic');
 	const onValueResults = icache.get('basicOnValue');
 
@@ -28,7 +28,7 @@ const App = factory(function({ middleware: { icache } }) {
 		<Example>
 			<Form
 				initialValue={{
-					firstName: 'Billy'
+					firstName: 'Billy',
 				}}
 				onSubmit={(values) => icache.set('basic', values)}
 				onValue={(values) =>
@@ -117,7 +117,7 @@ const App = factory(function({ middleware: { icache } }) {
 									value({
 										firstName: 'Billy',
 										middleName: '',
-										lastName: 'Bob'
+										lastName: 'Bob',
 									});
 								}}
 							>

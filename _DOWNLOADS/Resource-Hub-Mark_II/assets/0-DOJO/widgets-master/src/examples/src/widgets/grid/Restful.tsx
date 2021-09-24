@@ -7,16 +7,16 @@ import Example from '../../Example';
 const columnConfig = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'firstName',
-		title: 'First Name'
+		title: 'First Name',
 	},
 	{
 		id: 'lastName',
-		title: 'Last Name'
-	}
+		title: 'Last Name',
+	},
 ];
 
 async function fetcher(
@@ -36,15 +36,15 @@ async function fetcher(
 	}
 	const response = await fetch(url, {
 		headers: {
-			'Content-Type': 'application/json'
-		}
+			'Content-Type': 'application/json',
+		},
 	});
 	const data = await response.json();
 	return {
 		data: data.data,
 		meta: {
-			total: data.total
-		}
+			total: data.total,
+		},
 	};
 }
 

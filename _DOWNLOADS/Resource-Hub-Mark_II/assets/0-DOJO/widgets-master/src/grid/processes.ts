@@ -8,7 +8,7 @@ import {
 	SortCommandPayload,
 	FilterCommandPayload,
 	UpdaterCommandPayload,
-	SelectionCommandPayload
+	SelectionCommandPayload,
 } from './interfaces';
 import { findIndex } from '@dojo/framework/shim/array';
 
@@ -31,7 +31,7 @@ const preFetcherCommand = commandFactory<FetcherCommandPayload>(
 			return [
 				replace(path(id, 'meta', 'fetchedPages'), [...fetchedPages, page]),
 				replace(path(id, 'meta', 'page'), page),
-				replace(path(id, 'meta', 'pageSize'), pageSize)
+				replace(path(id, 'meta', 'pageSize'), pageSize),
 			];
 		}
 		throw Error('The page has already been requested');
@@ -48,14 +48,14 @@ const fetcherCommand = commandFactory<FetcherCommandPayload>(
 			try {
 				result = await fetcher(page, pageSize, {
 					sort: sortOptions,
-					filter: filterOptions
+					filter: filterOptions,
 				});
 			} catch (error) {
 				return [remove(path(id, 'data', 'pages', `page-${page}`))];
 			}
 			return [
 				replace(path(id, 'data', 'pages', `page-${page}`), result.data),
-				replace(path(id, 'meta', 'total'), result.meta.total)
+				replace(path(id, 'meta', 'total'), result.meta.total),
 			];
 		} else {
 			throw Error('The grid is being sorted or filtered');
@@ -72,7 +72,7 @@ const preSortCommand = commandFactory<SortCommandPayload>(
 			replace(path(id, 'meta', 'fetchedPages'), page === 1 ? [1] : [page, page - 1]),
 			replace(path(id, 'meta', 'sort', 'columnId'), columnId),
 			replace(path(id, 'meta', 'sort', 'direction'), direction),
-			replace(path(id, 'meta', 'isSorting'), true)
+			replace(path(id, 'meta', 'isSorting'), true),
 		];
 	}
 );
@@ -86,7 +86,7 @@ const preFilterCommand = commandFactory<FilterCommandPayload>(
 			replace(path(id, 'meta', 'filter', filterOptions.columnId), filterOptions.value),
 			replace(path(id, 'meta', 'currentFilter'), filterOptions),
 			replace(path(id, 'meta', 'page'), 1),
-			replace(path(id, 'meta', 'isSorting'), true)
+			replace(path(id, 'meta', 'isSorting'), true),
 		];
 	}
 );
@@ -104,7 +104,7 @@ const sortCommand = commandFactory<SortCommandPayload>(
 		try {
 			const options = {
 				sort: { columnId, direction },
-				filter: filterOptions
+				filter: filterOptions,
 			};
 			const previousPage = fetcher(page - 1, pageSize, options);
 			const currentPage = fetcher(page, pageSize, options);
@@ -120,7 +120,7 @@ const sortCommand = commandFactory<SortCommandPayload>(
 			replace(path(id, 'meta', 'sort', 'direction'), direction),
 			replace(path(id, 'meta', 'total'), result[1].meta.total),
 			replace(path(id, 'meta', 'page'), page),
-			replace(path(id, 'meta', 'isSorting'), false)
+			replace(path(id, 'meta', 'isSorting'), false),
 		];
 	}
 );
@@ -133,7 +133,7 @@ const sortForFirstPage = commandFactory<SortCommandPayload>(
 		try {
 			result = await fetcher(1, pageSize, {
 				sort: { columnId, direction },
-				filter: filterOptions
+				filter: filterOptions,
 			});
 		} catch (err) {
 			return [];
@@ -144,7 +144,7 @@ const sortForFirstPage = commandFactory<SortCommandPayload>(
 			replace(path(id, 'meta', 'sort', 'direction'), direction),
 			replace(path(id, 'meta', 'total'), result.meta.total),
 			replace(path(id, 'meta', 'page'), 1),
-			replace(path(id, 'meta', 'isSorting'), false)
+			replace(path(id, 'meta', 'isSorting'), false),
 		];
 	}
 );
@@ -168,7 +168,7 @@ const filterCommand = commandFactory<FilterCommandPayload>(
 			remove(path(id, 'data', 'pages')),
 			replace(path(id, 'data', 'pages', 'page-1'), result.data),
 			replace(path(id, 'meta', 'total'), result.meta.total),
-			replace(path(id, 'meta', 'isSorting'), false)
+			replace(path(id, 'meta', 'isSorting'), false),
 		];
 	}
 );
@@ -182,7 +182,7 @@ const preUpdateCommand = commandFactory<UpdaterCommandPayload>(
 			replace(at(path(id, 'data', 'pages', `page-${page}`), rowNumber), updatedItem),
 			replace(path(id, 'meta', 'editedRow', 'page'), page),
 			replace(path(id, 'meta', 'editedRow', 'index'), rowNumber),
-			replace(path(id, 'meta', 'editedRow', 'item'), { ...item })
+			replace(path(id, 'meta', 'editedRow', 'item'), { ...item }),
 		];
 	}
 );
@@ -195,7 +195,7 @@ const updaterCommand = commandFactory<UpdaterCommandPayload>(
 		} catch (err) {
 			const previousItem = get(path(id, 'meta', 'editedRow', 'item'));
 			return [
-				replace(at(path(id, 'data', 'pages', `page-${page}`), rowNumber), previousItem)
+				replace(at(path(id, 'data', 'pages', `page-${page}`), rowNumber), previousItem),
 			];
 		}
 
@@ -245,7 +245,7 @@ export const filterProcess: Process<GridState, FilterCommandPayload> = createPro
 );
 export const sortProcess: Process<GridState, SortCommandPayload> = createProcess('grid-sort', [
 	preSortCommand,
-	sortCommand
+	sortCommand,
 ]);
 export const selectionProcess: Process<GridState, SelectionCommandPayload> = createProcess(
 	'grid-selection',

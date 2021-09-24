@@ -72,7 +72,7 @@ describe('PasswordInput', () => {
 						<button onclick={() => {}} type="button">
 							<Icon type="eyeIcon" />
 						</button>
-					)
+					),
 				}}
 			</ConstrainedInput>
 		));

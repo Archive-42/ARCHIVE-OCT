@@ -13,7 +13,7 @@ function icacheFactory<T>() {
 		id: 'test-cache',
 		properties: () => ({}),
 		children: () => [],
-		middleware: { destroy: sb.stub(), invalidator: sb.stub() }
+		middleware: { destroy: sb.stub(), invalidator: sb.stub() },
 	});
 }
 
@@ -27,7 +27,7 @@ describe('RadioGroup-middleware', () => {
 			id: 'radiogroup-test',
 			middleware: { icache: icacheFactory() },
 			properties: () => ({}),
-			children: () => []
+			children: () => [],
 		})(onValueStub, 'test');
 
 		const test1Api = radioGroup('test1');

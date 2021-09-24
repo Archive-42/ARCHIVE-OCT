@@ -19,9 +19,7 @@ export interface CardChildren {
 	actionIcons?: RenderResult;
 }
 
-const factory = create({ theme })
-	.properties<CardProperties>()
-	.children<CardChildren | undefined>();
+const factory = create({ theme }).properties<CardProperties>().children<CardChildren | undefined>();
 
 export const Card = factory(function Card({ children, properties, middleware: { theme } }) {
 	const themeCss = theme.classes(css);
@@ -45,10 +43,10 @@ export const Card = factory(function Card({ children, properties, middleware: { 
 						title={mediaTitle}
 						classes={[
 							themeCss.media,
-							square ? themeCss.mediaSquare : themeCss.media16by9
+							square ? themeCss.mediaSquare : themeCss.media16by9,
 						]}
 						styles={{
-							backgroundImage: `url("${mediaSrc}")`
+							backgroundImage: `url("${mediaSrc}")`,
 						}}
 					/>
 				)}

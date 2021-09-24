@@ -124,10 +124,10 @@ export default {
 		'@dojo/widgets/tooltip': tooltip,
 		'@dojo/widgets/tree': tree,
 		'@dojo/widgets/two-column-layout': twoColumnLayout,
-		'@dojo/widgets/typeahead': typeahead
+		'@dojo/widgets/typeahead': typeahead,
 	},
 	variants: {
 		default: defaultVariant,
-		dark: darkVariant
-	}
+		dark: darkVariant,
+	},
 };

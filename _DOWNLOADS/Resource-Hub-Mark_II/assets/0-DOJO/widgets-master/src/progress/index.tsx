@@ -32,7 +32,7 @@ export const Progress = factory(function Progress({
 	children,
 	id,
 	properties,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const themeCss = theme.classes(css);
 	const {
@@ -41,7 +41,7 @@ export const Progress = factory(function Progress({
 		showOutput = true,
 		max = 100,
 		min = 0,
-		widgetId = `progress-${id}`
+		widgetId = `progress-${id}`,
 	} = properties();
 
 	const _output = (value: number, percent: number) => {

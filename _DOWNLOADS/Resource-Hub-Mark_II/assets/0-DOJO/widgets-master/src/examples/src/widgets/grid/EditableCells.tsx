@@ -10,18 +10,18 @@ import Example from '../../Example';
 const columnConfig: ColumnConfig[] = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'firstName',
 		title: 'First Name',
-		editable: true
+		editable: true,
 	},
 	{
 		id: 'lastName',
 		title: 'Last Name',
-		editable: true
-	}
+		editable: true,
+	},
 ];
 
 const data = createData();

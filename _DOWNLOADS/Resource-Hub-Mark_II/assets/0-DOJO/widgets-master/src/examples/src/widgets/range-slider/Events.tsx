@@ -11,7 +11,7 @@ export default factory(function EventsRangeSlider({ middleware: { icache } }) {
 			<RangeSlider
 				initialValue={{
 					min: 0,
-					max: 100
+					max: 100,
 				}}
 				onValue={() => icache.set('event', 'onValue')}
 				onBlur={() => icache.set('event', 'onBlur')}

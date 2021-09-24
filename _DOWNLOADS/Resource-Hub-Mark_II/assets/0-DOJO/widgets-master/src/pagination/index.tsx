@@ -7,7 +7,7 @@ import resize from '@dojo/framework/core/middleware/resize';
 import { RenderResult } from '@dojo/framework/core/interfaces';
 import {
 	createResourceMiddleware,
-	createMemoryResourceTemplate
+	createMemoryResourceTemplate,
 } from '@dojo/framework/core/middleware/resources';
 import global from '@dojo/framework/shim/global';
 
@@ -84,13 +84,13 @@ const factory = create({
 	dimensions,
 	resize,
 	diffProperty,
-	resource
+	resource,
 }).properties<PaginationProperties>();
 
 export default factory(function Pagination({
 	id,
 	middleware: { theme, icache, i18n, dimensions, resize, diffProperty, resource },
-	properties
+	properties,
 }) {
 	diffProperty('theme', (current, next) => {
 		if (current !== next) {
@@ -100,15 +100,8 @@ export default factory(function Pagination({
 	});
 	resize.get('root');
 
-	const {
-		initialPage,
-		initialPageSize,
-		onPage,
-		onPageSize,
-		pageSizes,
-		siblingCount,
-		total
-	} = properties();
+	const { initialPage, initialPageSize, onPage, onPageSize, pageSizes, siblingCount, total } =
+		properties();
 	const classes = theme.classes(css);
 	const { messages } = i18n.localize(bundle);
 
@@ -269,7 +262,7 @@ export default factory(function Pagination({
 					key="links"
 					classes={classes.linksWrapper}
 					styles={{
-						opacity: containerWidth ? '1' : '0'
+						opacity: containerWidth ? '1' : '0',
 					}}
 				>
 					{showPrev && prevLink}
@@ -294,9 +287,9 @@ export default factory(function Pagination({
 									id,
 									data: pageSizes.map((ps) => ({
 										value: `${ps}`,
-										label: `${ps}`
-									}))
-								}
+										label: `${ps}`,
+									})),
+								},
 							})}
 							onValue={(value) => {
 								onPageSize && onPageSize(parseInt(value.value, 10));

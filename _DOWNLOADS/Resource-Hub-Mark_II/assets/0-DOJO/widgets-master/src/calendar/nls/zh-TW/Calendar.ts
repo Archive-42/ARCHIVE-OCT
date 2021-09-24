@@ -42,5 +42,5 @@ export default {
 	september: '九月',
 	october: '十月',
 	november: '十一月',
-	december: '十二月'
+	december: '十二月',
 };

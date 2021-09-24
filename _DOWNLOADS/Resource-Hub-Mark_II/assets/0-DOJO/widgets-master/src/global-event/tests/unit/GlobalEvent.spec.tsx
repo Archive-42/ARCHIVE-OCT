@@ -15,14 +15,14 @@ let documentRemoveEventlistenerStub: SinonStub;
 if (!global.document) {
 	global.document = {
 		addEventListener() {},
-		removeEventListener() {}
+		removeEventListener() {},
 	};
 }
 
 if (!global.window) {
 	global.window = {
 		addEventListener() {},
-		removeEventListener() {}
+		removeEventListener() {},
 	};
 }
 
@@ -97,6 +97,6 @@ registerSuite('GlobalEvent', {
 		'Returns children if they exist'() {
 			const h = harness(() => <GlobalEvent>child</GlobalEvent>);
 			h.expect(() => ['child']);
-		}
-	}
+		},
+	},
 });

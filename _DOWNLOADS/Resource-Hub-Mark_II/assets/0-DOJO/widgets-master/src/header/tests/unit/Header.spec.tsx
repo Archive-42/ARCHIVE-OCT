@@ -27,7 +27,7 @@ describe('HeaderToolbar', () => {
 		const h = harness(() => (
 			<Header>
 				{{
-					title: 'title'
+					title: 'title',
 				}}
 			</Header>
 		));
@@ -39,12 +39,12 @@ describe('HeaderToolbar', () => {
 			<Header>
 				{{
 					title: 'title',
-					leading: 'leading'
+					leading: 'leading',
 				}}
 			</Header>
 		));
 		const testTemplate = baseTemplate.prepend('@primary', () => [
-			<div classes={classes.leading}>leading</div>
+			<div classes={classes.leading}>leading</div>,
 		]);
 		h.expect(testTemplate);
 	});
@@ -54,12 +54,12 @@ describe('HeaderToolbar', () => {
 			<Header>
 				{{
 					title: 'title',
-					trailing: 'trailing'
+					trailing: 'trailing',
 				}}
 			</Header>
 		));
 		const testTemplate = baseTemplate.append('@secondary', () => [
-			<div classes={classes.trailing}>trailing</div>
+			<div classes={classes.trailing}>trailing</div>,
 		]);
 		h.expect(testTemplate);
 	});
@@ -68,7 +68,7 @@ describe('HeaderToolbar', () => {
 		const h = harness(() => (
 			<Header>
 				{{
-					title: 'title'
+					title: 'title',
 				}}
 			</Header>
 		));
@@ -81,12 +81,12 @@ describe('HeaderToolbar', () => {
 			<Header>
 				{{
 					title: 'title',
-					actions: ['action']
+					actions: ['action'],
 				}}
 			</Header>
 		));
 		const testTemplate = baseTemplate.replaceChildren('@actions', () => [
-			<div classes={classes.action}>action</div>
+			<div classes={classes.action}>action</div>,
 		]);
 		h.expect(testTemplate);
 	});
@@ -96,12 +96,12 @@ describe('HeaderToolbar', () => {
 			<Header>
 				{{
 					title: 'title',
-					actions: 'action'
+					actions: 'action',
 				}}
 			</Header>
 		));
 		const testTemplate = baseTemplate.replaceChildren('@actions', () => [
-			<div classes={classes.action}>action</div>
+			<div classes={classes.action}>action</div>,
 		]);
 		h.expect(testTemplate);
 	});
@@ -110,7 +110,7 @@ describe('HeaderToolbar', () => {
 		const h = harness(() => (
 			<Header sticky>
 				{{
-					title: 'title'
+					title: 'title',
 				}}
 			</Header>
 		));

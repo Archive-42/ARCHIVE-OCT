@@ -11,7 +11,7 @@ export default factory(function Basic() {
 				{{
 					label: 'Input label',
 					leading: <Addon>A</Addon>,
-					trailing: <Addon filled>Z</Addon>
+					trailing: <Addon filled>Z</Addon>,
 				}}
 			</TextInput>
 		</Example>

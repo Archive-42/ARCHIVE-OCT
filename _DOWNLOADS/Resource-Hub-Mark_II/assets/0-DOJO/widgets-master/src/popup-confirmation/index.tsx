@@ -34,7 +34,7 @@ const factory = create({ theme, i18n })
 export default factory(function PopupConfirmation({
 	middleware: { theme, i18n },
 	properties,
-	children
+	children,
 }) {
 	const {
 		onCancel,
@@ -63,7 +63,7 @@ export default factory(function PopupConfirmation({
 						<div
 							classes={[
 								themedCss.popupContainer,
-								position === 'above' ? themedCss.above : themedCss.below
+								position === 'above' ? themedCss.above : themedCss.below,
 							]}
 						>
 							<div classes={themedCss.popup}>
@@ -73,11 +73,7 @@ export default factory(function PopupConfirmation({
 										classes={classes}
 										key="cancel-button"
 										type="button"
-										theme={theme.compose(
-											buttonCss,
-											css,
-											'cancel'
-										)}
+										theme={theme.compose(buttonCss, css, 'cancel')}
 										variant={variant}
 										onClick={() => {
 											close();
@@ -90,11 +86,7 @@ export default factory(function PopupConfirmation({
 										classes={classes}
 										key="confirm-button"
 										type="button"
-										theme={theme.compose(
-											buttonCss,
-											css,
-											'confirm'
-										)}
+										theme={theme.compose(buttonCss, css, 'confirm')}
 										variant={variant}
 										onClick={() => {
 											close();
@@ -106,7 +98,7 @@ export default factory(function PopupConfirmation({
 								</div>
 							</div>
 						</div>
-					)
+					),
 				}}
 			</TriggerPopup>
 		</div>

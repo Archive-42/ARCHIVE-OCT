@@ -12,7 +12,7 @@ import {
 	compareId,
 	compareAriaLabelledBy,
 	noop,
-	stubEvent
+	stubEvent,
 } from '../../../common/tests/support/test-helpers';
 import { assertionTemplate } from '@dojo/framework/testing/harness/assertionTemplate';
 
@@ -37,7 +37,7 @@ const closedTemplate = assertionTemplate(() => (
 			styles={{
 				transform: undefined,
 				width: '320px',
-				height: undefined
+				height: undefined,
 			}}
 		>
 			<div assertion-key="textContent" classes={[css.content, fixedCss.contentFixed]}>
@@ -53,7 +53,7 @@ const closedTemplateRight = closedTemplate.setProperty('@content', 'classes', [
 	null,
 	null,
 	fixedCss.paneFixed,
-	fixedCss.rightFixed
+	fixedCss.rightFixed,
 ]);
 
 const openTemplate = closedTemplate
@@ -63,8 +63,8 @@ const openTemplate = closedTemplate
 			enterAnimation: animations.fadeIn,
 			exitAnimation: animations.fadeOut,
 			onpointerup: noop,
-			key: 'underlay'
-		})
+			key: 'underlay',
+		}),
 	])
 	.setProperty('@content', 'classes', [
 		css.pane,
@@ -73,7 +73,7 @@ const openTemplate = closedTemplate
 		null,
 		null,
 		fixedCss.paneFixed,
-		fixedCss.leftFixed
+		fixedCss.leftFixed,
 	]);
 const openTemplateRight = openTemplate.setProperty('@content', 'classes', [
 	css.pane,
@@ -82,7 +82,7 @@ const openTemplateRight = openTemplate.setProperty('@content', 'classes', [
 	null,
 	null,
 	fixedCss.paneFixed,
-	fixedCss.rightFixed
+	fixedCss.rightFixed,
 ]);
 
 registerSuite('SlidePane', {
@@ -120,12 +120,12 @@ registerSuite('SlidePane', {
 							css.slideIn,
 							null,
 							fixedCss.paneFixed,
-							fixedCss.leftFixed
+							fixedCss.leftFixed,
 						]}
 						styles={{
 							transform: undefined,
 							width: '320px',
-							height: undefined
+							height: undefined,
 						}}
 					>
 						<div classes={[css.content, fixedCss.contentFixed]}>{GREEKING}</div>
@@ -142,7 +142,7 @@ registerSuite('SlidePane', {
 
 		'change property to close'() {
 			let properties = {
-				open: true
+				open: true,
 			};
 			const h = harness(() => w(SlidePane, properties));
 
@@ -155,7 +155,7 @@ registerSuite('SlidePane', {
 						onpointerdown: noop,
 						onpointermove: noop,
 						onpointercancel: noop,
-						classes: [undefined, css.root]
+						classes: [undefined, css.root],
 					},
 					[
 						v('div', {
@@ -163,7 +163,7 @@ registerSuite('SlidePane', {
 							enterAnimation: animations.fadeIn,
 							exitAnimation: animations.fadeOut,
 							onpointerup: noop,
-							key: 'underlay'
+							key: 'underlay',
 						}),
 						v(
 							'div',
@@ -176,25 +176,25 @@ registerSuite('SlidePane', {
 									css.slideIn,
 									null,
 									fixedCss.paneFixed,
-									fixedCss.leftFixed
+									fixedCss.leftFixed,
 								],
 								styles: {
 									transform: undefined,
 									width: '320px',
-									height: undefined
-								}
+									height: undefined,
+								},
 							},
 							[
 								null,
 								v(
 									'div',
 									{
-										classes: [css.content, fixedCss.contentFixed]
+										classes: [css.content, fixedCss.contentFixed],
 									},
 									[]
-								)
+								),
 							]
-						)
+						),
 					]
 				)
 			);
@@ -209,7 +209,7 @@ registerSuite('SlidePane', {
 						onpointerdown: noop,
 						onpointermove: noop,
 						onpointercancel: noop,
-						classes: [undefined, css.root]
+						classes: [undefined, css.root],
 					},
 					[
 						null,
@@ -224,25 +224,25 @@ registerSuite('SlidePane', {
 									null,
 									css.slideOut,
 									fixedCss.paneFixed,
-									fixedCss.leftFixed
+									fixedCss.leftFixed,
 								],
 								styles: {
 									transform: undefined,
 									width: '320px',
-									height: undefined
-								}
+									height: undefined,
+								},
 							},
 							[
 								null,
 								v(
 									'div',
 									{
-										classes: [css.content, fixedCss.contentFixed]
+										classes: [css.content, fixedCss.contentFixed],
 									},
 									[]
-								)
+								),
 							]
-						)
+						),
 					]
 				)
 			);
@@ -255,16 +255,16 @@ registerSuite('SlidePane', {
 					open: true,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 			h.trigger('@underlay', 'onpointerdown', {
 				pageX: 300,
-				...stubEvent
+				...stubEvent,
 			});
 			h.trigger('@underlay', 'onpointerup', {
 				pageX: 300,
-				...stubEvent
+				...stubEvent,
 			});
 			assert.isTrue(called, 'onRequestClose should have been called');
 		},
@@ -279,7 +279,7 @@ registerSuite('SlidePane', {
 					closeText: 'close',
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
@@ -295,17 +295,17 @@ registerSuite('SlidePane', {
 					open: true,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 			h.trigger('@underlay', 'onpointerup', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 			assert.isTrue(called, 'onRequestClose should be called on underlay tap');
 		},
@@ -318,21 +318,21 @@ registerSuite('SlidePane', {
 					open: true,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 			h.trigger('@underlay', 'onpointerup', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			assert.isTrue(called, 'onRequestClose should be called if dragged far enough');
@@ -346,28 +346,28 @@ registerSuite('SlidePane', {
 					open: true,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger('@underlay', 'onpointermove', {
 				changedTouches: [{ screenX: 150 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointermove', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointerup', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			assert.isTrue(called, 'onRequestClose should be called if swiped far enough');
@@ -382,28 +382,28 @@ registerSuite('SlidePane', {
 					align: 'top',
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger('@underlay', 'onpointermove', {
 				changedTouches: [{ screenY: 150 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenY: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointermove', {
 				changedTouches: [{ screenY: 150 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointerup', {
 				changedTouches: [{ screenY: 50 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			assert.isTrue(called, 'onRequestClose should be called if swiped far enough up');
@@ -419,23 +419,23 @@ registerSuite('SlidePane', {
 					width: 320,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenX: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointermove', {
 				changedTouches: [{ screenX: 400 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointerup', {
 				changedTouches: [{ screenX: 500 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			assert.isTrue(
@@ -454,23 +454,23 @@ registerSuite('SlidePane', {
 					width: 320,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger('@underlay', 'onpointerdown', {
 				changedTouches: [{ screenY: 300 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointermove', {
 				changedTouches: [{ screenY: 400 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger('@underlay', 'onpointerup', {
 				changedTouches: [{ screenY: 500 }],
-				...stubEvent
+				...stubEvent,
 			});
 
 			assert.isTrue(
@@ -487,23 +487,23 @@ registerSuite('SlidePane', {
 					open: true,
 					onRequestClose() {
 						called = true;
-					}
+					},
 				})
 			);
 
 			h.trigger(`.${css.root}`, 'onpointerdown', {
 				pageX: 300,
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger(`.${css.root}`, 'onpointermove', {
 				pageX: 250,
-				...stubEvent
+				...stubEvent,
 			});
 
 			h.trigger(`.${css.root}`, 'onpointerup', {
 				pageX: 250,
-				...stubEvent
+				...stubEvent,
 			});
 
 			assert.isFalse(
@@ -514,7 +514,7 @@ registerSuite('SlidePane', {
 
 		'transform styles are applied on next render if being swiped closed'() {
 			let properties: SlidePaneProperties = {
-				open: true
+				open: true,
 			};
 			properties.onRequestClose = () => (properties.open = false);
 
@@ -528,7 +528,7 @@ registerSuite('SlidePane', {
 					css.slideIn,
 					null,
 					fixedCss.paneFixed,
-					fixedCss.leftFixed
+					fixedCss.leftFixed,
 				])
 			);
 
@@ -539,7 +539,7 @@ registerSuite('SlidePane', {
 				openTemplate.setProperty('@content', 'styles', {
 					transform: 'translateX(-46.875%)',
 					width: '320px',
-					height: undefined
+					height: undefined,
 				})
 			);
 
@@ -553,7 +553,7 @@ registerSuite('SlidePane', {
 					null,
 					css.slideOut,
 					fixedCss.paneFixed,
-					fixedCss.leftFixed
+					fixedCss.leftFixed,
 				])
 			);
 		},
@@ -561,7 +561,7 @@ registerSuite('SlidePane', {
 		'transform styles are applied on next render if being swiped closed right'() {
 			let properties: SlidePaneProperties = {
 				align: 'right',
-				open: true
+				open: true,
 			};
 			properties.onRequestClose = () => (properties.open = false);
 
@@ -574,7 +574,7 @@ registerSuite('SlidePane', {
 					css.slideIn,
 					null,
 					fixedCss.paneFixed,
-					fixedCss.rightFixed
+					fixedCss.rightFixed,
 				])
 			);
 
@@ -590,12 +590,12 @@ registerSuite('SlidePane', {
 						null,
 						null,
 						fixedCss.paneFixed,
-						fixedCss.rightFixed
+						fixedCss.rightFixed,
 					])
 					.setProperty('@content', 'styles', {
 						transform: 'translateX(31.25%)',
 						width: '320px',
-						height: undefined
+						height: undefined,
 					})
 			);
 
@@ -609,10 +609,10 @@ registerSuite('SlidePane', {
 					null,
 					css.slideOut,
 					fixedCss.paneFixed,
-					fixedCss.rightFixed
+					fixedCss.rightFixed,
 				])
 			);
 			assert(!properties.open);
-		}
-	}
+		},
+	},
 });

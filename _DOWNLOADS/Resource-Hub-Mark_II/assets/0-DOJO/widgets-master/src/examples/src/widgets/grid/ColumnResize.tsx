@@ -11,26 +11,26 @@ const columnConfig: ColumnConfig[] = [
 	{
 		id: 'id',
 		title: 'ID',
-		resizable: true
+		resizable: true,
 	},
 	{
 		id: 'firstName',
 		title: 'First Name',
-		resizable: true
+		resizable: true,
 	},
 	{
 		id: 'middleName',
-		title: 'Middle Name'
+		title: 'Middle Name',
 	},
 	{
 		id: 'lastName',
-		title: 'Last Name'
+		title: 'Last Name',
 	},
 	{
 		id: 'otherName',
 		title: 'Other Name',
-		resizable: true
-	}
+		resizable: true,
+	},
 ];
 
 const fetcher = createFetcher(createData());

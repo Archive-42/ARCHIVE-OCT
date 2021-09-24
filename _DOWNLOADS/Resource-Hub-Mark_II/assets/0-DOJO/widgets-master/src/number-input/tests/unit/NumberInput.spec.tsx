@@ -54,7 +54,7 @@ registerSuite('NumberInput', {
 				readOnly: true,
 				initialValue: 42,
 				widgetId: 'widgetId',
-				value: undefined
+				value: undefined,
 			};
 
 			const h = harness(
@@ -71,10 +71,10 @@ registerSuite('NumberInput', {
 						...baseProperties,
 						initialValue: baseProperties.initialValue!.toString(),
 						type: 'number',
-						theme: { '@dojo/widgets/text-input': textInputCss }
+						theme: { '@dojo/widgets/text-input': textInputCss },
 					})
 					.setChildren(':root', [
-						{ label: 'label', leading: <div />, trailing: <div /> }
+						{ label: 'label', leading: <div />, trailing: <div /> },
 					] as any)
 			);
 		},
@@ -90,6 +90,6 @@ registerSuite('NumberInput', {
 			const h = harness(() => <NumberInput onValue={onValue} />);
 			h.trigger(':root', 'onValue', value.toString());
 			assert.isTrue(onValue.calledWith(value));
-		}
-	}
+		},
+	},
 });

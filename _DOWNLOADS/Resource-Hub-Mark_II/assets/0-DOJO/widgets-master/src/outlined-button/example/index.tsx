@@ -18,10 +18,10 @@ export default class App extends WidgetBase {
 				w(
 					OutlinedButton,
 					{
-						key: 'b1'
+						key: 'b1',
 					},
 					['Basic OutlinedButton']
-				)
+				),
 			]),
 			v('div', { id: 'example-2' }, [
 				v('p', ['Disabled submit button:']),
@@ -30,10 +30,10 @@ export default class App extends WidgetBase {
 					{
 						key: 'b2',
 						disabled: true,
-						type: 'submit'
+						type: 'submit',
 					},
 					['Submit']
-				)
+				),
 			]),
 			v('div', { id: 'example-4' }, [
 				v('p', ['Toggle OutlinedButton']),
@@ -42,11 +42,11 @@ export default class App extends WidgetBase {
 					{
 						key: 'b4',
 						pressed: this._buttonPressed,
-						onClick: this.toggleButton
+						onClick: this.toggleButton,
 					},
 					['OutlinedButton state']
-				)
-			])
+				),
+			]),
 		]);
 	}
 }

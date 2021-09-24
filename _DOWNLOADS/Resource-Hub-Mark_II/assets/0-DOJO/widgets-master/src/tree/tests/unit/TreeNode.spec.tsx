@@ -29,7 +29,7 @@ const defaultProps = {
 	onValue: noop,
 	onCheck: noop,
 	onExpand: noop,
-	node
+	node,
 };
 const defaultRenderer = (n: TreeNodeOption) => n.value;
 
@@ -164,7 +164,7 @@ describe('TreeNode', () => {
 			r.expect(checkboxAssertion);
 
 			r.property(WrappedCheckboxContainer, 'onpointerdown', {
-				stopPropagation: stopPropagationMock
+				stopPropagation: stopPropagationMock,
 			});
 			r.expect(checkboxAssertion);
 

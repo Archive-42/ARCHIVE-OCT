@@ -9,7 +9,7 @@ import {
 	compareAriaLabelledBy,
 	compareId,
 	createHarness,
-	stubEvent
+	stubEvent,
 } from '../../../common/tests/support/test-helpers';
 import * as themeCss from '../../../theme/default/dialog.m.css';
 import * as fixedCss from '../../styles/dialog.m.css';
@@ -93,7 +93,7 @@ describe('Dialog', () => {
 	it('renders with custom properties', () => {
 		let properties: DialogProperties = {
 			open: true,
-			onRequestClose: () => {}
+			onRequestClose: () => {},
 		};
 		const h = harness(() => <Dialog {...properties}>{{ title: 'foo' }}</Dialog>);
 
@@ -104,7 +104,7 @@ describe('Dialog', () => {
 			open: true,
 			role: 'alertdialog',
 			underlay: true,
-			onRequestClose: () => {}
+			onRequestClose: () => {},
 		};
 
 		h.expect(
@@ -121,7 +121,7 @@ describe('Dialog', () => {
 								classes={undefined}
 							/>
 						</span>
-					</button>
+					</button>,
 				])
 				.setProperty('@underlay', 'classes', [themeCss.underlayVisible, fixedCss.underlay])
 				.setProperty('@main', 'aria-describedby', 'foo')
@@ -164,7 +164,7 @@ describe('Dialog', () => {
 		let properties: any = {
 			open: true,
 			onOpen,
-			onRequestClose: () => {}
+			onRequestClose: () => {},
 		};
 		const h = harness(() => <Dialog {...properties}>{{ title: 'foo' }}</Dialog>);
 		h.expect(openAssertion.setProperty('@main', 'focus', true));
@@ -178,7 +178,7 @@ describe('Dialog', () => {
 			closeable: true,
 			open: true,
 			onOpen,
-			onRequestClose: () => {}
+			onRequestClose: () => {},
 		};
 		h.expect(openAssertion);
 		assert.isTrue(onOpen.calledOnce, 'onOpen handler not called if dialog was previously open');
@@ -189,7 +189,7 @@ describe('Dialog', () => {
 		let properties: any = {
 			open: true,
 			modal: true,
-			onRequestClose
+			onRequestClose,
 		};
 		const h = harness(() => <Dialog {...properties}>{{}}</Dialog>);
 		h.trigger(`.${fixedCss.underlay}`, 'onclick', stubEvent);
@@ -202,7 +202,7 @@ describe('Dialog', () => {
 		properties = {
 			open: true,
 			modal: false,
-			onRequestClose
+			onRequestClose,
 		};
 
 		h.trigger(`.${fixedCss.underlay}`, 'onclick', stubEvent);
@@ -247,7 +247,7 @@ describe('Dialog', () => {
 				{{
 					title: 'foo',
 					content: 'bar',
-					actions: 'action'
+					actions: 'action',
 				}}
 			</Dialog>
 		));
@@ -258,7 +258,7 @@ describe('Dialog', () => {
 				.insertAfter('@content', () => [
 					<div classes={themeCss.actions} key="actions">
 						action
-					</div>
+					</div>,
 				])
 		);
 	});

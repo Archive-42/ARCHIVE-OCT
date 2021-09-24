@@ -33,7 +33,7 @@ describe('Avatar', () => {
 				css.avatarColorSecondary,
 				undefined,
 				css.medium,
-				css.circle
+				css.circle,
 			])
 		);
 	});
@@ -47,7 +47,7 @@ describe('Avatar', () => {
 				css.avatarColor,
 				css.avatarOutline,
 				css.medium,
-				css.circle
+				css.circle,
 			])
 		);
 	});
@@ -62,7 +62,7 @@ describe('Avatar', () => {
 					css.avatarColor,
 					undefined,
 					css.medium,
-					css.circle
+					css.circle,
 				])
 			);
 		});
@@ -76,7 +76,7 @@ describe('Avatar', () => {
 					css.avatarColor,
 					undefined,
 					css.medium,
-					css.square
+					css.square,
 				])
 			);
 		});
@@ -90,7 +90,7 @@ describe('Avatar', () => {
 					css.avatarColor,
 					undefined,
 					css.medium,
-					css.rounded
+					css.rounded,
 				])
 			);
 		});
@@ -106,7 +106,7 @@ describe('Avatar', () => {
 					css.avatarColor,
 					undefined,
 					css.small,
-					css.circle
+					css.circle,
 				])
 			);
 		});
@@ -120,7 +120,7 @@ describe('Avatar', () => {
 					css.avatarColor,
 					undefined,
 					css.medium,
-					css.circle
+					css.circle,
 				])
 			);
 		});
@@ -134,7 +134,7 @@ describe('Avatar', () => {
 					css.avatarColor,
 					undefined,
 					css.large,
-					css.circle
+					css.circle,
 				])
 			);
 		});

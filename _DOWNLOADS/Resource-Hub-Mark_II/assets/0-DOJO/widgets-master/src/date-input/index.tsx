@@ -63,10 +63,10 @@ const factory = create({ theme, icache, i18n, focus })
 	.properties<DateInputProperties>()
 	.children<DateInputChildren | RenderResult | undefined>();
 
-export default factory(function({
+export default factory(function ({
 	properties,
 	children,
-	middleware: { theme, icache, i18n, focus }
+	middleware: { theme, icache, i18n, focus },
 }) {
 	const {
 		initialValue,
@@ -76,7 +76,7 @@ export default factory(function({
 		value: controlledValue,
 		theme: themeProp,
 		variant,
-		classes
+		classes,
 	} = properties();
 	const { messages } = i18n.localize(bundle);
 	const themedCss = theme.classes(css);
@@ -178,11 +178,7 @@ export default factory(function({
 								<TextInput
 									key="input"
 									focus={() => shouldFocus && focusNode === 'input'}
-									theme={theme.compose(
-										textInputCss,
-										css,
-										'input'
-									)}
+									theme={theme.compose(textInputCss, css, 'input')}
 									type="text"
 									initialValue={icache.get('inputValue')}
 									onBlur={() => icache.set('shouldValidate', true)}
@@ -227,7 +223,7 @@ export default factory(function({
 													<Icon type="dateIcon" />
 												</button>
 											</Addon>
-										)
+										),
 									}}
 								</TextInput>
 							</div>
@@ -264,7 +260,7 @@ export default factory(function({
 								/>
 							</div>
 						);
-					}
+					},
 				}}
 			</TriggerPopup>
 		</div>

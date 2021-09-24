@@ -19,7 +19,7 @@ export const data: Data[] = [
 		price: '625.00',
 		description:
 			'The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design',
-		summary: 'Awesome Granite Bacon / Cheese / Baby / $625.00'
+		summary: 'Awesome Granite Bacon / Cheese / Baby / $625.00',
 	},
 	{
 		id: 'f106a6ce-d514-4cf3-bb74-41e08d541dcb',
@@ -29,7 +29,7 @@ export const data: Data[] = [
 		price: '706.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Handcrafted Plastic Sausages / Computer / Grocery / $706.00'
+		summary: 'Handcrafted Plastic Sausages / Computer / Grocery / $706.00',
 	},
 	{
 		id: '5f814c11-615b-4ec9-9b93-67dbb2d66823',
@@ -39,7 +39,7 @@ export const data: Data[] = [
 		price: '705.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Generic Rubber Chicken / Towels / Sports / $705.00'
+		summary: 'Generic Rubber Chicken / Towels / Sports / $705.00',
 	},
 	{
 		id: '2be4af15-0973-48b5-a034-2495f511f2ba',
@@ -48,7 +48,7 @@ export const data: Data[] = [
 		department: 'Beauty',
 		price: '43.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Small Plastic Chicken / Ball / Beauty / $43.00'
+		summary: 'Small Plastic Chicken / Ball / Beauty / $43.00',
 	},
 	{
 		id: 'a1835fcd-a723-47f5-9f83-d116a936512c',
@@ -58,7 +58,7 @@ export const data: Data[] = [
 		price: '439.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Handmade Granite Car / Gloves / Tools / $439.00'
+		summary: 'Handmade Granite Car / Gloves / Tools / $439.00',
 	},
 	{
 		id: 'd8766593-e49b-4726-86a1-c038a2778c88',
@@ -68,7 +68,7 @@ export const data: Data[] = [
 		price: '816.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Fantastic Soft Sausages / Keyboard / Electronics / $816.00'
+		summary: 'Fantastic Soft Sausages / Keyboard / Electronics / $816.00',
 	},
 	{
 		id: '13dd0c79-f0ff-44dc-a598-14c8b2535a7e',
@@ -78,7 +78,7 @@ export const data: Data[] = [
 		price: '140.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Handcrafted Soft Soap / Tuna / Health / $140.00'
+		summary: 'Handcrafted Soft Soap / Tuna / Health / $140.00',
 	},
 	{
 		id: 'a2d7ecd4-4a3a-4508-b7f5-99a274321877',
@@ -88,7 +88,7 @@ export const data: Data[] = [
 		price: '803.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Ergonomic Concrete Table / Shirt / Health / $803.00'
+		summary: 'Ergonomic Concrete Table / Shirt / Health / $803.00',
 	},
 	{
 		id: 'c2226fd7-47f0-4031-b6d3-d0f5f6ca51c9',
@@ -98,7 +98,7 @@ export const data: Data[] = [
 		price: '283.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Gorgeous Soft Chips / Bacon / Music / $283.00'
+		summary: 'Gorgeous Soft Chips / Bacon / Music / $283.00',
 	},
 	{
 		id: '811efad9-cee2-4649-bdac-2caa5626580b',
@@ -108,7 +108,7 @@ export const data: Data[] = [
 		price: '832.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Awesome Metal Table / Sausages / Toys / $832.00'
+		summary: 'Awesome Metal Table / Sausages / Toys / $832.00',
 	},
 	{
 		id: '707ea70a-5d09-46f9-ace3-29acaf3f11e1',
@@ -117,7 +117,7 @@ export const data: Data[] = [
 		department: 'Games',
 		price: '788.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Fantastic Rubber Chair / Keyboard / Games / $788.00'
+		summary: 'Fantastic Rubber Chair / Keyboard / Games / $788.00',
 	},
 	{
 		id: '9d5085e5-be3f-4be7-ba3b-3f157e142757',
@@ -126,7 +126,7 @@ export const data: Data[] = [
 		department: 'Health',
 		price: '163.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Sleek Granite Bike / Towels / Health / $163.00'
+		summary: 'Sleek Granite Bike / Towels / Health / $163.00',
 	},
 	{
 		id: 'a4f281bb-6b1f-4ea4-9556-a06ed68ee93c',
@@ -135,7 +135,7 @@ export const data: Data[] = [
 		department: 'Music',
 		price: '138.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Small Concrete Mouse / Gloves / Music / $138.00'
+		summary: 'Small Concrete Mouse / Gloves / Music / $138.00',
 	},
 	{
 		id: '3a77f516-b56e-4eae-8751-8d4b684e3b81',
@@ -145,7 +145,7 @@ export const data: Data[] = [
 		price: '275.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Handcrafted Metal Computer / Pants / Automotive / $275.00'
+		summary: 'Handcrafted Metal Computer / Pants / Automotive / $275.00',
 	},
 	{
 		id: '2b12ae49-7645-4022-b5bd-c7ee55fbd8dd',
@@ -155,7 +155,7 @@ export const data: Data[] = [
 		price: '434.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Sleek Steel Mouse / Pants / Industrial / $434.00'
+		summary: 'Sleek Steel Mouse / Pants / Industrial / $434.00',
 	},
 	{
 		id: '9fe14881-05a1-40ca-99e2-8f19927626a9',
@@ -165,7 +165,7 @@ export const data: Data[] = [
 		price: '922.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Generic Cotton Shoes / Mouse / Baby / $922.00'
+		summary: 'Generic Cotton Shoes / Mouse / Baby / $922.00',
 	},
 	{
 		id: 'a73b5894-86ca-446f-843d-60891d69b41a',
@@ -175,7 +175,7 @@ export const data: Data[] = [
 		price: '666.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Awesome Metal Pizza / Pants / Health / $666.00'
+		summary: 'Awesome Metal Pizza / Pants / Health / $666.00',
 	},
 	{
 		id: '5fed813c-2788-497d-b477-e65ef4f9e5c5',
@@ -185,7 +185,7 @@ export const data: Data[] = [
 		price: '966.00',
 		description:
 			'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
-		summary: 'Generic Metal Towels / Table / Outdoors / $966.00'
+		summary: 'Generic Metal Towels / Table / Outdoors / $966.00',
 	},
 	{
 		id: 'bfae9901-4c4a-4dc1-8f0b-ac7c60c5976a',
@@ -195,7 +195,7 @@ export const data: Data[] = [
 		price: '30.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Refined Soft Pants / Car / Games / $30.00'
+		summary: 'Refined Soft Pants / Car / Games / $30.00',
 	},
 	{
 		id: '916b1f87-6966-4074-8379-d3d3598126ee',
@@ -205,7 +205,7 @@ export const data: Data[] = [
 		price: '130.00',
 		description:
 			'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
-		summary: 'Licensed Wooden Computer / Bike / Movies / $130.00'
+		summary: 'Licensed Wooden Computer / Bike / Movies / $130.00',
 	},
 	{
 		id: '345805c0-0967-45b1-8827-340c6bfb0252',
@@ -215,7 +215,7 @@ export const data: Data[] = [
 		price: '202.00',
 		description:
 			'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
-		summary: 'Incredible Cotton Soap / Cheese / Automotive / $202.00'
+		summary: 'Incredible Cotton Soap / Cheese / Automotive / $202.00',
 	},
 	{
 		id: '096ea07c-b0b7-4242-9030-6a03ee822b43',
@@ -225,7 +225,7 @@ export const data: Data[] = [
 		price: '733.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Intelligent Concrete Pants / Shirt / Shoes / $733.00'
+		summary: 'Intelligent Concrete Pants / Shirt / Shoes / $733.00',
 	},
 	{
 		id: 'b9a344d4-601d-4c71-90d6-09c8d2b0c462',
@@ -234,7 +234,7 @@ export const data: Data[] = [
 		department: 'Games',
 		price: '213.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Awesome Fresh Pizza / Cheese / Games / $213.00'
+		summary: 'Awesome Fresh Pizza / Cheese / Games / $213.00',
 	},
 	{
 		id: 'c8500f1d-806c-4475-a9df-e9da4f7ac315',
@@ -244,7 +244,7 @@ export const data: Data[] = [
 		price: '190.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Handcrafted Fresh Salad / Hat / Movies / $190.00'
+		summary: 'Handcrafted Fresh Salad / Hat / Movies / $190.00',
 	},
 	{
 		id: 'f794b1fd-4890-4f49-92e3-51bd5b1b076d',
@@ -254,7 +254,7 @@ export const data: Data[] = [
 		price: '137.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Awesome Fresh Bacon / Bike / Jewelery / $137.00'
+		summary: 'Awesome Fresh Bacon / Bike / Jewelery / $137.00',
 	},
 	{
 		id: '38ec3edd-c54e-42d1-a289-edca0b38939b',
@@ -264,7 +264,7 @@ export const data: Data[] = [
 		price: '992.00',
 		description:
 			'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
-		summary: 'Handmade Plastic Mouse / Chips / Movies / $992.00'
+		summary: 'Handmade Plastic Mouse / Chips / Movies / $992.00',
 	},
 	{
 		id: '0d6e836f-c29b-4d91-9c63-57fa2529963c',
@@ -274,7 +274,7 @@ export const data: Data[] = [
 		price: '386.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Small Frozen Ball / Shirt / Industrial / $386.00'
+		summary: 'Small Frozen Ball / Shirt / Industrial / $386.00',
 	},
 	{
 		id: '6c8dabf7-69d2-4c8b-b2b4-53e6235d0cbb',
@@ -284,7 +284,7 @@ export const data: Data[] = [
 		price: '670.00',
 		description:
 			'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
-		summary: 'Ergonomic Soft Gloves / Cheese / Kids / $670.00'
+		summary: 'Ergonomic Soft Gloves / Cheese / Kids / $670.00',
 	},
 	{
 		id: '80fa58fb-882b-4749-ac12-72f5bc1fa1f1',
@@ -294,7 +294,7 @@ export const data: Data[] = [
 		price: '963.00',
 		description:
 			'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
-		summary: 'Practical Rubber Table / Salad / Computers / $963.00'
+		summary: 'Practical Rubber Table / Salad / Computers / $963.00',
 	},
 	{
 		id: 'f0adec85-6701-4f9b-a30a-f491e62b3186',
@@ -304,7 +304,7 @@ export const data: Data[] = [
 		price: '957.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Intelligent Plastic Chips / Sausages / Jewelery / $957.00'
+		summary: 'Intelligent Plastic Chips / Sausages / Jewelery / $957.00',
 	},
 	{
 		id: '4c956494-b643-491b-86ac-e5889b061d5a',
@@ -313,7 +313,7 @@ export const data: Data[] = [
 		department: 'Music',
 		price: '555.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Ergonomic Cotton Bike / Chair / Music / $555.00'
+		summary: 'Ergonomic Cotton Bike / Chair / Music / $555.00',
 	},
 	{
 		id: '3a689e19-816a-479d-a331-a21a595cf1fd',
@@ -323,7 +323,7 @@ export const data: Data[] = [
 		price: '922.00',
 		description:
 			'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
-		summary: 'Unbranded Fresh Bike / Pants / Grocery / $922.00'
+		summary: 'Unbranded Fresh Bike / Pants / Grocery / $922.00',
 	},
 	{
 		id: '3f64cc97-1722-4ad0-a1d6-7d63b2758b07',
@@ -333,7 +333,7 @@ export const data: Data[] = [
 		price: '447.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Practical Wooden Shoes / Table / Jewelery / $447.00'
+		summary: 'Practical Wooden Shoes / Table / Jewelery / $447.00',
 	},
 	{
 		id: '083795f8-8a8d-4c3a-8469-2dad705417e7',
@@ -343,7 +343,7 @@ export const data: Data[] = [
 		price: '179.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Handmade Rubber Table / Ball / Computers / $179.00'
+		summary: 'Handmade Rubber Table / Ball / Computers / $179.00',
 	},
 	{
 		id: '5d547ec5-3dd8-45d0-83f7-d6902f1e959c',
@@ -353,7 +353,7 @@ export const data: Data[] = [
 		price: '265.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Generic Metal Chair / Chair / Health / $265.00'
+		summary: 'Generic Metal Chair / Chair / Health / $265.00',
 	},
 	{
 		id: '20169baa-79f2-4ba5-9ac0-edd81b069368',
@@ -362,7 +362,7 @@ export const data: Data[] = [
 		department: 'Movies',
 		price: '32.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Generic Soft Tuna / Fish / Movies / $32.00'
+		summary: 'Generic Soft Tuna / Fish / Movies / $32.00',
 	},
 	{
 		id: '865be68b-11d4-4ea1-9451-5152ef0cc356',
@@ -372,7 +372,7 @@ export const data: Data[] = [
 		price: '277.00',
 		description:
 			'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
-		summary: 'Ergonomic Cotton Bike / Pizza / Music / $277.00'
+		summary: 'Ergonomic Cotton Bike / Pizza / Music / $277.00',
 	},
 	{
 		id: '97bbb876-a411-4e6a-928d-7747589056e0',
@@ -382,7 +382,7 @@ export const data: Data[] = [
 		price: '904.00',
 		description:
 			'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
-		summary: 'Handcrafted Frozen Salad / Table / Kids / $904.00'
+		summary: 'Handcrafted Frozen Salad / Table / Kids / $904.00',
 	},
 	{
 		id: 'd0fb3af6-c465-45a7-8bd6-f9c3a3d8122a',
@@ -392,7 +392,7 @@ export const data: Data[] = [
 		price: '524.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Refined Soft Tuna / Chicken / Tools / $524.00'
+		summary: 'Refined Soft Tuna / Chicken / Tools / $524.00',
 	},
 	{
 		id: '9d8d04dc-a793-47e6-a1eb-c175b99e4b65',
@@ -402,7 +402,7 @@ export const data: Data[] = [
 		price: '570.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Awesome Plastic Fish / Bacon / Jewelery / $570.00'
+		summary: 'Awesome Plastic Fish / Bacon / Jewelery / $570.00',
 	},
 	{
 		id: '4543142e-7a93-4231-b01e-63b21c585367',
@@ -411,7 +411,7 @@ export const data: Data[] = [
 		department: 'Grocery',
 		price: '925.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Gorgeous Cotton Chicken / Keyboard / Grocery / $925.00'
+		summary: 'Gorgeous Cotton Chicken / Keyboard / Grocery / $925.00',
 	},
 	{
 		id: 'be8ea310-ab77-475a-ad5b-600b8e45411e',
@@ -420,7 +420,7 @@ export const data: Data[] = [
 		department: 'Industrial',
 		price: '815.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Practical Frozen Pizza / Pizza / Industrial / $815.00'
+		summary: 'Practical Frozen Pizza / Pizza / Industrial / $815.00',
 	},
 	{
 		id: '4151cdb5-53f1-4278-98c7-9e50f25aa4b2',
@@ -430,7 +430,7 @@ export const data: Data[] = [
 		price: '416.00',
 		description:
 			'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
-		summary: 'Sleek Frozen Chicken / Chair / Home / $416.00'
+		summary: 'Sleek Frozen Chicken / Chair / Home / $416.00',
 	},
 	{
 		id: 'def84018-5dda-4b3d-9d17-3bd6b02683b4',
@@ -440,7 +440,7 @@ export const data: Data[] = [
 		price: '857.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Rustic Fresh Chicken / Ball / Health / $857.00'
+		summary: 'Rustic Fresh Chicken / Ball / Health / $857.00',
 	},
 	{
 		id: 'f7011bbe-379f-4bb2-b4f3-d68bbb170b02',
@@ -450,7 +450,7 @@ export const data: Data[] = [
 		price: '517.00',
 		description:
 			'The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design',
-		summary: 'Handcrafted Steel Keyboard / Shirt / Books / $517.00'
+		summary: 'Handcrafted Steel Keyboard / Shirt / Books / $517.00',
 	},
 	{
 		id: '1da802b8-f12d-4687-9d72-92a54b1da4e4',
@@ -460,7 +460,7 @@ export const data: Data[] = [
 		price: '711.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Licensed Frozen Hat / Tuna / Home / $711.00'
+		summary: 'Licensed Frozen Hat / Tuna / Home / $711.00',
 	},
 	{
 		id: 'b4a3d8e0-fb22-49a8-a2b3-592540b4a240',
@@ -470,7 +470,7 @@ export const data: Data[] = [
 		price: '892.00',
 		description:
 			'The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design',
-		summary: 'Handcrafted Soft Hat / Fish / Clothing / $892.00'
+		summary: 'Handcrafted Soft Hat / Fish / Clothing / $892.00',
 	},
 	{
 		id: 'b3587a6f-9773-4879-ba01-ab695d4046a8',
@@ -480,7 +480,7 @@ export const data: Data[] = [
 		price: '684.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Practical Frozen Tuna / Shoes / Toys / $684.00'
+		summary: 'Practical Frozen Tuna / Shoes / Toys / $684.00',
 	},
 	{
 		id: 'abc40c70-3753-48d0-8eaa-dc8cbabb8192',
@@ -490,7 +490,7 @@ export const data: Data[] = [
 		price: '339.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Tasty Metal Chips / Fish / Toys / $339.00'
+		summary: 'Tasty Metal Chips / Fish / Toys / $339.00',
 	},
 	{
 		id: 'f4874ba8-22a9-4329-afeb-ab9bb5781323',
@@ -500,7 +500,7 @@ export const data: Data[] = [
 		price: '521.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Refined Granite Bike / Pants / Baby / $521.00'
+		summary: 'Refined Granite Bike / Pants / Baby / $521.00',
 	},
 	{
 		id: '89bb3dac-dce7-4914-93d4-5ead460d7bab',
@@ -509,7 +509,7 @@ export const data: Data[] = [
 		department: 'Shoes',
 		price: '394.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Small Rubber Keyboard / Soap / Shoes / $394.00'
+		summary: 'Small Rubber Keyboard / Soap / Shoes / $394.00',
 	},
 	{
 		id: 'e23f03f2-be54-43ff-b5e3-7e79a0961fef',
@@ -519,7 +519,7 @@ export const data: Data[] = [
 		price: '795.00',
 		description:
 			'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
-		summary: 'Gorgeous Metal Keyboard / Shoes / Electronics / $795.00'
+		summary: 'Gorgeous Metal Keyboard / Shoes / Electronics / $795.00',
 	},
 	{
 		id: '46263091-daff-4ab2-a33f-65a835828743',
@@ -529,7 +529,7 @@ export const data: Data[] = [
 		price: '554.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Small Granite Car / Tuna / Clothing / $554.00'
+		summary: 'Small Granite Car / Tuna / Clothing / $554.00',
 	},
 	{
 		id: '0f76a975-bd97-48d9-814d-55a7fa19096d',
@@ -538,7 +538,7 @@ export const data: Data[] = [
 		department: 'Games',
 		price: '179.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Refined Soft Soap / Sausages / Games / $179.00'
+		summary: 'Refined Soft Soap / Sausages / Games / $179.00',
 	},
 	{
 		id: '0d4c5b50-b2f6-41cb-a3da-ba9074ef6198',
@@ -548,7 +548,7 @@ export const data: Data[] = [
 		price: '128.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Practical Granite Bacon / Shirt / Garden / $128.00'
+		summary: 'Practical Granite Bacon / Shirt / Garden / $128.00',
 	},
 	{
 		id: 'de8a9dc3-6e7e-4150-b6f9-d4aee2bfe7d2',
@@ -558,7 +558,7 @@ export const data: Data[] = [
 		price: '877.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Unbranded Cotton Computer / Towels / Books / $877.00'
+		summary: 'Unbranded Cotton Computer / Towels / Books / $877.00',
 	},
 	{
 		id: 'dca170e6-b75b-4535-8339-8c9812c1f885',
@@ -568,7 +568,7 @@ export const data: Data[] = [
 		price: '716.00',
 		description:
 			'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
-		summary: 'Awesome Fresh Keyboard / Salad / Toys / $716.00'
+		summary: 'Awesome Fresh Keyboard / Salad / Toys / $716.00',
 	},
 	{
 		id: 'da453419-54b2-4607-a733-2211d3ccd668',
@@ -578,7 +578,7 @@ export const data: Data[] = [
 		price: '287.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Handcrafted Soft Keyboard / Bacon / Baby / $287.00'
+		summary: 'Handcrafted Soft Keyboard / Bacon / Baby / $287.00',
 	},
 	{
 		id: '975928af-3192-473d-bcc2-45db5859facf',
@@ -588,7 +588,7 @@ export const data: Data[] = [
 		price: '439.00',
 		description:
 			'The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design',
-		summary: 'Rustic Plastic Shirt / Pizza / Home / $439.00'
+		summary: 'Rustic Plastic Shirt / Pizza / Home / $439.00',
 	},
 	{
 		id: '33de4d99-6ca7-4e4d-be31-862b0eaed206',
@@ -598,7 +598,7 @@ export const data: Data[] = [
 		price: '322.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Refined Cotton Pizza / Fish / Sports / $322.00'
+		summary: 'Refined Cotton Pizza / Fish / Sports / $322.00',
 	},
 	{
 		id: '68398931-02e4-4502-a542-6b3b48595416',
@@ -608,7 +608,7 @@ export const data: Data[] = [
 		price: '991.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Refined Fresh Keyboard / Pizza / Sports / $991.00'
+		summary: 'Refined Fresh Keyboard / Pizza / Sports / $991.00',
 	},
 	{
 		id: '4aff9404-8f16-48b6-8297-806fb83fd320',
@@ -618,7 +618,7 @@ export const data: Data[] = [
 		price: '322.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Tasty Granite Bacon / Mouse / Computers / $322.00'
+		summary: 'Tasty Granite Bacon / Mouse / Computers / $322.00',
 	},
 	{
 		id: 'ad62f282-d9ce-4f86-be50-aba328f004b7',
@@ -628,7 +628,7 @@ export const data: Data[] = [
 		price: '825.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Tasty Fresh Shoes / Keyboard / Clothing / $825.00'
+		summary: 'Tasty Fresh Shoes / Keyboard / Clothing / $825.00',
 	},
 	{
 		id: '0b528df6-03f1-4b89-ac27-ca5fb8da4227',
@@ -638,7 +638,7 @@ export const data: Data[] = [
 		price: '260.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Practical Plastic Chips / Shirt / Computers / $260.00'
+		summary: 'Practical Plastic Chips / Shirt / Computers / $260.00',
 	},
 	{
 		id: '4743e0f8-e8a8-4a54-bece-ce1598ed7d32',
@@ -647,7 +647,7 @@ export const data: Data[] = [
 		department: 'Sports',
 		price: '919.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Rustic Soft Ball / Chicken / Sports / $919.00'
+		summary: 'Rustic Soft Ball / Chicken / Sports / $919.00',
 	},
 	{
 		id: 'e3d05e3c-17c4-4afb-bbbc-d93be6e945b1',
@@ -657,7 +657,7 @@ export const data: Data[] = [
 		price: '29.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Handmade Plastic Car / Sausages / Electronics / $29.00'
+		summary: 'Handmade Plastic Car / Sausages / Electronics / $29.00',
 	},
 	{
 		id: '66958cbe-672d-403b-a0bc-e2ebb7636c67',
@@ -666,7 +666,7 @@ export const data: Data[] = [
 		department: 'Automotive',
 		price: '370.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Generic Cotton Mouse / Mouse / Automotive / $370.00'
+		summary: 'Generic Cotton Mouse / Mouse / Automotive / $370.00',
 	},
 	{
 		id: 'c7e59045-84ba-400b-92db-cb40cab1c3ef',
@@ -676,7 +676,7 @@ export const data: Data[] = [
 		price: '521.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Intelligent Concrete Bike / Pants / Games / $521.00'
+		summary: 'Intelligent Concrete Bike / Pants / Games / $521.00',
 	},
 	{
 		id: '01842f1e-95ae-4bfe-8c60-210dd578c108',
@@ -686,7 +686,7 @@ export const data: Data[] = [
 		price: '783.00',
 		description:
 			'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
-		summary: 'Awesome Frozen Soap / Chips / Baby / $783.00'
+		summary: 'Awesome Frozen Soap / Chips / Baby / $783.00',
 	},
 	{
 		id: '35ef42e6-3468-42f3-8e0c-fc979af761ab',
@@ -696,7 +696,7 @@ export const data: Data[] = [
 		price: '558.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Refined Soft Shoes / Car / Sports / $558.00'
+		summary: 'Refined Soft Shoes / Car / Sports / $558.00',
 	},
 	{
 		id: '1f29a11d-8b38-4cd4-9c87-66a9f2d6f378',
@@ -706,7 +706,7 @@ export const data: Data[] = [
 		price: '957.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Incredible Soft Computer / Bacon / Books / $957.00'
+		summary: 'Incredible Soft Computer / Bacon / Books / $957.00',
 	},
 	{
 		id: '267683af-9f68-4a4c-8b08-6fe1f5903b49',
@@ -716,7 +716,7 @@ export const data: Data[] = [
 		price: '656.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Generic Soft Towels / Shirt / Beauty / $656.00'
+		summary: 'Generic Soft Towels / Shirt / Beauty / $656.00',
 	},
 	{
 		id: '770b614e-ce44-4dca-81f8-80aec0628172',
@@ -725,7 +725,7 @@ export const data: Data[] = [
 		department: 'Music',
 		price: '671.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Refined Cotton Computer / Towels / Music / $671.00'
+		summary: 'Refined Cotton Computer / Towels / Music / $671.00',
 	},
 	{
 		id: '9acad2bf-9240-4f7c-ab1c-8188a1698cb9',
@@ -734,7 +734,7 @@ export const data: Data[] = [
 		department: 'Garden',
 		price: '778.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Sleek Soft Chicken / Sausages / Garden / $778.00'
+		summary: 'Sleek Soft Chicken / Sausages / Garden / $778.00',
 	},
 	{
 		id: '2aaab651-9fb8-4505-aa7c-8e856960785d',
@@ -743,7 +743,7 @@ export const data: Data[] = [
 		department: 'Outdoors',
 		price: '222.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Refined Cotton Shirt / Bike / Outdoors / $222.00'
+		summary: 'Refined Cotton Shirt / Bike / Outdoors / $222.00',
 	},
 	{
 		id: '00ae56d0-b268-4b3f-99f6-e0565fb3b48b',
@@ -753,7 +753,7 @@ export const data: Data[] = [
 		price: '293.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Small Cotton Cheese / Cheese / Clothing / $293.00'
+		summary: 'Small Cotton Cheese / Cheese / Clothing / $293.00',
 	},
 	{
 		id: '25b99703-339d-4b9a-a502-5d0bae77aa9e',
@@ -763,7 +763,7 @@ export const data: Data[] = [
 		price: '454.00',
 		description:
 			'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
-		summary: 'Small Granite Mouse / Hat / Beauty / $454.00'
+		summary: 'Small Granite Mouse / Hat / Beauty / $454.00',
 	},
 	{
 		id: '662f83c8-f3ad-481a-8502-a7395b7b1d4a',
@@ -773,7 +773,7 @@ export const data: Data[] = [
 		price: '4.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Licensed Fresh Chair / Bacon / Outdoors / $4.00'
+		summary: 'Licensed Fresh Chair / Bacon / Outdoors / $4.00',
 	},
 	{
 		id: 'cff23cb8-47bb-401c-b2a5-8ea5a35cd2cf',
@@ -783,7 +783,7 @@ export const data: Data[] = [
 		price: '940.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Unbranded Concrete Computer / Ball / Tools / $940.00'
+		summary: 'Unbranded Concrete Computer / Ball / Tools / $940.00',
 	},
 	{
 		id: '9f726027-30f0-4d4d-ba33-ee474e490023',
@@ -792,7 +792,7 @@ export const data: Data[] = [
 		department: 'Baby',
 		price: '516.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Handmade Granite Chips / Pizza / Baby / $516.00'
+		summary: 'Handmade Granite Chips / Pizza / Baby / $516.00',
 	},
 	{
 		id: '479af14c-6851-47ea-ad29-3850b3cac55b',
@@ -802,7 +802,7 @@ export const data: Data[] = [
 		price: '490.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Incredible Fresh Hat / Pizza / Computers / $490.00'
+		summary: 'Incredible Fresh Hat / Pizza / Computers / $490.00',
 	},
 	{
 		id: '02e1cca4-3229-47d9-b53c-1d6252db6c47',
@@ -812,7 +812,7 @@ export const data: Data[] = [
 		price: '220.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Sleek Wooden Computer / Hat / Beauty / $220.00'
+		summary: 'Sleek Wooden Computer / Hat / Beauty / $220.00',
 	},
 	{
 		id: '91e4513b-3cf3-45cc-80da-534d2e774e16',
@@ -821,7 +821,7 @@ export const data: Data[] = [
 		department: 'Jewelery',
 		price: '879.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Small Cotton Gloves / Fish / Jewelery / $879.00'
+		summary: 'Small Cotton Gloves / Fish / Jewelery / $879.00',
 	},
 	{
 		id: 'ae6b1484-8ab1-4e43-8097-bceaff0c8423',
@@ -830,7 +830,7 @@ export const data: Data[] = [
 		department: 'Kids',
 		price: '382.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Small Plastic Towels / Gloves / Kids / $382.00'
+		summary: 'Small Plastic Towels / Gloves / Kids / $382.00',
 	},
 	{
 		id: 'be1b4053-7a0b-4dd4-9fc3-ffa8ffa8f8ac',
@@ -840,7 +840,7 @@ export const data: Data[] = [
 		price: '432.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Fantastic Wooden Pants / Bike / Computers / $432.00'
+		summary: 'Fantastic Wooden Pants / Bike / Computers / $432.00',
 	},
 	{
 		id: 'f891a0e3-b129-4a01-81f8-329ebd994f9c',
@@ -850,7 +850,7 @@ export const data: Data[] = [
 		price: '539.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Generic Frozen Table / Towels / Garden / $539.00'
+		summary: 'Generic Frozen Table / Towels / Garden / $539.00',
 	},
 	{
 		id: '5cf23dec-9597-4d91-a62e-41c327ed91c7',
@@ -860,7 +860,7 @@ export const data: Data[] = [
 		price: '164.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Licensed Cotton Computer / Pizza / Toys / $164.00'
+		summary: 'Licensed Cotton Computer / Pizza / Toys / $164.00',
 	},
 	{
 		id: 'e49615d9-aa06-4911-a1ca-61bcf71a412a',
@@ -870,7 +870,7 @@ export const data: Data[] = [
 		price: '977.00',
 		description:
 			'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
-		summary: 'Rustic Steel Table / Mouse / Industrial / $977.00'
+		summary: 'Rustic Steel Table / Mouse / Industrial / $977.00',
 	},
 	{
 		id: '13c31ab3-7680-4746-9326-cd8968530b4d',
@@ -880,7 +880,7 @@ export const data: Data[] = [
 		price: '79.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Intelligent Metal Salad / Computer / Baby / $79.00'
+		summary: 'Intelligent Metal Salad / Computer / Baby / $79.00',
 	},
 	{
 		id: 'a85d3006-3311-4719-917d-1d1cec82cf69',
@@ -890,7 +890,7 @@ export const data: Data[] = [
 		price: '261.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Ergonomic Plastic Chips / Tuna / Health / $261.00'
+		summary: 'Ergonomic Plastic Chips / Tuna / Health / $261.00',
 	},
 	{
 		id: 'bfdd88e4-8e55-4dea-a6a9-0d12e7bc183a',
@@ -900,7 +900,7 @@ export const data: Data[] = [
 		price: '405.00',
 		description:
 			'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
-		summary: 'Ergonomic Granite Salad / Sausages / Outdoors / $405.00'
+		summary: 'Ergonomic Granite Salad / Sausages / Outdoors / $405.00',
 	},
 	{
 		id: '3d506f5e-522f-4152-83ad-0636542d182b',
@@ -910,7 +910,7 @@ export const data: Data[] = [
 		price: '383.00',
 		description:
 			'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
-		summary: 'Fantastic Cotton Pizza / Gloves / Beauty / $383.00'
+		summary: 'Fantastic Cotton Pizza / Gloves / Beauty / $383.00',
 	},
 	{
 		id: '9dd54a7b-c76a-4292-a361-d9f4315007e3',
@@ -920,7 +920,7 @@ export const data: Data[] = [
 		price: '274.00',
 		description:
 			'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-		summary: 'Rustic Concrete Mouse / Tuna / Books / $274.00'
+		summary: 'Rustic Concrete Mouse / Tuna / Books / $274.00',
 	},
 	{
 		id: '1e5d4d7f-509f-40d3-9ab2-caed1831dc1f',
@@ -930,7 +930,7 @@ export const data: Data[] = [
 		price: '83.00',
 		description:
 			'The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design',
-		summary: 'Practical Metal Pizza / Chair / Beauty / $83.00'
+		summary: 'Practical Metal Pizza / Chair / Beauty / $83.00',
 	},
 	{
 		id: '4fe6c6e5-b569-435c-be1a-01768ff260eb',
@@ -939,7 +939,7 @@ export const data: Data[] = [
 		department: 'Jewelery',
 		price: '44.00',
 		description: 'The Football Is Good For Training And Recreational Purposes',
-		summary: 'Ergonomic Cotton Computer / Gloves / Jewelery / $44.00'
+		summary: 'Ergonomic Cotton Computer / Gloves / Jewelery / $44.00',
 	},
 	{
 		id: '321a32af-b494-4ae3-85b8-ca016b42fb3a',
@@ -949,7 +949,7 @@ export const data: Data[] = [
 		price: '327.00',
 		description:
 			'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
-		summary: 'Awesome Plastic Fish / Keyboard / Health / $327.00'
+		summary: 'Awesome Plastic Fish / Keyboard / Health / $327.00',
 	},
 	{
 		id: '680badd3-ff8b-47c1-8c82-4b0642dcb6ea',
@@ -959,7 +959,7 @@ export const data: Data[] = [
 		price: '926.00',
 		description:
 			'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
-		summary: 'Refined Frozen Gloves / Bacon / Music / $926.00'
+		summary: 'Refined Frozen Gloves / Bacon / Music / $926.00',
 	},
 	{
 		id: '2b1a15d4-7b28-4d1d-96cb-aeb98a545507',
@@ -969,7 +969,7 @@ export const data: Data[] = [
 		price: '275.00',
 		description:
 			'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
-		summary: 'Unbranded Concrete Tuna / Shirt / Outdoors / $275.00'
+		summary: 'Unbranded Concrete Tuna / Shirt / Outdoors / $275.00',
 	},
 	{
 		id: '2a9ea674-abbb-40fd-a0a9-5dd8d2f2a1f3',
@@ -979,7 +979,7 @@ export const data: Data[] = [
 		price: '197.00',
 		description:
 			"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-		summary: 'Rustic Fresh Pants / Chips / Beauty / $197.00'
+		summary: 'Rustic Fresh Pants / Chips / Beauty / $197.00',
 	},
 	{
 		id: 'bac4f2a9-15ad-4e90-a08e-691ab24c2cfa',
@@ -988,11 +988,11 @@ export const data: Data[] = [
 		department: 'Home',
 		price: '592.00',
 		description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
-		summary: 'Gorgeous Concrete Shoes / Fish / Home / $592.00'
-	}
+		summary: 'Gorgeous Concrete Shoes / Fish / Home / $592.00',
+	},
 ];
 
 export const listOptions: ListOption[] = data.map((item) => ({
 	value: item.id,
-	label: item.summary
+	label: item.summary,
 }));

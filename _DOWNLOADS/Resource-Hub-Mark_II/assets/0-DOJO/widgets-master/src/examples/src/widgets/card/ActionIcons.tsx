@@ -18,7 +18,7 @@ export default factory(function ActionIcons() {
 								<Icon type="downIcon" />
 								<Icon type="upIcon" />
 							</virtual>
-						)
+						),
 					}}
 				</Card>
 			</div>

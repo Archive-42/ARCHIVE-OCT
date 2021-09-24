@@ -14,10 +14,10 @@ function createMiddleware() {
 		middleware: {
 			destroy: () => {
 				destroyStub();
-			}
+			},
 		} as any,
 		properties: () => ({}),
-		children: () => []
+		children: () => [],
 	});
 
 	return middleware;

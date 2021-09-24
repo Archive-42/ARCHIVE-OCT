@@ -54,7 +54,7 @@ describe('RadioGroup', () => {
 				classes={undefined}
 			>
 				dog
-			</Radio>
+			</Radio>,
 		]);
 		h.expect(optionTemplate);
 	});
@@ -63,7 +63,7 @@ describe('RadioGroup', () => {
 		const h = harness(() => (
 			<RadioGroup name="test" onValue={noop} options={[{ value: 'cat' }]}>
 				{{
-					label: 'test label'
+					label: 'test label',
 				}}
 			</RadioGroup>
 		));
@@ -79,7 +79,7 @@ describe('RadioGroup', () => {
 				classes={undefined}
 			>
 				cat
-			</Radio>
+			</Radio>,
 		]);
 		h.expect(labelTemplate);
 	});
@@ -126,7 +126,7 @@ describe('RadioGroup', () => {
 				classes={undefined}
 			>
 				dog
-			</Radio>
+			</Radio>,
 		]);
 		h.expect(optionTemplate);
 		h.trigger('[value="cat"]', 'onValue', true);
@@ -174,7 +174,7 @@ describe('RadioGroup', () => {
 				classes={undefined}
 			>
 				dog
-			</Radio>
+			</Radio>,
 		]);
 		h.expect(optionTemplate);
 		h.trigger('[value="cat"]', 'onValue', true);
@@ -200,9 +200,9 @@ describe('RadioGroup', () => {
 							>
 								cat
 							</Radio>,
-							<hr />
+							<hr />,
 						];
-					}
+					},
 				}}
 			</RadioGroup>
 		));
@@ -220,7 +220,7 @@ describe('RadioGroup', () => {
 			>
 				cat
 			</Radio>,
-			<hr />
+			<hr />,
 		]);
 		h.expect(customTemplate);
 	});

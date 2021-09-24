@@ -7,15 +7,15 @@
 A suite of pre-built Dojo widgets, ready to use in your web application.
 These widgets are built using Dojo's widget authoring system [(@dojo/framework/core)](https://github.com/dojo/framework/blob/master/src/core/README.md).
 
-- [Usage](#usage)
-- [Features](#features)
-- [Conventions](#conventions)
-  - [Icons](#icons)
-  - [Coding conventions](#coding-conventions)
-- [How Do I Contribute?](#how-do-i-contribute)
-    - [Installation](#installation)
-    - [Testing](#testing)
-- [Licensing Information](#licensing-information)
+-   [Usage](#usage)
+-   [Features](#features)
+-   [Conventions](#conventions)
+    -   [Icons](#icons)
+    -   [Coding conventions](#coding-conventions)
+-   [How Do I Contribute?](#how-do-i-contribute)
+    -   [Installation](#installation)
+    -   [Testing](#testing)
+-   [Licensing Information](#licensing-information)
 
 ## Usage
 
@@ -24,7 +24,8 @@ To use `@dojo/widgets` in your project, you will need to install the package:
 ```bash
 npm install @dojo/widgets
 ```
-This package contains *all* of the widgets in this repo.
+
+This package contains _all_ of the widgets in this repo.
 
 All of the widgets are on the same release schedule, that is to say, that we release all widgets at the same time.
 Minor releases may include new widgets and/or features, whereas patch releases may contain fixes to more than 1 widget.
@@ -46,19 +47,20 @@ This allows our [`dojo cli`](https://github.com/dojo/cli) build tooling to make 
 
 ## Features
 
-- All widgets are supported in all evergreen browsers (Chrome, Edge, Firefox, IE11+, and Safari) as well as popular mobile browsers (Mobile Safari, Chrome on Android).
+-   All widgets are supported in all evergreen browsers (Chrome, Edge, Firefox, IE11+, and Safari) as well as popular mobile browsers (Mobile Safari, Chrome on Android).
 
-- All widgets are designed to be accessible. If custom ARIA semantics are required, widgets have an `aria` property that may be passed an object with custom `aria-*` attributes.
+-   All widgets are designed to be accessible. If custom ARIA semantics are required, widgets have an `aria` property that may be passed an object with custom `aria-*` attributes.
 
-- All widgets are fully themeable. Example themes are available in the [@dojo/themes](https://github.com/dojo/themes) repository.
+-   All widgets are fully themeable. Example themes are available in the [@dojo/themes](https://github.com/dojo/themes) repository.
 
-- All widgets support internationalization (`i18n`)
+-   All widgets support internationalization (`i18n`)
 
 ## Widgets
 
 Live examples of current widgets are available in the [widget showcase](https://dojo.github.io/examples/widget-showcase/).
 
 ### Form widgets
+
 [Button](src/button/README.md)
 
 [Calendar](src/calendar/README.md)
@@ -88,6 +90,7 @@ Live examples of current widgets are available in the [widget showcase](https://
 [TimePicker](src/time-picker/README.md)
 
 ### Layout widgets
+
 [Accordion](src/accordion/README.md)
 
 [SlidePane](src/slide-pane/README.md)
@@ -99,6 +102,7 @@ Live examples of current widgets are available in the [widget showcase](https://
 [TitlePane](src/title-pane/README.md)
 
 ### Misc widgets
+
 [Grid](src/grid/README.md)
 
 [Dialog](src/dialog/README.md)
@@ -120,16 +124,15 @@ Live examples of current widgets are available in the [widget showcase](https://
 You can register event handlers that get called when the corresponding events occur by passing the handlers into a widget's `properties`.
 The naming convention for event handlers is as follows:
 
-- if the parent of the widget has the power to decide *if* an event is successful, i.e. can cancel the event, then the child widget will call an event handler in the following format:
+-   if the parent of the widget has the power to decide _if_ an event is successful, i.e. can cancel the event, then the child widget will call an event handler in the following format:
 
- `onRequest[X]`, e.g. for a `close` event, the event handler called by the child widget must be called `onRequestClose`
+`onRequest[X]`, e.g. for a `close` event, the event handler called by the child widget must be called `onRequestClose`
 
- Here the child widget is requesting that the `close` event take place.
+Here the child widget is requesting that the `close` event take place.
 
-- for events that will occur regardless of child/parent interaction, then the `Request` naming convention is dropped:
+-   for events that will occur regardless of child/parent interaction, then the `Request` naming convention is dropped:
 
 `on[X]`, e.g. for a `dismiss` event, the event handler called by the child widget must be called `onDismiss`
-
 
 ### Icons
 
@@ -161,12 +164,11 @@ Widgets adhere to a basic convention for using specific ranges of z-index values
 
 The range definitions are as follows:
 
-- **0 - 100**: Any specific component layering, e.g. a caption over an image.
-- **100 - 200**: Fixed position elements. Fixed headers and footers are clear examples of fixed page elements, but it could also include a drag-and-drop element in a drag state.
-- **200 - 300**: Partial-page overlays such as Slide panes.
-- **300 - 400**: Full-page overlays such as Dialogs.
-- **400 - 500**: Body level popups, tooltips and alerts.
-
+-   **0 - 100**: Any specific component layering, e.g. a caption over an image.
+-   **100 - 200**: Fixed position elements. Fixed headers and footers are clear examples of fixed page elements, but it could also include a drag-and-drop element in a drag state.
+-   **200 - 300**: Partial-page overlays such as Slide panes.
+-   **300 - 400**: Full-page overlays such as Dialogs.
+-   **400 - 500**: Body level popups, tooltips and alerts.
 
 ## How to customize a widget
 
@@ -188,9 +190,10 @@ export class MyWidget extends Button {
 Dojo widgets provide standard extension points to allow you to customize their behavior. For more details, please refer to the [widget authoring system](https://github.com/dojo/framework/blob/master/src/core/README.md#decorator-lifecycle-hooks).
 
 Individual widgets also provide certain types of extension points where applicable:
-- `render*`: Large render functions are split up into multiple smaller pieces that can be more easily overridden to create custom vdom.
-- `getModifierClasses`: Modify the array of conditionally applied classes like `css.selected` or `css.disabled`.
-Not all widgets include these extension points, and some have additional overridable methods.
+
+-   `render*`: Large render functions are split up into multiple smaller pieces that can be more easily overridden to create custom vdom.
+-   `getModifierClasses`: Modify the array of conditionally applied classes like `css.selected` or `css.disabled`.
+    Not all widgets include these extension points, and some have additional overridable methods.
 
 ## Widget Variants
 
@@ -198,7 +201,7 @@ When writing a widget variant, ie. `RaisedButton`, you should ensure that you us
 
 ## How do I contribute?
 
-We appreciate your interest!  Please see the [Dojo Meta Repository](https://github.com/dojo/meta#readme) for the
+We appreciate your interest! Please see the [Dojo Meta Repository](https://github.com/dojo/meta#readme) for the
 Contributing Guidelines and Style Guide.
 
 Note that all changes to widgets should work with the [dojo theme](https://github.com/dojo/themes/). To test this start the example page (instructions at [Installation](#installation) section) and select the dojo option at the top of the page.
@@ -247,11 +250,11 @@ To add a new example, create a directory that matches the directory name of the 
 }
 ```
 
- * filename: The name of the widget module, defaults to `index`
- * overview: The configuration for the basic example including the imported Basic module and the example filename (has to be `'Basic'`)
- * examples: Additional examples for the widget, an array of configuration that specifies the title, description, module and example filename.
+-   filename: The name of the widget module, defaults to `index`
+-   overview: The configuration for the basic example including the imported Basic module and the example filename (has to be `'Basic'`)
+-   examples: Additional examples for the widget, an array of configuration that specifies the title, description, module and example filename.
 
- To view the examples locally run `npm run dev` in the root directory and navigate to http://localhost:9999, this starts the examples in watch mode and should update widget module are changed. Note that you do not have to install dependencies in the `src/examples` project, this will result in an error.
+To view the examples locally run `npm run dev` in the root directory and navigate to http://localhost:9999, this starts the examples in watch mode and should update widget module are changed. Note that you do not have to install dependencies in the `src/examples` project, this will result in an error.
 
 ### Widget Documentation
 
@@ -265,10 +268,10 @@ The widget examples and documentation is automatically generated by the `example
 
 ```ts
 interface ExampleProperties {
-    /** This is the description for foo */
-    foo: string;
-    /** This is the description for bar */
-    bar: string;
+	/** This is the description for foo */
+	foo: string;
+	/** This is the description for bar */
+	bar: string;
 }
 ```
 

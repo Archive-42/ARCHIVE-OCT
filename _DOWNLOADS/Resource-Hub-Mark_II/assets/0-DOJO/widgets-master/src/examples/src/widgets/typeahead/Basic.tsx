@@ -4,7 +4,7 @@ import Typeahead from '@dojo/widgets/typeahead';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { data, Data } from '../../data';
 
@@ -22,14 +22,14 @@ export default factory(function Basic({ id, middleware: { icache, resource } }) 
 				resource={resource({
 					template,
 					transform: { value: 'id', label: 'summary' },
-					initOptions: { data: dataWithDisabled, id }
+					initOptions: { data: dataWithDisabled, id },
 				})}
 				onValue={(value) => {
 					icache.set('value', value);
 				}}
 			>
 				{{
-					label: 'Basic Typeahead'
+					label: 'Basic Typeahead',
 				}}
 			</Typeahead>
 			<pre>{JSON.stringify(icache.getOrSet('value', ''))}</pre>

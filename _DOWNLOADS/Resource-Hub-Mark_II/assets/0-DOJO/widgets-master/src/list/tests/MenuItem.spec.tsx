@@ -61,7 +61,7 @@ describe('MenuItem', () => {
 			undefined,
 			css.root,
 			css.active,
-			false
+			false,
 		]);
 		h.expect(activeTemplate);
 	});

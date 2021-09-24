@@ -5,7 +5,7 @@ import Example from '../../Example';
 import {
 	createResourceTemplate,
 	createResourceMiddleware,
-	defaultFind
+	defaultFind,
 } from '@dojo/framework/core/middleware/resources';
 
 interface User {
@@ -33,8 +33,8 @@ const template = createResourceTemplate<User>({
 
 		const response = await fetch(url, {
 			headers: {
-				'Content-Type': 'application/json'
-			}
+				'Content-Type': 'application/json',
+			},
 		});
 		const data: {
 			data: User[];
@@ -44,11 +44,11 @@ const template = createResourceTemplate<User>({
 		put(
 			{
 				data: data.data,
-				total: data.total
+				total: data.total,
 			},
 			request
 		);
-	}
+	},
 });
 
 const resource = createResourceMiddleware();
@@ -60,7 +60,7 @@ export default factory(function FetchedResource({ middleware: { icache, resource
 			<List
 				resource={resource({
 					template,
-					transform: { value: 'id', label: 'firstName' }
+					transform: { value: 'id', label: 'firstName' },
 				})}
 				onValue={(value) => {
 					icache.set('value', value);

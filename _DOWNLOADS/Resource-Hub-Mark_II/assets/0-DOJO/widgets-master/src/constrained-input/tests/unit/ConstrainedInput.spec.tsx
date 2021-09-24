@@ -29,7 +29,7 @@ describe('ConstrainedInput', () => {
 	it('renders with default properties', () => {
 		const h = harness(() => <ConstrainedInput rules={rules} />, {
 			middleware: [[validation, createMockValidationMiddleware(() => true)]],
-			customComparator: [compareTheme]
+			customComparator: [compareTheme],
 		});
 
 		h.expect(() => (
@@ -49,7 +49,7 @@ describe('ConstrainedInput', () => {
 			() => <ConstrainedInput rules={rules}>{{ label: 'Test Label' }}</ConstrainedInput>,
 			{
 				middleware: [[validation, createMockValidationMiddleware(() => true)]],
-				customComparator: [compareTheme]
+				customComparator: [compareTheme],
 			}
 		);
 		h.expect(() => (
@@ -75,7 +75,7 @@ describe('ConstrainedInput', () => {
 			),
 			{
 				middleware: [[validation, createMockValidationMiddleware(() => true)]],
-				customComparator: [compareTheme]
+				customComparator: [compareTheme],
 			}
 		);
 		h.expect(() => (
@@ -98,14 +98,14 @@ describe('ConstrainedInput', () => {
 				<ConstrainedInput
 					rules={{
 						length: {
-							min: 1
-						}
+							min: 1,
+						},
 					}}
 				/>
 			),
 			{
 				middleware: [[validation, createMockValidationMiddleware(() => true)]],
-				customComparator: [compareTheme]
+				customComparator: [compareTheme],
 			}
 		);
 

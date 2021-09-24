@@ -11,7 +11,7 @@ export default factory(function CardWithMediaContent() {
 			<div styles={{ maxWidth: '400px' }}>
 				<Card title="Hello, World" mediaSrc={mediaSrc}>
 					{{
-						content: <span>Lorem ipsum</span>
+						content: <span>Lorem ipsum</span>,
 					}}
 				</Card>
 			</div>

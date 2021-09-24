@@ -11,13 +11,13 @@ export default factory(function Basic() {
 				rules={{
 					length: {
 						min: 4,
-						max: 16
+						max: 16,
 					},
 					contains: {
 						numbers: 1,
 						uppercase: 1,
-						specialCharacters: 1
-					}
+						specialCharacters: 1,
+					},
 				}}
 			>
 				{{ label: 'Enter Username' }}

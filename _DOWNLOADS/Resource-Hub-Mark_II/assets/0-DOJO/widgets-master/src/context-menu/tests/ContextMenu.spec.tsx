@@ -4,7 +4,7 @@ import {
 	createHarness,
 	compareTheme,
 	compareResource,
-	createTestResource
+	createTestResource,
 } from '../../common/tests/support/test-helpers';
 import assertionTemplate from '@dojo/framework/testing/harness/assertionTemplate';
 import { stub } from 'sinon';
@@ -26,7 +26,7 @@ describe('ContextMenu', () => {
 		<ContextPopup>
 			{{
 				trigger: null as any,
-				content: null as any
+				content: null as any,
 			}}
 		</ContextPopup>
 	));

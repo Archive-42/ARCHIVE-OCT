@@ -12,7 +12,7 @@ export default factory(function ProgressWithCustomOutput() {
 		<Example>
 			<Progress value={value} max={max}>
 				{{
-					output: (value, percent) => `${value} of ${max} is ${percent}%`
+					output: (value, percent) => `${value} of ${max} is ${percent}%`,
 				}}
 			</Progress>
 		</Example>

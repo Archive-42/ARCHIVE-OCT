@@ -21,7 +21,7 @@ describe('TwoColumnLayout', () => {
 		return {
 			get() {
 				return { breakpoint, contentRect: {} };
-			}
+			},
 		};
 	});
 
@@ -30,7 +30,7 @@ describe('TwoColumnLayout', () => {
 		return {
 			get() {
 				return { isDragging, delta: { x: xDelta } };
-			}
+			},
 		};
 	});
 
@@ -39,7 +39,7 @@ describe('TwoColumnLayout', () => {
 		return {
 			get() {
 				return { width: 0 };
-			}
+			},
 		};
 	});
 	const render = (renderFunc: () => WNode) =>
@@ -47,8 +47,8 @@ describe('TwoColumnLayout', () => {
 			middleware: [
 				[breakpointMiddleware, () => mockBreakpoint()],
 				[drag, () => mockDrag()],
-				[resize, () => mockResize()]
-			] as any
+				[resize, () => mockResize()],
+			] as any,
 		});
 	const leading = <div>Leading</div>;
 	const trailing = <div>Trailing</div>;
@@ -84,7 +84,7 @@ describe('TwoColumnLayout', () => {
 			<TwoColumnLayout>
 				{{
 					leading,
-					trailing
+					trailing,
 				}}
 			</TwoColumnLayout>
 		));
@@ -97,7 +97,7 @@ describe('TwoColumnLayout', () => {
 			<TwoColumnLayout bias="leading">
 				{{
 					leading,
-					trailing
+					trailing,
 				}}
 			</TwoColumnLayout>
 		));
@@ -109,14 +109,14 @@ describe('TwoColumnLayout', () => {
 					false,
 					false,
 					false,
-					css.column
+					css.column,
 				])
 				.setProperty(WrappedTrailing, 'classes', [
 					false,
 					false,
 					false,
 					css.small,
-					css.column
+					css.column,
 				])
 		);
 	});
@@ -126,7 +126,7 @@ describe('TwoColumnLayout', () => {
 			<TwoColumnLayout bias="trailing">
 				{{
 					leading,
-					trailing
+					trailing,
 				}}
 			</TwoColumnLayout>
 		));
@@ -138,14 +138,14 @@ describe('TwoColumnLayout', () => {
 					false,
 					false,
 					css.small,
-					css.column
+					css.column,
 				])
 				.setProperty(WrappedTrailing, 'classes', [
 					fixedCss.biased,
 					false,
 					false,
 					false,
-					css.column
+					css.column,
 				])
 		);
 	});
@@ -155,14 +155,14 @@ describe('TwoColumnLayout', () => {
 			<TwoColumnLayout resize>
 				{{
 					leading,
-					trailing
+					trailing,
 				}}
 			</TwoColumnLayout>
 		));
 
 		r.expect(
 			baseAssertion.insertAfter(WrappedLeading, () => [
-				<div classes={css.divider} key="divider" />
+				<div classes={css.divider} key="divider" />,
 			])
 		);
 	});
@@ -174,7 +174,7 @@ describe('TwoColumnLayout', () => {
 			<TwoColumnLayout resize>
 				{{
 					leading,
-					trailing
+					trailing,
 				}}
 			</TwoColumnLayout>
 		));
@@ -187,7 +187,7 @@ describe('TwoColumnLayout', () => {
 					undefined,
 					fixedCss.root,
 					css.root,
-					fixedCss.resize
+					fixedCss.resize,
 				])
 		);
 
@@ -202,7 +202,7 @@ describe('TwoColumnLayout', () => {
 					undefined,
 					fixedCss.root,
 					css.root,
-					fixedCss.resize
+					fixedCss.resize,
 				])
 		);
 
@@ -216,7 +216,7 @@ describe('TwoColumnLayout', () => {
 					undefined,
 					fixedCss.root,
 					css.root,
-					fixedCss.resize
+					fixedCss.resize,
 				])
 		);
 	});
@@ -231,7 +231,7 @@ describe('TwoColumnLayout', () => {
 				<TwoColumnLayout>
 					{{
 						leading,
-						trailing
+						trailing,
 					}}
 				</TwoColumnLayout>
 			));
@@ -243,14 +243,14 @@ describe('TwoColumnLayout', () => {
 						false,
 						false,
 						false,
-						css.column
+						css.column,
 					])
 					.setProperty(WrappedTrailing, 'classes', [
 						false,
 						false,
 						baseCss.visuallyHidden,
 						false,
-						css.column
+						css.column,
 					])
 			);
 		});
@@ -260,7 +260,7 @@ describe('TwoColumnLayout', () => {
 				<TwoColumnLayout resize>
 					{{
 						leading,
-						trailing
+						trailing,
 					}}
 				</TwoColumnLayout>
 			));
@@ -272,14 +272,14 @@ describe('TwoColumnLayout', () => {
 						false,
 						false,
 						false,
-						css.column
+						css.column,
 					])
 					.setProperty(WrappedTrailing, 'classes', [
 						false,
 						false,
 						baseCss.visuallyHidden,
 						false,
-						css.column
+						css.column,
 					])
 			);
 		});
@@ -289,7 +289,7 @@ describe('TwoColumnLayout', () => {
 				<TwoColumnLayout bias="leading">
 					{{
 						leading,
-						trailing
+						trailing,
 					}}
 				</TwoColumnLayout>
 			));
@@ -301,14 +301,14 @@ describe('TwoColumnLayout', () => {
 						false,
 						false,
 						false,
-						css.column
+						css.column,
 					])
 					.setProperty(WrappedTrailing, 'classes', [
 						false,
 						false,
 						baseCss.visuallyHidden,
 						false,
-						css.column
+						css.column,
 					])
 			);
 		});
@@ -318,7 +318,7 @@ describe('TwoColumnLayout', () => {
 				<TwoColumnLayout bias="trailing">
 					{{
 						leading,
-						trailing
+						trailing,
 					}}
 				</TwoColumnLayout>
 			));
@@ -330,14 +330,14 @@ describe('TwoColumnLayout', () => {
 						false,
 						baseCss.visuallyHidden,
 						false,
-						css.column
+						css.column,
 					])
 					.setProperty(WrappedTrailing, 'classes', [
 						fixedCss.biased,
 						false,
 						false,
 						false,
-						css.column
+						css.column,
 					])
 			);
 		});

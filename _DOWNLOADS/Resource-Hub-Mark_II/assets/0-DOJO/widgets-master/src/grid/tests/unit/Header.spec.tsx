@@ -17,36 +17,33 @@ const noop = () => {};
 const columnConfig = [
 	{
 		id: 'title',
-		title: 'Title'
+		title: 'Title',
 	},
 	{
 		id: 'firstName',
-		title: 'First Name'
-	}
+		title: 'First Name',
+	},
 ];
 
 const advancedColumnConfig = [
 	{
 		id: 'title',
-		title: 'Title'
+		title: 'Title',
 	},
 	{
 		id: 'firstName',
 		title: () => 'Custom Title',
 		sortable: true,
 		editable: true,
-		filterable: true
-	}
+		filterable: true,
+	},
 ];
 
 function getColumnWidths(columns: any[]): { [index: string]: number } {
-	return columns.reduce(
-		(widths, column) => {
-			widths[column.id] = 100;
-			return widths;
-		},
-		{} as any
-	);
+	return columns.reduce((widths, column) => {
+		widths[column.id] = 100;
+		return widths;
+	}, {} as any);
 }
 
 describe('Header', () => {
@@ -58,7 +55,7 @@ describe('Header', () => {
 				columnConfig,
 				sorter: sorterStub,
 				filterer: filtererStub,
-				columnWidths: undefined
+				columnWidths: undefined,
 			})
 		);
 		h.expect(() =>
@@ -69,7 +66,7 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[v('div', {}, ['Title'])]
 				),
@@ -79,10 +76,10 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[v('div', {}, ['First Name'])]
-				)
+				),
 			])
 		);
 	});
@@ -95,7 +92,7 @@ describe('Header', () => {
 				columnConfig: advancedColumnConfig,
 				sorter: sorterStub,
 				filterer: filtererStub,
-				columnWidths: undefined
+				columnWidths: undefined,
 			})
 		);
 
@@ -107,7 +104,7 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[v('div', {}, ['Title'])]
 				),
@@ -117,14 +114,14 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[
 						v(
 							'div',
 							{
 								classes: [fixedCss.column, css.sortable, null, null, null],
-								onclick: noop
+								onclick: noop,
 							},
 							[
 								'Custom Title',
@@ -132,17 +129,17 @@ describe('Header', () => {
 									'button',
 									{
 										classes: css.sort,
-										onclick: noop
+										onclick: noop,
 									},
 									[
 										w(Icon, {
 											type: 'downIcon',
 											altText: 'Sort by Custom Title',
 											classes: undefined,
-											theme: undefined
-										})
+											theme: undefined,
+										}),
 									]
-								)
+								),
 							]
 						),
 						w(
@@ -153,19 +150,19 @@ describe('Header', () => {
 									'@dojo/widgets/text-input': {
 										root: [css.filter],
 										input: [css.filterInput],
-										noLabel: [css.filterNoLabel]
-									}
+										noLabel: [css.filterNoLabel],
+									},
 								},
 								labelHidden: true,
 								type: 'search',
 								initialValue: undefined,
 								onValue: noop,
-								theme: undefined
+								theme: undefined,
 							},
 							[{ label: 'Filter by Custom Title' }]
-						)
+						),
 					]
-				)
+				),
 			])
 		);
 	});
@@ -180,9 +177,9 @@ describe('Header', () => {
 				filterer: filtererStub,
 				sort: {
 					columnId: 'firstName',
-					direction: 'asc'
+					direction: 'asc',
 				},
-				columnWidths: undefined
+				columnWidths: undefined,
 			})
 		);
 
@@ -194,7 +191,7 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[v('div', {}, ['Title'])]
 				),
@@ -204,14 +201,14 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': 'ascending'
+						'aria-sort': 'ascending',
 					},
 					[
 						v(
 							'div',
 							{
 								classes: [fixedCss.column, css.sortable, css.sorted, null, css.asc],
-								onclick: noop
+								onclick: noop,
 							},
 							[
 								'Custom Title',
@@ -219,17 +216,17 @@ describe('Header', () => {
 									'button',
 									{
 										classes: css.sort,
-										onclick: noop
+										onclick: noop,
 									},
 									[
 										w(Icon, {
 											type: 'upIcon',
 											altText: 'Sort by Custom Title',
 											classes: undefined,
-											theme: undefined
-										})
+											theme: undefined,
+										}),
 									]
-								)
+								),
 							]
 						),
 						w(
@@ -240,19 +237,19 @@ describe('Header', () => {
 									'@dojo/widgets/text-input': {
 										root: [css.filter],
 										input: [css.filterInput],
-										noLabel: [css.filterNoLabel]
-									}
+										noLabel: [css.filterNoLabel],
+									},
 								},
 								labelHidden: true,
 								type: 'search',
 								initialValue: undefined,
 								onValue: noop,
-								theme: undefined
+								theme: undefined,
 							},
 							[{ label: 'Filter by Custom Title' }]
-						)
+						),
 					]
-				)
+				),
 			])
 		);
 	});
@@ -267,9 +264,9 @@ describe('Header', () => {
 				filterer: filtererStub,
 				sort: {
 					columnId: 'firstName',
-					direction: 'desc'
+					direction: 'desc',
 				},
-				columnWidths: undefined
+				columnWidths: undefined,
 			})
 		);
 
@@ -281,7 +278,7 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[v('div', {}, ['Title'])]
 				),
@@ -291,7 +288,7 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': 'descending'
+						'aria-sort': 'descending',
 					},
 					[
 						v(
@@ -302,9 +299,9 @@ describe('Header', () => {
 									css.sortable,
 									css.sorted,
 									css.desc,
-									null
+									null,
 								],
-								onclick: noop
+								onclick: noop,
 							},
 							[
 								'Custom Title',
@@ -312,17 +309,17 @@ describe('Header', () => {
 									'button',
 									{
 										classes: css.sort,
-										onclick: noop
+										onclick: noop,
 									},
 									[
 										w(Icon, {
 											type: 'downIcon',
 											altText: 'Sort by Custom Title',
 											classes: undefined,
-											theme: undefined
-										})
+											theme: undefined,
+										}),
 									]
-								)
+								),
 							]
 						),
 						w(
@@ -333,19 +330,19 @@ describe('Header', () => {
 									'@dojo/widgets/text-input': {
 										root: [css.filter],
 										input: [css.filterInput],
-										noLabel: [css.filterNoLabel]
-									}
+										noLabel: [css.filterNoLabel],
+									},
 								},
 								labelHidden: true,
 								type: 'search',
 								initialValue: undefined,
 								onValue: noop,
-								theme: undefined
+								theme: undefined,
 							},
 							[{ label: 'Filter by Custom Title' }]
-						)
+						),
 					]
-				)
+				),
 			])
 		);
 	});
@@ -359,9 +356,9 @@ describe('Header', () => {
 				sorter: sorterStub,
 				filterer: filtererStub,
 				filter: {
-					firstName: 'my filter'
+					firstName: 'my filter',
 				},
-				columnWidths: undefined
+				columnWidths: undefined,
 			})
 		);
 
@@ -373,7 +370,7 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[v('div', {}, ['Title'])]
 				),
@@ -383,14 +380,14 @@ describe('Header', () => {
 						classes: [css.cell, fixedCss.cellFixed],
 						styles: {},
 						role: 'columnheader',
-						'aria-sort': undefined
+						'aria-sort': undefined,
 					},
 					[
 						v(
 							'div',
 							{
 								classes: [fixedCss.column, css.sortable, null, null, null],
-								onclick: noop
+								onclick: noop,
 							},
 							[
 								'Custom Title',
@@ -398,17 +395,17 @@ describe('Header', () => {
 									'button',
 									{
 										classes: css.sort,
-										onclick: noop
+										onclick: noop,
 									},
 									[
 										w(Icon, {
 											type: 'downIcon',
 											altText: 'Sort by Custom Title',
 											classes: undefined,
-											theme: undefined
-										})
+											theme: undefined,
+										}),
 									]
-								)
+								),
 							]
 						),
 						w(
@@ -419,19 +416,19 @@ describe('Header', () => {
 									'@dojo/widgets/text-input': {
 										root: [css.filter],
 										input: [css.filterInput],
-										noLabel: [css.filterNoLabel]
-									}
+										noLabel: [css.filterNoLabel],
+									},
 								},
 								labelHidden: true,
 								type: 'search',
 								initialValue: 'my filter',
 								onValue: noop,
-								theme: undefined
+								theme: undefined,
 							},
 							[{ label: 'Filter by Custom Title' }]
-						)
+						),
 					]
-				)
+				),
 			])
 		);
 	});
@@ -444,7 +441,7 @@ describe('Header', () => {
 				columnConfig: advancedColumnConfig,
 				sorter: sorterStub,
 				filterer: filtererStub,
-				columnWidths: undefined
+				columnWidths: undefined,
 			})
 		);
 
@@ -461,7 +458,7 @@ describe('Header', () => {
 					columnConfig: advancedColumnConfig,
 					sorter: sorterStub,
 					filterer: filtererStub,
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 
@@ -483,9 +480,9 @@ describe('Header', () => {
 					filterer: filtererStub,
 					sort: {
 						columnId: 'firstName',
-						direction: 'desc'
+						direction: 'desc',
 					},
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 
@@ -507,9 +504,9 @@ describe('Header', () => {
 					filterer: filtererStub,
 					sort: {
 						columnId: 'firstName',
-						direction: 'asc'
+						direction: 'asc',
 					},
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 
@@ -531,16 +528,16 @@ describe('Header', () => {
 					filterer: filtererStub,
 					sort: {
 						columnId: 'firstName',
-						direction: 'asc'
+						direction: 'asc',
 					},
 					sortRenderer: (column: ColumnConfig, direction: any, sorter: () => void) => {
 						const title =
 							typeof column.title === 'string' ? column.title : column.title();
 						return v('div', { key: 'sort', onclick: sorter }, [
-							`custom renderer - ${direction} - ${title}`
+							`custom renderer - ${direction} - ${title}`,
 						]);
 					},
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 
@@ -552,7 +549,7 @@ describe('Header', () => {
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {},
 							role: 'columnheader',
-							'aria-sort': undefined
+							'aria-sort': undefined,
 						},
 						[v('div', {}, ['Title'])]
 					),
@@ -562,7 +559,7 @@ describe('Header', () => {
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {},
 							role: 'columnheader',
-							'aria-sort': 'ascending'
+							'aria-sort': 'ascending',
 						},
 						[
 							v(
@@ -573,15 +570,15 @@ describe('Header', () => {
 										css.sortable,
 										css.sorted,
 										null,
-										css.asc
+										css.asc,
 									],
-									onclick: noop
+									onclick: noop,
 								},
 								[
 									'Custom Title',
 									v('div', { key: 'sort', onclick: noop }, [
-										'custom renderer - asc - Custom Title'
-									])
+										'custom renderer - asc - Custom Title',
+									]),
 								]
 							),
 							w(
@@ -592,19 +589,19 @@ describe('Header', () => {
 										'@dojo/widgets/text-input': {
 											root: [css.filter],
 											input: [css.filterInput],
-											noLabel: [css.filterNoLabel]
-										}
+											noLabel: [css.filterNoLabel],
+										},
 									},
 									labelHidden: true,
 									type: 'search',
 									initialValue: undefined,
 									onValue: noop,
-									theme: undefined
+									theme: undefined,
 								},
 								[{ label: 'Filter by Custom Title' }]
-							)
+							),
 						]
-					)
+					),
 				])
 			);
 		});
@@ -619,16 +616,16 @@ describe('Header', () => {
 					filterer: filtererStub,
 					sort: {
 						columnId: 'firstName',
-						direction: 'desc'
+						direction: 'desc',
 					},
 					sortRenderer: (column: ColumnConfig, direction: any, sorter: () => void) => {
 						const title =
 							typeof column.title === 'string' ? column.title : column.title();
 						return v('div', { key: 'sort', onclick: sorter }, [
-							`custom renderer - ${direction} - ${title}`
+							`custom renderer - ${direction} - ${title}`,
 						]);
 					},
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 
@@ -640,7 +637,7 @@ describe('Header', () => {
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {},
 							role: 'columnheader',
-							'aria-sort': undefined
+							'aria-sort': undefined,
 						},
 						[v('div', {}, ['Title'])]
 					),
@@ -650,7 +647,7 @@ describe('Header', () => {
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {},
 							role: 'columnheader',
-							'aria-sort': 'descending'
+							'aria-sort': 'descending',
 						},
 						[
 							v(
@@ -661,15 +658,15 @@ describe('Header', () => {
 										css.sortable,
 										css.sorted,
 										css.desc,
-										null
+										null,
 									],
-									onclick: noop
+									onclick: noop,
 								},
 								[
 									'Custom Title',
 									v('div', { key: 'sort', onclick: noop }, [
-										'custom renderer - desc - Custom Title'
-									])
+										'custom renderer - desc - Custom Title',
+									]),
 								]
 							),
 							w(
@@ -680,19 +677,19 @@ describe('Header', () => {
 										'@dojo/widgets/text-input': {
 											root: [css.filter],
 											input: [css.filterInput],
-											noLabel: [css.filterNoLabel]
-										}
+											noLabel: [css.filterNoLabel],
+										},
 									},
 									labelHidden: true,
 									type: 'search',
 									initialValue: undefined,
 									onValue: noop,
-									theme: undefined
+									theme: undefined,
 								},
 								[{ label: 'Filter by Custom Title' }]
-							)
+							),
 						]
-					)
+					),
 				])
 			);
 		});
@@ -713,10 +710,10 @@ describe('Header', () => {
 					) => {
 						return v('div', [
 							v('input', { value: filterValue, onValue: doFilter }),
-							v('span', [`${title} - ${columnConfig.id}`])
+							v('span', [`${title} - ${columnConfig.id}`]),
 						]);
 					},
-					columnWidths: undefined
+					columnWidths: undefined,
 				})
 			);
 
@@ -728,7 +725,7 @@ describe('Header', () => {
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {},
 							role: 'columnheader',
-							'aria-sort': undefined
+							'aria-sort': undefined,
 						},
 						[v('div', {}, ['Title'])]
 					),
@@ -738,14 +735,14 @@ describe('Header', () => {
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {},
 							role: 'columnheader',
-							'aria-sort': undefined
+							'aria-sort': undefined,
 						},
 						[
 							v(
 								'div',
 								{
 									classes: [fixedCss.column, css.sortable, null, null, null],
-									onclick: noop
+									onclick: noop,
 								},
 								[
 									'Custom Title',
@@ -753,25 +750,25 @@ describe('Header', () => {
 										'button',
 										{
 											classes: css.sort,
-											onclick: noop
+											onclick: noop,
 										},
 										[
 											w(Icon, {
 												type: 'downIcon',
 												altText: 'Sort by Custom Title',
 												classes: undefined,
-												theme: undefined
-											})
+												theme: undefined,
+											}),
 										]
-									)
+									),
 								]
 							),
 							v('div', [
 								v('input', { value: '', onValue: noop }),
-								v('span', ['Custom Title - firstName'])
-							])
+								v('span', ['Custom Title - firstName']),
+							]),
 						]
-					)
+					),
 				])
 			);
 		});
@@ -781,13 +778,13 @@ describe('Header', () => {
 			{
 				id: 'title',
 				title: 'Title',
-				resizable: true
+				resizable: true,
 			},
 			{
 				id: 'firstName',
 				title: 'First Name',
-				resizable: true
-			}
+				resizable: true,
+			},
 		];
 
 		const h = harness(() => (
@@ -804,7 +801,7 @@ describe('Header', () => {
 				{
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'row',
-					styles: { width: '200px' }
+					styles: { width: '200px' },
 				},
 				[
 					v(
@@ -812,14 +809,14 @@ describe('Header', () => {
 						{
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {
-								flex: '0 1 100px'
+								flex: '0 1 100px',
 							},
 							role: 'columnheader',
-							'aria-sort': undefined
+							'aria-sort': undefined,
 						},
 						[
 							v('div', {}, ['Title']),
-							v('span', { key: 'title-resize', classes: [fixedCss.resize] })
+							v('span', { key: 'title-resize', classes: [fixedCss.resize] }),
 						]
 					),
 					v(
@@ -827,16 +824,16 @@ describe('Header', () => {
 						{
 							classes: [css.cell, fixedCss.cellFixed],
 							styles: {
-								flex: '0 1 100px'
+								flex: '0 1 100px',
 							},
 							role: 'columnheader',
-							'aria-sort': undefined
+							'aria-sort': undefined,
 						},
 						[
 							v('div', {}, ['First Name']),
-							v('span', { key: 'firstName-resize', classes: [fixedCss.resize] })
+							v('span', { key: 'firstName-resize', classes: [fixedCss.resize] }),
 						]
-					)
+					),
 				]
 			)
 		);

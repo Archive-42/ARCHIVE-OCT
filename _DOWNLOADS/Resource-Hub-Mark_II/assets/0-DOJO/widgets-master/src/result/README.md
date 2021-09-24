@@ -4,5 +4,5 @@ Dojo's `Result` widget provides a simple container for providing feedback to a u
 
 ### Features
 
-- Wrap content with a consistent style
-- Include a status icon, content, and actions for the result
+-   Wrap content with a consistent style
+-   Include a status icon, content, and actions for the result

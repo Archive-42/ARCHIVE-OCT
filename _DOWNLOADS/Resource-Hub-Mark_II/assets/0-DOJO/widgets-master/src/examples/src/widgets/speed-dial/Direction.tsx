@@ -56,7 +56,7 @@ export default factory(function Direction({ middleware: { icache } }) {
 							{ value: 'right' },
 							{ value: 'left' },
 							{ value: 'up' },
-							{ value: 'down' }
+							{ value: 'down' },
 						]}
 						onValue={(direction) => {
 							icache.set('direction', direction);

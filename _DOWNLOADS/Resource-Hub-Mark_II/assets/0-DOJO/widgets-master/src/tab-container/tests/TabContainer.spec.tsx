@@ -16,7 +16,7 @@ import {
 	compareId,
 	compareWidgetId,
 	isStringComparator,
-	noop
+	noop,
 } from '../../common/tests/support/test-helpers';
 import assertionTemplate from '@dojo/framework/testing/harness/assertionTemplate';
 
@@ -28,13 +28,13 @@ const createMockKeydownEvent = (which: number) => {
 	return {
 		stopPropagation: sinon.spy(),
 		preventDefault: sinon.spy(),
-		which
+		which,
 	} as any;
 };
 
 const mockClickEvent = {
 	stopPropagation: sinon.spy(),
-	preventDefault: sinon.spy()
+	preventDefault: sinon.spy(),
 };
 
 const baseTemplate = assertionTemplate(() => (
@@ -72,7 +72,7 @@ const tabButtonProperties = {
 	onclick: noop,
 	onkeydown: noop,
 	role: 'tab',
-	tabIndex: 0
+	tabIndex: 0,
 };
 
 registerSuite('TabContainer', {
@@ -95,12 +95,12 @@ registerSuite('TabContainer', {
 								<span classes={css.indicatorContent} />
 							</span>
 						</span>
-					</div>
+					</div>,
 				])
 				.setChildren('@tabs', () => [
 					<div classes={css.tab} hidden={false}>
 						<div>tab</div>
-					</div>
+					</div>,
 				]);
 
 			h.expect(ariaRenderTemplate);
@@ -123,12 +123,12 @@ registerSuite('TabContainer', {
 								<span classes={css.indicatorContent} />
 							</span>
 						</span>
-					</div>
+					</div>,
 				])
 				.setChildren('@tabs', () => [
 					<div classes={css.tab} hidden={false}>
 						<div>tab</div>
-					</div>
+					</div>,
 				]);
 
 			h.expect(orientationTemplate);
@@ -141,7 +141,7 @@ registerSuite('TabContainer', {
 				w(
 					TabContainer,
 					{
-						tabs: tabs
+						tabs: tabs,
 					},
 					[v('div', {}, ['tab0']), v('div', {}, ['tab1'])]
 				)
@@ -171,7 +171,7 @@ registerSuite('TabContainer', {
 								<span classes={css.indicatorContent} />
 							</span>
 						</span>
-					</div>
+					</div>,
 				])
 				.setChildren('@tabs', () => [
 					<div classes={css.tab} hidden={false}>
@@ -179,7 +179,7 @@ registerSuite('TabContainer', {
 					</div>,
 					<div classes={undefined} hidden={true}>
 						<div>tab1</div>
-					</div>
+					</div>,
 				]);
 
 			h.expect(twoChildTemplate);
@@ -219,7 +219,7 @@ registerSuite('TabContainer', {
 								<span classes={css.indicatorContent} />
 							</span>
 						</span>
-					</div>
+					</div>,
 				])
 				.setChildren('@tabs', () => [
 					<div classes={undefined} hidden={true}>
@@ -227,7 +227,7 @@ registerSuite('TabContainer', {
 					</div>,
 					<div classes={css.tab} hidden={false}>
 						<div>tab1</div>
-					</div>
+					</div>,
 				]);
 
 			h.trigger('@1-tabbutton', 'onclick');
@@ -293,7 +293,7 @@ registerSuite('TabContainer', {
 									<span classes={css.indicatorContent} />
 								</span>
 							</span>
-						</div>
+						</div>,
 					])
 					.setChildren('@tabs', () => [
 						<div classes={css.tab} hidden={false}>
@@ -301,7 +301,7 @@ registerSuite('TabContainer', {
 						</div>,
 						<div classes={undefined} hidden={true}>
 							<div>tab1</div>
-						</div>
+						</div>,
 					])
 			);
 
@@ -395,7 +395,7 @@ registerSuite('TabContainer', {
 								<span classes={css.indicatorContent} />
 							</span>
 						</span>
-					</div>
+					</div>,
 				])
 				.setChildren('@tabs', () => [
 					<div classes={css.tab} hidden={false}>
@@ -403,12 +403,12 @@ registerSuite('TabContainer', {
 					</div>,
 					<div classes={undefined} hidden={true}>
 						<div>tab1</div>
-					</div>
+					</div>,
 				]);
 
 			h.trigger('@1-tabbutton', 'onclick');
 			h.expect(disabledTemplate);
 			assert.isTrue(onActiveIndexStub.notCalled);
-		}
-	}
+		},
+	},
 });

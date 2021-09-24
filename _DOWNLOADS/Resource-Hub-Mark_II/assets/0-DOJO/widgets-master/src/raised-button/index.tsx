@@ -11,18 +11,12 @@ const factory = create({ theme }).properties<RaisedButtonProperties>();
 export const RaisedButton = factory(function RaisedButton({
 	properties,
 	children,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const props = properties();
 
 	return (
-		<Button
-			{...props}
-			theme={theme.compose(
-				buttonCss,
-				raisedButtonCss
-			)}
-		>
+		<Button {...props} theme={theme.compose(buttonCss, raisedButtonCss)}>
 			{children()}
 		</Button>
 	);

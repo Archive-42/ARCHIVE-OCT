@@ -9,7 +9,7 @@ export default factory(function Leading() {
 		<Example>
 			<Snackbar leading open={true}>
 				{{
-					message: 'Leading Snackbar'
+					message: 'Leading Snackbar',
 				}}
 			</Snackbar>
 		</Example>

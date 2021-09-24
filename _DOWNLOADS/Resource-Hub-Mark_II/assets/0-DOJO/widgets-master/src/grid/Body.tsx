@@ -126,7 +126,7 @@ export default class Body<S> extends I18nMixin(ThemedMixin(WidgetBase))<BodyProp
 			classes,
 			columnWidths,
 			onRowSelect,
-			selectedRows = []
+			selectedRows = [],
 		} = this.properties;
 
 		const startPage = Math.max(Math.ceil(start / pageSize), 1);
@@ -172,7 +172,7 @@ export default class Body<S> extends I18nMixin(ThemedMixin(WidgetBase))<BodyProp
 									onRowSelect(i, type);
 							  }
 							: undefined,
-						selected: selectedRows.indexOf(i) !== -1
+						selected: selectedRows.indexOf(i) !== -1,
 					})
 				);
 			} else {
@@ -192,7 +192,7 @@ export default class Body<S> extends I18nMixin(ThemedMixin(WidgetBase))<BodyProp
 			pageSize,
 			height,
 			width,
-			columnWidths
+			columnWidths,
 		} = this.properties;
 
 		const rowWidth =
@@ -226,14 +226,14 @@ export default class Body<S> extends I18nMixin(ThemedMixin(WidgetBase))<BodyProp
 			onscroll: this._onScroll,
 			styles: width
 				? { height: `${height}px`, width: `${width}px` }
-				: { height: `${height}px` }
+				: { height: `${height}px` },
 		};
 
 		if (this._resetScroll) {
 			this._resetScroll = false;
 			containerProperties = {
 				...containerProperties,
-				scrollTop: 0
+				scrollTop: 0,
 			};
 		}
 
@@ -243,9 +243,9 @@ export default class Body<S> extends I18nMixin(ThemedMixin(WidgetBase))<BodyProp
 				...rows,
 				v('div', {
 					key: 'bottom',
-					styles: { height: `${bottomPaddingHeight}px` }
-				})
-			])
+					styles: { height: `${bottomPaddingHeight}px` },
+				}),
+			]),
 		]);
 	}
 }

@@ -10,18 +10,18 @@ import Example from '../../Example';
 const columnConfig: ColumnConfig[] = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'firstName',
 		title: 'First Name',
-		sortable: true
+		sortable: true,
 	},
 	{
 		id: 'lastName',
 		title: 'Last Name',
-		sortable: true
-	}
+		sortable: true,
+	},
 ];
 
 const fetcher = createFetcher(createData());

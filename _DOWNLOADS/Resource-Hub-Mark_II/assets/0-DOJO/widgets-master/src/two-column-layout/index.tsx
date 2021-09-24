@@ -32,15 +32,15 @@ const factory = create({ theme, breakpoint, icache, resize, drag })
 	.properties<TwoColumnLayoutProperties>()
 	.children<TwoColumnLayoutChildren>();
 
-export const TwoColumnLayout = factory(function({
+export const TwoColumnLayout = factory(function ({
 	properties,
 	children,
-	middleware: { theme, breakpoint: breakpointMiddleware, icache, resize: resizeMiddleware, drag }
+	middleware: { theme, breakpoint: breakpointMiddleware, icache, resize: resizeMiddleware, drag },
 }) {
 	const { bias, breakpoint = 600, resize } = properties();
 	const { breakpoint: currentBreakpoint } = breakpointMiddleware.get('root', {
 		SMALL: 0,
-		LARGE: breakpoint
+		LARGE: breakpoint,
 	}) || { breakpoint: 'LARGE' };
 	const size = resizeMiddleware.get('leading');
 	let width = resize && icache.get('width');
@@ -69,7 +69,7 @@ export const TwoColumnLayout = factory(function({
 				theme.variant(),
 				fixedCss.root,
 				classes.root,
-				typeof width === 'number' && fixedCss.resize
+				typeof width === 'number' && fixedCss.resize,
 			]}
 		>
 			<div
@@ -79,7 +79,7 @@ export const TwoColumnLayout = factory(function({
 					bias === undefined && !shouldCollapse && fixedCss.even,
 					bias === 'trailing' && shouldCollapse && baseCss.visuallyHidden,
 					bias === 'trailing' && !shouldCollapse && classes.small,
-					classes.column
+					classes.column,
 				]}
 				styles={typeof width === 'number' ? { flexBasis: `${width}px` } : {}}
 			>
@@ -95,7 +95,7 @@ export const TwoColumnLayout = factory(function({
 						shouldCollapse &&
 						baseCss.visuallyHidden,
 					bias === 'leading' && !shouldCollapse && classes.small,
-					classes.column
+					classes.column,
 				]}
 			>
 				{trailing}

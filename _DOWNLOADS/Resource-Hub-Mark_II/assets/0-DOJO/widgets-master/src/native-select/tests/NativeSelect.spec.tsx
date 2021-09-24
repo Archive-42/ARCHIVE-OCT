@@ -7,7 +7,7 @@ import {
 	createHarness,
 	noop,
 	compareForId,
-	stubEvent
+	stubEvent,
 } from '../../common/tests/support/test-helpers';
 import HelperText from '../../helper-text';
 import * as css from '../../theme/default/native-select.m.css';
@@ -66,10 +66,10 @@ const baseTemplate = assertionTemplate(() => (
 
 describe('Native Select', () => {
 	it('renders', () => {
-		const h = harness(() => <NativeSelect onValue={() => {}} options={options} />, [
-			compareForId,
-			compareId
-		]);
+		const h = harness(
+			() => <NativeSelect onValue={() => {}} options={options} />,
+			[compareForId, compareId]
+		);
 		h.expect(baseTemplate);
 	});
 
@@ -104,7 +104,7 @@ describe('Native Select', () => {
 				css.root,
 				css.disabled,
 				css.required,
-				undefined
+				undefined,
 			])
 			.prepend('@root', () => [
 				<Label
@@ -119,7 +119,7 @@ describe('Native Select', () => {
 					focused={false}
 				>
 					Pets
-				</Label>
+				</Label>,
 			])
 			.remove('@blank-option');
 
@@ -157,7 +157,7 @@ describe('Native Select', () => {
 				css.root,
 				css.disabled,
 				css.required,
-				undefined
+				undefined,
 			])
 			.prepend('@root', () => [
 				<Label
@@ -172,7 +172,7 @@ describe('Native Select', () => {
 					focused={false}
 				>
 					Pets
-				</Label>
+				</Label>,
 			])
 			.remove('@blank-option');
 
@@ -210,7 +210,7 @@ describe('Native Select', () => {
 				css.root,
 				css.disabled,
 				css.required,
-				undefined
+				undefined,
 			])
 			.prepend('@root', () => [
 				<Label
@@ -225,7 +225,7 @@ describe('Native Select', () => {
 					focused={false}
 				>
 					Pets
-				</Label>
+				</Label>,
 			])
 			.remove('@blank-option');
 
@@ -235,16 +235,16 @@ describe('Native Select', () => {
 	it('calls onValue when a select item is selected', () => {
 		const changeEvent = {
 			target: {
-				value: 'cat'
-			}
+				value: 'cat',
+			},
 		};
 
 		const onValueStub = stub();
 
-		const h = harness(() => <NativeSelect onValue={onValueStub} options={options} />, [
-			compareForId,
-			compareId
-		]);
+		const h = harness(
+			() => <NativeSelect onValue={onValueStub} options={options} />,
+			[compareForId, compareId]
+		);
 
 		h.trigger('@native-select', 'onchange', changeEvent);
 
@@ -254,10 +254,10 @@ describe('Native Select', () => {
 	it('calls onBlur when select loses focus', () => {
 		const onBlurStub = stub();
 
-		const h = harness(() => <NativeSelect onBlur={onBlurStub} options={options} />, [
-			compareForId,
-			compareId
-		]);
+		const h = harness(
+			() => <NativeSelect onBlur={onBlurStub} options={options} />,
+			[compareForId, compareId]
+		);
 
 		h.trigger('@native-select', 'onblur', stubEvent);
 
@@ -267,10 +267,10 @@ describe('Native Select', () => {
 	it('calls onFocus when select gains focus', () => {
 		const onFocusStub = stub();
 
-		const h = harness(() => <NativeSelect onFocus={onFocusStub} options={options} />, [
-			compareForId,
-			compareId
-		]);
+		const h = harness(
+			() => <NativeSelect onFocus={onFocusStub} options={options} />,
+			[compareForId, compareId]
+		);
 
 		h.trigger('@native-select', 'onfocus', stubEvent);
 

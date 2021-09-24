@@ -24,7 +24,7 @@ export default factory(function Basic({ middleware: { icache } }) {
 						>
 							{{ label: 'Focus me' }}
 						</TextInput>
-					)
+					),
 				}}
 			</Tooltip>
 		</Example>

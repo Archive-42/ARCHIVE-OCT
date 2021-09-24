@@ -44,7 +44,7 @@ export const Button = factory(function Button({
 	children,
 	id,
 	middleware: { focus, theme },
-	properties
+	properties,
 }) {
 	const {
 		aria = {},
@@ -61,7 +61,7 @@ export const Button = factory(function Button({
 		onUp,
 		onBlur,
 		onFocus,
-		title
+		title,
 	} = properties();
 
 	const themeCss = theme.classes(css);
@@ -73,7 +73,7 @@ export const Button = factory(function Button({
 				theme.variant(),
 				themeCss.root,
 				disabled ? themeCss.disabled : null,
-				pressed ? themeCss.pressed : null
+				pressed ? themeCss.pressed : null,
 			]}
 			title={title}
 			disabled={disabled}

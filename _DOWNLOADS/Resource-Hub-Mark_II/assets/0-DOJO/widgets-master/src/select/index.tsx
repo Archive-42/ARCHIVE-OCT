@@ -14,7 +14,7 @@ import {
 	List,
 	ListOption,
 	ListItemProperties,
-	MenuItemProperties
+	MenuItemProperties,
 } from '../list';
 import theme from '../middleware/theme';
 import { PopupPosition } from '../popup';
@@ -80,7 +80,7 @@ const factory = create({
 	focus,
 	theme,
 	i18n,
-	resource: createResourceMiddleware<ListOption>()
+	resource: createResourceMiddleware<ListOption>(),
 })
 	.properties<SelectProperties>()
 	.children<SelectChildren | undefined>();
@@ -89,7 +89,7 @@ export const Select = factory(function Select({
 	id,
 	children,
 	properties,
-	middleware: { icache, focus, theme, i18n, resource }
+	middleware: { icache, focus, theme, i18n, resource },
 }) {
 	const { createOptions, isLoading, meta, find } = resource;
 	const {
@@ -106,7 +106,7 @@ export const Select = factory(function Select({
 		position,
 		required,
 		name,
-		resource: { template, options = createOptions(id) }
+		resource: { template, options = createOptions(id) },
 	} = properties();
 	const [{ items, label } = { items: undefined, label: undefined }] = children();
 	let { value } = properties();
@@ -151,17 +151,13 @@ export const Select = factory(function Select({
 				valid === true && themedCss.valid,
 				valid === false && themedCss.invalid,
 				shouldFocus === true && themedCss.focused,
-				expanded && themedCss.expanded
+				expanded && themedCss.expanded,
 			]}
 			key="root"
 		>
 			{label && (
 				<Label
-					theme={theme.compose(
-						labelCss,
-						css,
-						'label'
-					)}
+					theme={theme.compose(labelCss, css, 'label')}
 					classes={classes}
 					variant={variant}
 					disabled={disabled}
@@ -207,9 +203,9 @@ export const Select = factory(function Select({
 									options: options(),
 									start: 0,
 									query: { value },
-									type: 'exact'
+									type: 'exact',
 								}) || {
-									item: undefined
+									item: undefined,
 								}
 							).item;
 						}
@@ -251,11 +247,7 @@ export const Select = factory(function Select({
 								<span classes={themedCss.arrow}>
 									<Icon
 										type="downIcon"
-										theme={theme.compose(
-											iconCss,
-											css,
-											'icon'
-										)}
+										theme={theme.compose(iconCss, css, 'icon')}
 										classes={classes}
 										variant={variant}
 									/>
@@ -294,11 +286,7 @@ export const Select = factory(function Select({
 									onBlur={closeMenu}
 									initialValue={value}
 									itemsInView={itemsInView}
-									theme={theme.compose(
-										listCss,
-										css,
-										'menu'
-									)}
+									theme={theme.compose(listCss, css, 'menu')}
 									classes={classes}
 									variant={variant}
 									widgetId={menuId}
@@ -307,7 +295,7 @@ export const Select = factory(function Select({
 								</List>
 							</div>
 						);
-					}
+					},
 				}}
 			</TriggerPopup>
 			<HelperText

@@ -17,14 +17,14 @@ export default factory(function SliderWithCustomOutput({}) {
 							return 'Tribbles only cause trouble';
 						}
 						if (value < 60) {
-							return 'They\`re kind of cute';
+							return 'They`re kind of cute';
 						}
 						if (value < 80) {
 							return 'Most of my salary goes to tribble food';
 						} else {
 							return 'I permanently altered the ecology of a planet for my tribbles';
 						}
-					}
+					},
 				}}
 			</Slider>
 		</Example>

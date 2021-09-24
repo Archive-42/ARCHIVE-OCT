@@ -14,13 +14,13 @@ const middlewareFactory = create();
 function createMockFocusMiddleware({
 	shouldFocus = false,
 	focused = false,
-	isFocused = false
+	isFocused = false,
 } = {}) {
 	return () =>
 		middlewareFactory(() => ({
 			shouldFocus: () => shouldFocus,
 			focused: () => focused,
-			isFocused: () => isFocused
+			isFocused: () => isFocused,
 		}))();
 }
 
@@ -58,11 +58,11 @@ registerSuite('Button', {
 			const focusMock = createMockFocusMiddleware({
 				shouldFocus: true,
 				focused: true,
-				isFocused: true
+				isFocused: true,
 			});
 			const h = harness(() => <Button />, {
 				middleware: [[focus, focusMock]],
-				customComparator: [compareId]
+				customComparator: [compareId],
 			});
 			h.expect(template.setProperty('button', 'focus', true));
 		},
@@ -93,6 +93,6 @@ registerSuite('Button', {
 			assert.isTrue(blurred);
 			assert.isTrue(clicked);
 			assert.isTrue(focused);
-		}
-	}
+		},
+	},
 });

@@ -20,7 +20,7 @@ export default factory(function Basic() {
 							<div styles={{ background: 'red', height: '100px', fontSize: '32px' }}>
 								Hello Below!
 							</div>
-						)
+						),
 					}}
 				</TriggerPopup>
 				<TriggerPopup position="above">
@@ -34,7 +34,7 @@ export default factory(function Basic() {
 							>
 								Hello Above!
 							</div>
-						)
+						),
 					}}
 				</TriggerPopup>
 				<TriggerPopup position="left">
@@ -48,7 +48,7 @@ export default factory(function Basic() {
 							>
 								Hello Left!
 							</div>
-						)
+						),
 					}}
 				</TriggerPopup>
 				<TriggerPopup position="right">
@@ -60,7 +60,7 @@ export default factory(function Basic() {
 							<div styles={{ background: 'red', height: '100px', fontSize: '32px' }}>
 								Hello Right!
 							</div>
-						)
+						),
 					}}
 				</TriggerPopup>
 			</div>

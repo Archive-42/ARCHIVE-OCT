@@ -48,7 +48,7 @@ const factory = create({ theme, focus })
 export const Checkbox = factory(function Checkbox({
 	children,
 	properties,
-	middleware: { theme, focus }
+	middleware: { theme, focus },
 }) {
 	const _uuid = uuid();
 	const {
@@ -69,7 +69,7 @@ export const Checkbox = factory(function Checkbox({
 		variant,
 		valid,
 		value,
-		widgetId = _uuid
+		widgetId = _uuid,
 	} = properties();
 
 	const [label] = children();
@@ -87,7 +87,7 @@ export const Checkbox = factory(function Checkbox({
 				valid === false ? themeCss.invalid : null,
 				valid === true ? themeCss.valid : null,
 				readOnly ? themeCss.readonly : null,
-				required ? themeCss.required : null
+				required ? themeCss.required : null,
 			]}
 		>
 			<div classes={themeCss.inputWrapper}>

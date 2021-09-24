@@ -11,14 +11,14 @@ export default factory(function CustomIcon() {
 			<Rate key="custom">
 				{{
 					label: 'How much help?',
-					icon: <Icon size="large" type="helpIcon" />
+					icon: <Icon size="large" type="helpIcon" />,
 				}}
 			</Rate>
 			<br />
 			<Rate key="custom-half" allowHalf>
 				{{
 					label: 'Half eyes',
-					icon: <Icon size="large" type="eyeIcon" />
+					icon: <Icon size="large" type="eyeIcon" />,
 				}}
 			</Rate>
 		</Example>

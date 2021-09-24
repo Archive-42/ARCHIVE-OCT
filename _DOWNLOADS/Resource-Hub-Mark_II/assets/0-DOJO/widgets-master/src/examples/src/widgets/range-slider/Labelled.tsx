@@ -10,7 +10,7 @@ export default factory(function LabelledRangeSlider() {
 			<RangeSlider
 				initialValue={{
 					min: 0,
-					max: 100
+					max: 100,
 				}}
 			>
 				{{ label: 'A Labelled Slider' }}

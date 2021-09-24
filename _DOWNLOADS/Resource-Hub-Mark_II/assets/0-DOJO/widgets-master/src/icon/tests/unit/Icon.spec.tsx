@@ -30,7 +30,7 @@ describe('Icon', () => {
 			css.root,
 			css.icon,
 			css.starIcon,
-			css.large
+			css.large,
 		]);
 
 		r.expect(sizeAssertion);

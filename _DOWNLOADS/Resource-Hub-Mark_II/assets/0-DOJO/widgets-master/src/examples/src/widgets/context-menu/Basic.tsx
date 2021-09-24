@@ -3,13 +3,16 @@ import icache from '@dojo/framework/core/middleware/icache';
 import ContextMenu from '@dojo/widgets/context-menu';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { ListOption } from '@dojo/widgets/list';
 
 const resource = createResourceMiddleware();
 const factory = create({ resource, icache });
-const options = [{ value: 'print', label: 'Print' }, { value: 'delete', label: 'Delete' }];
+const options = [
+	{ value: 'print', label: 'Print' },
+	{ value: 'delete', label: 'Delete' },
+];
 const template = createMemoryResourceTemplate<ListOption>();
 
 export default factory(function Basic({ id, middleware: { icache, resource } }) {

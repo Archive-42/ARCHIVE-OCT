@@ -4,7 +4,7 @@ import * as css from './Example.m.css';
 
 const factory = create({ theme });
 
-export default factory(function({ children, middleware: { theme } }) {
+export default factory(function ({ children, middleware: { theme } }) {
 	const [example, ...rest] = children();
 	return (
 		<virtual>

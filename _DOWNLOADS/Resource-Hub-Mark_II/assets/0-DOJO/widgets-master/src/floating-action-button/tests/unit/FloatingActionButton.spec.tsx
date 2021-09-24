@@ -15,8 +15,8 @@ const baseTemplate = assertionTemplate(() => (
 		theme={{ '@dojo/widgets/button': buttonCss }}
 		classes={{
 			'@dojo/widgets/button': {
-				root: [false, false]
-			}
+				root: [false, false],
+			},
 		}}
 	>
 		<span aria="hidden" classes={css.effect} />
@@ -47,8 +47,8 @@ registerSuite('FloatingActionButton', {
 					theme={{ '@dojo/widgets/button': buttonCss }}
 					classes={{
 						'@dojo/widgets/button': {
-							root: [css.extended, false]
-						}
+							root: [css.extended, false],
+						},
 					}}
 					type="submit"
 					name="bar"
@@ -71,8 +71,8 @@ registerSuite('FloatingActionButton', {
 					theme={{ '@dojo/widgets/button': buttonCss }}
 					classes={{
 						'@dojo/widgets/button': {
-							root: [false, css.small]
-						}
+							root: [false, css.small],
+						},
 					}}
 					type="submit"
 					name="bar"
@@ -81,6 +81,6 @@ registerSuite('FloatingActionButton', {
 					<span aria="hidden" classes={css.effect} />
 				</Button>
 			));
-		}
-	}
+		},
+	},
 });

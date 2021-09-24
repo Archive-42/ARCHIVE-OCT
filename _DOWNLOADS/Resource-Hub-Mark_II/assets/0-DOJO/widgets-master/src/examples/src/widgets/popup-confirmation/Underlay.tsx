@@ -14,7 +14,7 @@ export default factory(function Underlay() {
 				<PopupConfirmation onConfirm={() => {}} onCancel={() => {}} underlayVisible={true}>
 					{{
 						content: 'Are you sure you want to delete this?',
-						trigger: (open) => <Button onClick={open}>Trigger With Underlay</Button>
+						trigger: (open) => <Button onClick={open}>Trigger With Underlay</Button>,
 					}}
 				</PopupConfirmation>
 			</div>

@@ -4,7 +4,7 @@ import icache from '@dojo/framework/core/middleware/icache';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -16,7 +16,7 @@ const options = [
 	{ value: '3', label: 'Paste', disabled: true },
 	{ value: '4', label: 'Print' },
 	{ value: '5', label: 'Export' },
-	{ value: '6', label: 'Share' }
+	{ value: '6', label: 'Share' },
 ];
 
 const template = createMemoryResourceTemplate<ListOption>();

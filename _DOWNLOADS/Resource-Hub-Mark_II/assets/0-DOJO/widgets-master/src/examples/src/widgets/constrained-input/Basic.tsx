@@ -11,8 +11,8 @@ export default factory(function Basic() {
 				rules={{
 					length: {
 						min: 1,
-						max: 10
-					}
+						max: 10,
+					},
 				}}
 			>
 				{{ label: 'Minimum and Maximum Length Constraints' }}

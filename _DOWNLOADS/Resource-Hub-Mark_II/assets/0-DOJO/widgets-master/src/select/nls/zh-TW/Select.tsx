@@ -1,3 +1,3 @@
 export default {
-	requiredMessage: '請選擇一個值。'
+	requiredMessage: '請選擇一個值。',
 };

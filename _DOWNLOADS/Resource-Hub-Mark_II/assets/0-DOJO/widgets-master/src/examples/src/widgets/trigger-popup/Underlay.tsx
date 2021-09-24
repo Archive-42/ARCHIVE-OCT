@@ -15,7 +15,7 @@ export default factory(function Underlay() {
 						<div styles={{ background: 'yellow', height: '150px', fontSize: '32px' }}>
 							I'm on a visible underlay
 						</div>
-					)
+					),
 				}}
 			</TriggerPopup>
 		</Example>

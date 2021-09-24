@@ -27,7 +27,7 @@ describe('Row', () => {
 					classes: [css.root, undefined, fixedCss.rootFixed, undefined],
 					role: 'row',
 					'aria-rowindex': '2',
-					onclick: undefined
+					onclick: undefined,
 				},
 				[]
 			)
@@ -37,7 +37,7 @@ describe('Row', () => {
 	it('should render items for column config', () => {
 		const columnConfig: ColumnConfig = {
 			id: 'id',
-			title: 'id'
+			title: 'id',
 		};
 		const h = harness(() =>
 			w(Row, {
@@ -45,7 +45,7 @@ describe('Row', () => {
 				item: { id: 'id' },
 				columnConfig: [columnConfig],
 				updater: noop,
-				columnWidths: { id: 100 }
+				columnWidths: { id: 100 },
 			})
 		);
 		h.expect(() =>
@@ -56,7 +56,7 @@ describe('Row', () => {
 					classes: [css.root, undefined, fixedCss.rootFixed, undefined],
 					role: 'row',
 					'aria-rowindex': '2',
-					onclick: undefined
+					onclick: undefined,
 				},
 				[
 					w(Cell, {
@@ -68,8 +68,8 @@ describe('Row', () => {
 						rawValue: 'id',
 						classes: undefined,
 						theme: undefined,
-						width: 100
-					})
+						width: 100,
+					}),
 				]
 			)
 		);
@@ -79,7 +79,7 @@ describe('Row', () => {
 		const columnConfig: ColumnConfig = {
 			id: 'id',
 			title: 'id',
-			renderer: () => 'transformed'
+			renderer: () => 'transformed',
 		};
 		const h = harness(() =>
 			w(Row, {
@@ -87,7 +87,7 @@ describe('Row', () => {
 				item: { id: 'id' },
 				columnConfig: [columnConfig],
 				updater: noop,
-				columnWidths: { id: 100 }
+				columnWidths: { id: 100 },
 			})
 		);
 		h.expect(() =>
@@ -98,7 +98,7 @@ describe('Row', () => {
 					classes: [css.root, undefined, fixedCss.rootFixed, undefined],
 					role: 'row',
 					'aria-rowindex': '2',
-					onclick: undefined
+					onclick: undefined,
 				},
 				[
 					w(Cell, {
@@ -110,8 +110,8 @@ describe('Row', () => {
 						rawValue: 'id',
 						classes: undefined,
 						theme: undefined,
-						width: 100
-					})
+						width: 100,
+					}),
 				]
 			)
 		);
@@ -122,7 +122,7 @@ describe('Row', () => {
 		const columnConfig: ColumnConfig = {
 			id: 'id',
 			title: 'id',
-			renderer: () => 'transformed'
+			renderer: () => 'transformed',
 		};
 		const h = harness(() =>
 			w(Row, {
@@ -132,7 +132,7 @@ describe('Row', () => {
 				updater: noop,
 				columnWidths: { id: 100 },
 				selected: true,
-				onRowSelect: rowSelectStub
+				onRowSelect: rowSelectStub,
 			})
 		);
 
@@ -144,7 +144,7 @@ describe('Row', () => {
 					classes: [css.root, css.selected, fixedCss.rootFixed, css.selectable],
 					role: 'row',
 					'aria-rowindex': '2',
-					onclick: noop
+					onclick: noop,
 				},
 				[
 					w(Cell, {
@@ -156,8 +156,8 @@ describe('Row', () => {
 						rawValue: 'id',
 						classes: undefined,
 						theme: undefined,
-						width: 100
-					})
+						width: 100,
+					}),
 				]
 			)
 		);

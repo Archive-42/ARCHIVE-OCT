@@ -21,9 +21,10 @@ registerSuite('OutlinedButton', {
 		},
 
 		'properties and children'() {
-			const h = harness(() => <OutlinedButton type="submit" name="bar" disabled={true} />, [
-				compareTheme
-			]);
+			const h = harness(
+				() => <OutlinedButton type="submit" name="bar" disabled={true} />,
+				[compareTheme]
+			);
 			h.expect(() => (
 				<Button
 					theme={{ '@dojo/widgets/button': buttonCss }}
@@ -32,6 +33,6 @@ registerSuite('OutlinedButton', {
 					disabled={true}
 				/>
 			));
-		}
-	}
+		},
+	},
 });

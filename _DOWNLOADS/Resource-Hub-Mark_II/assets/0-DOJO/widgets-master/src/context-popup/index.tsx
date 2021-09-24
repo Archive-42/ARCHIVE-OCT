@@ -37,7 +37,7 @@ const CursorHeight = 4;
 export const ContextPopup = factory(function ContextPopup({
 	properties,
 	children,
-	middleware: { icache, focus }
+	middleware: { icache, focus },
 }) {
 	const { variant, theme, classes } = properties();
 	const x = icache.getOrSet('x', 0);

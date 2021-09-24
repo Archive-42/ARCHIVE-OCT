@@ -17,13 +17,13 @@ const middlewareFactory = create();
 function createMockFocusMiddleware({
 	shouldFocus = false,
 	focused = false,
-	isFocused = false
+	isFocused = false,
 } = {}) {
 	return () =>
 		middlewareFactory(() => ({
 			shouldFocus: () => shouldFocus,
 			focused: () => focused,
-			isFocused: () => isFocused
+			isFocused: () => isFocused,
 		}))();
 }
 
@@ -36,7 +36,7 @@ const expected = ({
 	readOnly = undefined,
 	required = undefined,
 	offLabel = undefined,
-	onLabel = undefined
+	onLabel = undefined,
 }: { [key: string]: boolean | undefined } = {}) =>
 	assertionTemplate(() => (
 		<div
@@ -50,7 +50,7 @@ const expected = ({
 				valid === false ? css.invalid : null,
 				valid === true ? css.valid : null,
 				readOnly ? css.readonly : null,
-				required ? css.required : null
+				required ? css.required : null,
 			]}
 		>
 			{offLabel ? (
@@ -204,7 +204,7 @@ registerSuite('Switch', {
 					disabled: true,
 					readOnly: true,
 					required: true,
-					valid: false
+					valid: false,
 				})
 			);
 		},
@@ -213,11 +213,11 @@ registerSuite('Switch', {
 			const focusMock = createMockFocusMiddleware({
 				shouldFocus: true,
 				focused: true,
-				isFocused: true
+				isFocused: true,
 			});
 			const h = harness(() => <Switch value={false} onValue={noop} />, {
 				middleware: [[focus, focusMock]],
-				customComparator: [compareId]
+				customComparator: [compareId],
 			});
 			h.expect(expected({ focused: true }));
 		},
@@ -237,6 +237,6 @@ registerSuite('Switch', {
 			assert.isTrue(onValue.called, 'onChange called');
 			h.trigger('input', 'onfocus', stubEvent);
 			assert.isTrue(onFocus.called, 'onFocus called');
-		}
-	}
+		},
+	},
 });

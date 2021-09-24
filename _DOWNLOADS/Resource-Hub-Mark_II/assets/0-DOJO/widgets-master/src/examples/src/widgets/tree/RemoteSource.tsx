@@ -2,7 +2,7 @@ import { create, tsx } from '@dojo/framework/core/vdom';
 import {
 	createResourceMiddleware,
 	defaultFind,
-	createResourceTemplate
+	createResourceTemplate,
 } from '@dojo/framework/core/middleware/resources';
 import Example from '../../Example';
 import Tree, { TreeNodeOption } from '@dojo/widgets/tree';
@@ -13,14 +13,14 @@ const template = createResourceTemplate<TreeNodeOption>({
 		const { query } = request;
 		const response = await fetch(`https://foamy-picayune-lamprey.glitch.me/${query.parent}`, {
 			headers: {
-				'Content-Type': 'application/json'
-			}
+				'Content-Type': 'application/json',
+			},
 		});
 
 		const { data, total } = await response.json();
 
 		put({ data, total }, request);
-	}
+	},
 });
 
 const resource = createResourceMiddleware();
@@ -32,7 +32,7 @@ export default factory(function Remote({ id, middleware: { resource } }) {
 			<Tree
 				checkable={true}
 				resource={resource({
-					template
+					template,
 				})}
 			/>
 		</Example>

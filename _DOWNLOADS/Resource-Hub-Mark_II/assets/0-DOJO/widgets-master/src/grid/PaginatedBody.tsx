@@ -76,7 +76,7 @@ export default class PaginatedBody<S> extends I18nMixin(ThemedMixin(WidgetBase))
 			classes,
 			columnWidths,
 			onRowSelect,
-			selectedRows = []
+			selectedRows = [],
 		} = this.properties;
 		let data = pages[`page-${pageNumber}`];
 		if (!data) {
@@ -104,7 +104,7 @@ export default class PaginatedBody<S> extends I18nMixin(ThemedMixin(WidgetBase))
 									onRowSelect && onRowSelect(i, type);
 							  }
 							: undefined,
-						selected: selectedRows.indexOf(i) !== -1
+						selected: selectedRows.indexOf(i) !== -1,
 					})
 				);
 			}
@@ -130,13 +130,13 @@ export default class PaginatedBody<S> extends I18nMixin(ThemedMixin(WidgetBase))
 				onscroll: this._onScroll,
 				styles: width
 					? { height: `${height}px`, width: `${width}px` }
-					: { height: `${height}px` }
+					: { height: `${height}px` },
 			},
 			[
 				v('div', { styles: rowWidth ? { width: `${rowWidth}px` } : {} }, [
 					v('div'),
-					...this._renderRows()
-				])
+					...this._renderRows(),
+				]),
 			]
 		);
 	}

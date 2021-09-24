@@ -17,14 +17,14 @@ export default factory(function ValidateCustom({ middleware: { icache } }) {
 					if (value === 'valid') {
 						return {
 							valid: true,
-							message: 'Value is valid!'
+							message: 'Value is valid!',
 						};
 					} else if (!value) {
 						return undefined;
 					} else {
 						return {
 							valid: false,
-							message: 'Only "valid" is a valid input'
+							message: 'Only "valid" is a valid input',
 						};
 					}
 				}}

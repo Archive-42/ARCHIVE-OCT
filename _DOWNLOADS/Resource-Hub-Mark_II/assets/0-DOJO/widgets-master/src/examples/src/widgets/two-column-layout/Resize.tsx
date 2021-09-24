@@ -15,7 +15,7 @@ export default factory(function Resize() {
 						),
 						trailing: (
 							<div styles={{ textAlign: 'center' }}>This is the trailing content</div>
-						)
+						),
 					}}
 				</TwoColumnLayout>
 			</div>

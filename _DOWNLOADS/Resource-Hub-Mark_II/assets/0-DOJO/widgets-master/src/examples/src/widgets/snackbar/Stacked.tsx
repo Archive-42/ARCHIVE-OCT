@@ -11,7 +11,7 @@ export default factory(function Stacked() {
 			<Snackbar stacked open={true}>
 				{{
 					message: 'Stacked Snackbar',
-					actions: <ActionButton>Some Action</ActionButton>
+					actions: <ActionButton>Some Action</ActionButton>,
 				}}
 			</Snackbar>
 		</Example>

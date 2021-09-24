@@ -5,7 +5,7 @@ import Example from '../../Example';
 
 const factory = create({ icache });
 
-const App = factory(function({ properties, middleware: { icache } }) {
+const App = factory(function ({ properties, middleware: { icache } }) {
 	const { get, set } = icache;
 
 	return (
@@ -19,7 +19,7 @@ const App = factory(function({ properties, middleware: { icache } }) {
 				}}
 			>
 				{{
-					label: 'favourite names'
+					label: 'favourite names',
 				}}
 			</CheckboxGroup>
 			<pre>{`${get('controlled')}`}</pre>

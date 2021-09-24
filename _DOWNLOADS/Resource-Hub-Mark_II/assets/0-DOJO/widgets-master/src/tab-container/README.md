@@ -4,9 +4,9 @@ Dojo's `TabContainer` widget provides a user interface capable of displaying tab
 
 ## Features
 
-- Tab buttons can be positioned above, below, before, or after tab content
-- Tabs can be closeable and disabled
-- Completely keyboard accessible
+-   Tab buttons can be positioned above, below, before, or after tab content
+-   Tabs can be closeable and disabled
+-   Completely keyboard accessible
 
 ### Keyboard Usage
 
@@ -14,13 +14,13 @@ Dojo's `TabContainer` widget provides a user interface capable of displaying tab
 
 **Tab Button Events**
 
-- Escape key: closes a closeable tab
-- Left Arrow: If tab buttons are aligned above or below content, requests to select the previous tab
-- Right Arrow: If tab buttons are aligned above or below content, requests to select the next tab
-- Up Arrow: If tab buttons are aligned before or after content, requests to select the previous tab
-- Down Arrow: If tab buttons are aligned before or after content, requests to select the next tab
-- Home key: Requests to select the first tab
-- End key: Requests to select the last tab
+-   Escape key: closes a closeable tab
+-   Left Arrow: If tab buttons are aligned above or below content, requests to select the previous tab
+-   Right Arrow: If tab buttons are aligned above or below content, requests to select the next tab
+-   Up Arrow: If tab buttons are aligned before or after content, requests to select the previous tab
+-   Down Arrow: If tab buttons are aligned before or after content, requests to select the next tab
+-   Home key: Requests to select the first tab
+-   End key: Requests to select the last tab
 
 ### Accessibility Features
 

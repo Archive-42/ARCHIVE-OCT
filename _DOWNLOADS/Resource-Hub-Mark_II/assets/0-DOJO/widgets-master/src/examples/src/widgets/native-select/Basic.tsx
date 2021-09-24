@@ -9,7 +9,7 @@ const options = [
 	{ value: 'dog' },
 	{ value: 'fish' },
 	{ value: 'unicorn' },
-	{ value: 'did' }
+	{ value: 'did' },
 ];
 
 export default factory(function Basic({ middleware: { icache } }) {

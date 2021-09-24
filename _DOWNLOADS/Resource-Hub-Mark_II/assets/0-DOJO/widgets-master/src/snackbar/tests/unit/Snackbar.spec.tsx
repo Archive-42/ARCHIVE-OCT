@@ -34,7 +34,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar open={true}>
 				{{
-					message: 'test'
+					message: 'test',
 				}}
 			</Snackbar>
 		));
@@ -45,7 +45,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar open={true}>
 				{{
-					message: <div>test</div>
+					message: <div>test</div>,
 				}}
 			</Snackbar>
 		));
@@ -57,13 +57,13 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar open={true}>
 				{{
-					message: [<div>test</div>, <div>test2</div>]
+					message: [<div>test</div>, <div>test2</div>],
 				}}
 			</Snackbar>
 		));
 		const multipleNonStringTemplate = template.setChildren('@label', [
 			<div>test</div>,
-			<div>test2</div>
+			<div>test2</div>,
 		]);
 		h.expect(multipleNonStringTemplate);
 	});
@@ -72,7 +72,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar open={false}>
 				{{
-					message: 'test'
+					message: 'test',
 				}}
 			</Snackbar>
 		));
@@ -83,7 +83,7 @@ describe('Snackbar', () => {
 			null,
 			null,
 			null,
-			null
+			null,
 		]);
 		h.expect(openTemplate);
 	});
@@ -92,7 +92,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar type="success" open={true}>
 				{{
-					message: 'test'
+					message: 'test',
 				}}
 			</Snackbar>
 		));
@@ -103,7 +103,7 @@ describe('Snackbar', () => {
 			css.open,
 			css.success,
 			null,
-			null
+			null,
 		]);
 		h.expect(successTemplate);
 	});
@@ -112,7 +112,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar leading open={true}>
 				{{
-					message: 'test'
+					message: 'test',
 				}}
 			</Snackbar>
 		));
@@ -123,7 +123,7 @@ describe('Snackbar', () => {
 			css.open,
 			null,
 			css.leading,
-			null
+			null,
 		]);
 		h.expect(successTemplate);
 	});
@@ -132,7 +132,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar stacked open={true}>
 				{{
-					message: 'test'
+					message: 'test',
 				}}
 			</Snackbar>
 		));
@@ -143,7 +143,7 @@ describe('Snackbar', () => {
 			css.open,
 			null,
 			null,
-			css.stacked
+			css.stacked,
 		]);
 		h.expect(successTemplate);
 	});
@@ -152,7 +152,7 @@ describe('Snackbar', () => {
 		const h = harness(() => (
 			<Snackbar type="error" open={true}>
 				{{
-					message: 'test'
+					message: 'test',
 				}}
 			</Snackbar>
 		));
@@ -163,7 +163,7 @@ describe('Snackbar', () => {
 			css.open,
 			css.error,
 			null,
-			null
+			null,
 		]);
 		h.expect(errorTemplate);
 	});
@@ -173,14 +173,14 @@ describe('Snackbar', () => {
 			<Snackbar open={true}>
 				{{
 					message: 'test',
-					actions: <Button>Dismiss</Button>
+					actions: <Button>Dismiss</Button>,
 				}}
 			</Snackbar>
 		));
 		const actionsTemplate = template.insertAfter('~label', [
 			<div key="actions" classes={css.actions}>
 				<Button>Dismiss</Button>
-			</div>
+			</div>,
 		]);
 		h.expect(actionsTemplate);
 	});
@@ -190,7 +190,7 @@ describe('Snackbar', () => {
 			<Snackbar open={true}>
 				{{
 					message: 'test',
-					actions: [<Button>Retry</Button>, <Button>Close</Button>]
+					actions: [<Button>Retry</Button>, <Button>Close</Button>],
 				}}
 			</Snackbar>
 		));
@@ -198,7 +198,7 @@ describe('Snackbar', () => {
 			<div key="actions" classes={css.actions}>
 				<Button>Retry</Button>
 				<Button>Close</Button>
-			</div>
+			</div>,
 		]);
 		h.expect(actionsTemplate);
 	});

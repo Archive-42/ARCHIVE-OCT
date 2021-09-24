@@ -9,7 +9,7 @@ export interface FocusResults {
 
 const defaultResults = {
 	active: false,
-	containsFocus: false
+	containsFocus: false,
 };
 
 export class Focus extends Base {
@@ -33,7 +33,7 @@ export class Focus extends Base {
 
 		return {
 			active: node === this._activeElement,
-			containsFocus: !!this._activeElement && node.contains(this._activeElement)
+			containsFocus: !!this._activeElement && node.contains(this._activeElement),
 		};
 	}
 
@@ -66,7 +66,7 @@ export class Focus extends Base {
 		this.own({
 			destroy: () => {
 				this._removeListener();
-			}
+			},
 		});
 	}
 

@@ -104,7 +104,7 @@ registerSuite('Calendar date utils', {
 					fullDate.getDate() - 1
 				);
 				assert.isTrue(isOutOfDateRange(fullDate, undefined, max));
-			}
+			},
 		},
 
 		'toDate returns the value passed when it is a date'() {
@@ -125,6 +125,6 @@ registerSuite('Calendar date utils', {
 		'toDate returns a new date instance when null or undefined is passed'() {
 			assert.instanceOf(toDate(null), Date);
 			assert.instanceOf(toDate(undefined), Date);
-		}
-	}
+		},
+	},
 });

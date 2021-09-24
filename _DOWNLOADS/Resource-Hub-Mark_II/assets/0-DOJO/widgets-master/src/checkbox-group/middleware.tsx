@@ -62,7 +62,7 @@ export const checkboxGroup = factory(({ middleware: { icache } }) => {
 			}
 
 			return {
-				checked
+				checked,
 			};
 		};
 	};

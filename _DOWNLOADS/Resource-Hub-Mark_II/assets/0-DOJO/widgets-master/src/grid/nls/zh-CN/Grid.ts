@@ -9,5 +9,5 @@ export default {
 	pagination: '分页导航',
 	resultRange: '第 {from} 到 {to} 条，共 {total} 条记录',
 	sortBy: '根据 {name} 排序',
-	filterBy: '根据 {name} 过滤'
+	filterBy: '根据 {name} 过滤',
 };

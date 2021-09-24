@@ -26,13 +26,13 @@ interface GlobalEventICache {
 const factory = create({
 	destroy,
 	diffProperty,
-	icache: createICacheMiddleware<GlobalEventICache>()
+	icache: createICacheMiddleware<GlobalEventICache>(),
 }).properties<GlobalEventProperties>();
 
-export const GlobalEvent = factory(function({
+export const GlobalEvent = factory(function ({
 	children,
 	properties,
-	middleware: { destroy, diffProperty, icache }
+	middleware: { destroy, diffProperty, icache },
 }) {
 	const registerListeners = (
 		type: 'window' | 'document',
@@ -41,7 +41,7 @@ export const GlobalEvent = factory(function({
 	) => {
 		const currentListeners = icache.getOrSet('listeners', {
 			window: {},
-			document: {}
+			document: {},
 		});
 		const registeredListeners: ListenerObject = {};
 
@@ -83,7 +83,7 @@ export const GlobalEvent = factory(function({
 	const removeAllRegisteredListeners = (type: 'window' | 'document') => {
 		const currentListeners = icache.getOrSet('listeners', {
 			window: {},
-			document: {}
+			document: {},
 		});
 		Object.keys(currentListeners[type]).forEach((eventName) => {
 			global[type].removeEventListener(eventName, currentListeners[type][eventName]);

@@ -12,7 +12,7 @@ export default factory(function Basic() {
 					maxWidth: '400px',
 					display: 'flex',
 					justifyContent: 'space-around',
-					alignItems: 'center'
+					alignItems: 'center',
 				}}
 			>
 				<Avatar size="small">A</Avatar>

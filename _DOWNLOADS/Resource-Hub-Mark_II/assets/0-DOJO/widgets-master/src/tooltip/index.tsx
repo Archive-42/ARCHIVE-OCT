@@ -25,12 +25,10 @@ export enum Orientation {
 	bottom = 'bottom',
 	left = 'left',
 	right = 'right',
-	top = 'top'
+	top = 'top',
 }
 
-const factory = create({ theme })
-	.properties<TooltipProperties>()
-	.children<TooltipChildren>();
+const factory = create({ theme }).properties<TooltipProperties>().children<TooltipChildren>();
 
 export const Tooltip = factory(function Tooltip({ children, properties, middleware: { theme } }) {
 	const { open, aria = {}, orientation = Orientation.right } = properties();
@@ -61,7 +59,7 @@ export const Tooltip = factory(function Tooltip({ children, properties, middlewa
 				theme.variant(),
 				classesOrientation,
 				fixedClasses.rootFixed,
-				fixedOrientation
+				fixedOrientation,
 			]}
 		>
 			<div key="target">

@@ -83,7 +83,7 @@ export default class Cell extends I18nMixin(ThemedMixin(FocusMixin(WidgetBase)))
 			{
 				key: 'content',
 				id: this._idBase,
-				ondblclick: this._onEdit
+				ondblclick: this._onEdit,
 			},
 			[value]
 		);
@@ -102,10 +102,10 @@ export default class Cell extends I18nMixin(ThemedMixin(FocusMixin(WidgetBase)))
 				role: 'cell',
 				styles: width
 					? {
-							flex: `0 1 ${width}px`
+							flex: `0 1 ${width}px`,
 					  }
 					: {},
-				classes: [this.theme(css.root), fixedCss.rootFixed]
+				classes: [this.theme(css.root), fixedCss.rootFixed],
 			},
 			[
 				this._editing
@@ -118,15 +118,15 @@ export default class Cell extends I18nMixin(ThemedMixin(FocusMixin(WidgetBase)))
 									...classes,
 									'@dojo/widgets/text-input': {
 										input: [this.theme(css.input)],
-										...passedInputClasses
-									}
+										...passedInputClasses,
+									},
 								},
 								labelHidden: true,
 								focus: this._focusKey === 'input' ? this.shouldFocus : () => false,
 								initialValue: this._editingValue,
 								onValue: this._onInput,
 								onBlur: this._onBlur,
-								onKeyDown: this._onKeyDown
+								onKeyDown: this._onKeyDown,
 							},
 							[{ label: format('editValue', { value: rawValue }) }]
 					  )
@@ -141,17 +141,17 @@ export default class Cell extends I18nMixin(ThemedMixin(FocusMixin(WidgetBase)))
 									...classes,
 									'@dojo/widgets/button': {
 										root: [this.theme(css.edit)],
-										...passedButtonClasses
-									}
+										...passedButtonClasses,
+									},
 								},
 								aria: { describedby: this._idBase },
 								focus: this._focusKey === 'button' ? this.shouldFocus : () => false,
 								type: 'button',
-								onClick: this._onEdit
+								onClick: this._onEdit,
 							},
 							[w(Icon, { type: 'editIcon', altText: messages.edit, classes, theme })]
 					  )
-					: null
+					: null,
 			]
 		);
 	}

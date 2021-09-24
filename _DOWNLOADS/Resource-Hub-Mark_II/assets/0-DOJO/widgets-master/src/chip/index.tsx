@@ -25,9 +25,7 @@ export interface ChipChildren {
 	closeIcon?: RenderResult;
 }
 
-const factory = create({ theme })
-	.properties<ChipProperties>()
-	.children<ChipChildren>();
+const factory = create({ theme }).properties<ChipProperties>().children<ChipChildren>();
 
 export default factory(function Chip({ properties, children, middleware: { theme } }) {
 	const {
@@ -37,7 +35,7 @@ export default factory(function Chip({ properties, children, middleware: { theme
 		checked,
 		theme: themeProp,
 		variant,
-		classes = {}
+		classes = {},
 	} = properties();
 	const themedCss = theme.classes(css);
 	const [{ icon, label, closeIcon }] = children();
@@ -49,7 +47,7 @@ export default factory(function Chip({ properties, children, middleware: { theme
 				theme.variant(),
 				themedCss.root,
 				disabled && themedCss.disabled,
-				clickable && themedCss.clickable
+				clickable && themedCss.clickable,
 			]}
 			role={clickable ? 'button' : undefined}
 			onclick={() => {
@@ -96,8 +94,8 @@ export default factory(function Chip({ properties, children, middleware: { theme
 								...classes,
 								'@dojo/widgets/icon': {
 									...classes['@dojo/widgets/icon'],
-									icon: [themedCss.icon]
-								}
+									icon: [themedCss.icon],
+								},
 							}}
 							theme={themeProp}
 							variant={variant}

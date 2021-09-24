@@ -24,7 +24,7 @@ describe('Result', () => {
 					<div classes={css.titleWrapper}>
 						{<h2 classes={css.title}>Foo</h2>}
 						<h3 classes={css.subtitle}>Bar</h3>
-					</div>
+					</div>,
 				])
 			);
 		});
@@ -38,7 +38,7 @@ describe('Result', () => {
 				template.setChildren('@root', () => [
 					<div key="iconWrapper" classes={[css.iconWrapper, null, null]}>
 						<Icon type="clockIcon" />
-					</div>
+					</div>,
 				])
 			);
 		});
@@ -49,13 +49,13 @@ describe('Result', () => {
 			const h = harness(() => (
 				<Result>
 					{{
-						content: 'Result Content'
+						content: 'Result Content',
 					}}
 				</Result>
 			));
 			h.expect(
 				template.setChildren('@root', () => [
-					<div classes={css.contentWrapper}>Result Content</div>
+					<div classes={css.contentWrapper}>Result Content</div>,
 				])
 			);
 		});
@@ -68,7 +68,7 @@ describe('Result', () => {
 					<div classes={css.titleWrapper}>
 						{<h2 classes={css.title}>Foo</h2>}
 						<h3 classes={css.subtitle}>Bar</h3>
-					</div>
+					</div>,
 				])
 			);
 		});
@@ -77,7 +77,7 @@ describe('Result', () => {
 			const h = harness(() => (
 				<Result title="Foo" subtitle="Bar">
 					{{
-						content: 'Result Content'
+						content: 'Result Content',
 					}}
 				</Result>
 			));
@@ -87,7 +87,7 @@ describe('Result', () => {
 						{<h2 classes={css.title}>Foo</h2>}
 						<h3 classes={css.subtitle}>Bar</h3>
 					</div>,
-					<div classes={css.contentWrapper}>Result Content</div>
+					<div classes={css.contentWrapper}>Result Content</div>,
 				])
 			);
 		});
@@ -95,21 +95,21 @@ describe('Result', () => {
 
 	describe('actions', () => {
 		const actionsTemplate = template.append('@root', () => [
-			<div key="actions" classes={css.actions} />
+			<div key="actions" classes={css.actions} />,
 		]);
 
 		it('renders action buttons', () => {
 			const h = harness(() => (
 				<Result>
 					{{
-						actionButtons: <Button>test</Button>
+						actionButtons: <Button>test</Button>,
 					}}
 				</Result>
 			));
 			const childrenTemplate = actionsTemplate.setChildren('@actions', () => [
 				<div classes={css.actionButtons}>
 					<Button>test</Button>
-				</div>
+				</div>,
 			]);
 			h.expect(childrenTemplate);
 		});
@@ -121,7 +121,7 @@ describe('Result', () => {
 				{{
 					icon: <Icon type="clockIcon" />,
 					content: 'Result Content',
-					actionButtons: <Button>test</Button>
+					actionButtons: <Button>test</Button>,
 				}}
 			</Result>
 		));
@@ -140,7 +140,7 @@ describe('Result', () => {
 					<div classes={css.actionButtons}>
 						<Button>test</Button>
 					</div>
-				</div>
+				</div>,
 			])
 		);
 	});

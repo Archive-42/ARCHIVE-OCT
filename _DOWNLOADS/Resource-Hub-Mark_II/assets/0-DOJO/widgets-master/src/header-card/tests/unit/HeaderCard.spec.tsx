@@ -17,7 +17,7 @@ describe('HeaderCard', () => {
 							<h2 classes={css.title}>title</h2>
 						</div>
 					</div>
-				)
+				),
 			}}
 		</Card>
 	));
@@ -42,8 +42,8 @@ describe('HeaderCard', () => {
 										<h3 classes={css.subtitle}>subtitle</h3>
 									</div>
 								</div>
-							)
-						}
+							),
+						},
 					] as any
 			)
 		);
@@ -70,8 +70,8 @@ describe('HeaderCard', () => {
 										<h3 classes={css.subtitle}>subtitle</h3>
 									</div>
 								</div>
-							)
-						}
+							),
+						},
 					] as any
 			)
 		);

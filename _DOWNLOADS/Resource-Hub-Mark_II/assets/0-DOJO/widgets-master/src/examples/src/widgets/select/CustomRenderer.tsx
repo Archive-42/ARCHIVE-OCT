@@ -5,7 +5,7 @@ import { ListItem } from '@dojo/widgets/list';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -21,7 +21,7 @@ export default factory(function CustomRenderer({ id, middleware: { icache, resou
 				resource={resource({
 					template,
 					transform: { value: 'value', label: 'value' },
-					initOptions: { id, data: options }
+					initOptions: { id, data: options },
 				})}
 				onValue={(value) => {
 					icache.set('value', value);
@@ -36,7 +36,7 @@ export default factory(function CustomRenderer({ id, middleware: { icache, resou
 								{value}
 							</ListItem>
 						);
-					}
+					},
 				}}
 			</Select>
 			<pre>{JSON.stringify(icache.getOrSet('value', ''))}</pre>

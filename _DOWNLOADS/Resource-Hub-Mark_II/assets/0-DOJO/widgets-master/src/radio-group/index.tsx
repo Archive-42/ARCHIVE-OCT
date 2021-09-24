@@ -34,10 +34,10 @@ const factory = create({ radioGroup, theme })
 	.properties<RadioGroupProperties>()
 	.children<RadioGroupChildren | undefined>();
 
-export const RadioGroup = factory(function({
+export const RadioGroup = factory(function ({
 	children,
 	properties,
-	middleware: { radioGroup, theme }
+	middleware: { radioGroup, theme },
 }) {
 	const {
 		name,
@@ -47,7 +47,7 @@ export const RadioGroup = factory(function({
 		initialValue,
 		theme: themeCss,
 		classes,
-		variant
+		variant,
 	} = properties();
 	const [{ radios, label } = { radios: undefined, label: undefined }] = children();
 	const radio = radioGroup(onValue, initialValue || '', value);

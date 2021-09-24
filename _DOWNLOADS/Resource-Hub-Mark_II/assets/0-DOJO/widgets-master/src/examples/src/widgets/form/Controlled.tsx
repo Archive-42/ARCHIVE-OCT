@@ -18,7 +18,7 @@ interface Fields {
 	email?: string;
 }
 
-const App = factory(function({ middleware: { icache } }) {
+const App = factory(function ({ middleware: { icache } }) {
 	const results = icache.get('basic');
 
 	return (

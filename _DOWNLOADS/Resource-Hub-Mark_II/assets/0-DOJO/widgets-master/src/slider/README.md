@@ -4,8 +4,8 @@ Dojo's `Slider` widget creates a range slider control with a styleable track, fi
 
 ## Features
 
-- Horizontal or vertical slider with a track, fill, and single thumb
-- Output node with customizable text that can be used to display the current value
+-   Horizontal or vertical slider with a track, fill, and single thumb
+-   Output node with customizable text that can be used to display the current value
 
 ### Accessibility Features
 

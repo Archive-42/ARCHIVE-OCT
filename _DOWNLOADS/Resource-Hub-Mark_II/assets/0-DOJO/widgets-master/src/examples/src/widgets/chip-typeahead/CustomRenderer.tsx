@@ -4,7 +4,7 @@ import { ListItem, ListOption } from '@dojo/widgets/list';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -12,7 +12,7 @@ const factory = create({ resource });
 const options = [
 	{ value: '1', label: 'Apples' },
 	{ value: '2', label: 'Tacos' },
-	{ value: '3', label: 'Pizza' }
+	{ value: '3', label: 'Pizza' },
 ];
 
 const template = createMemoryResourceTemplate<ListOption>();
@@ -37,7 +37,7 @@ export default factory(function CustomRenderer({ id, middleware: { resource } })
 							case '3':
 								return '🍕';
 						}
-					}
+					},
 				}}
 			</ChipTypeahead>
 		</Example>

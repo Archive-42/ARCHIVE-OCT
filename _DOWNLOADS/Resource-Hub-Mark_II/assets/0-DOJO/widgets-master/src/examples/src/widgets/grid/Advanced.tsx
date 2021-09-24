@@ -26,15 +26,15 @@ async function fetcher(
 	}
 	const response = await fetch(url, {
 		headers: {
-			'Content-Type': 'application/json'
-		}
+			'Content-Type': 'application/json',
+		},
 	});
 	const data = await response.json();
 	return {
 		data: data.data,
 		meta: {
-			total: data.total
-		}
+			total: data.total,
+		},
 	};
 }
 
@@ -49,8 +49,8 @@ async function updater(item: any) {
 		body: JSON.stringify(data),
 		method: 'PUT',
 		headers: {
-			'Content-Type': 'application/json'
-		}
+			'Content-Type': 'application/json',
+		},
 	});
 }
 
@@ -63,7 +63,7 @@ const columnConfig: ColumnConfig[] = [
 		filterable: true,
 		sortable: true,
 		editable: true,
-		resizable: true
+		resizable: true,
 	},
 	{
 		id: 'lastName',
@@ -71,7 +71,7 @@ const columnConfig: ColumnConfig[] = [
 		filterable: true,
 		sortable: true,
 		editable: true,
-		resizable: true
+		resizable: true,
 	},
 	{
 		id: 'phoneNumber',
@@ -79,7 +79,7 @@ const columnConfig: ColumnConfig[] = [
 		filterable: true,
 		sortable: true,
 		editable: true,
-		resizable: true
+		resizable: true,
 	},
 	{
 		id: 'country',
@@ -87,8 +87,8 @@ const columnConfig: ColumnConfig[] = [
 		filterable: true,
 		sortable: true,
 		editable: true,
-		resizable: true
-	}
+		resizable: true,
+	},
 ];
 
 interface Item {

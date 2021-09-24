@@ -19,7 +19,7 @@ function createMockRadioGroupMiddleware(checkedValue: string) {
 		return {
 			checked: () => {
 				return value === checkedValue;
-			}
+			},
 		};
 	};
 }
@@ -29,7 +29,7 @@ const baseOptions = [
 	{ value: '2' },
 	{ value: '3' },
 	{ value: '4' },
-	{ value: '5' }
+	{ value: '5' },
 ];
 
 describe('Rate', () => {
@@ -49,7 +49,7 @@ describe('Rate', () => {
 			>
 				{{
 					label: 'test',
-					radios: () => []
+					radios: () => [],
 				}}
 			</WrappedRadioGroup>
 		</WrappedRootNode>
@@ -59,7 +59,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test">
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -71,7 +71,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={7}>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -83,7 +83,7 @@ describe('Rate', () => {
 			{ value: '4' },
 			{ value: '5' },
 			{ value: '6' },
-			{ value: '7' }
+			{ value: '7' },
 		]);
 
 		r.expect(maxAssertion);
@@ -93,7 +93,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={2} initialValue={1}>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -102,7 +102,7 @@ describe('Rate', () => {
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('1'), twoOptions],
-			label: []
+			label: [],
 		});
 		const initialValueAssertion = baseAssertion
 			.setProperty(WrappedRadioGroup, 'options', twoOptions)
@@ -166,8 +166,8 @@ describe('Rate', () => {
 								value={'2'}
 							/>
 						</label>
-					</span>
-				]
+					</span>,
+				],
 			}));
 		r.expect(initialValueAssertion);
 	});
@@ -176,7 +176,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={2} initialValue={1.5} allowHalf>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -185,7 +185,7 @@ describe('Rate', () => {
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('1.5'), twoOptions],
-			label: []
+			label: [],
 		});
 		const halfStarAssertion = baseAssertion
 			.setProperty(WrappedRadioGroup, 'options', twoOptions)
@@ -303,8 +303,8 @@ describe('Rate', () => {
 								value={'2'}
 							/>
 						</label>
-					</span>
-				]
+					</span>,
+				],
 			}));
 		r.expect(halfStarAssertion);
 	});
@@ -313,7 +313,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={3} initialValue={1}>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -322,7 +322,7 @@ describe('Rate', () => {
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('1'), threeOptions],
-			label: []
+			label: [],
 		});
 
 		const WrappedThirdLabel = wrap('label');
@@ -418,8 +418,8 @@ describe('Rate', () => {
 								value={'3'}
 							/>
 						</WrappedThirdLabel>
-					</span>
-				]
+					</span>,
+				],
 			}));
 
 		r.expect(initialAssertion);
@@ -514,8 +514,8 @@ describe('Rate', () => {
 							value={'3'}
 						/>
 					</label>
-				</span>
-			]
+				</span>,
+			],
 		}));
 
 		r.expect(visuallyCheckedAssertion);
@@ -525,7 +525,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={2} initialValue={1} readOnly>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -534,7 +534,7 @@ describe('Rate', () => {
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('1'), twoOptions],
-			label: []
+			label: [],
 		});
 		const initialValueAssertion = baseAssertion
 			.setProperty(WrappedRadioGroup, 'options', twoOptions)
@@ -598,8 +598,8 @@ describe('Rate', () => {
 								value={'2'}
 							/>
 						</label>
-					</span>
-				]
+					</span>,
+				],
 			}));
 		r.expect(initialValueAssertion);
 	});
@@ -611,14 +611,14 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={3} onValue={onValueStub}>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('0'), threeOptions],
-			label: []
+			label: [],
 		});
 		const onValueAssertion = baseAssertion
 			.setProperty(WrappedRadioGroup, 'options', threeOptions)
@@ -711,8 +711,8 @@ describe('Rate', () => {
 								value={'3'}
 							/>
 						</label>
-					</span>
-				]
+					</span>,
+				],
 			}));
 
 		r.expect(onValueAssertion);
@@ -721,7 +721,7 @@ describe('Rate', () => {
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('2'), threeOptions],
-			label: []
+			label: [],
 		});
 
 		const afterClickAssertion = onValueAssertion.setChildren(WrappedRadioGroup, () => ({
@@ -813,8 +813,8 @@ describe('Rate', () => {
 							value={'3'}
 						/>
 					</label>
-				</span>
-			]
+				</span>,
+			],
 		}));
 
 		r.expect(afterClickAssertion);
@@ -827,7 +827,7 @@ describe('Rate', () => {
 		const r = renderer(() => (
 			<Rate name="test" max={2}>
 				{{
-					label: 'test'
+					label: 'test',
 				}}
 			</Rate>
 		));
@@ -836,7 +836,7 @@ describe('Rate', () => {
 
 		r.child(WrappedRadioGroup as any, {
 			radios: ['test', createMockRadioGroupMiddleware('0'), twoOptions],
-			label: []
+			label: [],
 		});
 		const beforeFocusAssertion = baseAssertion
 			.setProperty(WrappedRadioGroup, 'options', twoOptions)
@@ -900,8 +900,8 @@ describe('Rate', () => {
 								value={'2'}
 							/>
 						</label>
-					</span>
-				]
+					</span>,
+				],
 			}));
 
 		r.expect(beforeFocusAssertion);
@@ -970,8 +970,8 @@ describe('Rate', () => {
 								value={'2'}
 							/>
 						</label>
-					</span>
-				]
+					</span>,
+				],
 			}));
 
 		r.expect(afterFocusAssertion);
@@ -1037,8 +1037,8 @@ describe('Rate', () => {
 							value={'2'}
 						/>
 					</label>
-				</span>
-			]
+				</span>,
+			],
 		}));
 
 		r.expect(afterBlurAssertion);

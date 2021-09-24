@@ -31,7 +31,7 @@ function createFocusMock({
 	shouldFocus = false,
 	focused = false,
 	isFocused = false,
-	focus = () => {}
+	focus = () => {},
 } = {}): () => DefaultMiddlewareResult {
 	const factory = create();
 	return () =>
@@ -39,7 +39,7 @@ function createFocusMock({
 			shouldFocus: () => shouldFocus,
 			focused: () => focused,
 			isFocused: () => isFocused,
-			focus
+			focus,
 		}))();
 }
 
@@ -57,7 +57,7 @@ const baseTemplate = (date?: Date) =>
 				<TriggerPopup variant={undefined} classes={undefined} theme={undefined} key="popup">
 					{{
 						trigger: () => <button />,
-						content: () => <div />
+						content: () => <div />,
 					}}
 				</TriggerPopup>
 			</div>
@@ -179,8 +179,9 @@ describe('DateInput', () => {
 		);
 		h.expect(buttonTemplate, () => triggerResult);
 		assert.equal(
-			h.trigger('@popup', (node) => () =>
-				(node.children as any)[0].trigger().children[0].children[0].label
+			h.trigger(
+				'@popup',
+				(node) => () => (node.children as any)[0].trigger().children[0].children[0].label
 			),
 			'Label'
 		);
@@ -197,8 +198,9 @@ describe('DateInput', () => {
 		);
 		h.expect(buttonTemplate, () => triggerResult);
 		assert.equal(
-			h.trigger('@popup', (node) => () =>
-				(node.children as any)[0].trigger().children[0].children[0].label
+			h.trigger(
+				'@popup',
+				(node) => () => (node.children as any)[0].trigger().children[0].children[0].label
 			),
 			'Label'
 		);
@@ -224,8 +226,10 @@ describe('DateInput', () => {
 		);
 		h.expect(buttonTemplate, () => triggerResult);
 		assert.equal(
-			h.trigger('@popup', (node) => () =>
-				(node.children as any)[0].trigger().children[0].children[0].label.children[0]
+			h.trigger(
+				'@popup',
+				(node) => () =>
+					(node.children as any)[0].trigger().children[0].children[0].label.children[0]
 			),
 			'The label'
 		);
@@ -254,10 +258,10 @@ describe('DateInput', () => {
 	it('focus popup content on trigger', () => {
 		const focusStub = sinon.stub();
 		const focusMock = createFocusMock({
-			focus: focusStub
+			focus: focusStub,
 		});
 		const h = harness(() => <DateInput name="dateInput" />, {
-			middleware: [[focus, focusMock]]
+			middleware: [[focus, focusMock]],
 		});
 		h.expect(baseTemplate());
 

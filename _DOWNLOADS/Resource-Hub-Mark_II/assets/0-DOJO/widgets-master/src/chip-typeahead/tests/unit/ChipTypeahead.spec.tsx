@@ -5,7 +5,7 @@ import {
 	compareTheme,
 	createHarness,
 	compareResource,
-	createTestResource
+	createTestResource,
 } from '../../../common/tests/support/test-helpers';
 import Typeahead from '../../../typeahead';
 import { stub } from 'sinon';
@@ -27,7 +27,7 @@ const noop = stub();
 const animalOptions: ListOption[] = [
 	{ value: '1', label: 'Dog' },
 	{ value: '2', label: 'Cat' },
-	{ value: '3', label: 'Fish', disabled: true }
+	{ value: '3', label: 'Fish', disabled: true },
 ];
 
 const baseAssertion = assertionTemplate(() => (
@@ -36,7 +36,7 @@ const baseAssertion = assertionTemplate(() => (
 			strict={undefined}
 			key="typeahead"
 			theme={{
-				'@dojo/widgets/typeahead': typeaheadCss
+				'@dojo/widgets/typeahead': typeaheadCss,
 			}}
 			itemsInView={undefined}
 			position={undefined}
@@ -54,13 +54,13 @@ const baseAssertion = assertionTemplate(() => (
 				'@dojo/widgets/text-input': {
 					inputWrapper: [themeCss.inputWrapper],
 					input: [themeCss.input],
-					wrapper: [themeCss.wrapper]
-				}
+					wrapper: [themeCss.wrapper],
+				},
 			}}
 		>
 			{{
 				items: stub as any,
-				leading: ['test']
+				leading: ['test'],
 			}}
 		</Typeahead>
 	</div>
@@ -71,7 +71,7 @@ const hasValueAssertion = baseAssertion.setProperty('@root', 'classes', [
 	themeCss.root,
 	themeCss.hasValue,
 	null,
-	null
+	null,
 ]);
 
 const disabledAssertion = hasValueAssertion.setProperty('@typeahead', 'disabled', true);
@@ -81,7 +81,7 @@ const focusedAssertion = baseAssertion.setProperty('@root', 'classes', [
 	themeCss.root,
 	null,
 	themeCss.focused,
-	null
+	null,
 ]);
 
 const bottomAssertion = hasValueAssertion.insertAfter('@typeahead', () => [
@@ -95,7 +95,7 @@ const bottomAssertion = hasValueAssertion.insertAfter('@typeahead', () => [
 		>
 			{{ label: 'Cat' }}
 		</Chip>
-	</div>
+	</div>,
 ]);
 
 const labeledAssertion = baseAssertion
@@ -107,13 +107,13 @@ const labeledAssertion = baseAssertion
 			theme={{ '@dojo/widgets/Label': labelCss }}
 			classes={{
 				'@dojo/widgets/label': {
-					root: [themeCss.label]
-				}
+					root: [themeCss.label],
+				},
 			}}
 			variant={undefined}
 		>
 			Label
-		</Label>
+		</Label>,
 	]);
 
 registerSuite('ChipTypeahead', {
@@ -152,7 +152,7 @@ registerSuite('ChipTypeahead', {
 						variant={undefined}
 					>
 						{{ label: 'Cat' }}
-					</Chip>
+					</Chip>,
 				],
 				() => chips
 			);
@@ -162,7 +162,7 @@ registerSuite('ChipTypeahead', {
 
 		'renders with controlled values'() {
 			const properties = {
-				value: ['2']
+				value: ['2'],
 			};
 
 			const h = harness(() => (
@@ -188,7 +188,7 @@ registerSuite('ChipTypeahead', {
 						variant={undefined}
 					>
 						{{ label: 'Cat' }}
-					</Chip>
+					</Chip>,
 				],
 				() => chips
 			);
@@ -210,7 +210,7 @@ registerSuite('ChipTypeahead', {
 						variant={undefined}
 					>
 						{{ label: 'Dog' }}
-					</Chip>
+					</Chip>,
 				],
 				() => chips
 			);
@@ -224,7 +224,7 @@ registerSuite('ChipTypeahead', {
 					initialValue={['2']}
 				>
 					{{
-						selected: (_, label) => label.toUpperCase()
+						selected: (_, label) => label.toUpperCase(),
 					}}
 				</ChipTypeahead>
 			));
@@ -242,7 +242,7 @@ registerSuite('ChipTypeahead', {
 						variant={undefined}
 					>
 						{{ label: 'Cat' }}
-					</Chip>
+					</Chip>,
 				],
 				() => chips
 			);
@@ -260,7 +260,7 @@ registerSuite('ChipTypeahead', {
 					initialValue={['cat']}
 				>
 					{{
-						selected: (value) => value.toUpperCase()
+						selected: (value) => value.toUpperCase(),
 					}}
 				</ChipTypeahead>
 			));
@@ -283,7 +283,7 @@ registerSuite('ChipTypeahead', {
 			const h = harness(() => (
 				<ChipTypeahead resource={createTestResource(animalOptions)} onValue={valueStub}>
 					{{
-						selected: (value) => value && value.toUpperCase()
+						selected: (value) => value && value.toUpperCase(),
 					}}
 				</ChipTypeahead>
 			));
@@ -305,7 +305,7 @@ registerSuite('ChipTypeahead', {
 						variant={undefined}
 					>
 						{{ label: 'Cat' }}
-					</Chip>
+					</Chip>,
 				],
 				() => chips
 			);
@@ -330,8 +330,9 @@ registerSuite('ChipTypeahead', {
 				</ChipTypeahead>
 			));
 
-			const itemRenderer = h.trigger('@typeahead', (node: any) => () =>
-				node.children[0].items
+			const itemRenderer = h.trigger(
+				'@typeahead',
+				(node: any) => () => node.children[0].items
 			);
 
 			h.expect(
@@ -376,13 +377,14 @@ registerSuite('ChipTypeahead', {
 				<ChipTypeahead resource={createTestResource(animalOptions)} initialValue={['2']}>
 					{{
 						items: (item: any) =>
-							`Item ${item.label}, selected = ${item.selected ? 'true' : 'false'}`
+							`Item ${item.label}, selected = ${item.selected ? 'true' : 'false'}`,
 					}}
 				</ChipTypeahead>
 			));
 
-			const itemRenderer = h.trigger('@typeahead', (node: any) => () =>
-				node.children[0].items
+			const itemRenderer = h.trigger(
+				'@typeahead',
+				(node: any) => () => node.children[0].items
 			);
 
 			assert.strictEqual(
@@ -432,7 +434,7 @@ registerSuite('ChipTypeahead', {
 						variant={undefined}
 					>
 						{{ label: 'Cat' }}
-					</Chip>
+					</Chip>,
 				],
 				() => chips
 			);
@@ -442,7 +444,7 @@ registerSuite('ChipTypeahead', {
 			const h = harness(() => (
 				<ChipTypeahead resource={createTestResource(animalOptions)}>
 					{{
-						label: 'Label'
+						label: 'Label',
 					}}
 				</ChipTypeahead>
 			));
@@ -457,8 +459,9 @@ registerSuite('ChipTypeahead', {
 				</ChipTypeahead>
 			));
 
-			const disabled = h.trigger('@typeahead', (node: any) => () =>
-				node.properties.itemDisabled
+			const disabled = h.trigger(
+				'@typeahead',
+				(node: any) => () => node.properties.itemDisabled
 			);
 
 			assert.isTrue(disabled({ value: '2', label: 'Cat' }));
@@ -476,8 +479,9 @@ registerSuite('ChipTypeahead', {
 				</ChipTypeahead>
 			));
 
-			const disabled = h.trigger('@typeahead', (node: any) => () =>
-				node.properties.itemDisabled
+			const disabled = h.trigger(
+				'@typeahead',
+				(node: any) => () => node.properties.itemDisabled
 			);
 
 			assert.isFalse(disabled({ value: '2', label: 'Cat' }));
@@ -496,8 +500,9 @@ registerSuite('ChipTypeahead', {
 				</ChipTypeahead>
 			));
 
-			const disabled = h.trigger('@typeahead', (node: any) => () =>
-				node.properties.itemDisabled
+			const disabled = h.trigger(
+				'@typeahead',
+				(node: any) => () => node.properties.itemDisabled
 			);
 
 			assert.isFalse(disabled({ value: '2', label: 'Cat' }));
@@ -521,6 +526,6 @@ registerSuite('ChipTypeahead', {
 			});
 
 			assert.isTrue(onValueStub.calledWith(['abc']));
-		}
-	}
+		},
+	},
 });

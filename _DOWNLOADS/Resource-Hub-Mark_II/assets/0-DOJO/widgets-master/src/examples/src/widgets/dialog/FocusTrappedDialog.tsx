@@ -23,7 +23,7 @@ export default factory(function FocusTrappedDialog({ middleware: { icache } }) {
 								<TextInput key="first">{{ label: 'First Name' }}</TextInput>
 								<TextInput key="last">{{ label: 'Last Name' }}</TextInput>
 							</virtual>
-						)
+						),
 					}}
 				</Dialog>
 			</div>

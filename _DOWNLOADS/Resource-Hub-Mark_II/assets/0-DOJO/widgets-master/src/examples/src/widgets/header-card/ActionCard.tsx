@@ -23,7 +23,7 @@ export default factory(function Basic() {
 								<Icon type="upIcon" />
 								<Icon type="downIcon" />
 							</virtual>
-						)
+						),
 					}}
 				</HeaderCard>
 			</div>

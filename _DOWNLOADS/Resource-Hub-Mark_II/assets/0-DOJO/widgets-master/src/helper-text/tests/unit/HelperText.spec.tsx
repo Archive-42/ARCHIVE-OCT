@@ -13,7 +13,7 @@ const baseTemplate = assertationTemplate(() => {
 const textTemplate = baseTemplate.setChildren('@root', [
 	<p key="text" classes={css.text} aria-hidden="true" title="test">
 		test
-	</p>
+	</p>,
 ]);
 
 registerSuite('HelperText', {
@@ -35,7 +35,7 @@ registerSuite('HelperText', {
 				undefined,
 				css.root,
 				css.valid,
-				null
+				null,
 			]);
 			const h = harness(() => (
 				<HelperText
@@ -53,7 +53,7 @@ registerSuite('HelperText', {
 				undefined,
 				css.root,
 				null,
-				css.invalid
+				css.invalid,
 			]);
 			const h = harness(() => (
 				<HelperText
@@ -65,6 +65,6 @@ registerSuite('HelperText', {
 				/>
 			));
 			h.expect(invalidTemplate);
-		}
-	}
+		},
+	},
 });

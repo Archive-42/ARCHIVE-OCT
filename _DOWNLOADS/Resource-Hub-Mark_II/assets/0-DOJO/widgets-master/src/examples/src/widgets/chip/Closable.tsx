@@ -18,7 +18,7 @@ const App = factory(function Closeable({ middleware: { icache } }) {
 					}}
 				>
 					{{
-						label: 'Close me'
+						label: 'Close me',
 					}}
 				</Chip>
 			)}

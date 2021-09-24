@@ -28,7 +28,7 @@ export default factory(function ActionsDialog({ middleware: { icache } }) {
 							<virtual>
 								<Button onClick={() => icache.set('isOpen', false)}>OK</Button>
 							</virtual>
-						)
+						),
 					}}
 				</Dialog>
 			</div>

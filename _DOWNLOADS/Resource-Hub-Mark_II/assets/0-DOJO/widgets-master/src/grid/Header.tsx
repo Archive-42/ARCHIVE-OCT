@@ -82,9 +82,9 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 				classes,
 				type: direction === 'asc' ? 'upIcon' : 'downIcon',
 				altText: format('sortBy', {
-					name: this._getColumnTitle(column)
-				})
-			})
+					name: this._getColumnTitle(column),
+				}),
+			}),
 		]);
 	};
 
@@ -107,13 +107,13 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 						root: [this.theme(css.filter)],
 						input: [this.theme(css.filterInput)],
 						noLabel: [this.theme(css.filterNoLabel)],
-						...classes['@dojo/widgets/text-input']
-					}
+						...classes['@dojo/widgets/text-input'],
+					},
 				},
 				labelHidden: true,
 				type: 'search',
 				initialValue: filterValue || undefined,
-				onValue: doFilter
+				onValue: doFilter,
 			},
 			[{ label: format('filterBy', { name: title }) }]
 		);
@@ -128,7 +128,7 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 			sortRenderer = this._sortRenderer,
 			filterRenderer = this._filterRenderer,
 			columnWidths,
-			onColumnResize
+			onColumnResize,
 		} = this.properties;
 
 		const rowWidth =
@@ -142,7 +142,7 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 			{
 				styles: rowWidth ? { width: `${rowWidth}px` } : {},
 				classes: [this.theme(css.root), fixedCss.rootFixed],
-				role: 'row'
+				role: 'row',
 			},
 			columnConfig.map((column, index) => {
 				const title = this._getColumnTitle(column);
@@ -158,11 +158,11 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 							this.theme(css.sortable),
 							isSorted ? this.theme(css.sorted) : null,
 							isSorted && !isSortedAsc ? this.theme(css.desc) : null,
-							isSortedAsc ? this.theme(css.asc) : null
+							isSortedAsc ? this.theme(css.asc) : null,
 						],
 						onclick: () => {
 							this._sortColumn(column.id);
-						}
+						},
 					};
 				}
 
@@ -195,9 +195,9 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 						role: 'columnheader',
 						styles: columnWidths
 							? {
-									flex: `0 1 ${columnWidths[column.id]}px`
+									flex: `0 1 ${columnWidths[column.id]}px`,
 							  }
-							: {}
+							: {},
 					},
 					[
 						v('div', headerProperties, [
@@ -206,7 +206,7 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 								? sortRenderer(column, direction, () => {
 										this._sortColumn(column.id);
 								  })
-								: null
+								: null,
 						]),
 
 						column.filterable
@@ -215,8 +215,8 @@ export default class Header extends I18nMixin(ThemedMixin(WidgetBase))<HeaderPro
 						column.resizable &&
 							v('span', {
 								key: `${column.id}-resize`,
-								classes: [fixedCss.resize]
-							})
+								classes: [fixedCss.resize],
+							}),
 					]
 				);
 			})

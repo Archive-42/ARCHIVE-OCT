@@ -4,7 +4,7 @@ import {
 	MetaBase,
 	WidgetMetaConstructor,
 	MiddlewareResultFactory,
-	DefaultMiddlewareResult
+	DefaultMiddlewareResult,
 } from '@dojo/framework/core/interfaces';
 import { CustomComparator, harness } from '@dojo/framework/testing/harness/harness';
 import { SinonStub } from 'sinon';
@@ -16,7 +16,7 @@ export const noop: any = () => {};
 export const stubEvent = {
 	stopPropagation: noop,
 	preventDefault: noop,
-	target: {}
+	target: {},
 };
 
 export const isResourceComparator = (value: any) => Boolean(value && value.template);
@@ -30,55 +30,55 @@ export const isNotFocusedComparator = (value: () => boolean) => value() === fals
 export const compareId = {
 	selector: '*',
 	property: 'id',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareWidgetId = {
 	selector: '*',
 	property: 'widgetId',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareForId = {
 	selector: '*',
 	property: 'forId',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareAria = {
 	selector: '*',
 	property: 'aria',
-	comparator: isStringObjectComparator
+	comparator: isStringObjectComparator,
 };
 
 export const compareAriaControls = {
 	selector: '*',
 	property: 'aria-controls',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareAriaLabelledBy = {
 	selector: '*',
 	property: 'aria-labelledby',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareAriaOwns = {
 	selector: '*',
 	property: 'aria-owns',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareAriaDescribedBy = {
 	selector: '*',
 	property: 'aria-describedby',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 export const compareLabelId = {
 	selector: '*',
 	property: 'labelId',
-	comparator: isStringComparator
+	comparator: isStringComparator,
 };
 
 interface HarnessOptions {
@@ -93,7 +93,7 @@ export const createHarness = (globalCompares: CustomComparator[]) => {
 		} else {
 			return harness(renderFunction, {
 				...options,
-				customComparator: [...globalCompares, ...(options.customComparator || [])]
+				customComparator: [...globalCompares, ...(options.customComparator || [])],
 			});
 		}
 	};
@@ -113,13 +113,13 @@ export function MockMetaMixin<T extends Constructor<WidgetBase<any>>>(
 export const compareTheme = {
 	selector: '*',
 	property: 'theme',
-	comparator: isObjectComparator
+	comparator: isObjectComparator,
 };
 
 export const compareResource = {
 	selector: '*',
 	property: 'resource',
-	comparator: isResourceComparator
+	comparator: isResourceComparator,
 };
 
 export function createTestResource(data: any[], options?: any, transform?: any) {
@@ -128,8 +128,8 @@ export function createTestResource(data: any[], options?: any, transform?: any) 
 			id: 'test',
 			template: createMemoryResourceTemplate<any>(),
 			initOptions: { id: 'test', data },
-			transform
+			transform,
 		},
-		options
+		options,
 	};
 }

@@ -4,7 +4,7 @@ import { data, Data } from '../../data';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -19,11 +19,11 @@ export default factory(function Basic({ id, middleware: { resource } }) {
 				resource={resource({
 					template,
 					transform: { value: 'id', label: 'product' },
-					initOptions: { id, data }
+					initOptions: { id, data },
 				})}
 			>
 				{{
-					label: 'Select Products'
+					label: 'Select Products',
 				}}
 			</ChipTypeahead>
 		</Example>

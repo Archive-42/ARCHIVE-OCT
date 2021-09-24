@@ -5,7 +5,7 @@ import Example from '../../Example';
 
 const factory = create({ icache });
 
-const App = factory(function({ properties, middleware: { icache } }) {
+const App = factory(function ({ properties, middleware: { icache } }) {
 	const { get, set } = icache;
 
 	return (
@@ -18,7 +18,7 @@ const App = factory(function({ properties, middleware: { icache } }) {
 				}}
 			>
 				{{
-					label: 'pets'
+					label: 'pets',
 				}}
 			</CheckboxGroup>
 			<pre>{`${get('standard')}`}</pre>

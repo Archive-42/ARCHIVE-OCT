@@ -17,7 +17,7 @@ describe('TitlePane', () => {
 		closeable = true,
 		headingLevel,
 		initialOpen,
-		open
+		open,
 	}: Partial<TitlePaneProperties> = {}) {
 		const isOpen = open || initialOpen;
 
@@ -28,7 +28,7 @@ describe('TitlePane', () => {
 						undefined,
 						themeCss.root,
 						isOpen ? themeCss.open : null,
-						fixedCss.rootFixed
+						fixedCss.rootFixed,
 					]}
 				>
 					<div
@@ -37,7 +37,7 @@ describe('TitlePane', () => {
 							themeCss.title,
 							closeable ? themeCss.closeable : null,
 							fixedCss.titleFixed,
-							closeable ? fixedCss.closeableFixed : null
+							closeable ? fixedCss.closeableFixed : null,
 						]}
 						role="heading"
 					>
@@ -69,7 +69,7 @@ describe('TitlePane', () => {
 						id="test-content"
 						key="content"
 						styles={{
-							marginTop: isOpen ? '0px' : `-0px`
+							marginTop: isOpen ? '0px' : `-0px`,
 						}}
 					>
 						content
@@ -92,7 +92,7 @@ describe('TitlePane', () => {
 		));
 		h.expect(
 			getTemplate({
-				initialOpen: true
+				initialOpen: true,
 			})
 		);
 	});
@@ -105,7 +105,7 @@ describe('TitlePane', () => {
 		));
 		h.expect(
 			getTemplate({
-				headingLevel: 3
+				headingLevel: 3,
 			})
 		);
 	});
@@ -118,7 +118,7 @@ describe('TitlePane', () => {
 		));
 		h.expect(
 			getTemplate({
-				closeable: false
+				closeable: false,
 			})
 		);
 	});
@@ -132,7 +132,7 @@ describe('TitlePane', () => {
 			getTemplate({ initialOpen: true }).setProperty('@content', 'classes', [
 				themeCss.content,
 				themeCss.contentTransition,
-				fixedCss.contentFixed
+				fixedCss.contentFixed,
 			])
 		);
 	});
@@ -152,7 +152,7 @@ describe('TitlePane', () => {
 				.setProperty('@content', 'classes', [
 					themeCss.content,
 					themeCss.contentTransition,
-					fixedCss.contentFixed
+					fixedCss.contentFixed,
 				])
 		);
 	});

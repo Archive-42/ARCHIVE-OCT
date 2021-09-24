@@ -35,10 +35,10 @@ const factory = create({ checkboxGroup, theme })
 	.properties<CheckboxGroupProperties>()
 	.children<CheckboxGroupChildren | undefined>();
 
-export const CheckboxGroup = factory(function({
+export const CheckboxGroup = factory(function ({
 	children,
 	properties,
-	middleware: { checkboxGroup, theme }
+	middleware: { checkboxGroup, theme },
 }) {
 	const {
 		name,
@@ -48,7 +48,7 @@ export const CheckboxGroup = factory(function({
 		value,
 		classes,
 		theme: themeProp,
-		variant
+		variant,
 	} = properties();
 	const [{ checkboxes, label } = { checkboxes: undefined, label: undefined }] = children();
 

@@ -91,7 +91,7 @@ const factory = create({
 	icache: createICacheMiddleware<TextAreaICache>(),
 	theme,
 	focus,
-	validity
+	validity,
 })
 	.properties<TextAreaProperties>()
 	.children<TextAreaChildren | RenderResult | undefined>();
@@ -99,7 +99,7 @@ export const TextArea = factory(function TextArea({
 	id,
 	middleware: { icache, theme, focus, validity },
 	properties,
-	children
+	children,
 }) {
 	const themeCss = theme.classes(css);
 
@@ -149,7 +149,7 @@ export const TextArea = factory(function TextArea({
 
 		return {
 			valid: valid.valid,
-			message: valid.message
+			message: valid.message,
 		};
 	}
 
@@ -172,7 +172,7 @@ export const TextArea = factory(function TextArea({
 		labelHidden,
 		helperText,
 		onValidate,
-		variant
+		variant,
 	} = properties();
 
 	let { value } = properties();
@@ -207,16 +207,12 @@ export const TextArea = factory(function TextArea({
 					valid === true ? themeCss.valid : null,
 					readOnly ? themeCss.readonly : null,
 					required ? themeCss.required : null,
-					inputFocused ? themeCss.focused : null
+					inputFocused ? themeCss.focused : null,
 				]}
 			>
 				{label ? (
 					<Label
-						theme={theme.compose(
-							labelCss,
-							css,
-							'label'
-						)}
+						theme={theme.compose(labelCss, css, 'label')}
 						classes={classes}
 						variant={variant}
 						disabled={disabled}

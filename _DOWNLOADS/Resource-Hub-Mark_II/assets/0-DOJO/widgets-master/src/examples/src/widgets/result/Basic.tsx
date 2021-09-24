@@ -9,7 +9,7 @@ export default factory(function Basic() {
 		<Example>
 			<Result title="Hello, World" subtitle="Result SubTitle" status="info">
 				{{
-					content: <span>Result Content</span>
+					content: <span>Result Content</span>,
 				}}
 			</Result>
 		</Example>

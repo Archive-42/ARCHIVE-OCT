@@ -13,7 +13,7 @@ import {
 	compareWidgetId,
 	createHarness,
 	compareResource,
-	createTestResource
+	createTestResource,
 } from '../../common/tests/support/test-helpers';
 import HelperText from '../../helper-text';
 import Icon from '../../icon';
@@ -82,7 +82,7 @@ const buttonTemplate = assertionTemplate(() => (
 const ignoreMenuTheme = {
 	selector: '@menu',
 	property: 'theme',
-	comparator: () => true
+	comparator: () => true,
 };
 
 const menuTemplate = assertionTemplate(() => (
@@ -145,7 +145,7 @@ describe('Select', () => {
 					focused={false}
 				>
 					test-label
-				</Label>
+				</Label>,
 			])
 
 			.setProperty('@popup', 'position', 'above')
@@ -287,9 +287,9 @@ describe('Select', () => {
 						}).then(() => {
 							put({ data, total: data.length }, req);
 						});
-					}
-				})
-			}
+					},
+				}),
+			},
 		};
 
 		const h = harness(
@@ -308,7 +308,7 @@ describe('Select', () => {
 				<span classes={[css.value, false]}>Dog</span>,
 				<span classes={css.arrow}>
 					<Icon type="downIcon" theme={{}} classes={undefined} variant={undefined} />
-				</span>
+				</span>,
 			]),
 			() => triggerRenderResult
 		);
@@ -338,7 +338,7 @@ describe('Select', () => {
 				<span classes={[css.value, undefined]}>Dog</span>,
 				<span classes={css.arrow}>
 					<Icon type="downIcon" theme={{}} classes={undefined} variant={undefined} />
-				</span>
+				</span>,
 			]),
 			() => triggerRenderResult
 		);
@@ -366,7 +366,7 @@ describe('Select', () => {
 					false,
 					css.invalid,
 					false,
-					false
+					false,
 				])
 				.setProperty('@helperText', 'text', messages.requiredMessage)
 				.setProperty('@helperText', 'valid', false)

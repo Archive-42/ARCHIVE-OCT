@@ -35,7 +35,7 @@ export const radioGroup = factory(({ middleware: { icache } }) => {
 			}
 
 			return {
-				checked
+				checked,
 			};
 		};
 	};

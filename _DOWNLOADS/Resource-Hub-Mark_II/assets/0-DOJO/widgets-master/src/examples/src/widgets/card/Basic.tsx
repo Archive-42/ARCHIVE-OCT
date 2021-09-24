@@ -10,7 +10,7 @@ export default factory(function Basic() {
 			<div styles={{ maxWidth: '400px' }}>
 				<Card title="Hello, World">
 					{{
-						content: <span>Lorem ipsum</span>
+						content: <span>Lorem ipsum</span>,
 					}}
 				</Card>
 			</div>

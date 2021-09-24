@@ -1,79 +1,79 @@
-import { Session } from '../interfaces';
-import { RouteContext } from '@dojo/framework/routing/interfaces';
+import { Session } from "../interfaces";
+import { RouteContext } from "@dojo/framework/routing/interfaces";
 
 export interface SlugPayload {
-	slug: string;
+  slug: string;
 }
 
 export interface TitlePayload {
-	title: string;
+  title: string;
 }
 
 export interface DescriptionPayload {
-	description: string;
+  description: string;
 }
 
 export interface BodyPayload {
-	body: string;
+  body: string;
 }
 
 export interface TagPayload {
-	tag: string;
+  tag: string;
 }
 
 export interface BioPayload {
-	bio: string;
+  bio: string;
 }
 
 export interface ImagePayload {
-	imageUrl: string;
+  imageUrl: string;
 }
 
 export interface EmailPayload {
-	email: string;
+  email: string;
 }
 
 export interface UsernamePayload {
-	username: string;
+  username: string;
 }
 
 export interface PasswordPayload {
-	password: string;
+  password: string;
 }
 
 export interface FollowUserPayload {
-	username: string;
-	following: boolean;
-	slug?: string;
+  username: string;
+  following: boolean;
+  slug?: string;
 }
 
 export interface FavoriteArticlePayload extends SlugPayload {
-	favorited: boolean;
-	type?: string;
+  favorited: boolean;
+  type?: string;
 }
 
 export interface NewCommentPayload {
-	newComment: string;
-	slug: string;
+  newComment: string;
+  slug: string;
 }
 
 export interface AddCommentPayload extends SlugPayload, NewCommentPayload {}
 
 export interface DeleteCommentPayload extends SlugPayload {
-	id: number;
+  id: number;
 }
 
 export interface FetchFeedPayload {
-	type: string;
-	filter: string;
-	page: number;
+  type: string;
+  filter: string;
+  page: number;
 }
 
 export interface SetSessionPayload {
-	session: Session;
+  session: Session;
 }
 
 export interface ChangeRoutePayload {
-	outlet: string;
-	context: RouteContext;
+  outlet: string;
+  context: RouteContext;
 }

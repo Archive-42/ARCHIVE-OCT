@@ -4,8 +4,8 @@ Dojo's `TextArea` widget provides a wrapped native `textarea` input with an opti
 
 ## Features
 
-- Provides an API for valid `<textarea>` attributes
-- Correctly handles a11y attributes
+-   Provides an API for valid `<textarea>` attributes
+-   Correctly handles a11y attributes
 
 ### Accessibility Features
 

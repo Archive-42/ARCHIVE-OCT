@@ -5,7 +5,7 @@ import Example from '../../Example';
 import { ListOption } from '@dojo/widgets/list';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -13,7 +13,7 @@ const factory = create({ icache, resource });
 const options = [
 	{ value: '1', label: 'cat' },
 	{ value: '2', label: 'dog' },
-	{ value: '3', label: 'fish' }
+	{ value: '3', label: 'fish' },
 ];
 
 const template = createMemoryResourceTemplate<ListOption>();
@@ -27,7 +27,7 @@ export default factory(function DisabledSelect({ id, middleware: { resource } })
 				onValue={() => {}}
 			>
 				{{
-					label: 'Disabled Select'
+					label: 'Disabled Select',
 				}}
 			</Select>
 		</Example>

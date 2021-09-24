@@ -19,7 +19,7 @@ describe('Wizard', () => {
 		return {
 			get() {
 				return { size: { width } };
-			}
+			},
 		};
 	});
 	const mockedRenderer = (renderFunc: () => WNode) =>
@@ -51,8 +51,8 @@ describe('Wizard', () => {
 									root: css.avatarRoot,
 									rounded: avatarCss.rounded,
 									small: avatarCss.small,
-									square: avatarCss.square
-								}
+									square: avatarCss.square,
+								},
 							}}
 							outline={true}
 							classes={undefined}
@@ -85,8 +85,8 @@ describe('Wizard', () => {
 									root: css.avatarRoot,
 									rounded: avatarCss.rounded,
 									small: avatarCss.small,
-									square: avatarCss.square
-								}
+									square: avatarCss.square,
+								},
 							}}
 							classes={undefined}
 							variant={undefined}
@@ -118,8 +118,8 @@ describe('Wizard', () => {
 									root: css.avatarRoot,
 									rounded: avatarCss.rounded,
 									small: avatarCss.small,
-									square: avatarCss.square
-								}
+									square: avatarCss.square,
+								},
 							}}
 							outline={true}
 							classes={undefined}
@@ -169,7 +169,7 @@ describe('Wizard', () => {
 				undefined,
 				css.root,
 				css.vertical,
-				false
+				false,
 			])
 		);
 	});
@@ -188,7 +188,7 @@ describe('Wizard', () => {
 				undefined,
 				css.root,
 				css.horizontal,
-				css.clickable
+				css.clickable,
 			])
 		);
 	});
@@ -222,8 +222,8 @@ describe('Wizard', () => {
 										root: css.avatarRoot,
 										rounded: avatarCss.rounded,
 										small: avatarCss.small,
-										square: avatarCss.square
-									}
+										square: avatarCss.square,
+									},
 								}}
 								outline={false}
 								classes={undefined}
@@ -233,7 +233,7 @@ describe('Wizard', () => {
 							</WrappedAvatar>
 						</div>
 						<Step status="error" />
-					</virtual>
+					</virtual>,
 				])
 				.setProperty(WrappedAvatar, 'outline', true)
 				.setChildren(WrappedAvatar, () => [
@@ -242,7 +242,7 @@ describe('Wizard', () => {
 						classes={undefined}
 						variant={undefined}
 						theme={undefined}
-					/>
+					/>,
 				])
 				.setProperty(WrappedStep3, 'classes', [css.step, false, css.pending, false])
 		);
@@ -269,7 +269,7 @@ describe('Wizard', () => {
 				undefined,
 				css.root,
 				css.horizontal,
-				css.clickable
+				css.clickable,
 			])
 		);
 
@@ -280,7 +280,7 @@ describe('Wizard', () => {
 				undefined,
 				css.root,
 				css.horizontal,
-				css.clickable
+				css.clickable,
 			])
 		);
 
@@ -299,7 +299,7 @@ describe('Wizard', () => {
 					{{
 						title: 'title',
 						subTitle: 'subTitle',
-						description: 'description'
+						description: 'description',
 					}}
 				</Step>
 			));
@@ -309,7 +309,7 @@ describe('Wizard', () => {
 						title
 						<div classes={css.stepSubTitle}>subTitle</div>
 					</div>,
-					<div classes={css.stepDescription}>description</div>
+					<div classes={css.stepDescription}>description</div>,
 				])
 			);
 		});

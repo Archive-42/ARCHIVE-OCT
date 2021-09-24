@@ -33,7 +33,7 @@ const factory = create({ dimensions, icache, theme })
 export const TriggerPopup = factory(function TriggerPopup({
 	properties,
 	children,
-	middleware: { dimensions, icache, theme }
+	middleware: { dimensions, icache, theme },
 }) {
 	const { matchWidth = true, onOpen, classes, ...otherProperties } = properties();
 
@@ -44,7 +44,7 @@ export const TriggerPopup = factory(function TriggerPopup({
 	const themedCss = theme.classes(fixedCss);
 
 	const wrapperStyles = {
-		width: matchWidth ? `${triggerSize.width}px` : 'auto'
+		width: matchWidth ? `${triggerSize.width}px` : 'auto',
 	};
 
 	const { trigger, content } = children()[0];

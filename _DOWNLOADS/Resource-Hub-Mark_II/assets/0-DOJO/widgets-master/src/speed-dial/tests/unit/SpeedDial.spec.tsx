@@ -23,7 +23,7 @@ const baseTemplate = assertionTemplate(() => (
 		<FloatingActionButton
 			key="trigger"
 			theme={{
-				'@dojo/widgets/floating-action-button': fabCss
+				'@dojo/widgets/floating-action-button': fabCss,
 			}}
 			onOver={noop}
 			onClick={noop}
@@ -144,7 +144,7 @@ describe('SpeedDial', () => {
 				false,
 				false,
 				false,
-				css.up
+				css.up,
 			])
 		);
 	});
@@ -171,7 +171,7 @@ describe('SpeedDial', () => {
 				false,
 				false,
 				css.down,
-				false
+				false,
 			])
 		);
 	});
@@ -198,7 +198,7 @@ describe('SpeedDial', () => {
 				css.left,
 				false,
 				false,
-				false
+				false,
 			])
 		);
 	});

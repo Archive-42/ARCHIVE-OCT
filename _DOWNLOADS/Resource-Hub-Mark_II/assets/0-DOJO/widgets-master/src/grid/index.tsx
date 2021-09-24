@@ -25,7 +25,7 @@ import {
 	pageChangeProcess,
 	selectionProcess,
 	sortProcess,
-	updaterProcess
+	updaterProcess,
 } from './processes';
 import * as fixedCss from './styles/grid.m.css';
 
@@ -36,7 +36,7 @@ const defaultGridMeta = {
 	filter: undefined,
 	isSorting: false,
 	editedRow: undefined,
-	selection: []
+	selection: [],
 };
 
 export interface CustomRenderers {
@@ -100,16 +100,16 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 		const { height } = this.properties;
 		const headerWrapper = this.meta(Dimensions).get('header-wrapper');
 		const {
-			size: { height: headerHeight, width: bodyWidth }
+			size: { height: headerHeight, width: bodyWidth },
 		} = this.meta(Dimensions).get('header');
 		const {
-			size: { height: footerHeight }
+			size: { height: footerHeight },
 		} = this.meta(Dimensions).get('footer');
 
 		return {
 			headerWidth: headerWrapper.size.width,
 			bodyHeight: footerHeight && footerHeight ? height - headerHeight - footerHeight : 0,
-			bodyWidth
+			bodyWidth,
 		};
 	}
 
@@ -129,7 +129,7 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 
 		this._columnWidths = {
 			...this._columnWidths,
-			[columnConfig[index].id]: currentColumnWidth + value
+			[columnConfig[index].id]: currentColumnWidth + value,
 		};
 		this.invalidate();
 	}
@@ -206,7 +206,7 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 			classes,
 			pagination = false,
 			customRenderers = {},
-			onRowSelect
+			onRowSelect,
 		} = this._getProperties();
 		const { sortRenderer, filterRenderer } = customRenderers;
 
@@ -223,13 +223,10 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 
 		if (bodyWidth && headerWidth && hasResizableColumns && !this._columnWidths) {
 			const width = headerWidth / columnConfig.length;
-			this._columnWidths = columnConfig.reduce(
-				(sizes, { id }) => {
-					sizes[id] = Math.max(MIN_COLUMN_WIDTH, width);
-					return sizes;
-				},
-				{} as any
-			);
+			this._columnWidths = columnConfig.reduce((sizes, { id }) => {
+				sizes[id] = Math.max(MIN_COLUMN_WIDTH, width);
+				return sizes;
+			}, {} as any);
 			this._gridWidth = Math.max(bodyWidth, MIN_COLUMN_WIDTH * columnConfig.length);
 		}
 
@@ -239,7 +236,7 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 				key: 'root',
 				classes: [this.variant(), this.theme(css.root), fixedCss.rootFixed],
 				role: 'table',
-				'aria-rowcount': meta.total ? `${meta.total}` : undefined
+				'aria-rowcount': meta.total ? `${meta.total}` : undefined,
 			},
 			[
 				v(
@@ -250,15 +247,15 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 						styles:
 							hasResizableColumns && this._gridWidth
 								? {
-										width: `${this._gridWidth}px`
+										width: `${this._gridWidth}px`,
 								  }
 								: {},
 						classes: [
 							this.theme(css.header),
 							fixedCss.headerFixed,
-							hasFilters ? this.theme(css.filterGroup) : null
+							hasFilters ? this.theme(css.filterGroup) : null,
 						],
-						row: 'rowgroup'
+						row: 'rowgroup',
 					},
 					[
 						v('div', { key: 'header-wrapper' }, [
@@ -275,9 +272,9 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 								filterer: this._filterer,
 								sortRenderer,
 								filterRenderer,
-								onColumnResize: this._onColumnResize
-							})
-						])
+								onColumnResize: this._onColumnResize,
+							}),
+						]),
 					]
 				),
 				bodyHeight
@@ -298,7 +295,7 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 								height: bodyHeight,
 								width: hasResizableColumns ? this._gridWidth : undefined,
 								onRowSelect: onRowSelect ? this._selection : undefined,
-								selectedRows: meta.selection
+								selectedRows: meta.selection,
 						  })
 						: w(Body, {
 								key: 'body',
@@ -317,7 +314,7 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 								height: bodyHeight,
 								width: hasResizableColumns ? this._gridWidth : undefined,
 								onRowSelect: onRowSelect ? this._selection : undefined,
-								selectedRows: meta.selection
+								selectedRows: meta.selection,
 						  })
 					: null,
 				v('div', { key: 'footer' }, [
@@ -331,7 +328,7 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 								pageSize: this._pageSize,
 								onPageChange: (page: number) => {
 									this._pageChange(page);
-								}
+								},
 						  })
 						: w(Footer, {
 								key: 'footer-row',
@@ -340,9 +337,9 @@ export default class Grid<S> extends I18nMixin(ThemedMixin(WidgetBase))<GridProp
 								classes,
 								total: meta.total,
 								page: meta.page,
-								pageSize: this._pageSize
-						  })
-				])
+								pageSize: this._pageSize,
+						  }),
+				]),
 			]
 		);
 	}

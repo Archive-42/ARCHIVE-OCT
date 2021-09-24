@@ -4,8 +4,8 @@ Dojo's `RangeSlider` widget creates a range slider control with a styleable trac
 
 ## Features
 
-- Horizontal slider with a track, fill, and two thumbs
-- Output node with customizable text that can be used to display the current minimum/maximum values.
+-   Horizontal slider with a track, fill, and two thumbs
+-   Output node with customizable text that can be used to display the current minimum/maximum values.
 
 ### Accessibility Features
 

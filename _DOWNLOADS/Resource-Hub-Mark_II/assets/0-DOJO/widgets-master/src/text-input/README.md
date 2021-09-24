@@ -4,9 +4,9 @@ Dojo's `TextInput` widget provides a basic text input widget with an optional la
 
 ## Features
 
-- Allows specification of input type (e.g. `text`, `email`, `number`, etc)
-- Correctly handles a11y attributes
-- Allows leading / trailing icons / text to be added
+-   Allows specification of input type (e.g. `text`, `email`, `number`, etc)
+-   Correctly handles a11y attributes
+-   Allows leading / trailing icons / text to be added
 
 ### Accessibility Features
 

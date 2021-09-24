@@ -18,7 +18,7 @@ const messages = {
 	atLeastOf: 'at least {count} of: {rules}.',
 	allOf: 'each of: {rules}.',
 	and: 'and {rule}',
-	or: 'or {rule}'
+	or: 'or {rule}',
 };
 
 export default { messages };

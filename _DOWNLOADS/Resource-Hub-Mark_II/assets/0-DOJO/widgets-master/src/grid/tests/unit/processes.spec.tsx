@@ -12,7 +12,7 @@ import {
 	filterProcess,
 	updaterProcess,
 	selectionProcess,
-	clearSelectionProcess
+	clearSelectionProcess,
 } from '../../processes';
 
 let store: Store;
@@ -45,14 +45,14 @@ describe('Grid Processes', () => {
 			fetcherStub.returns({
 				data: [{ id: '1' }],
 				meta: {
-					total: 10000
-				}
+					total: 10000,
+				},
 			});
 			await fetcherProcess(store)({
 				id: 'grid',
 				page: 2,
 				fetcher: fetcherStub,
-				pageSize: 100
+				pageSize: 100,
 			});
 			const pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-2': [{ id: '1' }] } });
@@ -65,14 +65,14 @@ describe('Grid Processes', () => {
 			fetcherStub.returns({
 				data: [{ id: '1' }],
 				meta: {
-					total: 10000
-				}
+					total: 10000,
+				},
 			});
 			await fetcherProcess(store)({
 				id: 'grid',
 				page: 2,
 				fetcher: fetcherStub,
-				pageSize: 100
+				pageSize: 100,
 			});
 			const pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-2': [{ id: '1' }] } });
@@ -82,7 +82,7 @@ describe('Grid Processes', () => {
 				id: 'grid',
 				page: 2,
 				fetcher: fetcherStub,
-				pageSize: 100
+				pageSize: 100,
 			}).then((result) => {
 				assert.isOk(result.error);
 				assert.strictEqual(
@@ -98,14 +98,14 @@ describe('Grid Processes', () => {
 				{
 					op: OperationType.REPLACE,
 					path: new Pointer(['grid', 'meta', 'isSorting']),
-					value: true
-				}
+					value: true,
+				},
 			]);
 			return fetcherProcess(store)({
 				id: 'grid',
 				page: 2,
 				fetcher: fetcherStub,
-				pageSize: 100
+				pageSize: 100,
 			}).then((result) => {
 				assert.isOk(result.error);
 				assert.strictEqual(
@@ -122,20 +122,20 @@ describe('Grid Processes', () => {
 			fetcherStub.returns({
 				data: [{ id: '1' }],
 				meta: {
-					total: 10000
-				}
+					total: 10000,
+				},
 			});
 			store.apply([
 				{
 					op: OperationType.REPLACE,
 					path: new Pointer(['grid', 'meta', 'page']),
-					value: 10
-				}
+					value: 10,
+				},
 			]);
 			await filterProcess(store)({
 				filterOptions: { columnId: 'id', value: 'filter' },
 				id: 'grid',
-				fetcher: fetcherStub
+				fetcher: fetcherStub,
 			});
 			const pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-1': [{ id: '1' }] } });
@@ -143,13 +143,13 @@ describe('Grid Processes', () => {
 			assert.deepEqual(meta, {
 				currentFilter: {
 					columnId: 'id',
-					value: 'filter'
+					value: 'filter',
 				},
 				page: 1,
 				filter: { id: 'filter' },
 				fetchedPages: [1],
 				isSorting: false,
-				total: 10000
+				total: 10000,
 			});
 		});
 	});
@@ -160,17 +160,21 @@ describe('Grid Processes', () => {
 			fetcherStub.returns({
 				data: [{ id: '1' }],
 				meta: {
-					total: 10000
-				}
+					total: 10000,
+				},
 			});
 			store.apply([
-				{ op: OperationType.REPLACE, path: new Pointer(['grid', 'meta', 'page']), value: 1 }
+				{
+					op: OperationType.REPLACE,
+					path: new Pointer(['grid', 'meta', 'page']),
+					value: 1,
+				},
 			]);
 			await sortProcess(store)({
 				columnId: 'id',
 				direction: 'asc',
 				id: 'grid',
-				fetcher: fetcherStub
+				fetcher: fetcherStub,
 			});
 			const pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-1': [{ id: '1' }] } });
@@ -180,7 +184,7 @@ describe('Grid Processes', () => {
 				sort: { columnId: 'id', direction: 'asc' },
 				fetchedPages: [1],
 				isSorting: false,
-				total: 10000
+				total: 10000,
 			});
 		});
 
@@ -189,25 +193,25 @@ describe('Grid Processes', () => {
 			fetcherStub.returns({
 				data: [{ id: '1' }],
 				meta: {
-					total: 10000
-				}
+					total: 10000,
+				},
 			});
 			store.apply([
 				{
 					op: OperationType.REPLACE,
 					path: new Pointer(['grid', 'meta', 'page']),
-					value: 10
-				}
+					value: 10,
+				},
 			]);
 			await sortProcess(store)({
 				columnId: 'id',
 				direction: 'asc',
 				id: 'grid',
-				fetcher: fetcherStub
+				fetcher: fetcherStub,
 			});
 			const pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, {
-				pages: { 'page-9': [{ id: '1' }], 'page-10': [{ id: '1' }] }
+				pages: { 'page-9': [{ id: '1' }], 'page-10': [{ id: '1' }] },
 			});
 			const meta = store.get(store.path('grid', 'meta'));
 			assert.deepEqual(meta, {
@@ -215,7 +219,7 @@ describe('Grid Processes', () => {
 				sort: { columnId: 'id', direction: 'asc' },
 				fetchedPages: [10, 9],
 				isSorting: false,
-				total: 10000
+				total: 10000,
 			});
 		});
 	});
@@ -227,8 +231,8 @@ describe('Grid Processes', () => {
 				{
 					op: OperationType.REPLACE,
 					path: new Pointer(['grid', 'data', 'pages', 'page-1']),
-					value: [{ id: 'A', name: 'bill' }]
-				}
+					value: [{ id: 'A', name: 'bill' }],
+				},
 			]);
 			let pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-1': [{ id: 'A', name: 'bill' }] } });
@@ -238,7 +242,7 @@ describe('Grid Processes', () => {
 				id: 'grid',
 				value: 'foo',
 				page: 1,
-				rowNumber: 0
+				rowNumber: 0,
 			});
 			pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-1': [{ id: 'A', name: 'foo' }] } });
@@ -251,8 +255,8 @@ describe('Grid Processes', () => {
 				{
 					op: OperationType.REPLACE,
 					path: new Pointer(['grid', 'data', 'pages', 'page-1']),
-					value: [{ id: 'A', name: 'bill' }]
-				}
+					value: [{ id: 'A', name: 'bill' }],
+				},
 			]);
 			let pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-1': [{ id: 'A', name: 'bill' }] } });
@@ -262,7 +266,7 @@ describe('Grid Processes', () => {
 				id: 'grid',
 				value: 'foo',
 				page: 1,
-				rowNumber: 0
+				rowNumber: 0,
 			});
 			pages = store.get(store.path('grid', 'data'));
 			assert.deepEqual(pages, { pages: { 'page-1': [{ id: 'A', name: 'bill' }] } });

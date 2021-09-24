@@ -1,10 +1,10 @@
 const locales = {
 	zh: () => import('./zh-CN/SlidePane'),
-	'zh-TW': () => import('./zh-TW/SlidePane')
+	'zh-TW': () => import('./zh-TW/SlidePane'),
 };
 
 const messages = {
-	close: 'close'
+	close: 'close',
 };
 
 export default { locales, messages };

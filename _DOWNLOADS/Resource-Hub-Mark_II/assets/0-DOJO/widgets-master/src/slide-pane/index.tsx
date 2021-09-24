@@ -43,12 +43,12 @@ const DEFAULT_WIDTH = 320;
 
 enum Plane {
 	x,
-	y
+	y,
 }
 
 enum Slide {
 	in,
-	out
+	out,
 }
 
 export interface SlidePaneICache {
@@ -64,13 +64,13 @@ export interface SlidePaneICache {
 const factory = create({
 	icache: createICacheMiddleware<SlidePaneICache>(),
 	theme,
-	i18n
+	i18n,
 }).properties<SlidePaneProperties>();
 
 export const SlidePane = factory(function SlidePane({
 	middleware: { icache, theme, i18n },
 	properties,
-	children
+	children,
 }) {
 	let {
 		aria = {},
@@ -82,7 +82,7 @@ export const SlidePane = factory(function SlidePane({
 		underlay = false,
 		theme: themeProp,
 		variant,
-		classes
+		classes,
 	} = properties();
 	const themeCss = theme.classes(css);
 
@@ -112,7 +112,7 @@ export const SlidePane = factory(function SlidePane({
 	const contentStyles = {
 		transform: translate ? `translate${translateAxis}(${translate}%)` : undefined,
 		width: plane === Plane.x ? `${width}px` : undefined,
-		height: plane === Plane.y ? `${width}px` : undefined
+		height: plane === Plane.y ? `${width}px` : undefined,
 	};
 
 	const alignCss: { [key: string]: any } = themeCss;
@@ -122,7 +122,7 @@ export const SlidePane = factory(function SlidePane({
 		alignCss[align],
 		open ? themeCss.open : null,
 		slide === Slide.in ? themeCss.slideIn : null,
-		slide === Slide.out ? themeCss.slideOut : null
+		slide === Slide.out ? themeCss.slideOut : null,
 	];
 
 	const fixedAlignCss: { [key: string]: any } = fixedCss;
@@ -249,7 +249,7 @@ export const SlidePane = factory(function SlidePane({
 					themeCss.pane,
 					...contentClasses,
 					fixedCss.paneFixed,
-					...fixedContentClasses
+					...fixedContentClasses,
 				]}
 				styles={contentStyles}
 			>

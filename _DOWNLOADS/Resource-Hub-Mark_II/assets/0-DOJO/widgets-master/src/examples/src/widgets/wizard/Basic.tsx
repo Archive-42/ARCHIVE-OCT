@@ -21,14 +21,14 @@ export default factory(function Basic({ middleware: { icache } }) {
 				<Step>
 					{{
 						title: 'Title',
-						subTitle: 'SubTitle'
+						subTitle: 'SubTitle',
 					}}
 				</Step>
 				<Step>
 					{{
 						title: 'Title',
 						subTitle: 'SubTitle',
-						description: 'This is a description'
+						description: 'This is a description',
 					}}
 				</Step>
 			</Wizard>

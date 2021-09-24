@@ -21,9 +21,10 @@ registerSuite('RaisedButton', {
 		},
 
 		'properties and attributes'() {
-			const h = harness(() => <RaisedButton type="submit" name="bar" disabled={true} />, [
-				compareTheme
-			]);
+			const h = harness(
+				() => <RaisedButton type="submit" name="bar" disabled={true} />,
+				[compareTheme]
+			);
 			h.expect(() => (
 				<Button
 					theme={{ '@dojo/widgets/button': buttonCss }}
@@ -32,6 +33,6 @@ registerSuite('RaisedButton', {
 					disabled={true}
 				/>
 			));
-		}
-	}
+		},
+	},
 });

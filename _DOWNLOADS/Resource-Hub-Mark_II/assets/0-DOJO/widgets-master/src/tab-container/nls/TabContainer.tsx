@@ -1,10 +1,10 @@
 const locales = {
 	zh: () => import('./zh-CN/TabContainer'),
-	'zh-TW': () => import('./zh-TW/TabContainer')
+	'zh-TW': () => import('./zh-TW/TabContainer'),
 };
 
 const messages = {
-	close: 'close'
+	close: 'close',
 };
 
 export default { locales, messages };

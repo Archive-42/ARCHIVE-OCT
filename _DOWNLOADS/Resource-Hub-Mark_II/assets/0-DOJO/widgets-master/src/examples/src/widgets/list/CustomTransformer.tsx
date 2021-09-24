@@ -4,7 +4,7 @@ import icache from '@dojo/framework/core/middleware/icache';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -18,7 +18,7 @@ interface Animal {
 const animals: Animal[] = [
 	{ name: 'whiskers', type: 'feline' },
 	{ name: 'fido', type: 'kanine' },
-	{ name: 'mickey', type: 'rodent' }
+	{ name: 'mickey', type: 'rodent' },
 ];
 
 const template = createMemoryResourceTemplate<Animal>();
@@ -30,7 +30,7 @@ export default factory(function CustomTransformer({ id, middleware: { icache, re
 				resource={resource({
 					template,
 					transform: { value: 'type', label: 'name' },
-					initOptions: { id, data: animals }
+					initOptions: { id, data: animals },
 				})}
 				onValue={(value) => {
 					icache.set('value', value);

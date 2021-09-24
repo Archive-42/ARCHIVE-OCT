@@ -29,21 +29,21 @@ export default factory(function Vertical({ middleware: { icache } }) {
 				<Step status={steps[0]}>
 					{{
 						title: 'Title',
-						subTitle: 'SubTitle'
+						subTitle: 'SubTitle',
 					}}
 				</Step>
 				<Step status={steps[1]}>
 					{{
 						title: 'Title',
 						subTitle: 'SubTitle',
-						description: 'This is a description'
+						description: 'This is a description',
 					}}
 				</Step>
 				<Step status={steps[2]}>
 					{{
 						title: 'Title',
 						subTitle: 'SubTitle',
-						description: 'Description'
+						description: 'Description',
 					}}
 				</Step>
 			</Wizard>

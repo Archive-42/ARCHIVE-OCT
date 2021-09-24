@@ -11,6 +11,6 @@ const doc = jsdom.jsdom(`
 
 global.document = doc;
 global.window = doc.defaultView;
-global.Element = function() {};
+global.Element = function () {};
 
 console.log('Loaded JSDOM...');

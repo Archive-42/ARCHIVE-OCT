@@ -37,7 +37,7 @@ export default factory(function CloseableDialog({ middleware: { icache } }) {
 									Closeable?
 								</Checkbox>
 							</virtual>
-						)
+						),
 					}}
 				</Dialog>
 			</div>

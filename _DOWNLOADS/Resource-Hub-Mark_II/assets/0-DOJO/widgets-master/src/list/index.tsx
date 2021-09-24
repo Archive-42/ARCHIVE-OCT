@@ -32,7 +32,7 @@ const menuItemFactory = create({ theme }).properties<MenuItemProperties>();
 export const MenuItem = menuItemFactory(function MenuItem({
 	properties,
 	children,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const { onSelect, active = false, onRequestActive, disabled = false, widgetId } = properties();
 
@@ -57,7 +57,7 @@ export const MenuItem = menuItemFactory(function MenuItem({
 				theme.variant(),
 				themedCss.root,
 				active && themedCss.active,
-				disabled && themedCss.disabled
+				disabled && themedCss.disabled,
 			]}
 			onclick={() => {
 				requestActive();
@@ -109,7 +109,7 @@ const listItemFactory = create({ theme }).properties<ListItemProperties>();
 export const ListItem = listItemFactory(function ListItem({
 	properties,
 	children,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const {
 		onSelect,
@@ -128,7 +128,7 @@ export const ListItem = listItemFactory(function ListItem({
 		movedDown,
 		collapsed,
 		theme: themeProp,
-		variant
+		variant,
 	} = properties();
 
 	const themedCss = theme.classes(listItemCss);
@@ -158,7 +158,7 @@ export const ListItem = listItemFactory(function ListItem({
 				movedDown && themedCss.movedDown,
 				collapsed && themedCss.collapsed,
 				dragged && themedCss.dragged,
-				draggable && themedCss.draggable
+				draggable && themedCss.draggable,
 			]}
 			onclick={() => {
 				requestActive();
@@ -262,7 +262,7 @@ const factory = create({
 	focus,
 	theme,
 	offscreen,
-	resource: createResourceMiddleware<ListOption>()
+	resource: createResourceMiddleware<ListOption>(),
 })
 	.properties<ListProperties>()
 	.children<ListChildren | undefined>();
@@ -271,7 +271,7 @@ export const List = factory(function List({
 	children,
 	properties,
 	id,
-	middleware: { icache, focus, theme, resource, offscreen }
+	middleware: { icache, focus, theme, resource, offscreen },
 }) {
 	const { getOrRead, createOptions, find, meta, isLoading } = resource;
 	const {
@@ -290,7 +290,7 @@ export const List = factory(function List({
 		variant,
 		resource: { template, options = createOptions(id) },
 		classes,
-		height = 'fixed'
+		height = 'fixed',
 	} = properties();
 	const [itemRenderer] = children();
 
@@ -416,28 +416,17 @@ export const List = factory(function List({
 			},
 			disabled: true,
 			classes,
-			variant
+			variant,
 		};
 		return menu ? (
-			<MenuItem
-				{...itemProps}
-				theme={theme.compose(
-					menuItemCss,
-					css,
-					'item'
-				)}
-			>
+			<MenuItem {...itemProps} theme={theme.compose(menuItemCss, css, 'item')}>
 				<LoadingIndicator />
 			</MenuItem>
 		) : (
 			<ListItem
 				{...itemProps}
 				selected={false}
-				theme={theme.compose(
-					listItemCss,
-					css,
-					'item'
-				)}
+				theme={theme.compose(listItemCss, css, 'item')}
 				dragged={icache.get('dragIndex') === index}
 				draggable={draggable}
 				onDragStart={(event) => onDragStart(event, index)}
@@ -530,7 +519,7 @@ export const List = factory(function List({
 			},
 			disabled: itemDisabled,
 			classes,
-			variant
+			variant,
 		};
 		let item: RenderResult;
 
@@ -541,31 +530,20 @@ export const List = factory(function List({
 					label,
 					disabled: itemDisabled,
 					active,
-					selected
+					selected,
 				},
 				{ ...itemProps, theme: themeProp }
 			);
 		} else {
 			const children = label || value;
 			item = menu ? (
-				<MenuItem
-					{...itemProps}
-					theme={theme.compose(
-						menuItemCss,
-						css,
-						'item'
-					)}
-				>
+				<MenuItem {...itemProps} theme={theme.compose(menuItemCss, css, 'item')}>
 					{children}
 				</MenuItem>
 			) : (
 				<ListItem
 					{...itemProps}
-					theme={theme.compose(
-						listItemCss,
-						css,
-						'item'
-					)}
+					theme={theme.compose(listItemCss, css, 'item')}
 					selected={selected}
 					dragged={icache.get('dragIndex') === index}
 					draggable={draggable}
@@ -616,7 +594,7 @@ export const List = factory(function List({
 			onActive: () => {},
 			scrollIntoView: false,
 			widgetId: 'offcreen',
-			theme: themeProp
+			theme: themeProp,
 		};
 
 		const offscreenMenuItem = itemRenderer ? (
@@ -626,7 +604,7 @@ export const List = factory(function List({
 					active: false,
 					value: 'offscreen',
 					label: 'offscreen',
-					disabled: false
+					disabled: false,
 				},
 				offscreenItemProps
 			)
@@ -638,7 +616,10 @@ export const List = factory(function List({
 
 		const itemHeight = icache.getOrSet(
 			'itemHeight',
-			offscreen(() => offscreenMenuItem, (node) => node.getBoundingClientRect().height)
+			offscreen(
+				() => offscreenMenuItem,
+				(node) => node.getBoundingClientRect().height
+			)
 		);
 
 		itemHeight && icache.set('menuHeight', itemsInView * itemHeight);
@@ -666,7 +647,7 @@ export const List = factory(function List({
 			options: options(),
 			start: computedActiveIndex + 1,
 			type: 'start' as const,
-			query: { label: inputText || requestedInputText }
+			query: { label: inputText || requestedInputText },
 		};
 		if (!isLoading(template, findOptions)) {
 			const foundItem = find(template, findOptions);
@@ -743,14 +724,14 @@ export const List = factory(function List({
 			<div
 				classes={fixedCss.wrapper}
 				styles={{
-					height: `${totalContentHeight}px`
+					height: `${totalContentHeight}px`,
 				}}
 				key="wrapper"
 			>
 				<div
 					classes={fixedCss.transformer}
 					styles={{
-						transform: `translateY(${offsetY}px)`
+						transform: `translateY(${offsetY}px)`,
 					}}
 					key="transformer"
 				>

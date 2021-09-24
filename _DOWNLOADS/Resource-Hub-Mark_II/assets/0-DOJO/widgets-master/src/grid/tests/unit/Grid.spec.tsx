@@ -33,10 +33,10 @@ mockDimensionsGet.withArgs('footer').returns({ size: { height: 50 } });
 mockDimensionsGet.withArgs('root').returns({ size: { width: 50 } });
 const metaDimensionsReturn = {
 	get: mockDimensionsGet,
-	has: () => false
+	has: () => false,
 };
 const metaResizeReturn = {
-	get: () => {}
+	get: () => {},
 };
 const mockMeta = stub();
 mockMeta.withArgs(Dimensions).returns(metaDimensionsReturn);
@@ -53,7 +53,7 @@ describe('Grid', () => {
 				updater: noop,
 				columnConfig: filterableConfig,
 				store,
-				height: 500
+				height: 500,
 			})
 		);
 
@@ -64,7 +64,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -74,7 +74,7 @@ describe('Grid', () => {
 							styles: {},
 							classes: [css.header, fixedCss.headerFixed, css.filterGroup],
 							row: 'rowgroup',
-							scrollLeft: 0
+							scrollLeft: 0,
 						},
 						[
 							v('div', { key: 'header-wrapper' }, [
@@ -91,9 +91,9 @@ describe('Grid', () => {
 									filterRenderer: undefined,
 									sortRenderer: undefined,
 									columnWidths: undefined,
-									onColumnResize: noop
-								})
-							])
+									onColumnResize: noop,
+								}),
+							]),
 						]
 					),
 					w(Body, {
@@ -113,7 +113,7 @@ describe('Grid', () => {
 						theme: undefined,
 						columnWidths: undefined,
 						onRowSelect: undefined,
-						selectedRows: []
+						selectedRows: [],
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -123,9 +123,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -137,7 +137,7 @@ describe('Grid', () => {
 				{
 					op: OperationType.REPLACE,
 					path: new Pointer('_grid/data/pages/page-1'),
-					value: [{ id: 'id' }]
+					value: [{ id: 'id' }],
 				},
 				{
 					op: OperationType.REPLACE,
@@ -146,15 +146,15 @@ describe('Grid', () => {
 						page: 10,
 						sort: {
 							columnId: 'id',
-							direction: 'asc'
+							direction: 'asc',
 						},
 						filter: {
 							columnId: 'id',
-							value: 'id'
+							value: 'id',
 						},
-						total: 100
-					}
-				}
+						total: 100,
+					},
+				},
 			],
 			true
 		);
@@ -166,7 +166,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': '100'
+					'aria-rowcount': '100',
 				},
 				[
 					v(
@@ -176,7 +176,7 @@ describe('Grid', () => {
 							classes: [css.header, fixedCss.headerFixed, css.filterGroup],
 							styles: {},
 							row: 'rowgroup',
-							scrollLeft: 0
+							scrollLeft: 0,
 						},
 						[
 							v('div', { key: 'header-wrapper' }, [
@@ -187,11 +187,11 @@ describe('Grid', () => {
 									sorter: noop,
 									sort: {
 										columnId: 'id',
-										direction: 'asc'
+										direction: 'asc',
 									},
 									filter: {
 										columnId: 'id',
-										value: 'id'
+										value: 'id',
 									},
 									filterer: noop,
 									classes: undefined,
@@ -199,9 +199,9 @@ describe('Grid', () => {
 									filterRenderer: undefined,
 									sortRenderer: undefined,
 									columnWidths: undefined,
-									onColumnResize: noop
-								})
-							])
+									onColumnResize: noop,
+								}),
+							]),
 						]
 					),
 					w(Body, {
@@ -209,7 +209,7 @@ describe('Grid', () => {
 						i18nBundle: undefined,
 						onScroll: noop,
 						pages: {
-							'page-1': [{ id: 'id' }]
+							'page-1': [{ id: 'id' }],
 						},
 						totalRows: 100,
 						pageSize: 100,
@@ -223,7 +223,7 @@ describe('Grid', () => {
 						theme: undefined,
 						columnWidths: undefined,
 						onRowSelect: undefined,
-						selectedRows: undefined
+						selectedRows: undefined,
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -233,9 +233,9 @@ describe('Grid', () => {
 							page: 10,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -252,7 +252,7 @@ describe('Grid', () => {
 				columnConfig: filterableConfig,
 				store,
 				storeId: 'test-id',
-				height: 500
+				height: 500,
 			})
 		);
 
@@ -263,7 +263,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -273,7 +273,7 @@ describe('Grid', () => {
 							classes: [css.header, fixedCss.headerFixed, css.filterGroup],
 							styles: {},
 							row: 'rowgroup',
-							scrollLeft: 0
+							scrollLeft: 0,
 						},
 						[
 							v('div', { key: 'header-wrapper' }, [
@@ -290,9 +290,9 @@ describe('Grid', () => {
 									filterRenderer: undefined,
 									sortRenderer: undefined,
 									columnWidths: undefined,
-									onColumnResize: noop
-								})
-							])
+									onColumnResize: noop,
+								}),
+							]),
 						]
 					),
 					w(Body, {
@@ -312,7 +312,7 @@ describe('Grid', () => {
 						theme: undefined,
 						columnWidths: undefined,
 						onRowSelect: undefined,
-						selectedRows: []
+						selectedRows: [],
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -322,9 +322,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -338,7 +338,7 @@ describe('Grid', () => {
 				fetcher: noop,
 				updater: noop,
 				columnConfig,
-				height: 250
+				height: 250,
 			})
 		);
 
@@ -349,7 +349,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -359,7 +359,7 @@ describe('Grid', () => {
 							classes: [css.header, fixedCss.headerFixed, null],
 							styles: {},
 							row: 'rowgroup',
-							scrollLeft: 0
+							scrollLeft: 0,
 						},
 						[
 							v('div', { key: 'header-wrapper' }, [
@@ -376,9 +376,9 @@ describe('Grid', () => {
 									filterRenderer: undefined,
 									sortRenderer: undefined,
 									columnWidths: undefined,
-									onColumnResize: noop
-								})
-							])
+									onColumnResize: noop,
+								}),
+							]),
 						]
 					),
 					w(Body, {
@@ -398,7 +398,7 @@ describe('Grid', () => {
 						theme: undefined,
 						columnWidths: undefined,
 						onRowSelect: undefined,
-						selectedRows: []
+						selectedRows: [],
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -408,9 +408,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -422,7 +422,7 @@ describe('Grid', () => {
 				fetcher: noop,
 				updater: noop,
 				columnConfig,
-				height: 500
+				height: 500,
 			})
 		);
 
@@ -433,7 +433,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -443,13 +443,13 @@ describe('Grid', () => {
 							scrollLeft: 0,
 							styles: {},
 							classes: [css.header, fixedCss.headerFixed, null],
-							row: 'rowgroup'
+							row: 'rowgroup',
 						},
 						[
 							v(
 								'div',
 								{
-									key: 'header-wrapper'
+									key: 'header-wrapper',
 								},
 								[
 									w(Header, {
@@ -465,10 +465,10 @@ describe('Grid', () => {
 										classes: undefined,
 										theme: undefined,
 										filterRenderer: undefined,
-										sortRenderer: undefined
-									})
+										sortRenderer: undefined,
+									}),
 								]
-							)
+							),
 						]
 					),
 					w(Body, {
@@ -488,7 +488,7 @@ describe('Grid', () => {
 						theme: undefined,
 						width: undefined,
 						onRowSelect: undefined,
-						selectedRows: []
+						selectedRows: [],
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -498,9 +498,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -514,7 +514,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -524,13 +524,13 @@ describe('Grid', () => {
 							scrollLeft: 10,
 							styles: {},
 							classes: [css.header, fixedCss.headerFixed, null],
-							row: 'rowgroup'
+							row: 'rowgroup',
 						},
 						[
 							v(
 								'div',
 								{
-									key: 'header-wrapper'
+									key: 'header-wrapper',
 								},
 								[
 									w(Header, {
@@ -546,10 +546,10 @@ describe('Grid', () => {
 										classes: undefined,
 										theme: undefined,
 										filterRenderer: undefined,
-										sortRenderer: undefined
-									})
+										sortRenderer: undefined,
+									}),
 								]
-							)
+							),
 						]
 					),
 					w(Body, {
@@ -569,7 +569,7 @@ describe('Grid', () => {
 						theme: undefined,
 						width: undefined,
 						onRowSelect: undefined,
-						selectedRows: []
+						selectedRows: [],
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -579,9 +579,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -592,20 +592,20 @@ describe('Grid', () => {
 			{
 				id: 'id',
 				title: 'Id',
-				resizable: true
+				resizable: true,
 			},
 			{
 				id: 'name',
 				title: 'Name',
-				resizable: true
-			}
+				resizable: true,
+			},
 		];
 		const h = harness(() =>
 			w(MockMetaMixin(Grid, mockMeta), {
 				fetcher: noop,
 				updater: noop,
 				columnConfig,
-				height: 500
+				height: 500,
 			})
 		);
 
@@ -616,7 +616,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -626,13 +626,13 @@ describe('Grid', () => {
 							scrollLeft: 0,
 							styles: { width: '1000px' },
 							classes: [css.header, fixedCss.headerFixed, null],
-							row: 'rowgroup'
+							row: 'rowgroup',
 						},
 						[
 							v(
 								'div',
 								{
-									key: 'header-wrapper'
+									key: 'header-wrapper',
 								},
 								[
 									w(Header, {
@@ -641,7 +641,7 @@ describe('Grid', () => {
 										columnConfig,
 										columnWidths: {
 											id: 500,
-											name: 500
+											name: 500,
 										},
 										sorter: noop,
 										sort: undefined,
@@ -651,10 +651,10 @@ describe('Grid', () => {
 										classes: undefined,
 										theme: undefined,
 										filterRenderer: undefined,
-										sortRenderer: undefined
-									})
+										sortRenderer: undefined,
+									}),
 								]
-							)
+							),
 						]
 					),
 					w(Body, {
@@ -666,7 +666,7 @@ describe('Grid', () => {
 						columnConfig,
 						columnWidths: {
 							id: 500,
-							name: 500
+							name: 500,
 						},
 						pageChange: noop,
 						updater: noop,
@@ -677,7 +677,7 @@ describe('Grid', () => {
 						theme: undefined,
 						width: 1000,
 						onRowSelect: undefined,
-						selectedRows: []
+						selectedRows: [],
 					}),
 					v('div', { key: 'footer' }, [
 						w(Footer, {
@@ -687,9 +687,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);
@@ -700,13 +700,13 @@ describe('Grid', () => {
 			{
 				id: 'id',
 				title: 'Id',
-				resizable: true
+				resizable: true,
 			},
 			{
 				id: 'name',
 				title: 'Name',
-				resizable: true
-			}
+				resizable: true,
+			},
 		];
 		const store = new Store();
 		store.apply(
@@ -716,9 +716,9 @@ describe('Grid', () => {
 					path: new Pointer('_grid/meta'),
 					value: {
 						page: 1,
-						selection: [1]
-					}
-				}
+						selection: [1],
+					},
+				},
 			],
 			true
 		);
@@ -731,7 +731,7 @@ describe('Grid', () => {
 				columnConfig,
 				height: 500,
 				onRowSelect: noop,
-				pagination: true
+				pagination: true,
 			})
 		);
 
@@ -742,7 +742,7 @@ describe('Grid', () => {
 					key: 'root',
 					classes: [undefined, css.root, fixedCss.rootFixed],
 					role: 'table',
-					'aria-rowcount': undefined
+					'aria-rowcount': undefined,
 				},
 				[
 					v(
@@ -752,13 +752,13 @@ describe('Grid', () => {
 							scrollLeft: 0,
 							styles: { width: '1000px' },
 							classes: [css.header, fixedCss.headerFixed, null],
-							row: 'rowgroup'
+							row: 'rowgroup',
 						},
 						[
 							v(
 								'div',
 								{
-									key: 'header-wrapper'
+									key: 'header-wrapper',
 								},
 								[
 									w(Header, {
@@ -767,7 +767,7 @@ describe('Grid', () => {
 										columnConfig,
 										columnWidths: {
 											id: 500,
-											name: 500
+											name: 500,
 										},
 										sorter: noop,
 										sort: undefined,
@@ -777,10 +777,10 @@ describe('Grid', () => {
 										classes: undefined,
 										theme: undefined,
 										filterRenderer: undefined,
-										sortRenderer: undefined
-									})
+										sortRenderer: undefined,
+									}),
 								]
-							)
+							),
 						]
 					),
 					w(PaginatedBody, {
@@ -791,7 +791,7 @@ describe('Grid', () => {
 						columnConfig,
 						columnWidths: {
 							id: 500,
-							name: 500
+							name: 500,
 						},
 						updater: noop,
 						fetcher: noop,
@@ -802,7 +802,7 @@ describe('Grid', () => {
 						width: 1000,
 						onRowSelect: noop,
 						selectedRows: [1],
-						pageNumber: 1
+						pageNumber: 1,
 					}),
 					v('div', { key: 'footer' }, [
 						w(PaginatedFooter, {
@@ -812,9 +812,9 @@ describe('Grid', () => {
 							page: 1,
 							pageSize: 100,
 							classes: undefined,
-							theme: undefined
-						})
-					])
+							theme: undefined,
+						}),
+					]),
 				]
 			)
 		);

@@ -26,7 +26,7 @@ export default class Footer extends I18nMixin(ThemedMixin(WidgetBase))<FooterPro
 				? format('pageOfTotal', {
 						page,
 						totalPages: Math.ceil(total / pageSize),
-						totalRows: total
+						totalRows: total,
 				  })
 				: format('pageOfUnknownTotal', { page });
 		return v('div', { classes: this.theme(css.root) }, [footer]);

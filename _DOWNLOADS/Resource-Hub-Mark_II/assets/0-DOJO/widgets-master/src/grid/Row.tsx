@@ -44,30 +44,27 @@ export default class Row extends I18nMixin(ThemedMixin(WidgetBase))<RowPropertie
 			classes,
 			columnWidths,
 			onRowSelect,
-			selected
+			selected,
 		} = this.properties;
-		let columns = columnConfig.map(
-			(config) => {
-				let value: string | DNode = `${item[config.id]}`;
-				if (config.renderer) {
-					value = config.renderer({ value });
-				}
-				return w(Cell, {
-					i18nBundle,
-					theme,
-					key: config.id,
-					classes,
-					updater: (updatedValue: string) => {
-						this.properties.updater(id, config.id, updatedValue);
-					},
-					value,
-					editable: config.editable,
-					rawValue: `${item[config.id]}`,
-					width: columnWidths ? columnWidths[config.id] : undefined
-				});
-			},
-			[] as DNode[]
-		);
+		let columns = columnConfig.map((config) => {
+			let value: string | DNode = `${item[config.id]}`;
+			if (config.renderer) {
+				value = config.renderer({ value });
+			}
+			return w(Cell, {
+				i18nBundle,
+				theme,
+				key: config.id,
+				classes,
+				updater: (updatedValue: string) => {
+					this.properties.updater(id, config.id, updatedValue);
+				},
+				value,
+				editable: config.editable,
+				rawValue: `${item[config.id]}`,
+				width: columnWidths ? columnWidths[config.id] : undefined,
+			});
+		}, [] as DNode[]);
 
 		return v(
 			'div',
@@ -77,11 +74,11 @@ export default class Row extends I18nMixin(ThemedMixin(WidgetBase))<RowPropertie
 					this.theme(css.root),
 					selected && this.theme(css.selected),
 					fixedCss.rootFixed,
-					onRowSelect && this.theme(css.selectable)
+					onRowSelect && this.theme(css.selectable),
 				],
 				role: 'row',
 				onclick: onRowSelect ? this._onRowSelect : undefined,
-				'aria-rowindex': `${id + 1}`
+				'aria-rowindex': `${id + 1}`,
 			},
 			columns
 		);

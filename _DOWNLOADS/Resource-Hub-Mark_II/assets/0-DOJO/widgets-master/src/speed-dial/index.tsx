@@ -23,11 +23,7 @@ export const Action = actionFactory(({ properties, children, middleware: { theme
 		<FloatingActionButton
 			size="small"
 			title={title}
-			theme={theme.compose(
-				fabCss,
-				css,
-				'action'
-			)}
+			theme={theme.compose(fabCss, css, 'action')}
 			onClick={() => {
 				onClick();
 			}}
@@ -69,7 +65,7 @@ const factory = create({ theme, icache }).properties<SpeedDialProperties>();
 export const SpeedDial = factory(function SpeedDial({
 	properties,
 	children,
-	middleware: { theme, icache }
+	middleware: { theme, icache },
 }) {
 	const {
 		initialOpen,
@@ -80,7 +76,7 @@ export const SpeedDial = factory(function SpeedDial({
 		classes,
 		variant,
 		delay = 30,
-		iconType = 'plusIcon'
+		iconType = 'plusIcon',
 	} = properties();
 	const themedCss = theme.classes(css);
 
@@ -125,17 +121,13 @@ export const SpeedDial = factory(function SpeedDial({
 				direction === 'left' && themedCss.left,
 				direction === 'right' && themedCss.right,
 				direction === 'down' && themedCss.down,
-				direction === 'up' && themedCss.up
+				direction === 'up' && themedCss.up,
 			]}
 			onmouseleave={toggleClose}
 		>
 			<FloatingActionButton
 				key="trigger"
-				theme={theme.compose(
-					fabCss,
-					css,
-					'trigger'
-				)}
+				theme={theme.compose(fabCss, css, 'trigger')}
 				onOver={toggleOpen}
 				onClick={() => {
 					const open = icache.get('open');

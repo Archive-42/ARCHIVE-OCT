@@ -15,7 +15,7 @@ export default factory(function Error() {
 						<virtual>
 							<Button>OK</Button>
 						</virtual>
-					)
+					),
 				}}
 			</Result>
 		</Example>

@@ -19,12 +19,12 @@ describe('ThreeColumnLayout', () => {
 		return {
 			get() {
 				return { breakpoint, contentRect: {} };
-			}
+			},
 		};
 	});
 	const harness = (renderFunc: () => WNode) =>
 		testHarness(renderFunc, {
-			middleware: [[breakpointMiddleware, () => mockBreakpoint()]] as any
+			middleware: [[breakpointMiddleware, () => mockBreakpoint()]] as any,
 		});
 
 	beforeEach(() => {
@@ -53,7 +53,7 @@ describe('ThreeColumnLayout', () => {
 				{{
 					leading,
 					center,
-					trailing
+					trailing,
 				}}
 			</ThreeColumnLayout>
 		));
@@ -68,7 +68,7 @@ describe('ThreeColumnLayout', () => {
 				{{
 					leading,
 					center,
-					trailing
+					trailing,
 				}}
 			</ThreeColumnLayout>
 		));
@@ -76,7 +76,7 @@ describe('ThreeColumnLayout', () => {
 		h.expect(
 			baseAssertion.setProperty('@trailing', 'classes', [
 				css.trailing,
-				baseCss.visuallyHidden
+				baseCss.visuallyHidden,
 			])
 		);
 	});
@@ -88,7 +88,7 @@ describe('ThreeColumnLayout', () => {
 				{{
 					leading,
 					center,
-					trailing
+					trailing,
 				}}
 			</ThreeColumnLayout>
 		));
@@ -105,7 +105,7 @@ describe('ThreeColumnLayout', () => {
 				{{
 					leading,
 					center,
-					trailing
+					trailing,
 				}}
 			</ThreeColumnLayout>
 		));

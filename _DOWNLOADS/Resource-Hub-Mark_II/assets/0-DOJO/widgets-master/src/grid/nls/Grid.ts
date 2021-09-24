@@ -1,6 +1,6 @@
 const locales = {
 	zh: () => import('./zh-CN/Grid'),
-	'zh-TW': () => import('./zh-TW/Grid')
+	'zh-TW': () => import('./zh-TW/Grid'),
 };
 
 const messages = {
@@ -14,7 +14,7 @@ const messages = {
 	pagination: 'Pagination Navigation',
 	resultRange: '{from} – {to} of {total} Results',
 	sortBy: 'Sort by {name}',
-	filterBy: 'Filter by {name}'
+	filterBy: 'Filter by {name}',
 };
 
 export default { locales, messages };

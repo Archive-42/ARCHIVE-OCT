@@ -12,7 +12,7 @@ export enum StatusIcon {
 	alert = 'alertIcon',
 	error = 'cancelIcon',
 	info = 'infoIcon',
-	success = 'checkedBoxIcon'
+	success = 'checkedBoxIcon',
 }
 
 export interface ResultProperties {
@@ -47,7 +47,7 @@ export const Result = factory(function Result({ children, properties, middleware
 					classes={[
 						themeCss.iconWrapper,
 						status ? themeCss[status] : null,
-						status && !icon ? themeCss.statusIcon : null
+						status && !icon ? themeCss.statusIcon : null,
 					]}
 				>
 					{icon ? (
@@ -56,11 +56,7 @@ export const Result = factory(function Result({ children, properties, middleware
 						<Icon
 							key="icon"
 							type={StatusIcon[status as ResultStatus]}
-							theme={theme.compose(
-								iconCss,
-								css,
-								'icon'
-							)}
+							theme={theme.compose(iconCss, css, 'icon')}
 							classes={classes}
 							variant={variant}
 						/>

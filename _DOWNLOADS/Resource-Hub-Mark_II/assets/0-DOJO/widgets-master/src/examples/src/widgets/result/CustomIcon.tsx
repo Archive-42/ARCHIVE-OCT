@@ -17,7 +17,7 @@ export default factory(function Alert() {
 						<virtual>
 							<Button>Result Action</Button>
 						</virtual>
-					)
+					),
 				}}
 			</Result>
 		</Example>

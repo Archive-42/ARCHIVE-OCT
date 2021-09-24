@@ -34,14 +34,14 @@ const factory = create({
 	dimensions,
 	focus,
 	icache: createICacheMiddleware<TitlePaneICache>(),
-	theme
+	theme,
 }).properties<TitlePaneProperties>();
 
 export const TitlePane = factory(function TitlePane({
 	id,
 	children,
 	properties,
-	middleware: { dimensions, focus, icache, theme }
+	middleware: { dimensions, focus, icache, theme },
 }) {
 	const themeCss = theme.classes(css);
 	const {
@@ -53,7 +53,7 @@ export const TitlePane = factory(function TitlePane({
 		name,
 		theme: themeProp,
 		classes,
-		variant
+		variant,
 	} = properties();
 	let { open } = properties();
 
@@ -75,7 +75,7 @@ export const TitlePane = factory(function TitlePane({
 				theme.variant(),
 				themeCss.root,
 				open ? themeCss.open : null,
-				fixedCss.rootFixed
+				fixedCss.rootFixed,
 			]}
 		>
 			<div
@@ -84,7 +84,7 @@ export const TitlePane = factory(function TitlePane({
 					themeCss.title,
 					closeable ? themeCss.closeable : null,
 					fixedCss.titleFixed,
-					closeable ? fixedCss.closeableFixed : null
+					closeable ? fixedCss.closeableFixed : null,
 				]}
 				role="heading"
 			>
@@ -123,12 +123,12 @@ export const TitlePane = factory(function TitlePane({
 				classes={[
 					themeCss.content,
 					!firstRender && themeCss.contentTransition,
-					fixedCss.contentFixed
+					fixedCss.contentFixed,
 				]}
 				id={`${id}-content`}
 				key="content"
 				styles={{
-					marginTop: open ? '0px' : `-${dimensions.get('content').offset.height}px`
+					marginTop: open ? '0px' : `-${dimensions.get('content').offset.height}px`,
 				}}
 			>
 				{children()}

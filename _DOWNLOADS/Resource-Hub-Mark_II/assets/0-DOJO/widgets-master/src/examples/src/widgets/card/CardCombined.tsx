@@ -32,7 +32,7 @@ export default factory(function CardWithMediaContent() {
 								<Icon type="downIcon" />
 								<Icon type="upIcon" />
 							</virtual>
-						)
+						),
 					}}
 				</Card>
 			</div>

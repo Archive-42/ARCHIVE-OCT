@@ -11,7 +11,7 @@ if (typeof define === 'function' && define.amd) {
 }(this, function () {
 	return ${content};
 }));`;
-};
+}
 
 const files = glob.sync('dist/dev/src/**/*.m.css.js');
 

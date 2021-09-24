@@ -14,7 +14,7 @@ const factory = create({ theme }).properties<FloatingActionButtonProperties>();
 export const FloatingActionButton = factory(function FloatingActionButton({
 	properties,
 	children,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const { size = 'normal', ...props } = properties();
 	const classes = theme.classes(floatingActionButtonCss);
@@ -22,17 +22,14 @@ export const FloatingActionButton = factory(function FloatingActionButton({
 	return (
 		<Button
 			{...props}
-			theme={theme.compose(
-				buttonCss,
-				floatingActionButtonCss
-			)}
+			theme={theme.compose(buttonCss, floatingActionButtonCss)}
 			classes={{
 				'@dojo/widgets/button': {
 					root: [
 						size === 'extended' && classes.extended,
-						size === 'small' && classes.small
-					]
-				}
+						size === 'small' && classes.small,
+					],
+				},
 			}}
 		>
 			<span aria="hidden" classes={classes.effect} />

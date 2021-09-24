@@ -17,13 +17,13 @@ const middlewareFactory = create();
 function createMockFocusMiddleware({
 	shouldFocus = false,
 	focused = false,
-	isFocused = false
+	isFocused = false,
 } = {}) {
 	return () =>
 		middlewareFactory(() => ({
 			shouldFocus: () => shouldFocus,
 			focused: () => focused,
-			isFocused: () => isFocused
+			isFocused: () => isFocused,
 		}))();
 }
 
@@ -34,7 +34,7 @@ const expected = ({
 	focused = false,
 	valid = undefined,
 	readOnly = undefined,
-	required = undefined
+	required = undefined,
 }: { [key: string]: boolean | undefined } = {}) =>
 	assertionTemplate(() => (
 		<div
@@ -48,7 +48,7 @@ const expected = ({
 				valid === false ? css.invalid : null,
 				valid === true ? css.valid : null,
 				readOnly ? css.readonly : null,
-				required ? css.required : null
+				required ? css.required : null,
 			]}
 		>
 			<div classes={css.inputWrapper}>
@@ -188,7 +188,7 @@ registerSuite('Checkbox', {
 					disabled: true,
 					readOnly: true,
 					required: true,
-					valid: false
+					valid: false,
 				})
 			);
 		},
@@ -197,11 +197,11 @@ registerSuite('Checkbox', {
 			const focusMock = createMockFocusMiddleware({
 				shouldFocus: true,
 				focused: true,
-				isFocused: true
+				isFocused: true,
 			});
 			const h = harness(() => <Checkbox checked={false} onValue={noop} />, {
 				middleware: [[focus, focusMock]],
-				customComparator: [compareId]
+				customComparator: [compareId],
 			});
 			h.expect(expected({ focused: true }));
 		},
@@ -221,6 +221,6 @@ registerSuite('Checkbox', {
 			assert.isTrue(onValue.called, 'onChange called');
 			h.trigger('input', 'onfocus', stubEvent);
 			assert.isTrue(onFocus.called, 'onFocus called');
-		}
-	}
+		},
+	},
 });

@@ -10,7 +10,7 @@ export default factory(function RequiredRangeSlider() {
 			<RangeSlider
 				initialValue={{
 					min: 0,
-					max: 100
+					max: 100,
 				}}
 				required
 			>

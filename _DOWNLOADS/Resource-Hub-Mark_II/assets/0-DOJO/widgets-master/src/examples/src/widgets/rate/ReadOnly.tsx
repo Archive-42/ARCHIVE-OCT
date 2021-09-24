@@ -9,7 +9,7 @@ export default factory(function ReadOnly() {
 		<Example>
 			<Rate key="half" readOnly initialValue={3}>
 				{{
-					label: 'read only stars?'
+					label: 'read only stars?',
 				}}
 			</Rate>
 		</Example>

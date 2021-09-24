@@ -54,7 +54,7 @@ describe('CheckboxGroup', () => {
 				variant={undefined}
 			>
 				dog
-			</Checkbox>
+			</Checkbox>,
 		]);
 		h.expect(optionTemplate);
 	});
@@ -63,7 +63,7 @@ describe('CheckboxGroup', () => {
 		const h = harness(() => (
 			<CheckboxGroup onValue={noop} name="test" options={[{ value: 'cat' }]}>
 				{{
-					label: 'test label'
+					label: 'test label',
 				}}
 			</CheckboxGroup>
 		));
@@ -79,7 +79,7 @@ describe('CheckboxGroup', () => {
 				variant={undefined}
 			>
 				cat
-			</Checkbox>
+			</Checkbox>,
 		]);
 		h.expect(labelTemplate);
 	});
@@ -126,7 +126,7 @@ describe('CheckboxGroup', () => {
 				variant={undefined}
 			>
 				dog
-			</Checkbox>
+			</Checkbox>,
 		]);
 		h.expect(optionTemplate);
 	});
@@ -173,7 +173,7 @@ describe('CheckboxGroup', () => {
 				variant={undefined}
 			>
 				dog
-			</Checkbox>
+			</Checkbox>,
 		]);
 		h.expect(optionTemplate);
 	});
@@ -197,9 +197,9 @@ describe('CheckboxGroup', () => {
 							>
 								cat
 							</Checkbox>,
-							<hr />
+							<hr />,
 						];
-					}
+					},
 				}}
 			</CheckboxGroup>
 		));
@@ -217,7 +217,7 @@ describe('CheckboxGroup', () => {
 			>
 				cat
 			</Checkbox>,
-			<hr />
+			<hr />,
 		]);
 		h.expect(customTemplate);
 	});

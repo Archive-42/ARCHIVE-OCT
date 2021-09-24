@@ -17,10 +17,10 @@ const factory = create({ icache, theme })
 	.properties<EmailInputProperties>()
 	.children<TextInputChildren | undefined>();
 
-export const EmailInput = factory(function({
+export const EmailInput = factory(function ({
 	properties,
 	children,
-	middleware: { icache, theme }
+	middleware: { icache, theme },
 }) {
 	const { get, set } = icache;
 	const props = properties();
@@ -34,10 +34,7 @@ export const EmailInput = factory(function({
 				props.onValidate && props.onValidate(valid, message);
 			}}
 			valid={{ valid: get('valid'), message: get('message') }}
-			theme={theme.compose(
-				textInputCss,
-				emailInputCss
-			)}
+			theme={theme.compose(textInputCss, emailInputCss)}
 		>
 			{children()[0]}
 		</TextInput>

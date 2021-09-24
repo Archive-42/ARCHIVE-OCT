@@ -42,7 +42,7 @@ describe('PopupConfirmation', () => {
 										variant={undefined}
 										type="button"
 										theme={{
-											'@dojo/widgets/button': buttonTheme
+											'@dojo/widgets/button': buttonTheme,
 										}}
 										onClick={noop}
 									>
@@ -54,7 +54,7 @@ describe('PopupConfirmation', () => {
 										variant={undefined}
 										type="button"
 										theme={{
-											'@dojo/widgets/button': buttonTheme
+											'@dojo/widgets/button': buttonTheme,
 										}}
 										onClick={noop}
 									>
@@ -63,7 +63,7 @@ describe('PopupConfirmation', () => {
 								</div>
 							</div>
 						</div>
-					)
+					),
 				}}
 			</TriggerPopupWrap>
 		</div>
@@ -74,14 +74,14 @@ describe('PopupConfirmation', () => {
 			<PopupConfirmation onConfirm={noop} onCancel={noop}>
 				{{
 					trigger: () => <button>Delete</button>,
-					content: 'Sure?'
+					content: 'Sure?',
 				}}
 			</PopupConfirmation>
 		));
 
 		r.child(TriggerPopupWrap, {
 			trigger: [noop],
-			content: [noop, 'below']
+			content: [noop, 'below'],
 		});
 
 		r.expect(baseAssertion);
@@ -94,7 +94,7 @@ describe('PopupConfirmation', () => {
 			<PopupConfirmation onCancel={onCancel} onConfirm={onConfirm}>
 				{{
 					trigger: () => <button>Delete</button>,
-					content: 'Sure?'
+					content: 'Sure?',
 				}}
 			</PopupConfirmation>
 		));
@@ -102,7 +102,7 @@ describe('PopupConfirmation', () => {
 		const onClose = sinon.stub();
 		r.child(TriggerPopupWrap, {
 			trigger: [noop],
-			content: [onClose, 'below']
+			content: [onClose, 'below'],
 		});
 		r.expect(baseAssertion);
 
@@ -121,7 +121,7 @@ describe('PopupConfirmation', () => {
 			<PopupConfirmation onCancel={onCancel} onConfirm={onConfirm}>
 				{{
 					trigger: () => <button>Delete</button>,
-					content: 'Sure?'
+					content: 'Sure?',
 				}}
 			</PopupConfirmation>
 		));
@@ -129,7 +129,7 @@ describe('PopupConfirmation', () => {
 		const onClose = sinon.stub();
 		r.child(TriggerPopupWrap, {
 			trigger: [noop],
-			content: [onClose, 'below']
+			content: [onClose, 'below'],
 		});
 		r.expect(baseAssertion);
 

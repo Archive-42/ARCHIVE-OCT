@@ -10,7 +10,7 @@ import {
 	ListOption,
 	ListItem,
 	ListItemProperties,
-	MenuItemProperties
+	MenuItemProperties,
 } from '../list';
 import Chip from '../chip';
 import focus from '@dojo/framework/core/middleware/focus';
@@ -66,7 +66,7 @@ const factory = create({
 	icache: createICacheMiddleware<ChipTypeaheadIcache>(),
 	theme,
 	resource: createResourceMiddleware<ListOption>(),
-	focus
+	focus,
 })
 	.properties<ChipTypeaheadProperties>()
 	.children<ChipTypeaheadChildren>();
@@ -89,7 +89,7 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 	id,
 	middleware: { icache, theme, focus, resource },
 	properties,
-	children
+	children,
 }) {
 	const { createOptions, find } = resource;
 	const {
@@ -100,7 +100,7 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 		name,
 		placement = 'inline',
 		strict,
-		resource: { template, options = createOptions(id) }
+		resource: { template, options = createOptions(id) },
 	} = properties();
 	const [{ label, items, selected } = {} as ChipTypeaheadChildren] = children();
 	const themeCss = theme.classes(css);
@@ -127,27 +127,23 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 					options: findOptions(),
 					start: 0,
 					query: { value },
-					type: 'exact'
+					type: 'exact',
 				}) || {
-					item: undefined
+					item: undefined,
 				}
 			).item;
 		}
 
 		return (
 			<Chip
-				theme={theme.compose(
-					chipCss,
-					css,
-					'selection'
-				)}
+				theme={theme.compose(chipCss, css, 'selection')}
 				key={`value-${value}`}
 				classes={{
 					...classes,
 					'@dojo/widgets/chip': {
 						...classes['@dojo/widgets/chip'],
-						root: [themeCss.value]
-					}
+						root: [themeCss.value],
+					},
 				}}
 				variant={variant}
 				onClose={
@@ -158,7 +154,10 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 								const options = [...icache.getOrSet('options', [])];
 
 								options.splice(index, 1);
-								icache.set('value', options.map((option) => option.value));
+								icache.set(
+									'value',
+									options.map((option) => option.value)
+								);
 								icache.set('options', options);
 								onValue && onValue(options);
 
@@ -171,7 +170,7 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 						? selected(value, option ? option.label : value)
 						: option
 						? option.label
-						: value
+						: value,
 				}}
 			</Chip>
 		);
@@ -188,22 +187,18 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 				themeCss.root,
 				values.length > 0 ? themeCss.hasValue : null,
 				focused ? themeCss.focused : null,
-				label ? themeCss.hasLabel : null
+				label ? themeCss.hasLabel : null,
 			]}
 		>
 			{label && (
 				<Label
 					focused={focused}
 					active={active}
-					theme={theme.compose(
-						labelCss,
-						css,
-						'label'
-					)}
+					theme={theme.compose(labelCss, css, 'label')}
 					classes={{
 						'@dojo/widgets/label': {
-							root: [themeCss.label]
-						}
+							root: [themeCss.label],
+						},
 					}}
 					variant={variant}
 				>
@@ -212,11 +207,7 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 			)}
 			<Typeahead
 				key="typeahead"
-				theme={theme.compose(
-					typeaheadCss,
-					css,
-					'input'
-				)}
+				theme={theme.compose(typeaheadCss, css, 'input')}
 				variant={variant}
 				strict={strict}
 				itemsInView={itemsInView}
@@ -247,8 +238,8 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 					'@dojo/widgets/text-input': {
 						inputWrapper: [themeCss.inputWrapper],
 						input: [themeCss.input],
-						wrapper: [themeCss.wrapper]
-					}
+						wrapper: [themeCss.wrapper],
+					},
 				}}
 				itemDisabled={(item) => {
 					const { duplicates = false, strict = true } = properties();
@@ -266,11 +257,11 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 							return items(
 								{
 									...item,
-									selected
+									selected,
 								},
 								{
 									...props,
-									selected
+									selected,
 								}
 							);
 						}
@@ -283,7 +274,7 @@ export const ChipTypeahead = factory(function ChipTypeahead({
 							</ListItem>
 						);
 					},
-					leading: placement === 'inline' ? chips : undefined
+					leading: placement === 'inline' ? chips : undefined,
 				}}
 			</Typeahead>
 			{placement === 'bottom' && <div classes={themeCss.values}>{chips}</div>}

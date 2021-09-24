@@ -72,7 +72,7 @@ export interface SliderICache {
 const factory = create({
 	theme,
 	focus,
-	icache: createICacheMiddleware<SliderICache>()
+	icache: createICacheMiddleware<SliderICache>(),
 })
 	.properties<SliderProperties>()
 	.children<SliderChildren | undefined>();
@@ -81,7 +81,7 @@ export const Slider = factory(function Slider({
 	id,
 	middleware: { theme, focus, icache },
 	properties,
-	children
+	children,
 }) {
 	const {
 		aria = {},
@@ -107,7 +107,7 @@ export const Slider = factory(function Slider({
 		onOver,
 		onBlur,
 		onFocus,
-		onValue
+		onValue,
 	} = properties();
 	const [{ output, label } = { output: undefined, label: undefined }] = children();
 
@@ -228,7 +228,7 @@ export const Slider = factory(function Slider({
 				{label}
 			</Label>
 		) : null,
-		slider
+		slider,
 	];
 
 	return (
@@ -243,7 +243,7 @@ export const Slider = factory(function Slider({
 				valid === true ? themeCss.valid : null,
 				readOnly ? themeCss.readonly : null,
 				vertical ? themeCss.vertical : null,
-				fixedCss.rootFixed
+				fixedCss.rootFixed,
 			]}
 		>
 			{labelAfter ? content.reverse() : content}

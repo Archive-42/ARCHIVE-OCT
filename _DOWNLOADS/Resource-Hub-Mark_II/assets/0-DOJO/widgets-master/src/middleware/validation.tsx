@@ -44,7 +44,7 @@ interface LengthRule {
 }
 
 interface ContainsRule {
-	contains: ({ atLeast?: number }) & ContainsRules;
+	contains: { atLeast?: number } & ContainsRules;
 }
 
 export type ValidationRules = RequireAtLeastOne<LengthRule & ContainsRule>;
@@ -87,7 +87,7 @@ const specialCharactersRegEx = new RegExp(
 		'{',
 		'\\|',
 		'}',
-		'~'
+		'~',
 	].join('|')
 );
 
@@ -98,7 +98,7 @@ type ValidationType<T> = {
 			value: string
 		) => { valid?: boolean; message?: string } | void;
 		describe: (rules: NonNullable<T[P]>) => string[];
-	}
+	};
 };
 
 const validationFactory = create({ i18n });
@@ -111,11 +111,11 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 		if (list.length > 1) {
 			if (atLeast) {
 				fixedList[fixedList.length - 1] = format('or', {
-					rule: fixedList[fixedList.length - 1]
+					rule: fixedList[fixedList.length - 1],
 				});
 			} else {
 				fixedList[fixedList.length - 1] = format('and', {
-					rule: fixedList[fixedList.length - 1]
+					rule: fixedList[fixedList.length - 1],
 				});
 			}
 		}
@@ -127,8 +127,8 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 		return format('mustContain', {
 			rules: format(atLeast ? 'atLeastOf' : 'allOf', {
 				count: atLeast,
-				rules: fixedList.join(', ')
-			})
+				rules: fixedList.join(', '),
+			}),
 		});
 	}
 
@@ -139,7 +139,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 					if (value.length < min) {
 						return {
 							valid: false,
-							message: format('minimumLength', { length: min })
+							message: format('minimumLength', { length: min }),
 						};
 					}
 				}
@@ -148,7 +148,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 					if (value.length > max) {
 						return {
 							valid: false,
-							message: format('maximumLength', { length: max })
+							message: format('maximumLength', { length: max }),
 						};
 					}
 				}
@@ -165,7 +165,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				}
 
 				return limits;
-			}
+			},
 		},
 		contains: {
 			validate: ({ atLeast, uppercase = 0, numbers = 0, specialCharacters = 0 }, value) => {
@@ -192,7 +192,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				if (uppercaseTotal < uppercase) {
 					failures.push(
 						format('uppercase', {
-							count: uppercase
+							count: uppercase,
 						})
 					);
 				} else if (uppercase) {
@@ -202,7 +202,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				if (numberTotal < numbers) {
 					failures.push(
 						format('numbers', {
-							count: numbers
+							count: numbers,
 						})
 					);
 				} else if (numbers) {
@@ -212,7 +212,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				if (specialTotal < specialCharacters) {
 					failures.push(
 						format('specialCharacters', {
-							count: specialCharacters
+							count: specialCharacters,
 						})
 					);
 				} else if (specialCharacters) {
@@ -225,7 +225,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 						message: formatList(
 							atLeast ? containsAtLeast - successes : undefined,
 							failures
-						)
+						),
 					};
 				}
 			},
@@ -235,7 +235,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				if (uppercase) {
 					types.push(
 						format('uppercase', {
-							count: uppercase
+							count: uppercase,
 						})
 					);
 				}
@@ -243,7 +243,7 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				if (numbers) {
 					types.push(
 						format('numbers', {
-							count: numbers
+							count: numbers,
 						})
 					);
 				}
@@ -251,14 +251,14 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 				if (specialCharacters) {
 					types.push(
 						format('specialCharacters', {
-							count: specialCharacters
+							count: specialCharacters,
 						})
 					);
 				}
 
 				return [formatList(atLeast, types)];
-			}
-		}
+			},
+		},
 	};
 
 	return (rules: ValidationRules) => {
@@ -273,7 +273,9 @@ const validation = validationFactory(function validation({ middleware: { i18n } 
 			if (failedResults.length) {
 				return {
 					valid: false,
-					message: failedResults.map((result) => (result ? result.message : '')).join(' ')
+					message: failedResults
+						.map((result) => (result ? result.message : ''))
+						.join(' '),
 				};
 			}
 		}

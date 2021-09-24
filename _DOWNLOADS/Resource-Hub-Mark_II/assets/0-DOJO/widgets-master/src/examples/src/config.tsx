@@ -275,15 +275,15 @@ const tests =
 const dojoDarkTheme = {
 	theme: { ...dojoTheme.theme },
 	variants: {
-		default: dojoDarkVariant
-	}
+		default: dojoDarkVariant,
+	},
 };
 
 const materialDarkTheme = {
 	theme: { ...materialTheme.theme },
 	variants: {
-		default: materialDarkVariant
-	}
+		default: materialDarkVariant,
+	},
 };
 
 export const config = {
@@ -294,7 +294,7 @@ export const config = {
 		{ label: 'material', theme: materialTheme },
 		{ label: 'dojo-dark', theme: dojoDarkTheme },
 		{ label: 'material-dark', theme: materialDarkTheme },
-		{ label: 'default', theme: { theme: {}, variants: {} } }
+		{ label: 'default', theme: { theme: {}, variants: {} } },
 	],
 	tests,
 	readmePath: (widget: string) => `src/${widget}/README.md`,
@@ -309,317 +309,317 @@ export const config = {
 			examples: [
 				{
 					filename: 'Exclusive',
-					module: Exclusive
-				}
+					module: Exclusive,
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicAccordionPane
-				}
-			}
+					module: BasicAccordionPane,
+				},
+			},
 		},
 		'action-button': {
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicActionButton
-				}
-			}
+					module: BasicActionButton,
+				},
+			},
 		},
 		avatar: {
 			examples: [
 				{
 					title: 'Avatar with image',
 					filename: 'Image',
-					module: ImageAvatar
+					module: ImageAvatar,
 				},
 				{
 					title: 'Avatar variants',
 					filename: 'Variant',
-					module: AvatarVariant
+					module: AvatarVariant,
 				},
 				{
 					title: 'Avatar with secondary colors',
 					filename: 'Secondary',
-					module: AvatarSecondary
+					module: AvatarSecondary,
 				},
 				{
 					title: 'Avatar sizes',
 					filename: 'Size',
-					module: AvatarSize
+					module: AvatarSize,
 				},
 				{
 					title: 'Avatar with Icons',
 					filename: 'Icon',
-					module: AvatarIcon
+					module: AvatarIcon,
 				},
 				{
 					title: 'Avatar with outline styles',
 					filename: 'Outline',
-					module: AvatarOutlines
-				}
+					module: AvatarOutlines,
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicAvatar
-				}
-			}
+					module: BasicAvatar,
+				},
+			},
 		},
 		'breadcrumb-group': {
 			examples: [
 				{
 					filename: 'CustomRenderer',
 					module: CustomRendererBreadcrumbGroup,
-					title: 'Custom Renderer'
-				}
+					title: 'Custom Renderer',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicBreadcrumbGroup
-				}
-			}
+					module: BasicBreadcrumbGroup,
+				},
+			},
 		},
 		button: {
 			examples: [
 				{
 					filename: 'DisabledSubmit',
 					module: DisabledSubmit,
-					title: 'Disabled Submit Button'
+					title: 'Disabled Submit Button',
 				},
 				{
 					filename: 'ToggleButton',
 					module: ToggleButton,
-					title: 'Toggle Button'
-				}
+					title: 'Toggle Button',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicButton
-				}
-			}
+					module: BasicButton,
+				},
+			},
 		},
 		calendar: {
 			examples: [
 				{
 					filename: 'CustomFirstWeekDay',
 					module: FirstDayOfWeekCalendar,
-					title: 'Custom First Day of Week'
+					title: 'Custom First Day of Week',
 				},
 				{
 					description: 'Demonstrates limiting the selectable region of the calendar.',
 					filename: 'LimitedRange',
 					module: LimitedRange,
-					title: 'Limited Date Range'
+					title: 'Limited Date Range',
 				},
 				{
 					description: 'Demonstrates initializing month and year, and monitoring changes',
 					filename: 'InitialMonthAndYear',
 					module: InitialMonthAndYear,
-					title: 'Initial month and year'
+					title: 'Initial month and year',
 				},
 				{
 					description: 'Shows a fully controlled calendar',
 					filename: 'FullyControlled',
 					module: FullyControlledCalendar,
-					title: 'Fully controlled'
-				}
+					title: 'Fully controlled',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicCalendar
-				}
-			}
+					module: BasicCalendar,
+				},
+			},
 		},
 		card: {
 			examples: [
 				{
 					title: 'Basic Card with Action Buttons',
 					module: ActionButtons,
-					filename: 'ActionButtons'
+					filename: 'ActionButtons',
 				},
 				{
 					title: 'Basic Card with Action Icons',
 					module: ActionIcons,
-					filename: 'ActionIcons'
+					filename: 'ActionIcons',
 				},
 				{
 					title: 'Basic Card with Actions and Icons',
 					module: ActionButtonsAndIcons,
-					filename: 'ActionButtonsAndIcons'
+					filename: 'ActionButtonsAndIcons',
 				},
 				{
 					title: 'Basic card with 16x9 Media',
 					module: CardWithMediaRectangle,
-					filename: 'CardWithMediaRectangle'
+					filename: 'CardWithMediaRectangle',
 				},
 				{
 					title: 'Basic card with Square Media',
 					module: CardWithMediaSquare,
-					filename: 'CardWithMediaSquare'
+					filename: 'CardWithMediaSquare',
 				},
 				{
 					title: 'Basic card with Content Media',
 					module: CardWithMediaContent,
-					filename: 'CardWithMediaContent'
+					filename: 'CardWithMediaContent',
 				},
 				{
 					title: 'Card with header, content, media, and actions',
 					module: CardCombined,
-					filename: 'CardCombined'
-				}
+					filename: 'CardCombined',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicCard
-				}
-			}
+					module: BasicCard,
+				},
+			},
 		},
 		'header-card': {
 			examples: [
 				{
 					title: 'Basic HeaderCard with Action Buttons',
 					module: ActionHeaderCard,
-					filename: 'ActionCard'
+					filename: 'ActionCard',
 				},
 				{
 					title: 'Header Card with media',
 					module: MediaHeaderCard,
-					filename: 'MediaCard'
-				}
+					filename: 'MediaCard',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicHeaderCard
-				}
-			}
+					module: BasicHeaderCard,
+				},
+			},
 		},
 		checkbox: {
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicCheckbox
-				}
+					module: BasicCheckbox,
+				},
 			},
 			examples: [
 				{
 					title: 'Disabled',
 					module: DisabledCheckbox,
-					filename: 'Disabled'
+					filename: 'Disabled',
 				},
 				{
 					title: 'Readonly',
 					module: ReadonlyCheckbox,
-					filename: 'Readonly'
+					filename: 'Readonly',
 				},
 				{
 					title: 'Custom Label',
 					module: CustomLabelCheckbox,
-					filename: 'CustomLabel'
-				}
-			]
+					filename: 'CustomLabel',
+				},
+			],
 		},
 		'checkbox-group': {
 			examples: [
 				{
 					filename: 'InitialValue',
 					module: InitialValueCheckboxGroup,
-					title: 'Initial Value'
+					title: 'Initial Value',
 				},
 				{
 					filename: 'CustomLabel',
 					module: CustomLabelCheckboxGroup,
-					title: 'Custom Label'
+					title: 'Custom Label',
 				},
 				{
 					filename: 'CustomRenderer',
 					module: CustomRendererCheckboxGroup,
-					title: 'Custom Renderer'
+					title: 'Custom Renderer',
 				},
 				{
 					filename: 'Controlled',
 					module: ControlledCheckboxGroup,
-					title: 'Controlled'
-				}
+					title: 'Controlled',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicCheckboxGroup
-				}
-			}
+					module: BasicCheckboxGroup,
+				},
+			},
 		},
 		chip: {
 			examples: [
 				{
 					filename: 'Icon',
 					module: IconChip,
-					title: 'Icon'
+					title: 'Icon',
 				},
 				{
 					filename: 'Clickable',
 					module: ClickableChip,
-					title: 'Clickable'
+					title: 'Clickable',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledChip,
-					title: 'Disabled'
+					title: 'Disabled',
 				},
 				{
 					filename: 'Closable',
 					module: ClosableChip,
-					title: 'Closable'
+					title: 'Closable',
 				},
 				{
 					filename: 'ClosableRenderer',
 					module: ClosableRendererChip,
-					title: 'Closable Renderer'
+					title: 'Closable Renderer',
 				},
 				{
 					filename: 'ClickableClosable',
 					module: ClickableClosableChip,
-					title: 'Clickable and Closable'
-				}
+					title: 'Clickable and Closable',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicChip
-				}
-			}
+					module: BasicChip,
+				},
+			},
 		},
 		'constrained-input': {
 			examples: [
 				{
 					filename: 'Username',
 					module: Username,
-					title: 'Username'
-				}
+					title: 'Username',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicConstrainedInput
-				}
-			}
+					module: BasicConstrainedInput,
+				},
+			},
 		},
 		'context-menu': {
 			overview: {
@@ -627,9 +627,9 @@ export const config = {
 					filename: 'Basic',
 					module: BasicContextMenu,
 					sandbox: true,
-					size: 'medium'
-				}
-			}
+					size: 'medium',
+				},
+			},
 		},
 		'date-input': {
 			filename: 'index',
@@ -638,8 +638,8 @@ export const config = {
 					filename: 'Basic',
 					module: BasicDateInput,
 					sandbox: true,
-					size: 'large'
-				}
+					size: 'large',
+				},
 			},
 			examples: [
 				{
@@ -647,9 +647,9 @@ export const config = {
 					module: ControlledDateInput,
 					sandbox: true,
 					size: 'large',
-					title: 'Controlled date input'
-				}
-			]
+					title: 'Controlled date input',
+				},
+			],
 		},
 		'context-popup': {
 			overview: {
@@ -657,9 +657,9 @@ export const config = {
 					filename: 'Basic',
 					module: BasicContextPopup,
 					sandbox: true,
-					size: 'medium'
-				}
-			}
+					size: 'medium',
+				},
+			},
 		},
 		dialog: {
 			examples: [
@@ -668,328 +668,328 @@ export const config = {
 					module: UnderlayDialog,
 					title: 'Dialog with and Underlay',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'ModalDialog',
 					module: ModalDialog,
 					title: 'Modal Dialog',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'CloseableDialog',
 					module: CloseableDialog,
 					title: 'Dialog with Configurable Closeability',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'AlertDialog',
 					module: AlertDialog,
 					title: 'Alert Dialog',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'AnimatedDialog',
 					module: AnimatedDialog,
 					title: 'Animated Dialog',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'FocusTrappedDialog',
 					module: FocusTrappedDialog,
 					title: 'Focus Trapping',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'ActionsDialog',
 					module: ActionsDialog,
 					title: 'Actions Dialog',
 					sandbox: true,
-					size: 'medium'
-				}
+					size: 'medium',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
 					module: BasicDialog,
 					sandbox: true,
-					size: 'medium'
-				}
-			}
+					size: 'medium',
+				},
+			},
 		},
 		'email-input': {
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicEmailInput
-				}
-			}
+					module: BasicEmailInput,
+				},
+			},
 		},
 		'floating-action-button': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicFab
-				}
+					module: BasicFab,
+				},
 			},
 			examples: [
 				{
 					title: 'Extended FAB',
 					module: ExtendedFab,
-					filename: 'Extended'
+					filename: 'Extended',
 				},
 				{
 					title: 'Small FAB',
 					module: SmallFab,
-					filename: 'Small'
-				}
-			]
+					filename: 'Small',
+				},
+			],
 		},
 		form: {
 			examples: [
 				{
 					title: 'Basic form with validation',
 					module: ValidationForm,
-					filename: 'Validation'
+					filename: 'Validation',
 				},
 				{
 					title: 'Basic form with an initial value',
 					module: InitialValueForm,
-					filename: 'InitialValueForm'
+					filename: 'InitialValueForm',
 				},
 				{
 					title: 'Basic controlled form',
 					module: ControlledForm,
-					filename: 'Controlled'
+					filename: 'Controlled',
 				},
 				{
 					title: 'Basic form with fill button',
 					module: FillingForm,
-					filename: 'FillingForm'
+					filename: 'FillingForm',
 				},
 				{
 					title: 'Basic form with required fields',
 					module: RequiredFieldsForm,
-					filename: 'RequiredFieldsForm'
+					filename: 'RequiredFieldsForm',
 				},
 				{
 					title: 'Basic form with disabled fields',
 					module: DisabledFieldsForm,
-					filename: 'DisabledFieldsForm'
+					filename: 'DisabledFieldsForm',
 				},
 				{
 					title: 'Basic form with whole form disabling',
 					module: DisabledForm,
-					filename: 'DisabledForm'
+					filename: 'DisabledForm',
 				},
 				{
 					title: 'Basic form with reset button',
 					module: ResettingForm,
-					filename: 'ResettingForm'
+					filename: 'ResettingForm',
 				},
 				{
 					title: 'Basic form with onSubmit',
 					module: SubmitForm,
-					filename: 'SubmitForm'
+					filename: 'SubmitForm',
 				},
 				{
 					title: 'Form with all available options',
 					module: KitchenSinkForm,
-					filename: 'KitchenSinkForm'
+					filename: 'KitchenSinkForm',
 				},
 				{
 					title: 'Action form with a name',
 					module: ActionForm,
-					filename: 'ActionForm'
-				}
+					filename: 'ActionForm',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicForm
-				}
-			}
+					module: BasicForm,
+				},
+			},
 		},
 		'global-event': {
 			filename: 'index',
 			overview: {
 				example: {
 					module: BasicGlobalEvent,
-					filename: 'Basic'
-				}
-			}
+					filename: 'Basic',
+				},
+			},
 		},
 		grid: {
 			examples: [
 				{
 					filename: 'Sorting',
 					module: Sorting,
-					title: 'Grid with Sorting'
+					title: 'Grid with Sorting',
 				},
 				{
 					filename: 'Filtering',
 					module: Filtering,
-					title: 'Grid with Filtered Columns'
+					title: 'Grid with Filtered Columns',
 				},
 				{
 					filename: 'CustomCellRenderer',
 					module: CustomCellRenderer,
-					title: 'Grid with Custom Cell Rendering'
+					title: 'Grid with Custom Cell Rendering',
 				},
 				{
 					filename: 'CustomFilterRenderer',
 					module: GridCustomFilterRenderer,
-					title: 'Grid with Custom Filter Renderer'
+					title: 'Grid with Custom Filter Renderer',
 				},
 				{
 					filename: 'CustomSortRenderer',
 					module: CustomSortRenderer,
-					title: 'Grid with Customized Sort Rendering'
+					title: 'Grid with Customized Sort Rendering',
 				},
 				{
 					filename: 'ColumnResize',
 					module: ColumnResize,
-					title: 'Grid with resizable columns'
+					title: 'Grid with resizable columns',
 				},
 				{
 					filename: 'Paginated',
 					module: Paginated,
-					title: 'Grid with traditional pagination'
+					title: 'Grid with traditional pagination',
 				},
 				{
 					filename: 'RowSelection',
 					module: RowSelection,
-					title: 'Grid with row selection'
+					title: 'Grid with row selection',
 				},
 				{
 					filename: 'Restful',
 					module: Restful,
-					title: 'Grid with Data Loaded from a Remote Resource (REST)'
+					title: 'Grid with Data Loaded from a Remote Resource (REST)',
 				},
 				{
 					description: 'Demonstrates using the grid utilities to support editable cells',
 					filename: 'EditableCells',
 					module: EditableCells,
-					title: 'Grid with Editable Cells'
+					title: 'Grid with Editable Cells',
 				},
 				{
 					description:
 						'Advanced grid demonstrating all features working together, including remote data, editable cells, pagination, filtering, resizable columns and sorting',
 					filename: 'Advanced',
 					module: Advanced,
-					title: 'Advanced Grid'
-				}
+					title: 'Advanced Grid',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicGrid
-				}
-			}
+					module: BasicGrid,
+				},
+			},
 		},
 		header: {
 			examples: [
 				{
 					filename: 'Leading',
 					module: LeadingHeader,
-					title: 'With leading element'
+					title: 'With leading element',
 				},
 				{
 					filename: 'Trailing',
 					module: TrailingHeader,
-					title: 'With trailing element'
+					title: 'With trailing element',
 				},
 				{
 					filename: 'Sticky',
 					module: StickyHeader,
 					sandbox: true,
 					size: 'medium',
-					title: 'With fixed positioning'
-				}
+					title: 'With fixed positioning',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					module: BasicHeader,
-					filename: 'Basic'
-				}
-			}
+					filename: 'Basic',
+				},
+			},
 		},
 		icon: {
 			examples: [
 				{
 					filename: 'AltText',
 					module: AltTextIcon,
-					title: 'With alt text'
+					title: 'With alt text',
 				},
 				{
 					filename: 'IconButton',
 					module: IconButton,
-					title: 'Icon within a button'
+					title: 'Icon within a button',
 				},
 				{
 					filename: 'Sizes',
 					module: IconSizes,
-					title: 'Icon Sizes'
-				}
+					title: 'Icon Sizes',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicIcons
-				}
-			}
+					module: BasicIcons,
+				},
+			},
 		},
 		label: {
 			overview: {
 				example: {
 					filename: 'Basic',
 					module: BasicLabel,
-					sandbox: true
-				}
+					sandbox: true,
+				},
 			},
 			examples: [
 				{
 					filename: 'HiddenLabel',
 					module: HiddenLabel,
 					title: 'Hidden Label',
-					sandbox: true
+					sandbox: true,
 				},
 				{
 					filename: 'InvalidLabel',
 					module: InvalidLabel,
 					title: 'Invalid Label',
-					sandbox: true
+					sandbox: true,
 				},
 				{
 					filename: 'DisabledLabel',
 					module: DisabledLabel,
 					title: 'Disabled Label',
-					sandbox: true
+					sandbox: true,
 				},
 				{
 					filename: 'SecondaryLabel',
 					module: SecondaryLabel,
-					title: 'Secondary Label'
-				}
-			]
+					title: 'Secondary Label',
+				},
+			],
 		},
 		'loading-indicator': {
 			filename: 'index',
 			overview: {
 				example: {
 					module: BasicLoadingIndicator,
-					filename: 'Basic'
-				}
-			}
+					filename: 'Basic',
+				},
+			},
 		},
 		list: {
 			examples: [
@@ -998,102 +998,102 @@ export const config = {
 						'In this example, an activeIndex and onActiveIndexChange property are passed into the List allowing for the active list item to be controlled.',
 					filename: 'Controlled',
 					module: ControlledList,
-					title: 'Controlled Active Index'
+					title: 'Controlled Active Index',
 				},
 				{
 					filename: 'ItemRenderer',
 					module: ItemRenderer,
-					title: 'Item Renderer'
+					title: 'Item Renderer',
 				},
 				{
 					description:
 						'This example shows the menu used as a Listbox. This allows for a selection to be made and persisted. Useful for user selections and within selects / typeahead etc.',
 					filename: 'Menu',
 					module: Menu,
-					title: 'Menu Mode'
+					title: 'Menu Mode',
 				},
 				{
 					filename: 'FetchedResource',
 					module: FetchedResource,
-					title: 'Rest fetched resource'
+					title: 'Rest fetched resource',
 				},
 				{
 					filename: 'CustomTransformer',
 					module: CustomTransformer,
-					title: 'Custom transform to match resource format'
+					title: 'Custom transform to match resource format',
 				},
 				{
 					description:
 						'This example shows usage of the divider property on a menu item to trigger the menu to render with a divider after that item',
 					filename: 'Dividers',
 					module: DividedList,
-					title: 'Dividers'
+					title: 'Dividers',
 				},
 				{
 					description:
 						'This example shows how to disable a list item, even if the item is not marked as disabled in the resource.',
 					filename: 'Disabled',
 					module: DisabledList,
-					title: 'Disabled'
+					title: 'Disabled',
 				},
 				{
 					description:
 						'This example shows how items within a list can be reordered via drag-and-drop.',
 					filename: 'Draggable',
 					module: DraggableList,
-					title: 'Draggable'
-				}
+					title: 'Draggable',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicList
-				}
-			}
+					module: BasicList,
+				},
+			},
 		},
 		'native-select': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicNativeSelect
-				}
+					module: BasicNativeSelect,
+				},
 			},
 			examples: [
 				{
 					title: 'Contolled Native Select',
 					filename: 'ControlledNativeSelect',
-					module: ControlledNativeSelect
-				}
-			]
+					module: ControlledNativeSelect,
+				},
+			],
 		},
 		'password-input': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicPassword
-				}
+					module: BasicPassword,
+				},
 			},
 			examples: [
 				{
 					title: 'No Rules',
 					filename: 'NoRules',
-					module: NoRules
-				}
-			]
+					module: NoRules,
+				},
+			],
 		},
 		rate: {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicRate
-				}
+					module: BasicRate,
+				},
 			},
 			examples: [
 				{ title: 'Half Ratings', module: HalfRate, filename: 'AllowHalf' },
 				{ title: 'Controlled Ratings', module: ControlledRate, filename: 'Controlled' },
 				{ title: 'Custom Icons', module: CustomIconRate, filename: 'CustomIcon' },
-				{ title: 'Read Only Mode', module: ReadOnlyRate, filename: 'ReadOnly' }
-			]
+				{ title: 'Read Only Mode', module: ReadOnlyRate, filename: 'ReadOnly' },
+			],
 		},
 		'trigger-popup': {
 			overview: {
@@ -1101,8 +1101,8 @@ export const config = {
 					filename: 'Basic',
 					module: BasicTriggerPopup,
 					sandbox: true,
-					size: 'medium'
-				}
+					size: 'medium',
+				},
 			},
 			examples: [
 				{
@@ -1110,149 +1110,149 @@ export const config = {
 					filename: 'Underlay',
 					module: Underlay,
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					title: 'Set Width',
 					filename: 'SetWidth',
 					module: SetWidth,
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					title: 'Menu Popup',
 					filename: 'MenuPopup',
 					module: MenuTriggerPopup,
 					sandbox: true,
-					size: 'medium'
-				}
-			]
+					size: 'medium',
+				},
+			],
 		},
 		'chip-typeahead': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicChipTypeahead
-				}
+					module: BasicChipTypeahead,
+				},
 			},
 			examples: [
 				{
 					title: 'Controlled',
 					filename: 'Controlled',
-					module: ControlledChipTypeahead
+					module: ControlledChipTypeahead,
 				},
 				{
 					title: 'Disabled',
 					filename: 'Disabled',
-					module: DisabledChipTypeahead
+					module: DisabledChipTypeahead,
 				},
 				{
 					title: 'Custom Renderer',
 					filename: 'CustomRenderer',
-					module: CustomRendererChipTypeahead
+					module: CustomRendererChipTypeahead,
 				},
 				{
 					title: 'Bottom Placement',
 					filename: 'BottomPlacement',
-					module: BottomChipTypeahead
+					module: BottomChipTypeahead,
 				},
 				{
 					title: 'Duplicates',
 					filename: 'Duplicates',
-					module: DuplicatesChipTypeahead
+					module: DuplicatesChipTypeahead,
 				},
 				{
 					title: 'Free Text',
 					filename: 'FreeText',
-					module: FreeTextChipTypeahead
-				}
-			]
+					module: FreeTextChipTypeahead,
+				},
+			],
 		},
 		'number-input': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicNumberInput
-				}
+					module: BasicNumberInput,
+				},
 			},
 			examples: [
 				{
 					title: 'Validation',
 					filename: 'Validation',
-					module: ValidatedNumberInput
-				}
-			]
+					module: ValidatedNumberInput,
+				},
+			],
 		},
 		'outlined-button': {
 			examples: [
 				{
 					filename: 'DisabledSubmit',
 					module: OutlinedDisabledSubmit,
-					title: 'Disabled Submit Button'
+					title: 'Disabled Submit Button',
 				},
 				{
 					filename: 'ToggleButton',
 					module: OutlinedToggleButton,
-					title: 'Toggle Button'
-				}
+					title: 'Toggle Button',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicOutlinedButton
-				}
-			}
+					module: BasicOutlinedButton,
+				},
+			},
 		},
 		pagination: {
 			examples: [
 				{
 					filename: 'PageSizeSelector',
 					module: PaginationPageSizeSelector,
-					title: 'Page Size Selection'
+					title: 'Page Size Selection',
 				},
 				{
 					filename: 'Controlled',
 					module: PaginationControlled,
-					title: 'Fully Controlled'
+					title: 'Fully Controlled',
 				},
 				{
 					filename: 'SiblingCount',
 					module: PaginationSiblingCount,
-					title: 'Sibling Count'
-				}
+					title: 'Sibling Count',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: Pagination
-				}
-			}
+					module: Pagination,
+				},
+			},
 		},
 		progress: {
 			examples: [
 				{
 					filename: 'ProgressWithChangingValues',
-					module: ProgressWithChangingValues
+					module: ProgressWithChangingValues,
 				},
 				{
 					filename: 'ProgressWithMax',
-					module: ProgressWithMax
+					module: ProgressWithMax,
 				},
 				{
 					filename: 'ProgressWithCustomOutput',
-					module: ProgressWithCustomOutput
+					module: ProgressWithCustomOutput,
 				},
 				{
 					filename: 'ProgressWithoutOutput',
-					module: ProgressWithoutOutput
-				}
+					module: ProgressWithoutOutput,
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicProgress
-				}
-			}
+					module: BasicProgress,
+				},
+			},
 		},
 		'popup-confirmation': {
 			overview: {
@@ -1260,8 +1260,8 @@ export const config = {
 					filename: 'Basic',
 					module: PopupConfirmation,
 					sandbox: true,
-					size: 'medium'
-				}
+					size: 'medium',
+				},
 			},
 			examples: [
 				{
@@ -1269,156 +1269,156 @@ export const config = {
 					module: PopupConfirmationUnderlay,
 					title: 'Visible Underlay',
 					sandbox: true,
-					size: 'medium'
-				}
-			]
+					size: 'medium',
+				},
+			],
 		},
 		radio: {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicRadio
-				}
+					module: BasicRadio,
+				},
 			},
 			examples: [
 				{
 					filename: 'Labelled',
 					module: LabelledRadio,
-					title: 'Labelled Radio Button'
+					title: 'Labelled Radio Button',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledRadio,
-					title: 'Disabled Radio Button'
+					title: 'Disabled Radio Button',
 				},
 				{
 					filename: 'Events',
 					module: EventsRadio,
-					title: 'Radio Button Events'
-				}
-			]
+					title: 'Radio Button Events',
+				},
+			],
 		},
 		'radio-group': {
 			examples: [
 				{
 					filename: 'Controlled',
 					module: ControlledRadioGroup,
-					title: 'Controlled radio group'
+					title: 'Controlled radio group',
 				},
 				{
 					filename: 'InitialValue',
 					module: InitialValueRadioGroup,
-					title: 'Initial Value'
+					title: 'Initial Value',
 				},
 				{
 					filename: 'CustomLabel',
 					module: CustomLabelRadioGroup,
-					title: 'Custom Label'
+					title: 'Custom Label',
 				},
 				{
 					filename: 'CustomRenderer',
 					module: CustomRendererRadioGroup,
-					title: 'Custom Renderer'
-				}
+					title: 'Custom Renderer',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicRadioGroup
-				}
-			}
+					module: BasicRadioGroup,
+				},
+			},
 		},
 		'raised-button': {
 			examples: [
 				{
 					filename: 'DisabledSubmit',
 					module: RaisedDisabledSubmit,
-					title: 'Disabled Submit Button'
+					title: 'Disabled Submit Button',
 				},
 				{
 					filename: 'ToggleButton',
 					module: RaisedToggleButton,
-					title: 'Toggle Button'
-				}
+					title: 'Toggle Button',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicRaisedButton
-				}
-			}
+					module: BasicRaisedButton,
+				},
+			},
 		},
 		'range-slider': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicRangeSlider
-				}
+					module: BasicRangeSlider,
+				},
 			},
 			examples: [
 				{
 					filename: 'Labelled',
 					module: LabelledRangeSlider,
-					title: 'Labelled'
+					title: 'Labelled',
 				},
 				{
 					filename: 'MinMax',
 					module: MinMaxRangeSlider,
-					title: 'Minimum and Maximum Values'
+					title: 'Minimum and Maximum Values',
 				},
 				{ filename: 'Events', module: EventsRangeSlider, title: 'Events' },
 				{
 					filename: 'Tooltip',
 					module: TooltipRangeSlider,
-					title: 'Display Tooltip Output'
+					title: 'Display Tooltip Output',
 				},
 				{
 					filename: 'Required',
 					module: RequiredRangeSlider,
-					title: 'Required'
+					title: 'Required',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledRangeSlider,
-					title: 'Disabled'
+					title: 'Disabled',
 				},
 				{
 					filename: 'Controlled',
 					module: ControlledRangeSlider,
-					title: 'Controlled'
-				}
-			]
+					title: 'Controlled',
+				},
+			],
 		},
 		result: {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicResult
-				}
+					module: BasicResult,
+				},
 			},
 			examples: [
 				{
 					filename: 'Alert',
 					module: AlertResult,
-					title: 'Alert'
+					title: 'Alert',
 				},
 				{
 					filename: 'Error',
 					module: ErrorResult,
-					title: 'Error'
+					title: 'Error',
 				},
 				{
 					filename: 'Success',
 					module: SuccessResult,
-					title: 'Success'
+					title: 'Success',
 				},
 				{
 					filename: 'CustomIcon',
 					module: CustomIconResult,
-					title: 'Custom Icon'
-				}
-			]
+					title: 'Custom Icon',
+				},
+			],
 		},
 		select: {
 			overview: {
@@ -1426,8 +1426,8 @@ export const config = {
 					filename: 'Basic',
 					module: BasicSelect,
 					sandbox: true,
-					size: 'medium'
-				}
+					size: 'medium',
+				},
 			},
 			examples: [
 				{
@@ -1435,37 +1435,37 @@ export const config = {
 					module: ControlledSelect,
 					sandbox: true,
 					title: 'Controlled Select',
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'AdditionalText',
 					module: AdditionalText,
 					title: 'Additional Text',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'DisabledSelect',
 					module: DisabledSelect,
 					title: 'Disabled Select',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'RequiredSelect',
 					module: RequiredSelect,
 					title: 'Required Select',
 					sandbox: true,
-					size: 'medium'
+					size: 'medium',
 				},
 				{
 					filename: 'CustomRenderer',
 					module: CustomRenderer,
 					title: 'Custom Item Renderer',
 					sandbox: true,
-					size: 'medium'
-				}
-			]
+					size: 'medium',
+				},
+			],
 		},
 		'slide-pane': {
 			overview: {
@@ -1473,8 +1473,8 @@ export const config = {
 					filename: 'Basic',
 					module: BasicSlidePane,
 					sandbox: true,
-					size: 'large'
-				}
+					size: 'large',
+				},
 			},
 			examples: [
 				{
@@ -1482,71 +1482,71 @@ export const config = {
 					module: RightAlignSlidePane,
 					title: 'Right Aligned Slide Pane',
 					sandbox: true,
-					size: 'large'
+					size: 'large',
 				},
 				{
 					filename: 'LeftAlignSlidePane',
 					module: LeftAlignSlidePane,
 					title: 'Left Aligned Slide Pane',
 					sandbox: true,
-					size: 'large'
+					size: 'large',
 				},
 				{
 					filename: 'BottomAlignSlidePane',
 					module: BottomAlignSlidePane,
 					title: 'Bottom Aligned Slide Pane',
 					sandbox: true,
-					size: 'large'
+					size: 'large',
 				},
 				{
 					filename: 'UnderlaySlidePane',
 					module: UnderlaySlidePane,
 					title: 'Underlaid Slide Pane',
 					sandbox: true,
-					size: 'large'
+					size: 'large',
 				},
 				{
 					filename: 'FixedWidthSlidePane',
 					module: FixedWidthSlidePane,
 					title: 'Fixed Width Slide Pane',
 					sandbox: true,
-					size: 'large'
-				}
-			]
+					size: 'large',
+				},
+			],
 		},
 		slider: {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicSlider
-				}
+					module: BasicSlider,
+				},
 			},
 			examples: [
 				{
 					filename: 'SliderWithCustomOutput',
-					module: SliderWithCustomOutput
+					module: SliderWithCustomOutput,
 				},
 				{
 					filename: 'DisabledSlider',
-					module: DisabledSlider
+					module: DisabledSlider,
 				},
 				{
 					filename: 'VerticalSlider',
-					module: VerticalSlider
+					module: VerticalSlider,
 				},
 				{
 					filename: 'SliderWithNoOutput',
-					module: SliderWithNoOutput
+					module: SliderWithNoOutput,
 				},
 				{
 					filename: 'SliderWithValidityCheck',
-					module: SliderWithValidityCheck
+					module: SliderWithValidityCheck,
 				},
 				{
 					filename: 'Controlled',
-					module: ControlledSlider
-				}
-			]
+					module: ControlledSlider,
+				},
+			],
 		},
 		snackbar: {
 			overview: {
@@ -1554,8 +1554,8 @@ export const config = {
 					filename: 'Basic',
 					module: BasicSnackbar,
 					sandbox: true,
-					size: 'small'
-				}
+					size: 'small',
+				},
 			},
 			examples: [
 				{
@@ -1563,396 +1563,396 @@ export const config = {
 					module: ErrorSnackbar,
 					title: 'Error Snackbar',
 					sandbox: true,
-					size: 'small'
+					size: 'small',
 				},
 				{
 					filename: 'Success',
 					module: SuccessSnackbar,
 					title: 'Success Snackbar',
 					sandbox: true,
-					size: 'small'
+					size: 'small',
 				},
 				{
 					filename: 'Stacked',
 					module: StackedSnackbar,
 					title: 'Stacked Snackbar',
 					sandbox: true,
-					size: 'small'
+					size: 'small',
 				},
 				{
 					filename: 'Leading',
 					module: LeadingSnackbar,
 					title: 'Leading Snackbar',
 					sandbox: true,
-					size: 'small'
-				}
-			]
+					size: 'small',
+				},
+			],
 		},
 		'speed-dial': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicSpeedDial
-				}
+					module: BasicSpeedDial,
+				},
 			},
 			examples: [
 				{
 					filename: 'Direction',
 					module: DirectionSpeedDial,
-					title: 'With a direction'
+					title: 'With a direction',
 				},
 				{
 					filename: 'CustomIcons',
 					module: CustomIconSpeedDial,
-					title: 'With custom icons'
+					title: 'With custom icons',
 				},
 				{
 					filename: 'TitleText',
 					module: TitleText,
-					title: 'Title Text on Actions'
-				}
-			]
+					title: 'Title Text on Actions',
+				},
+			],
 		},
 		switch: {
 			examples: [
 				{
 					filename: 'Disabled',
 					module: DisabledSwitch,
-					title: 'Disabled'
-				}
+					title: 'Disabled',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicSwitch
-				}
-			}
+					module: BasicSwitch,
+				},
+			},
 		},
 		'tab-container': {
 			examples: [
 				{
 					filename: 'Controlled',
 					module: ControlledTabContainer,
-					title: 'Controlled TabContainer'
+					title: 'Controlled TabContainer',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledTabContainer,
-					title: 'TabContainer with disabled tabs'
+					title: 'TabContainer with disabled tabs',
 				},
 				{
 					filename: 'ButtonAlignment',
 					module: ButtonAlignmentTabContainer,
-					title: 'TabContainer with adjustable button alignment'
+					title: 'TabContainer with adjustable button alignment',
 				},
 				{
 					filename: 'Closeable',
 					module: CloseableTabContainer,
-					title: 'TabContainer with closeable tab'
-				}
+					title: 'TabContainer with closeable tab',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTabContainer
-				}
-			}
+					module: BasicTabContainer,
+				},
+			},
 		},
 		'text-area': {
 			examples: [
 				{
 					filename: 'Controlled',
 					module: ControlledTextArea,
-					title: 'Controlled text area'
+					title: 'Controlled text area',
 				},
 				{
 					filename: 'Label',
 					module: TextAreaWithLabel,
-					title: 'Textarea with label'
+					title: 'Textarea with label',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledTextArea,
-					title: 'Disabled'
+					title: 'Disabled',
 				},
 				{
 					filename: 'HelperText',
 					module: HelperTextTextArea,
-					title: 'Helper text'
+					title: 'Helper text',
 				},
 				{
 					filename: 'HiddenLabel',
 					module: HiddenLabelTextArea,
-					title: 'Hidden label'
+					title: 'Hidden label',
 				},
 				{
 					filename: 'ValidatedCustom',
 					module: ValidatedCustomTextArea,
-					title: 'Validated with custom validator'
+					title: 'Validated with custom validator',
 				},
 				{
 					filename: 'ValidatedRequired',
 					module: ValidatedRequiredTextArea,
-					title: 'Validated required'
-				}
+					title: 'Validated required',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTextArea
-				}
-			}
+					module: BasicTextArea,
+				},
+			},
 		},
 		'text-input': {
 			examples: [
 				{
 					filename: 'WithLabel',
 					module: TextInputWithLabel,
-					title: 'TextInput with Label'
+					title: 'TextInput with Label',
 				},
 				{
 					filename: 'HiddenLabel',
 					module: HiddenLabelTextInput,
-					title: 'TextInput with hidden label'
+					title: 'TextInput with hidden label',
 				},
 				{
 					filename: 'Placeholder',
 					module: PlaceholderTextInput,
-					title: 'TextInput with placeholder and no label'
+					title: 'TextInput with placeholder and no label',
 				},
 				{
 					filename: 'Controlled',
 					module: ControlledTextInput,
-					title: 'Controlled TextInput'
+					title: 'Controlled TextInput',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledTextInput,
-					title: 'Disabled TextInput'
+					title: 'Disabled TextInput',
 				},
 				{
 					filename: 'Validated',
 					module: ValidatedTextInput,
-					title: 'Validated TextInput'
+					title: 'Validated TextInput',
 				},
 				{
 					filename: 'HelperText',
 					module: HelperTextInput,
-					title: 'TextInput with helper text'
+					title: 'TextInput with helper text',
 				},
 				{
 					filename: 'LeadingTrailing',
 					module: LeadingTrailingTextInput,
-					title: 'TextInput with leading and trailing'
-				}
+					title: 'TextInput with leading and trailing',
+				},
 			],
 			filename: 'index',
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTextInput
-				}
-			}
+					module: BasicTextInput,
+				},
+			},
 		},
 		'three-column-layout': {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicThreeColumnLayout
-				}
-			}
+					module: BasicThreeColumnLayout,
+				},
+			},
 		},
 		'time-picker': {
 			examples: [
 				{
 					filename: 'Controlled',
 					module: ControlledTimePicker,
-					title: 'Controlled time picker'
+					title: 'Controlled time picker',
 				},
 				{
 					filename: 'DisabledMenuItems',
 					module: DisabledMenuItemsTimePicker,
-					title: 'Disabled menu items'
+					title: 'Disabled menu items',
 				},
 				{
 					filename: 'Disabled',
 					module: DisabledTimePicker,
-					title: 'Disabled time picker'
+					title: 'Disabled time picker',
 				},
 				{
 					filename: 'SelectBySecond',
 					module: SelectBySecondTimePicker,
-					title: 'Select time by the second'
+					title: 'Select time by the second',
 				},
 				{
 					filename: '12HourTime',
 					module: TwelveHourTimePicker,
-					title: '12 hour time'
+					title: '12 hour time',
 				},
 				{
 					filename: 'Required',
 					module: RequiredTimePicker,
-					title: 'Required time picker'
-				}
+					title: 'Required time picker',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTimePicker
-				}
-			}
+					module: BasicTimePicker,
+				},
+			},
 		},
 		'title-pane': {
 			examples: [
 				{
 					filename: 'HeadingLevel',
 					module: HeadingLevel,
-					title: 'Defined aria heading level'
+					title: 'Defined aria heading level',
 				},
 				{
 					filename: 'NonCloseable',
 					module: NonCloseable,
-					title: 'Non closeable'
+					title: 'Non closeable',
 				},
 				{
 					filename: 'Controlled',
 					module: ControlledTitlePane,
-					title: 'Controlled title pane'
-				}
+					title: 'Controlled title pane',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTitlePane
-				}
-			}
+					module: BasicTitlePane,
+				},
+			},
 		},
 		tooltip: {
 			examples: [
 				{
 					filename: 'Focus',
 					module: FocusTooltip,
-					title: 'Show on focus'
+					title: 'Show on focus',
 				},
 				{
 					filename: 'Click',
 					module: ClickTooltip,
-					title: 'Show on click'
-				}
+					title: 'Show on click',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTooltip
-				}
-			}
+					module: BasicTooltip,
+				},
+			},
 		},
 		tree: {
 			examples: [
 				{
 					filename: 'Checkable',
 					module: CheckableTree,
-					title: 'Checkable Nodes'
+					title: 'Checkable Nodes',
 				},
 				{
 					filename: 'CustomRenderer',
 					module: CustomRendererTree,
-					title: 'Custom Renderer'
+					title: 'Custom Renderer',
 				},
 				{
 					filename: 'Controlled',
 					module: ControlledTree,
-					title: 'Controlled Usage'
+					title: 'Controlled Usage',
 				},
 				{
 					filename: 'RemoteSource',
 					module: RemoteSource,
-					title: 'Remote Source'
+					title: 'Remote Source',
 				},
 				{
 					filename: 'InitialState',
 					module: InitialStateTree,
-					title: 'Tree with initial state'
-				}
+					title: 'Tree with initial state',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTree
-				}
-			}
+					module: BasicTree,
+				},
+			},
 		},
 		'two-column-layout': {
 			examples: [
 				{
 					filename: 'TrailingBias',
 					module: TrailingBiasTwoColumnLayout,
-					title: 'Trailing section bias'
+					title: 'Trailing section bias',
 				},
 				{
 					filename: 'Collapsing',
 					module: CollapsingLayout,
-					title: 'Collapsing columns'
+					title: 'Collapsing columns',
 				},
 				{
 					filename: 'Resize',
 					module: ResizableTwoColumnLayout,
-					title: 'Resizable columns'
-				}
+					title: 'Resizable columns',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTwoColumnLayout
-				}
-			}
+					module: BasicTwoColumnLayout,
+				},
+			},
 		},
 		typeahead: {
 			examples: [
 				{
 					filename: 'RemoteSource',
 					module: RemoteTypeahead,
-					title: 'Remote Source'
+					title: 'Remote Source',
 				},
 				{
 					filename: 'Validation',
 					module: ValidatedTypeahead,
-					title: 'Validation'
+					title: 'Validation',
 				},
 				{
 					filename: 'FreeText',
 					module: FreeTextTypeahead,
-					title: 'Free Text Typeahead'
-				}
+					title: 'Free Text Typeahead',
+				},
 			],
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicTypeahead
-				}
-			}
+					module: BasicTypeahead,
+				},
+			},
 		},
 		wizard: {
 			overview: {
 				example: {
 					filename: 'Basic',
-					module: BasicWizard
-				}
+					module: BasicWizard,
+				},
 			},
 			examples: [
 				{
 					filename: 'Vertical',
 					module: VerticalWizard,
-					title: 'Vertical Wizard'
+					title: 'Vertical Wizard',
 				},
 				{
 					filename: 'Error',
 					module: ErrorWizard,
-					title: 'Wizard with an error'
-				}
-			]
-		}
-	}
+					title: 'Wizard with an error',
+				},
+			],
+		},
+	},
 };
 export default config;

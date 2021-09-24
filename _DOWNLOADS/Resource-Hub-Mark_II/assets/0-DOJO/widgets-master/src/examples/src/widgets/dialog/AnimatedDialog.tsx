@@ -24,8 +24,8 @@ export default factory(function AnimatedDialog({ middleware: { icache, theme } }
 					classes={{
 						'@dojo/widgets/dialog': {
 							enter: [enter],
-							exit: [exit]
-						}
+							exit: [exit],
+						},
 					}}
 				>
 					{{
@@ -36,7 +36,7 @@ export default factory(function AnimatedDialog({ middleware: { icache, theme } }
 								purus ipsum. Aenean ac purus purus. Nam sollicitudin varius augue,
 								sed lacinia felis tempor in.
 							</virtual>
-						)
+						),
 					}}
 				</Dialog>
 			</div>

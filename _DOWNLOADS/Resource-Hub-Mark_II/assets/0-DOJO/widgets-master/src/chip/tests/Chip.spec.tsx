@@ -42,7 +42,7 @@ describe('Chip', () => {
 			template.prepend(':root', () => [
 				<span classes={css.iconWrapper}>
 					<Icon type="plusIcon" />
-				</span>
+				</span>,
 			])
 		);
 	});
@@ -52,7 +52,7 @@ describe('Chip', () => {
 			<Chip checked={true}>
 				{{
 					label,
-					icon: (checked) => <span>{String(checked)}</span>
+					icon: (checked) => <span>{String(checked)}</span>,
 				}}
 			</Chip>
 		));
@@ -61,7 +61,7 @@ describe('Chip', () => {
 			template.prepend(':root', () => [
 				<span classes={css.iconWrapper}>
 					<span>true</span>
-				</span>
+				</span>,
 			])
 		);
 	});
@@ -84,7 +84,7 @@ describe('Chip', () => {
 						variant={undefined}
 						theme={undefined}
 					/>
-				</span>
+				</span>,
 			])
 		);
 	});
@@ -104,7 +104,7 @@ describe('Chip', () => {
 					onkeydown={noop}
 				>
 					<Icon type="minusIcon" />
-				</span>
+				</span>,
 			])
 		);
 	});
@@ -137,12 +137,12 @@ describe('Chip', () => {
 							variant={undefined}
 							theme={undefined}
 						/>
-					</span>
+					</span>,
 				])
 				.prepend(':root', () => [
 					<span classes={css.iconWrapper}>
 						<Icon type="plusIcon" />
-					</span>
+					</span>,
 				])
 		);
 	});
@@ -177,7 +177,7 @@ describe('Chip', () => {
 			<Chip onClose={onClose} onClick={onClick}>
 				{{
 					label,
-					icon: () => <Icon type="plusIcon" classes={iconClasses} />
+					icon: () => <Icon type="plusIcon" classes={iconClasses} />,
 				}}
 			</Chip>
 		));
@@ -202,17 +202,17 @@ describe('Chip', () => {
 							variant={undefined}
 							theme={undefined}
 						/>
-					</span>
+					</span>,
 				])
 				.prepend(':root', () => [
 					<span classes={css.iconWrapper}>
 						<Icon type="plusIcon" classes={iconClasses} />
-					</span>
+					</span>,
 				])
 		);
 
 		const event = {
-			stopPropagation: sinon.spy()
+			stopPropagation: sinon.spy(),
 		};
 		h.trigger('@closeButton', 'onclick', event as any);
 
@@ -250,7 +250,7 @@ describe('Chip', () => {
 			<Chip onClose={onClose} onClick={onClick}>
 				{{
 					label,
-					icon: () => <Icon type="plusIcon" classes={iconClasses} />
+					icon: () => <Icon type="plusIcon" classes={iconClasses} />,
 				}}
 			</Chip>
 		));
@@ -275,12 +275,12 @@ describe('Chip', () => {
 							variant={undefined}
 							theme={undefined}
 						/>
-					</span>
+					</span>,
 				])
 				.prepend(':root', () => [
 					<span classes={css.iconWrapper}>
 						<Icon type="plusIcon" classes={iconClasses} />
-					</span>
+					</span>,
 				])
 		);
 
@@ -290,7 +290,7 @@ describe('Chip', () => {
 			const closeEvent = {
 				which,
 				preventDefault: sinon.spy(),
-				stopPropagation: sinon.spy()
+				stopPropagation: sinon.spy(),
 			};
 			h.trigger('@closeButton', 'onkeydown', closeEvent as any);
 
@@ -308,7 +308,7 @@ describe('Chip', () => {
 
 			const clickKeyEvent = {
 				which,
-				preventDefault: sinon.spy()
+				preventDefault: sinon.spy(),
 			};
 
 			h.trigger('@root', 'onkeydown', clickKeyEvent as any);

@@ -17,7 +17,7 @@ export enum Keys {
 	Right = 39,
 	Space = 32,
 	Tab = 9,
-	Up = 38
+	Up = 38,
 }
 
 export function formatAriaProperties(aria: AriaPropertyObject): AriaPropertyObject {

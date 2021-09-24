@@ -19,7 +19,7 @@ export default factory(function Basic() {
 						>
 							Hello from the context menu!
 						</div>
-					)
+					),
 				}}
 			</ContextPopup>
 		</Example>

@@ -99,7 +99,7 @@ const firstNames = [
 	'Laurie',
 	'Annabela',
 	'Dottie',
-	'Karilynn'
+	'Karilynn',
 ];
 const lastNames = [
 	'Jamison',
@@ -201,7 +201,7 @@ const lastNames = [
 	'Tierney',
 	'Lloyd',
 	'Hammer',
-	'Dodd'
+	'Dodd',
 ];
 
 export function createData(rows: number = 10000) {
@@ -213,7 +213,7 @@ export function createData(rows: number = 10000) {
 			middleName: firstNames[Math.floor(Math.random() * firstNames.length)],
 			lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
 			otherName: lastNames[Math.floor(Math.random() * lastNames.length)],
-			gender: gender[i % 2]
+			gender: gender[i % 2],
 		});
 	}
 	return data;

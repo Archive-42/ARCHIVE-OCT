@@ -4,9 +4,9 @@ Dojo's `Select` provides a dropdown menu form control using either the native `<
 
 ## Features
 
-- Compatible with any underlying data provider, data format, or store
-- Allows customization of option state and vdom
-- Keyboard accessible
+-   Compatible with any underlying data provider, data format, or store
+-   Allows customization of option state and vdom
+-   Keyboard accessible
 
 ### Keyboard Usage
 
@@ -14,18 +14,18 @@ The custom `Select` supports keyboard navigation for opening and closing the opt
 
 **Trigger Button Events**
 
-- Enter Key: opens the options menu
-- Space Key: opens the options menu
+-   Enter Key: opens the options menu
+-   Space Key: opens the options menu
 
 **Options Menu Events**
 
-- Enter Key: selects the current option and closes the menu
-- Space Key: selects the current option and closes the menu
-- Up Arrow: highlights the previous option
-- Down Arrow: highlights the next option
-- Home/Page Up: highlights the first option
-- End/Page Down: highlights the last option
-- Escape Key: closes the options menu without selecting an option
+-   Enter Key: selects the current option and closes the menu
+-   Space Key: selects the current option and closes the menu
+-   Up Arrow: highlights the previous option
+-   Down Arrow: highlights the next option
+-   Home/Page Up: highlights the first option
+-   End/Page Down: highlights the last option
+-   Escape Key: closes the options menu without selecting an option
 
 ### Accessibility Features
 

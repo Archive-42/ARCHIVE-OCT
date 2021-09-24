@@ -52,7 +52,7 @@ registerSuite('CalendarCell', {
 						css.inactiveDate,
 						css.outOfRange,
 						css.selectedDate,
-						css.todayDate
+						css.todayDate,
 					]}
 					onclick={noop}
 					onkeydown={noop}
@@ -135,7 +135,7 @@ registerSuite('CalendarCell', {
 				...stubEvent,
 				preventDefault() {
 					preventDefaultCalled = true;
-				}
+				},
 			};
 			const h = harness(() => (
 				<CalendarCell
@@ -201,6 +201,6 @@ registerSuite('CalendarCell', {
 			));
 
 			assert.isFalse(callFocus, 'Focus callback should set callFocus to false');
-		}
-	}
+		},
+	},
 });

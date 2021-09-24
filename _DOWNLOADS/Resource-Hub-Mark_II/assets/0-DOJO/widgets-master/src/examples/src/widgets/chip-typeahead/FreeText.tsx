@@ -4,7 +4,7 @@ import states from '../list/states';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -20,11 +20,11 @@ export default factory(function FreeText({ id, middleware: { resource } }) {
 				resource={resource({
 					template,
 					transform: { value: 'value', label: 'value' },
-					initOptions: { id, data: states }
+					initOptions: { id, data: states },
 				})}
 			>
 				{{
-					label: 'Select All States That Apply, or make up your own'
+					label: 'Select All States That Apply, or make up your own',
 				}}
 			</ChipTypeahead>
 		</Example>

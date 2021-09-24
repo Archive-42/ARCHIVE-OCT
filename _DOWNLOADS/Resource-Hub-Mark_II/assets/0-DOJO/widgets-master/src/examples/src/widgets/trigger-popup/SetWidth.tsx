@@ -15,7 +15,7 @@ export default factory(function SetWidth() {
 						<div styles={{ background: 'orange', width: '350px', fontSize: '32px' }}>
 							My Width is 150px!
 						</div>
-					)
+					),
 				}}
 			</TriggerPopup>
 		</Example>

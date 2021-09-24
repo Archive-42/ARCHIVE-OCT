@@ -125,14 +125,14 @@ export const createFormMiddleware = <S extends FormValue = any>() => {
 				if (requiredValues[name] === undefined) {
 					icache.set('required', {
 						...requiredValues,
-						[name]: required
+						[name]: required,
 					});
 				}
 				const values = icache.getOrSet('values', {}) as S;
 				if (!values.hasOwnProperty(name)) {
 					icache.set('values', {
 						...values,
-						[name]: undefined
+						[name]: undefined,
 					});
 				}
 				return {
@@ -153,13 +153,13 @@ export const createFormMiddleware = <S extends FormValue = any>() => {
 					valid: (valid?: boolean, message?: string): Validity => {
 						let newValue = valid || {
 							valid,
-							message: message || ''
+							message: message || '',
 						};
 						const values = icache.getOrSet('valid', {});
 						if (!values.hasOwnProperty(name)) {
 							icache.set('valid', {
 								...values,
-								[name]: newValue
+								[name]: newValue,
 							});
 							return newValue;
 						}
@@ -167,7 +167,7 @@ export const createFormMiddleware = <S extends FormValue = any>() => {
 							if (!compareValidity(newValue, values[name])) {
 								icache.set('valid', {
 									...values,
-									[name]: newValue
+									[name]: newValue,
 								});
 								return newValue;
 							}
@@ -179,7 +179,7 @@ export const createFormMiddleware = <S extends FormValue = any>() => {
 						if (required !== undefined && values[name] !== required) {
 							icache.set('required', {
 								...values,
-								[name]: required
+								[name]: required,
 							});
 							return required;
 						}
@@ -191,14 +191,14 @@ export const createFormMiddleware = <S extends FormValue = any>() => {
 						if (disabled !== undefined && values[name] !== disabled) {
 							icache.set('disabled', {
 								...values,
-								[name]: disabled
+								[name]: disabled,
 							});
 							return formValue || disabled;
 						}
 						return formValue || Boolean(values[name]);
-					}
+					},
 				};
-			}
+			},
 		};
 		const apiFactory: any = () => {
 			return api;

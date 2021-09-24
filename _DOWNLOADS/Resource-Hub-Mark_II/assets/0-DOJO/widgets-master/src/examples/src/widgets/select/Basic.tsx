@@ -4,7 +4,7 @@ import icache from '@dojo/framework/core/middleware/icache';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { data, Data } from '../../data';
 
@@ -21,14 +21,14 @@ export default factory(function Basic({ id, middleware: { icache, resource } }) 
 				resource={resource({
 					template,
 					transform: { value: 'id', label: 'summary' },
-					initOptions: { id, data }
+					initOptions: { id, data },
 				})}
 				onValue={(value) => {
 					icache.set('value', value);
 				}}
 			>
 				{{
-					label: 'Basic Select'
+					label: 'Basic Select',
 				}}
 			</Select>
 			<pre>{JSON.stringify(icache.getOrSet('value', ''))}</pre>

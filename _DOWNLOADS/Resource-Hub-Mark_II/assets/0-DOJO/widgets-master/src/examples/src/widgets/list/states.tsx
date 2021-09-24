@@ -48,7 +48,7 @@ const states = [
 	{ value: 'Washington' },
 	{ value: 'West Virginia', disabled: true },
 	{ value: 'Wisconsin' },
-	{ value: 'Wyoming' }
+	{ value: 'Wyoming' },
 ];
 
 export default states;

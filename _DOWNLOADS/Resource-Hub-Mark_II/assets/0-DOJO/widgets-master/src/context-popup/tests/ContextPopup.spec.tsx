@@ -31,11 +31,11 @@ describe('ContextPopup', () => {
 	before(() => {
 		Object.defineProperty(document.documentElement, 'scrollTop', {
 			value: 100,
-			configurable: true
+			configurable: true,
 		});
 		Object.defineProperty(document.documentElement, 'clientHeight', {
 			value: 1000,
-			configurable: true
+			configurable: true,
 		});
 	});
 
@@ -44,7 +44,7 @@ describe('ContextPopup', () => {
 			<ContextPopup>
 				{{
 					trigger: <div>Some text with a context menu</div>,
-					content: () => 'hello world'
+					content: () => 'hello world',
 				}}
 			</ContextPopup>
 		));
@@ -64,7 +64,7 @@ describe('ContextPopup', () => {
 						<div key="content" tabIndex={0} onblur={close} focus={shouldFocus}>
 							hello world
 						</div>
-					)
+					),
 				}}
 			</ContextPopup>
 		));
@@ -74,7 +74,7 @@ describe('ContextPopup', () => {
 					<div key="content" tabIndex={0} onblur={() => {}} focus={onClose}>
 						hello world
 					</div>
-				</div>
+				</div>,
 			])
 		);
 		assert.isFalse(
@@ -91,14 +91,14 @@ describe('ContextPopup', () => {
 			<ContextPopup onOpen={onOpen} onClose={onClose}>
 				{{
 					trigger: undefined,
-					content: () => 'hello world'
+					content: () => 'hello world',
 				}}
 			</ContextPopup>
 		));
 		const event = {
 			preventDefault: stub(),
 			pageX: 100,
-			pageY: 100
+			pageY: 100,
 		};
 
 		h.trigger('@trigger', 'oncontextmenu', event);

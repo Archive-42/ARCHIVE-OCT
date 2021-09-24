@@ -4,7 +4,7 @@ import Example from '../../Example';
 
 const factory = create();
 
-export default factory(function() {
+export default factory(function () {
 	return (
 		<Example>
 			<EmailInput />

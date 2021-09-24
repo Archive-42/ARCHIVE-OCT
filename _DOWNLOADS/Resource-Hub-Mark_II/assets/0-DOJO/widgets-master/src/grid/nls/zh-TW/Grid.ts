@@ -9,5 +9,5 @@ export default {
 	pagination: '分頁導航',
 	resultRange: '第 {from} 到 {to} 項，共 {total} 項',
 	sortBy: '根據 {name} 排序',
-	filterBy: '根據 {name} 篩選'
+	filterBy: '根據 {name} 篩選',
 };

@@ -11,7 +11,7 @@ export default factory(function Basic({ middleware: { icache } }) {
 		{ name: 'Tab One' },
 		{ name: 'Tab Two' },
 		{ name: 'Tab Three' },
-		{ name: 'Tab Four' }
+		{ name: 'Tab Four' },
 	];
 
 	return (

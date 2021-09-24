@@ -24,15 +24,15 @@ describe('Popup', () => {
 	before(() => {
 		Object.defineProperty(document.documentElement, 'scrollTop', {
 			value: 0,
-			configurable: true
+			configurable: true,
 		});
 		Object.defineProperty(document.documentElement, 'clientHeight', {
 			value: 1000,
-			configurable: true
+			configurable: true,
 		});
 		Object.defineProperty(document.documentElement, 'clientWidth', {
 			value: 900,
-			configurable: true
+			configurable: true,
 		});
 	});
 
@@ -75,9 +75,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -88,7 +88,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -102,7 +107,7 @@ describe('Popup', () => {
 				styles={{ left: '50px', opacity: '1', top: '100px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -115,9 +120,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -136,7 +141,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -150,7 +160,7 @@ describe('Popup', () => {
 				styles={{ left: '30px', opacity: '1', top: '100px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -163,9 +173,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -184,7 +194,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -198,7 +213,7 @@ describe('Popup', () => {
 				styles={{ left: '160px', opacity: '1', top: '100px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -211,9 +226,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -232,7 +247,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -246,7 +266,7 @@ describe('Popup', () => {
 				styles={{ left: '160px', opacity: '1', top: '100px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -259,9 +279,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -280,7 +300,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -294,7 +319,7 @@ describe('Popup', () => {
 				styles={{ left: '30px', opacity: '1', top: '100px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -307,9 +332,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -327,7 +352,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -341,7 +371,7 @@ describe('Popup', () => {
 				styles={{ left: '50px', opacity: '1', top: '200px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -354,9 +384,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 
 		mockNode('wrapper', wrapper);
@@ -367,7 +397,12 @@ describe('Popup', () => {
 					hello world
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 		const contentTemplate = baseTemplate.setChildren(':root', () => [
 			<div
@@ -381,7 +416,7 @@ describe('Popup', () => {
 				styles={{ left: '50px', opacity: '1', top: '300px' }}
 			>
 				hello world
-			</div>
+			</div>,
 		]);
 
 		h.expect(contentTemplate);
@@ -406,7 +441,7 @@ describe('Popup', () => {
 			baseTemplate.setProperty('@underlay', 'classes', [
 				undefined,
 				fixedCss.underlay,
-				css.underlayVisible
+				css.underlayVisible,
 			])
 		);
 	});
@@ -417,9 +452,9 @@ describe('Popup', () => {
 			getBoundingClientRect() {
 				return {
 					width: 100,
-					height: 100
+					height: 100,
 				};
-			}
+			},
 		};
 		mockNode('wrapper', wrapper);
 
@@ -438,7 +473,12 @@ describe('Popup', () => {
 					{onContent}
 				</Popup>
 			),
-			{ middleware: [[node, mockNode], [resize, createMockResize()]] }
+			{
+				middleware: [
+					[node, mockNode],
+					[resize, createMockResize()],
+				],
+			}
 		);
 
 		h.expect(
@@ -446,7 +486,7 @@ describe('Popup', () => {
 				.setProperty('@wrapper', 'styles', {
 					left: '50px',
 					opacity: '1',
-					top: '300px'
+					top: '300px',
 				})
 				.setChildren('@wrapper', [<div>hello world</div>])
 		);

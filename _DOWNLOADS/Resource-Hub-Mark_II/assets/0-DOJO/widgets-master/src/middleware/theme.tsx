@@ -1,6 +1,6 @@
 import { create } from '@dojo/framework/core/vdom';
 import coreTheme, {
-	ThemeProperties as CoreThemeProperties
+	ThemeProperties as CoreThemeProperties,
 } from '@dojo/framework/core/middleware/theme';
 import { ThemeWithVariant, ClassNames, Theme } from '@dojo/framework/core/interfaces';
 import { isThemeInjectorPayloadWithVariant } from '@dojo/framework/core/ThemeInjector';
@@ -22,7 +22,7 @@ function isThemeWithVariant(theme: any): theme is ThemeWithVariant {
 
 export interface ThemeProperties extends CoreThemeProperties {}
 
-export const theme = factory(function({ middleware: { coreTheme }, properties }) {
+export const theme = factory(function ({ middleware: { coreTheme }, properties }) {
 	const { variant: coreVariant, get, set, classes } = coreTheme;
 	function getTheme() {
 		const { theme } = properties();
@@ -92,17 +92,17 @@ export const theme = factory(function({ middleware: { coreTheme }, properties })
 						theme: {
 							theme: {
 								...theme.theme.theme,
-								[baseKey]: baseTheme
+								[baseKey]: baseTheme,
 							},
-							variants: theme.theme.variants
+							variants: theme.theme.variants,
 						},
-						variant: theme.variant
+						variant: theme.variant,
 					};
 				}
 
 				return {
 					...theme,
-					[baseKey]: baseTheme
+					[baseKey]: baseTheme,
 				};
 			}
 
@@ -130,17 +130,17 @@ export const theme = factory(function({ middleware: { coreTheme }, properties })
 					theme: {
 						theme: {
 							...theme.theme.theme,
-							[baseKey]: constructedTheme
+							[baseKey]: constructedTheme,
 						},
-						variants: theme.theme.variants
+						variants: theme.theme.variants,
 					},
-					variant: theme.variant
+					variant: theme.variant,
 				};
 			}
 
 			return {
 				...theme,
-				[baseKey]: constructedTheme
+				[baseKey]: constructedTheme,
 			};
 		},
 		variant: () => {
@@ -148,7 +148,7 @@ export const theme = factory(function({ middleware: { coreTheme }, properties })
 		},
 		get,
 		set,
-		classes
+		classes,
 	};
 });
 

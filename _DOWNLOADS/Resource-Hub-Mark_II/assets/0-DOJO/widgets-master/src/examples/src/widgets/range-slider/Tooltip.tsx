@@ -10,7 +10,7 @@ export default factory(function TooltipRangeSlider() {
 			<RangeSlider
 				initialValue={{
 					min: 0,
-					max: 100
+					max: 100,
 				}}
 				showOutput={true}
 				outputIsTooltip={true}

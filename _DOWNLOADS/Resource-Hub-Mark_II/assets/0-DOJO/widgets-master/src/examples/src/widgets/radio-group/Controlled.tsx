@@ -5,7 +5,7 @@ import Example from '../../Example';
 
 const factory = create({ icache });
 
-const App = factory(function({ properties, middleware: { icache } }) {
+const App = factory(function ({ properties, middleware: { icache } }) {
 	const { get, set } = icache;
 
 	return (
@@ -19,7 +19,7 @@ const App = factory(function({ properties, middleware: { icache } }) {
 				}}
 			>
 				{{
-					label: 'pets'
+					label: 'pets',
 				}}
 			</RadioGroup>
 			<pre>{`${get('standard')}`}</pre>

@@ -64,14 +64,14 @@ const factory = create({ form, theme, icache })
 export default factory(function Form({
 	properties,
 	children,
-	middleware: { form, theme, icache }
+	middleware: { form, theme, icache },
 }) {
 	const themedCss = theme.classes(css);
 	const props = properties();
 
 	let formProps: Partial<VNodeProperties> = {
 		classes: [theme.variant(), themedCss.root],
-		name: props.name
+		name: props.name,
 	};
 
 	const { initialValue, value, onValue } = props;
@@ -82,14 +82,14 @@ export default factory(function Form({
 			onsubmit: (event) => {
 				event.preventDefault();
 				form.submit((value) => props.onSubmit(value));
-			}
+			},
 		};
 	} else if (isActionForm(props)) {
 		const { action, method = 'post' } = props;
 		formProps = {
 			...formProps,
 			action,
-			method
+			method,
 		};
 	}
 
@@ -112,14 +112,12 @@ export interface FormGroupProperties {
 	column?: boolean;
 }
 
-const formGroupFactory = create({ theme })
-	.properties<FormGroupProperties>()
-	.children();
+const formGroupFactory = create({ theme }).properties<FormGroupProperties>().children();
 
 export const FormGroup = formGroupFactory(function FormRow({
 	properties,
 	children,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const { column } = properties();
 	const themedCss = theme.classes(css);
@@ -131,7 +129,7 @@ export const FormGroup = formGroupFactory(function FormRow({
 				theme.variant(),
 				themedCss.groupRoot,
 				!column && themedCss.row,
-				column && themedCss.column
+				column && themedCss.column,
 			]}
 		>
 			{children()}

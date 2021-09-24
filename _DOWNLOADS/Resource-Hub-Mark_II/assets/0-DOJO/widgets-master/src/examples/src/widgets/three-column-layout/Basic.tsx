@@ -19,7 +19,7 @@ export default factory(function Basic() {
 						<div styles={{ textAlign: 'center', borderLeft: '1px solid black' }}>
 							This is the trailing content
 						</div>
-					)
+					),
 				}}
 			</ThreeColumnLayout>
 		</Example>

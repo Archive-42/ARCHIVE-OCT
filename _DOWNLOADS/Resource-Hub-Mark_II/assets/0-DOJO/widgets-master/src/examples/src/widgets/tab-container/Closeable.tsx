@@ -10,14 +10,14 @@ const tabs = [
 	{ closeable: true, name: 'Tab One' },
 	{ name: 'Tab Two' },
 	{ closeable: true, name: 'Tab Three' },
-	{ name: 'Tab Four' }
+	{ name: 'Tab Four' },
 ];
 
 const tabContents = [
 	<div key="tab0">Hello Tab One</div>,
 	<div key="tab1">Hello Tab Two</div>,
 	<div key="tab2">Hello Tab Three</div>,
-	<div key="tab3">Hello Tab Four</div>
+	<div key="tab3">Hello Tab Four</div>,
 ];
 
 export default factory(function Closeable({ middleware: { icache } }) {

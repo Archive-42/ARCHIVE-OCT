@@ -17,7 +17,7 @@ import {
 	compareAriaLabelledBy,
 	compareLabelId,
 	noop,
-	stubEvent
+	stubEvent,
 } from '../../../common/tests/support/test-helpers';
 import assertionTemplate from '@dojo/framework/testing/harness/assertionTemplate';
 
@@ -25,7 +25,7 @@ const testDate = new Date('June 5 2017');
 const harness = createHarness([compareId, compareLabelId, compareAriaLabelledBy, compareTheme]);
 
 /** Index of current expected date cell. Used by date cell factory function */
-const expectedDateCell = function(
+const expectedDateCell = function (
 	dateIndex: number,
 	date: number,
 	currentMonth: boolean,
@@ -111,7 +111,7 @@ const mayDates = (selectedIndex = -1, focusIndex = -1) => {
 			{expectedDateCell(dateIndex++, 8, false, false, selectedIndex, focusIndex)}
 			{expectedDateCell(dateIndex++, 9, false, false, selectedIndex, focusIndex)}
 			{expectedDateCell(dateIndex++, 10, false, false, selectedIndex, focusIndex)}
-		</tr>
+		</tr>,
 	];
 };
 
@@ -171,11 +171,11 @@ const julyDates = (selectedIndex = -1, focusIndex = -1) => {
 			{expectedDateCell(dateIndex++, 3, false, false, selectedIndex, focusIndex)}
 			{expectedDateCell(dateIndex++, 4, false, false, selectedIndex, focusIndex)}
 			{expectedDateCell(dateIndex++, 5, false, false, selectedIndex, focusIndex)}
-		</tr>
+		</tr>,
 	];
 };
 
-const expected = function(
+const expected = function (
 	popupOpen = false,
 	selectedIndex = -1,
 	weekdayLabel = '',
@@ -468,11 +468,11 @@ registerSuite('Calendar', {
 				labels: bundle.messages,
 				monthNames: DEFAULT_MONTHS,
 				initialValue: new Date('June 1 2017'),
-				weekdayNames: DEFAULT_WEEKDAYS
+				weekdayNames: DEFAULT_WEEKDAYS,
 			};
 			let children: any = {
 				monthLabel: () => 'Foo',
-				weekdayCell: () => 'Bar'
+				weekdayCell: () => 'Bar',
 			};
 			const h = harness(() => <Calendar {...properties}>{children}</Calendar>);
 
@@ -514,7 +514,7 @@ registerSuite('Calendar', {
 				},
 				onMonth(month: number) {
 					currentMonth = month;
-				}
+				},
 			};
 			const h = harness(() => <Calendar {...properties} />);
 
@@ -646,7 +646,7 @@ registerSuite('Calendar', {
 				},
 				onYear(year: number) {
 					currentYear = year;
-				}
+				},
 			};
 			const h = harness(() => <Calendar {...properties} />);
 
@@ -688,7 +688,7 @@ registerSuite('Calendar', {
 				},
 				onYear(year: number) {
 					currentYear = year;
-				}
+				},
 			};
 			const h = harness(() => <Calendar {...properties} />);
 
@@ -797,11 +797,11 @@ registerSuite('Calendar', {
 			h.trigger('@date-picker', 'onPopupChange', true);
 			properties = {
 				initialMonth: testDate.getMonth(),
-				initialYear: testDate.getFullYear()
+				initialYear: testDate.getFullYear(),
 			};
 			h.expect(() => expected(true));
-		}
-	}
+		},
+	},
 });
 
 const minDateInMonth = new Date('June 3, 2017');
@@ -817,7 +817,7 @@ const baseMinMaxTemplate = baseTemplate
 		expectedDateCell(3, 31, false, true),
 		expectedDateCell(4, 1, true, true),
 		expectedDateCell(5, 2, true, true),
-		expectedDateCell(6, 3, true, false)
+		expectedDateCell(6, 3, true, false),
 	])
 	.setProperty('@date-4', 'focusable', false)
 	.setProperty('@date-6', 'focusable', true)
@@ -830,7 +830,7 @@ const baseMinMaxTemplate = baseTemplate
 			expectedDateCell(dateIndex++, 28, true, false),
 			expectedDateCell(dateIndex++, 29, true, false),
 			expectedDateCell(dateIndex++, 30, true, true),
-			expectedDateCell(dateIndex++, 1, false, true)
+			expectedDateCell(dateIndex++, 1, false, true),
 		];
 	})
 	.replaceChildren('tbody tr:last-child', () => {
@@ -842,7 +842,7 @@ const baseMinMaxTemplate = baseTemplate
 			expectedDateCell(dateIndex++, 5, false, true),
 			expectedDateCell(dateIndex++, 6, false, true),
 			expectedDateCell(dateIndex++, 7, false, true),
-			expectedDateCell(dateIndex++, 8, false, true)
+			expectedDateCell(dateIndex++, 8, false, true),
 		];
 	})
 	.setProperty('~previousMonth', 'disabled', true)
@@ -870,7 +870,7 @@ registerSuite('Custom first day of week', {
 									</abbr>
 								</th>
 							))}
-						</tr>
+						</tr>,
 					];
 				})
 				.replaceChildren('tbody', () => {
@@ -929,12 +929,12 @@ registerSuite('Custom first day of week', {
 							{expectedDateCell(dateIndex++, 8, false)}
 							{expectedDateCell(dateIndex++, 9, false)}
 							{expectedDateCell(dateIndex++, 10, false)}
-						</tr>
+						</tr>,
 					];
 				});
 			h.expect(firstDayOfWeekTemplate);
-		}
-	}
+		},
+	},
 });
 
 let environment: any;
@@ -1000,7 +1000,7 @@ registerSuite('Calendar with min-max', {
 			const calendarProperties: CalendarProperties = {
 				initialMonth: testDate.getMonth() - 1,
 				initialYear: testDate.getFullYear(),
-				maxDate
+				maxDate,
 			};
 
 			const h = harness(() => <Calendar {...calendarProperties} />);
@@ -1048,7 +1048,7 @@ registerSuite('Calendar with min-max', {
 							expectedDateCell(dateIndex++, 28, true, true),
 							expectedDateCell(dateIndex++, 29, true, true),
 							expectedDateCell(dateIndex++, 30, true, true),
-							expectedDateCell(dateIndex++, 1, false, true)
+							expectedDateCell(dateIndex++, 1, false, true),
 						];
 					})
 					.replaceChildren('tbody tr:last-child', () => {
@@ -1060,7 +1060,7 @@ registerSuite('Calendar with min-max', {
 							expectedDateCell(dateIndex++, 5, false, true),
 							expectedDateCell(dateIndex++, 6, false, true),
 							expectedDateCell(dateIndex++, 7, false, true),
-							expectedDateCell(dateIndex++, 8, false, true)
+							expectedDateCell(dateIndex++, 8, false, true),
 						];
 					})
 					.setProperty('@date-27', 'focusable', true)
@@ -1160,6 +1160,6 @@ registerSuite('Calendar with min-max', {
 				testDate.getMonth(),
 				'Going right from the last day does not change the month'
 			);
-		}
-	}
+		},
+	},
 });

@@ -3,10 +3,10 @@
 		"align": false,
 		"ban": [],
 		"class-name": true,
-		"comment-format": [ true, "check-space" ],
+		"comment-format": [true, "check-space"],
 		"curly": true,
 		"forin": false,
-		"interface-name": [ true, "never-prefix" ],
+		"interface-name": [true, "never-prefix"],
 		"jsdoc-format": true,
 		"label-position": true,
 		"member-access": false,
@@ -20,7 +20,7 @@
 		"no-duplicate-variable": true,
 		"no-empty": false,
 		"no-eval": true,
-		"no-inferrable-types": [ true, "ignore-params" ],
+		"no-inferrable-types": [true, "ignore-params"],
 		"no-shadowed-variable": false,
 		"no-string-literal": false,
 		"no-switch-case-fall-through": false,
@@ -30,8 +30,14 @@
 		"no-var-requires": false,
 		"object-literal-sort-keys": false,
 		"radix": true,
-		"triple-equals": [ true, "allow-null-check" ],
+		"triple-equals": [true, "allow-null-check"],
 		"typedef": false,
-		"variable-name": [ true, "check-format", "allow-leading-underscore", "ban-keywords", "allow-pascal-case" ]
+		"variable-name": [
+			true,
+			"check-format",
+			"allow-leading-underscore",
+			"ban-keywords",
+			"allow-pascal-case"
+		]
 	}
 }

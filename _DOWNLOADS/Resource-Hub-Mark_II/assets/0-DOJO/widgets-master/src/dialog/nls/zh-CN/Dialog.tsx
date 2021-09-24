@@ -1,3 +1,3 @@
 export default {
-	close: '关闭'
+	close: '关闭',
 };

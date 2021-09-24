@@ -41,14 +41,14 @@ const factory = create({
 	focus,
 	i18n,
 	icache: createICacheMiddleware<TabContainerICache>(),
-	theme
+	theme,
 }).properties<TabContainerProperties>();
 
 export const TabContainer = factory(function TabContainer({
 	children,
 	id,
 	middleware: { focus, i18n, icache, theme },
-	properties
+	properties,
 }) {
 	const {
 		alignButtons = 'top',
@@ -59,7 +59,7 @@ export const TabContainer = factory(function TabContainer({
 		onClose,
 		theme: themeProp,
 		classes,
-		variant
+		variant,
 	} = properties();
 	let { activeIndex } = properties();
 
@@ -126,7 +126,7 @@ export const TabContainer = factory(function TabContainer({
 					themeCss.tabButton,
 					active ? themeCss.activeTabButton : null,
 					closeable ? themeCss.closeable : null,
-					disabled ? themeCss.disabledTabButton : null
+					disabled ? themeCss.disabledTabButton : null,
 				]}
 				focus={active ? focus.shouldFocus : () => false}
 				id={`${id}-tabbutton-${index}`}
@@ -188,7 +188,7 @@ export const TabContainer = factory(function TabContainer({
 					</div>
 				);
 			})}
-		</div>
+		</div>,
 	];
 
 	let alignClass;

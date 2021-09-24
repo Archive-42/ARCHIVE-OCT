@@ -31,13 +31,10 @@
 		"sourceMap": true,
 		"strict": true,
 		"target": "es5",
-		"types": [ "intern" ],
+		"types": ["intern"],
 		"paths": {
 			"@dojo/widgets/*": ["src/*"]
 		}
 	},
-	"include": [
-		"./src/**/*.ts",
-		"./src/**/*.tsx"
-	]
+	"include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

@@ -6,7 +6,7 @@ import { tsx, getRegistry, create } from '@dojo/framework/core/vdom';
 import { renderer, assertion, wrap } from '@dojo/framework/testing/renderer';
 import {
 	createMemoryResourceTemplate,
-	createResourceTemplate
+	createResourceTemplate,
 } from '@dojo/framework/core/middleware/resources';
 import { noop } from '../../common/tests/support/test-helpers';
 import { Keys } from '../../common/util';
@@ -19,7 +19,7 @@ import * as menuItemCss from '../../theme/default/menu-item.m.css';
 import Registry from '@dojo/framework/core/Registry';
 import RegistryHandler from '@dojo/framework/core/RegistryHandler';
 
-const mockGetRegistry = create()(function() {
+const mockGetRegistry = create()(function () {
 	const registry = new Registry();
 	const handler = new RegistryHandler();
 	handler.base = registry;
@@ -30,17 +30,17 @@ let template = createMemoryResourceTemplate<{ value: string; label: string; disa
 const data = [
 	{
 		value: '1',
-		label: 'Dog'
+		label: 'Dog',
 	},
 	{
 		value: '2',
-		label: 'Cat'
+		label: 'Cat',
 	},
 	{
 		value: '3',
 		label: 'Fish',
-		disabled: true
-	}
+		disabled: true,
+	},
 ];
 const sb = sandbox.create();
 const onValueStub = sb.stub();
@@ -49,7 +49,7 @@ function createMockEvent({
 	which,
 	key,
 	metaKey,
-	ctrlKey
+	ctrlKey,
 }: {
 	which: Keys;
 	key?: string;
@@ -62,7 +62,7 @@ function createMockEvent({
 		which,
 		key,
 		metaKey: !!metaKey,
-		ctrlKey: !!ctrlKey
+		ctrlKey: !!ctrlKey,
 	};
 }
 
@@ -86,7 +86,7 @@ const baseAssertion = assertion(() => (
 		role={'listbox'}
 		scrollTop={0}
 		styles={{
-			height: '450px'
+			height: '450px',
 		}}
 		tabIndex={0}
 	>
@@ -94,14 +94,14 @@ const baseAssertion = assertion(() => (
 			classes={fixedCss.wrapper}
 			key={'wrapper'}
 			styles={{
-				height: '0px'
+				height: '0px',
 			}}
 		>
 			<WrappedItemContainer
 				classes={fixedCss.transformer}
 				key={'transformer'}
 				styles={{
-					transform: 'translateY(0px)'
+					transform: 'translateY(0px)',
 				}}
 			/>
 		</WrappedItemWrapper>
@@ -110,7 +110,7 @@ const baseAssertion = assertion(() => (
 
 const listWithListItemsAssertion = baseAssertion
 	.setProperty(WrappedItemWrapper, 'styles', {
-		height: '135px'
+		height: '135px',
 	})
 	.replaceChildren(WrappedItemContainer, () => [
 		<ListItem
@@ -134,8 +134,8 @@ const listWithListItemsAssertion = baseAssertion
 					dragIcon: listItemCss.dragIcon,
 					draggable: listItemCss.draggable,
 					movedUp: listItemCss.movedUp,
-					movedDown: listItemCss.movedDown
-				}
+					movedDown: listItemCss.movedDown,
+				},
 			}}
 			widgetId={'menu-test-item-0'}
 			collapsed={false}
@@ -171,8 +171,8 @@ const listWithListItemsAssertion = baseAssertion
 					dragIcon: listItemCss.dragIcon,
 					draggable: listItemCss.draggable,
 					movedUp: listItemCss.movedUp,
-					movedDown: listItemCss.movedDown
-				}
+					movedDown: listItemCss.movedDown,
+				},
 			}}
 			widgetId={'menu-test-item-1'}
 			collapsed={false}
@@ -208,8 +208,8 @@ const listWithListItemsAssertion = baseAssertion
 					dragIcon: listItemCss.dragIcon,
 					draggable: listItemCss.draggable,
 					movedUp: listItemCss.movedUp,
-					movedDown: listItemCss.movedDown
-				}
+					movedDown: listItemCss.movedDown,
+				},
 			}}
 			widgetId={'menu-test-item-2'}
 			collapsed={false}
@@ -223,12 +223,12 @@ const listWithListItemsAssertion = baseAssertion
 			onDrop={noop}
 		>
 			Fish
-		</ListItem>
+		</ListItem>,
 	]);
 
 const listWithMenuItemsAssertion = baseAssertion
 	.setProperty(WrappedItemWrapper, 'styles', {
-		height: '135px'
+		height: '135px',
 	})
 	.setProperty(WrappedRoot, 'role', 'menu')
 	.replaceChildren(WrappedItemContainer, () => [
@@ -245,8 +245,8 @@ const listWithMenuItemsAssertion = baseAssertion
 					active: menuItemCss.active,
 					disabled: menuItemCss.disabled,
 					root: menuItemCss.root,
-					s: css.items
-				}
+					s: css.items,
+				},
 			}}
 			widgetId={'menu-test-item-0'}
 		>
@@ -265,8 +265,8 @@ const listWithMenuItemsAssertion = baseAssertion
 					active: menuItemCss.active,
 					disabled: menuItemCss.disabled,
 					root: menuItemCss.root,
-					s: css.items
-				}
+					s: css.items,
+				},
 			}}
 			widgetId={'menu-test-item-1'}
 		>
@@ -285,19 +285,19 @@ const listWithMenuItemsAssertion = baseAssertion
 					active: menuItemCss.active,
 					disabled: menuItemCss.disabled,
 					root: menuItemCss.root,
-					s: css.items
-				}
+					s: css.items,
+				},
 			}}
 			widgetId={'menu-test-item-2'}
 		>
 			Fish
-		</MenuItem>
+		</MenuItem>,
 	]);
 
 describe('List', () => {
 	beforeEach(() => {
 		sb.stub(global.window.HTMLDivElement.prototype, 'getBoundingClientRect').callsFake(() => ({
-			height: 45
+			height: 45,
 		}));
 		template = createMemoryResourceTemplate<{
 			value: string;
@@ -325,10 +325,10 @@ describe('List', () => {
 		});
 		const listAssertion = listWithListItemsAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '2700px'
+				height: '2700px',
 			})
 			.setProperty(WrappedRoot, 'styles', {
-				height: '450px'
+				height: '450px',
 			})
 			.replaceChildren(WrappedItemContainer, () => {
 				const children: any[] = [];
@@ -355,8 +355,8 @@ describe('List', () => {
 									dragIcon: listItemCss.dragIcon,
 									draggable: listItemCss.draggable,
 									movedUp: listItemCss.movedUp,
-									movedDown: listItemCss.movedDown
-								}
+									movedDown: listItemCss.movedDown,
+								},
 							}}
 							widgetId={`menu-test-item-${i}`}
 							collapsed={false}
@@ -390,7 +390,7 @@ describe('List', () => {
 					put(res, request);
 				});
 			},
-			find: () => {}
+			find: () => {},
 		});
 
 		const r = renderer(
@@ -431,8 +431,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={`menu-test-item-${i}`}
 						collapsed={false}
@@ -479,8 +479,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={`menu-test-item-${i}`}
 						collapsed={false}
@@ -507,7 +507,7 @@ describe('List', () => {
 			() => (
 				<List
 					resource={{
-						template: { template, id: 'test', initOptions: { data, id: 'test' } }
+						template: { template, id: 'test', initOptions: { data, id: 'test' } },
 					}}
 					onValue={onValueStub}
 				/>
@@ -523,7 +523,7 @@ describe('List', () => {
 				<List
 					height="auto"
 					resource={{
-						template: { template, id: 'test', initOptions: { data, id: 'test' } }
+						template: { template, id: 'test', initOptions: { data, id: 'test' } },
 					}}
 					onValue={onValueStub}
 				/>
@@ -532,7 +532,7 @@ describe('List', () => {
 		);
 		r.expect(
 			listWithListItemsAssertion.setProperty(WrappedRoot, 'styles', {
-				maxHeight: '450px'
+				maxHeight: '450px',
 			})
 		);
 	});
@@ -543,7 +543,7 @@ describe('List', () => {
 				<List
 					menu
 					resource={{
-						template: { template, id: 'test', initOptions: { data, id: 'test' } }
+						template: { template, id: 'test', initOptions: { data, id: 'test' } },
 					}}
 					onValue={onValueStub}
 				/>
@@ -568,10 +568,10 @@ describe('List', () => {
 		});
 		const menuAssertion = listWithMenuItemsAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '2700px'
+				height: '2700px',
 			})
 			.setProperty(WrappedRoot, 'styles', {
-				height: '450px'
+				height: '450px',
 			})
 			.replaceChildren(WrappedItemContainer, () => {
 				const children: any[] = [];
@@ -590,8 +590,8 @@ describe('List', () => {
 									active: menuItemCss.active,
 									disabled: menuItemCss.disabled,
 									root: menuItemCss.root,
-									s: css.items
-								}
+									s: css.items,
+								},
 							}}
 							widgetId={`menu-test-item-${i}`}
 						>
@@ -616,7 +616,7 @@ describe('List', () => {
 					put(res, request);
 				});
 			},
-			find: () => {}
+			find: () => {},
 		});
 
 		const r = renderer(
@@ -655,8 +655,8 @@ describe('List', () => {
 								active: menuItemCss.active,
 								disabled: menuItemCss.disabled,
 								root: menuItemCss.root,
-								s: css.items
-							}
+								s: css.items,
+							},
 						}}
 						widgetId={`menu-test-item-${i}`}
 					>
@@ -686,8 +686,8 @@ describe('List', () => {
 								active: menuItemCss.active,
 								disabled: menuItemCss.disabled,
 								root: menuItemCss.root,
-								s: css.items
-							}
+								s: css.items,
+							},
 						}}
 						widgetId={`menu-test-item-${i}`}
 					>
@@ -724,8 +724,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={`menu-test-item-${index}`}
 					collapsed={false}
@@ -748,17 +748,17 @@ describe('List', () => {
 			...[
 				{
 					value: '4',
-					label: 'Panda'
+					label: 'Panda',
 				},
 				{
 					value: '5',
-					label: 'Crow'
+					label: 'Crow',
 				},
 				{
 					value: '6',
-					label: 'Fire-Bellied Toad'
-				}
-			]
+					label: 'Fire-Bellied Toad',
+				},
+			],
 		];
 		const r = renderer(
 			() => (
@@ -767,8 +767,8 @@ describe('List', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: testData, id: 'test' }
-						}
+							initOptions: { data: testData, id: 'test' },
+						},
 					}}
 					disabled={(item) => {
 						return item.value === '3';
@@ -782,7 +782,7 @@ describe('List', () => {
 		r.expect(
 			baseAssertion
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems();
@@ -794,7 +794,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-5')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(5);
@@ -806,7 +806,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-0')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems();
@@ -818,7 +818,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-5')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(5);
@@ -830,7 +830,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-0')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems();
@@ -842,7 +842,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-5')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(5);
@@ -854,7 +854,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-0')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems();
@@ -866,7 +866,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-1')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(1);
@@ -878,7 +878,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-2')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(2);
@@ -890,7 +890,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-1')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(1);
@@ -902,7 +902,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-5')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(5);
@@ -913,7 +913,7 @@ describe('List', () => {
 		r.expect(
 			baseAssertion
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems();
@@ -925,7 +925,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-1')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(1);
@@ -938,7 +938,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-1')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(1, 1);
@@ -951,7 +951,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-2')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(2, 1);
@@ -964,7 +964,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-2')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(2, 1);
@@ -978,7 +978,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-3')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(3, 1);
@@ -992,7 +992,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-3')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(3, 3);
@@ -1006,7 +1006,7 @@ describe('List', () => {
 			baseAssertion
 				.setProperty(WrappedRoot, 'aria-activedescendant', 'menu-test-item-3')
 				.setProperty(WrappedItemWrapper, 'styles', {
-					height: '270px'
+					height: '270px',
 				})
 				.replaceChildren(WrappedItemContainer, () => {
 					return createListItems(3, 3);
@@ -1020,24 +1020,24 @@ describe('List', () => {
 		const testData = [
 			{
 				value: '1',
-				label: 'Bob'
+				label: 'Bob',
 			},
 			{
 				value: '2',
-				label: 'Adam'
+				label: 'Adam',
 			},
 			{
 				value: '3',
-				label: 'Ant'
+				label: 'Ant',
 			},
 			{
 				value: '4',
-				label: 'Anthony'
+				label: 'Anthony',
 			},
 			{
 				value: '5',
-				label: 'Bobby'
-			}
+				label: 'Bobby',
+			},
 		];
 		const r = renderer(
 			() => (
@@ -1046,8 +1046,8 @@ describe('List', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: testData, id: 'test' }
-						}
+							initOptions: { data: testData, id: 'test' },
+						},
 					}}
 					onValue={onValueStub}
 				/>
@@ -1056,7 +1056,7 @@ describe('List', () => {
 		);
 		const listAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '225px'
+				height: '225px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -1080,8 +1080,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-0'}
 					collapsed={false}
@@ -1117,8 +1117,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-1'}
 					collapsed={false}
@@ -1154,8 +1154,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-2'}
 					collapsed={false}
@@ -1191,8 +1191,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-3'}
 					collapsed={false}
@@ -1228,8 +1228,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-4'}
 					collapsed={false}
@@ -1243,7 +1243,7 @@ describe('List', () => {
 					onDrop={noop}
 				>
 					Bobby
-				</ListItem>
+				</ListItem>,
 			]);
 		r.expect(listAssertion);
 		r.property(
@@ -1286,8 +1286,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-0'}
 						collapsed={false}
@@ -1323,8 +1323,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-1'}
 						collapsed={false}
@@ -1360,8 +1360,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-2'}
 						collapsed={false}
@@ -1397,8 +1397,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-3'}
 						collapsed={false}
@@ -1434,8 +1434,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-4'}
 						collapsed={false}
@@ -1449,7 +1449,7 @@ describe('List', () => {
 						onDrop={noop}
 					>
 						Bobby
-					</ListItem>
+					</ListItem>,
 				])
 		);
 		await new Promise((resolve) => setTimeout(resolve, 800));
@@ -1482,8 +1482,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-0'}
 						collapsed={false}
@@ -1519,8 +1519,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-1'}
 						collapsed={false}
@@ -1556,8 +1556,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-2'}
 						collapsed={false}
@@ -1593,8 +1593,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-3'}
 						collapsed={false}
@@ -1630,8 +1630,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-4'}
 						collapsed={false}
@@ -1645,7 +1645,7 @@ describe('List', () => {
 						onDrop={noop}
 					>
 						Bobby
-					</ListItem>
+					</ListItem>,
 				])
 		);
 		await new Promise((resolve) => setTimeout(resolve, 800));
@@ -1675,8 +1675,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-0'}
 						collapsed={false}
@@ -1712,8 +1712,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-1'}
 						collapsed={false}
@@ -1749,8 +1749,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-2'}
 						collapsed={false}
@@ -1786,8 +1786,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-3'}
 						collapsed={false}
@@ -1823,8 +1823,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-4'}
 						collapsed={false}
@@ -1838,7 +1838,7 @@ describe('List', () => {
 						onDrop={noop}
 					>
 						Bobby
-					</ListItem>
+					</ListItem>,
 				])
 		);
 		await new Promise((resolve) => setTimeout(resolve, 800));
@@ -1868,8 +1868,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-0'}
 						collapsed={false}
@@ -1905,8 +1905,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-1'}
 						collapsed={false}
@@ -1942,8 +1942,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-2'}
 						collapsed={false}
@@ -1979,8 +1979,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-3'}
 						collapsed={false}
@@ -2016,8 +2016,8 @@ describe('List', () => {
 								dragIcon: listItemCss.dragIcon,
 								draggable: listItemCss.draggable,
 								movedUp: listItemCss.movedUp,
-								movedDown: listItemCss.movedDown
-							}
+								movedDown: listItemCss.movedDown,
+							},
 						}}
 						widgetId={'menu-test-item-4'}
 						collapsed={false}
@@ -2031,7 +2031,7 @@ describe('List', () => {
 						onDrop={noop}
 					>
 						Bobby
-					</ListItem>
+					</ListItem>,
 				])
 		);
 	});
@@ -2039,20 +2039,20 @@ describe('List', () => {
 	it('should scroll list', () => {
 		const testData = [
 			{
-				value: 'Bob'
+				value: 'Bob',
 			},
 			{
-				value: 'Adam'
+				value: 'Adam',
 			},
 			{
-				value: 'Ant'
+				value: 'Ant',
 			},
 			{
-				value: 'Anthony'
+				value: 'Anthony',
 			},
 			{
-				value: 'Bobby'
-			}
+				value: 'Bobby',
+			},
 		];
 		const r = renderer(
 			() => (
@@ -2061,8 +2061,8 @@ describe('List', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: testData, id: 'test' }
-						}
+							initOptions: { data: testData, id: 'test' },
+						},
 					}}
 					onValue={onValueStub}
 				/>
@@ -2071,7 +2071,7 @@ describe('List', () => {
 		);
 		const listAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '225px'
+				height: '225px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -2095,8 +2095,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-0'}
 					collapsed={false}
@@ -2132,8 +2132,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-1'}
 					collapsed={false}
@@ -2169,8 +2169,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-2'}
 					collapsed={false}
@@ -2206,8 +2206,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-3'}
 					collapsed={false}
@@ -2243,8 +2243,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-4'}
 					collapsed={false}
@@ -2258,13 +2258,13 @@ describe('List', () => {
 					onDrop={noop}
 				>
 					Bobby
-				</ListItem>
+				</ListItem>,
 			]);
 		r.expect(listAssertion);
 		r.property(WrappedRoot, 'onscroll', {
 			target: {
-				scrollTop: 100
-			}
+				scrollTop: 100,
+			},
 		});
 		r.expect(listAssertion.setProperty(WrappedRoot, 'scrollTop', 100));
 	});
@@ -2272,7 +2272,7 @@ describe('List', () => {
 	it('should use custom item renderer', () => {
 		const listWithListItemsAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '135px'
+				height: '135px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -2313,13 +2313,13 @@ describe('List', () => {
 					widgetId={'menu-test-item-2'}
 				>
 					Fish
-				</ListItem>
+				</ListItem>,
 			]);
 		const r = renderer(
 			() => (
 				<List
 					resource={{
-						template: { template, id: 'test', initOptions: { data, id: 'test' } }
+						template: { template, id: 'test', initOptions: { data, id: 'test' } },
 					}}
 					onValue={onValueStub}
 				>
@@ -2342,7 +2342,7 @@ describe('List', () => {
 			() => (
 				<List
 					resource={{
-						template: { template, id: 'test', initOptions: { data, id: 'test' } }
+						template: { template, id: 'test', initOptions: { data, id: 'test' } },
 					}}
 					onValue={onValueStub}
 					initialValue="2"
@@ -2352,7 +2352,7 @@ describe('List', () => {
 		);
 		const listAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '135px'
+				height: '135px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -2376,8 +2376,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-0'}
 					collapsed={false}
@@ -2413,8 +2413,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-1'}
 					collapsed={false}
@@ -2450,8 +2450,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-2'}
 					collapsed={false}
@@ -2465,20 +2465,20 @@ describe('List', () => {
 					onDrop={noop}
 				>
 					Fish
-				</ListItem>
+				</ListItem>,
 			]);
 		r.expect(listAssertion);
 	});
 
 	it('should render with value', () => {
 		const props = {
-			value: '2'
+			value: '2',
 		};
 		const r = renderer(
 			() => (
 				<List
 					resource={{
-						template: { template, id: 'test', initOptions: { data, id: 'test' } }
+						template: { template, id: 'test', initOptions: { data, id: 'test' } },
 					}}
 					onValue={onValueStub}
 					value={props.value}
@@ -2488,7 +2488,7 @@ describe('List', () => {
 		);
 		let listAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '135px'
+				height: '135px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -2512,8 +2512,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-0'}
 					collapsed={false}
@@ -2549,8 +2549,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-1'}
 					collapsed={false}
@@ -2586,8 +2586,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-2'}
 					collapsed={false}
@@ -2601,13 +2601,13 @@ describe('List', () => {
 					onDrop={noop}
 				>
 					Fish
-				</ListItem>
+				</ListItem>,
 			]);
 		r.expect(listAssertion);
 		props.value = '1';
 		listAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '135px'
+				height: '135px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -2631,8 +2631,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-0'}
 					collapsed={false}
@@ -2668,8 +2668,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-1'}
 					collapsed={false}
@@ -2705,8 +2705,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-2'}
 					collapsed={false}
@@ -2720,7 +2720,7 @@ describe('List', () => {
 					onDrop={noop}
 				>
 					Fish
-				</ListItem>
+				</ListItem>,
 			]);
 		r.expect(listAssertion);
 	});
@@ -2730,18 +2730,18 @@ describe('List', () => {
 			{
 				value: '1',
 				label: 'Dog',
-				divider: true
+				divider: true,
 			},
 			{
 				value: '2',
 				label: 'Cat',
-				divider: true
+				divider: true,
 			},
 			{
 				value: '3',
 				label: 'Fish',
-				disabled: true
-			}
+				disabled: true,
+			},
 		];
 		const r = renderer(
 			() => (
@@ -2750,8 +2750,8 @@ describe('List', () => {
 						template: {
 							template,
 							id: 'test',
-							initOptions: { data: testData, id: 'test' }
-						}
+							initOptions: { data: testData, id: 'test' },
+						},
 					}}
 					onValue={onValueStub}
 				/>
@@ -2760,7 +2760,7 @@ describe('List', () => {
 		);
 		const listAssertion = baseAssertion
 			.setProperty(WrappedItemWrapper, 'styles', {
-				height: '135px'
+				height: '135px',
 			})
 			.replaceChildren(WrappedItemContainer, () => [
 				<ListItem
@@ -2784,8 +2784,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-0'}
 					collapsed={false}
@@ -2822,8 +2822,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-1'}
 					collapsed={false}
@@ -2860,8 +2860,8 @@ describe('List', () => {
 							dragIcon: listItemCss.dragIcon,
 							draggable: listItemCss.draggable,
 							movedUp: listItemCss.movedUp,
-							movedDown: listItemCss.movedDown
-						}
+							movedDown: listItemCss.movedDown,
+						},
 					}}
 					widgetId={'menu-test-item-2'}
 					collapsed={false}
@@ -2875,7 +2875,7 @@ describe('List', () => {
 					onDrop={noop}
 				>
 					Fish
-				</ListItem>
+				</ListItem>,
 			]);
 		r.expect(listAssertion);
 	});

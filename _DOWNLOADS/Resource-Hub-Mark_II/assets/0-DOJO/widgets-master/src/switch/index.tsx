@@ -66,7 +66,7 @@ export default factory(function Switch({ children, properties, id, middleware: {
 		theme: themeProp,
 		valid,
 		variant,
-		value = false
+		value = false,
 	} = properties();
 
 	const [{ label, offLabel, onLabel } = {} as SwitchChildren] = children();
@@ -85,7 +85,7 @@ export default factory(function Switch({ children, properties, id, middleware: {
 				valid === false ? themedCss.invalid : null,
 				valid === true ? themedCss.valid : null,
 				readOnly ? themedCss.readonly : null,
-				required ? themedCss.required : null
+				required ? themedCss.required : null,
 			]}
 		>
 			{offLabel && (

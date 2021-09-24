@@ -20,7 +20,7 @@ const icache = createICacheMiddleware<AccordionPaneICache>();
 
 const factory = create({
 	icache,
-	theme
+	theme,
 })
 	.properties<AccordionPaneProperties>()
 	.children<RenderResult>();
@@ -28,7 +28,7 @@ const factory = create({
 export const Accordion = factory(function Accordion({
 	middleware: { icache, theme },
 	properties,
-	children
+	children,
 }) {
 	const themedCss = theme.classes(css);
 	const { exclusive, panes, variant, classes } = properties();
@@ -64,11 +64,7 @@ export const Accordion = factory(function Accordion({
 						onClose={() => {
 							onClose(index);
 						}}
-						theme={theme.compose(
-							titlePaneCss,
-							css,
-							'pane'
-						)}
+						theme={theme.compose(titlePaneCss, css, 'pane')}
 						classes={classes}
 						variant={variant}
 						name={paneName}

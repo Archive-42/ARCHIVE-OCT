@@ -4,9 +4,9 @@ Dojo's `Accordion` component can be used to show multiple pieces of content insi
 
 ## Features
 
-- Optionally supports multiple panes open at once
+-   Optionally supports multiple panes open at once
 
 ### Accessibility Features
 
-- Supports standard tab navigation
-- Space bar toggles the pane content of a closeable child `TitlePane`
+-   Supports standard tab navigation
+-   Space bar toggles the pane content of a closeable child `TitlePane`

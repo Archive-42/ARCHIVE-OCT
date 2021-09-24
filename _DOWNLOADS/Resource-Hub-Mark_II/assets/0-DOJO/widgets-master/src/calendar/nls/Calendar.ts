@@ -1,6 +1,6 @@
 const locales = {
 	zh: () => import('./zh-CN/Calendar'),
-	'zh-TW': () => import('./zh-TW/Calendar')
+	'zh-TW': () => import('./zh-TW/Calendar'),
 };
 
 const messages = {
@@ -47,7 +47,7 @@ const messages = {
 	september: 'September',
 	october: 'October',
 	november: 'November',
-	december: 'December'
+	december: 'December',
 };
 
 export default { locales, messages };

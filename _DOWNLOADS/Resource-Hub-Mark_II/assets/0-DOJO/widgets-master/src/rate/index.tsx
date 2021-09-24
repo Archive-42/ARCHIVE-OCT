@@ -50,7 +50,7 @@ export const Rate = factory(function Radio({
 	properties,
 	id,
 	children,
-	middleware: { theme, icache }
+	middleware: { theme, icache },
 }) {
 	const idBase = `rate-${id}`;
 	const {
@@ -62,7 +62,7 @@ export const Rate = factory(function Radio({
 		readOnly,
 		theme: themeProp,
 		classes,
-		variant
+		variant,
 	} = properties();
 	let { value } = properties();
 	const [{ label, icon } = { label: undefined, icon: undefined }] = children();
@@ -104,7 +104,7 @@ export const Rate = factory(function Radio({
 					theme.variant(),
 					fixedCss.labelFixed,
 					themeCss.icon,
-					visiblyChecked && themeCss.checked
+					visiblyChecked && themeCss.checked,
 				]}
 				onmouseenter={() => {
 					!readOnly && icache.set('valueHovered', numValue);
@@ -181,7 +181,7 @@ export const Rate = factory(function Radio({
 									<span
 										classes={[
 											fixedCss.halfWrapperFixed,
-											focused && themeCss.focusedStar
+											focused && themeCss.focusedStar,
 										]}
 									>
 										{renderRadio(halfValue, radioGroup(halfValue).checked)}
@@ -192,7 +192,7 @@ export const Rate = factory(function Radio({
 								return (
 									<span
 										classes={[
-											valueFocused === stringValue && themeCss.focusedStar
+											valueFocused === stringValue && themeCss.focusedStar,
 										]}
 									>
 										{renderRadio(stringValue, radioGroup(stringValue).checked)}
@@ -200,7 +200,7 @@ export const Rate = factory(function Radio({
 								);
 							}
 						});
-					}
+					},
 				}}
 			</RadioGroup>
 		</div>

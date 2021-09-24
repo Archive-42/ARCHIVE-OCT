@@ -21,7 +21,7 @@ export default factory(function Basic({ middleware: { icache } }) {
 						>
 							Click Me
 						</Button>
-					)
+					),
 				}}
 			</Tooltip>
 		</Example>

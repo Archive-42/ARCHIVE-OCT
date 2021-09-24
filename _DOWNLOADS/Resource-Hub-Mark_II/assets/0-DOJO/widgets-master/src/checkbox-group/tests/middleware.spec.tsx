@@ -15,7 +15,7 @@ function icacheFactory<T>() {
 		id: 'test-cache',
 		properties: () => ({}),
 		children: () => [],
-		middleware: { invalidator: sb.stub(), destroy: sb.stub() }
+		middleware: { invalidator: sb.stub(), destroy: sb.stub() },
 	});
 }
 
@@ -29,7 +29,7 @@ describe('CheckboxGroup-middleware', () => {
 			id: 'checkboxgroup-test',
 			middleware: { icache: icacheFactory() },
 			properties: () => ({}),
-			children: () => []
+			children: () => [],
 		})(onValueStub);
 
 		const test1Api = checkboxGroup('test1');

@@ -28,7 +28,7 @@ export default factory(function ActionButtonsAndIcons({ middleware: { icache } }
 								<Icon type="downIcon" />
 								<Icon type="upIcon" />
 							</virtual>
-						)
+						),
 					}}
 				</Card>
 			</div>

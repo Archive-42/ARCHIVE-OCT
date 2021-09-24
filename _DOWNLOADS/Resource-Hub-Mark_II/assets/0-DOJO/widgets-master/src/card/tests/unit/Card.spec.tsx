@@ -36,7 +36,7 @@ describe('Card', () => {
 			const h = harness(() => (
 				<Card>
 					{{
-						header: 'Hello, World'
+						header: 'Hello, World',
 					}}
 				</Card>
 			));
@@ -45,7 +45,7 @@ describe('Card', () => {
 				template.prepend('@root', () => [
 					<div key="header" classes={css.header}>
 						Hello, World
-					</div>
+					</div>,
 				])
 			);
 		});
@@ -56,13 +56,13 @@ describe('Card', () => {
 			const h = harness(() => (
 				<Card>
 					{{
-						content: 'Hello, World'
+						content: 'Hello, World',
 					}}
 				</Card>
 			));
 			h.expect(
 				template.setChildren('@content', () => [
-					<div classes={css.contentWrapper}>Hello, World</div>
+					<div classes={css.contentWrapper}>Hello, World</div>,
 				])
 			);
 		});
@@ -74,7 +74,7 @@ describe('Card', () => {
 					<div classes={css.titleWrapper}>
 						{<h2 classes={css.title}>Hello, World</h2>}
 						<h3 classes={css.subtitle}>this is a test</h3>
-					</div>
+					</div>,
 				])
 			);
 		});
@@ -83,7 +83,7 @@ describe('Card', () => {
 			const h = harness(() => (
 				<Card title="Hello, World" subtitle="this is a test">
 					{{
-						content: 'test'
+						content: 'test',
 					}}
 				</Card>
 			));
@@ -93,7 +93,7 @@ describe('Card', () => {
 						{<h2 classes={css.title}>Hello, World</h2>}
 						<h3 classes={css.subtitle}>this is a test</h3>
 					</div>,
-					<div classes={css.contentWrapper}>test</div>
+					<div classes={css.contentWrapper}>test</div>,
 				])
 			);
 		});
@@ -106,9 +106,9 @@ describe('Card', () => {
 						title="test"
 						classes={[css.media, css.media16by9]}
 						styles={{
-							backgroundImage: 'url("test.png")'
+							backgroundImage: 'url("test.png")',
 						}}
-					/>
+					/>,
 				])
 			);
 		});
@@ -121,9 +121,9 @@ describe('Card', () => {
 						title="test"
 						classes={[css.media, css.mediaSquare]}
 						styles={{
-							backgroundImage: 'url("test.png")'
+							backgroundImage: 'url("test.png")',
 						}}
-					/>
+					/>,
 				])
 			);
 		});
@@ -131,21 +131,21 @@ describe('Card', () => {
 
 	describe('actions', () => {
 		const actionsTemplate = template.append('@root', () => [
-			<div key="actions" classes={css.actions} />
+			<div key="actions" classes={css.actions} />,
 		]);
 
 		it('renders action buttons', () => {
 			const h = harness(() => (
 				<Card>
 					{{
-						actionButtons: <Button>test</Button>
+						actionButtons: <Button>test</Button>,
 					}}
 				</Card>
 			));
 			const childrenTemplate = actionsTemplate.setChildren('@actions', () => [
 				<div classes={css.actionButtons}>
 					<Button>test</Button>
-				</div>
+				</div>,
 			]);
 			h.expect(childrenTemplate);
 		});
@@ -154,14 +154,14 @@ describe('Card', () => {
 			const h = harness(() => (
 				<Card>
 					{{
-						actionIcons: <Icon type="upIcon" />
+						actionIcons: <Icon type="upIcon" />,
 					}}
 				</Card>
 			));
 			const childrenTemplate = actionsTemplate.setChildren('@actions', () => [
 				<div classes={css.actionIcons}>
 					<Icon type="upIcon" />
-				</div>
+				</div>,
 			]);
 			h.expect(childrenTemplate);
 		});
@@ -171,7 +171,7 @@ describe('Card', () => {
 				<Card>
 					{{
 						actionButtons: <Button>test</Button>,
-						actionIcons: <Icon type="upIcon" />
+						actionIcons: <Icon type="upIcon" />,
 					}}
 				</Card>
 			));
@@ -181,7 +181,7 @@ describe('Card', () => {
 				</div>,
 				<div classes={css.actionIcons}>
 					<Icon type="upIcon" />
-				</div>
+				</div>,
 			]);
 			h.expect(childrenTemplate);
 		});
@@ -200,7 +200,7 @@ describe('Card', () => {
 					header: 'Header Content',
 					content: 'Content',
 					actionButtons: <Button>test</Button>,
-					actionIcons: <Icon type="upIcon" />
+					actionIcons: <Icon type="upIcon" />,
 				}}
 			</Card>
 		));
@@ -210,21 +210,21 @@ describe('Card', () => {
 				.prepend('@root', () => [
 					<div key="header" classes={css.header}>
 						Header Content
-					</div>
+					</div>,
 				])
 				.setChildren('@content', () => [
 					<div
 						title="test"
 						classes={[css.media, css.mediaSquare]}
 						styles={{
-							backgroundImage: 'url("test.png")'
+							backgroundImage: 'url("test.png")',
 						}}
 					/>,
 					<div classes={css.titleWrapper}>
 						{<h2 classes={css.title}>Hello, World</h2>}
 						<h3 classes={css.subtitle}>this is a test</h3>
 					</div>,
-					<div classes={css.contentWrapper}>Content</div>
+					<div classes={css.contentWrapper}>Content</div>,
 				])
 				.append('@root', () => [
 					<div key="actions" classes={css.actions}>
@@ -234,7 +234,7 @@ describe('Card', () => {
 						<div classes={css.actionIcons}>
 							<Icon type="upIcon" />
 						</div>
-					</div>
+					</div>,
 				])
 		);
 	});

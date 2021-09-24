@@ -13,12 +13,12 @@ function createMiddleware() {
 		middleware: {
 			i18n: {
 				localize: () => ({
-					format: i18nStub
-				})
-			}
+					format: i18nStub,
+				}),
+			},
 		} as any,
 		properties: () => ({}),
-		children: () => []
+		children: () => [],
 	});
 
 	return middleware;
@@ -36,8 +36,8 @@ describe('validation middleware', () => {
 
 			const rules = middleware({
 				length: {
-					min: 2
-				}
+					min: 2,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
@@ -50,8 +50,8 @@ describe('validation middleware', () => {
 
 			const rules = middleware({
 				length: {
-					max: 2
-				}
+					max: 2,
+				},
 			});
 
 			assert.isUndefined(rules(''));
@@ -67,8 +67,8 @@ describe('validation middleware', () => {
 
 			const rules = middleware({
 				contains: {
-					uppercase: 2
-				}
+					uppercase: 2,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
@@ -82,8 +82,8 @@ describe('validation middleware', () => {
 
 			const rules = middleware({
 				contains: {
-					numbers: 2
-				}
+					numbers: 2,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
@@ -97,8 +97,8 @@ describe('validation middleware', () => {
 
 			const rules = middleware({
 				contains: {
-					specialCharacters: 2
-				}
+					specialCharacters: 2,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
@@ -115,14 +115,14 @@ describe('validation middleware', () => {
 				contains: {
 					uppercase: 1,
 					numbers: 1,
-					specialCharacters: 1
-				}
+					specialCharacters: 1,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
 			assert.deepEqual(rules('abc'), {
 				valid: false,
-				message: 'invalid'
+				message: 'invalid',
 			});
 			assert.deepEqual(rules('Abc'), { valid: false, message: 'invalid' });
 			assert.deepEqual(rules('1'), { valid: false, message: 'invalid' });
@@ -140,14 +140,14 @@ describe('validation middleware', () => {
 					atLeast: 1,
 					uppercase: 1,
 					numbers: 1,
-					specialCharacters: 1
-				}
+					specialCharacters: 1,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
 			assert.deepEqual(rules('abc'), {
 				valid: false,
-				message: 'invalid'
+				message: 'invalid',
 			});
 			assert.isUndefined(rules('Abc'));
 			assert.isUndefined(rules('1'));
@@ -165,14 +165,14 @@ describe('validation middleware', () => {
 					atLeast: 2,
 					uppercase: 1,
 					numbers: 1,
-					specialCharacters: 1
-				}
+					specialCharacters: 1,
+				},
 			});
 
 			assert.deepEqual(rules(''), { valid: false, message: 'invalid' });
 			assert.deepEqual(rules('abc'), {
 				valid: false,
-				message: 'invalid'
+				message: 'invalid',
 			});
 			assert.deepEqual(rules('Abc'), { valid: false, message: 'invalid' });
 			assert.isUndefined(rules('Ab1'));
@@ -185,8 +185,8 @@ describe('validation middleware', () => {
 		assert.deepEqual(
 			middleware({
 				length: {
-					min: 2
-				}
+					min: 2,
+				},
 			}).describe(),
 			['invalid']
 		);
@@ -195,8 +195,8 @@ describe('validation middleware', () => {
 			middleware({
 				length: {
 					min: 2,
-					max: 2
-				}
+					max: 2,
+				},
 			}).describe(),
 			['invalid', 'invalid']
 		);
@@ -205,8 +205,8 @@ describe('validation middleware', () => {
 			middleware({
 				contains: {
 					uppercase: 1,
-					numbers: 1
-				}
+					numbers: 1,
+				},
 			}).describe(),
 			['invalid']
 		);
@@ -214,12 +214,12 @@ describe('validation middleware', () => {
 		assert.deepEqual(
 			middleware({
 				length: {
-					min: 1
+					min: 1,
 				},
 				contains: {
 					uppercase: 1,
-					numbers: 1
-				}
+					numbers: 1,
+				},
 			}).describe(),
 			['invalid', 'invalid']
 		);

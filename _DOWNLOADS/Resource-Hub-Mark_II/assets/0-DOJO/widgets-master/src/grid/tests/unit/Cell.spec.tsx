@@ -13,7 +13,7 @@ import {
 	createHarness,
 	compareAriaDescribedBy,
 	isFocusedComparator,
-	noop
+	noop,
 } from '../../../common/tests/support/test-helpers';
 import bundle from '../../nls/Grid';
 import * as fixedCss from '../../styles/cell.m.css';
@@ -27,22 +27,22 @@ const harness = createHarness([compareId, compareAria, compareAriaDescribedBy]);
 const compareInputFocused = {
 	selector: '@input',
 	property: 'focus',
-	comparator: isFocusedComparator
+	comparator: isFocusedComparator,
 };
 
 const compareButtonFocused = {
 	selector: '@button',
 	property: 'focus',
-	comparator: isFocusedComparator
+	comparator: isFocusedComparator,
 };
 
-const expectedEditing = function() {
+const expectedEditing = function () {
 	return v(
 		'div',
 		{
 			role: 'cell',
 			styles: { flex: '0 1 100px' },
-			classes: [css.root, fixedCss.rootFixed]
+			classes: [css.root, fixedCss.rootFixed],
 		},
 		[
 			w(
@@ -56,21 +56,21 @@ const expectedEditing = function() {
 					onValue: noop,
 					onBlur: noop,
 					onKeyDown: noop,
-					theme: undefined
+					theme: undefined,
 				},
 				[{ label: 'Edit id' }]
-			)
+			),
 		]
 	);
 };
 
-const expectedEditable = function() {
+const expectedEditable = function () {
 	return v(
 		'div',
 		{
 			role: 'cell',
 			styles: { flex: '0 1 100px' },
-			classes: [css.root, fixedCss.rootFixed]
+			classes: [css.root, fixedCss.rootFixed],
 		},
 		[
 			v(
@@ -78,7 +78,7 @@ const expectedEditable = function() {
 				{
 					key: 'content',
 					id: '',
-					ondblclick: noop
+					ondblclick: noop,
 				},
 				['id']
 			),
@@ -91,17 +91,17 @@ const expectedEditable = function() {
 					type: 'button',
 					onClick: noop,
 					classes: { '@dojo/widgets/button': { root: [css.edit] } },
-					theme: undefined
+					theme: undefined,
 				},
 				[
 					w(Icon, {
 						type: 'editIcon',
 						altText: messages.edit,
 						theme: undefined,
-						classes: undefined
-					})
+						classes: undefined,
+					}),
 				]
-			)
+			),
 		]
 	);
 };
@@ -113,7 +113,7 @@ describe('Cell', () => {
 				value: 'id',
 				rawValue: 'id',
 				updater: noop,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(() =>
@@ -122,7 +122,7 @@ describe('Cell', () => {
 				{
 					classes: [css.root, fixedCss.rootFixed],
 					styles: { flex: '0 1 100px' },
-					role: 'cell'
+					role: 'cell',
 				},
 				[
 					v(
@@ -130,10 +130,10 @@ describe('Cell', () => {
 						{
 							key: 'content',
 							id: '',
-							ondblclick: noop
+							ondblclick: noop,
 						},
 						['id']
-					)
+					),
 				]
 			)
 		);
@@ -145,7 +145,7 @@ describe('Cell', () => {
 				value: v('div', ['id']),
 				rawValue: 'id',
 				updater: noop,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(() =>
@@ -154,7 +154,7 @@ describe('Cell', () => {
 				{
 					styles: { flex: '0 1 100px' },
 					classes: [css.root, fixedCss.rootFixed],
-					role: 'cell'
+					role: 'cell',
 				},
 				[
 					v(
@@ -162,10 +162,10 @@ describe('Cell', () => {
 						{
 							key: 'content',
 							id: '',
-							ondblclick: noop
+							ondblclick: noop,
 						},
 						[v('div', ['id'])]
-					)
+					),
 				]
 			)
 		);
@@ -178,7 +178,7 @@ describe('Cell', () => {
 				value: 'id',
 				rawValue: 'id',
 				updater: updaterStub,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(() =>
@@ -187,7 +187,7 @@ describe('Cell', () => {
 				{
 					classes: [css.root, fixedCss.rootFixed],
 					styles: { flex: '0 1 100px' },
-					role: 'cell'
+					role: 'cell',
 				},
 				[
 					v(
@@ -195,10 +195,10 @@ describe('Cell', () => {
 						{
 							key: 'content',
 							id: '',
-							ondblclick: noop
+							ondblclick: noop,
 						},
 						['id']
-					)
+					),
 				]
 			)
 		);
@@ -211,7 +211,7 @@ describe('Cell', () => {
 				{
 					classes: [css.root, fixedCss.rootFixed],
 					styles: { flex: '0 1 100px' },
-					role: 'cell'
+					role: 'cell',
 				},
 				[
 					v(
@@ -219,10 +219,10 @@ describe('Cell', () => {
 						{
 							key: 'content',
 							id: '',
-							ondblclick: noop
+							ondblclick: noop,
 						},
 						['id']
-					)
+					),
 				]
 			)
 		);
@@ -236,7 +236,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(expectedEditable);
@@ -254,7 +254,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(expectedEditable);
@@ -277,7 +277,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(expectedEditable);
@@ -300,7 +300,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			})
 		);
 		h.expect(expectedEditable);
@@ -323,7 +323,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			});
 		}, [compareInputFocused]);
 		h.trigger('@content', 'ondblclick');
@@ -338,7 +338,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			});
 		}, [compareButtonFocused]);
 
@@ -358,7 +358,7 @@ describe('Cell', () => {
 				rawValue: 'id',
 				updater: updaterStub,
 				editable: true,
-				width: 100
+				width: 100,
 			});
 		}, [compareButtonFocused]);
 

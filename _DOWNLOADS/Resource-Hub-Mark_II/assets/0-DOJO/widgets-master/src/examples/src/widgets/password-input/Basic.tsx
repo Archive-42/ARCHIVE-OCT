@@ -10,14 +10,14 @@ export default factory(function Basic() {
 			<PasswordInput
 				rules={{
 					length: {
-						min: 4
+						min: 4,
 					},
 					contains: {
 						atLeast: 2,
 						uppercase: 1,
 						specialCharacters: 1,
-						numbers: 1
-					}
+						numbers: 1,
+					},
 				}}
 			>
 				{{ label: 'Enter Password' }}

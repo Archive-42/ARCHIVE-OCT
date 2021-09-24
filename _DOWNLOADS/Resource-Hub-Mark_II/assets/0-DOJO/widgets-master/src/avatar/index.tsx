@@ -33,12 +33,12 @@ export const Avatar = factory(function Avatar({ middleware: { theme }, propertie
 				secondary ? themeCss.avatarColorSecondary : themeCss.avatarColor,
 				outline && themeCss.avatarOutline,
 				themeCss[size],
-				themeCss[type]
+				themeCss[type],
 			]}
 			styles={
 				src
 					? {
-							backgroundImage: `url(${src})`
+							backgroundImage: `url(${src})`,
 					  }
 					: {}
 			}

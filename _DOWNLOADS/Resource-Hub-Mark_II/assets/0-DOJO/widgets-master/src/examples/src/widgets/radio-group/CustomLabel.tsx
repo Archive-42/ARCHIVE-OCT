@@ -5,7 +5,7 @@ import Example from '../../Example';
 
 const factory = create({ icache });
 
-const App = factory(function({ properties, middleware: { icache } }) {
+const App = factory(function ({ properties, middleware: { icache } }) {
 	const { get, set } = icache;
 
 	return (
@@ -15,14 +15,14 @@ const App = factory(function({ properties, middleware: { icache } }) {
 				options={[
 					{ value: 'red', label: 'Rouge' },
 					{ value: 'green', label: 'Vert' },
-					{ value: 'blue', label: 'Bleu' }
+					{ value: 'blue', label: 'Bleu' },
 				]}
 				onValue={(value) => {
 					set('colours', value);
 				}}
 			>
 				{{
-					label: 'colours'
+					label: 'colours',
 				}}
 			</RadioGroup>
 			<pre>{`${get('colours')}`}</pre>

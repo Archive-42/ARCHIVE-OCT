@@ -5,7 +5,7 @@ import { listOptions } from '../../data';
 import Example from '../../Example';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 const resource = createResourceMiddleware();
@@ -55,7 +55,7 @@ export default factory(function Controlled({ id, middleware: { icache, resource 
 					resource={resource({
 						template,
 						transform: { value: 'value', label: 'value' },
-						initOptions: { id, data: listOptions }
+						initOptions: { id, data: listOptions },
 					})}
 					onActiveIndexChange={(index: number) => {
 						icache.set('activeIndex', index);

@@ -10,26 +10,26 @@ import Example from '../../Example';
 const columnConfig: ColumnConfig[] = [
 	{
 		id: 'id',
-		title: 'ID'
+		title: 'ID',
 	},
 	{
 		id: 'firstName',
 		title: 'First Name',
-		filterable: true
+		filterable: true,
 	},
 	{
 		id: 'middleName',
-		title: 'Middle Name'
+		title: 'Middle Name',
 	},
 	{
 		id: 'lastName',
 		title: 'Last Name',
-		filterable: true
+		filterable: true,
 	},
 	{
 		id: 'otherName',
-		title: 'Other Name'
-	}
+		title: 'Other Name',
+	},
 ];
 
 const fetcher = createFetcher(createData());

@@ -2,11 +2,10 @@
 
 Dojo's `Switch` widget provides an on/off toggle that uses the native `<input type="checkbox">` as a base.
 
-
 ## Features
 
-- Creates a toggle switch
-- Correctly handles a11y attributes
+-   Creates a toggle switch
+-   Correctly handles a11y attributes
 
 ### Accessibility Features
 

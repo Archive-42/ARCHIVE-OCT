@@ -22,7 +22,7 @@ export interface ConstrainedInputState {
 const factory = create({
 	icache: createICacheMiddleware<ConstrainedInputState>(),
 	validation,
-	theme
+	theme,
 })
 	.properties<ConstrainedInputProperties>()
 	.children<TextInputChildren | undefined>();
@@ -30,7 +30,7 @@ const factory = create({
 export const ConstrainedInput = factory(function ConstrainedInput({
 	middleware: { icache, validation, theme },
 	properties,
-	children
+	children,
 }) {
 	const { rules, onValidate, helperText, ...props } = properties();
 	const valid = icache.get('valid');
@@ -49,10 +49,7 @@ export const ConstrainedInput = factory(function ConstrainedInput({
 		<TextInput
 			key="root"
 			{...props}
-			theme={theme.compose(
-				textInputCss,
-				constrainedInputCss
-			)}
+			theme={theme.compose(textInputCss, constrainedInputCss)}
 			customValidator={validator}
 			valid={valid}
 			onValidate={handleValidation}

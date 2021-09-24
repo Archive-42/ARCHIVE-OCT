@@ -9,7 +9,7 @@ export default factory(function Basic() {
 		<Example>
 			<Snackbar open={true}>
 				{{
-					message: 'Basic Snackbar'
+					message: 'Basic Snackbar',
 				}}
 			</Snackbar>
 		</Example>

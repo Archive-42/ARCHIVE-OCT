@@ -60,7 +60,7 @@ export const NativeSelect = factory(function NativeSelect({
 	properties,
 	children,
 	id,
-	middleware: { icache, theme, focus }
+	middleware: { icache, theme, focus },
 }) {
 	const {
 		classes,
@@ -75,7 +75,7 @@ export const NativeSelect = factory(function NativeSelect({
 		size,
 		onFocus,
 		onBlur,
-		theme: themeProp
+		theme: themeProp,
 	} = properties();
 
 	const [labelChild] = children();
@@ -108,17 +108,13 @@ export const NativeSelect = factory(function NativeSelect({
 				themedCss.root,
 				disabled && themedCss.disabled,
 				required && themedCss.required,
-				inputFocused ? themedCss.focused : undefined
+				inputFocused ? themedCss.focused : undefined,
 			]}
 			key="root"
 		>
 			{label && (
 				<Label
-					theme={theme.compose(
-						labelCss,
-						css,
-						'label'
-					)}
+					theme={theme.compose(labelCss, css, 'label')}
 					variant={variant}
 					focused={inputFocused}
 					classes={classes}
@@ -170,11 +166,7 @@ export const NativeSelect = factory(function NativeSelect({
 				<span classes={themedCss.arrow}>
 					<Icon
 						type="downIcon"
-						theme={theme.compose(
-							iconCss,
-							css,
-							'icon'
-						)}
+						theme={theme.compose(iconCss, css, 'icon')}
 						variant={variant}
 						classes={classes}
 					/>

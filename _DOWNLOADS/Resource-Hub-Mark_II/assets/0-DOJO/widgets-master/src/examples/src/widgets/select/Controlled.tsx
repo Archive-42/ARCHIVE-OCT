@@ -5,7 +5,7 @@ import Example from '../../Example';
 import {
 	createResourceTemplate,
 	createResourceMiddleware,
-	defaultFind
+	defaultFind,
 } from '@dojo/framework/core/middleware/resources';
 import { ListOption } from '@dojo/widgets/list';
 
@@ -14,14 +14,14 @@ const factory = create({ icache, resource });
 const options = [
 	{ value: '1', label: 'Cat' },
 	{ value: '2', label: 'Dog' },
-	{ value: '3', label: 'Fish' }
+	{ value: '3', label: 'Fish' },
 ];
 
 const template = createResourceTemplate<{ value: string; label: string }>({
 	find: defaultFind,
 	read: async (req, { put }) => {
 		put({ data: options, total: options.length }, req);
-	}
+	},
 });
 
 export default factory(function Controlled({ middleware: { icache, resource } }) {
@@ -36,7 +36,7 @@ export default factory(function Controlled({ middleware: { icache, resource } })
 				value={currentValue ? currentValue.value : '1'}
 			>
 				{{
-					label: 'Controlled Select'
+					label: 'Controlled Select',
 				}}
 			</Select>
 			<pre>{JSON.stringify(icache.getOrSet('value', ''))}</pre>

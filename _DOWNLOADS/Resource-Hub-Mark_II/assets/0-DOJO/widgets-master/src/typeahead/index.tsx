@@ -7,7 +7,7 @@ import List, {
 	ListOption,
 	ListItemProperties,
 	MenuItemProperties,
-	ListProperties
+	ListProperties,
 } from '../list';
 import theme from '../middleware/theme';
 import focus from '@dojo/framework/core/middleware/focus';
@@ -85,7 +85,7 @@ const factory = create({
 	resource: createResourceMiddleware<ListOption>(),
 	theme,
 	focus,
-	i18n
+	i18n,
 })
 	.properties<TypeaheadProperties>()
 	.children<TypeaheadChildren | undefined>();
@@ -94,7 +94,7 @@ export const Typeahead = factory(function Typeahead({
 	id,
 	properties,
 	children,
-	middleware: { icache, resource, theme, focus, i18n }
+	middleware: { icache, resource, theme, focus, i18n },
 }) {
 	const { createOptions, isLoading, meta, find, getOrRead } = resource;
 	const {
@@ -112,7 +112,7 @@ export const Typeahead = factory(function Typeahead({
 		resource: { template, options = createOptions(id) },
 		classes,
 		theme: themeProp,
-		variant
+		variant,
 	} = properties();
 	const themedCss = theme.classes(css);
 	const { messages } = i18n.localize(bundle);
@@ -253,7 +253,7 @@ export const Typeahead = factory(function Typeahead({
 				themedCss.root,
 				disabled && themedCss.disabled,
 				valid === true && themedCss.valid,
-				valid === false && themedCss.invalid
+				valid === false && themedCss.invalid,
 			]}
 		>
 			<TriggerPopup
@@ -299,13 +299,13 @@ export const Typeahead = factory(function Typeahead({
 								find(template, {
 									options: findOptions({
 										page: options().page,
-										size: options().size
+										size: options().size,
 									}),
 									start: 0,
 									query: { value },
-									type: 'exact'
+									type: 'exact',
 								}) || {
-									item: undefined
+									item: undefined,
 								}
 							).item;
 							if (valueOption && icache.get('labelValue') !== valueOption.label) {
@@ -322,11 +322,7 @@ export const Typeahead = factory(function Typeahead({
 									icache.set('labelValue', value || '');
 									icache.delete('value');
 								}}
-								theme={theme.compose(
-									inputCss,
-									css,
-									'input'
-								)}
+								theme={theme.compose(inputCss, css, 'input')}
 								onFocus={() => {
 									const { onFocus } = properties();
 									onFocus && onFocus();
@@ -343,7 +339,7 @@ export const Typeahead = factory(function Typeahead({
 														value: valueOption.value,
 														label: valueOption.label,
 														divider: valueOption.divider,
-														disabled: valueOption.disabled
+														disabled: valueOption.disabled,
 												  }
 												: { value, label: value }
 										);
@@ -360,15 +356,15 @@ export const Typeahead = factory(function Typeahead({
 								aria={{
 									controls: listId,
 									haspopup: 'listbox',
-									expanded: `${icache.getOrSet('expanded', false)}`
+									expanded: `${icache.getOrSet('expanded', false)}`,
 								}}
 								key="trigger"
 								widgetId={triggerId}
 								disabled={disabled}
 								classes={{
 									'@dojo/widgets/text-input': {
-										root: [themedCss.trigger]
-									}
+										root: [themedCss.trigger],
+									},
 								}}
 								variant={variant}
 								onClick={openMenu}
@@ -418,11 +414,7 @@ export const Typeahead = factory(function Typeahead({
 									onBlur={closeMenu}
 									initialValue={value}
 									itemsInView={itemsInView}
-									theme={theme.compose(
-										listCss,
-										css,
-										'menu'
-									)}
+									theme={theme.compose(listCss, css, 'menu')}
 									variant={variant}
 									widgetId={listId}
 								>
@@ -430,7 +422,7 @@ export const Typeahead = factory(function Typeahead({
 								</List>
 							</div>
 						);
-					}
+					},
 				}}
 			</TriggerPopup>
 			<HelperText

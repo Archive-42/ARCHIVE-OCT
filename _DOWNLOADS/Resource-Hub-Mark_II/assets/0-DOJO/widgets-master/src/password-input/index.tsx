@@ -22,7 +22,7 @@ export interface PasswordInputState {
 
 const factory = create({
 	icache: createICacheMiddleware<PasswordInputState>(),
-	theme
+	theme,
 })
 	.properties<PasswordInputProperties>()
 	.children<TextInputChildren | undefined>();
@@ -30,7 +30,7 @@ const factory = create({
 export const PasswordInput = factory(function PasswordInput({
 	middleware: { theme, icache },
 	properties,
-	children
+	children,
 }) {
 	const props = properties();
 	const showPassword = icache.getOrSet('showPassword', false);
@@ -62,10 +62,7 @@ export const PasswordInput = factory(function PasswordInput({
 			rules={props.rules}
 			key="root"
 			type={showPassword ? 'text' : 'password'}
-			theme={theme.compose(
-				textInputCss,
-				css
-			)}
+			theme={theme.compose(textInputCss, css)}
 		>
 			{{ ...children()[0], trailing }}
 		</ConstrainedInput>
@@ -74,10 +71,7 @@ export const PasswordInput = factory(function PasswordInput({
 			{...props}
 			key="root"
 			type={showPassword ? 'text' : 'password'}
-			theme={theme.compose(
-				textInputCss,
-				css
-			)}
+			theme={theme.compose(textInputCss, css)}
 			onValidate={handleValidation}
 			valid={icache.get('valid')}
 		>

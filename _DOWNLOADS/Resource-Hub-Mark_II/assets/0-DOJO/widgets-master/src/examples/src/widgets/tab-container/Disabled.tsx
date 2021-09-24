@@ -10,7 +10,7 @@ export default factory(function Disabled() {
 		{ disabled: true, name: 'Tab One' },
 		{ name: 'Tab Two' },
 		{ disabled: true, name: 'Tab Three' },
-		{ name: 'Tab Four' }
+		{ name: 'Tab Four' },
 	];
 
 	return (

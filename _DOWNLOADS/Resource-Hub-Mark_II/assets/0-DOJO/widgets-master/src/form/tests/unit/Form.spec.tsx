@@ -33,7 +33,7 @@ describe('Form', () => {
 				initialValue="Billy"
 				valid={{
 					valid: undefined,
-					message: ''
+					message: '',
 				}}
 				onValue={noop}
 				onValidate={noop}
@@ -48,7 +48,7 @@ describe('Form', () => {
 				initialValue={undefined}
 				valid={{
 					valid: undefined,
-					message: ''
+					message: '',
 				}}
 				onValue={noop}
 				onValidate={noop}
@@ -64,7 +64,7 @@ describe('Form', () => {
 				initialValue={undefined}
 				valid={{
 					valid: undefined,
-					message: ''
+					message: '',
 				}}
 				onValue={noop}
 				onValidate={noop}
@@ -80,7 +80,7 @@ describe('Form', () => {
 				initialValue={undefined}
 				valid={{
 					valid: undefined,
-					message: ''
+					message: '',
 				}}
 				onValue={noop}
 				onValidate={noop}
@@ -116,7 +116,7 @@ describe('Form', () => {
 	const form = (value?: FormValue) => (
 		<Form
 			initialValue={{
-				firstName: 'Billy'
+				firstName: 'Billy',
 			}}
 			value={value}
 			onSubmit={onSubmit}
@@ -191,7 +191,7 @@ describe('Form', () => {
 							value({
 								firstName: 'Billy',
 								middleName: '',
-								lastName: 'Bob'
+								lastName: 'Bob',
 							});
 						}}
 					>
@@ -221,7 +221,7 @@ describe('Form', () => {
 					</Button>,
 					<Button key="submit" type="submit" disabled={!valid() || disabled()}>
 						Submit
-					</Button>
+					</Button>,
 				];
 			}}
 		</Form>
@@ -241,7 +241,7 @@ describe('Form', () => {
 		const h = harness(() => (
 			<Form
 				initialValue={{
-					firstName: 'Billy'
+					firstName: 'Billy',
 				}}
 				value={undefined}
 				onSubmit={onSubmit}
@@ -317,7 +317,7 @@ describe('Form', () => {
 								value({
 									firstName: 'Billy',
 									middleName: '',
-									lastName: 'Bob'
+									lastName: 'Bob',
 								});
 							}}
 						>
@@ -356,7 +356,7 @@ describe('Form', () => {
 						</Button>,
 						<Button key="submit" type="submit" disabled={!valid() || disabled()}>
 							Submit
-						</Button>
+						</Button>,
 					];
 				}}
 			</Form>
@@ -466,7 +466,7 @@ describe('Form', () => {
 
 		assertion = assertion.setProperty('@firstName', 'valid', {
 			valid: false,
-			message: 'Required'
+			message: 'Required',
 		});
 		h.expect(assertion);
 	});
@@ -595,7 +595,7 @@ describe('Form', () => {
 				firstName: 'Billy',
 				middleName: 'Bo',
 				lastName: 'Bob',
-				email: 'test@example.com'
+				email: 'test@example.com',
 			})
 		);
 	});

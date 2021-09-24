@@ -1,7 +1,7 @@
 import { create, tsx } from '@dojo/framework/core/vdom';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { createICacheMiddleware } from '@dojo/framework/core/middleware/icache';
 import Tree, { TreeNodeOption } from '@dojo/widgets/tree';
@@ -19,38 +19,38 @@ const nodes: TreeNodeOption[] = [
 		id: 'c9ae529a',
 		value: 'parent 1',
 		parent: 'root',
-		hasChildren: true
+		hasChildren: true,
 	},
 	{
 		id: 'cde74420',
 		value: 'parent 1-0',
 		parent: 'c9ae529a',
-		hasChildren: true
+		hasChildren: true,
 	},
 	{
 		id: 'e2065522',
 		value: 'parent 1-1',
 		parent: 'c9ae529a',
-		hasChildren: true
+		hasChildren: true,
 	},
 	{
 		id: 'de48r11ea',
 		value: 'child-1',
 		parent: 'cde74420',
-		hasChildren: false
+		hasChildren: false,
 	},
 	{
 		id: 'd8fada34',
 		value: 'child-2',
 		parent: 'cde74420',
-		hasChildren: false
+		hasChildren: false,
 	},
 	{
 		id: 'e73a11b4',
 		value: 'child-3',
 		parent: 'e2065522',
-		hasChildren: false
-	}
+		hasChildren: false,
+	},
 ];
 const template = createMemoryResourceTemplate<TreeNodeOption>();
 

@@ -84,6 +84,6 @@ registerSuite('Tooltip', {
 					</div>
 				</div>
 			));
-		}
-	}
+		},
+	},
 });

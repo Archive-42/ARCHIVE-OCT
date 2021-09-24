@@ -19,10 +19,10 @@ describe('Grid Utils', () => {
 			{ id: 'A' },
 			{ id: 'B' },
 			{ id: 'Z' },
-			{ id: 'Z' }
+			{ id: 'Z' },
 		]);
 		const descSortedData = sorter(ascSortedData, {
-			sort: { columnId: 'id', direction: 'desc' }
+			sort: { columnId: 'id', direction: 'desc' },
 		});
 		assert.notStrictEqual(descSortedData, ascSortedData);
 		assert.deepEqual(descSortedData, [
@@ -30,7 +30,7 @@ describe('Grid Utils', () => {
 			{ id: 'Z' },
 			{ id: 'B' },
 			{ id: 'A' },
-			{ id: 'A' }
+			{ id: 'A' },
 		]);
 	});
 
@@ -53,11 +53,14 @@ describe('Grid Utils', () => {
 			{ id: 'A', foo: 'bar' },
 			{ id: 'Z', foo: 'bar' },
 			{ id: 'B', foo: 'bar' },
-			{ id: 'A', foo: 'foobar' }
+			{ id: 'A', foo: 'foobar' },
 		];
 		const filteredData = filterer(data, { filter: { id: 'A', foo: 'bar' } });
 		assert.notStrictEqual(filteredData, data);
-		assert.deepEqual(filteredData, [{ id: 'A', foo: 'bar' }, { id: 'A', foo: 'foobar' }]);
+		assert.deepEqual(filteredData, [
+			{ id: 'A', foo: 'bar' },
+			{ id: 'A', foo: 'foobar' },
+		]);
 	});
 
 	it('Should return a fetcher result from the data for the page and pageSize', async () => {
@@ -66,7 +69,7 @@ describe('Grid Utils', () => {
 		assert.notStrictEqual(fetcherResult.data, data);
 		assert.deepEqual(fetcherResult.data, [{ id: 'A' }]);
 		assert.deepEqual(fetcherResult.meta, {
-			total: 3
+			total: 3,
 		});
 	});
 
@@ -75,12 +78,12 @@ describe('Grid Utils', () => {
 		const fetcher = createFetcher(data);
 		const fetcherResult = await fetcher(1, 2, {
 			sort: { columnId: 'id', direction: 'asc' },
-			filter: { id: 'A' }
+			filter: { id: 'A' },
 		});
 		assert.notStrictEqual(fetcherResult.data, data);
 		assert.deepEqual(fetcherResult.data, [{ id: 'Aa' }, { id: 'Ab' }]);
 		assert.deepEqual(fetcherResult.meta, {
-			total: 2
+			total: 2,
 		});
 	});
 
@@ -91,7 +94,7 @@ describe('Grid Utils', () => {
 		assert.notStrictEqual(fetcherResult.data, data);
 		assert.deepEqual(fetcherResult.data, [{ id: 'Ab' }, { id: 'Aa' }]);
 		assert.deepEqual(fetcherResult.meta, {
-			total: 4
+			total: 4,
 		});
 	});
 
@@ -99,14 +102,14 @@ describe('Grid Utils', () => {
 		const data = [
 			{ id: 'A', name: 'bob' },
 			{ id: 'Z', name: 'bill' },
-			{ id: 'B', name: 'ben' }
+			{ id: 'B', name: 'ben' },
 		];
 		const updater = createUpdater(data);
 		updater({ id: 'A', name: 'zane' });
 		assert.deepEqual(data, [
 			{ id: 'A', name: 'zane' },
 			{ id: 'Z', name: 'bill' },
-			{ id: 'B', name: 'ben' }
+			{ id: 'B', name: 'ben' },
 		]);
 	});
 
@@ -114,14 +117,14 @@ describe('Grid Utils', () => {
 		const data = [
 			{ idd: 'A', name: 'bob' },
 			{ idd: 'Z', name: 'bill' },
-			{ idd: 'B', name: 'ben' }
+			{ idd: 'B', name: 'ben' },
 		];
 		const updater = createUpdater(data, 'idd');
 		updater({ idd: 'A', name: 'zane' });
 		assert.deepEqual(data, [
 			{ idd: 'A', name: 'zane' },
 			{ idd: 'Z', name: 'bill' },
-			{ idd: 'B', name: 'ben' }
+			{ idd: 'B', name: 'ben' },
 		]);
 	});
 });

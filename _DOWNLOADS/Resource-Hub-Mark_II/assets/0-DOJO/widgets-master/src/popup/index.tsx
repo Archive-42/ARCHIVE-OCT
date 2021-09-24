@@ -42,7 +42,7 @@ const factory = create({ dimensions, theme, bodyScroll, resize })
 export const Popup = factory(function Popup({
 	properties,
 	children,
-	middleware: { dimensions, theme, bodyScroll, resize }
+	middleware: { dimensions, theme, bodyScroll, resize },
 }) {
 	const { underlayVisible = false, yBottom, yTop, xRight, xLeft, onClose, open } = properties();
 	let { position = 'below' as PopupPosition } = properties();
@@ -58,17 +58,17 @@ export const Popup = factory(function Popup({
 		below: yTop + wrapperDimensions.size.height <= bottomOfVisibleScreen,
 		above: yBottom - wrapperDimensions.size.height >= topOfVisibleScreen,
 		left: xLeft - wrapperDimensions.size.width >= 0,
-		right: xRight + wrapperDimensions.size.width <= widthOfScreen
+		right: xRight + wrapperDimensions.size.width <= widthOfScreen,
 	};
 
 	let wrapperStyles: Partial<CSSStyleDeclaration> = {
-		opacity: '0'
+		opacity: '0',
 	};
 
 	if (wrapperDimensions.size.height) {
 		wrapperStyles = {
 			left: `${xLeft}px`,
-			opacity: '1'
+			opacity: '1',
 		};
 
 		if (position === 'below') {
@@ -121,7 +121,7 @@ export const Popup = factory(function Popup({
 					classes={[
 						theme.variant(),
 						fixedCss.underlay,
-						underlayVisible && classes.underlayVisible
+						underlayVisible && classes.underlayVisible,
 					]}
 					onclick={onClose}
 				/>

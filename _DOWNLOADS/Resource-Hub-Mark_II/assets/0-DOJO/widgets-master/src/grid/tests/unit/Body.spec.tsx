@@ -22,7 +22,7 @@ describe('Body', () => {
 				bottom: 0,
 				top: 0,
 				left: 0,
-				right: 0
+				right: 0,
 			};
 		};
 	});
@@ -35,7 +35,7 @@ describe('Body', () => {
 				bottom: 0,
 				top: 0,
 				left: 0,
-				right: 0
+				right: 0,
 			};
 		};
 	});
@@ -51,7 +51,7 @@ describe('Body', () => {
 				fetcher: noop,
 				updater: noop,
 				pageChange: noop,
-				columnWidths: {}
+				columnWidths: {},
 			})
 		);
 
@@ -68,14 +68,14 @@ describe('Body', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[
 					v('div', { styles: {} }, [
 						v('div', { key: 'top', styles: { height: '0px' } }),
 						...rows,
-						v('div', { key: 'bottom', styles: { height: '31500px' } })
-					])
+						v('div', { key: 'bottom', styles: { height: '31500px' } }),
+					]),
 				]
 			)
 		);
@@ -99,7 +99,7 @@ describe('Body', () => {
 					theme: undefined,
 					columnWidths: {},
 					onRowSelect: undefined,
-					selected: false
+					selected: false,
 				})
 			);
 		}
@@ -110,13 +110,13 @@ describe('Body', () => {
 				pageSize: 100,
 				height: 400,
 				pages: {
-					'page-1': page
+					'page-1': page,
 				},
 				columnConfig: [] as any,
 				fetcher: noop,
 				updater: noop,
 				pageChange: noop,
-				columnWidths: {}
+				columnWidths: {},
 			})
 		);
 
@@ -128,14 +128,14 @@ describe('Body', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[
 					v('div', { styles: {} }, [
 						v('div', { key: 'top', styles: { height: '0px' } }),
 						...rows,
-						v('div', { key: 'bottom', styles: { height: '31500px' } })
-					])
+						v('div', { key: 'bottom', styles: { height: '31500px' } }),
+					]),
 				]
 			)
 		);
@@ -152,7 +152,7 @@ describe('Body', () => {
 				fetcher: noop,
 				updater: noop,
 				pageChange: noop,
-				columnWidths: {}
+				columnWidths: {},
 			})
 		);
 
@@ -169,14 +169,14 @@ describe('Body', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[
 					v('div', { styles: {} }, [
 						v('div', { key: 'top', styles: { height: '0px' } }),
 						...rows,
-						v('div', { key: 'bottom', styles: { height: '0px' } })
-					])
+						v('div', { key: 'bottom', styles: { height: '0px' } }),
+					]),
 				]
 			)
 		);
@@ -200,7 +200,7 @@ describe('Body', () => {
 					theme: undefined,
 					columnWidths: {},
 					onRowSelect: undefined,
-					selected: false
+					selected: false,
 				})
 			);
 		}
@@ -213,13 +213,13 @@ describe('Body', () => {
 				pageSize: 100,
 				height: 400,
 				pages: {
-					'page-1': page
+					'page-1': page,
 				},
 				columnConfig: [] as any,
 				fetcher: fetcherStub,
 				updater: noop,
 				pageChange: noop,
-				columnWidths: {}
+				columnWidths: {},
 			})
 		);
 
@@ -231,14 +231,14 @@ describe('Body', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[
 					v('div', { styles: {} }, [
 						v('div', { key: 'top', styles: { height: '0px' } }),
 						...rows,
-						v('div', { key: 'bottom', styles: { height: '31500px' } })
-					])
+						v('div', { key: 'bottom', styles: { height: '31500px' } }),
+					]),
 				]
 			)
 		);
@@ -246,8 +246,8 @@ describe('Body', () => {
 		h.trigger('@root', 'onscroll', {
 			target: {
 				scrollTop: 10000,
-				scrollLeft: 0
-			}
+				scrollLeft: 0,
+			},
 		});
 
 		rows = [];
@@ -263,14 +263,14 @@ describe('Body', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[
 					v('div', { styles: {} }, [
 						v('div', { key: 'top', styles: { height: '10010px' } }),
 						...rows,
-						v('div', { key: 'bottom', styles: { height: '23310px' } })
-					])
+						v('div', { key: 'bottom', styles: { height: '23310px' } }),
+					]),
 				]
 			)
 		);
@@ -285,14 +285,14 @@ describe('Body', () => {
 					classes: [css.root, fixedCss.rootFixed],
 					role: 'rowgroup',
 					onscroll: noop,
-					styles: { height: '400px' }
+					styles: { height: '400px' },
 				},
 				[
 					v('div', { styles: {} }, [
 						v('div', { key: 'top', styles: { height: '10010px' } }),
 						...rows,
-						v('div', { key: 'bottom', styles: { height: '23310px' } })
-					])
+						v('div', { key: 'bottom', styles: { height: '23310px' } }),
+					]),
 				]
 			)
 		);
@@ -313,21 +313,21 @@ describe('Body', () => {
 					pageSize: 100,
 					height: 400,
 					pages: {
-						'page-1': page
+						'page-1': page,
 					},
 					columnConfig: [] as any,
 					fetcher: noop,
 					updater: noop,
 					pageChange: pageChangeStub,
-					columnWidths: {}
+					columnWidths: {},
 				})
 			);
 
 			h.trigger('@root', 'onscroll', {
 				target: {
 					scrollTop: 0,
-					scrollLeft: 0
-				}
+					scrollLeft: 0,
+				},
 			});
 			h.expect(() => h.getRender());
 			assert.isTrue(pageChangeStub.calledWith(1));
@@ -347,21 +347,21 @@ describe('Body', () => {
 					pageSize: 100,
 					height: 400,
 					pages: {
-						'page-1': page
+						'page-1': page,
 					},
 					columnConfig: [] as any,
 					fetcher: noop,
 					updater: noop,
 					pageChange: pageChangeStub,
-					columnWidths: {}
+					columnWidths: {},
 				})
 			);
 			// scroll to row 286
 			h.trigger('@root', 'onscroll', {
 				target: {
 					scrollTop: 10000,
-					scrollLeft: 0
-				}
+					scrollLeft: 0,
+				},
 			});
 			// force a render
 			h.expect(() => h.getRender());
@@ -379,8 +379,8 @@ describe('Body', () => {
 			const columnConfig = [
 				{
 					id: 'id',
-					title: 'Id'
-				}
+					title: 'Id',
+				},
 			];
 
 			const h = harness(() =>
@@ -394,9 +394,9 @@ describe('Body', () => {
 					updater: noop,
 					pageChange: pageChangeStub,
 					columnWidths: {
-						id: 100
+						id: 100,
 					},
-					width: 100
+					width: 100,
 				})
 			);
 
@@ -413,14 +413,14 @@ describe('Body', () => {
 						classes: [css.root, fixedCss.rootFixed],
 						role: 'rowgroup',
 						onscroll: noop,
-						styles: { height: '400px', width: '100px' }
+						styles: { height: '400px', width: '100px' },
 					},
 					[
 						v('div', { styles: { width: '100px' } }, [
 							v('div', { key: 'top', styles: { height: '0px' } }),
 							...rows,
-							v('div', { key: 'bottom', styles: { height: '31500px' } })
-						])
+							v('div', { key: 'bottom', styles: { height: '31500px' } }),
+						]),
 					]
 				)
 			);
@@ -430,8 +430,8 @@ describe('Body', () => {
 			const columnConfig = [
 				{
 					id: 'id',
-					title: 'Id'
-				}
+					title: 'Id',
+				},
 			];
 			const rows: any[] = [];
 			const page: any[] = [];
@@ -450,7 +450,7 @@ describe('Body', () => {
 						theme: undefined,
 						columnWidths: undefined,
 						onRowSelect: noop,
-						selected: i === 1
+						selected: i === 1,
 					})
 				);
 			}
@@ -461,14 +461,14 @@ describe('Body', () => {
 					pageSize: 100,
 					height: 400,
 					pages: {
-						'page-1': page
+						'page-1': page,
 					},
 					columnConfig,
 					fetcher: noop,
 					updater: noop,
 					pageChange: noop,
 					onRowSelect: noop,
-					selectedRows: [1]
+					selectedRows: [1],
 				})
 			);
 
@@ -480,14 +480,14 @@ describe('Body', () => {
 						classes: [css.root, fixedCss.rootFixed],
 						role: 'rowgroup',
 						onscroll: noop,
-						styles: { height: '400px' }
+						styles: { height: '400px' },
 					},
 					[
 						v('div', { styles: {} }, [
 							v('div', { key: 'top', styles: { height: '0px' } }),
 							...rows,
-							v('div', { key: 'bottom', styles: { height: '31500px' } })
-						])
+							v('div', { key: 'bottom', styles: { height: '31500px' } }),
+						]),
 					]
 				)
 			);

@@ -14,7 +14,7 @@ import bundle from './nls/TimePicker';
 import i18n from '@dojo/framework/core/middleware/i18n';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 
 import { RenderResult } from '@dojo/framework/core/interfaces';
@@ -83,7 +83,7 @@ const factory = create({
 	theme,
 	i18n,
 	focus,
-	icache: createICacheMiddleware<TimePickerICache>()
+	icache: createICacheMiddleware<TimePickerICache>(),
 })
 	.properties<TimePickerProperties>()
 	.children<TimePickerChildren | RenderResult | undefined>();
@@ -102,31 +102,31 @@ const formats: Record<string, TimeParser> = {
 	hh: {
 		regex: /^(\d{1,2})$/i,
 		positions: {
-			hour: 1
-		}
+			hour: 1,
+		},
 	},
 
 	hhmm: {
 		regex: /^(\d{1,2}):(\d{1,2})$/,
 		positions: {
 			hour: 1,
-			minute: 2
-		}
+			minute: 2,
+		},
 	},
 	hhmmss: {
 		regex: /^(\d{1,2}):(\d{1,2}):(\d{1,2})$/,
 		positions: {
 			hour: 1,
 			minute: 2,
-			second: 3
-		}
+			second: 3,
+		},
 	},
 	hham: {
 		regex: /^(\d{1,2})\s*([ap]\.?m\.?)$/i,
 		positions: {
 			hour: 1,
-			amPm: 2
-		}
+			amPm: 2,
+		},
 	},
 
 	hhmmam: {
@@ -134,8 +134,8 @@ const formats: Record<string, TimeParser> = {
 		positions: {
 			hour: 1,
 			minute: 2,
-			amPm: 3
-		}
+			amPm: 3,
+		},
 	},
 	hhmmssam: {
 		regex: /^(\d{1,2}):(\d{1,2}):(\d{1,2})\s*([ap]\.?m\.?)$/i,
@@ -143,9 +143,9 @@ const formats: Record<string, TimeParser> = {
 			hour: 1,
 			minute: 2,
 			second: 3,
-			amPm: 4
-		}
-	}
+			amPm: 4,
+		},
+	},
 };
 
 const formats24 = ['hh', 'hhmm', 'hhmmss'];
@@ -221,7 +221,7 @@ export const TimePicker = factory(function TimePicker({
 	id,
 	middleware: { theme, icache, focus, i18n, resource },
 	properties,
-	children
+	children,
 }) {
 	const themedCss = theme.classes(css);
 	const { messages } = i18n.localize(bundle);
@@ -237,7 +237,7 @@ export const TimePicker = factory(function TimePicker({
 					hour12: false,
 					hour: 'numeric',
 					minute: 'numeric',
-					second: hideSeconds ? undefined : 'numeric'
+					second: hideSeconds ? undefined : 'numeric',
 				})
 				.replace(/[^a-zA-Z\d\s:.]/g, '');
 		} else {
@@ -246,7 +246,7 @@ export const TimePicker = factory(function TimePicker({
 					hour12: true,
 					hour: 'numeric',
 					minute: 'numeric',
-					second: hideSeconds ? undefined : 'numeric'
+					second: hideSeconds ? undefined : 'numeric',
 				})
 				.replace(/[^a-zA-Z\d\s:.]/g, '');
 		}
@@ -347,7 +347,7 @@ export const TimePicker = factory(function TimePicker({
 			options.push({
 				label: value,
 				value: value,
-				disabled: timeDisabled ? timeDisabled(dt) : false
+				disabled: timeDisabled ? timeDisabled(dt) : false,
 			});
 
 			dt.setSeconds(dt.getSeconds() + step);
@@ -387,11 +387,7 @@ export const TimePicker = factory(function TimePicker({
 									disabled={disabled}
 									required={required}
 									focus={() => shouldFocus && focusNode === 'input'}
-									theme={theme.compose(
-										inputCss,
-										css,
-										'input'
-									)}
+									theme={theme.compose(inputCss, css, 'input')}
 									classes={classes}
 									variant={variant}
 									initialValue={icache.get('inputValue')}
@@ -437,7 +433,7 @@ export const TimePicker = factory(function TimePicker({
 													<Icon type="clockIcon" />
 												</button>
 											</Addon>
-										)
+										),
 									}}
 								</TextInput>
 							</div>
@@ -461,7 +457,7 @@ export const TimePicker = factory(function TimePicker({
 									focus={() => shouldFocus && focusNode === 'menu'}
 									resource={resource({
 										template,
-										initOptions: { id, data: options }
+										initOptions: { id, data: options },
 									})}
 									onValue={(value) => {
 										if (controlledValue === undefined) {
@@ -479,7 +475,7 @@ export const TimePicker = factory(function TimePicker({
 								/>
 							</div>
 						);
-					}
+					},
 				}}
 			</TriggerPopup>
 		</div>

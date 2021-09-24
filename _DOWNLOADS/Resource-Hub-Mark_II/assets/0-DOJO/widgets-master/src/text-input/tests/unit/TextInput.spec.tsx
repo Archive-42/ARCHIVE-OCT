@@ -18,7 +18,7 @@ import {
 	compareId,
 	createHarness,
 	noop,
-	stubEvent
+	stubEvent,
 } from '../../../common/tests/support/test-helpers';
 import HelperText from '../../../helper-text/index';
 
@@ -41,14 +41,14 @@ interface ExpectedOptions {
 	value?: string;
 }
 
-const expected = function({
+const expected = function ({
 	label = false,
 	inputOverrides = {},
 	states = {},
 	focused = false,
 	helperText,
 	value,
-	labelHidden = false
+	labelHidden = false,
 }: ExpectedOptions = {}) {
 	const { disabled, required, readOnly, valid: validState } = states;
 	let valid: boolean | undefined;
@@ -77,7 +77,7 @@ const expected = function({
 					required ? css.required : null,
 					null,
 					null,
-					!label || labelHidden ? css.noLabel : null
+					!label || labelHidden ? css.noLabel : null,
 				]}
 				role="presentation"
 			>
@@ -225,7 +225,7 @@ registerSuite('TextInput', {
 					null,
 					null,
 					null,
-					css.noLabel
+					css.noLabel,
 				]);
 			h.expect(valueTemplate);
 		},
@@ -235,7 +235,7 @@ registerSuite('TextInput', {
 				<TextInput
 					aria={{
 						controls: 'foo',
-						describedBy: 'bar'
+						describedBy: 'bar',
 					}}
 					widgetId="foo"
 					maxLength={50}
@@ -256,8 +256,8 @@ registerSuite('TextInput', {
 						minlength: '10',
 						name: 'bar',
 						placeholder: 'baz',
-						type: 'email'
-					}
+						type: 'email',
+					},
 				})
 			);
 		},
@@ -275,22 +275,22 @@ registerSuite('TextInput', {
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							pattern: '^foo|bar$'
-						}
+							pattern: '^foo|bar$',
+						},
 					})
 				);
 			},
 			regexp() {
 				const properties = {
-					pattern: /^foo|bar$/
+					pattern: /^foo|bar$/,
 				};
 				const h = harness(() => <TextInput {...properties} />);
 
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							pattern: '^foo|bar$'
-						}
+							pattern: '^foo|bar$',
+						},
 					})
 				);
 
@@ -299,8 +299,8 @@ registerSuite('TextInput', {
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							pattern: '^bar|baz$'
-						}
+							pattern: '^bar|baz$',
+						},
 					})
 				);
 
@@ -309,11 +309,11 @@ registerSuite('TextInput', {
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							pattern: '^ham|spam$'
-						}
+							pattern: '^ham|spam$',
+						},
 					})
 				);
-			}
+			},
 		},
 
 		autocomplete: {
@@ -323,8 +323,8 @@ registerSuite('TextInput', {
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							autocomplete: 'on'
-						}
+							autocomplete: 'on',
+						},
 					})
 				);
 			},
@@ -334,8 +334,8 @@ registerSuite('TextInput', {
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							autocomplete: 'off'
-						}
+							autocomplete: 'off',
+						},
 					})
 				);
 			},
@@ -345,11 +345,11 @@ registerSuite('TextInput', {
 				h.expect(() =>
 					expected({
 						inputOverrides: {
-							autocomplete: 'name'
-						}
+							autocomplete: 'name',
+						},
 					})
 				);
-			}
+			},
 		},
 
 		'state classes'() {
@@ -357,13 +357,13 @@ registerSuite('TextInput', {
 				disabled: true,
 				readOnly: true,
 				required: true,
-				valid: true
+				valid: true,
 			};
 			const h = harness(() => <TextInput {...properties} />);
 
 			h.expect(() =>
 				expected({
-					states: properties
+					states: properties,
 				})
 			);
 
@@ -371,12 +371,12 @@ registerSuite('TextInput', {
 				disabled: false,
 				readOnly: false,
 				required: false,
-				valid: false
+				valid: false,
 			};
 
 			h.expect(() =>
 				expected({
-					states: properties
+					states: properties,
 				})
 			);
 
@@ -384,12 +384,12 @@ registerSuite('TextInput', {
 				disabled: false,
 				readOnly: false,
 				required: false,
-				valid: { valid: false, message: 'test' }
+				valid: { valid: false, message: 'test' },
 			};
 
 			h.expect(() =>
 				expected({
-					states: properties
+					states: properties,
 				})
 			);
 		},
@@ -402,7 +402,10 @@ registerSuite('TextInput', {
 			validityMock('input', { valid: undefined, message: '' });
 
 			const h = harness(() => <TextInput />, {
-				middleware: [[focus, focusMock], [validity, validityMock]]
+				middleware: [
+					[focus, focusMock],
+					[validity, validityMock],
+				],
 			});
 			h.expect(() => expected({ focused: true }));
 		},
@@ -426,7 +429,10 @@ registerSuite('TextInput', {
 			let h = harness(
 				() => <TextInput initialValue="test value" onValidate={validateSpy} />,
 				{
-					middleware: [[focus, focusMock], [validity, validityMock]]
+					middleware: [
+						[focus, focusMock],
+						[validity, validityMock],
+					],
 				}
 			);
 
@@ -437,7 +443,10 @@ registerSuite('TextInput', {
 			validityMock('input', { valid: true, message: '' });
 
 			h = harness(() => <TextInput initialValue="test value" onValidate={validateSpy} />, {
-				middleware: [[focus, focusMock], [validity, validityMock]]
+				middleware: [
+					[focus, focusMock],
+					[validity, validityMock],
+				],
 			});
 
 			h.trigger('@input', '');
@@ -463,7 +472,12 @@ registerSuite('TextInput', {
 						onValidate={validateSpy}
 					/>
 				),
-				{ middleware: [[focus, focusMock], [validity, validityMock]] }
+				{
+					middleware: [
+						[focus, focusMock],
+						[validity, validityMock],
+					],
+				}
 			);
 
 			h.expect(
@@ -471,8 +485,8 @@ registerSuite('TextInput', {
 					expected({
 						value: 'test value',
 						states: {
-							valid: { valid: false, message: 'test' }
-						}
+							valid: { valid: false, message: 'test' },
+						},
 					})
 				)
 			);
@@ -498,7 +512,12 @@ registerSuite('TextInput', {
 						customValidator={customValidatorSpy}
 					/>
 				),
-				{ middleware: [[focus, focusMock], [validity, validityMock]] }
+				{
+					middleware: [
+						[focus, focusMock],
+						[validity, validityMock],
+					],
+				}
 			);
 
 			h.expect(assertionTemplate(() => expected({ value: 'test value' })));
@@ -524,7 +543,12 @@ registerSuite('TextInput', {
 						customValidator={customValidatorSpy}
 					/>
 				),
-				{ middleware: [[focus, focusMock], [validity, validityMock]] }
+				{
+					middleware: [
+						[focus, focusMock],
+						[validity, validityMock],
+					],
+				}
 			);
 
 			h.expect(assertionTemplate(() => expected({ value: 'test value' })));
@@ -552,7 +576,12 @@ registerSuite('TextInput', {
 						customValidator={customValidatorSpy}
 					/>
 				),
-				{ middleware: [[focus, focusMock], [validity, validityMock]] }
+				{
+					middleware: [
+						[focus, focusMock],
+						[validity, validityMock],
+					],
+				}
 			);
 
 			h.expect(assertionTemplate(() => expected({ value: 'test value' })));
@@ -573,7 +602,7 @@ registerSuite('TextInput', {
 					null,
 					css.hasLeading,
 					null,
-					css.noLabel
+					css.noLabel,
 				])
 				.prepend('@inputWrapper', () => [leading]);
 			const h = harness(() => <TextInput>{{ leading }}</TextInput>);
@@ -593,7 +622,7 @@ registerSuite('TextInput', {
 					null,
 					null,
 					css.hasTrailing,
-					css.noLabel
+					css.noLabel,
 				])
 				.append('@inputWrapper', () => [trailing]);
 			const h = harness(() => <TextInput>{{ trailing }}</TextInput>);
@@ -647,7 +676,7 @@ registerSuite('TextInput', {
 							editedValues = {
 								...values,
 								...editedValues,
-								required: value as string
+								required: value as string,
 							};
 						}}
 						initialValue={editedValues ? editedValues.required : values.required}
@@ -656,7 +685,12 @@ registerSuite('TextInput', {
 						placeholder={placeholder}
 					/>
 				),
-				{ middleware: [[focus, focusMock], [validity, validityMock]] }
+				{
+					middleware: [
+						[focus, focusMock],
+						[validity, validityMock],
+					],
+				}
 			);
 
 			let assertion = baseAssertion
@@ -670,7 +704,7 @@ registerSuite('TextInput', {
 					css.required,
 					null,
 					null,
-					css.noLabel
+					css.noLabel,
 				])
 				.setProperty('@input', 'required', true)
 				.setProperty('@input', 'value', 'Initial');
@@ -691,7 +725,7 @@ registerSuite('TextInput', {
 					css.required,
 					null,
 					null,
-					css.noLabel
+					css.noLabel,
 				])
 				.setProperty('@input', 'aria-invalid', 'true')
 				.setProperty('~helperText', 'text', 'Please fill out this field.')
@@ -724,7 +758,7 @@ registerSuite('TextInput', {
 						css.required,
 						null,
 						null,
-						css.noLabel
+						css.noLabel,
 					])
 					.setProperty('~helperText', 'valid', true)
 			);
@@ -766,6 +800,6 @@ registerSuite('TextInput', {
 
 			const h = harness(() => w(Addon, {}, ['foo', <div>bar</div>]));
 			h.expect(addonTemplate);
-		}
-	}
+		},
+	},
 });

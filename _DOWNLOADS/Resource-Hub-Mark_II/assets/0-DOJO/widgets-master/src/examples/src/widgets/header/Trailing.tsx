@@ -15,9 +15,9 @@ export default factory(function Basic() {
 					actions: [
 						<Link to="#foo">Foo</Link>,
 						<Link to="#bar">Bar</Link>,
-						<Link to="#baz">Baz</Link>
+						<Link to="#baz">Baz</Link>,
 					],
-					trailing: <Icon type="searchIcon" />
+					trailing: <Icon type="searchIcon" />,
 				}}
 			</Header>
 		</Example>

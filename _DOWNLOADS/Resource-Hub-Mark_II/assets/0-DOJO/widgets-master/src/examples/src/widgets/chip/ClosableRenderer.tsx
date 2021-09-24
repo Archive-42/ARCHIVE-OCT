@@ -20,7 +20,7 @@ const App = factory(function ClosableRenderer({ middleware: { icache } }) {
 				>
 					{{
 						label: 'Close me',
-						closeIcon: <Icon type="minusIcon" />
+						closeIcon: <Icon type="minusIcon" />,
 					}}
 				</Chip>
 			)}

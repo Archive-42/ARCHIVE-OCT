@@ -1,7 +1,7 @@
 import icache from '@dojo/framework/core/middleware/icache';
 import {
 	createMemoryResourceTemplate,
-	createResourceMiddleware
+	createResourceMiddleware,
 } from '@dojo/framework/core/middleware/resources';
 import { create, tsx } from '@dojo/framework/core/vdom';
 import List, { ListOption } from '@dojo/widgets/list';
@@ -13,7 +13,7 @@ const factory = create({ icache, resource });
 
 const items = Array.from(Array(100).keys()).map((value, i) => ({
 	value: `${i}`,
-	label: `${value}`
+	label: `${value}`,
 }));
 const template = createMemoryResourceTemplate<ListOption>();
 

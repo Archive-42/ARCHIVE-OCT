@@ -15,10 +15,10 @@ const expected = assertionTemplate(() => (
 		onValidate={noop}
 		valid={{
 			valid: undefined,
-			message: undefined
+			message: undefined,
 		}}
 		theme={{
-			'@dojo/widgets/text-input': textInputCss
+			'@dojo/widgets/text-input': textInputCss,
 		}}
 	/>
 ));
@@ -28,6 +28,6 @@ registerSuite('EmailInput', {
 		'default properties'() {
 			const h = harness(() => <EmailInput />, [compareTheme]);
 			h.expect(expected);
-		}
-	}
+		},
+	},
 });

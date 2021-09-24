@@ -11,18 +11,12 @@ const factory = create({ theme }).properties<OutlinedButtonProperties>();
 export const OutlinedButton = factory(function OutlinedButton({
 	properties,
 	children,
-	middleware: { theme }
+	middleware: { theme },
 }) {
 	const props = properties();
 
 	return (
-		<Button
-			{...props}
-			theme={theme.compose(
-				buttonCss,
-				outlinedButtonCss
-			)}
-		>
+		<Button {...props} theme={theme.compose(buttonCss, outlinedButtonCss)}>
 			{children()}
 		</Button>
 	);

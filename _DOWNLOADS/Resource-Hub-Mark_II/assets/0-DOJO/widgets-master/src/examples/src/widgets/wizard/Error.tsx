@@ -12,14 +12,14 @@ export default factory(function Error() {
 				<Step status="error">
 					{{
 						title: 'Title',
-						subTitle: 'SubTitle'
+						subTitle: 'SubTitle',
 					}}
 				</Step>
 				<Step status="pending">
 					{{
 						title: 'Title',
 						subTitle: 'SubTitle',
-						description: 'Description'
+						description: 'Description',
 					}}
 				</Step>
 			</Wizard>

@@ -15,9 +15,9 @@ export interface PaginatedFooterProperties {
 }
 
 @theme(css)
-export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
-	PaginatedFooterProperties
-> {
+export default class PaginatedFooter extends I18nMixin(
+	ThemedMixin(WidgetBase)
+)<PaginatedFooterProperties> {
 	private _renderPageControl(page: number) {
 		const { onPageChange, page: currentPage } = this.properties;
 		const { format } = this.localizeBundle(bundle);
@@ -35,7 +35,7 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 				'aria-label': active
 					? format('currentPage', { page })
 					: format('goToPage', { page }),
-				classes: [this.theme(css.pageNumber), active && this.theme(css.active)]
+				classes: [this.theme(css.pageNumber), active && this.theme(css.active)],
 			},
 			[`${page}`]
 		);
@@ -56,11 +56,11 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 						{
 							key: 'more',
 							'aria-hidden': 'true',
-							classes: [this.theme(css.more), fixedCss.moreFixed]
+							classes: [this.theme(css.more), fixedCss.moreFixed],
 						},
 						['...']
 					),
-				totalPages > 5 && this._renderPageControl(totalPages)
+				totalPages > 5 && this._renderPageControl(totalPages),
 			];
 		} else if (page > totalPages - 3) {
 			return [
@@ -70,7 +70,7 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 					{
 						key: 'less',
 						'aria-hidden': 'true',
-						classes: [this.theme(css.more), fixedCss.moreFixed]
+						classes: [this.theme(css.more), fixedCss.moreFixed],
 					},
 					['...']
 				),
@@ -78,7 +78,7 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 				this._renderPageControl(totalPages - 3),
 				this._renderPageControl(totalPages - 2),
 				this._renderPageControl(totalPages - 1),
-				this._renderPageControl(totalPages)
+				this._renderPageControl(totalPages),
 			];
 		} else {
 			return [
@@ -88,7 +88,7 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 					{
 						key: 'less',
 						'aria-hidden': 'true',
-						classes: [this.theme(css.more), fixedCss.moreFixed]
+						classes: [this.theme(css.more), fixedCss.moreFixed],
 					},
 					['...']
 				),
@@ -100,11 +100,11 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 					{
 						key: 'more',
 						'aria-hidden': 'true',
-						classes: [this.theme(css.more), fixedCss.moreFixed]
+						classes: [this.theme(css.more), fixedCss.moreFixed],
 					},
 					['...']
 				),
-				this._renderPageControl(totalPages)
+				this._renderPageControl(totalPages),
 			];
 		}
 	}
@@ -127,17 +127,17 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 					classes: [
 						fixedCss.containerFixed,
 						this.theme(css.details),
-						fixedCss.detailsFixed
-					]
+						fixedCss.detailsFixed,
+					],
 				},
 				[
 					total
 						? format('resultRange', {
 								from,
 								to: total < to ? total : to,
-								total
+								total,
 						  })
-						: messages.noResults
+						: messages.noResults,
 				]
 			),
 			v(
@@ -145,7 +145,7 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 				{
 					role: 'navigation',
 					'aria-label': messages.pagination,
-					classes: [this.theme(css.pagination)]
+					classes: [this.theme(css.pagination)],
 				},
 				[
 					v(
@@ -154,8 +154,8 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 							classes: [
 								fixedCss.containerFixed,
 								this.theme(css.paginationList),
-								fixedCss.paginationListFixed
-							]
+								fixedCss.paginationListFixed,
+							],
 						},
 						[
 							v('li', { classes: [fixedCss.itemFixed, this.theme(css.item)] }, [
@@ -171,8 +171,8 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 											'aria-label': format('goToPage', { page: page - 1 }),
 											classes: [
 												this.theme(css.pageNav),
-												fixedCss.pageNavFixed
-											]
+												fixedCss.pageNavFixed,
+											],
 										},
 										['<']
 									),
@@ -189,16 +189,16 @@ export default class PaginatedFooter extends I18nMixin(ThemedMixin(WidgetBase))<
 											'aria-label': format('goToPage', { page: page + 1 }),
 											classes: [
 												this.theme(css.pageNav),
-												fixedCss.pageNavFixed
-											]
+												fixedCss.pageNavFixed,
+											],
 										},
 										['>']
-									)
-							])
+									),
+							]),
 						]
-					)
+					),
 				]
-			)
+			),
 		]);
 	}
 }

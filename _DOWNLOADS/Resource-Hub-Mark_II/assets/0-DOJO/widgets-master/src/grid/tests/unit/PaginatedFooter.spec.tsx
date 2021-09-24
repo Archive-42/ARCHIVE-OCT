@@ -15,7 +15,7 @@ const baseTemplate = assertionTemplate(() =>
 			'div',
 			{
 				'~key': 'details',
-				classes: [fixedCss.containerFixed, css.details, fixedCss.detailsFixed]
+				classes: [fixedCss.containerFixed, css.details, fixedCss.detailsFixed],
 			},
 			['1 – 100 of 10500 Results']
 		),
@@ -24,7 +24,7 @@ const baseTemplate = assertionTemplate(() =>
 			{
 				role: 'navigation',
 				'aria-label': 'Pagination Navigation',
-				classes: [css.pagination]
+				classes: [css.pagination],
 			},
 			[
 				v(
@@ -33,8 +33,8 @@ const baseTemplate = assertionTemplate(() =>
 						classes: [
 							fixedCss.containerFixed,
 							css.paginationList,
-							fixedCss.paginationListFixed
-						]
+							fixedCss.paginationListFixed,
+						],
 					},
 					[
 						v(
@@ -48,7 +48,7 @@ const baseTemplate = assertionTemplate(() =>
 										disabled: true,
 										onclick: noop,
 										'aria-label': `Go to Page 0`,
-										classes: [css.pageNav, fixedCss.pageNavFixed]
+										classes: [css.pageNav, fixedCss.pageNavFixed],
 									},
 									['<']
 								),
@@ -61,7 +61,7 @@ const baseTemplate = assertionTemplate(() =>
 										onclick: noop,
 										'aria-current': 'page',
 										'aria-label': 'Current Page, Page 1',
-										classes: [css.pageNumber, css.active]
+										classes: [css.pageNumber, css.active],
 									},
 									['1']
 								),
@@ -73,7 +73,7 @@ const baseTemplate = assertionTemplate(() =>
 										onclick: noop,
 										'aria-current': undefined,
 										'aria-label': 'Go to Page 2',
-										classes: [css.pageNumber, false]
+										classes: [css.pageNumber, false],
 									},
 									['2']
 								),
@@ -85,7 +85,7 @@ const baseTemplate = assertionTemplate(() =>
 										onclick: noop,
 										'aria-current': undefined,
 										'aria-label': 'Go to Page 3',
-										classes: [css.pageNumber, false]
+										classes: [css.pageNumber, false],
 									},
 									['3']
 								),
@@ -97,7 +97,7 @@ const baseTemplate = assertionTemplate(() =>
 										onclick: noop,
 										'aria-current': undefined,
 										'aria-label': 'Go to Page 4',
-										classes: [css.pageNumber, false]
+										classes: [css.pageNumber, false],
 									},
 									['4']
 								),
@@ -109,7 +109,7 @@ const baseTemplate = assertionTemplate(() =>
 										onclick: noop,
 										'aria-current': undefined,
 										'aria-label': 'Go to Page 5',
-										classes: [css.pageNumber, false]
+										classes: [css.pageNumber, false],
 									},
 									['5']
 								),
@@ -118,7 +118,7 @@ const baseTemplate = assertionTemplate(() =>
 									{
 										key: 'more',
 										'aria-hidden': 'true',
-										classes: [css.more, fixedCss.moreFixed]
+										classes: [css.more, fixedCss.moreFixed],
 									},
 									['...']
 								),
@@ -130,7 +130,7 @@ const baseTemplate = assertionTemplate(() =>
 										onclick: noop,
 										'aria-current': undefined,
 										'aria-label': 'Go to Page 105',
-										classes: [css.pageNumber, false]
+										classes: [css.pageNumber, false],
 									},
 									['105']
 								),
@@ -141,16 +141,16 @@ const baseTemplate = assertionTemplate(() =>
 										disabled: false,
 										onclick: noop,
 										'aria-label': `Go to Page 2`,
-										classes: [css.pageNav, fixedCss.pageNavFixed]
+										classes: [css.pageNav, fixedCss.pageNavFixed],
 									},
 									['>']
-								)
+								),
 							]
-						)
+						),
 					]
-				)
+				),
 			]
-		)
+		),
 	])
 );
 
@@ -160,7 +160,7 @@ describe('PaginatedFooter', () => {
 			w(PaginatedFooter, {
 				page: 1,
 				pageSize: 100,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		h.expect(() => v('div', { classes: [css.root, fixedCss.rootFixed] }));
@@ -172,7 +172,7 @@ describe('PaginatedFooter', () => {
 				page: 1,
 				pageSize: 100,
 				total: 10500,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		h.expect(baseTemplate);
@@ -184,7 +184,7 @@ describe('PaginatedFooter', () => {
 				page: 12,
 				pageSize: 100,
 				total: 10500,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		const pageControlsTemplate = baseTemplate
@@ -198,7 +198,7 @@ describe('PaginatedFooter', () => {
 							disabled: false,
 							onclick: noop,
 							'aria-label': `Go to Page 11`,
-							classes: [css.pageNav, fixedCss.pageNavFixed]
+							classes: [css.pageNav, fixedCss.pageNavFixed],
 						},
 						['<']
 					),
@@ -210,7 +210,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 1',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['1']
 					),
@@ -219,7 +219,7 @@ describe('PaginatedFooter', () => {
 						{
 							key: 'less',
 							'aria-hidden': 'true',
-							classes: [css.more, fixedCss.moreFixed]
+							classes: [css.more, fixedCss.moreFixed],
 						},
 						['...']
 					),
@@ -231,7 +231,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 11',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['11']
 					),
@@ -243,7 +243,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': 'page',
 							'aria-label': 'Current Page, Page 12',
-							classes: [css.pageNumber, css.active]
+							classes: [css.pageNumber, css.active],
 						},
 						['12']
 					),
@@ -255,7 +255,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 13',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['13']
 					),
@@ -264,7 +264,7 @@ describe('PaginatedFooter', () => {
 						{
 							key: 'more',
 							'aria-hidden': 'true',
-							classes: [css.more, fixedCss.moreFixed]
+							classes: [css.more, fixedCss.moreFixed],
 						},
 						['...']
 					),
@@ -276,7 +276,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 105',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['105']
 					),
@@ -287,10 +287,10 @@ describe('PaginatedFooter', () => {
 							disabled: false,
 							onclick: noop,
 							'aria-label': `Go to Page 13`,
-							classes: [css.pageNav, fixedCss.pageNavFixed]
+							classes: [css.pageNav, fixedCss.pageNavFixed],
 						},
 						['>']
-					)
+					),
 				];
 			});
 		h.expect(pageControlsTemplate);
@@ -302,7 +302,7 @@ describe('PaginatedFooter', () => {
 				page: 105,
 				pageSize: 100,
 				total: 10500,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		const pageControlsTemplate = baseTemplate
@@ -316,7 +316,7 @@ describe('PaginatedFooter', () => {
 							disabled: false,
 							onclick: noop,
 							'aria-label': `Go to Page 104`,
-							classes: [css.pageNav, fixedCss.pageNavFixed]
+							classes: [css.pageNav, fixedCss.pageNavFixed],
 						},
 						['<']
 					),
@@ -328,7 +328,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 1',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['1']
 					),
@@ -337,7 +337,7 @@ describe('PaginatedFooter', () => {
 						{
 							key: 'less',
 							'aria-hidden': 'true',
-							classes: [css.more, fixedCss.moreFixed]
+							classes: [css.more, fixedCss.moreFixed],
 						},
 						['...']
 					),
@@ -349,7 +349,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 101',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['101']
 					),
@@ -361,7 +361,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 102',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['102']
 					),
@@ -373,7 +373,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 103',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['103']
 					),
@@ -385,7 +385,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 104',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['104']
 					),
@@ -397,7 +397,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': 'page',
 							'aria-label': 'Current Page, Page 105',
-							classes: [css.pageNumber, css.active]
+							classes: [css.pageNumber, css.active],
 						},
 						['105']
 					),
@@ -408,10 +408,10 @@ describe('PaginatedFooter', () => {
 							disabled: true,
 							onclick: noop,
 							'aria-label': `Go to Page 106`,
-							classes: [css.pageNav, fixedCss.pageNavFixed]
+							classes: [css.pageNav, fixedCss.pageNavFixed],
 						},
 						['>']
-					)
+					),
 				];
 			});
 		h.expect(pageControlsTemplate);
@@ -423,7 +423,7 @@ describe('PaginatedFooter', () => {
 				page: 1,
 				pageSize: 100,
 				total: 90,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		const pageControlsTemplate = baseTemplate
@@ -438,10 +438,10 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': 'page',
 							'aria-label': 'Current Page, Page 1',
-							classes: [css.pageNumber, css.active]
+							classes: [css.pageNumber, css.active],
 						},
 						['1']
-					)
+					),
 				];
 			});
 		h.expect(pageControlsTemplate);
@@ -453,7 +453,7 @@ describe('PaginatedFooter', () => {
 				page: 1,
 				pageSize: 100,
 				total: 401,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		const pageControlsTemplate = baseTemplate
@@ -467,7 +467,7 @@ describe('PaginatedFooter', () => {
 							disabled: true,
 							onclick: noop,
 							'aria-label': `Go to Page 0`,
-							classes: [css.pageNav, fixedCss.pageNavFixed]
+							classes: [css.pageNav, fixedCss.pageNavFixed],
 						},
 						['<']
 					),
@@ -479,7 +479,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': 'page',
 							'aria-label': 'Current Page, Page 1',
-							classes: [css.pageNumber, css.active]
+							classes: [css.pageNumber, css.active],
 						},
 						['1']
 					),
@@ -491,7 +491,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 2',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['2']
 					),
@@ -503,7 +503,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 3',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['3']
 					),
@@ -515,7 +515,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 4',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['4']
 					),
@@ -527,7 +527,7 @@ describe('PaginatedFooter', () => {
 							onclick: noop,
 							'aria-current': undefined,
 							'aria-label': 'Go to Page 5',
-							classes: [css.pageNumber, false]
+							classes: [css.pageNumber, false],
 						},
 						['5']
 					),
@@ -538,10 +538,10 @@ describe('PaginatedFooter', () => {
 							disabled: false,
 							onclick: noop,
 							'aria-label': `Go to Page 2`,
-							classes: [css.pageNav, fixedCss.pageNavFixed]
+							classes: [css.pageNav, fixedCss.pageNavFixed],
 						},
 						['>']
-					)
+					),
 				];
 			});
 		h.expect(pageControlsTemplate);
@@ -553,7 +553,7 @@ describe('PaginatedFooter', () => {
 				page: 1,
 				pageSize: 100,
 				total: 0,
-				onPageChange: noop
+				onPageChange: noop,
 			})
 		);
 		const pageControlsTemplate = baseTemplate

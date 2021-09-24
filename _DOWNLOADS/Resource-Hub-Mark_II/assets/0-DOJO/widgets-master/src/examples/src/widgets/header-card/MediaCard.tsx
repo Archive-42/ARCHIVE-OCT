@@ -14,7 +14,7 @@ export default factory(function Basic() {
 				<HeaderCard title="Hello, World" subtitle="Lorem ipsum" mediaSrc={mediaSrc}>
 					{{
 						avatar: <Avatar src={avatar} />,
-						content: <p styles={{ margin: '0' }}>Lorem ipsum</p>
+						content: <p styles={{ margin: '0' }}>Lorem ipsum</p>,
 					}}
 				</HeaderCard>
 			</div>

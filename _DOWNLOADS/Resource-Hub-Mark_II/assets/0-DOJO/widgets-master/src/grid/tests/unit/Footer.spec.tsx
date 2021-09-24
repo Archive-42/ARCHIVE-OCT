@@ -11,7 +11,7 @@ describe('Footer', () => {
 		const h = harness(() =>
 			w(Footer, {
 				page: 1,
-				pageSize: 100
+				pageSize: 100,
 			})
 		);
 		h.expect(() => v('div', { classes: css.root }, ['Page 1 of ?']));
@@ -22,7 +22,7 @@ describe('Footer', () => {
 			w(Footer, {
 				total: 9998,
 				page: 1,
-				pageSize: 100
+				pageSize: 100,
 			})
 		);
 		h.expect(() => v('div', { classes: css.root }, ['Page 1 of 100. Total rows 9998']));

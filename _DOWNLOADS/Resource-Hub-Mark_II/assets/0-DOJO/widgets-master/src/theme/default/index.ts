@@ -119,9 +119,9 @@ export default {
 		'@dojo/widgets/tree': tree,
 		'@dojo/widgets/tooltip': tooltip,
 		'@dojo/widgets/two-column-layout': twoColumnLayout,
-		'@dojo/widgets/typeahead': typeahead
+		'@dojo/widgets/typeahead': typeahead,
 	},
 	variants: {
-		default: defaultVariant
-	}
+		default: defaultVariant,
+	},
 };

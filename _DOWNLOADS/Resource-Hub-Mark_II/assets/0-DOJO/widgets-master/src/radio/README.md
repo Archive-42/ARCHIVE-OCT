@@ -4,9 +4,9 @@ Dojo's `Radio` widget provides a wrapped, styleable radio widget that uses the n
 
 ## Features
 
-- Creates a normal radio input.
-- Correctly handles a11y attributes.
-- Wraps the input in a visible or invisible but accessible `<label>`.
+-   Creates a normal radio input.
+-   Correctly handles a11y attributes.
+-   Wraps the input in a visible or invisible but accessible `<label>`.
 
 ### Accessibility Features
 

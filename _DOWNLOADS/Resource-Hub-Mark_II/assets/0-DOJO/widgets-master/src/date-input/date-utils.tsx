@@ -1,7 +1,7 @@
 const components = {
 	day: '(\\d{1,2})',
 	month: '(\\d{1,2})',
-	year: '(\\d{4})'
+	year: '(\\d{4})',
 };
 
 const dateExpressions = () => {
@@ -9,8 +9,8 @@ const dateExpressions = () => {
 		[
 			// standard 'YYYY-mm-dd' format
 			new RegExp(`^${components.year}-${components.month}-${components.day}$`),
-			{ month: 2, day: 3, year: 1 }
-		]
+			{ month: 2, day: 3, year: 1 },
+		],
 	];
 
 	const usCanary = Intl.DateTimeFormat().format(new Date(2018, 3, 3)); // April 3
@@ -18,13 +18,13 @@ const dateExpressions = () => {
 		// US-only 'mm/dd/yyyy' format
 		tokens.push([
 			new RegExp(`^${components.month}\/${components.day}\/${components.year}$`),
-			{ month: 1, day: 2, year: 3 }
+			{ month: 1, day: 2, year: 3 },
 		]);
 	} else {
 		// standard 'dd/mm/yyyy' format
 		tokens.push([
 			new RegExp(`^${components.day}\/${components.month}\/${components.year}$`),
-			{ month: 2, day: 1, year: 3 }
+			{ month: 2, day: 1, year: 3 },
 		]);
 	}
 
@@ -58,10 +58,7 @@ export function formatDateISO(date: Date | undefined) {
 
 	const year = date.getFullYear();
 	const month = (date.getMonth() + 1).toString().padStart(2, '0');
-	const day = date
-		.getDate()
-		.toString()
-		.padStart(2, '0');
+	const day = date.getDate().toString().padStart(2, '0');
 
 	return `${year}-${month}-${day}`;
 }

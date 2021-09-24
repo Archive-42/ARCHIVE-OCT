@@ -1,6 +1,6 @@
 const messages = {
 	yes: 'Yes',
-	no: 'No'
+	no: 'No',
 };
 
 export default { messages };

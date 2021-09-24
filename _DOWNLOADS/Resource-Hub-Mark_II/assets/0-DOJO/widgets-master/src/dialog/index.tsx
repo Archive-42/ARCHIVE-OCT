@@ -61,14 +61,14 @@ const factory = create({
 	i18n,
 	icache: createICacheMiddleware<DialogState>(),
 	inert,
-	bodyScroll
+	bodyScroll,
 })
 	.properties<DialogProperties>()
 	.children<DialogChild>();
 export const Dialog = factory(function Dialog({
 	middleware: { theme, i18n, icache, inert, bodyScroll },
 	properties,
-	children
+	children,
 }) {
 	const themeCss = theme.classes(css);
 
@@ -81,7 +81,7 @@ export const Dialog = factory(function Dialog({
 		closeText,
 		classes,
 		theme: themeProp,
-		variant
+		variant,
 	} = properties();
 	const [{ title, actions, content }] = children();
 	const modal = role === 'alertdialog' || (properties() as DialogPropertiesDialogRole).modal;
@@ -141,7 +141,7 @@ export const Dialog = factory(function Dialog({
 						<div
 							classes={[
 								underlay ? themeCss.underlayVisible : null,
-								fixedCss.underlay
+								fixedCss.underlay,
 							]}
 							enterAnimation={themeCss.underlayEnter}
 							exitAnimation={themeCss.underlayExit}

@@ -10,7 +10,7 @@ export default factory(function Basic() {
 		{ name: 'Tab One' },
 		{ name: 'Tab Two' },
 		{ name: 'Tab Three' },
-		{ name: 'Tab Four' }
+		{ name: 'Tab Four' },
 	];
 
 	return (

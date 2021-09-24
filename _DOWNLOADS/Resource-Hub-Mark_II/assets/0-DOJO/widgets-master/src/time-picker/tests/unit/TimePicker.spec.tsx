@@ -16,7 +16,7 @@ import {
 	compareTheme,
 	stubEvent,
 	compareResource,
-	createTestResource
+	createTestResource,
 } from '../../../common/tests/support/test-helpers';
 import { Keys } from '../../../common/util';
 import focus from '@dojo/framework/core/middleware/focus';
@@ -33,7 +33,7 @@ function createFocusMock({
 	shouldFocus = false,
 	focused = false,
 	isFocused = false,
-	focus = () => {}
+	focus = () => {},
 } = {}) {
 	const factory = create();
 	return () =>
@@ -41,7 +41,7 @@ function createFocusMock({
 			shouldFocus: () => shouldFocus,
 			focused: () => focused,
 			isFocused: () => isFocused,
-			focus
+			focus,
 		}))();
 }
 
@@ -58,7 +58,7 @@ const baseTemplate = (date?: Date) =>
 				<TriggerPopup variant={undefined} classes={undefined} theme={undefined} key="popup">
 					{{
 						trigger: () => <button />,
-						content: () => <div />
+						content: () => <div />,
 					}}
 				</TriggerPopup>
 			</div>
@@ -105,7 +105,7 @@ function generateOptions(step: number, dateOptions: Intl.DateTimeFormatOptions =
 		options.push({
 			label: dt.toLocaleTimeString(undefined, dateOptions),
 			value,
-			disabled: false
+			disabled: false,
 		});
 
 		dt.setSeconds(dt.getSeconds() + step);
@@ -117,13 +117,13 @@ function generateOptions(step: number, dateOptions: Intl.DateTimeFormatOptions =
 const options30Minutes = generateOptions(1800, {
 	hour12: false,
 	hour: 'numeric',
-	minute: 'numeric'
+	minute: 'numeric',
 });
 
 const options30Minutes12 = generateOptions(1800, {
 	hour12: true,
 	hour: 'numeric',
-	minute: 'numeric'
+	minute: 'numeric',
 });
 
 const menuTemplate = assertionTemplate(() => {
@@ -199,7 +199,7 @@ describe('TimePicker', () => {
 		const h = harness(() => (
 			<TimePicker name="timeInput">
 				{{
-					label: 'Label'
+					label: 'Label',
 				}}
 			</TimePicker>
 		));
@@ -212,8 +212,9 @@ describe('TimePicker', () => {
 		);
 		h.expect(buttonTemplate, () => triggerResult);
 		assert.equal(
-			h.trigger('@popup', (node) => () =>
-				(node.children as any)[0].trigger().children[0].children[0].label
+			h.trigger(
+				'@popup',
+				(node) => () => (node.children as any)[0].trigger().children[0].children[0].label
 			),
 			'Label'
 		);
@@ -230,8 +231,9 @@ describe('TimePicker', () => {
 		);
 		h.expect(buttonTemplate, () => triggerResult);
 		assert.equal(
-			h.trigger('@popup', (node) => () =>
-				(node.children as any)[0].trigger().children[0].children[0].label
+			h.trigger(
+				'@popup',
+				(node) => () => (node.children as any)[0].trigger().children[0].children[0].label
 			),
 			'Label'
 		);
@@ -277,8 +279,9 @@ describe('TimePicker', () => {
 		);
 		h.expect(buttonTemplate, () => triggerResult);
 		assert.equal(
-			h.trigger('@popup', (node) => () =>
-				(node.children as any)[0].trigger().children[0].children[0].label
+			h.trigger(
+				'@popup',
+				(node) => () => (node.children as any)[0].trigger().children[0].children[0].label
 			),
 			undefined
 		);
@@ -287,10 +290,10 @@ describe('TimePicker', () => {
 	it('focus popup content on trigger', () => {
 		const focusStub = sinon.stub();
 		const focusMock = createFocusMock({
-			focus: focusStub
+			focus: focusStub,
 		});
 		const h = harness(() => <TimePicker name="timeInput" />, {
-			middleware: [[focus, focusMock]]
+			middleware: [[focus, focusMock]],
 		});
 		h.expect(baseTemplate());
 
@@ -536,7 +539,7 @@ describe('TimePicker', () => {
 					generateOptions(60 * 30, {
 						hour12: false,
 						hour: 'numeric',
-						minute: 'numeric'
+						minute: 'numeric',
 					})
 				)
 			),

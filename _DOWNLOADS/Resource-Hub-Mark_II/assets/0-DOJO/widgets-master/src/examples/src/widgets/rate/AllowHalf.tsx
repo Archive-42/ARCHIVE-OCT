@@ -9,7 +9,7 @@ export default factory(function AllowHalf() {
 		<Example>
 			<Rate key="half" allowHalf initialValue={2.5}>
 				{{
-					label: 'What about half stars?'
+					label: 'What about half stars?',
 				}}
 			</Rate>
 		</Example>

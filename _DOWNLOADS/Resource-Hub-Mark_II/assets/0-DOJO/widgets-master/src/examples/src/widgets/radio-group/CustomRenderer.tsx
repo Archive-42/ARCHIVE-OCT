@@ -6,7 +6,7 @@ import Example from '../../Example';
 
 const factory = create({ icache });
 
-const App = factory(function({ middleware: { icache } }) {
+const App = factory(function ({ middleware: { icache } }) {
 	const { get, set } = icache;
 
 	return (
@@ -41,13 +41,13 @@ const App = factory(function({ middleware: { icache } }) {
 											borderWidth: '1px 0 0',
 											height: '0',
 											margin: '0',
-											overflow: 'hidden'
+											overflow: 'hidden',
 										}}
 									/>
 								</virtual>
 							);
 						});
-					}
+					},
 				}}
 			</RadioGroup>
 			<pre>{`${get('custom')}`}</pre>

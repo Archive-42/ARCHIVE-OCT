@@ -37,8 +37,8 @@ export const Step = stepFactory(({ children, middleware: { theme } }) => {
 		{ title, subTitle, description } = {
 			description: undefined,
 			title: undefined,
-			subTitle: undefined
-		}
+			subTitle: undefined,
+		},
 	] = children();
 	const themedCss = theme.classes(css);
 
@@ -48,7 +48,7 @@ export const Step = stepFactory(({ children, middleware: { theme } }) => {
 				classes={[
 					themedCss.stepTitle,
 					!title && themedCss.noTitle,
-					!description && themedCss.noDescription
+					!description && themedCss.noDescription,
 				]}
 			>
 				{title}
@@ -59,9 +59,7 @@ export const Step = stepFactory(({ children, middleware: { theme } }) => {
 	);
 });
 
-const factory = create({ theme })
-	.children<WNode[]>()
-	.properties<WizardProperties>();
+const factory = create({ theme }).children<WNode[]>().properties<WizardProperties>();
 
 export default factory(function Wizard({ properties, children, middleware: { theme } }) {
 	const themedCss = theme.classes(css);
@@ -72,7 +70,7 @@ export default factory(function Wizard({ properties, children, middleware: { the
 		clickable = false,
 		classes,
 		variant,
-		theme: themeProp
+		theme: themeProp,
 	} = properties();
 
 	const stepNodes = children();
@@ -111,11 +109,7 @@ export default factory(function Wizard({ properties, children, middleware: { the
 				<virtual>
 					<div classes={themedCss.stepIcon}>
 						<Avatar
-							theme={theme.compose(
-								avatarCss,
-								css,
-								'avatar'
-							)}
+							theme={theme.compose(avatarCss, css, 'avatar')}
 							classes={classes}
 							variant={variant}
 							outline={Boolean(status !== 'inProgress')}
@@ -126,7 +120,7 @@ export default factory(function Wizard({ properties, children, middleware: { the
 					{step}
 				</virtual>
 			),
-			status
+			status,
 		};
 	});
 
@@ -137,7 +131,7 @@ export default factory(function Wizard({ properties, children, middleware: { the
 				theme.variant(),
 				themedCss.root,
 				direction === 'horizontal' ? themedCss.horizontal : themedCss.vertical,
-				clickable && themedCss.clickable
+				clickable && themedCss.clickable,
 			]}
 		>
 			{stepWrappers.map(({ content, status }, index) => (
@@ -147,7 +141,7 @@ export default factory(function Wizard({ properties, children, middleware: { the
 						themedCss.step,
 						status === 'complete' && themedCss.complete,
 						status === 'pending' && themedCss.pending,
-						status === 'error' && themedCss.error
+						status === 'error' && themedCss.error,
 					]}
 					onclick={() => {
 						if (clickable && onStep) {

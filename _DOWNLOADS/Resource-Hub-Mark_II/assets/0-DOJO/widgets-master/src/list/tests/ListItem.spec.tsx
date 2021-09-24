@@ -24,7 +24,7 @@ describe('ListBoxItem', () => {
 				undefined,
 				undefined,
 				undefined,
-				undefined
+				undefined,
 			]}
 			draggable={undefined}
 			onclick={noop}
@@ -38,7 +38,7 @@ describe('ListBoxItem', () => {
 			ondragstart={undefined}
 			ondrop={undefined}
 			styles={{
-				visibility: undefined
+				visibility: undefined,
 			}}
 		>
 			test
@@ -77,7 +77,7 @@ describe('ListBoxItem', () => {
 				undefined,
 				undefined,
 				undefined,
-				undefined
+				undefined,
 			])
 			.setProperty('@root', 'aria-selected', 'true');
 		h.expect(selectedTemplate);
@@ -100,7 +100,7 @@ describe('ListBoxItem', () => {
 				undefined,
 				undefined,
 				undefined,
-				undefined
+				undefined,
 			])
 			.setProperty('@root', 'aria-disabled', 'true');
 		h.expect(disabledTemplate);
@@ -122,7 +122,7 @@ describe('ListBoxItem', () => {
 			undefined,
 			undefined,
 			undefined,
-			undefined
+			undefined,
 		]);
 		h.expect(activeTemplate);
 	});
@@ -143,7 +143,7 @@ describe('ListBoxItem', () => {
 			undefined,
 			undefined,
 			undefined,
-			undefined
+			undefined,
 		]);
 		h.expect(selectedTemplate);
 	});
@@ -164,7 +164,7 @@ describe('ListBoxItem', () => {
 			css.movedDown,
 			undefined,
 			undefined,
-			undefined
+			undefined,
 		]);
 		h.expect(selectedTemplate);
 	});
@@ -185,7 +185,7 @@ describe('ListBoxItem', () => {
 			undefined,
 			css.collapsed,
 			undefined,
-			undefined
+			undefined,
 		]);
 		h.expect(selectedTemplate);
 	});
@@ -207,7 +207,7 @@ describe('ListBoxItem', () => {
 				undefined,
 				undefined,
 				css.dragged,
-				undefined
+				undefined,
 			])
 			.setProperty('@root', 'styles', { visibility: 'hidden' });
 		h.expect(selectedTemplate);

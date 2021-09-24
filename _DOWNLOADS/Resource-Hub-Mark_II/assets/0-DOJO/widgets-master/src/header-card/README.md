@@ -4,6 +4,6 @@ Dojo's `HeaderCard` widget is a wrapper around `@dojo/widgets/card` that adds co
 
 ## Feautres
 
-- Wrap content with a consistent style
-- Consistently style the header section of a card
-- Include actions within the card
+-   Wrap content with a consistent style
+-   Consistently style the header section of a card
+-   Include actions within the card

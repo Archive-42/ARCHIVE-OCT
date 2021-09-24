@@ -29,7 +29,7 @@ export enum FirstDayOfWeek {
 	wednesday = 3,
 	thursday = 4,
 	friday = 5,
-	saturday = 6
+	saturday = 6,
 }
 
 export interface CalendarProperties {
@@ -104,7 +104,7 @@ const DEFAULT_MONTHS: ShortLong<typeof bundle.messages>[] = [
 	{ short: 'sepShort', long: 'september' },
 	{ short: 'octShort', long: 'october' },
 	{ short: 'novShort', long: 'november' },
-	{ short: 'decShort', long: 'december' }
+	{ short: 'decShort', long: 'december' },
 ];
 
 const DEFAULT_WEEKDAYS: ShortLong<typeof bundle.messages>[] = [
@@ -114,7 +114,7 @@ const DEFAULT_WEEKDAYS: ShortLong<typeof bundle.messages>[] = [
 	{ short: 'wedShort', long: 'wednesday' },
 	{ short: 'thuShort', long: 'thursday' },
 	{ short: 'friShort', long: 'friday' },
-	{ short: 'satShort', long: 'saturday' }
+	{ short: 'satShort', long: 'saturday' },
 ];
 
 interface CalendarCellProperties {
@@ -145,7 +145,7 @@ interface CalendarCellProperties {
  */
 enum Paging {
 	next = 'next',
-	previous = 'previous'
+	previous = 'previous',
 }
 
 /**
@@ -153,7 +153,7 @@ enum Paging {
  */
 enum Controls {
 	month = 'month',
-	year = 'year'
+	year = 'year',
 }
 
 interface DatePickerProperties {
@@ -196,7 +196,7 @@ export const CalendarCell = create({ theme }).properties<CalendarCellProperties>
 			onFocusCalled,
 			disabled = false,
 			outOfRange = false,
-			today = false
+			today = false,
 		} = properties();
 
 		function onClick(event: MouseEvent) {
@@ -230,7 +230,7 @@ export const CalendarCell = create({ theme }).properties<CalendarCellProperties>
 					disabled || outOfRange ? themeCss.inactiveDate : null,
 					outOfRange ? themeCss.outOfRange : null,
 					selected ? themeCss.selectedDate : null,
-					today ? themeCss.todayDate : null
+					today ? themeCss.todayDate : null,
 				]}
 				onclick={onClick}
 				onkeydown={onKeyDown}
@@ -340,13 +340,8 @@ export const DatePicker = create({ theme, focus, icache }).properties<DatePicker
 
 		function onYearRadioChange(event: Event) {
 			event.stopPropagation();
-			const {
-				onRequestYearChange,
-				month,
-				minDate,
-				maxDate,
-				onRequestMonthChange
-			} = properties();
+			const { onRequestYearChange, month, minDate, maxDate, onRequestMonthChange } =
+				properties();
 			const newYear = parseInt((event.target as HTMLInputElement).value, 10);
 			if (!monthInMinMax(newYear, month)) {
 				// we know the year is valid but the month is out of range
@@ -408,7 +403,7 @@ export const DatePicker = create({ theme, focus, icache }).properties<DatePicker
 					id={`${id}_${type}_button`}
 					classes={[
 						(themeCss as any)[`${type}Trigger`],
-						open ? (themeCss as any)[`${type}TriggerActive`] : null
+						open ? (themeCss as any)[`${type}TriggerActive`] : null,
 					]}
 					focus={keyWithFocus === key ? focus.shouldFocus : undefined}
 					role="menuitem"
@@ -436,7 +431,7 @@ export const DatePicker = create({ theme, focus, icache }).properties<DatePicker
 						key={`${id}_month_radios_${i}`}
 						classes={[
 							themeCss.monthRadio,
-							i === month ? themeCss.monthRadioChecked : null
+							i === month ? themeCss.monthRadioChecked : null,
 						]}
 						for={getMonthInputKey(i)}
 						onmouseup={closeMonthPopup}
@@ -470,15 +465,11 @@ export const DatePicker = create({ theme, focus, icache }).properties<DatePicker
 			return [
 				<Icon
 					type={iconType}
-					theme={theme.compose(
-						iconCss,
-						css,
-						'datePickerPaging'
-					)}
+					theme={theme.compose(iconCss, css, 'datePickerPaging')}
 					classes={classes}
 					variant={variant}
 				/>,
-				<span classes={baseCss.visuallyHidden}>{labelText}</span>
+				<span classes={baseCss.visuallyHidden}>{labelText}</span>,
 			];
 		}
 
@@ -494,7 +485,7 @@ export const DatePicker = create({ theme, focus, icache }).properties<DatePicker
 						key={`${id}_year_radios_${i}`}
 						classes={[
 							themeCss.yearRadio,
-							i === year ? themeCss.yearRadioChecked : null
+							i === year ? themeCss.yearRadioChecked : null,
 						]}
 						for={getYearInputKey(i)}
 						onmouseup={closeYearPopup}
@@ -591,7 +582,7 @@ const factory = create({
 	icache: createICacheMiddleware<CalendarIcache>(),
 	i18n,
 	theme,
-	focus
+	focus,
 })
 	.properties<CalendarProperties>()
 	.children<CalendarChildren | undefined>();
@@ -600,7 +591,7 @@ export const Calendar = factory(function Calendar({
 	middleware: { icache, i18n, theme, focus },
 	properties,
 	id,
-	children
+	children,
 }) {
 	const themeCss = theme.classes(css);
 	const { messages: commonMessages } = i18n.localize(bundle);
@@ -612,16 +603,14 @@ export const Calendar = factory(function Calendar({
 		maxDate,
 		initialValue,
 		weekdayNames = getWeekdays(commonMessages),
-		firstDayOfWeek = 0
+		firstDayOfWeek = 0,
 	} = properties();
 
 	let { value, month, year } = properties();
 	const { monthLabel, weekdayCell } = children()[0] || ({} as CalendarChildren);
 	const defaultDate = initialValue || new Date();
-	const {
-		initialYear = defaultDate.getFullYear(),
-		initialMonth = defaultDate.getMonth()
-	} = properties();
+	const { initialYear = defaultDate.getFullYear(), initialMonth = defaultDate.getMonth() } =
+		properties();
 
 	const existingInitialValue = icache.get('initialValue');
 	const existingInitialMonth = icache.get('initialMonth');
@@ -706,7 +695,7 @@ export const Calendar = factory(function Calendar({
 	function getMonths(commonMessages: typeof bundle.messages) {
 		return DEFAULT_MONTHS.map((month) => ({
 			short: commonMessages[month.short],
-			long: commonMessages[month.long]
+			long: commonMessages[month.long],
 		}));
 	}
 
@@ -717,14 +706,14 @@ export const Calendar = factory(function Calendar({
 		year = typeof year === 'number' ? year : icache.get('year');
 		return {
 			month: typeof month === 'number' ? month : selectedDate.getMonth(),
-			year: typeof year === 'number' ? year : selectedDate.getFullYear()
+			year: typeof year === 'number' ? year : selectedDate.getFullYear(),
 		};
 	}
 
 	function getWeekdays(commonMessages: typeof bundle.messages) {
 		return DEFAULT_WEEKDAYS.map((weekday) => ({
 			short: commonMessages[weekday.short],
-			long: commonMessages[weekday.long]
+			long: commonMessages[weekday.long],
 		}));
 	}
 
@@ -947,7 +936,7 @@ export const Calendar = factory(function Calendar({
 			classes,
 			variant,
 			minDate,
-			maxDate
+			maxDate,
 		} = properties();
 		const { month, year } = getMonthYear();
 
@@ -986,15 +975,11 @@ export const Calendar = factory(function Calendar({
 		return [
 			<Icon
 				type={iconType}
-				theme={theme.compose(
-					iconCss,
-					css,
-					'calendarPaging'
-				)}
+				theme={theme.compose(iconCss, css, 'calendarPaging')}
 				classes={classes}
 				variant={variant}
 			/>,
-			<span classes={[baseCss.visuallyHidden]}>{labelText}</span>
+			<span classes={[baseCss.visuallyHidden]}>{labelText}</span>,
 		];
 	}
 

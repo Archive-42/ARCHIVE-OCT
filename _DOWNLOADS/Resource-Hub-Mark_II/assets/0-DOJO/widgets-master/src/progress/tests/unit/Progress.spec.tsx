@@ -74,7 +74,7 @@ describe('Progress', () => {
 		const h = harness(() => (
 			<Progress value={value} max={max}>
 				{{
-					output: (value, percent) => `${value} of ${max} is ${percent}%`
+					output: (value, percent) => `${value} of ${max} is ${percent}%`,
 				}}
 			</Progress>
 		));

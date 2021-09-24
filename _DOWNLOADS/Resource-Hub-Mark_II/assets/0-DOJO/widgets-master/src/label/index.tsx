@@ -44,7 +44,7 @@ export const Label = factory(function Label({ properties, id, children, middlewa
 		required,
 		secondary,
 		valid,
-		widgetId = `label-${id}`
+		widgetId = `label-${id}`,
 	} = properties();
 
 	const themeCss = theme.classes(css);
@@ -64,7 +64,7 @@ export const Label = factory(function Label({ properties, id, children, middlewa
 				required ? themeCss.required : null,
 				secondary ? themeCss.secondary : null,
 				active ? themeCss.active : null,
-				hidden ? baseCss.visuallyHidden : null
+				hidden ? baseCss.visuallyHidden : null,
 			]}
 			for={forId}
 		>

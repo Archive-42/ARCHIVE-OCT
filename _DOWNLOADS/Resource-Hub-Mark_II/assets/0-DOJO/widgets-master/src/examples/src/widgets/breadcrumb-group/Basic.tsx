@@ -4,19 +4,19 @@ import Example from '../../Example';
 
 const factory = create();
 
-const App = factory(function() {
+const App = factory(function () {
 	const items = [
 		{ label: 'Home', href: '/' },
 		{
 			label: 'Overview',
 			href: '/#widget/breadcrumb/overview',
-			title: 'Breadcrumb Overview'
+			title: 'Breadcrumb Overview',
 		},
 		{
 			label: 'Tests',
 			href: '/#widget/breadcrumb/tests',
-			title: 'Breadcrumb Tests'
-		}
+			title: 'Breadcrumb Tests',
+		},
 	];
 
 	return (

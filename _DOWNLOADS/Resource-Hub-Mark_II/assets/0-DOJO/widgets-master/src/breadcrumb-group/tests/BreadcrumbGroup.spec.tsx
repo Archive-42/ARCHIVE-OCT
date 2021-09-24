@@ -131,7 +131,7 @@ describe('BreadcrumbGroup', () => {
 				items={[
 					{ label: 'Home', href: '/' },
 					{ label: 'Overview', href: '/overview', title: 'Breadcrumb Overview' },
-					{ href: '/tests', label: 'Tests' }
+					{ href: '/tests', label: 'Tests' },
 				]}
 			>
 				{(items) =>
@@ -166,7 +166,7 @@ describe('BreadcrumbGroup', () => {
 					<a aria-current={undefined} href="/tests" title={undefined}>
 						Tests
 					</a>
-				</li>
+				</li>,
 			])
 		);
 	});
