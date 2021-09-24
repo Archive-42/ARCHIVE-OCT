@@ -64,10 +64,10 @@ class ArraySet {
   }
 
   /**
- * Get all the values on the Set
- * @returns {iterator} values in insertion order
- */
-  * keys() {
+   * Get all the values on the Set
+   * @returns {iterator} values in insertion order
+   */
+  *keys() {
     yield* this;
   }
 
@@ -77,7 +77,7 @@ class ArraySet {
    * @returns {iterator} new Iterator object that contains[value, value]
    *  for each element in the Set object, in ascending order.
    */
-  * entries() {
+  *entries() {
     for (const value of this) {
       yield [value, value];
     }

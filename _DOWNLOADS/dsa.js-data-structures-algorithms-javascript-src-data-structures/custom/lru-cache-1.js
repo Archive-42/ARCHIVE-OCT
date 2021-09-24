@@ -10,9 +10,9 @@ const LRUCache = function (capacity) {
 };
 
 /**
-* @param {number} key
-* @return {number}
-*/
+ * @param {number} key
+ * @return {number}
+ */
 LRUCache.prototype.get = function (key) {
   const value = this.map.get(key);
   if (value) {
@@ -23,10 +23,10 @@ LRUCache.prototype.get = function (key) {
 };
 
 /**
-* @param {number} key
-* @param {number} value
-* @return {void}
-*/
+ * @param {number} key
+ * @param {number} value
+ * @return {void}
+ */
 LRUCache.prototype.put = function (key, value) {
   this.map.set(key, value);
   this.rotate(key);
@@ -37,7 +37,7 @@ LRUCache.prototype.rotate = function (key) {
   while (this.cache.length > this.capacity) {
     const keyToDelete = this.cache.shift();
     this.map.delete(keyToDelete);
-  // console.log({keyToDelete})
+    // console.log({keyToDelete})
   }
 };
 

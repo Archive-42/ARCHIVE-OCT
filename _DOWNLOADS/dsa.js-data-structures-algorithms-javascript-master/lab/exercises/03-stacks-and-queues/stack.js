@@ -1,4 +1,4 @@
-const LinkedList = require('../02-linked-list/linkedlist');
+const LinkedList = require("../02-linked-list/linkedlist");
 
 class Stack {
   constructor() {
@@ -14,12 +14,14 @@ class Stack {
   }
 
   peek() {
-    if(!this.list.tail) { return; }
+    if (!this.list.tail) {
+      return;
+    }
     return this.list.tail.data;
   }
 
   isEmpty() {
-    return typeof this.peek() === 'undefined';
+    return typeof this.peek() === "undefined";
   }
 
   size() {

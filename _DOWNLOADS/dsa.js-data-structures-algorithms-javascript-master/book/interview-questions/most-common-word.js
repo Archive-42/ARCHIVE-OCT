@@ -12,24 +12,23 @@ function mostCommonWord(paragraph, banned) {
   // write your code here...
   // end::placeholder[]
   // tag::solution[]
-  const words = paragraph.toLowerCase().replace(/\W+/g, ' ').split(/\s+/);
+  const words = paragraph.toLowerCase().replace(/\W+/g, " ").split(/\s+/);
   const b = new Set(banned);
-  const map = words.reduce((m, w) => (b.has(w) ? m : m.set(w, 1 + (m.get(w) || 0))), new Map());
+  const map = words.reduce(
+    (m, w) => (b.has(w) ? m : m.set(w, 1 + (m.get(w) || 0))),
+    new Map()
+  );
   const max = Math.max(...map.values());
   for (const [w, c] of map.entries()) if (c === max) return w;
-  return '';
+  return "";
   // end::solution[]
   // tag::description[]
 }
 // end::description[]
 
-
 // tag::explicit[]
 function mostCommonWordExplicit(paragraph, banned) {
-  const words = paragraph
-    .toLowerCase()
-    .replace(/\W+/g, ' ')
-    .split(/\s+/);
+  const words = paragraph.toLowerCase().replace(/\W+/g, " ").split(/\s+/);
   const exclude = new Set(banned);
 
   const wordsCount = words.reduce((map, word) => {
@@ -45,7 +44,7 @@ function mostCommonWordExplicit(paragraph, banned) {
       return word;
     }
   }
-  return '';
+  return "";
 }
 // end::explicit[]
 

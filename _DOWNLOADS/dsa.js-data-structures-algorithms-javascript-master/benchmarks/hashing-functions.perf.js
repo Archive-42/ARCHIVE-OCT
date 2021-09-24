@@ -1,32 +1,34 @@
 // nodemon benchmarks/hashing-functions.perf.js
 /* eslint-disable */
-const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite;
+const Benchmark = require("benchmark");
+const suite = new Benchmark.Suite();
 
-const Stats = require('./stats');
+const Stats = require("./stats");
 
 const keys = [
-  '',
+  "",
   0,
-  'aa',
-  'stop',
-  'pots',
-  '@',
-  '#!',
-  'Ca',
-  'DB',
-  'polygenelubricants',
-  'aoffckzdaoffckzdatafwjsh',
-  'aoffckzdaoffckzdbhlijevx',
-  'creamwove',
-  'quists',
-  'costarring',
+  "aa",
+  "stop",
+  "pots",
+  "@",
+  "#!",
+  "Ca",
+  "DB",
+  "polygenelubricants",
+  "aoffckzdaoffckzdatafwjsh",
+  "aoffckzdaoffckzdbhlijevx",
+  "creamwove",
+  "quists",
+  "costarring",
   Math.PI,
   Number.MAX_VALUE,
-  function a() {return;},
-  { a:1, 'max-d': 'test' },
-  { b:2 },
-  Array(100).fill('1').join(''),
+  function a() {
+    return;
+  },
+  { a: 1, "max-d": "test" },
+  { b: 2 },
+  Array(100).fill("1").join(""),
 ];
 
 let hashCodes = [];
@@ -35,89 +37,91 @@ let hashCodes = [];
 // const primes = [7, 47, 223, 3967, 16127, 23251, 114451, 1046527];
 
 // Centered triangular primes (3n**2 + 3n + 2) / 2.
-const primes = [19, 31, 109, 199, 409, 571, 631, 829, 1489, 1999, 2341, 2971, 3529, 4621];
+const primes = [
+  19, 31, 109, 199, 409, 571, 631, 829, 1489, 1999, 2341, 2971, 3529, 4621,
+];
 
 const MAX = 109; // bucket size
 
 // add tests
 suite
-// .add('hashCode31Shifting32bit', function() {
-//   runner(hashCode31Shifting32bit);
-// })
-// .add('hashCode524287Shifting32bitSafeMod', function() {
-//   runner(hashCode524287Shifting32bitSafeMod);
-// })
-// .add('hashCode524287Shifting32bitSafeModBefore', function() {
-//   runner(hashCode524287Shifting32bitSafeModBefore);
-// })
-// .add('hashCode3Shifting', function() {
-//   runner(hashCode3Shifting);
-// })
-// .add('hashFNV1a', function() {
-//   runner(hashFNV1a);
-// })
-.add('murmurhash3_32_gc', function() {
-  runner(murmurhash3_32_gc);
-})
-.add('HashJavaMultiplication', function() {
-  runner(HashJavaMultiplication);
-})
-.add('hashFNV1a32bitSafeModBefore', function() {
-  runner(hashFNV1a32bitSafeModBefore);
-})
-.add('hashFNV1a32bitSafeModAfter', function() {
-  runner(hashFNV1a32bitSafeModAfter);
-})
-.add('hashFNV1a32bitSafeModAfterChop', function() {
-  runner(hashFNV1a32bitSafeModAfterChop);
-})
-.add('fnv1a', function() {
-  runner(fnv1a);
-})
-.add('hashFNV1a32bitSafeModAfterParams', function() {
-  runner(hashFNV1a32bitSafeModAfterParams);
-})
-// .add('HashJavaShifting', function() {
-//   runner(HashJavaShifting);
-// })
-//
-// too slow 30k ops/s vs 300k-700k ops/s
-//
-// .add('hashCode31Shifting', function() {
-//   runner(hashCode31Shifting);
-// })
-// .add('hashCode41Multiplication', function() {
-//   runner(hashCode41Multiplication);
-// })
-// .add('hashCode31Multiplication', function() {
-//   runner(hashCode31Multiplication);
-// })
+  // .add('hashCode31Shifting32bit', function() {
+  //   runner(hashCode31Shifting32bit);
+  // })
+  // .add('hashCode524287Shifting32bitSafeMod', function() {
+  //   runner(hashCode524287Shifting32bitSafeMod);
+  // })
+  // .add('hashCode524287Shifting32bitSafeModBefore', function() {
+  //   runner(hashCode524287Shifting32bitSafeModBefore);
+  // })
+  // .add('hashCode3Shifting', function() {
+  //   runner(hashCode3Shifting);
+  // })
+  // .add('hashFNV1a', function() {
+  //   runner(hashFNV1a);
+  // })
+  .add("murmurhash3_32_gc", function () {
+    runner(murmurhash3_32_gc);
+  })
+  .add("HashJavaMultiplication", function () {
+    runner(HashJavaMultiplication);
+  })
+  .add("hashFNV1a32bitSafeModBefore", function () {
+    runner(hashFNV1a32bitSafeModBefore);
+  })
+  .add("hashFNV1a32bitSafeModAfter", function () {
+    runner(hashFNV1a32bitSafeModAfter);
+  })
+  .add("hashFNV1a32bitSafeModAfterChop", function () {
+    runner(hashFNV1a32bitSafeModAfterChop);
+  })
+  .add("fnv1a", function () {
+    runner(fnv1a);
+  })
+  .add("hashFNV1a32bitSafeModAfterParams", function () {
+    runner(hashFNV1a32bitSafeModAfterParams);
+  })
+  // .add('HashJavaShifting', function() {
+  //   runner(HashJavaShifting);
+  // })
+  //
+  // too slow 30k ops/s vs 300k-700k ops/s
+  //
+  // .add('hashCode31Shifting', function() {
+  //   runner(hashCode31Shifting);
+  // })
+  // .add('hashCode41Multiplication', function() {
+  //   runner(hashCode41Multiplication);
+  // })
+  // .add('hashCode31Multiplication', function() {
+  //   runner(hashCode31Multiplication);
+  // })
 
-// add listeners
-.on('start', () => {
-  console.log('Fasten your belt...');
-})
-.on('cycle', function(event) {
-  console.log(String(event.target));
-  // console.log(`\thashCodes ${hashCodes.sort((a, b) => a - b)}`);
-  console.log(`\thashCodes dups ${findDuplicates(hashCodes)}`);
-  const s = new Stats(hashCodes);
-  // console.log(s.describe());
-  console.log(`range: [${s.min}...${s.max}]`);
-})
-.on('complete', function() {
-  console.log('Fastest is ' + this.filter('fastest').map('name'));
-  printSortedResults(this);
-})
-.on('error', function(event) {
-  console.log(event.target.error);
-})
-// run async
-.run({ 'async': true });
+  // add listeners
+  .on("start", () => {
+    console.log("Fasten your belt...");
+  })
+  .on("cycle", function (event) {
+    console.log(String(event.target));
+    // console.log(`\thashCodes ${hashCodes.sort((a, b) => a - b)}`);
+    console.log(`\thashCodes dups ${findDuplicates(hashCodes)}`);
+    const s = new Stats(hashCodes);
+    // console.log(s.describe());
+    console.log(`range: [${s.min}...${s.max}]`);
+  })
+  .on("complete", function () {
+    console.log("Fastest is " + this.filter("fastest").map("name"));
+    printSortedResults(this);
+  })
+  .on("error", function (event) {
+    console.log(event.target.error);
+  })
+  // run async
+  .run({ async: true });
 
 function printSortedResults(benchmark) {
-  console.log('\n======== Results ========');
-  const results = Object.values(benchmark).filter(b => b && b.name);
+  console.log("\n======== Results ========");
+  const results = Object.values(benchmark).filter((b) => b && b.name);
   const sortedResults = results.sort((a, b) => b.hz - a.hz);
   sortedResults.forEach((b) => {
     console.log(`${b.hz.toLocaleString()} ops/s with ${b.name}`);
@@ -160,13 +164,13 @@ function hashCode3Shifting(key) {
 
 function hashCode41Multiplication(key) {
   return Array.from(key.toString()).reduce((hash, char) => {
-    return char.codePointAt() + (hash * 41);
+    return char.codePointAt() + hash * 41;
   }, 0);
 }
 
 function hashCode31Multiplication(key) {
   return Array.from(key.toString()).reduce((hash, char) => {
-    return char.codePointAt() + (hash * 31);
+    return char.codePointAt() + hash * 31;
   }, 0);
 }
 
@@ -181,7 +185,7 @@ function hashCode31Shifting32bit(key) {
   var hash = 0;
   if (str.length == 0) return hash;
   for (i = 0; i < str.length; i++) {
-    hash = (hash<<5) - hash;
+    hash = (hash << 5) - hash;
     hash = hash + str.codePointAt(i);
     hash = hash & hash; // Convert to 32bit integer
   }
@@ -224,7 +228,7 @@ function hashCode524287Shifting32bitSafeModBefore(key) {
     hash = hash + str.codePointAt(i);
     hash = (hash << 19) - hash;
     // hash = hash & 0x7fffffff; // Convert to 32bit integer
-    hash = hash  % MAX;
+    hash = hash % MAX;
   }
   // return Math.abs(hash);
   return hash;
@@ -250,7 +254,7 @@ function hashFNV1a32bitSafe(key) {
     hash = hash ^ str.codePointAt(i); // XOR
     // issue with overflow 50855934 << 19 = -1048576
     // & 0x7fffffff keep 31bit
-    hash = (hash << 19) & 0x7fffffff - hash; // 524287 * hash
+    hash = (hash << 19) & (0x7fffffff - hash); // 524287 * hash
   }
   return hash;
 }
@@ -261,7 +265,7 @@ function hashFNV1a32bitSafeModAfterChop(key) {
   for (i = 0; i < str.length; i++) {
     hash = hash ^ str.codePointAt(i); // XOR
     // issue with overflow 50855934 << 19 = -1048576, so `& 0x7fffffff` keep 31bit positive
-    hash = (hash << 19) & 0x7fffffff - hash; // 524287 * hash
+    hash = (hash << 19) & (0x7fffffff - hash); // 524287 * hash
   }
   return hash % MAX;
 }
@@ -318,15 +322,16 @@ function fnv1a(key) {
   let hash = 2166136261;
   const string = key.toString();
 
-	for (let i = 0; i < string.length; i++) {
-		hash ^= string.codePointAt(i);
+  for (let i = 0; i < string.length; i++) {
+    hash ^= string.codePointAt(i);
 
-		// 32-bit FNV prime: 2**24 + 2**8 + 0x93 = 16777619
-		// Using bitshift for accuracy and performance. Numbers in JS suck.
-		hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
-	}
+    // 32-bit FNV prime: 2**24 + 2**8 + 0x93 = 16777619
+    // Using bitshift for accuracy and performance. Numbers in JS suck.
+    hash +=
+      (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
 
-	return (hash >>> 0) % MAX;
+  return (hash >>> 0) % MAX;
 }
 
 function HashJavaShifting(key) {
@@ -357,53 +362,69 @@ function murmurhash3_32_gc(key, seed = 17) {
   var remainder, bytes, h1, h1b, c1, c1b, c2, c2b, k1, i;
   const string = key.toString();
 
-	remainder = string.length & 3; // key.length % 4
-	bytes = string.length - remainder;
-	h1 = seed;
-	c1 = 0xcc9e2d51;
-	c2 = 0x1b873593;
-	i = 0;
+  remainder = string.length & 3; // key.length % 4
+  bytes = string.length - remainder;
+  h1 = seed;
+  c1 = 0xcc9e2d51;
+  c2 = 0x1b873593;
+  i = 0;
 
-	while (i < bytes) {
-	  	k1 =
-	  	  ((string.charCodeAt(i) & 0xff)) |
-	  	  ((string.charCodeAt(++i) & 0xff) << 8) |
-	  	  ((string.charCodeAt(++i) & 0xff) << 16) |
-	  	  ((string.charCodeAt(++i) & 0xff) << 24);
-		++i;
+  while (i < bytes) {
+    k1 =
+      (string.charCodeAt(i) & 0xff) |
+      ((string.charCodeAt(++i) & 0xff) << 8) |
+      ((string.charCodeAt(++i) & 0xff) << 16) |
+      ((string.charCodeAt(++i) & 0xff) << 24);
+    ++i;
 
-		k1 = ((((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16))) & 0xffffffff;
-		k1 = (k1 << 15) | (k1 >>> 17);
-		k1 = ((((k1 & 0xffff) * c2) + ((((k1 >>> 16) * c2) & 0xffff) << 16))) & 0xffffffff;
+    k1 =
+      ((k1 & 0xffff) * c1 + ((((k1 >>> 16) * c1) & 0xffff) << 16)) & 0xffffffff;
+    k1 = (k1 << 15) | (k1 >>> 17);
+    k1 =
+      ((k1 & 0xffff) * c2 + ((((k1 >>> 16) * c2) & 0xffff) << 16)) & 0xffffffff;
 
-		h1 ^= k1;
-        h1 = (h1 << 13) | (h1 >>> 19);
-		h1b = ((((h1 & 0xffff) * 5) + ((((h1 >>> 16) * 5) & 0xffff) << 16))) & 0xffffffff;
-		h1 = (((h1b & 0xffff) + 0x6b64) + ((((h1b >>> 16) + 0xe654) & 0xffff) << 16));
-	}
+    h1 ^= k1;
+    h1 = (h1 << 13) | (h1 >>> 19);
+    h1b =
+      ((h1 & 0xffff) * 5 + ((((h1 >>> 16) * 5) & 0xffff) << 16)) & 0xffffffff;
+    h1 = (h1b & 0xffff) + 0x6b64 + ((((h1b >>> 16) + 0xe654) & 0xffff) << 16);
+  }
 
-	k1 = 0;
+  k1 = 0;
 
-	switch (remainder) {
-		case 3: k1 ^= (string.charCodeAt(i + 2) & 0xff) << 16;
-		case 2: k1 ^= (string.charCodeAt(i + 1) & 0xff) << 8;
-		case 1: k1 ^= (string.charCodeAt(i) & 0xff);
+  switch (remainder) {
+    case 3:
+      k1 ^= (string.charCodeAt(i + 2) & 0xff) << 16;
+    case 2:
+      k1 ^= (string.charCodeAt(i + 1) & 0xff) << 8;
+    case 1:
+      k1 ^= string.charCodeAt(i) & 0xff;
 
-		k1 = (((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16)) & 0xffffffff;
-		k1 = (k1 << 15) | (k1 >>> 17);
-		k1 = (((k1 & 0xffff) * c2) + ((((k1 >>> 16) * c2) & 0xffff) << 16)) & 0xffffffff;
-		h1 ^= k1;
-	}
+      k1 =
+        ((k1 & 0xffff) * c1 + ((((k1 >>> 16) * c1) & 0xffff) << 16)) &
+        0xffffffff;
+      k1 = (k1 << 15) | (k1 >>> 17);
+      k1 =
+        ((k1 & 0xffff) * c2 + ((((k1 >>> 16) * c2) & 0xffff) << 16)) &
+        0xffffffff;
+      h1 ^= k1;
+  }
 
-	h1 ^= string.length;
+  h1 ^= string.length;
 
-	h1 ^= h1 >>> 16;
-	h1 = (((h1 & 0xffff) * 0x85ebca6b) + ((((h1 >>> 16) * 0x85ebca6b) & 0xffff) << 16)) & 0xffffffff;
-	h1 ^= h1 >>> 13;
-	h1 = ((((h1 & 0xffff) * 0xc2b2ae35) + ((((h1 >>> 16) * 0xc2b2ae35) & 0xffff) << 16))) & 0xffffffff;
-	h1 ^= h1 >>> 16;
+  h1 ^= h1 >>> 16;
+  h1 =
+    ((h1 & 0xffff) * 0x85ebca6b +
+      ((((h1 >>> 16) * 0x85ebca6b) & 0xffff) << 16)) &
+    0xffffffff;
+  h1 ^= h1 >>> 13;
+  h1 =
+    ((h1 & 0xffff) * 0xc2b2ae35 +
+      ((((h1 >>> 16) * 0xc2b2ae35) & 0xffff) << 16)) &
+    0xffffffff;
+  h1 ^= h1 >>> 16;
 
-	return (h1 >>> 0) % MAX;
+  return (h1 >>> 0) % MAX;
 }
 
 /*

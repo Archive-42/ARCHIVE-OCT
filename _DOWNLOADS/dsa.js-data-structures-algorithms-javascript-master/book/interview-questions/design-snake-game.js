@@ -1,4 +1,4 @@
-const { Queue } = require('../../src/index');
+const { Queue } = require("../../src/index");
 
 // tag::description[]
 /**
@@ -19,8 +19,8 @@ const { Queue } = require('../../src/index');
  *  snakeGame.move('U'); // -1
  */
 class SnakeGame {
-// end::description[]
-// tag::solution[]
+  // end::description[]
+  // tag::solution[]
 
   // end::solution[]
   // tag::description[]
@@ -39,7 +39,10 @@ class SnakeGame {
     this.snake = new Queue([[0, 0]]);
     this.tail = new Set([[0, 0]]);
     this.dirs = {
-      U: [-1, 0], D: [1, 0], R: [0, 1], L: [0, -1],
+      U: [-1, 0],
+      D: [1, 0],
+      R: [0, 1],
+      L: [0, -1],
     };
     // end::solution[]
     // tag::description[]

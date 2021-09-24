@@ -1,4 +1,4 @@
-const Queue = require('./queue');
+const Queue = require("./queue");
 
 /**
  * Using two queues and order attribute
@@ -11,9 +11,9 @@ class AnimalShelter {
   }
 
   enqueue(data) {
-    Object.assign(data, {_order: this.order++});
+    Object.assign(data, { _order: this.order++ });
 
-    if(data.animal === 'dog') {
+    if (data.animal === "dog") {
       this.dogs.add(data);
     } else {
       this.cats.add(data);
@@ -24,7 +24,7 @@ class AnimalShelter {
     const dogLast = this.dogs.peek();
     const catlast = this.cats.peek();
 
-    if(!dogLast || dogLast && catlast && dogLast._order > catlast._order) {
+    if (!dogLast || (dogLast && catlast && dogLast._order > catlast._order)) {
       return this.cats.remove();
     } else {
       return this.dogs.remove();
@@ -39,7 +39,6 @@ class AnimalShelter {
     return this.cats.remove();
   }
 }
-
 
 /**
  * Using one queue with removeBy
@@ -58,11 +57,11 @@ class AnimalShelter2 {
   }
 
   dequeueDog() {
-    return this.queue.removeBy({animal: 'dog'});
+    return this.queue.removeBy({ animal: "dog" });
   }
 
   dequeueCat() {
-    return this.queue.removeBy({animal: 'cat'});
+    return this.queue.removeBy({ animal: "cat" });
   }
 }
 

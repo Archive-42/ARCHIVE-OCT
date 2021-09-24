@@ -1,7 +1,7 @@
 /* eslint-disable no-bitwise, no-iterator, no-restricted-syntax */
-const { TextEncoder } = require('util');
-const LinkedList = require('../../linked-lists/linked-list');
-const { nextPrime } = require('./primes');
+const { TextEncoder } = require("util");
+const LinkedList = require("../../linked-lists/linked-list");
+const { nextPrime } = require("./primes");
 
 // Text encoding
 const encoding = new TextEncoder();
@@ -46,7 +46,7 @@ class HashMap {
     size = 0,
     collisions = 0,
     keysTrackerArray = [],
-    keysTrackerIndex = 0,
+    keysTrackerIndex = 0
   ) {
     this.buckets = buckets;
     this.size = size;
@@ -99,7 +99,8 @@ class HashMap {
     this.buckets[index] = this.buckets[index] || new LinkedList(); // <2>
     const bucket = this.buckets[index];
 
-    const entry = bucket.find(({ value: node }) => { // <3>
+    const entry = bucket.find(({ value: node }) => {
+      // <3>
       if (key === node.key) {
         return node; // stop search
       }
@@ -109,7 +110,6 @@ class HashMap {
     return { bucket, entry }; // <4>
   }
   // end::getEntry[]
-
 
   // tag::set[]
   /**
@@ -123,13 +123,18 @@ class HashMap {
   set(key, value) {
     const { entry: exists, bucket } = this.getEntry(key);
 
-    if (!exists) { // key/value doesn't exist <1>
+    if (!exists) {
+      // key/value doesn't exist <1>
       bucket.push({ key, value, order: this.keysTrackerIndex });
       this.keysTrackerArray[this.keysTrackerIndex] = key; // <4>
       this.keysTrackerIndex += 1;
       this.size += 1;
-      if (bucket.size > 1) { this.collisions += 1; } // <3>
-      if (this.isBeyondloadFactor()) { this.rehash(); }
+      if (bucket.size > 1) {
+        this.collisions += 1;
+      } // <3>
+      if (this.isBeyondloadFactor()) {
+        this.rehash();
+      }
     } else {
       // update value if key already exists
       exists.value = value; // <2>
@@ -175,7 +180,9 @@ class HashMap {
    */
   delete(key) {
     const { bucket, entry } = this.getEntry(key);
-    if (!entry) { return false; }
+    if (!entry) {
+      return false;
+    }
 
     return !!bucket.remove((node) => {
       if (key === node.value.key) {
@@ -231,17 +238,16 @@ class HashMap {
       newMap.size,
       newMap.collisions,
       newArrayKeys,
-      newArrayKeys.length,
+      newArrayKeys.length
     );
   }
   // end::rehash[]
-
 
   /**
    * Keys for each element in the map in insertion order.
    * @returns {Iterator} keys without holes (empty spaces of deleted keys)
    */
-  * keys() {
+  *keys() {
     for (let index = 0; index < this.keysTrackerArray.length; index++) {
       const key = this.keysTrackerArray[index];
       if (key !== undefined) {
@@ -254,7 +260,7 @@ class HashMap {
    * Values for each element in the map in insertion order.
    * @returns {Iterator} values without holes (empty spaces of deleted values)
    */
-  * values() {
+  *values() {
     for (const key of this.keys()) {
       yield this.get(key);
     }
@@ -264,7 +270,7 @@ class HashMap {
    * Contains the [key, value] pairs for each element in the map in insertion order.
    * @returns {Iterator}
    */
-  * entries() {
+  *entries() {
     for (const key of this.keys()) {
       yield [key, this.get(key)];
     }
@@ -274,7 +280,7 @@ class HashMap {
    * The same function object as the initial value of the `entries` method.
    * Contains the [key, value] pairs for each element in the Map.
    */
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     yield* this.entries();
   }
 

@@ -3,7 +3,7 @@
  * @param {number} n
  * @return {string[]}
  */
-function generateParenthesis(n, result = [], open = 0, close = 0, curr = '') {
+function generateParenthesis(n, result = [], open = 0, close = 0, curr = "") {
   if (curr.length === n * 2) {
     result.push(curr);
   } else {

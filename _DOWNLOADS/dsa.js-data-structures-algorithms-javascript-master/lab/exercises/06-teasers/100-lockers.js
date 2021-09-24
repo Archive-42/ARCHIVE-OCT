@@ -7,16 +7,18 @@
 function getOpenedLockers(num = 100) {
   const lockers = Array(num);
 
-  for(let i = 0; i < num; i++) {
-    for(let j = i; i < num; j += (i + 1)) {
-      if(j >= num) break;
+  for (let i = 0; i < num; i++) {
+    for (let j = i; i < num; j += i + 1) {
+      if (j >= num) break;
       lockers[j] = !lockers[j];
     }
     // console.log(i, JSON.stringify(lockers));
   }
 
-  console.log(lockers.reduce((acc, val, i) => val ? acc.concat(i+1) : acc, []));
-  return lockers.reduce((acc, val) => val ? acc + 1 : acc, 0);
+  console.log(
+    lockers.reduce((acc, val, i) => (val ? acc.concat(i + 1) : acc), [])
+  );
+  return lockers.reduce((acc, val) => (val ? acc + 1 : acc), 0);
 }
 
 console.log(getOpenedLockers());

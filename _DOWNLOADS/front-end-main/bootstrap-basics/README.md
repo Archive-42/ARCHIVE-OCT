@@ -1,14 +1,17 @@
 # Bootstrap Webpage
+
 <a href="https://bootstrap-webpage.web.app"><img src="https://img.shields.io/static/v1?style=flat&logo=Firebase&label=Hosted&message=Firebase&color=orange"/></a>
 <a href="getbootstrap.com"><img src="https://img.shields.io/static/v1?style=flat&logo=Bootstrap&label=Bootstrap&message=4.4.1&color=green"/></a>
 
-A website template built by using the core components of [***Bootstrap Framework***](https://getbootstrap.com/) for experimental purposes.
+A website template built by using the core components of [**_Bootstrap Framework_**](https://getbootstrap.com/) for experimental purposes.
 
 ## Preview
+
 <img width="640" height="320" src="https://raw.githubusercontent.com/neemiassgc/front-end/main/bootstrap-basics/screenshot.png"/>
 
 ## Demo
-This webpage is hosted on [***Firebase***](https://firebase.google.com). A demo is available [here](https://bootstrap-webpage.web.app)
+
+This webpage is hosted on [**_Firebase_**](https://firebase.google.com). A demo is available [here](https://bootstrap-webpage.web.app)
 
 ## Technologies
 

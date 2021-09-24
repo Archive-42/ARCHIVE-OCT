@@ -9,5 +9,4 @@
  * @param {number[]} b - Array of numbers.
  * @returns {number[]} the sum array.
  */
-function sum(a, b) {
-}
+function sum(a, b) {}

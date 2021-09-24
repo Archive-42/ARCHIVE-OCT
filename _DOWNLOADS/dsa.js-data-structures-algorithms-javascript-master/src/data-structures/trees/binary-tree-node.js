@@ -1,5 +1,5 @@
-const LEFT = Symbol('left');
-const RIGHT = Symbol('right');
+const LEFT = Symbol("left");
+const RIGHT = Symbol("right");
 
 // tag::snippet[]
 /**
@@ -50,10 +50,10 @@ class BinaryTreeNode {
    */
   get parentChildSide() {
     if (this.parent) {
-      return this.isParentLeftChild ? 'left' : 'right';
+      return this.isParentLeftChild ? "left" : "right";
     }
 
-    return 'root';
+    return "root";
   }
 
   /**

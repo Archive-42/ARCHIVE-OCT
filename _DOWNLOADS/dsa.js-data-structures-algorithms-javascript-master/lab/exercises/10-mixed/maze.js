@@ -1,6 +1,11 @@
 function hasPath(maze, start, destination) {
   const queue = [start];
-  const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]; // right, left, up, down,
+  const directions = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ]; // right, left, up, down,
 
   for (const curr of queue) {
     let [currRow, currCol] = curr;
@@ -13,7 +18,13 @@ function hasPath(maze, start, destination) {
 
     for (const [nextRow, nextCol] of directions) {
       [currRow, currCol] = curr; // reset to start point
-      while (currRow >= 0 && currRow < maze.length && currCol >= 0 && currCol < maze[currRow].length && maze[currRow][currCol] !== 1) {
+      while (
+        currRow >= 0 &&
+        currRow < maze.length &&
+        currCol >= 0 &&
+        currCol < maze[currRow].length &&
+        maze[currRow][currCol] !== 1
+      ) {
         currRow += nextRow;
         currCol += nextCol;
       }

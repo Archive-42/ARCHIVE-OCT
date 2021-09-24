@@ -1,4 +1,4 @@
-const DLinkedList = require('../linked-lists/linked-list');
+const DLinkedList = require("../linked-lists/linked-list");
 /**
  * Least Recently Used (LRU) cache.
  * Map + Double LinkedList: O(1)
@@ -12,7 +12,9 @@ class LRUCache extends Map {
   }
 
   get(key) {
-    if (!super.has(key)) { return -1; }
+    if (!super.has(key)) {
+      return -1;
+    }
 
     // console.log('get', {key});
     const node = super.get(key);
@@ -28,7 +30,7 @@ class LRUCache extends Map {
       node = super.get(key);
       node.value.value = value;
     } else {
-      node = this.list.addLast({key, value});
+      node = this.list.addLast({ key, value });
     }
     this.moveToHead(key, node);
 

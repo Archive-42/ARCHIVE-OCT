@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require("assert");
 
 /**
  *
@@ -37,22 +37,19 @@ function printHash(key) {
 // console.table(['@', '#', '#!', 'stop', 'pots', 'Ca', 'DB', 'polygenelubricants', 'Pneumonoultramicroscopicsilicovolcanoconiosis'].map(printHash));
 
 const size = 5100;
-console.log(printHash(Array(size).fill('😁').join('')).hashFn);
-console.log(printHash(Array(size).fill('1').join('')).hashFn);
-console.log(printHash(Array(size).fill('A').join('')).hashFn);
-
+console.log(printHash(Array(size).fill("😁").join("")).hashFn);
+console.log(printHash(Array(size).fill("1").join("")).hashFn);
+console.log(printHash(Array(size).fill("A").join("")).hashFn);
 
 // all different
 // console.table(['cat', 'dog', 'rat', 'art', 10, '10', {a:1}, '😸', '🐶', '😸🐶', '🐶😸'].map(printHash));
 // console.log(hashFunction(Array(1500).fill('😁').join('')));
-
 
 // function test(){
 //   return 1n + 2n;
 // }
 
 // test();
-
 
 // hashCode(10); //=> 97
 // hashCode('10'); //=> 97

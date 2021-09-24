@@ -1,33 +1,31 @@
-const expect = require('chai').expect;
-const Node = require('./graph').Node;
-const isBinarySearchTree = require('./is-binary-search-tree');
+const expect = require("chai").expect;
+const Node = require("./graph").Node;
+const isBinarySearchTree = require("./is-binary-search-tree");
 
-describe('Tree: is binary tree search', function () {
-
-  it('should work with valid data', function () {
+describe("Tree: is binary tree search", function () {
+  it("should work with valid data", function () {
     let bt = new Node(4);
     bt.left = new Node(2);
     bt.right = new Node(5);
     expect(isBinarySearchTree(bt)).to.equal(true);
   });
 
-  it('should false with left > parent', function () {
+  it("should false with left > parent", function () {
     let bt = new Node(4);
     bt.left = new Node(6);
     bt.right = new Node(5);
     expect(isBinarySearchTree(bt)).to.equal(false);
   });
 
-  it('should false with parent > right', function () {
+  it("should false with parent > right", function () {
     let bt = new Node(4);
     bt.left = new Node(2);
     bt.right = new Node(3);
     expect(isBinarySearchTree(bt)).to.equal(false);
   });
 
-  it('should work with valid data', function () {
-    let
-      a = new Node(1),
+  it("should work with valid data", function () {
+    let a = new Node(1),
       b = new Node(2),
       c = new Node(3),
       d = new Node(4),
@@ -49,9 +47,8 @@ describe('Tree: is binary tree search', function () {
     expect(isBinarySearchTree(d)).to.equal(true);
   });
 
-  it('should return false when the left child is bigger than root', function () {
-    let
-      n10 = new Node(10),
+  it("should return false when the left child is bigger than root", function () {
+    let n10 = new Node(10),
       n20 = new Node(20),
       n25 = new Node(25),
       n30 = new Node(30);
@@ -64,9 +61,8 @@ describe('Tree: is binary tree search', function () {
     expect(isBinarySearchTree(n20)).to.equal(false);
   });
 
-  it('should return false when a right child is less than root', function () {
-    let
-      n10 = new Node(10),
+  it("should return false when a right child is less than root", function () {
+    let n10 = new Node(10),
       n20 = new Node(20),
       n25 = new Node(25),
       n30 = new Node(30);
@@ -78,5 +74,4 @@ describe('Tree: is binary tree search', function () {
 
     expect(isBinarySearchTree(n20)).to.equal(false);
   });
-
 });

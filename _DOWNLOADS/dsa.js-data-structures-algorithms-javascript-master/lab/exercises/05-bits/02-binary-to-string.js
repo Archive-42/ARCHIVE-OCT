@@ -12,33 +12,33 @@ function binaryToString(number) {
   string.push(integerToBinaryString(integer));
   string.push(decimalToBinaryString(decimal));
 
-  return string.join('');
+  return string.join("");
 }
 
 function integerToBinaryString(number) {
   const string = [];
 
-  while(number > 1) {
+  while (number > 1) {
     string.push(number % 2);
     number = parseInt(number / 2);
   }
   string.unshift(number);
 
-  return string.join('');
+  return string.join("");
 }
 
 function decimalToBinaryString(decimal, overflow = 32) {
   const string = [];
   let binary = 0;
 
-  for(let i=1; binary < decimal; i++) {
-    if(i === overflow) {
-      throw new Error('overflows 32-bits');
+  for (let i = 1; binary < decimal; i++) {
+    if (i === overflow) {
+      throw new Error("overflows 32-bits");
     }
 
     const exp = Math.pow(2, -i);
 
-    if((binary + exp) <= decimal) {
+    if (binary + exp <= decimal) {
       binary += exp;
       string.push(1);
     } else {
@@ -46,21 +46,19 @@ function decimalToBinaryString(decimal, overflow = 32) {
     }
   }
 
-  if(string.length > 0) {
-    string.unshift('.');
+  if (string.length > 0) {
+    string.unshift(".");
   }
 
-  return string.join('');
+  return string.join("");
 }
 
 module.exports = binaryToString;
-
 
 // 17 = 7 * 10^0 + 1 * 10^1
 
 // 0.893 = 8*10^-1 + 9*10^-2 + 3*10^-1
 // 0.10010 => 1*2^-1 + 0*2^-2 + 0*2^-3 + 1*2^-4 =
-
 
 // 0.1 = 0.5
 

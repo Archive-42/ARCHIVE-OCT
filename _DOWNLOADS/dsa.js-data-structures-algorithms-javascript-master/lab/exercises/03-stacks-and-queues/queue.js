@@ -1,7 +1,7 @@
-const LinkedList = require('./linkedlist');
+const LinkedList = require("./linkedlist");
 
 class Queue {
-  constructor(){
+  constructor() {
     this.list = new LinkedList();
   }
 
@@ -14,7 +14,9 @@ class Queue {
   }
 
   peek() {
-    if(this.isEmpty()) { return; }
+    if (this.isEmpty()) {
+      return;
+    }
     return this.list.head.data;
   }
 

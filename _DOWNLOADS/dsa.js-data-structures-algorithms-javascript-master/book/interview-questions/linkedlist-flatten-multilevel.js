@@ -10,7 +10,8 @@ function flatten(head) {
 
     let last = curr.child;
     while (last && last.next) last = last.next; // find "child"'s last
-    if (curr.next) { // move "next" to "child"'s last postion
+    if (curr.next) {
+      // move "next" to "child"'s last postion
       last.next = curr.next;
       curr.next.previous = last;
     }

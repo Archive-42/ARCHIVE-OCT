@@ -1,15 +1,19 @@
-const Stack = require('./stack');
+const Stack = require("./stack");
 
 function sort(stack) {
-  if(stack.size() === 0) { return; }
-  if(stack.size() === 1) { return stack; }
+  if (stack.size() === 0) {
+    return;
+  }
+  if (stack.size() === 1) {
+    return stack;
+  }
 
   const sorted = new Stack();
 
-  while(!stack.isEmpty()) {
+  while (!stack.isEmpty()) {
     var value = stack.pop();
 
-    while(!sorted.isEmpty() && sorted.peek() > value) {
+    while (!sorted.isEmpty() && sorted.peek() > value) {
       stack.push(sorted.pop());
     }
 

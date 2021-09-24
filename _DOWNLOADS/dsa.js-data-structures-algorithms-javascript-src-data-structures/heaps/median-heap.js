@@ -1,4 +1,4 @@
-const Heap = require('./heap');
+const Heap = require("./heap");
 
 /**
  * Median Heap using one MaxHeap and one MinHeap.

@@ -1,4 +1,4 @@
-const { Queue } = require('../../src/index');
+const { Queue } = require("../../src/index");
 
 // tag::description[]
 function criticalConnections(n, connections) {
@@ -8,7 +8,11 @@ function criticalConnections(n, connections) {
   // end::placeholder[]
   // tag::solution[]
   const critical = [];
-  const graph = new Map(Array(n).fill(0).map((_, i) => [i, []]));
+  const graph = new Map(
+    Array(n)
+      .fill(0)
+      .map((_, i) => [i, []])
+  );
   connections.forEach(([u, v]) => {
     graph.get(u).push(v);
     graph.get(v).push(u);
@@ -16,7 +20,7 @@ function criticalConnections(n, connections) {
 
   const dfs = (node, parent = null, depth = 0, group = []) => {
     group[node] = depth;
-    for (const adj of (graph.get(node) || [])) {
+    for (const adj of graph.get(node) || []) {
       if (adj === parent) continue; // skip parent node
       if (group[adj] === undefined) dfs(adj, node, depth + 1, group);
       group[node] = Math.min(group[node], group[adj]); // update group.
@@ -41,7 +45,7 @@ function areAllNodesReachable(n, graph) {
     if (seen[node]) continue;
     seen[node] = true;
 
-    for (const adj of (graph.get(node) || [])) {
+    for (const adj of graph.get(node) || []) {
       queue.enqueue(adj);
     }
   }
@@ -51,7 +55,11 @@ function areAllNodesReachable(n, graph) {
 
 function criticalConnectionsBrute1(n, connections) {
   const critical = [];
-  const graph = new Map(Array(n).fill(0).map((_, i) => [i, []]));
+  const graph = new Map(
+    Array(n)
+      .fill(0)
+      .map((_, i) => [i, []])
+  );
   connections.forEach(([u, v]) => {
     graph.get(u).push(v);
     graph.get(v).push(u);
@@ -59,8 +67,14 @@ function criticalConnectionsBrute1(n, connections) {
 
   for (const [u, v] of connections) {
     // remove edge
-    graph.set(u, (graph.get(u) || []).filter((e) => e !== v));
-    graph.set(v, (graph.get(v) || []).filter((e) => e !== u));
+    graph.set(
+      u,
+      (graph.get(u) || []).filter((e) => e !== v)
+    );
+    graph.set(
+      v,
+      (graph.get(v) || []).filter((e) => e !== u)
+    );
 
     if (!areAllNodesReachable(n, graph)) critical.push([u, v]);
 

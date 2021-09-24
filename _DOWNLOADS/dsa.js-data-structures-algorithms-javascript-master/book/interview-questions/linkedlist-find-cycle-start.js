@@ -10,9 +10,11 @@ function findCycleStart(head) {
   while (fast && fast.next) {
     slow = slow.next; // slow moves 1 by 1.
     fast = fast.next.next; // slow moves 2 by 2.
-    if (fast === slow) { // detects loop!
+    if (fast === slow) {
+      // detects loop!
       slow = head; // reset pointer to begining.
-      while (slow !== fast) { // find intersection
+      while (slow !== fast) {
+        // find intersection
         slow = slow.next;
         fast = fast.next; // move both pointers one by one this time.
       }

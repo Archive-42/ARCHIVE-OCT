@@ -1,7 +1,8 @@
 // simulation of window.fetch
 async function fetch(url) {
   let temp = 4;
-  if (!url || !url.length) return Promise.reject(new Error(`Invalid URL ${url}.`));
+  if (!url || !url.length)
+    return Promise.reject(new Error(`Invalid URL ${url}.`));
   if (/7836/.test(url)) temp = 42.12;
   if (/783e/.test(url)) temp = 42.1;
   if (/7833/.test(url)) temp = 42;

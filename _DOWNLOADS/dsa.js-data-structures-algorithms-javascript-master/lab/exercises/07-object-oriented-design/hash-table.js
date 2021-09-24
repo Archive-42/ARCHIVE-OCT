@@ -7,18 +7,20 @@ class HashTable {
   }
 
   set(key, value) {
-    if(!this.table[this.hash(key)]) {
+    if (!this.table[this.hash(key)]) {
       this.table[this.hash(key)] = [];
     }
-    this.table[this.hash(key)].push({key, value});
+    this.table[this.hash(key)].push({ key, value });
   }
 
   get(key) {
     const bucket = this.table[this.hash(key)];
-    if(!bucket) { return; }
+    if (!bucket) {
+      return;
+    }
 
-    for(let b of bucket) {
-      if(t(b.key) === t(key)) {
+    for (let b of bucket) {
+      if (t(b.key) === t(key)) {
         return b.value;
       }
     }
@@ -26,14 +28,20 @@ class HashTable {
 
   remove(key) {
     const bucket = this.table[this.hash(key)];
-    if(!bucket) { return; }
+    if (!bucket) {
+      return;
+    }
 
     const index = bucket.findIndex((b) => t(b.key) === t(key));
     bucket.splice(index, 1);
   }
 
   hash(key) {
-    return t(key).split('').reduce((sum, letter) => sum += letter.charCodeAt(), 0) % this.size;
+    return (
+      t(key)
+        .split("")
+        .reduce((sum, letter) => (sum += letter.charCodeAt()), 0) % this.size
+    );
   }
 }
 

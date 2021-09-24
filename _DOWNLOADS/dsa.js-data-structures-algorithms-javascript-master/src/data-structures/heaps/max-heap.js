@@ -1,4 +1,4 @@
-const Heap = require('./heap');
+const Heap = require("./heap");
 
 class MaxHeap extends Heap {
   constructor() {

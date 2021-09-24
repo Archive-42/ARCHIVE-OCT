@@ -19,7 +19,8 @@ function solveFractionalKnapsack(input, max) {
 
     if (weight + bestRatioItem.weight <= max) {
       bestRatioItem.proportion = 1; // take item as a whole
-    } else { // take a fraction of the item
+    } else {
+      // take a fraction of the item
       bestRatioItem.proportion = (max - weight) / bestRatioItem.weight;
     }
 

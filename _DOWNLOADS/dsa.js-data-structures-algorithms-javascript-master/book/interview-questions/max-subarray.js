@@ -10,8 +10,8 @@
  * @returns {number} - max sum
  */
 function maxSubArray(a) {
-// end::description[]
-// tag::solution[]
+  // end::description[]
+  // tag::solution[]
   let max = -Infinity;
   let local = 0;
 
@@ -28,8 +28,10 @@ function maxSubArray(a) {
 function maxSubArrayBrute1(nums) {
   let max = -Infinity;
 
-  for (let i = 0; i < nums.length; i++) { // O(n^3)
-    for (let j = i + 1; j <= nums.length; j++) { // O(n^2)
+  for (let i = 0; i < nums.length; i++) {
+    // O(n^3)
+    for (let j = i + 1; j <= nums.length; j++) {
+      // O(n^2)
       const sum = nums.slice(i, j).reduce((a, n) => n + a, 0); // O(n)
       max = Math.max(max, sum); // O(1)
     }
@@ -43,9 +45,11 @@ function maxSubArrayBrute1(nums) {
 function maxSubArrayBrute2(nums) {
   let max = -Infinity;
 
-  for (let i = 0; i < nums.length; i++) { // O(n) * O(n)
+  for (let i = 0; i < nums.length; i++) {
+    // O(n) * O(n)
     let local = 0;
-    for (let j = i; j < nums.length; j++) { // O(n)
+    for (let j = i; j < nums.length; j++) {
+      // O(n)
       local += nums[j];
       max = Math.max(max, local);
     }

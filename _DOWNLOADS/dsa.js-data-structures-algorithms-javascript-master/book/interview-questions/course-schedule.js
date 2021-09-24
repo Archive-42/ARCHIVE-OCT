@@ -12,7 +12,11 @@ function canFinish(n, prerequisites) {
   // write your code here...
   // end::placeholder[]
   // tag::solution[]
-  const graph = new Map(Array(n).fill().map((_, i) => ([i, []])));
+  const graph = new Map(
+    Array(n)
+      .fill()
+      .map((_, i) => [i, []])
+  );
   prerequisites.forEach(([u, v]) => graph.get(v).push(u));
 
   const seen = [];
@@ -32,7 +36,6 @@ function canFinish(n, prerequisites) {
   // tag::description[]
 }
 // end::description[]
-
 
 // tag::brute1[]
 function canFinishBrute1(n, prerequisites) {

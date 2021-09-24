@@ -1,4 +1,4 @@
-const { Queue } = require('../../src/index');
+const { Queue } = require("../../src/index");
 
 // tag::description[]
 /**

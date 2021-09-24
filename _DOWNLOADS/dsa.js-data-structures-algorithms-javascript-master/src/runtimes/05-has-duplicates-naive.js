@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require("assert");
 
 // tag::hasDuplicates[]
 /**
@@ -23,7 +23,6 @@ function hasDuplicates(array) {
   return false;
 }
 // end::hasDuplicates[]
-
 
 assert.equal(hasDuplicates([]), false);
 assert.equal(hasDuplicates([1, 1]), true);

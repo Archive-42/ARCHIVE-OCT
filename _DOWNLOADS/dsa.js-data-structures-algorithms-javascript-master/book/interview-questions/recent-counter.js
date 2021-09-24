@@ -1,4 +1,4 @@
-const { Queue } = require('../../src/index');
+const { Queue } = require("../../src/index");
 
 // tag::description[]
 /**
@@ -27,12 +27,12 @@ class RecentCounter {
    *  Defaults to 1 second (1000 ms)
    */
   constructor(maxWindow = 1000) {
-  // end::description[]
-  // tag::solution[]
+    // end::description[]
+    // tag::solution[]
     this.window = maxWindow;
     this.queue = new Queue();
-  // end::solution[]
-  // tag::description[]
+    // end::solution[]
+    // tag::description[]
   }
 
   /**
@@ -41,14 +41,14 @@ class RecentCounter {
    * @return {number} - The number of requests within the time window.
    */
   request(timestamp) {
-  // end::description[]
-  // tag::solution[]
+    // end::description[]
+    // tag::solution[]
     this.queue.enqueue(timestamp);
     while (timestamp - this.queue.peek() > this.window) this.queue.dequeue();
 
     return this.queue.size;
-  // end::solution[]
-  // tag::description[]
+    // end::solution[]
+    // tag::description[]
   }
 }
 // end::description[]

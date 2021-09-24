@@ -1,7 +1,7 @@
-const BinarySearchTree = require('./binary-search-tree');
+const BinarySearchTree = require("./binary-search-tree");
 
-const RED = Symbol('red');
-const BLACK = Symbol('black');
+const RED = Symbol("red");
+const BLACK = Symbol("black");
 
 /**
  * Red-Black Tree
@@ -59,9 +59,7 @@ class RedBlackTree extends BinarySearchTree {
       node.grandparent.color = BLACK;
     } else if (node.uncle && node.uncle.color === BLACK) {
       // if uncle is BLACK
-
       // case: Right Right Case
-
     } else if (node.parent && node.color === RED && node.parent.color === RED) {
       // Solve RED violation doing rotations and re-color
       if (node.isParentLeftChild) {

@@ -1,6 +1,6 @@
-const BinaryTreeNode = require('./binary-tree-node');
-const Queue = require('../queues/queue');
-const Stack = require('../stacks/stack');
+const BinaryTreeNode = require("./binary-tree-node");
+const Queue = require("../queues/queue");
+const Stack = require("../stacks/stack");
 // tag::snippet[]
 class BinarySearchTree {
   constructor() {
@@ -23,7 +23,8 @@ class BinarySearchTree {
 
     if (this.root) {
       const { found, parent } = this.findNodeAndParent(value); // <1>
-      if (found) { // duplicated: value already exist on the tree
+      if (found) {
+        // duplicated: value already exist on the tree
         found.meta.multiplicity = (found.meta.multiplicity || 1) + 1; // <2>
         node = found;
       } else if (value < parent.value) {
@@ -58,7 +59,6 @@ class BinarySearchTree {
     return this.findNodeAndParent(value).found;
   }
 
-
   /**
    * Recursively finds the node matching the value.
    * If it doesn't find, it returns the leaf `parent` where the new value should be appended.
@@ -70,7 +70,8 @@ class BinarySearchTree {
   findNodeAndParent(value, node = this.root, parent = null) {
     if (!node || node.value === value) {
       return { found: node, parent };
-    } if (value < node.value) {
+    }
+    if (value < node.value) {
       return this.findNodeAndParent(value, node.left, node);
     }
     return this.findNodeAndParent(value, node.right, node);
@@ -103,7 +104,6 @@ class BinarySearchTree {
   }
   // end::leftMost[]
 
-
   // tag::remove[]
   /**
    * Remove a node from the tree
@@ -117,13 +117,18 @@ class BinarySearchTree {
     // Combine left and right children into one subtree without nodeToRemove
     const removedNodeChildren = this.combineLeftIntoRightSubtree(nodeToRemove); // <3>
 
-    if (nodeToRemove.meta.multiplicity && nodeToRemove.meta.multiplicity > 1) { // <4>
+    if (nodeToRemove.meta.multiplicity && nodeToRemove.meta.multiplicity > 1) {
+      // <4>
       nodeToRemove.meta.multiplicity -= 1; // handles duplicated
-    } else if (nodeToRemove === this.root) { // <5>
+    } else if (nodeToRemove === this.root) {
+      // <5>
       // Replace (root) node to delete with the combined subtree.
       this.root = removedNodeChildren;
-      if (this.root) { this.root.parent = null; } // clearing up old parent
-    } else if (nodeToRemove.isParentLeftChild) { // <6>
+      if (this.root) {
+        this.root.parent = null;
+      } // clearing up old parent
+    } else if (nodeToRemove.isParentLeftChild) {
+      // <6>
       // Replace node to delete with the combined subtree.
       parent.setLeftAndUpdateParent(removedNodeChildren);
     } else {
@@ -170,7 +175,7 @@ class BinarySearchTree {
    * Breath-first search for a tree (always starting from the root element).
    * @yields {BinaryTreeNode}
    */
-  * bfs() {
+  *bfs() {
     const queue = new Queue();
 
     queue.add(this.root);
@@ -179,8 +184,12 @@ class BinarySearchTree {
       const node = queue.remove();
       yield node;
 
-      if (node.left) { queue.add(node.left); }
-      if (node.right) { queue.add(node.right); }
+      if (node.left) {
+        queue.add(node.left);
+      }
+      if (node.right) {
+        queue.add(node.right);
+      }
     }
   }
   // end::bfs[]
@@ -191,7 +200,7 @@ class BinarySearchTree {
    * @see preOrderTraversal Similar results to the pre-order transversal.
    * @yields {BinaryTreeNode}
    */
-  * dfs() {
+  *dfs() {
     const stack = new Stack();
 
     stack.add(this.root);
@@ -200,8 +209,12 @@ class BinarySearchTree {
       const node = stack.remove();
       yield node;
 
-      if (node.right) { stack.add(node.right); }
-      if (node.left) { stack.add(node.left); }
+      if (node.right) {
+        stack.add(node.right);
+      }
+      if (node.left) {
+        stack.add(node.left);
+      }
     }
   }
   // end::dfs[]
@@ -213,10 +226,14 @@ class BinarySearchTree {
    * @param {BinaryTreeNode} node first node to start the traversal
    * @yields {BinaryTreeNode}
    */
-  * inOrderTraversal(node = this.root) {
-    if (node && node.left) { yield* this.inOrderTraversal(node.left); }
+  *inOrderTraversal(node = this.root) {
+    if (node && node.left) {
+      yield* this.inOrderTraversal(node.left);
+    }
     yield node;
-    if (node && node.right) { yield* this.inOrderTraversal(node.right); }
+    if (node && node.right) {
+      yield* this.inOrderTraversal(node.right);
+    }
   }
   // end::inOrderTraversal[]
 
@@ -227,10 +244,14 @@ class BinarySearchTree {
    * @param {BinaryTreeNode} node first node to start the traversal
    * @yields {BinaryTreeNode}
    */
-  * preOrderTraversal(node = this.root) {
+  *preOrderTraversal(node = this.root) {
     yield node;
-    if (node.left) { yield* this.preOrderTraversal(node.left); }
-    if (node.right) { yield* this.preOrderTraversal(node.right); }
+    if (node.left) {
+      yield* this.preOrderTraversal(node.left);
+    }
+    if (node.right) {
+      yield* this.preOrderTraversal(node.right);
+    }
   }
   // end::preOrderTraversal[]
 
@@ -240,9 +261,13 @@ class BinarySearchTree {
    * @param {BinaryTreeNode} node first node to start the traversal
    * @yields {BinaryTreeNode}
    */
-  * postOrderTraversal(node = this.root) {
-    if (node.left) { yield* this.postOrderTraversal(node.left); }
-    if (node.right) { yield* this.postOrderTraversal(node.right); }
+  *postOrderTraversal(node = this.root) {
+    if (node.left) {
+      yield* this.postOrderTraversal(node.left);
+    }
+    if (node.right) {
+      yield* this.postOrderTraversal(node.right);
+    }
     yield node;
   }
   // end::postOrderTraversal[]
@@ -279,16 +304,24 @@ class BinarySearchTree {
     const queue = new Queue();
     const visited = new Map();
 
-    if (this.root) { queue.add(this.root); }
+    if (this.root) {
+      queue.add(this.root);
+    }
 
     while (!queue.isEmpty()) {
       const current = queue.remove();
       array.push(current && current.value);
 
-      if (current) { visited.set(current); }
+      if (current) {
+        visited.set(current);
+      }
 
-      if (current && !visited.has(current.left)) { queue.add(current.left); }
-      if (current && !visited.has(current.right)) { queue.add(current.right); }
+      if (current && !visited.has(current.left)) {
+        queue.add(current.left);
+      }
+      if (current && !visited.has(current.right)) {
+        queue.add(current.right);
+      }
     }
 
     return array;

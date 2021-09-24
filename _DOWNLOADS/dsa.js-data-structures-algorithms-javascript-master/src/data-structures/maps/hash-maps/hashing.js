@@ -33,7 +33,9 @@ hashCode(10); //=> 97 ('1'=49 + '0'=48)
 function hashCode(key) {
   const array = Array.from(`${key}${typeof key}`);
   return array.reduce((hashCode, char, position) => {
-    return hashCode + BigInt(char.codePointAt(0)) * (2n ** (BigInt(position) * 20n));
+    return (
+      hashCode + BigInt(char.codePointAt(0)) * 2n ** (BigInt(position) * 20n)
+    );
   }, 0n);
 }
 // end::hashCodeOffset[]
@@ -49,10 +51,22 @@ hashCode('😄') === hashCode('😸'); //↪️ false
 // end::hashCodeOffsetExample[]
 */
 
-
 // ---- Experiments -----
 
-const primes = [31n, 33n, 37n, 39n, 41n, 101n, 8191n, 131071n, 524287n, 6700417n, 1327144003n, 9007199254740881n];
+const primes = [
+  31n,
+  33n,
+  37n,
+  39n,
+  41n,
+  101n,
+  8191n,
+  131071n,
+  524287n,
+  6700417n,
+  1327144003n,
+  9007199254740881n,
+];
 
 function doubleToLongBits(number) {
   const buffer = new ArrayBuffer(8); // 8 bytes for float64
@@ -63,7 +77,7 @@ function doubleToLongBits(number) {
 
 function hashNumber(number) {
   const bigInt = doubleToLongBits(number);
-  return bigInt > 0 ? bigInt : ((2n ** 63n) + (bigInt * -1n));
+  return bigInt > 0 ? bigInt : 2n ** 63n + bigInt * -1n;
 }
 
 /**
@@ -72,31 +86,31 @@ function hashNumber(number) {
  */
 function hashString(key) {
   return Array.from(key.toString()).reduce((hash, char) => {
-    return (hash * 33n) + BigInt(char.codePointAt(0));
+    return hash * 33n + BigInt(char.codePointAt(0));
   }, 0n);
 }
 
 function hashCode2(key) {
-  if (typeof(key) === 'number') {
+  if (typeof key === "number") {
     return hashNumber(key);
   }
   return 2n ** 64n + hashString(key);
 }
 
-function hashIndex({key, size = 16} = {}) {
+function hashIndex({ key, size = 16 } = {}) {
   // return hashCode(key) % BigInt(size); // modulo size
 
   // Multiply-Add-Divide (MAD) compression
   const p = 524287n; // prime number larger than size.
   const a = 8191n; // random [1..p-1]
   const b = 0n; // random [0..p-1]
-  return ( (a * hashCode2(key) + b) % p ) % BigInt(size);
+  return ((a * hashCode2(key) + b) % p) % BigInt(size);
 }
 
 module.exports = {
   hashCode: hashCode2,
-  hashIndex
-}
+  hashIndex,
+};
 
 /**
 

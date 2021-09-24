@@ -1,4 +1,4 @@
-const Node = require('./graph').Node;
+const Node = require("./graph").Node;
 
 function getSuccessor(node) {
   // check current node's value
@@ -11,9 +11,9 @@ function getSuccessor(node) {
   const currentValue = node.data;
   const parentValue = node.parent && node.parent.data;
 
-  if(!node.left) {
+  if (!node.left) {
     nextValue = parentValue + 1;
-  } else if(!node.right) {
+  } else if (!node.right) {
     nextValue = currentValue + 1;
   } else {
     return;

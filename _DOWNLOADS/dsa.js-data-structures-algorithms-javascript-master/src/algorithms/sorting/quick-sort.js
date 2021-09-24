@@ -1,4 +1,4 @@
-const { swap, shuffle } = require('./sorting-common');
+const { swap, shuffle } = require("./sorting-common");
 
 // tag::partition[]
 /**
@@ -18,7 +18,8 @@ function partition(array, low, high) {
   let pivotFinalIndex = pivotIndex; // <2>
 
   for (let current = pivotIndex + 1; current <= high; current++) {
-    if (array[current] < array[pivotIndex]) { // <3>
+    if (array[current] < array[pivotIndex]) {
+      // <3>
       pivotFinalIndex += 1; // <4>
       swap(array, current, pivotFinalIndex); // <5>
     }
@@ -29,7 +30,6 @@ function partition(array, low, high) {
 }
 // end::partition[]
 
-
 // tag::quickSort[]
 /**
  * QuickSort - Efficient in-place recursive sorting algorithm.
@@ -39,7 +39,8 @@ function partition(array, low, high) {
  * @param {Number} high
  */
 function quickSort(array, low = 0, high = array.length - 1) {
-  if (low < high) { // <4>
+  if (low < high) {
+    // <4>
     const partitionIndex = partition(array, low, high); // <1>
     quickSort(array, low, partitionIndex - 1); // <2>
     quickSort(array, partitionIndex + 1, high); // <3>
@@ -47,7 +48,6 @@ function quickSort(array, low = 0, high = array.length - 1) {
   return array;
 }
 // end::quickSort[]
-
 
 // tag::sort[]
 /**
@@ -62,6 +62,5 @@ function quickSortWrapper(collection) {
   return quickSort(array);
 }
 // end::sort[]
-
 
 module.exports = quickSortWrapper;

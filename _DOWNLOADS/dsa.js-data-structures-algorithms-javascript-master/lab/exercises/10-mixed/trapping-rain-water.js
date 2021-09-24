@@ -12,10 +12,10 @@ function trap(height) {
   const rightMax = [];
 
   for (let j = height.length - 1; j >= 0; j--) {
-    leftMax[j] = Math.max((leftMax[j + 1] || 0), height[j]);
+    leftMax[j] = Math.max(leftMax[j + 1] || 0, height[j]);
   }
   for (let j = 0; j < height.length; j++) {
-    rightMax[j] = Math.max((rightMax[j - 1] || 0), height[j]);
+    rightMax[j] = Math.max(rightMax[j - 1] || 0, height[j]);
   }
 
   for (let i = 0; i < height.length; i++) {

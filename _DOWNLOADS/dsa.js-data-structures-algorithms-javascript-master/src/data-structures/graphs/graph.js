@@ -1,8 +1,8 @@
 // npx eslint --fix -f codeframe lib/data-structures/graphs/graph.js
-const Node = require('./node');
-const Stack = require('../stacks/stack');
-const Queue = require('../queues/queue');
-const HashMap = require('../maps/hash-maps/hash-map');
+const Node = require("./node");
+const Stack = require("../stacks/stack");
+const Queue = require("../queues/queue");
+const HashMap = require("../maps/hash-maps/hash-map");
 
 // tag::constructor[]
 /**
@@ -27,7 +27,8 @@ class Graph {
    * @returns {Node} the new node or the existing one if it already exits.
    */
   addVertex(value) {
-    if (this.nodes.has(value)) { // <1>
+    if (this.nodes.has(value)) {
+      // <1>
       return this.nodes.get(value);
     }
     const vertex = new Node(value); // <2>
@@ -48,7 +49,9 @@ class Graph {
   removeVertex(value) {
     const current = this.nodes.get(value); // <1>
     if (current) {
-      Array.from(this.nodes.values()).forEach((node) => node.removeAdjacent(current)); // <2>
+      Array.from(this.nodes.values()).forEach((node) =>
+        node.removeAdjacent(current)
+      ); // <2>
     }
     return this.nodes.delete(value); // <3>
   }
@@ -129,7 +132,7 @@ class Graph {
    * Use a stack to visit nodes (LIFO)
    * @param {Node} first node to start the dfs
    */
-  static* dfs(first) {
+  static *dfs(first) {
     yield* Graph.graphSearch(first, Stack);
   }
 
@@ -138,7 +141,7 @@ class Graph {
    * Use a queue to visit nodes (FIFO)
    * @param {Node} first node to start the dfs
    */
-  static* bfs(first) {
+  static *bfs(first) {
     yield* Graph.graphSearch(first, Queue);
   }
 
@@ -147,7 +150,7 @@ class Graph {
    * @param {Node} first node to start the search
    * @param {Stack|Queue} Type Stack for DFS or Queue for BFS
    */
-  static* graphSearch(first, Type = Stack) {
+  static *graphSearch(first, Type = Stack) {
     const visited = new Map();
     const visitList = new Type();
 
@@ -252,7 +255,7 @@ class Graph {
   }
 }
 
-Graph.UNDIRECTED = Symbol('undirected graph'); // two-way edges
-Graph.DIRECTED = Symbol('directed graph'); // one-way edges
+Graph.UNDIRECTED = Symbol("undirected graph"); // two-way edges
+Graph.DIRECTED = Symbol("directed graph"); // one-way edges
 
 module.exports = Graph;

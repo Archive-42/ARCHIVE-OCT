@@ -14,10 +14,10 @@ class Board {
     this.board = [];
     this.uncovered = 0;
 
-    for(let column = 0; column < columns; column++) {
+    for (let column = 0; column < columns; column++) {
       this.board[column] = [];
 
-      for(let row = 0; row < rows; row++ ){
+      for (let row = 0; row < rows; row++) {
         this.board[column][row] = new Cell(column, row);
       }
     }
@@ -33,14 +33,16 @@ class Board {
     this.mines = 0;
     let minesCoordinates = [];
 
-    if(Array.isArray(mines)) {
+    if (Array.isArray(mines)) {
       minesCoordinates = mines;
     } else {
       // Check if mines exceed the number of cells
       const minesCount = parseInt(mines);
 
-      if(minesCount > this.getTotalCells()) {
-        throw new Error(`Number of mines ${minesCount} is larger than the board ${this.getTotalCells()}`);
+      if (minesCount > this.getTotalCells()) {
+        throw new Error(
+          `Number of mines ${minesCount} is larger than the board ${this.getTotalCells()}`
+        );
       }
 
       // set bombs in order
@@ -48,8 +50,8 @@ class Board {
       let col = 0;
       const minesMap = new Map();
 
-      for(let bomb = 0; bomb < minesCount; bomb++ ) {
-        if(!this.getCell(col, row)) {
+      for (let bomb = 0; bomb < minesCount; bomb++) {
+        if (!this.getCell(col, row)) {
           row = 0;
           col++;
         }
@@ -59,17 +61,19 @@ class Board {
       // shuffle mines position
       const shuffledMines = new Map();
 
-      for(let coord of minesMap.keys()) {
+      for (let coord of minesMap.keys()) {
         const r = parseInt(Math.random() * this.rows);
         const c = parseInt(Math.random() * this.columns);
 
         shuffledMines.set(`${c},${r}`, true);
-        if(minesMap.has(`${c},${r}`)) {
+        if (minesMap.has(`${c},${r}`)) {
           shuffledMines.set(coord, true);
         }
       }
 
-      minesCoordinates = Array.from(shuffledMines.keys()).map((v) => v.split(','));
+      minesCoordinates = Array.from(shuffledMines.keys()).map((v) =>
+        v.split(",")
+      );
     }
 
     minesCoordinates.forEach((v) => {
@@ -77,8 +81,10 @@ class Board {
       const row = parseInt(v[1]);
       const cell = this.getCell(col, row);
 
-      if(!cell) return;
-      if(cell.hasBomb()) { throw new Error('This cell already has a bomb!'); }
+      if (!cell) return;
+      if (cell.hasBomb()) {
+        throw new Error("This cell already has a bomb!");
+      }
 
       cell.setBomb();
       this.mines++;
@@ -93,7 +99,7 @@ class Board {
   }
 
   getCell(col, row) {
-    if(col < 0 || col >= this.columns || row < 0 || row >= this.rows) {
+    if (col < 0 || col >= this.columns || row < 0 || row >= this.rows) {
       return;
     } else {
       return this.board[col][row];
@@ -103,13 +109,13 @@ class Board {
   getAdjacents(col, row) {
     const adjacents = [];
 
-    for(let y = -1; y < 2; y++ ) {
-      for(let x = -1; x < 2; x++) {
-        if(x === y && x === 0) {
+    for (let y = -1; y < 2; y++) {
+      for (let x = -1; x < 2; x++) {
+        if (x === y && x === 0) {
           continue;
         }
         const cell = this.getCell(col + y, row + x);
-        if(cell) {
+        if (cell) {
           adjacents.push(cell);
         }
       }
@@ -120,12 +126,14 @@ class Board {
 
   revealNumbers(col, row) {
     this.getAdjacents(col, row).forEach((cell) => {
-      if(!cell.isHidden) { return; }
+      if (!cell.isHidden) {
+        return;
+      }
 
       this.uncovered++;
       cell.discover();
 
-      if(cell.isEmpty()) {
+      if (cell.isEmpty()) {
         this.revealNumbers(cell.col, cell.row);
       }
     });
@@ -138,43 +146,53 @@ class Board {
    * @param action discover or flag
    * @returns {*}
    */
-  play(col, row, action = 'discover') {
+  play(col, row, action = "discover") {
     const cell = this.getCell(col, row);
     const value = cell[action]();
-    if(action === 'flag') { return; }
+    if (action === "flag") {
+      return;
+    }
 
     this.uncovered++;
 
-    if(cell.hasBomb()) {
-      throw 'Game Over';
+    if (cell.hasBomb()) {
+      throw "Game Over";
     }
 
-    if(cell.isEmpty()) {
+    if (cell.isEmpty()) {
       this.revealNumbers(col, row);
     }
 
-    if(this.uncovered === (this.rows * this.columns - this.mines)) {
-      throw 'You won!';
+    if (this.uncovered === this.rows * this.columns - this.mines) {
+      throw "You won!";
     }
 
     return value;
   }
 
   hasWin() {
-    return this.board.reduce((acc, col) => acc && col.reduce((acc, row) => {
-      return row.isHidden ? row.hasBomb() : false;
-    }, true), true);
+    return this.board.reduce(
+      (acc, col) =>
+        acc &&
+        col.reduce((acc, row) => {
+          return row.isHidden ? row.hasBomb() : false;
+        }, true),
+      true
+    );
   }
 
   toString(fn) {
-    let string = '';
+    let string = "";
 
-
-    for(let column = 0; column < this.board.length; column++ ) {
-      string += '\n';
-      for(let row = 0; row < this.board[column].length; row++ ) {
+    for (let column = 0; column < this.board.length; column++) {
+      string += "\n";
+      for (let row = 0; row < this.board[column].length; row++) {
         const cell = this.board[column][row];
-        const val = fn ? (fn instanceof Function ? fn(cell) : cell[fn]) : cell.getValue();
+        const val = fn
+          ? fn instanceof Function
+            ? fn(cell)
+            : cell[fn]
+          : cell.getValue();
         string += `\t ${val}`;
       }
     }
@@ -199,11 +217,11 @@ class Cell {
   }
 
   increaseNumber() {
-    if(this.value === Cell.BOMB) {
+    if (this.value === Cell.BOMB) {
       return;
     }
 
-    if(Number.isInteger(this.value)) {
+    if (Number.isInteger(this.value)) {
       ++this.value;
     } else {
       this.value = 1;
@@ -213,7 +231,7 @@ class Cell {
   }
 
   hasBomb() {
-    return this.value === Cell.BOMB
+    return this.value === Cell.BOMB;
   }
 
   isEmpty() {
@@ -230,11 +248,11 @@ class Cell {
   }
 
   getValue() {
-    return this.isFlagged ? 'F' : (this.isHidden ? '?' : this.value);
+    return this.isFlagged ? "F" : this.isHidden ? "?" : this.value;
   }
 }
 
-Cell.EMPTY = '.';
-Cell.BOMB = '*';
+Cell.EMPTY = ".";
+Cell.BOMB = "*";
 
 module.exports = Minesweeper;

@@ -21,7 +21,7 @@ function lengthOfLongestSubstring(s) {
   return max;
 }
 
-const assert = require('assert');
+const assert = require("assert");
 
 const testCases = { abcabcbb: 3 };
 

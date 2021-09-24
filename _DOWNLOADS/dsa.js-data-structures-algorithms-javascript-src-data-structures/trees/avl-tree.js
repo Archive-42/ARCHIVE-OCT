@@ -1,10 +1,10 @@
-const BinarySearchTree = require('./binary-search-tree');
+const BinarySearchTree = require("./binary-search-tree");
 const {
   leftRotation,
   rightRotation,
   leftRightRotation,
   rightLeftRotation,
-} = require('./tree-rotations');
+} = require("./tree-rotations");
 
 // tag::balance[]
 /**
@@ -26,7 +26,8 @@ function balance(node) {
       return leftRightRotation(node);
     }
     return rightRotation(node);
-  } if (node.balanceFactor < -1) {
+  }
+  if (node.balanceFactor < -1) {
     // right subtree is higher than left subtree
     if (node.right.balanceFactor > 0) {
       return rightLeftRotation(node);

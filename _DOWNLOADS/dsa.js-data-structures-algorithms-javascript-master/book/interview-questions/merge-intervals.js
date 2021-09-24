@@ -19,7 +19,8 @@ function merge(intervals) {
   for (let i = 0; i < intervals.length; i++) {
     const last = ans[ans.length - 1];
     const curr = intervals[i];
-    if (last && last[1] >= curr[0]) { // check for overlaps
+    if (last && last[1] >= curr[0]) {
+      // check for overlaps
       last[1] = Math.max(last[1], curr[1]);
     } else ans.push(curr);
   }

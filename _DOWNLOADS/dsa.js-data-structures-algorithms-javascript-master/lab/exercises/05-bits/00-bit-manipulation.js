@@ -36,7 +36,7 @@ function clearBit(n, i) {
  * @returns {number} new number with a given bit set/cleared
  */
 function updateBit(n, i, b) {
-  return (b > 0) ? setBit(n, i) : clearBit(n, i);
+  return b > 0 ? setBit(n, i) : clearBit(n, i);
 }
 
 /**
@@ -62,9 +62,13 @@ function updateBit2(n, i, b) {
  * @returns {number}
  */
 function setBitsRange(n, start = 0, end = 32) {
-  if(!(end - start) || start > end || start < 0) { return n; }
-  let mask = (~0 >>> (32 - (end - start)));
-  if(end - start === 32) { return mask; }
+  if (!(end - start) || start > end || start < 0) {
+    return n;
+  }
+  let mask = ~0 >>> (32 - (end - start));
+  if (end - start === 32) {
+    return mask;
+  }
   mask <<= start;
   return n | mask;
 }
@@ -74,5 +78,5 @@ module.exports = {
   setBit,
   clearBit,
   updateBit,
-  setBitsRange
+  setBitsRange,
 };

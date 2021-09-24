@@ -1,4 +1,4 @@
-const { swap } = require('./sorting-common');
+const { swap } = require("./sorting-common");
 
 // tag::sort[]
 /**
@@ -15,11 +15,13 @@ const { swap } = require('./sorting-common');
 function selectionSort(collection) {
   const array = Array.from(collection); // <1>
 
-  for (let left = 0; left < array.length; left++) { // <2>
+  for (let left = 0; left < array.length; left++) {
+    // <2>
     let selection = left; // <3>
 
     for (let right = left + 1; right < array.length; right++) {
-      if (array[selection] > array[right]) { // <4>
+      if (array[selection] > array[right]) {
+        // <4>
         selection = right; // <5>
       }
     }

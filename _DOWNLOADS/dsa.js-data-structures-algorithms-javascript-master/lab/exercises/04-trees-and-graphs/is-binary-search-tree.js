@@ -4,11 +4,13 @@
  * @returns {boolean}
  */
 function isBinarySearchTree(node, min, max) {
-  if(!node) return true;
+  if (!node) return true;
 
-  return !((min && node.data <= min) || (max && node.data > max)) &&
+  return (
+    !((min && node.data <= min) || (max && node.data > max)) &&
     isBinarySearchTree(node.left, min, node.data) &&
-    isBinarySearchTree(node.right, node.data, max);
+    isBinarySearchTree(node.right, node.data, max)
+  );
 }
 
 module.exports = isBinarySearchTree;

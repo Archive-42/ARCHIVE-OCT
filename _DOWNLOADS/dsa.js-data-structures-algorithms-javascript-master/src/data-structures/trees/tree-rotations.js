@@ -19,7 +19,7 @@
 function swapParentChild(oldChild, newChild, parent) {
   if (parent) {
     // this set parent child
-    const side = oldChild.isParentRightChild ? 'Right' : 'Left';
+    const side = oldChild.isParentRightChild ? "Right" : "Left";
     parent[`set${side}AndUpdateParent`](newChild);
   } else {
     // no parent? so set it to null
@@ -27,7 +27,6 @@ function swapParentChild(oldChild, newChild, parent) {
   }
 }
 // end::swapParentChild[]
-
 
 // tag::leftRotation[]
 /**
@@ -78,7 +77,7 @@ function leftRotation(node) {
 // tag::rightRotation[]
 /**
  * Single Right Rotation (RR Rotation)
-* @example: #1 rotate node 3 to the right
+ * @example: #1 rotate node 3 to the right
  *
  *       4                                  4
  *      /                                  /

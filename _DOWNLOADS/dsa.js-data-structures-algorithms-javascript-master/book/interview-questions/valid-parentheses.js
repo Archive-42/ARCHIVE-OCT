@@ -13,7 +13,11 @@
 function isParenthesesValid(string) {
   // end::description[]
   // tag::solution[]
-  const map = new Map([['(', ')'], ['{', '}'], ['[', ']']]);
+  const map = new Map([
+    ["(", ")"],
+    ["{", "}"],
+    ["[", "]"],
+  ]);
   const stack = [];
 
   for (const c of string) {

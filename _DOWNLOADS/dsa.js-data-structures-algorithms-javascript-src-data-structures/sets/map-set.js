@@ -46,7 +46,7 @@ class MapSet {
   /**
    * Make this class iterable
    */
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     yield* this.map.keys();
   }
 
@@ -54,7 +54,7 @@ class MapSet {
    * Get all the values on the Set
    * @returns {iterator} values in insertion order
    */
-  * keys() {
+  *keys() {
     yield* this;
   }
 
@@ -64,7 +64,7 @@ class MapSet {
    * @returns {iterator} new Iterator object that contains[value, value]
    *  for each element in the Set object, in ascending order.
    */
-  * entries() {
+  *entries() {
     for (const value of this) {
       yield [value, value];
     }

@@ -1,4 +1,4 @@
-const HashMap = require('../maps/hash-maps/hash-map');
+const HashMap = require("../maps/hash-maps/hash-map");
 // tag::constructor[]
 /**
  * Set implemented with our HashMap
@@ -60,7 +60,7 @@ class HashMapSet {
   /**
    * Make this class iterable
    */
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     yield* this.hashMap.keys();
   }
 
@@ -68,7 +68,7 @@ class HashMapSet {
    * Get all the values on the Set
    * @returns {iterator} values in insertion order
    */
-  * keys() {
+  *keys() {
     yield* this;
   }
 
@@ -78,12 +78,12 @@ class HashMapSet {
    * @returns {iterator} new Iterator object that contains[value, value]
    *  for each element in the Set object, in ascending order.
    */
-  * entries() {
+  *entries() {
     for (const value of this) {
       yield [value, value];
     }
   }
-// end::iterators[]
+  // end::iterators[]
 }
 
 module.exports = HashMapSet;

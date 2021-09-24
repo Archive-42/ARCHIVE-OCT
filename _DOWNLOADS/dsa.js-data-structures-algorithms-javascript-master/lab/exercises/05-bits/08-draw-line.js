@@ -8,7 +8,7 @@
  Hints: #366, #381, #384, #391
  */
 
-const bm = require('./00-bit-manipulation');
+const bm = require("./00-bit-manipulation");
 
 /**
  *
@@ -18,23 +18,25 @@ const bm = require('./00-bit-manipulation');
  * @param x2 integer
  * @param y integer
  */
-function drawLine(screen, width, x1, x2, y){
+function drawLine(screen, width, x1, x2, y) {
   // validations
-  if(x2 <= x1 || x1 < 0) { return screen; }
+  if (x2 <= x1 || x1 < 0) {
+    return screen;
+  }
 
-  const i1 =  y * screen.length/(width/8) + parseInt(x1/8);
-  const i2 =  y * screen.length/(width/8) + parseInt((x2 - 1)/8);
+  const i1 = (y * screen.length) / (width / 8) + parseInt(x1 / 8);
+  const i2 = (y * screen.length) / (width / 8) + parseInt((x2 - 1) / 8);
 
   // console.log(i1, i2, screen.length/(width/8));
 
-  for(let i = i1; i <= i2; i++) {
-    if(i1 === i2) {
-      screen[i] = bm.setBitsRange(screen[i], (8 - x2 % 9), (8 - x1 % 8));
+  for (let i = i1; i <= i2; i++) {
+    if (i1 === i2) {
+      screen[i] = bm.setBitsRange(screen[i], 8 - (x2 % 9), 8 - (x1 % 8));
     } else if (i === i1) {
-      screen[i] = bm.setBitsRange(screen[i], 0, (8 - x1 % 8));
+      screen[i] = bm.setBitsRange(screen[i], 0, 8 - (x1 % 8));
       // console.log(i, screen[i], 0, (8 - x1));
     } else if (i === i2) {
-      screen[i] = bm.setBitsRange(screen[i], (8 - x2 % 8), 8);
+      screen[i] = bm.setBitsRange(screen[i], 8 - (x2 % 8), 8);
       // console.log(i, screen[i], (8 - x2 % 8), 8);
     } else {
       screen[i] = bm.setBitsRange(screen[i], 0, 8);

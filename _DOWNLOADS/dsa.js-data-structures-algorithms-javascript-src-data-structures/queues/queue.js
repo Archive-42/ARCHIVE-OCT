@@ -1,4 +1,4 @@
-const LinkedList = require('../linked-lists/linked-list');
+const LinkedList = require("../linked-lists/linked-list");
 
 /* Usage Example:
 // tag::snippet[]

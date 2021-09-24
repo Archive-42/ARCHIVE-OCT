@@ -2,12 +2,14 @@
 function isPalindrome(head) {
   let slow = head;
   let fast = head;
-  while (fast) { // use slow/fast pointers to find the middle.
+  while (fast) {
+    // use slow/fast pointers to find the middle.
     slow = slow.next;
     fast = fast.next && fast.next.next;
   }
 
-  const reverseList = (node) => { // use 3 pointers to reverse a linked list
+  const reverseList = (node) => {
+    // use 3 pointers to reverse a linked list
     let prev = null;
     let curr = node;
     while (curr) {
@@ -20,7 +22,8 @@ function isPalindrome(head) {
   };
 
   const reversed = reverseList(slow); // head of the reversed half
-  for (let i = reversed, j = head; i; i = i.next, j = j.next) if (i.value !== j.value) return false;
+  for (let i = reversed, j = head; i; i = i.next, j = j.next)
+    if (i.value !== j.value) return false;
   return true;
 }
 // end::fn[]

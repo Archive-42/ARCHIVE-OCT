@@ -3,7 +3,7 @@
 
 // faster insertion
 // tag::constructor[]
-const Tree = require('../trees/red-black-tree');
+const Tree = require("../trees/red-black-tree");
 
 /**
  * TreeSet implements a Set (collection of unique values)
@@ -68,7 +68,7 @@ class TreeSet {
    * Default iterator for this set
    * @returns {iterator} values in ascending order
    */
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     for (const node of this.tree.inOrderTraversal()) {
       yield node.value;
     }
@@ -79,7 +79,7 @@ class TreeSet {
    * Get all the values on the Set
    * @returns {iterator} values in ascending order
    */
-  * keys() {
+  *keys() {
     yield* this;
   }
 
@@ -89,7 +89,7 @@ class TreeSet {
    * @returns {iterator} new Iterator object that contains[value, value]
    *  for each element in the Set object, in ascending order.
    */
-  * entries() {
+  *entries() {
     for (const value of this) {
       yield [value, value];
     }

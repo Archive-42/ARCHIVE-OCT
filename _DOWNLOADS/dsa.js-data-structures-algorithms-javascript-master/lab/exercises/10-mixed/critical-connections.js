@@ -10,7 +10,6 @@ function criticalConnections(n, connections) {
   return dfs(graph, 0);
 }
 
-
 function buildGraph(n, connections) {
   const graph = [...Array(n).keys()].reduce((map, i) => {
     map.set(i, new Set());
@@ -34,7 +33,8 @@ function dfs(graph, current, previous = null, rank = 1, group = []) {
   for (const adj of graph.get(current)) {
     if (adj === previous) continue;
 
-    if (!group[adj]) { // if not visited (and not in a group yet)
+    if (!group[adj]) {
+      // if not visited (and not in a group yet)
       const links = dfs(graph, adj, current, rank + 1, group);
       if (links.length) {
         criticalLinks = criticalLinks.concat(links);

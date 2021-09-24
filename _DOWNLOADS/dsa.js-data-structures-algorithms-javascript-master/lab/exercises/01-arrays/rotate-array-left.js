@@ -12,8 +12,8 @@
  * @param k - The number of times the array is rotated
  */
 function rotateLeft(a, k) {
-// end::description[]
-// tag::solution[]
+  // end::description[]
+  // tag::solution[]
   const moves = k % a.length;
   for (let i = 0; i < moves; i++) {
     a.push(a.shift());

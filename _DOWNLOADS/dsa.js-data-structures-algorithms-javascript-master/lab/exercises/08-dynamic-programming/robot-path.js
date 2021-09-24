@@ -15,27 +15,43 @@ let debug = 0;
  * @param position
  * @returns {*}
  */
-function findRobotPath(rows, columns, obstacle = [], path = [], position = {row: 0, column:0}) {
+function findRobotPath(
+  rows,
+  columns,
+  obstacle = [],
+  path = [],
+  position = { row: 0, column: 0 }
+) {
   debug++;
   // console.log(position);
   const lastRow = rows - 1;
   const lastColumn = columns - 1;
 
-  if(position.row === lastRow && position.column === lastColumn) {
+  if (position.row === lastRow && position.column === lastColumn) {
     // console.log('calls', debug);
     return path;
-  } else if(obstacle.some((o) => o.row === position.row && o.column === position.column) || position.row > lastRow || position.column > lastColumn) {
+  } else if (
+    obstacle.some(
+      (o) => o.row === position.row && o.column === position.column
+    ) ||
+    position.row > lastRow ||
+    position.column > lastColumn
+  ) {
     // console.log('*calls', debug);
     return false;
   } else {
-    const moveRight = {row: position.row, column: position.column + 1};
+    const moveRight = { row: position.row, column: position.column + 1 };
     const rightPath = path.concat([moveRight]);
 
-    const moveDown = {row: position.row + 1, column: position.column};
+    const moveDown = { row: position.row + 1, column: position.column };
     const downPath = path.concat([moveDown]);
 
-    return (moveRight.column <= lastColumn && findRobotPath(rows, columns, obstacle, rightPath, moveRight)) ||
-      (moveDown.row <= lastRow && findRobotPath(rows, columns, obstacle, downPath, moveDown));
+    return (
+      (moveRight.column <= lastColumn &&
+        findRobotPath(rows, columns, obstacle, rightPath, moveRight)) ||
+      (moveDown.row <= lastRow &&
+        findRobotPath(rows, columns, obstacle, downPath, moveDown))
+    );
   }
 }
 
@@ -50,27 +66,51 @@ function findRobotPath(rows, columns, obstacle = [], path = [], position = {row:
  * @param position
  * @returns {*}
  */
-function findRobotPath2(rows, columns, obstacle = [], path = [], position = {row: 0, column:0}) {
+function findRobotPath2(
+  rows,
+  columns,
+  obstacle = [],
+  path = [],
+  position = { row: 0, column: 0 }
+) {
   debug++;
   const lastRow = rows - 1;
   const lastColumn = columns - 1;
 
-  if(position.row === lastRow && position.column === lastColumn) {
+  if (position.row === lastRow && position.column === lastColumn) {
     // console.log('calls', debug);
     return path;
-  } else if(obstacle.some((o) => o.row === position.row && o.column === position.column) || position.row > lastRow || position.column > lastColumn) {
+  } else if (
+    obstacle.some(
+      (o) => o.row === position.row && o.column === position.column
+    ) ||
+    position.row > lastRow ||
+    position.column > lastColumn
+  ) {
     // console.log('calls', debug);
     return false;
   } else {
-    const moveRight = {row: position.row, column: position.column + 1};
+    const moveRight = { row: position.row, column: position.column + 1 };
     const rightPath = path.concat([moveRight]);
 
-    const moveDown = {row: position.row + 1, column: position.column};
+    const moveDown = { row: position.row + 1, column: position.column };
     const downPath = path.concat([moveDown]);
 
-    if(!obstacle.some((o) => o.row === moveRight.row && o.column === moveRight.column) && moveRight.row <= lastRow && moveRight.column <= lastColumn) {
+    if (
+      !obstacle.some(
+        (o) => o.row === moveRight.row && o.column === moveRight.column
+      ) &&
+      moveRight.row <= lastRow &&
+      moveRight.column <= lastColumn
+    ) {
       return findRobotPath(rows, columns, obstacle, rightPath, moveRight);
-    } else if (!obstacle.some((o) => o.row === moveDown.row && o.column === moveDown.column) && moveDown.row <= lastRow && moveDown.column <= lastColumn) {
+    } else if (
+      !obstacle.some(
+        (o) => o.row === moveDown.row && o.column === moveDown.column
+      ) &&
+      moveDown.row <= lastRow &&
+      moveDown.column <= lastColumn
+    ) {
       return findRobotPath(rows, columns, obstacle, downPath, moveDown);
     } else {
       // console.log('*calls', debug);

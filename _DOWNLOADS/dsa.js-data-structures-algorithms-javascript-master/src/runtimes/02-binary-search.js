@@ -18,9 +18,11 @@ function binarySearchRecursive(array, search, offset = 0) {
 
   if (current === search) {
     return offset + half;
-  } if (array.length === 1) {
+  }
+  if (array.length === 1) {
     return -1;
-  } if (search > current) {
+  }
+  if (search > current) {
     const right = array.slice(half);
     return binarySearchRecursive(right, search, offset + half);
   }
@@ -49,7 +51,8 @@ function binarySearchIterative(array, search) {
 
     if (current === search) {
       return currentIndex;
-    } if (search > current) {
+    }
+    if (search > current) {
       start = currentIndex;
     } else if (search < current) {
       end = currentIndex;
@@ -82,6 +85,5 @@ const binarySearch = binarySearchIterative;
 // }
 
 // test();
-
 
 module.exports = { binarySearch, binarySearchIterative, binarySearchRecursive };

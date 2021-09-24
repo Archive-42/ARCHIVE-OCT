@@ -8,7 +8,8 @@ function criticalConnections(n, connections) {
   const graph = buildGraph(n, connections);
   // console.log({graph})
 
-  for (let i = 0; i < connections.length; i++) { // O(|E| * [|V|^3 + |V|^2|E|]) = O(|V|^3|E| + |V|^2|E|^2)
+  for (let i = 0; i < connections.length; i++) {
+    // O(|E| * [|V|^3 + |V|^2|E|]) = O(|V|^3|E| + |V|^2|E|^2)
     const link = connections[i];
     if (isLinkCritical(link, graph)) {
       critical.push(link);
@@ -34,11 +35,13 @@ function buildGraph(n, connections) {
   return graph;
 }
 
-function isLinkCritical(link, graph) { // DFS: O(|V|^2 * |E|+|V|) = O(|V|^3 + |V|^2|E|)
+function isLinkCritical(link, graph) {
+  // DFS: O(|V|^2 * |E|+|V|) = O(|V|^3 + |V|^2|E|)
   for (let i = 0; i < graph.size; i++) {
     for (let j = 0; j < graph.size; j++) {
       if (hasLink([i, j], link)) continue;
-      if (!isConnected(i, j, link, graph)) { // DFS: O(|E|+|V|)
+      if (!isConnected(i, j, link, graph)) {
+        // DFS: O(|E|+|V|)
         // console.log({i, j, link});
         return true;
       }

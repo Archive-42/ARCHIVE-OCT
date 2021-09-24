@@ -40,7 +40,7 @@ function diff(obj1, obj2) {
 
 // console.log(process.argv);
 const args = process.argv.slice(2);
-const fargs = args.slice(1).map(a => JSON.parse(a));
+const fargs = args.slice(1).map((a) => JSON.parse(a));
 console.log({ args, fargs });
 
 // const ELEMENTS = 1e10; // 11,803.013ms
@@ -49,23 +49,21 @@ console.log({ args, fargs });
 // for (let i = 0; i < ELEMENTS; i++) {}
 // console.timeEnd(`${ELEMENTS.toLocaleString()}-elements`);
 
-
 // spin the CPU for 500 milliseconds
 // const now = Date.now();
 // while (Date.now() - now < 500);
 
-
 const chunks = [];
-process.stdin.on('readable', () => {
+process.stdin.on("readable", () => {
   const chunk = process.stdin.read();
   if (chunk !== null) {
-    process.stdout.write('.');
+    process.stdout.write(".");
     chunks.push(chunk);
   }
 });
 
-process.stdin.on('end', () => {
-  const allChunks = JSON.parse(chunks.join(''));
+process.stdin.on("end", () => {
+  const allChunks = JSON.parse(chunks.join(""));
   process.stdout.write(`data: ${allChunks.length.toLocaleString()}\r\n`);
 
   const startUsage = process.cpuUsage();
@@ -75,15 +73,13 @@ process.stdin.on('end', () => {
   process.stdout.write(require(args[0]).apply(null, [allChunks, ...fargs]));
   // console.profileEnd('MyLabel');
 
-  console.log('cpu usage', t(process.cpuUsage(startUsage)));
-  console.log('mem usage', t(diff(startMemUsaged, process.memoryUsage())));
-
+  console.log("cpu usage", t(process.cpuUsage(startUsage)));
+  console.log("mem usage", t(diff(startMemUsaged, process.memoryUsage())));
 
   // process.stdout.write('end\r\n');
   // console.log('totalCPUusage', t(process.cpuUsage(totalUsage)));
   // console.log(`totalMemUsage`, t(process.memoryUsage())); // https://stackoverflow.com/questions/12023359/what-do-the-return-values-of-node-js-process-memoryusage-stand-for
 });
-
 
 // Improvements
 

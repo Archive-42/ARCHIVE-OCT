@@ -8,8 +8,8 @@
  * @returns {*}
  */
 function recursiveMultiply(a, b) {
-  if(!b) return 0;
-  return a + recursiveMultiply(a, b-1);
+  if (!b) return 0;
+  return a + recursiveMultiply(a, b - 1);
 }
 
 module.exports = recursiveMultiply;

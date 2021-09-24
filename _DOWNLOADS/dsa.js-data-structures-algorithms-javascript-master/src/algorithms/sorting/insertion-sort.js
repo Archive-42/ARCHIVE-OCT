@@ -1,4 +1,4 @@
-const { swap } = require('./sorting-common');
+const { swap } = require("./sorting-common");
 
 // tag::sort[]
 /**
@@ -16,14 +16,15 @@ const { swap } = require('./sorting-common');
 function insertionSort(collection) {
   const array = Array.from(collection); // <1>
 
-  for (let right = 1; right < array.length; right++) { // <2>
-    for (let left = right; array[left - 1] > array[left]; left--) { // <3>
+  for (let right = 1; right < array.length; right++) {
+    // <2>
+    for (let left = right; array[left - 1] > array[left]; left--) {
+      // <3>
       swap(array, left - 1, left); // <4>
     }
   }
   return array;
 }
 // end::sort[]
-
 
 module.exports = insertionSort;

@@ -2,7 +2,8 @@
 function twoSum(nums, target) {
   const map = mapify(nums);
 
-  for (let i = 0; i < nums.length; i++) { // O(n)
+  for (let i = 0; i < nums.length; i++) {
+    // O(n)
     const diff = target - nums[i];
     if (map.has(diff)) {
       const id = map.get(diff).find((j) => j > i);
@@ -14,7 +15,8 @@ function twoSum(nums, target) {
 }
 
 function mapify(nums) {
-  return nums.reduce((m, v, i) => { // O(n)
+  return nums.reduce((m, v, i) => {
+    // O(n)
     const ids = m.get(v) || [];
     ids.push(i);
     return m.set(v, ids);

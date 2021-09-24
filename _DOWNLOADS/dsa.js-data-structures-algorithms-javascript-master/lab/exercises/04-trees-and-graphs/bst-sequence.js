@@ -18,7 +18,9 @@
  * @param root Binary Search Tree
  */
 function getSequences(root) {
-  if(!root) { return [[]]; }
+  if (!root) {
+    return [[]];
+  }
   return weave(root.data, getSequences(root.left), getSequences(root.right));
 }
 
@@ -29,7 +31,7 @@ function weave(prefix = [], arrays1 = [[]], arrays2 = [[]]) {
   let result = [];
 
   // in case of two arguments let's asume it is for array 1 and 2 and that prefix is empty
-  if(arguments.length === 2) {
+  if (arguments.length === 2) {
     [arrays1, arrays2] = [prefix, arrays1];
     prefix = [];
   }
@@ -44,14 +46,16 @@ function weave(prefix = [], arrays1 = [[]], arrays2 = [[]]) {
   // process weaving recursively
   arrays1.forEach((array1) => {
     arrays2.forEach((array2) => {
-
-      if(!array1.length || !array2.length) {
+      if (!array1.length || !array2.length) {
         result = result.concat([prefix.concat(array1, array2)]);
-
       } else {
         // weave the arrays
-        result = result.concat(weave(prefix.concat(array1[0]), array1.slice(1), array2));
-        result = result.concat(weave(prefix.concat(array2[0]), array1, array2.slice(1)));
+        result = result.concat(
+          weave(prefix.concat(array1[0]), array1.slice(1), array2)
+        );
+        result = result.concat(
+          weave(prefix.concat(array2[0]), array1, array2.slice(1))
+        );
       }
     });
   });
@@ -62,4 +66,4 @@ function weave(prefix = [], arrays1 = [[]], arrays2 = [[]]) {
   return result;
 }
 
-module.exports = {getSequences, weave};
+module.exports = { getSequences, weave };

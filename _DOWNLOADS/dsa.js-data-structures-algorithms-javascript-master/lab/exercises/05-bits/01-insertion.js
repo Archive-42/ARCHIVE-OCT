@@ -19,7 +19,7 @@ function insertion(n, m, i, j) {
 
   // mask to clear n between j and i
   let mask = ~(1 << j);
-  mask = mask | ((1 << (i+1)) - 1);
+  mask = mask | ((1 << (i + 1)) - 1);
 
   // shift m and merge with n
   return (n & mask) | (m << i);

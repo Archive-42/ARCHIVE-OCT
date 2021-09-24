@@ -1,6 +1,6 @@
 /*eslint-disable */
 
-function reverse (arr, i, j) {
+function reverse(arr, i, j) {
   while (i < j) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
     i++;

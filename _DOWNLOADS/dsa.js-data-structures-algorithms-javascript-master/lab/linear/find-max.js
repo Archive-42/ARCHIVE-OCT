@@ -13,9 +13,8 @@ function findMax(n) {
   return max;
 }
 
-const assert = require('assert');
+const assert = require("assert");
 
 assert.equal(findMax([3, 1, 2]), 3);
 assert.equal(findMax([4, 5, 6, 1, 9, 2, 8, 3, 7]), 9);
 assert.equal(findMax([4, 2, 8, 3, 7, 0, -1]), 8);
-

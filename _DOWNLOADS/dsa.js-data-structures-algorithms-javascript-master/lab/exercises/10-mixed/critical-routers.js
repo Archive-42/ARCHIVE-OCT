@@ -30,7 +30,9 @@ function criticalRouters(numRouters, numLinks, links) {
 function isCritical(graph, curr) {
   for (let i = 1; i <= graph.size; i++) {
     for (let j = 1; j <= graph.size; j++) {
-      if (curr === i || curr === j || i === j) { continue; }
+      if (curr === i || curr === j || i === j) {
+        continue;
+      }
       if (!isConnected(graph, i, j, curr)) {
         return true;
       }
@@ -48,8 +50,8 @@ function addEdge(graph, from, to) {
 function buildGraph(numRouters, links) {
   // console.log('buildGraph', { numRouters, links });
   const graph = new Map();
-  const routers = [...Array(numRouters).keys()].map(r => r + 1);
-  routers.forEach(r => graph.set(r, new Set()));
+  const routers = [...Array(numRouters).keys()].map((r) => r + 1);
+  routers.forEach((r) => graph.set(r, new Set()));
 
   links.forEach(([from, to]) => {
     addEdge(graph, from, to);
@@ -64,7 +66,9 @@ function isConnected(graph, i, j, ignore, visited = new Set()) {
   if (graph.get(i).has(j)) return true;
 
   for (const adj of graph.get(i)) {
-    if (visited.has(adj)) { continue; }
+    if (visited.has(adj)) {
+      continue;
+    }
     visited.add(adj);
     if (isConnected(graph, adj, j, ignore, visited)) {
       return true;

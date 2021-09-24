@@ -1,4 +1,4 @@
-const ListNode = require('../../src/data-structures/linked-lists/node');
+const ListNode = require("../../src/data-structures/linked-lists/node");
 // tag::description[]
 /**
  * Given two sorted linked lists merge them while keeping the asc order.
@@ -33,6 +33,5 @@ function mergeTwoLists(l1, l2) {
   return sentinel.next;
 }
 // end::solution[]
-
 
 module.exports = { mergeTwoLists };

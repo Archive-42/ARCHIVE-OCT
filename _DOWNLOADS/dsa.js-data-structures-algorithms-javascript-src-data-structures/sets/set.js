@@ -1,3 +1,3 @@
-const HashSet = require('./hash-set');
+const HashSet = require("./hash-set");
 
 module.exports = HashSet;

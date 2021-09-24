@@ -1,21 +1,21 @@
-const LinkedList = require('./linkedlist');
+const LinkedList = require("./linkedlist");
 
 function listOfDepths(root) {
   const result = [];
 
-  if(!root) return result;
+  if (!root) return result;
 
   let current = new LinkedList();
 
   current.addLast(root);
 
-  while(current.size()) {
+  while (current.size()) {
     result.push(current);
 
     const parents = current;
     current = new LinkedList();
 
-    for(let parent = parents.head; parent; parent = parent.next) {
+    for (let parent = parents.head; parent; parent = parent.next) {
       parent.data.adjacents.forEach(function (adj) {
         current.addLast(adj);
       });
@@ -27,27 +27,27 @@ function listOfDepths(root) {
 
 // ------- Alternative solution
 
-const Queue = require('./queue');
+const Queue = require("./queue");
 
 function listOfDepths2(root) {
   const queue = new Queue();
   const list = [];
   let depth = 0;
 
-  if(!root) return list;
+  if (!root) return list;
 
   queue.add(root);
-  queue.add('*');
+  queue.add("*");
 
-  while(!queue.isEmpty()) {
-    if(queue.peek() === '*') {
+  while (!queue.isEmpty()) {
+    if (queue.peek() === "*") {
       queue.remove();
       depth++;
 
-      if(queue.isEmpty()) {
+      if (queue.isEmpty()) {
         continue;
       } else {
-        queue.add('*');
+        queue.add("*");
       }
     }
 

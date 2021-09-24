@@ -18,10 +18,12 @@ function nextNumber(number) {
 
 function swapper(number, toRight = true) {
   const result = [];
-  const action = toRight ? {one: 'push', zero: 'unshift'} : {one: 'unshift', zero: 'push'};
+  const action = toRight
+    ? { one: "push", zero: "unshift" }
+    : { one: "unshift", zero: "push" };
 
-  while(number > 0) {
-    if(number & 1) {
+  while (number > 0) {
+    if (number & 1) {
       result[action.one](1);
     } else {
       result[action.zero](0);
@@ -29,7 +31,7 @@ function swapper(number, toRight = true) {
     number >>= 1;
   }
 
-  return parseInt(result.join(''), 2);
+  return parseInt(result.join(""), 2);
 }
 
 module.exports = nextNumber;

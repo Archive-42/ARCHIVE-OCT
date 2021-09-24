@@ -1,4 +1,4 @@
-const { PriorityQueue, Queue } = require('../../src/index');
+const { PriorityQueue, Queue } = require("../../src/index");
 
 // tag::description[]
 function networkDelayTime(times, N, K) {
@@ -7,7 +7,11 @@ function networkDelayTime(times, N, K) {
   // write your code here...
   // end::placeholder[]
   // tag::solution[]
-  const graph = new Map(Array(N).fill(0).map((_, i) => [i + 1, []]));
+  const graph = new Map(
+    Array(N)
+      .fill(0)
+      .map((_, i) => [i + 1, []])
+  );
   times.forEach(([u, v, w]) => graph.get(u).push([v, w]));
 
   const q = new PriorityQueue([[0, K]]);
@@ -32,7 +36,11 @@ function networkDelayTime(times, N, K) {
 
 // tag::networkDelayTimeQueue[]
 function networkDelayTimeQueue(times, N, K) {
-  const graph = new Map(Array(N).fill(0).map((_, i) => [i + 1, []]));
+  const graph = new Map(
+    Array(N)
+      .fill(0)
+      .map((_, i) => [i + 1, []])
+  );
   times.forEach(([u, v, w]) => graph.get(u).push([v, w]));
 
   const q = new Queue([[0, K]]);

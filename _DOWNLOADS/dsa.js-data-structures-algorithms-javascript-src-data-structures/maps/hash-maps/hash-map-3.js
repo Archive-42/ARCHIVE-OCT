@@ -66,7 +66,9 @@ class HashMap {
       this.buckets[bucketIndex].push({ key, value, keyIndex });
       this.size++;
       // Optional: keep count of collisions
-      if (this.buckets[bucketIndex].length > 1) { this.collisions++; }
+      if (this.buckets[bucketIndex].length > 1) {
+        this.collisions++;
+      }
     } else {
       // override existing value
       this.buckets[bucketIndex][entryIndex].value = value;
@@ -195,7 +197,7 @@ class HashMap {
    *   console.log(mapIter.next().value); // "baz"
    */
   values() {
-    throw new Error('Not implemented');
+    throw new Error("Not implemented");
   }
 }
 

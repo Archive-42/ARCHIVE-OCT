@@ -1,7 +1,11 @@
-const LinkedList = require('./linkedlist');
+const LinkedList = require("./linkedlist");
 
-function sumLists(list1, list2, {isForwardOrder} = {isForwardOrder: false}) {
-  if(isForwardOrder) {
+function sumLists(
+  list1,
+  list2,
+  { isForwardOrder } = { isForwardOrder: false }
+) {
+  if (isForwardOrder) {
     return sumListsForwardOrder(list1, list2);
   } else {
     return sumListsReverseOrder(list1, list2);
@@ -14,7 +18,11 @@ function sumListsReverseOrder(list1, list2) {
 
   // TODO: assert list length are the same
 
-  for(let l1 = list1.head, l2 = list2.head; l1 && l2; l1 = l1.next, l2 = l2.next) {
+  for (
+    let l1 = list1.head, l2 = list2.head;
+    l1 && l2;
+    l1 = l1.next, l2 = l2.next
+  ) {
     // TODO: validate data from both list are numbers
     const value = l1.data + l2.data + reminder;
     reminder = parseInt(value / 10);
@@ -30,16 +38,26 @@ function sumListsForwardOrder(list1, list2) {
 
   // TODO: assert list length are the same
 
-  for(let l1 = list1.head, l2 = list2.head; l1 && l2; l1 = l1.next, l2 = l2.next) {
+  for (
+    let l1 = list1.head, l2 = list2.head;
+    l1 && l2;
+    l1 = l1.next, l2 = l2.next
+  ) {
     // TODO: validate data from both list are numbers
     values.push(l1.data + l2.data);
   }
 
-  for(let i = 0; i < values.length; i++) {
+  for (let i = 0; i < values.length; i++) {
     num += values[i] * Math.pow(10, values.length - i - 1);
   }
 
-  num.toString().split('').reduce((list, e) => { list.addLast(e); return list; }, result);
+  num
+    .toString()
+    .split("")
+    .reduce((list, e) => {
+      list.addLast(e);
+      return list;
+    }, result);
 
   return result;
 }
@@ -50,12 +68,10 @@ function test1() {
   list1.addFirst(1);
   list1.addFirst(7);
 
-
   const list2 = new LinkedList();
   list2.addFirst(2);
   list2.addFirst(9);
   list2.addFirst(5);
-
 
   console.log(list1.toString()); // 7 -> 1 -> 6
   console.log(list2.toString()); // 5 -> 9 -> 2
@@ -68,16 +84,14 @@ function test2() {
   list1.addLast(1);
   list1.addLast(7);
 
-
   const list2 = new LinkedList();
   list2.addLast(2);
   list2.addLast(9);
   list2.addLast(5);
 
-
   console.log(list1.toString()); // 6 -> 1 -> 7
   console.log(list2.toString()); // 2 -> 9 -> 5
-  console.log(sumLists(list1, list2, {isForwardOrder: true}).toString()); // 9 -> 1 -> 2 = 912
+  console.log(sumLists(list1, list2, { isForwardOrder: true }).toString()); // 9 -> 1 -> 2 = 912
 }
 
 test1();

@@ -14,11 +14,11 @@ function flipBitToWin(number) {
   let current = 0;
   let max = 0;
 
-  while(number > 0) {
-    if(number & 1) {
+  while (number > 0) {
+    if (number & 1) {
       current++;
     } else {
-      if(previous > 0) {
+      if (previous > 0) {
         max = Math.max(current + previous + 1, max);
       }
 
@@ -29,7 +29,7 @@ function flipBitToWin(number) {
     number >>= 1;
   }
 
-  if(previous > 0) {
+  if (previous > 0) {
     max = Math.max(current + previous + 1, max);
   } else {
     max = Math.max(current, max);

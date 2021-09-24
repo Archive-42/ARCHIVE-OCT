@@ -1,14 +1,14 @@
-const expect = require('chai').expect;
-const LinkedList = require('./linkedlist');
+const expect = require("chai").expect;
+const LinkedList = require("./linkedlist");
 
-describe('LinkedList', function () {
+describe("LinkedList", function () {
   let list;
 
   beforeEach(function () {
     list = new LinkedList();
   });
 
-  describe('.addLast', function () {
+  describe(".addLast", function () {
     beforeEach(function () {
       list.addLast(1);
       list.addLast(2);
@@ -16,29 +16,29 @@ describe('LinkedList', function () {
       list.addLast(4);
     });
 
-    it('should add elements to the tail and count size', function () {
-      expect(list.toString()).to.equal('1 -> 2 -> 3 -> 4');
+    it("should add elements to the tail and count size", function () {
+      expect(list.toString()).to.equal("1 -> 2 -> 3 -> 4");
     });
 
-    it('should have a size of 4', function () {
+    it("should have a size of 4", function () {
       expect(list.size()).to.equal(4);
     });
 
-    it('should add nodes and update the tail and size', function () {
+    it("should add nodes and update the tail and size", function () {
       const list2 = new LinkedList();
-      const a = list2.addLast('a');
-      list2.addLast('b');
-      const c = list2.addLast('c');
+      const a = list2.addLast("a");
+      list2.addLast("b");
+      const c = list2.addLast("c");
 
       list.addLast(a);
 
-      expect(list.toString()).to.equal('1 -> 2 -> 3 -> 4 -> a -> b -> c');
+      expect(list.toString()).to.equal("1 -> 2 -> 3 -> 4 -> a -> b -> c");
       expect(list.size()).to.equal(7);
       expect(list.tail).to.equal(c);
     });
   });
 
-  describe('.addFirst', function () {
+  describe(".addFirst", function () {
     beforeEach(function () {
       list.addFirst(1);
       list.addFirst(2);
@@ -46,16 +46,16 @@ describe('LinkedList', function () {
       list.addFirst(4);
     });
 
-    it('should add elements to the tail and count size', function () {
-      expect(list.toString()).to.equal('4 -> 3 -> 2 -> 1');
+    it("should add elements to the tail and count size", function () {
+      expect(list.toString()).to.equal("4 -> 3 -> 2 -> 1");
     });
 
-    it('should have a size of 4', function () {
+    it("should have a size of 4", function () {
       expect(list.size()).to.equal(4);
     });
   });
 
-  describe('.add (addFirst)', function () {
+  describe(".add (addFirst)", function () {
     beforeEach(function () {
       list = new LinkedList();
       list.add(1);
@@ -64,26 +64,26 @@ describe('LinkedList', function () {
       list.add(4);
     });
 
-    it('should add elements to the tail and count size', function () {
-      expect(list.toString()).to.equal('4 -> 3 -> 2 -> 1');
+    it("should add elements to the tail and count size", function () {
+      expect(list.toString()).to.equal("4 -> 3 -> 2 -> 1");
     });
 
-    it('should have a size of 4', function () {
+    it("should have a size of 4", function () {
       expect(list.size()).to.equal(4);
     });
   });
 
-  describe('.removeLast', function () {
-    it('should handle empty', function () {
+  describe(".removeLast", function () {
+    it("should handle empty", function () {
       expect(list.removeLast()).to.equal(undefined);
     });
 
-    it('should remove item', function () {
+    it("should remove item", function () {
       list.add(1);
       expect(list.removeLast()).to.equal(1);
     });
 
-    it('should remove multiple items', function () {
+    it("should remove multiple items", function () {
       list.addLast(1);
       list.addLast(2);
 
@@ -99,17 +99,17 @@ describe('LinkedList', function () {
     });
   });
 
-  describe('.removeFirst', function () {
-    it('should handle empty', function () {
+  describe(".removeFirst", function () {
+    it("should handle empty", function () {
       expect(list.removeFirst()).to.equal(undefined);
     });
 
-    it('should remove item', function () {
+    it("should remove item", function () {
       list.add(1);
       expect(list.removeFirst()).to.equal(1);
     });
 
-    it('should remove multiple items and ', function () {
+    it("should remove multiple items and ", function () {
       list.addLast(1);
       list.addLast(2);
 
@@ -125,7 +125,7 @@ describe('LinkedList', function () {
     });
   });
 
-  describe('.delete', function () {
+  describe(".delete", function () {
     beforeEach(function () {
       list = new LinkedList();
       list.add(1);
@@ -134,12 +134,12 @@ describe('LinkedList', function () {
       list.add(4);
     });
 
-    it('should start with size of 3 after deleting one', function () {
+    it("should start with size of 3 after deleting one", function () {
       list.delete(4);
       expect(list.size()).to.equal(3);
     });
 
-    it('should have a size of 4', function () {
+    it("should have a size of 4", function () {
       list.delete(4);
       list.delete(2);
       list.delete(1);
@@ -147,45 +147,44 @@ describe('LinkedList', function () {
       expect(list.size()).to.equal(0);
     });
 
-    it('should not change if element not found', function () {
+    it("should not change if element not found", function () {
       list.delete(7);
       expect(list.size()).to.equal(4);
     });
 
-    it('should delete an arbitrary element', function () {
+    it("should delete an arbitrary element", function () {
       list.delete(3);
-      expect(list.toString()).to.equal('4 -> 2 -> 1');
+      expect(list.toString()).to.equal("4 -> 2 -> 1");
     });
   });
 
-
-  describe('removeFirstByQuery', function () {
+  describe("removeFirstByQuery", function () {
     let dog, cat, rat;
 
     beforeEach(function () {
-      dog = {animal: 'dog', name: 'Snoopy'};
-      cat = {animal: 'cat', name: 'Garfield'};
-      rat = {animal: 'rat', name: 'Micky'};
+      dog = { animal: "dog", name: "Snoopy" };
+      cat = { animal: "cat", name: "Garfield" };
+      rat = { animal: "rat", name: "Micky" };
 
       list.addLast(dog);
       list.addLast(cat);
       list.addLast(rat);
     });
 
-    it('should remove dog', function () {
-      expect(list.toString('name')).to.equal('Snoopy -> Garfield -> Micky');
-      expect(list.delete({animal: 'dog'})).to.equal(dog);
-      expect(list.toString('name')).to.equal('Garfield -> Micky');
+    it("should remove dog", function () {
+      expect(list.toString("name")).to.equal("Snoopy -> Garfield -> Micky");
+      expect(list.delete({ animal: "dog" })).to.equal(dog);
+      expect(list.toString("name")).to.equal("Garfield -> Micky");
     });
 
-    it('should remove the rat', function () {
-      expect(list.delete({animal: 'rat'})).to.equal(rat);
-      expect(list.toString('name')).to.equal('Snoopy -> Garfield');
+    it("should remove the rat", function () {
+      expect(list.delete({ animal: "rat" })).to.equal(rat);
+      expect(list.toString("name")).to.equal("Snoopy -> Garfield");
     });
 
-    it('should remove the cat', function () {
-      expect(list.delete({animal: 'cat'})).to.equal(cat);
-      expect(list.toString('name')).to.equal('Snoopy -> Micky');
+    it("should remove the cat", function () {
+      expect(list.delete({ animal: "cat" })).to.equal(cat);
+      expect(list.toString("name")).to.equal("Snoopy -> Micky");
     });
   });
 });

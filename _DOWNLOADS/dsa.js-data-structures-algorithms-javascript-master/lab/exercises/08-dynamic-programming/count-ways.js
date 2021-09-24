@@ -9,10 +9,10 @@
 function countWaysTripleSteps(n) {
   let ways = 0;
 
-  for(let z = 0; z <= n/3; z++) {
-    for(let y = 0; y <= n/2; y++) {
-      for(let x = 0; x <= n; x++) {
-        if(n === 1 * x + 2 * y + 3 * z) {
+  for (let z = 0; z <= n / 3; z++) {
+    for (let y = 0; y <= n / 2; y++) {
+      for (let x = 0; x <= n; x++) {
+        if (n === 1 * x + 2 * y + 3 * z) {
           ways++;
         }
       }
@@ -33,15 +33,17 @@ function countWaysTripleSteps(n) {
 function countWaysTripleSteps2(n) {
   let ways = 0;
 
-  for(let z = 0; z <= n/3; z++) {
-    for(let y = 0; y <= n/2; y++) {
-      for(let x = 0; x <= n; x++) {
-        if(n === 1 * x + 2 * y + 3 * z ||
-           n === 1 * x + 3 * y + 2 * z ||
-           n === 2 * x + 1 * y + 3 * z ||
-           n === 2 * x + 3 * y + 1 * z ||
-           n === 3 * x + 1 * y + 2 * z ||
-           n === 3 * x + 2 * y + 1 * z) {
+  for (let z = 0; z <= n / 3; z++) {
+    for (let y = 0; y <= n / 2; y++) {
+      for (let x = 0; x <= n; x++) {
+        if (
+          n === 1 * x + 2 * y + 3 * z ||
+          n === 1 * x + 3 * y + 2 * z ||
+          n === 2 * x + 1 * y + 3 * z ||
+          n === 2 * x + 3 * y + 1 * z ||
+          n === 3 * x + 1 * y + 2 * z ||
+          n === 3 * x + 2 * y + 1 * z
+        ) {
           ways++;
         }
       }
@@ -63,24 +65,24 @@ function countWaysTripleSteps2(n) {
 function countWays2(n, memo = []) {
   let ways = 0;
 
-  if(memo[n]) {
+  if (memo[n]) {
     return memo[n];
   }
 
-  if(n === 0) {
+  if (n === 0) {
     return 1;
   }
 
-  if(n - 1 >= 0) {
+  if (n - 1 >= 0) {
     ways += memo[n - 1] || countWays(n - 1, memo);
   }
 
-  if(n - 2 >= 0) {
-    ways += memo[n-2] || countWays(n - 2, memo);
+  if (n - 2 >= 0) {
+    ways += memo[n - 2] || countWays(n - 2, memo);
   }
 
-  if(n - 3 >= 0) {
-    ways += memo[n-3] || countWays(n - 3, memo);
+  if (n - 3 >= 0) {
+    ways += memo[n - 3] || countWays(n - 3, memo);
   }
 
   memo[n] = ways;
@@ -101,14 +103,15 @@ function countWays2(n, memo = []) {
 function countWays(n, memo = []) {
   let ways = 0;
 
-  if(n < 0) {
+  if (n < 0) {
     return 0;
-  } else if(n === 0) {
+  } else if (n === 0) {
     return 1;
-  } else if(memo[n]) {
+  } else if (memo[n]) {
     return memo[n];
   } else {
-    ways = countWays(n - 1, memo) + countWays(n - 2, memo) + countWays(n - 3, memo);
+    ways =
+      countWays(n - 1, memo) + countWays(n - 2, memo) + countWays(n - 3, memo);
   }
 
   memo[n] = ways;

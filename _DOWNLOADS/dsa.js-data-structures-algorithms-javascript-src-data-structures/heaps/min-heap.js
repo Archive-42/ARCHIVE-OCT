@@ -1,4 +1,4 @@
-const Heap = require('./heap');
+const Heap = require("./heap");
 
 class MinHeap extends Heap {
   constructor() {

@@ -36,9 +36,10 @@ function sortColors(nums) {
 
 // tag::compact[]
 function sortColorsCompact(nums) {
-  let i = 0; let lo = 0; let
-    hi = nums.length - 1;
-  const swap = (k, j) => [nums[k], nums[j]] = [nums[j], nums[k]];
+  let i = 0;
+  let lo = 0;
+  let hi = nums.length - 1;
+  const swap = (k, j) => ([nums[k], nums[j]] = [nums[j], nums[k]]);
 
   while (i <= hi) {
     if (nums[i] < 1) swap(i++, lo++);

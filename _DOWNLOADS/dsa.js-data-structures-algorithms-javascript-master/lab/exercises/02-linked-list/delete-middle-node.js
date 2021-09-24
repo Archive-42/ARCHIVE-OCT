@@ -1,4 +1,4 @@
-const LinkedList = require('./linkedlist');
+const LinkedList = require("./linkedlist");
 
 // 2.3
 
@@ -50,7 +50,6 @@ list.add(1);
 list.deleteMiddleNode(node);
 console.log(list.toString()); // 1 -> 2 -> 3 -> 4
 
-
 // -----------------------
 list.deleteMiddleNode();
 
@@ -59,8 +58,10 @@ list.deleteMiddleNode();
  * @param node
  */
 function deleteNode(node) {
-  if(!node || !node.next) { return; }
+  if (!node || !node.next) {
+    return;
+  }
   const next = node.next;
   node.data = next.data;
-  node.next = next.next
+  node.next = next.next;
 }

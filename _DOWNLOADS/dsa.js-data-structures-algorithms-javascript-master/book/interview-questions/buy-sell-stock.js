@@ -9,8 +9,8 @@
  * @returns {number} - Max profit
  */
 function maxProfit(prices) {
-// end::description[]
-// tag::solution[]
+  // end::description[]
+  // tag::solution[]
   let max = 0;
   let local = Infinity;
   for (let i = 0; i < prices.length; i++) {
@@ -32,6 +32,5 @@ function maxProfitBrute1(prices) {
   return max;
 }
 // end::maxProfitBrute1[]
-
 
 module.exports = { maxProfitBrute1, maxProfit };

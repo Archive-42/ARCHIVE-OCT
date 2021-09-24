@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 // const Tree = require('../../trees/binary-search-tree'); // unbalanced tree (slow everything)
 // const Tree = require('../../trees/avl-tree'); // fast lookup
-const Tree = require('../../trees/red-black-tree'); // fast insertion
+const Tree = require("../../trees/red-black-tree"); // fast insertion
 
 /**
  * TreeMap is a Map implementation using a self-balanced tree
@@ -117,7 +117,7 @@ class TreeMap {
   /**
    * Default iterator for this map
    */
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     yield* this.tree.inOrderTraversal(); // <1>
   }
 
@@ -126,7 +126,7 @@ class TreeMap {
    *  in order ascending order.
    * @returns {Iterator} keys
    */
-  * keys() {
+  *keys() {
     for (const node of this) {
       yield node.value;
     }
@@ -137,7 +137,7 @@ class TreeMap {
    *  in corresponding key ascending order.
    * @returns {Iterator} values without holes (empty spaces of deleted values)
    */
-  * values() {
+  *values() {
     for (const node of this) {
       yield node.data();
     }
@@ -149,7 +149,7 @@ class TreeMap {
    *  in corresponding key ascending order.
    * @returns {Iterator}
    */
-  * entries() {
+  *entries() {
     for (const node of this) {
       yield [node.value, node.data()];
     }

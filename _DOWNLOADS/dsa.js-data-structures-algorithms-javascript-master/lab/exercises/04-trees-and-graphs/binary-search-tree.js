@@ -3,12 +3,12 @@ class BinarySearchTree {
     this.binaryTree = [];
   }
 
-  add(element){
+  add(element) {
     this.binaryTree.push(element);
   }
 
   toString() {
-    return this.binaryTree.join(', ');
+    return this.binaryTree.join(", ");
   }
 }
 

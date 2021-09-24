@@ -19,16 +19,15 @@ function conversion(number1, number2) {
 function countOnes(num) {
   let ones = 0;
 
-  while(num > 0) {
+  while (num > 0) {
     ones++;
-    num &= (num - 1); // clear least significant bit
+    num &= num - 1; // clear least significant bit
   }
 
   return ones;
 }
 
 module.exports = conversion;
-
 
 /*
 xor

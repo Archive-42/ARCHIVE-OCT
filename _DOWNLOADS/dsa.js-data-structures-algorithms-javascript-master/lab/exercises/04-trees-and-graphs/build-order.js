@@ -1,4 +1,4 @@
-const Graph = require('./graph').Graph;
+const Graph = require("./graph").Graph;
 
 /**
  *
@@ -38,25 +38,25 @@ function getBuildOrder(projects, dependencies) {
       doDFS(node, list);
     });
   } catch (e) {
-    console.log(e.name + ': ' + e.message);
+    console.log(e.name + ": " + e.message);
   }
 
   return list;
 }
 
 function doDFS(node, list) {
-  if(node.metadata.status === 'VISITED') {
+  if (node.metadata.status === "VISITED") {
     return;
-  } else if(node.metadata.status === 'VISITING') {
-    throw new Error('Infinite loop detected');
+  } else if (node.metadata.status === "VISITING") {
+    throw new Error("Infinite loop detected");
   }
 
-  node.metadata.status = 'VISITING';
+  node.metadata.status = "VISITING";
   node.adjacents.forEach(function (adj) {
     doDFS(adj, list);
   });
 
-  node.metadata.status = 'VISITED';
+  node.metadata.status = "VISITED";
   list.unshift(node.data);
 }
 
@@ -77,18 +77,19 @@ function getBuildOrder2(projects, dependencies) {
 
   // add to results projects without dependencies
   projects.forEach(function (project) {
-    if(!nodes.includes(project)) {
+    if (!nodes.includes(project)) {
       result.add(project);
     }
   });
 
   // start by projects that doesn't depend on any other
   invGraph.nodes.forEach(function (node, value) {
-    if(!node.adjacents.length) { // node without incoming edges
+    if (!node.adjacents.length) {
+      // node without incoming edges
       const bfs = graph.bfs(value);
       let next = bfs.next();
 
-      while(!next.done) {
+      while (!next.done) {
         result.add(next.value.data);
         next = bfs.next();
       }

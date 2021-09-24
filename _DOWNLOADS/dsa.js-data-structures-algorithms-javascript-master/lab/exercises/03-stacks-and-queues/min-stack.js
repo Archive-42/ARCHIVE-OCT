@@ -19,7 +19,7 @@ class MinStack {
   push(data) {
     const node = new Node(data);
 
-    if(this.head) {
+    if (this.head) {
       node.next = this.head;
     } else {
       this.minNode = node;
@@ -28,7 +28,7 @@ class MinStack {
 
     this.head = node;
 
-    if(this.minNode.data > node.data) {
+    if (this.minNode.data > node.data) {
       this.minNode = node;
       this.minimums.push(node);
     }
@@ -41,11 +41,13 @@ class MinStack {
   pop() {
     const out = this.head;
 
-    if(!out) { return; }
+    if (!out) {
+      return;
+    }
 
     this.head = this.head.next;
 
-    if(out === this.minNode) {
+    if (out === this.minNode) {
       this.minimums.pop();
       this.minNode = this.minimums[this.minimums.length - 1];
     }
@@ -54,7 +56,9 @@ class MinStack {
   }
 
   min() {
-    if(!this.minNode) { return; }
+    if (!this.minNode) {
+      return;
+    }
     return this.minNode.data;
   }
 }

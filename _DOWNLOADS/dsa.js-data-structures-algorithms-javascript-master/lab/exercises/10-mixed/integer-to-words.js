@@ -1,12 +1,45 @@
 // nodemon lab/exercises/10-mixed/integer-to-words.spec-assert.js
 // npx jest lab/exercises/10-mixed/integer-to-words.spec.js --watch
-const UPTO20 = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
-const TENS = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+const UPTO20 = [
+  "Zero",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Eleven",
+  "Twelve",
+  "Thirteen",
+  "Fourteen",
+  "Fifteen",
+  "Sixteen",
+  "Seventeen",
+  "Eighteen",
+  "Nineteen",
+  "Twenty",
+];
+const TENS = [
+  "",
+  "",
+  "Twenty",
+  "Thirty",
+  "Forty",
+  "Fifty",
+  "Sixty",
+  "Seventy",
+  "Eighty",
+  "Ninety",
+];
 const HUNDREDS = new Map([
-  [1_000_000_000, 'Billion'],
-  [1_000_000, 'Million'],
-  [1_000, 'Thousand'],
-  [100, 'Hundred'],
+  [1_000_000_000, "Billion"],
+  [1_000_000, "Million"],
+  [1_000, "Thousand"],
+  [100, "Hundred"],
 ]);
 
 /**
@@ -25,24 +58,24 @@ const HUNDREDS = new Map([
 function numberToWords(num) {
   if (num < 21) return UPTO20[num];
 
-  let ans = '';
+  let ans = "";
 
   for (const [div, word] of HUNDREDS.entries()) {
-    if (Math.floor(num/div)) {
-      ans += `${ numberToWords(Math.floor(num/div)) } `;
-      ans += `${ word } `;
+    if (Math.floor(num / div)) {
+      ans += `${numberToWords(Math.floor(num / div))} `;
+      ans += `${word} `;
       num %= div;
     }
   }
 
   if (num && num < 21) {
-    ans += UPTO20[num]  + ' ';
+    ans += UPTO20[num] + " ";
   } else {
-    if (Math.floor(num/10)) ans += `${ TENS[Math.floor(num/10)] } `;
-    if (Math.floor(num % 10)) ans += `${ UPTO20[Math.floor(num % 10)] } `;
+    if (Math.floor(num / 10)) ans += `${TENS[Math.floor(num / 10)]} `;
+    if (Math.floor(num % 10)) ans += `${UPTO20[Math.floor(num % 10)]} `;
   }
 
   return ans.trim();
-};
+}
 
 module.exports = numberToWords;

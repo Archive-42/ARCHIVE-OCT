@@ -1,19 +1,18 @@
 // nodemon benchmarks/hashmap.perf.js
 /* eslint-disable */
 
-
 /**
  * Using Benchmark.js
  * @example
  * - https://benchmarkjs.com/
  * - https://github.com/bootstraponline-archive/livepreview_benchmark/blob/gh-pages/public/js/benchmarkjs/test.js#L14-16
  */
-const Series = require('./stats');
-const assert = require('assert');
-const readline = require('readline');
-var Benchmark = require('benchmark');
-const fs = require('fs');
-const filePath = 'benchmarks/data/';
+const Series = require("./stats");
+const assert = require("assert");
+const readline = require("readline");
+var Benchmark = require("benchmark");
+const fs = require("fs");
+const filePath = "benchmarks/data/";
 const en2048 = `${filePath}english.txt`;
 const en10k = `${filePath}google-10000-english.txt`;
 const all24k = `${filePath}00-combined.txt`;
@@ -23,7 +22,7 @@ const file = en2048;
 // const dsPath = './hash-map-2';
 // const dsPath = './hash-map-3';
 // const dsPath = './hash-map-4';
-const dsPath = 'src/data-structures/hash-maps/hash-map';
+const dsPath = "src/data-structures/hash-maps/hash-map";
 // const HashTable = require(dsPath);
 const keys = [];
 const values = [];
@@ -44,19 +43,19 @@ function runTest() {
   const map = new Map();
   // const dict = new HashTable();
 
-  reportTime('Map#set', () => {
+  reportTime("Map#set", () => {
     for (let i = 0; i < keys.length; i++) {
       map.set(keys[i], keys[i]);
     }
-    console.log('set.keys.length', keys.length);
+    console.log("set.keys.length", keys.length);
   });
 
-  reportTime('Map#get', () => {
+  reportTime("Map#get", () => {
     for (let i = 0; i < keys.length; i++) {
       const val = map.get(keys[i]);
       assert.equal(val, keys[i]);
     }
-    console.log('get.keys.length', keys.length);
+    console.log("get.keys.length", keys.length);
   });
 }
 
@@ -65,10 +64,10 @@ const rl = readline.createInterface({
   crlfDelay: Infinity,
 });
 
-rl.on('line', (line) => {
+rl.on("line", (line) => {
   keys.push(line);
   values.push(`${line}-${Math.random()}`);
-}).on('close', () => {
+}).on("close", () => {
   // inserting a duplicated key with different value
   // keys.push(keys[0]);
   // values.push(`${keys[0]}-${Math.random()}`);
@@ -89,8 +88,8 @@ function testMapOperations(map) {
     assert.equal(val, values[i]);
   }
   // update
-  map.set(keys[0], 'test');
-  assert.equal(map.get(keys[0]), 'test');
+  map.set(keys[0], "test");
+  assert.equal(map.get(keys[0]), "test");
   // delete
   for (let i = 0; i < keys.length; i++) {
     map.delete(keys[i], values[i]);
@@ -99,8 +98,8 @@ function testMapOperations(map) {
 }
 
 function printSortedResults(benchmark) {
-  console.log('\n======== Results ========');
-  const results = Object.values(benchmark).filter(b => b && b.name);
+  console.log("\n======== Results ========");
+  const results = Object.values(benchmark).filter((b) => b && b.name);
   const sortedResults = results.sort((a, b) => b.hz - a.hz);
   sortedResults.forEach((b) => {
     console.log(`${b.hz.toLocaleString()} ops/s with ${b.name}`);
@@ -108,12 +107,12 @@ function printSortedResults(benchmark) {
 }
 
 function useBenchmark() {
-  var suite = new Benchmark.Suite;
-  const NaiveHMLength = require('../src/data-structures/hash-maps/hash-map-1');
-  const HashMapSmallBucket = require('../src/data-structures/hash-maps/hash-map-2');
-  const HashMap3 = require('../src/data-structures/hash-maps/hash-map-3');
-  const HashMap4 = require('../src/data-structures/hash-maps/hash-map-4');
-  const HashMap = require('../src/data-structures/hash-maps/hash-map');
+  var suite = new Benchmark.Suite();
+  const NaiveHMLength = require("../src/data-structures/hash-maps/hash-map-1");
+  const HashMapSmallBucket = require("../src/data-structures/hash-maps/hash-map-2");
+  const HashMap3 = require("../src/data-structures/hash-maps/hash-map-3");
+  const HashMap4 = require("../src/data-structures/hash-maps/hash-map-4");
+  const HashMap = require("../src/data-structures/hash-maps/hash-map");
 
   // // Map (built-in) x 2,257 ops/sec ±2.42% (75 runs sampled)
   // suite.add('Map (built-in)', function() {
@@ -129,7 +128,7 @@ function useBenchmark() {
 
   suite
 
-  /*
+    /*
     ======== Results ========
     2,653.472 ops/s with Map (built-in)
     469.016 ops/s with HashMap
@@ -137,43 +136,43 @@ function useBenchmark() {
     66.808 ops/s with HashMap4
   */
 
-  // .add('Map (built-in)', function() {
-  //   const map = new Map();
-  //   testMapOperations(map);
-  // })
+    // .add('Map (built-in)', function() {
+    //   const map = new Map();
+    //   testMapOperations(map);
+    // })
 
-  // HashMap3 x 543 ops/sec ±1.53% (84 runs sampled)
-  .add('HashMap3', function() {
-    map = new HashMap3();
-    testMapOperations(map);
-  })
+    // HashMap3 x 543 ops/sec ±1.53% (84 runs sampled)
+    .add("HashMap3", function () {
+      map = new HashMap3();
+      testMapOperations(map);
+    })
 
-  // HashMap4 x 302 ops/sec ±2.09% (75 runs sampled)
-  .add('HashMap4', function() {
-    map = new HashMap4();
-    testMapOperations(map);
-  })
+    // HashMap4 x 302 ops/sec ±2.09% (75 runs sampled)
+    .add("HashMap4", function () {
+      map = new HashMap4();
+      testMapOperations(map);
+    })
 
-  .add('HashMap', function() {
-    map = new HashMap();
-    testMapOperations(map);
-  })
+    .add("HashMap", function () {
+      map = new HashMap();
+      testMapOperations(map);
+    })
 
-  // add listeners
-  .on('cycle', function(event) {
-    console.log(String(event.target));
-    if (map && map.collisions) {
-      console.log('\tcollisions', map.collisions);
-    }
-  })
-  .on('error', function(event) {
-    console.log(event.target.error);
-  })
-  .on('complete', function() {
-    console.log('Fastest is ' + this.filter('fastest').map('name'));
-    // console.log('Slowest is ' + this.filter('slowest').map('name'));
-    printSortedResults(this);
-  })
-  // run async
-  .run({ 'async': true });
+    // add listeners
+    .on("cycle", function (event) {
+      console.log(String(event.target));
+      if (map && map.collisions) {
+        console.log("\tcollisions", map.collisions);
+      }
+    })
+    .on("error", function (event) {
+      console.log(event.target.error);
+    })
+    .on("complete", function () {
+      console.log("Fastest is " + this.filter("fastest").map("name"));
+      // console.log('Slowest is ' + this.filter('slowest').map('name'));
+      printSortedResults(this);
+    })
+    // run async
+    .run({ async: true });
 }

@@ -7,7 +7,7 @@
  Write a program to move the disks from the first tower to the last using Stacks.
  */
 
-const Stack = require('../03-stacks-and-queues/stack');
+const Stack = require("../03-stacks-and-queues/stack");
 
 class HanoiTowers {
   constructor(numberOfDisks) {
@@ -18,13 +18,13 @@ class HanoiTowers {
     this.t2 = new Stack();
     this.t3 = new Stack();
 
-    for(let i = numberOfDisks; i > 0; i--) {
+    for (let i = numberOfDisks; i > 0; i--) {
       this.t1.push(i);
     }
   }
 
   getMovements() {
-    while(!this.t1.isEmpty()) {
+    while (!this.t1.isEmpty()) {
       this.move(this.t1, this.t2);
       this.moveFromT2toT3();
     }
@@ -33,7 +33,7 @@ class HanoiTowers {
   }
 
   moveFromT2toT3() {
-    while(this.t2.peek() > this.t3.peek()) {
+    while (this.t2.peek() > this.t3.peek()) {
       this.move(this.t3, this.t2);
       this.moveFromT2toT1();
     }
@@ -41,7 +41,7 @@ class HanoiTowers {
   }
 
   moveFromT2toT1() {
-    while(this.t2.peek() > this.t1.peek()) {
+    while (this.t2.peek() > this.t1.peek()) {
       this.move(this.t1, this.t2);
       this.moveFromT2toT3();
     }
@@ -49,8 +49,8 @@ class HanoiTowers {
   }
 
   move(t1, t2) {
-    if(t2.peek() < t1.peek()) {
-      throw new Error('A disk cannot be placed on top of a smaller disk');
+    if (t2.peek() < t1.peek()) {
+      throw new Error("A disk cannot be placed on top of a smaller disk");
     }
     const disk = t1.pop();
     t2.push(disk);

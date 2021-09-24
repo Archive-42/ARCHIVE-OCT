@@ -10,12 +10,15 @@
 A dinamic secure password generator website
 
 ## Screenshot
+
 <img src="https://raw.githubusercontent.com/neemiassgc/front-end/main/password-generator/Screenshot.png" width="800" height="420"/>
 
 ## Demo
+
 Hosted on Firebase. Demo available [here](https://forgepass.web.app)
 
 ## Technologies
+
 > <img height="42" width="42" src="https://static-content-c7a9e.firebaseapp.com/icons/svg/html5.svg"/>
 > <img height="42" width="42" src="https://static-content-c7a9e.firebaseapp.com/icons/svg/css3.svg"/>
 > <img height="42" width="42" src="https://static-content-c7a9e.firebaseapp.com/icons/svg/sass.svg"/>
@@ -39,6 +42,7 @@ Hosted on Firebase. Demo available [here](https://forgepass.web.app)
 - Json
 
 ### Dependencies
+
 - Gulp
   - gulp-uglify
   - gulp-clean-css

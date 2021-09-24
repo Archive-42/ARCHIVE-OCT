@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require("assert");
 
 // tag::merge[]
 /**
@@ -12,7 +12,7 @@ const assert = require('assert');
 function merge(a = [], b = []) {
   const merged = [];
   // merge elements on a and b in asc order. Run-time O(a + b)
-  for (let ai = 0, bi = 0; ai < a.length || bi < b.length;) {
+  for (let ai = 0, bi = 0; ai < a.length || bi < b.length; ) {
     if (ai >= a.length || a[ai] > b[bi]) {
       merged.push(b[bi++]);
     } else {

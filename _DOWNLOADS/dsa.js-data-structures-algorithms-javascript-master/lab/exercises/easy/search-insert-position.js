@@ -6,7 +6,7 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target, start =  0) {
+var searchInsert = function (nums, target, start = 0) {
   if (!nums.length) return start;
   const i = parseInt(nums.length / 2, 10);
 
@@ -23,7 +23,7 @@ var searchInsert = function(nums, target, start =  0) {
 
 // ---
 
-const assert = require('assert');
+const assert = require("assert");
 function test() {
   assert.equal(searchInsert([], 0), 0);
   assert.equal(searchInsert([], 1), 0);
@@ -31,12 +31,11 @@ function test() {
   assert.equal(searchInsert([1], 0), 0);
   assert.equal(searchInsert([1], 2), 1);
 
-  assert.equal(searchInsert([1,3,5,6], 5), 2);
-  assert.equal(searchInsert([1,3,5,6], 2), 1);
-  assert.equal(searchInsert([1,3,5,6], 7), 4);
-  assert.equal(searchInsert([1,3,5,6], 0), 0);
+  assert.equal(searchInsert([1, 3, 5, 6], 5), 2);
+  assert.equal(searchInsert([1, 3, 5, 6], 2), 1);
+  assert.equal(searchInsert([1, 3, 5, 6], 7), 4);
+  assert.equal(searchInsert([1, 3, 5, 6], 0), 0);
 
-  assert.equal(searchInsert([1,3,5], 5), 2);
-
+  assert.equal(searchInsert([1, 3, 5], 5), 2);
 }
 test();

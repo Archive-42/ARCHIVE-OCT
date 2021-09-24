@@ -37,7 +37,7 @@ class HashMap {
     dataView.setFloat64(0, number); // set as float64
     const longBits = dataView.getBigInt64(0); // read as long int (BigInt)
     // gurantee only positive (big) integers
-    return longBits > 0 ? longBits : BigInt(2 ** 63) + (longBits * BigInt(-1));
+    return longBits > 0 ? longBits : BigInt(2 ** 63) + longBits * BigInt(-1);
   }
 
   /**
@@ -47,9 +47,10 @@ class HashMap {
    * @param {any} key converted to string
    */
   hashFunctionForString(key) {
-    return Array
-      .from(key.toString())
-      .reduce((hashIndex, char) => ((41 * hashIndex) + char.codePointAt(0)), 0);
+    return Array.from(key.toString()).reduce(
+      (hashIndex, char) => 41 * hashIndex + char.codePointAt(0),
+      0
+    );
   }
 
   /**
@@ -58,7 +59,7 @@ class HashMap {
    * @returns {BigInt} array index given the bucket size
    */
   hashFunction(key) {
-    if (typeof key === 'number') {
+    if (typeof key === "number") {
       return this.hashCodeToIndex(HashMap.hashCodeForNumber(key));
     }
     return this.hashCodeToIndex(this.hashFunctionForString(key));
@@ -95,7 +96,9 @@ class HashMap {
       this.buckets[bucketIndex].push({ key, value, keyIndex });
       this.size++;
       // Optional: keep count of collisions
-      if (this.buckets[bucketIndex].length > 1) { this.collisions++; }
+      if (this.buckets[bucketIndex].length > 1) {
+        this.collisions++;
+      }
     } else {
       // override existing value
       this.buckets[bucketIndex][entryIndex].value = value;
@@ -224,7 +227,7 @@ class HashMap {
    *   console.log(mapIter.next().value); // "baz"
    */
   values() {
-    throw new Error('Not implemented');
+    throw new Error("Not implemented");
   }
 }
 

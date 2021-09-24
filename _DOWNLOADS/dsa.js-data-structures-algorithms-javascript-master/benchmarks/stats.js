@@ -28,7 +28,7 @@ class Stats {
 
   get percentiles() {
     const i25 = parseInt(this.length * 0.25, 10);
-    const i50 = parseInt(this.length * 0.50, 10);
+    const i50 = parseInt(this.length * 0.5, 10);
     const i75 = parseInt(this.length * 0.75, 10);
     const i5 = Math.ceil(this.length * 0.05);
     const i95 = parseInt(this.length * 0.95, 10);
@@ -94,26 +94,20 @@ class Stats {
   get std() {
     const { mean } = this;
     const squareDifference = this.serie.reduce((sum, el) => {
-      return sum + ((el - mean) ** 2);
+      return sum + (el - mean) ** 2;
     }, 0);
     return Math.sqrt(squareDifference / (this.length - 1));
   }
 
   describe() {
-    const {
-      q5,
-      q25,
-      q50,
-      q75,
-      q95,
-    } = this.percentiles;
+    const { q5, q25, q50, q75, q95 } = this.percentiles;
 
     return {
-      '5%': q5,
-      '25%': q25,
-      '50%': q50,
-      '75%': q75,
-      '95%': q95,
+      "5%": q5,
+      "25%": q25,
+      "50%": q50,
+      "75%": q75,
+      "95%": q95,
       min: this.min,
       median: this.median,
       max: this.max,

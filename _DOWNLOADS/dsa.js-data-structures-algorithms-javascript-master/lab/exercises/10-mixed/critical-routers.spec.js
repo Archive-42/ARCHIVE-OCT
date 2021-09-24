@@ -1,8 +1,8 @@
 // npx jest lab/exercises/10-mixed/critical-routers.spec.js --watch
-const critialRouters = require('./critical-routers');
+const critialRouters = require("./critical-routers");
 
-describe('Critical Routers', () => {
-  it('should work with daisy chain nodes', () => {
+describe("Critical Routers", () => {
+  it("should work with daisy chain nodes", () => {
     const numRouters = 3;
     const numLinks = 3;
     const links = [
@@ -13,7 +13,7 @@ describe('Critical Routers', () => {
     expect(critialRouters(numRouters, numLinks, links)).toEqual([]);
   });
 
-  it('should work with 7 nodes', () => {
+  it("should work with 7 nodes", () => {
     const numRouters = 7;
     const numLinks = 7;
     const links = [
@@ -28,7 +28,7 @@ describe('Critical Routers', () => {
     expect(critialRouters(numRouters, numLinks, links)).toEqual([3, 4, 6]);
   });
 
-  it('should work with 6 nodes', () => {
+  it("should work with 6 nodes", () => {
     const numRouters = 6;
     const numLinks = 5;
     const links = [
@@ -41,7 +41,7 @@ describe('Critical Routers', () => {
     expect(critialRouters(numRouters, numLinks, links)).toEqual([2, 3, 4]);
   });
 
-  it('should work with 10 nodes', () => {
+  it("should work with 10 nodes", () => {
     const numRouters = 10;
     const numLinks = 13;
     const links = [

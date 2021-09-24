@@ -1,4 +1,3 @@
-
 /**
  * Given an array and a target, return the indices of the 2 number that sum up target
  *

@@ -21,7 +21,9 @@ class HashMap {
     const bucketIndex = this.getIndex(key);
     if (this.buckets[bucketIndex]) {
       this.buckets[bucketIndex].push({ key, value });
-      if (this.buckets[bucketIndex].length > 1) { this.collisions++; }
+      if (this.buckets[bucketIndex].length > 1) {
+        this.collisions++;
+      }
     } else {
       this.buckets[bucketIndex] = [{ key, value }];
     }
@@ -34,7 +36,11 @@ class HashMap {
    */
   get(key) {
     const bucketIndex = this.getIndex(key);
-    for (let arrayIndex = 0; arrayIndex < this.buckets[bucketIndex].length; arrayIndex++) {
+    for (
+      let arrayIndex = 0;
+      arrayIndex < this.buckets[bucketIndex].length;
+      arrayIndex++
+    ) {
       const entry = this.buckets[bucketIndex][arrayIndex];
       if (entry.key === key) {
         return entry.value;
@@ -72,7 +78,6 @@ class HashMap {
 
 module.exports = HashMap;
 
-
 // // Usage:
 // const assert = require('assert');
 
@@ -95,9 +100,7 @@ module.exports = HashMap;
 // assert.equal(hashMap.get('rat'), 7); // Good. Didn't got overwritten by art
 // assert.equal(hashMap.get('dog'), 1); // Good. Didn't got overwritten by art
 
-
 // //
-
 
 // const hashMapSize10 = new HashMap(10);
 
@@ -117,9 +120,7 @@ module.exports = HashMap;
 //   <2 empty items> ]
 // */
 
-
 // //
-
 
 // const hashMapSize100 = new HashMap(100);
 

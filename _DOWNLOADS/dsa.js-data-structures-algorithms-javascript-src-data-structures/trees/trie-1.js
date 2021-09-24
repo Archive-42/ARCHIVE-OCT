@@ -31,7 +31,9 @@ class Trie {
     let curr = this;
 
     for (const char of word) {
-      if (!curr.children[char]) { return false; }
+      if (!curr.children[char]) {
+        return false;
+      }
       curr = curr.children[char];
     }
 
@@ -56,7 +58,7 @@ class Trie {
    * @param {string[]} words - Accumulated words.
    * @param {string} string - Current string.
    */
-  getAllWords(prefix = '', node = this, words = [], string = '') {
+  getAllWords(prefix = "", node = this, words = [], string = "") {
     if (node.isWord) {
       words.push(`${prefix}${string}`);
     }
@@ -79,12 +81,16 @@ class Trie {
     let curr = this;
 
     for (const char of word) {
-      if (!curr.children[char]) { return false; }
+      if (!curr.children[char]) {
+        return false;
+      }
       stack.push(curr);
       curr = curr.children[char];
     }
 
-    if (!curr.isWord) { return false; }
+    if (!curr.isWord) {
+      return false;
+    }
     let node = stack.pop();
 
     do {

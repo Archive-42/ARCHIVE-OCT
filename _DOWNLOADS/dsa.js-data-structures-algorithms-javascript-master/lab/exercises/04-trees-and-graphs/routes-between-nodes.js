@@ -1,5 +1,5 @@
-const Graph = require('./graph').Graph;
-const Queue = require('./queue');
+const Graph = require("./graph").Graph;
+const Queue = require("./queue");
 
 /**
  * Test if two nodes are connected using BFS
@@ -7,17 +7,17 @@ const Queue = require('./queue');
  * @param node2
  * @returns {boolean}
  */
-Graph.prototype.isConnected = function(node1, node2) {
+Graph.prototype.isConnected = function (node1, node2) {
   const bfs = this.bfs(node1);
   let next;
 
   do {
     next = bfs.next();
 
-    if(next.value && next.value.data === node2) {
+    if (next.value && next.value.data === node2) {
       return true;
     }
-  } while(!next.done);
+  } while (!next.done);
 
   return false;
 };

@@ -25,15 +25,15 @@ function backtrack(nums, result, index = 0) {
       swap(nums, index, current);
     }
   }
-};
+}
 
 function swap(array, i, j) {
-  [array[i], array[j]] = [array[j], array[i]]
+  [array[i], array[j]] = [array[j], array[i]];
 }
 
 // ---
 
-const assert = require('assert');
+const assert = require("assert");
 
 function test() {
   // assert.deepEqual(permute([1]), [
@@ -49,10 +49,9 @@ function test() {
     [2, 1, 3],
     [2, 3, 1],
     [3, 2, 1],
-    [3, 1, 2]
+    [3, 1, 2],
   ]);
 
-  console.log(permute(Array.from('art')));
-
+  console.log(permute(Array.from("art")));
 }
 test();

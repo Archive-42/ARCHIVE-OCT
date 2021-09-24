@@ -9,8 +9,7 @@
 function mostCommonWords(text, n = 1) {
   const words = text.toLowerCase().split(/\W+/);
 
-  const map = words
-    .reduce((m, w) => m.set(w, 1 + (m.get(w) || 0)), new Map());
+  const map = words.reduce((m, w) => m.set(w, 1 + (m.get(w) || 0)), new Map());
 
   return Array.from(map.entries())
     .sort((a, b) => b[1] - a[1])
@@ -42,6 +41,5 @@ function mostCommonWordsBrute(text, n = 1) {
     .map((w) => w[0]);
 }
 // end::brute[]
-
 
 module.exports = { mostCommonWords, mostCommonWordsBrute };

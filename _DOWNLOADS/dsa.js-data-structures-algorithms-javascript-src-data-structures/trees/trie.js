@@ -33,7 +33,9 @@ class Trie {
 
     // find word and stack path
     for (const char of word) {
-      if (!curr.children[char]) { return false; }
+      if (!curr.children[char]) {
+        return false;
+      }
       // lastWordToKeep += 1;
       curr = curr.children[char];
       stack.push(curr);
@@ -64,7 +66,9 @@ class Trie {
     let curr = this;
 
     for (const char of word) {
-      if (!curr.children[char]) { return false; }
+      if (!curr.children[char]) {
+        return false;
+      }
       curr = curr.children[char];
     }
 
@@ -79,7 +83,9 @@ class Trie {
    */
   search(word, { partial } = {}) {
     const curr = this.searchNode(word);
-    if (!curr) { return false; }
+    if (!curr) {
+      return false;
+    }
     return partial ? true : curr.isWord;
   }
 
@@ -99,16 +105,21 @@ class Trie {
    * @param {string} prefix - The prefix to append to each word.
    * @param {string} node - Current node to start backtracking.
    */
-  getAllWords(prefix = '', node = this) {
+  getAllWords(prefix = "", node = this) {
     let words = [];
 
-    if (!node) { return words; }
+    if (!node) {
+      return words;
+    }
     if (node.isWord) {
       words.push(prefix);
     }
 
     for (const char of Object.keys(node.children)) {
-      const newWords = this.getAllWords(`${prefix}${char}`, node.children[char]);
+      const newWords = this.getAllWords(
+        `${prefix}${char}`,
+        node.children[char]
+      );
       words = words.concat(newWords);
     }
 
@@ -120,7 +131,7 @@ class Trie {
    * @param {*} prefix - The prefix to match.
    * @returns {string[]}
    */
-  autocomplete(prefix = '') {
+  autocomplete(prefix = "") {
     const curr = this.searchNode(prefix);
     return this.getAllWords(prefix, curr);
   }

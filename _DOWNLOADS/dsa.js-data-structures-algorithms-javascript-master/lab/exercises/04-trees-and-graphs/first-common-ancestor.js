@@ -40,10 +40,9 @@ function getFirstCommonAncestor(graph, dataOrNode1, dataOrNode2) {
     return result.isAncestor;
   });
 
-  if(isFound) {
+  if (isFound) {
     return result.matchingNode;
   }
-
 }
 
 /**
@@ -57,8 +56,8 @@ function getAncestor(node, node1, node2) {
   let matchingNode = null;
   let isAncestor = false;
 
-  if(!node) {
-    return {matchingNode, isAncestor};
+  if (!node) {
+    return { matchingNode, isAncestor };
   }
 
   const left = getAncestor(node.left, node1, node2);
@@ -71,34 +70,29 @@ function getAncestor(node, node1, node2) {
     return right;
   }
 
-  if(node === node1 && node2 === node1) {
-
+  if (node === node1 && node2 === node1) {
     // already found both nodes since they are the same
     matchingNode = node;
     isAncestor = true;
-
-  } else if(left.matchingNode && right.matchingNode ||
-    left.matchingNode === node1 && node === node2 || left.matchingNode === node2 && node === node1 ||
-    right.matchingNode === node1 && node === node2 || right.matchingNode === node2 && node === node1) {
-
+  } else if (
+    (left.matchingNode && right.matchingNode) ||
+    (left.matchingNode === node1 && node === node2) ||
+    (left.matchingNode === node2 && node === node1) ||
+    (right.matchingNode === node1 && node === node2) ||
+    (right.matchingNode === node2 && node === node1)
+  ) {
     // if we found both nodes already then we found an ancestor
     matchingNode = node;
     isAncestor = true;
-
-  } else if(node === node1 || node === node2) {
-
+  } else if (node === node1 || node === node2) {
     // set match
     matchingNode = node;
-
   } else {
-
     // bubble up partial match
     return left.matchingNode ? left : right;
-
   }
 
-  return {matchingNode, isAncestor};
+  return { matchingNode, isAncestor };
 }
-
 
 module.exports = getFirstCommonAncestor;

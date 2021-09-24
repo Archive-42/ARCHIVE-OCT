@@ -16,7 +16,7 @@ function twoSum(nums, target) {
     const number = nums[index];
     const complement = target - number;
 
-    if(map.has(complement) && index !== map.get(complement)) {
+    if (map.has(complement) && index !== map.get(complement)) {
       return [map.get(complement), index];
     }
 

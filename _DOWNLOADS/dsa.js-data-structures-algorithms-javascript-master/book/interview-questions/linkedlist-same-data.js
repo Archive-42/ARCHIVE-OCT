@@ -34,8 +34,11 @@ function hasSameData(l1, l2) {
   while (p1 && p2) {
     [p1, i1] = findNextPointerIndex(p1, i1 + 1);
     [p2, i2] = findNextPointerIndex(p2, i2 + 1);
-    if ((p1 && p2 && p1.value[i1] !== p2.value[i2])
-      || ((!p1 || !p2) && p1 !== p2)) return false;
+    if (
+      (p1 && p2 && p1.value[i1] !== p2.value[i2]) ||
+      ((!p1 || !p2) && p1 !== p2)
+    )
+      return false;
   }
   return true;
 }
@@ -48,7 +51,7 @@ function hasSameDataBrute1(l1, l2) {
     for (let curr = node; curr; curr = curr.next) {
       str.push(curr.value);
     }
-    return str.join('');
+    return str.join("");
   }
 
   // console.log({s1: toString(l1), s2: toString(l2) });

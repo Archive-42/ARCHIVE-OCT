@@ -7,9 +7,9 @@
  */
 function hasPalindromePermutation(string) {
   const map = new Map();
-  const cleanString = string.toLowerCase().replace(/\s/g, '');
+  const cleanString = string.toLowerCase().replace(/\s/g, "");
 
-  for(const char of cleanString) {
+  for (const char of cleanString) {
     map.set(char, (map.get(char) || 0) + 1);
   }
 
@@ -19,7 +19,7 @@ function hasPalindromePermutation(string) {
   return oddValues.length <= 1;
 }
 
-console.log(hasPalindromePermutation('Tact Coa')); // true
-console.log(hasPalindromePermutation('Tact Coa')); // true
-console.log(hasPalindromePermutation('Tact Ca')); // true
-console.log(hasPalindromePermutation('Tact')); // false
+console.log(hasPalindromePermutation("Tact Coa")); // true
+console.log(hasPalindromePermutation("Tact Coa")); // true
+console.log(hasPalindromePermutation("Tact Ca")); // true
+console.log(hasPalindromePermutation("Tact")); // false

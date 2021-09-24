@@ -18,7 +18,6 @@ function reportTime(label, callback) {
   console.log(`${sec.toLocaleString()} sec. for ${label}`);
 }
 
-
 reportTime("Set#has()", () => {
   for (let i = 0; i < 1000 * 1000; i++) {
     const r = Math.floor(Math.random() * 1000 * 1000);
@@ -50,9 +49,14 @@ https://jsbench.me/h5jm8evhsk/1 - ops/s
 http://jsben.ch/bWfk9 - ms
 
 */
-var hz, period, startTime = new Date, runs = 0; do {
+var hz,
+  period,
+  startTime = new Date(),
+  runs = 0;
+do {
   // Code snippet goes here
-  runs++; totalTime = new Date - startTime;
+  runs++;
+  totalTime = new Date() - startTime;
 } while (totalTime < 1000);
 // convert ms to seconds
 totalTime /= 1000;

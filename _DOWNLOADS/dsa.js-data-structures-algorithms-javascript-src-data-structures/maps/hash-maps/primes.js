@@ -15,7 +15,9 @@ function isOdd(number) {
  * @returns {boolean} true if number is prime, otherwise false.
  */
 function isPrime(number) {
-  if (number < 2) { return false; }
+  if (number < 2) {
+    return false;
+  }
   const max = Math.sqrt(number);
   for (let divisor = 2; divisor <= max; divisor++) {
     if (number % divisor === 0) {
@@ -31,7 +33,9 @@ function isPrime(number) {
  * @param {integer} number
  */
 function nextPrime(number) {
-  if (number < 2) { return 2; }
+  if (number < 2) {
+    return 2;
+  }
   let possiblePrime = isOdd(number) ? number + 2 : number + 1;
 
   while (!isPrime(possiblePrime)) {

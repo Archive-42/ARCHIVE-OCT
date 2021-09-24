@@ -11,7 +11,6 @@ function networkDelayTime(times, N, K) {
     graph.get(u).push([v, w]);
   });
 
-
   const distances = Array(N + 1).fill(Infinity);
   distances[0] = 0;
   distances[K] = 0;

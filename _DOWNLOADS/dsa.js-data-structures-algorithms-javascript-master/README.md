@@ -6,10 +6,9 @@
 
 > This is the coding implementations of the [DSA.js book](https://books.adrianmejia.com/dsajs-data-structures-algorithms-javascript/) and the repo for the NPM package.
 
-> In this repository, you can find the implementation of algorithms and data structures in JavaScript.  This material can be used as a reference manual for developers, or you can refresh specific topics before an interview. Also, you can find ideas to solve problems more efficiently.
+> In this repository, you can find the implementation of algorithms and data structures in JavaScript. This material can be used as a reference manual for developers, or you can refresh specific topics before an interview. Also, you can find ideas to solve problems more efficiently.
 
 <!-- (Check out the Time Complexity Cheatsheet) -->
-
 
 <!--
 [![CircleCI](https://circleci.com/gh/amejiarosario/dsa.js-data-structures-and-algorithms-in-javascript.svg?style=svg)](https://circleci.com/gh/amejiarosario/dsa.js-data-structures-and-algorithms-in-javascript)
@@ -22,14 +21,13 @@ https://img.shields.io/github/repo-size/amejiarosario/dsa.js.svg - 98.1 MB
 -->
 
 ![Interactive Data Structures](https://user-images.githubusercontent.com/418605/46118890-ba721180-c1d6-11e8-82bc-6a671428b422.png)
-<!-- [](https://embed.kumu.io/85f1a4de5fb8430a10a1bf9c5118e015) -->
 
+<!-- [](https://embed.kumu.io/85f1a4de5fb8430a10a1bf9c5118e015) -->
 
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 
 - [Installation](#installation)
 - [Features](#features)
@@ -43,9 +41,7 @@ https://img.shields.io/github/repo-size/amejiarosario/dsa.js.svg - 98.1 MB
 - [Support](#support)
 - [License](#license)
 
-
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 
 ## Installation
 
@@ -58,11 +54,10 @@ npm install dsa.js
 and then you can import it into your programs or CLI
 
 ```js
-const { LinkedList, Queue, Stack } = require('dsa.js');
+const { LinkedList, Queue, Stack } = require("dsa.js");
 ```
 
 For a list of all available data structures and algorithms, [see index.js](src/index.js).
-
 
 ## Features
 
@@ -90,7 +85,6 @@ All the code and explanations are available on this repo. You can dig through th
 _Note: If you prefer to consume the information more linearly, then the [book format](https://books.adrianmejia.com/dsajs-data-structures-algorithms-javascript/) would be more appropriate for you._
 
 The topics are divided into four main categories, as you can see below:
-
 
 ### 📈 [Algorithms Analysis](book/part01-algorithms-analysis.asc)
 
@@ -186,27 +180,26 @@ Using Big O notation, we can compare different solutions that solve the same pro
 
 #### [Understand the ins and outs of the most common data structures](book/part02-linear-data-structures.asc)
 
-
 - [Arrays](book/content/part02/array.asc): Built-in in most languages so not implemented here. [Array Time complexity](book/content/part02/array.asc#array-complexity)
     <!-- [Post](https://adrianmejia.com/blog/2018/04/28/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#Array). -->
 
 - [Linked List](book/content/part02/linked-list.asc): each data node has a link to the next (and
-    previous).
-    [Code](src/data-structures/linked-lists/linked-list.js)
-    |
-    [Linked List Time Complexity](book/content/part02/linked-list.asc#linked-list-complexity-vs-array-complexity)
+  previous).
+  [Code](src/data-structures/linked-lists/linked-list.js)
+  |
+  [Linked List Time Complexity](book/content/part02/linked-list.asc#linked-list-complexity-vs-array-complexity)
     <!-- [Post](https://adrianmejia.com/blog/2018/04/28/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#Linked-Lists) -->
 
 - [Queue](book/content/part02/queue.asc): data flows in a "first-in, first-out" (FIFO) manner.
-    [Code](src/data-structures/queues/queue.js)
-    |
-    [Queue Time Complexity](book/content/part02/queue.asc#queue-complexity)
+  [Code](src/data-structures/queues/queue.js)
+  |
+  [Queue Time Complexity](book/content/part02/queue.asc#queue-complexity)
     <!-- [Post](https://adrianmejia.com/blog/2018/04/28/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#Queues) -->
 
 - [Stack](book/content/part02/stack.asc): data flows in a "last-in, first-out" (LIFO) manner.
-    [Code](src/data-structures/stacks/stack.js)
-    |
-    [Stack Time Complexity](book/content/part02/stack.asc#stack-complexity)
+  [Code](src/data-structures/stacks/stack.js)
+  |
+  [Stack Time Complexity](book/content/part02/stack.asc#stack-complexity)
     <!-- [Post](https://adrianmejia.com/blog/2018/04/28/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#Stacks) -->
 
 ---
@@ -222,10 +215,12 @@ Using Big O notation, we can compare different solutions that solve the same pro
 #### [When to use an Array or Linked List. Know the tradeoffs](book/content/part02/array-vs-list-vs-queue-vs-stack.asc)
 
 Use Arrays when…
+
 - You need to access data in random order fast (using an index).
 - Your data is multi-dimensional (e.g., matrix, tensor).
 
 Use Linked Lists when:
+
 - You will access your data sequentially.
 - You want to save memory and only allocate memory as you need it.
 - You want constant time to remove/add from extremes of the list.
@@ -239,21 +234,23 @@ Use Linked Lists when:
       Build a List, Stack, and a Queue. <i>(Click to expand)</i>
     </summary>
 
-  ---
+---
 
-  #### [Build a List, Stack and a Queue from scratch](book/part02-linear-data-structures.asc)
+#### [Build a List, Stack and a Queue from scratch](book/part02-linear-data-structures.asc)
 
-  Build any of these data structures from scratch:
-  - [Linked List](src/data-structures/linked-lists/linked-list.js)
-  - [Stack](src/data-structures/stacks/stack.js)
-  - [Queue](src/data-structures/queues/queue.js)
+Build any of these data structures from scratch:
 
-  ---
+- [Linked List](src/data-structures/linked-lists/linked-list.js)
+- [Stack](src/data-structures/stacks/stack.js)
+- [Queue](src/data-structures/queues/queue.js)
+
+---
 
   </details>
 </blockquote>
 
 ### 🌲 [Non-Linear Data Structures](book/part03-graph-data-structures.asc)
+
 <!-- - Understand one of the most versatile data structure of all: Maps -->
 <!-- - Know the properties of Graphs and Trees. -->
 <!-- - Implement a binary search tree for fast lookups. -->
@@ -269,16 +266,17 @@ Use Linked Lists when:
 #### [HashMaps](book/content/part03/map.asc)
 
 Learn how to implement different types of Maps such as:
+
 - [HashMap](book/content/part02/hash-map.asc)
 - [TreeMap](book/content/part03/tree-map.asc)
 
 Also, [learn the difference between the different Maps implementations](book/content/part03/time-complexity-graph-data-structures.asc):
 
 - `HashMap` is more time-efficient. A `TreeMap` is more space-efficient.
-- `TreeMap` search complexity is *O(log n)*, while an optimized `HashMap` is *O(1)* on average.
+- `TreeMap` search complexity is _O(log n)_, while an optimized `HashMap` is _O(1)_ on average.
 - `HashMap`’s keys are in insertion order (or random depending on the implementation). `TreeMap`’s keys are always sorted.
 - `TreeMap` offers some statistical data for free such as: get minimum, get maximum, median, find ranges of keys. `HashMap` doesn’t.
-- `TreeMap` has a guarantee always an *O(log n)*, while `HashMap`s has an amortized time of *O(1)* but in the rare case of a rehash, it would take an *O(n)*.
+- `TreeMap` has a guarantee always an _O(log n)_, while `HashMap`s has an amortized time of _O(1)_ but in the rare case of a rehash, it would take an _O(n)_.
 
 ---
 
@@ -299,11 +297,11 @@ Know all the graphs properties with many images and illustrations.
 
 ![graph example with USA airports](book/images/image46.png)
 
- **Graphs**: data **nodes** that can have a connection or **edge** to
-    zero or more adjacent nodes. Unlike trees, nodes can have multiple parents, loops.
-    [Code](src/data-structures/graphs/graph.js)
-    |
-    [Graph Time Complexity](book/content/part03/graph.asc#graph-complexity)
+**Graphs**: data **nodes** that can have a connection or **edge** to
+zero or more adjacent nodes. Unlike trees, nodes can have multiple parents, loops.
+[Code](src/data-structures/graphs/graph.js)
+|
+[Graph Time Complexity](book/content/part03/graph.asc#graph-complexity)
 
 #### [Trees](book/content/part03/tree-intro.asc)
 
@@ -312,38 +310,38 @@ Learn all the different kinds of trees and their properties.
 ![tree data structure properties](book/images/image31.jpg)
 
 - **Trees**: data nodes has zero or more adjacent nodes a.k.a.
-    children. Each node can only have one parent node otherwise is a
-    graph, not a tree.
-    [Code](src/data-structures/trees)
-    |
-    [Docs](book/content/part03/tree-intro.asc)
+  children. Each node can only have one parent node otherwise is a
+  graph, not a tree.
+  [Code](src/data-structures/trees)
+  |
+  [Docs](book/content/part03/tree-intro.asc)
     <!-- [Post](https://adrianmejia.com/blog/2018/06/11/data-structures-for-beginners-trees-binary-search-tree-tutorial/) -->
 
-    - **Binary Trees**: same as a tree but only can have two children at
-        most.
-        [Code](src/data-structures/trees)
-        |
-        [Docs](book/content/part03/tree-intro.asc#binary-tree)
-        <!-- [Post](https://adrianmejia.com/blog/2018/06/11/data-structures-for-beginners-trees-binary-search-tree-tutorial/#Binary-Trees) -->
+  - **Binary Trees**: same as a tree but only can have two children at
+    most.
+    [Code](src/data-structures/trees)
+    |
+    [Docs](book/content/part03/tree-intro.asc#binary-tree)
+      <!-- [Post](https://adrianmejia.com/blog/2018/06/11/data-structures-for-beginners-trees-binary-search-tree-tutorial/#Binary-Trees) -->
 
-    - **Binary Search Trees** (BST): same as a binary tree, but the
-        nodes value keep this order `left < parent < right`.
-        [Code](src/data-structures/trees/binary-search-tree.js)
-        |
-        [BST Time complexity](book/content/part03/binary-search-tree.asc#tree-complexity)
-        <!-- [Post](https://adrianmejia.com/blog/2018/06/11/data-structures-for-beginners-trees-binary-search-tree-tutorial/#Binary-Search-Tree-BST) -->
+  - **Binary Search Trees** (BST): same as a binary tree, but the
+    nodes value keep this order `left < parent < right`.
+    [Code](src/data-structures/trees/binary-search-tree.js)
+    |
+    [BST Time complexity](book/content/part03/binary-search-tree.asc#tree-complexity)
+      <!-- [Post](https://adrianmejia.com/blog/2018/06/11/data-structures-for-beginners-trees-binary-search-tree-tutorial/#Binary-Search-Tree-BST) -->
 
-    - **AVL Trees**: Self-balanced BST to maximize lookup time.
-        [Code](src/data-structures/trees/avl-tree.js)
-        |
-        [AVL Tree docs](book/C-AVL-tree.asc)
-        |
-        [Self-balancing & tree rotations docs](book/B-self-balancing-binary-search-trees.asc)
-        <!-- [Post](https://adrianmejia.com/blog/2018/07/16/self-balanced-binary-search-trees-with-avl-tree-data-structure-for-beginners/) -->
+  - **AVL Trees**: Self-balanced BST to maximize lookup time.
+    [Code](src/data-structures/trees/avl-tree.js)
+    |
+    [AVL Tree docs](book/C-AVL-tree.asc)
+    |
+    [Self-balancing & tree rotations docs](book/B-self-balancing-binary-search-trees.asc)
+      <!-- [Post](https://adrianmejia.com/blog/2018/07/16/self-balanced-binary-search-trees-with-avl-tree-data-structure-for-beginners/) -->
 
-    - **Red-Black Trees**: Self-balanced BST looser than AVL to
-        maximize insertion speed.
-        [Code](src/data-structures/trees/red-black-tree.js)
+  - **Red-Black Trees**: Self-balanced BST looser than AVL to
+    maximize insertion speed.
+    [Code](src/data-structures/trees/red-black-tree.js)
 
 ---
 
@@ -359,11 +357,12 @@ Learn all the different kinds of trees and their properties.
 #### [Implement a binary search tree for fast lookups](book/content/part03/binary-search-tree.asc)
 
 - Learn how to add/remove/update values in a tree:
-![inserting node in a tree](book/images/image36.png)
+  ![inserting node in a tree](book/images/image36.png)
 
 - [How to make a tree balanced?](book/B-self-balancing-binary-search-trees.asc)
 
 From unbalanced BST to balanced BST
+
 ```
 1                           2
   \                       /   \
@@ -371,7 +370,6 @@ From unbalanced BST to balanced BST
     \
      3
 ```
-
 
 ---
 
@@ -418,31 +416,33 @@ Full details [here](book/part04-algorithmic-toolbox.asc)
 #### [Master the most popular sorting algorithms](book/content/part04/sorting-algorithms.asc)
 
 We are going to explore three essential sorting algorithms O(n^2), which have low overhead:
-  - Bubble Sort.
-    [Code](src/algorithms/sorting/bubble-sort.js)
-    |
-    [Docs](book/content/part04/bubble-sort.asc)
 
-  - Insertion Sort.
-    [Code](src/algorithms/sorting/insertion-sort.js)
-    |
-    [Docs](book/content/part04/insertion-sort.asc)
+- Bubble Sort.
+  [Code](src/algorithms/sorting/bubble-sort.js)
+  |
+  [Docs](book/content/part04/bubble-sort.asc)
 
-  - Selection Sort.
-    [Code](src/algorithms/sorting/selection-sort.js)
-    |
-    [Docs](book/content/part04/selection-sort.asc)
+- Insertion Sort.
+  [Code](src/algorithms/sorting/insertion-sort.js)
+  |
+  [Docs](book/content/part04/insertion-sort.asc)
+
+- Selection Sort.
+  [Code](src/algorithms/sorting/selection-sort.js)
+  |
+  [Docs](book/content/part04/selection-sort.asc)
 
 and then discuss efficient sorting algorithms O(n log n) such as:
-  - Merge Sort.
-    [Code](src/algorithms/sorting/merge-sort.js)
-    |
-    [Docs](book/content/part04/merge-sort.asc)
 
-  - Quicksort.
-    [Code](src/algorithms/sorting/quick-sort.js)
-    |
-    [Docs](book/content/part04/quick-sort.asc)
+- Merge Sort.
+  [Code](src/algorithms/sorting/merge-sort.js)
+  |
+  [Docs](book/content/part04/merge-sort.asc)
+
+- Quicksort.
+  [Code](src/algorithms/sorting/quick-sort.js)
+  |
+  [Docs](book/content/part04/quick-sort.asc)
 
 ---
 
@@ -457,6 +457,7 @@ and then discuss efficient sorting algorithms O(n log n) such as:
 #### [Learn different approaches to solve algorithmic problems](book/part04-algorithmic-toolbox.asc)
 
 We are going to discuss the following techniques for solving algorithms problems:
+
 - [Greedy Algorithms](book/content/part04/greedy-algorithms.asc): makes greedy choices using heuristics to find the best solution without looking back.
 - [Dynamic Programming](book/content/part04/dynamic-programming.asc): a technique for speeding up recursive algorithms when there are many _overlapping subproblems_. It uses _memoization_ to avoid duplicating work.
 - [Divide and Conquer](book/content/part04/divide-and-conquer.asc): _divide_ problems into smaller pieces, _conquer_ each subproblem, and then _join_ the results.

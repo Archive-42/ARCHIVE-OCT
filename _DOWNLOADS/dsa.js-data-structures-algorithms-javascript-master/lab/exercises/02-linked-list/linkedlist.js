@@ -1,4 +1,4 @@
-const Node = require('./node');
+const Node = require("./node");
 
 /**
  * Singly LinkedList data structure
@@ -16,18 +16,20 @@ class LinkedList {
    * @param dataOrNode
    * @returns {Node}
    */
-  addLast(dataOrNode, once = false){
+  addLast(dataOrNode, once = false) {
     let node = getNode(dataOrNode);
-    if(this.head) {
+    if (this.head) {
       this.tail.next = node;
     } else {
       this.head = node;
     }
 
-    while(node) {
+    while (node) {
       this.tail = node;
       this.length++;
-      if(!node.next || once) { break; }
+      if (!node.next || once) {
+        break;
+      }
       node = node.next;
     }
     return node;
@@ -39,7 +41,7 @@ class LinkedList {
    */
   addFirst(dataOrNode) {
     const node = getNode(dataOrNode);
-    if(this.head) {
+    if (this.head) {
       node.next = this.head;
     } else {
       this.tail = node;
@@ -61,19 +63,23 @@ class LinkedList {
   removeLast() {
     const last = this.tail;
 
-    if(!last) { return; }
+    if (!last) {
+      return;
+    }
 
     let beforeLast = this.head;
-    while(beforeLast.next && beforeLast.next.next) { beforeLast = beforeLast.next; }
+    while (beforeLast.next && beforeLast.next.next) {
+      beforeLast = beforeLast.next;
+    }
 
-    if(beforeLast === this.head && !this.head.next) {
+    if (beforeLast === this.head && !this.head.next) {
       this.head = null;
       this.tail = null;
     } else {
       beforeLast.next = null;
       this.tail = beforeLast;
     }
-    this.length --;
+    this.length--;
 
     return last.data;
   }
@@ -86,12 +92,16 @@ class LinkedList {
    * @returns {*} removed element
    */
   removeFirst() {
-    if(!this.head) { return; }
+    if (!this.head) {
+      return;
+    }
 
     const first = this.head;
     this.head = first.next;
     this.length--;
-    if(this.length <= 1) { this.tail = this.head; }
+    if (this.length <= 1) {
+      this.tail = this.head;
+    }
     return first.data;
   }
 
@@ -101,16 +111,16 @@ class LinkedList {
     let data = n.data;
 
     // remove from head
-    if(isMatch(data, query)) {
+    if (isMatch(data, query)) {
       this.head = this.head.next;
       this.length--;
       return data;
     }
 
     // iterate
-    while(n.next){
+    while (n.next) {
       data = n.next.data;
-      if(isMatch(data, query)) {
+      if (isMatch(data, query)) {
         n.next = n.next.next;
         this.length--;
         return data;
@@ -123,11 +133,11 @@ class LinkedList {
   toString(key) {
     let data = [];
     let n = this.head;
-    while(n) {
+    while (n) {
       data.push(key ? n.data[key] : n.data);
       n = n.next;
     }
-    return data.join(' -> ');
+    return data.join(" -> ");
   }
 
   size() {
@@ -140,13 +150,12 @@ function getNode(dataOrNode) {
 }
 
 function isMatch(original, query) {
-
-  if(typeof original !== 'object') {
+  if (typeof original !== "object") {
     return original === query;
   }
 
-  for(let key in query) {
-    if(key && query[key] !== original[key]) {
+  for (let key in query) {
+    if (key && query[key] !== original[key]) {
       return false;
     }
   }

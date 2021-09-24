@@ -2,22 +2,22 @@
 
 // Strings are inmutable. You cannot do: s='abc'; s[1]='d';
 function urlify(str, length) {
-  let string = str.split('');
+  let string = str.split("");
 
-  for(let k = string.length-1, i=length-1; i >= 0; i--, k--) {
+  for (let k = string.length - 1, i = length - 1; i >= 0; i--, k--) {
     const char = string[i];
-    if(char === ' ') {
-      string[k] = '0';
-      string[--k] = '2';
-      string[--k] = '%';
+    if (char === " ") {
+      string[k] = "0";
+      string[--k] = "2";
+      string[--k] = "%";
     } else {
       string[k] = char;
     }
   }
 
-  return string.join('');
+  return string.join("");
 }
 
-console.log(urlify('Mr John Smith    ', 13)); // Mr%20John%20Smith
-console.log(urlify('Mr John Smith       ', 14)); // Mr%20John%20Smith%20
-console.log(urlify(' Mr John Smith      ', 14)); // %20Mr%20John%20Smith
+console.log(urlify("Mr John Smith    ", 13)); // Mr%20John%20Smith
+console.log(urlify("Mr John Smith       ", 14)); // Mr%20John%20Smith%20
+console.log(urlify(" Mr John Smith      ", 14)); // %20Mr%20John%20Smith

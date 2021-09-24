@@ -1,4 +1,4 @@
-const Heap = require('./heap');
+const Heap = require("./heap");
 
 class PriorityQueue extends Heap {
   constructor(iterable = [], comparator = (a, b) => a[0] - b[0]) {

@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require("assert");
 
 // tag::snippet[]
 /**
@@ -13,9 +13,9 @@ const assert = require('assert');
  * @param {string|array} n
  * @returns {array} all the subsets (including empty and set itself).
  */
-function findSubsets(n = '') {
+function findSubsets(n = "") {
   const array = Array.from(n);
-  const base = ['']; // <1>
+  const base = [""]; // <1>
 
   const results = array.reduce((previous, element) => {
     const previousPlusElement = previous.map((el) => `${el}${element}`); // <2>
@@ -26,9 +26,18 @@ function findSubsets(n = '') {
 }
 // end::snippet[]
 
-assert.deepStrictEqual(findSubsets(), ['']);
-assert.deepStrictEqual(findSubsets('a'), ['', 'a']);
-assert.deepStrictEqual(findSubsets([1, 'b']), ['', '1', 'b', '1b']);
-assert.deepStrictEqual(findSubsets('abc'), ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']);
+assert.deepStrictEqual(findSubsets(), [""]);
+assert.deepStrictEqual(findSubsets("a"), ["", "a"]);
+assert.deepStrictEqual(findSubsets([1, "b"]), ["", "1", "b", "1b"]);
+assert.deepStrictEqual(findSubsets("abc"), [
+  "",
+  "a",
+  "b",
+  "ab",
+  "c",
+  "ac",
+  "bc",
+  "abc",
+]);
 
 module.exports = findSubsets;

@@ -10,15 +10,14 @@ class WordDictionary {
   /**
    * Initialize your data structure here.
    */
-  constructor() {
-  }
+  constructor() {}
 
   /**
    * Adds a word into the data structure.
    * @param {string} word
    * @return {void}
    */
-  addWord (word) {
+  addWord(word) {
     let curr = this;
 
     for (let char of word) {
@@ -35,15 +34,14 @@ class WordDictionary {
    * @param {string} word
    * @return {boolean}
    */
-  search (word, curr = this, index = 0) {
+  search(word, curr = this, index = 0) {
     if (index > word.length) return true; // e.g. final '.'
     for (let [i, char] of [...word.slice(index)].entries()) {
-      if (char === '.') {
+      if (char === ".") {
         for (let child of Object.keys(curr.children)) {
           if (this.search(word, curr.children[child], i + 1)) return true;
         }
-      }
-      else if (!curr || !curr.children[char]) return false;
+      } else if (!curr || !curr.children[char]) return false;
       curr = curr.children[char];
     }
 

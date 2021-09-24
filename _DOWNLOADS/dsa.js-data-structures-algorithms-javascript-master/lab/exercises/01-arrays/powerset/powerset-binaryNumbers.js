@@ -9,10 +9,10 @@ function subsetsBinary(nums) {
   const result = [];
 
   for (let bin = 0; bin < max; bin++) {
-    const bitmask = bin.toString(2).padStart(len, '0');
+    const bitmask = bin.toString(2).padStart(len, "0");
 
     const el = Array.from(bitmask).reduce((a, bit, i) => {
-      if (bit === '1') {
+      if (bit === "1") {
         return a.concat(nums[i]);
       }
       return a;

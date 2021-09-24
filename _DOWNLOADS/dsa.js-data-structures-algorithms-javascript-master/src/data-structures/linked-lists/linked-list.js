@@ -1,5 +1,5 @@
-const util = require('util');
-const Node = require('./node'); // Doubly
+const util = require("util");
+const Node = require("./node"); // Doubly
 
 // tag::constructor[]
 /**
@@ -10,7 +10,7 @@ class LinkedList {
   constructor(
     iterable = [],
     // end::constructor[]
-    ListNode = Node, // Node class (e.g. singly, doubly, multilevel)
+    ListNode = Node // Node class (e.g. singly, doubly, multilevel)
     // tag::constructor[]
   ) {
     this.first = null; // head/root element
@@ -35,9 +35,11 @@ class LinkedList {
 
     newNode.next = this.first;
 
-    if (this.first) { // check if first node exists (list not empty)
+    if (this.first) {
+      // check if first node exists (list not empty)
       this.first.previous = newNode; // <1>
-    } else { // if list is empty, first & last will point to newNode.
+    } else {
+      // if list is empty, first & last will point to newNode.
       this.last = newNode;
     }
 
@@ -60,11 +62,13 @@ class LinkedList {
   addLast(value) {
     const newNode = new Node(value);
 
-    if (this.first) { // check if first node exists (list not empty)
+    if (this.first) {
+      // check if first node exists (list not empty)
       newNode.previous = this.last;
       this.last.next = newNode;
       this.last = newNode;
-    } else { // if list is empty, first & last will point to newNode.
+    } else {
+      // if list is empty, first & last will point to newNode.
       this.first = newNode;
       this.last = newNode;
     }
@@ -155,17 +159,20 @@ class LinkedList {
    * @returns {{node: any, index: number}}
    */
   findBy({ value, index = Infinity } = {}) {
-    for (let current = this.first, position = 0; // <1>
+    for (
+      let current = this.first, position = 0; // <1>
       current && position <= index; // <2>
-      position += 1, current = current.next) { // <3>
-      if (position === index || value === current.value) { // <4>
+      position += 1, current = current.next
+    ) {
+      // <3>
+      if (position === index || value === current.value) {
+        // <4>
         return { node: current, index: position }; // <5>
       }
     }
     return {}; // not found
   }
   // end::find[]
-
 
   // tag::removeFirst[]
   /**
@@ -181,7 +188,8 @@ class LinkedList {
     this.first = head.next; // move first pointer to the next element.
     if (this.first) {
       this.first.previous = null;
-    } else { // if list has size zero, then we need to null out last.
+    } else {
+      // if list has size zero, then we need to null out last.
       this.last = null;
     }
     this.size -= 1;
@@ -203,7 +211,8 @@ class LinkedList {
     this.last = tail.previous;
     if (this.last) {
       this.last.next = null;
-    } else { // if list has size zero, then we need to null out first.
+    } else {
+      // if list has size zero, then we need to null out first.
       this.first = null;
     }
     this.size -= 1;
@@ -235,7 +244,9 @@ class LinkedList {
    * O(1)
    */
   removeByNode(node) {
-    if (!node) { return null; }
+    if (!node) {
+      return null;
+    }
     if (node === this.first) {
       return this.removeFirst();
     }
@@ -253,7 +264,7 @@ class LinkedList {
    * Iterate through the list yield on each node
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#User-defined_iterables
    */
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     for (let node = this.first; node; node = node.next) {
       yield node;
     }
@@ -261,7 +272,7 @@ class LinkedList {
 
   toString() {
     const parts = [...this]; // see [Symbol.iterator]()
-    return parts.map((n) => util.inspect(n.value)).join(' -> ');
+    return parts.map((n) => util.inspect(n.value)).join(" -> ");
   }
 
   /**
@@ -280,9 +291,12 @@ class LinkedList {
    * @returns {any} callbacks's return value or undefined
    */
   find(callback) {
-    for (let current = this.first, position = 0; // <1>
+    for (
+      let current = this.first, position = 0; // <1>
       current; // <2>
-      position += 1, current = current.next) { // <3>
+      position += 1, current = current.next
+    ) {
+      // <3>
       const result = callback(current, position); // <4>
 
       if (result !== undefined) {
@@ -300,7 +314,7 @@ class LinkedList {
    * @param {any} callbackOrIndex callback or position index to remove
    */
   remove(callbackOrIndex) {
-    if (typeof callbackOrIndex !== 'function') {
+    if (typeof callbackOrIndex !== "function") {
       return this.removeByPosition(parseInt(callbackOrIndex, 10) || 0);
     }
 
@@ -312,7 +326,8 @@ class LinkedList {
       return undefined;
     });
 
-    if (position !== undefined) { // zero-based position.
+    if (position !== undefined) {
+      // zero-based position.
       return this.removeByPosition(position);
     }
 

@@ -8,7 +8,7 @@ jobs: # a collection of steps
       - checkout
       - run:
           name: update-npm
-          command: 'sudo npm install -g npm@latest'
+          command: "sudo npm install -g npm@latest"
       - run:
           name: node version
           command: node -v

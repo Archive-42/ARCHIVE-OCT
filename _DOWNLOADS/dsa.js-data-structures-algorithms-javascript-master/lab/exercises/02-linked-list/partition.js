@@ -1,17 +1,18 @@
-const LinkedList = require('./linkedlist');
-const Node = require('./node');
+const LinkedList = require("./linkedlist");
+const Node = require("./node");
 
 LinkedList.prototype.partition = partition;
 
 function partition(value) {
-  let head = this.head, tail = this.head;
+  let head = this.head,
+    tail = this.head;
 
   // partition list
   let current = this.head;
-  while(current) {
+  while (current) {
     const next = current.next;
 
-    if(current.data < value) {
+    if (current.data < value) {
       current.next = head;
       head = current;
     } else {

@@ -10,7 +10,8 @@ function threeSum(nums) {
 
   nums.sort((a, b) => a - b); // sort: O(n log n)
 
-  for (let i = 0; i < nums.length - 2; i++) { // O(n^2)
+  for (let i = 0; i < nums.length - 2; i++) {
+    // O(n^2)
     if (i > 0 && nums[i - 1] === nums[i]) continue; // skip duplicates
 
     let lo = i + 1;

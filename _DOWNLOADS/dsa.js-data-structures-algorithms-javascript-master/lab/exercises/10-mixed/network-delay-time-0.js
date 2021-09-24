@@ -11,7 +11,6 @@ function networkDelayTime(times, N, K) {
     graph.get(u).push([v, w]);
   });
 
-
   const distances = Array(N + 1).fill(Infinity);
   distances[0] = 0;
   distances[K] = 0;
@@ -27,12 +26,15 @@ function networkDelayTime(times, N, K) {
     visited[node] = true;
 
     // not working for some cases
-    graph.get(node).sort((a, b) => a[1] - b[1]).forEach(([n, w]) => {
-      distances[n] = Math.min(distances[n], dist + w);
-      if (queue.has(n) || !visited[n]) {
-        queue.set(n, distances[n]);
-      }
-    });
+    graph
+      .get(node)
+      .sort((a, b) => a[1] - b[1])
+      .forEach(([n, w]) => {
+        distances[n] = Math.min(distances[n], dist + w);
+        if (queue.has(n) || !visited[n]) {
+          queue.set(n, distances[n]);
+        }
+      });
   }
 
   const max = Math.max(...distances);

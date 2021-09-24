@@ -36,23 +36,26 @@ git log <last release> HEAD --grep feat
 # Generate TOC
 
 Install
+
 ```
 npm install -g doctoc
 ```
 
-Add to *.md:
+Add to \*.md:
+
 ```
 <!-- START doctoc -->
 <!-- END doctoc -->
 ```
 
 Run:
+
 ```
 doctoc README.md
 ```
 
-
 # Roadmap
+
 - [x] PDF: callouts and emojis are not showing correctly
 - [x] Writeup on balancing trees
 - [ ] `BinaryTree` implementation on its own. So far, we only have BST.
@@ -65,33 +68,39 @@ doctoc README.md
 # Watcher
 
 Install fswatch http://emcrisostomo.github.io/fswatch/usage.html
+
 ```sh
 # Watch for changes
 brew install fswatch
 ```
 
-Watch for changes in *.js and *.adoc
+Watch for changes in _.js and _.adoc
+
 ```sh
 fswatch /Users/admejiar/Code/algorithmsJS/src/**/*.js /Users/admejiar/Code/algorithmsJS/**/*.adoc | xargs -n1 -I{} make pdf
 ```
 
 # Troubleshooting
+
 Some notes while working on this project
 
 ## Tests
+
 Running one test without changing file
+
 ```sh
 jest -t '#findNodeAndParent'
 ```
 
 Running one test changing code
+
 ```js
-it.only('should return with an element and its parent', () => {
-// ...
+it.only("should return with an element and its parent", () => {
+  // ...
 });
 ```
 
-##  English Words
+## English Words
 
 Getting some (200k+) English words are useful for testing and benchmarking.
 
@@ -101,7 +110,8 @@ cat /usr/share/dict/words > benchmarks/dict.txt
 
 ## ESLint
 
- Disabling ESLints
+Disabling ESLints
+
 ```js
 somthing(t) =>  1  // eslint-disable-line no-unused-vars
 // eslint-disable-next-line no-use-before-define

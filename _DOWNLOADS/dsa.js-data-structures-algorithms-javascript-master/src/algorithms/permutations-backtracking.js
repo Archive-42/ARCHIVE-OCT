@@ -21,13 +21,15 @@ function swap(array, index1, index2) {
  *  permutations('ab') // ['ab', 'ba']
  *  permutations([1, 2, 3]) // ['123', '132', '213', '231', '321', '312']
  */
-function permutations(word = '', solution = [], start = 0) {
+function permutations(word = "", solution = [], start = 0) {
   const array = Array.isArray(word) ? word : Array.from(word);
 
-  if (start === array.length - 1) { // <4>
-    solution.push(array.join(''));
+  if (start === array.length - 1) {
+    // <4>
+    solution.push(array.join(""));
   } else {
-    for (let index = start; index < array.length; index++) { // <1>
+    for (let index = start; index < array.length; index++) {
+      // <1>
       swap(array, start, index); // <2>
       permutations(array, solution, start + 1); // <3>
       swap(array, start, index); // backtrack // <5>

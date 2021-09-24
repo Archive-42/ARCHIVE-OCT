@@ -1,13 +1,13 @@
-const BinaryTreeNode = require('./binary-tree-node');
+const BinaryTreeNode = require("./binary-tree-node");
 
 const {
   leftRotation,
   rightRotation,
   leftRightRotation,
   rightLeftRotation,
-} = require('./tree-rotations');
+} = require("./tree-rotations");
 
-describe('Tree rotations', () => {
+describe("Tree rotations", () => {
   let n1;
   let n2;
   let n3;
@@ -20,8 +20,8 @@ describe('Tree rotations', () => {
     n4 = new BinaryTreeNode(4);
   });
 
-  describe('#leftRotation (LL Rotation)', () => {
-    it('basic LL rotation', () => {
+  describe("#leftRotation (LL Rotation)", () => {
+    it("basic LL rotation", () => {
       /*
        *  1*                                         2*
        *   \                                       /  \
@@ -35,17 +35,26 @@ describe('Tree rotations', () => {
       const newParent = leftRotation(n1);
       expect(newParent.value).toBe(2);
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: null, parent: 2,
+        value: 1,
+        left: null,
+        right: null,
+        parent: 2,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: 1, right: 3, parent: null,
+        value: 2,
+        left: 1,
+        right: 3,
+        parent: null,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: null, right: null, parent: 2,
+        value: 3,
+        left: null,
+        right: null,
+        parent: 2,
       });
     });
 
-    it('should rotate left with root (LL Rotation)', () => {
+    it("should rotate left with root (LL Rotation)", () => {
       // 1
       //  \
       //   2*
@@ -61,17 +70,26 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n3);
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: 3, parent: null,
+        value: 1,
+        left: null,
+        right: 3,
+        parent: null,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: null, right: null, parent: 3,
+        value: 2,
+        left: null,
+        right: null,
+        parent: 3,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: 2, right: 4, parent: 1,
+        value: 3,
+        left: 2,
+        right: 4,
+        parent: 1,
       });
     });
 
-    it('should rotate last two', () => {
+    it("should rotate last two", () => {
       //        4
       //      /
       //    3
@@ -87,17 +105,26 @@ describe('Tree rotations', () => {
       expect(newParent).toBe(n2);
 
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: null, parent: 2,
+        value: 1,
+        left: null,
+        right: null,
+        parent: 2,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: 1, right: null, parent: 3,
+        value: 2,
+        left: 1,
+        right: null,
+        parent: 3,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: 2, right: null, parent: 4,
+        value: 3,
+        left: 2,
+        right: null,
+        parent: 4,
       });
     });
 
-    it('should not lose nodes on LL', () => {
+    it("should not lose nodes on LL", () => {
       //  1                                          1
       //   \                                          \
       //    4*                                         16
@@ -123,16 +150,22 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n16);
       expect(n8.toValues()).toMatchObject({
-        value: 8, left: null, right: null, parent: 4,
+        value: 8,
+        left: null,
+        right: null,
+        parent: 4,
       });
       expect(n4.toValues()).toMatchObject({
-        value: 4, left: 2, right: 8, parent: 16,
+        value: 4,
+        left: 2,
+        right: 8,
+        parent: 16,
       });
     });
   });
 
-  describe('#rightRotation (RR Rotation)', () => {
-    it('should rotate single trees', () => {
+  describe("#rightRotation (RR Rotation)", () => {
+    it("should rotate single trees", () => {
       //           4
       //         /
       //       3*
@@ -148,20 +181,32 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n2);
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: null, parent: 2,
+        value: 1,
+        left: null,
+        right: null,
+        parent: 2,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: 1, right: 3, parent: 4,
+        value: 2,
+        left: 1,
+        right: 3,
+        parent: 4,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: null, right: null, parent: 2,
+        value: 3,
+        left: null,
+        right: null,
+        parent: 2,
       });
       expect(n4.toValues()).toMatchObject({
-        value: 4, left: 2, right: null, parent: null,
+        value: 4,
+        left: 2,
+        right: null,
+        parent: null,
       });
     });
 
-    it('should right rotate at the top', () => {
+    it("should right rotate at the top", () => {
       //       3*
       //     /
       //    2
@@ -174,11 +219,14 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n2);
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: 1, right: 3, parent: null,
+        value: 2,
+        left: 1,
+        right: 3,
+        parent: null,
       });
     });
 
-    it('should RR last two', () => {
+    it("should RR last two", () => {
       //  1
       //   \
       //     3*
@@ -191,17 +239,26 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n2);
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: 2, parent: null,
+        value: 1,
+        left: null,
+        right: 2,
+        parent: null,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: null, right: 3, parent: 1,
+        value: 2,
+        left: null,
+        right: 3,
+        parent: 1,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: null, right: null, parent: 2,
+        value: 3,
+        left: null,
+        right: null,
+        parent: 2,
       });
     });
 
-    it('should not lose nodes on RR', () => {
+    it("should not lose nodes on RR", () => {
       //      16*                                      4
       //      / \                                     / \
       //     4  32    -- right-rotation(16) -->      2   16
@@ -222,16 +279,22 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n4);
       expect(n8.toValues()).toMatchObject({
-        value: 8, left: null, right: null, parent: 16,
+        value: 8,
+        left: null,
+        right: null,
+        parent: 16,
       });
       expect(n16.toValues()).toMatchObject({
-        value: 16, left: 8, right: 32, parent: 4,
+        value: 16,
+        left: 8,
+        right: 32,
+        parent: 4,
       });
     });
   });
 
-  describe('#leftRightRotation (LR Rotation)', () => {
-    it('should do LL rotation and RR rotation', () => {
+  describe("#leftRightRotation (LR Rotation)", () => {
+    it("should do LL rotation and RR rotation", () => {
       //        4
       //      /
       //    3*
@@ -247,19 +310,28 @@ describe('Tree rotations', () => {
 
       expect(newParent).toBe(n2);
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: null, parent: 2,
+        value: 1,
+        left: null,
+        right: null,
+        parent: 2,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: 1, right: 3, parent: 4,
+        value: 2,
+        left: 1,
+        right: 3,
+        parent: 4,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: null, right: null, parent: 2,
+        value: 3,
+        left: null,
+        right: null,
+        parent: 2,
       });
     });
   });
 
-  describe('#rightLeftRotation (RL Rotation)', () => {
-    it('should do a RR rotation and then a LL rotation', () => {
+  describe("#rightLeftRotation (RL Rotation)", () => {
+    it("should do a RR rotation and then a LL rotation", () => {
       //  1*
       //   \
       //     3
@@ -271,13 +343,22 @@ describe('Tree rotations', () => {
       const newParent = rightLeftRotation(n1);
       expect(newParent).toBe(n2);
       expect(n1.toValues()).toMatchObject({
-        value: 1, left: null, right: null, parent: 2,
+        value: 1,
+        left: null,
+        right: null,
+        parent: 2,
       });
       expect(n2.toValues()).toMatchObject({
-        value: 2, left: 1, right: 3, parent: null,
+        value: 2,
+        left: 1,
+        right: 3,
+        parent: null,
       });
       expect(n3.toValues()).toMatchObject({
-        value: 3, left: null, right: null, parent: 2,
+        value: 3,
+        left: null,
+        right: null,
+        parent: 2,
       });
     });
   });

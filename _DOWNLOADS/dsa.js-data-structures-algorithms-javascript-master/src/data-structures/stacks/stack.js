@@ -1,4 +1,4 @@
-const LinkedList = require('../linked-lists/linked-list');
+const LinkedList = require("../linked-lists/linked-list");
 // tag::constructor[]
 /**
  * Data structure that adds and remove elements in a first-in, first-out (FIFO) fashion

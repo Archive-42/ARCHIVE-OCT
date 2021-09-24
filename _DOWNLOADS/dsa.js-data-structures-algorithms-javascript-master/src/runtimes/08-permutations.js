@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require("assert");
 
 // tag::snippet[]
 /**
@@ -12,7 +12,7 @@ const assert = require('assert');
  * @param {string} prefix used internally for recursion
  * @returns {array} collection of all the ways the letters can be arranged
  */
-function getPermutations(word = '', prefix = '') {
+function getPermutations(word = "", prefix = "") {
   if (word.length <= 1) {
     return [prefix + word];
   }
@@ -23,11 +23,16 @@ function getPermutations(word = '', prefix = '') {
 }
 // end::snippet[]
 
-
-assert.deepStrictEqual(getPermutations(), ['']);
-assert.deepStrictEqual(getPermutations('a'), ['a']);
-assert.deepStrictEqual(getPermutations('ab'), ['ab', 'ba']);
-assert.deepStrictEqual(getPermutations('mad'), ['mad', 'mda', 'amd', 'adm', 'dma', 'dam']);
-
+assert.deepStrictEqual(getPermutations(), [""]);
+assert.deepStrictEqual(getPermutations("a"), ["a"]);
+assert.deepStrictEqual(getPermutations("ab"), ["ab", "ba"]);
+assert.deepStrictEqual(getPermutations("mad"), [
+  "mad",
+  "mda",
+  "amd",
+  "adm",
+  "dma",
+  "dam",
+]);
 
 module.exports = getPermutations;

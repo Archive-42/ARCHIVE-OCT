@@ -18,22 +18,22 @@ class CallCenter {
   }
 
   dispatchCall(call) {
-    for(let respondent of this.getRespondents()) {
-      if(respondent.isBusy()) continue;
+    for (let respondent of this.getRespondents()) {
+      if (respondent.isBusy()) continue;
       respondent.takeCall(call);
-      return true
+      return true;
     }
 
-    for(let manager of this.getManagers()) {
-      if(manager.isBusy()) continue;
+    for (let manager of this.getManagers()) {
+      if (manager.isBusy()) continue;
       manager.takeCall(call);
-      return true
+      return true;
     }
 
-    for(let director of this.getDirectors()) {
-      if(director.isBusy()) continue;
+    for (let director of this.getDirectors()) {
+      if (director.isBusy()) continue;
       director.takeCall(call);
-      return true
+      return true;
     }
 
     return false;
@@ -56,9 +56,9 @@ class Employee {
   }
 }
 
-Employee.RESPONDENT = Symbol('RESPONDENT');
-Employee.MANAGER = Symbol('MANAGER');
-Employee.DIRECTOR = Symbol('DIRECTOR');
+Employee.RESPONDENT = Symbol("RESPONDENT");
+Employee.MANAGER = Symbol("MANAGER");
+Employee.DIRECTOR = Symbol("DIRECTOR");
 
 class Respondent extends Employee {
   constructor() {
@@ -81,7 +81,12 @@ class Director extends Employee {
   }
 }
 
-const employees = [ new Director(), new Respondent(), new Respondent(), new Respondent()];
+const employees = [
+  new Director(),
+  new Respondent(),
+  new Respondent(),
+  new Respondent(),
+];
 const callCenter = new CallCenter(employees);
 
 callCenter.dispatchCall(1);
@@ -90,4 +95,3 @@ callCenter.dispatchCall(3);
 callCenter.dispatchCall(4);
 callCenter.dispatchCall(5);
 callCenter.dispatchCall(6);
-

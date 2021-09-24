@@ -8,7 +8,7 @@ function combinationSum(
   target,
   solution = [],
   current = [],
-  index = 0,
+  index = 0
 ) {
   if (target < 0) {
     // By adding another candidate we've gone below zero.
@@ -27,7 +27,11 @@ function combinationSum(
 
   // If we haven't reached zero yet let's continue to add all
   // possible candidates that are left.
-  for (let candidateIndex = index; candidateIndex < candidates.length; candidateIndex += 1) {
+  for (
+    let candidateIndex = index;
+    candidateIndex < candidates.length;
+    candidateIndex += 1
+  ) {
     const currentCandidate = candidates[candidateIndex];
 
     // Let's try to add another candidate.
@@ -39,7 +43,7 @@ function combinationSum(
       target - currentCandidate,
       solution,
       current,
-      candidateIndex,
+      candidateIndex
     );
 
     // BACKTRACKING.

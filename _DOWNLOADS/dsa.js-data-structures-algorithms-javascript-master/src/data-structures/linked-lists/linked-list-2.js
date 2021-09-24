@@ -1,4 +1,4 @@
-const Node = require('./node');
+const Node = require("./node");
 
 /**
  * Singly linked list with `last` element reference
@@ -90,7 +90,11 @@ class LinkedList {
    * @param {any} value
    */
   contains(value) {
-    for (let current = this.first, index = 0; current; index++, current = current.next) {
+    for (
+      let current = this.first, index = 0;
+      current;
+      index++, current = current.next
+    ) {
       if (current.value === value) {
         return index;
       }
@@ -108,9 +112,14 @@ class LinkedList {
       return this.removeFirst();
     }
 
-    for (let current = this.first, index = 0; current; index++, current = current.next) {
+    for (
+      let current = this.first, index = 0;
+      current;
+      index++, current = current.next
+    ) {
       if (index === nth) {
-        if (!current.next) { // if it doesn't have next it means that it is the last
+        if (!current.next) {
+          // if it doesn't have next it means that it is the last
           return this.removeLast();
         }
         current.previous = current.next;
@@ -122,8 +131,10 @@ class LinkedList {
 }
 
 // Aliases
-LinkedList.prototype.add = LinkedList.prototype.push = LinkedList.prototype.addLast;
-LinkedList.prototype.remove = LinkedList.prototype.pop = LinkedList.prototype.removeLast;
+LinkedList.prototype.add = LinkedList.prototype.push =
+  LinkedList.prototype.addLast;
+LinkedList.prototype.remove = LinkedList.prototype.pop =
+  LinkedList.prototype.removeLast;
 LinkedList.prototype.unshift = LinkedList.prototype.addFirst;
 LinkedList.prototype.shift = LinkedList.prototype.removeFirst;
 

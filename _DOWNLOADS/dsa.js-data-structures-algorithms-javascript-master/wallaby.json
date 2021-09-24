@@ -1,9 +1,5 @@
 {
-  "files": [
-    "src/**/*.js"
-  ],
+  "files": ["src/**/*.js"],
 
-  "tests": [
-    "src/**/*[sS]pec.js"
-  ]
+  "tests": ["src/**/*[sS]pec.js"]
 }

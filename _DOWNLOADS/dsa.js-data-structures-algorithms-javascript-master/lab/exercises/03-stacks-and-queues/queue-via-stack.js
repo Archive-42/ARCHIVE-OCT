@@ -1,4 +1,4 @@
-const Stack = require('./stack');
+const Stack = require("./stack");
 
 class QueueViaStack {
   constructor() {
@@ -11,8 +11,8 @@ class QueueViaStack {
   }
 
   remove() {
-    if(!this.stack2.peek()){
-      while(this.stack1.peek()){
+    if (!this.stack2.peek()) {
+      while (this.stack1.peek()) {
         this.stack2.push(this.stack1.pop());
       }
     }

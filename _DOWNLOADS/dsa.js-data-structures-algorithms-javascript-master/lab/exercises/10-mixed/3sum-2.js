@@ -6,7 +6,8 @@
  * @space O(n)
  */
 const threeSum = function (nums) {
-  const array = nums.reduce((acc, n, i) => { // O(n^2)
+  const array = nums.reduce((acc, n, i) => {
+    // O(n^2)
     if (i > nums.length - 2) return acc;
     const partial = twoSum(nums, -n, i + 1);
     const res = partial.map((p) => [n, ...p]);
@@ -21,10 +22,11 @@ const threeSum = function (nums) {
   }, new Set());
 
   // convert to array of nums
-  return [...set].map((a) => a.split(',').map((n) => +n));
+  return [...set].map((a) => a.split(",").map((n) => +n));
 };
 
-function twoSum(nums, target, start) { // O(n)
+function twoSum(nums, target, start) {
+  // O(n)
   const ans = [];
   const map = new Map();
 

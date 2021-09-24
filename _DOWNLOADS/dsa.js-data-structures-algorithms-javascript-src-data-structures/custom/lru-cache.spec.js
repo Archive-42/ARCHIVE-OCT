@@ -1,49 +1,49 @@
-const LRUCache = require('./lru-cache-3');
+const LRUCache = require("./lru-cache-3");
 
-describe('LRU Cache', () => {
+describe("LRU Cache", () => {
   let c;
 
-  describe('#constructor', () => {
-    it('should initialize', () => {
+  describe("#constructor", () => {
+    it("should initialize", () => {
       c = new LRUCache();
       expect(c).toBeDefined();
     });
 
-    it('should initialize with capacity', () => {
+    it("should initialize with capacity", () => {
       c = new LRUCache(7);
       expect(c.capacity).toEqual(7);
     });
   });
 
-  describe('when initialized', () => {
+  describe("when initialized", () => {
     beforeEach(() => {
       c = new LRUCache(2);
     });
 
-    describe('#put', () => {
-      it('should insert new elements', () => {
+    describe("#put", () => {
+      it("should insert new elements", () => {
         c.put(1, 1);
         expect(c.size).toEqual(1);
       });
 
-      it('should update existing element', () => {
+      it("should update existing element", () => {
         c.put(1, 1);
         c.put(1, 2);
         expect(c.size).toEqual(1);
       });
     });
 
-    describe('#get', () => {
-      it('should get element', () => {
+    describe("#get", () => {
+      it("should get element", () => {
         c.put(1, 1);
         expect(c.get(1)).toEqual(1);
       });
 
-      it('should return -1 for non-existing elements', () => {
+      it("should return -1 for non-existing elements", () => {
         expect(c.get(1)).toEqual(-1);
       });
 
-      it('should not add non-existing number to the top of the list', () => {
+      it("should not add non-existing number to the top of the list", () => {
         c.put(1, 1);
         expect(c.get(8)).toEqual(-1);
         c.put(2, 2);
@@ -52,14 +52,14 @@ describe('LRU Cache', () => {
         expect(c.get(2)).toEqual(2);
       });
 
-      it('should return -1 for removed elements', () => {
+      it("should return -1 for removed elements", () => {
         c.put(1, 1);
         c.put(2, 2);
         c.put(3, 3);
         expect(c.get(1)).toEqual(-1);
       });
 
-      it('should not remove value if accessed recently', () => {
+      it("should not remove value if accessed recently", () => {
         c.put(1, 1);
         c.put(2, 2);
         expect(c.get(1)).toEqual(1);
@@ -68,14 +68,14 @@ describe('LRU Cache', () => {
         expect(c.get(2)).toEqual(-1);
       });
 
-      it('should update a value', () => {
+      it("should update a value", () => {
         c.put(1, 1);
         c.put(1, 2);
         expect(c.get(1)).toEqual(2);
       });
     });
 
-    it('should work with updates', () => {
+    it("should work with updates", () => {
       // ["LRUCache","put","put","put","put","get","get"]
       // [[2],[2,1],[1,1],[2,3],[4,1],[1],[2]]
       c = new LRUCache(2);
@@ -87,7 +87,7 @@ describe('LRU Cache', () => {
       c.get(2);
     });
 
-    it('should work with size 10', () => {
+    it("should work with size 10", () => {
       c = new LRUCache(10);
 
       c.put(10, 13);

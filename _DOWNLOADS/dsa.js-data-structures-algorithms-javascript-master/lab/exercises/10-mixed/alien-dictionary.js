@@ -1,4 +1,3 @@
-
 /**
  * Add nodes and edges into a graph using adjacency list
  *
@@ -29,7 +28,14 @@ class Graph {
  * @param {number} [depth=0]
  * @returns {boolean} true if has a loop, false otherwise
  */
-function hasLoopOrAddToSet(g, node, set, parent = null, grouping = new Map(), depth = 0) {
+function hasLoopOrAddToSet(
+  g,
+  node,
+  set,
+  parent = null,
+  grouping = new Map(),
+  depth = 0
+) {
   if (set.has(node)) set.delete(node);
   set.add(node);
   grouping.set(node, depth);
@@ -40,7 +46,8 @@ function hasLoopOrAddToSet(g, node, set, parent = null, grouping = new Map(), de
     // if (adj === parent) continue; // only for indirected graph
 
     if (!grouping.has(adj)) {
-      if (hasLoopOrAddToSet(g, adj, set, node, grouping, depth + 1)) return true;
+      if (hasLoopOrAddToSet(g, adj, set, node, grouping, depth + 1))
+        return true;
     }
 
     const minGroup = Math.min(grouping.get(adj), grouping.get(node));
@@ -50,7 +57,6 @@ function hasLoopOrAddToSet(g, node, set, parent = null, grouping = new Map(), de
   }
 }
 
-
 /**
  * Find the order of the alien alphabet given a list of words on lexicographical order.
  *
@@ -59,19 +65,21 @@ function hasLoopOrAddToSet(g, node, set, parent = null, grouping = new Map(), de
  */
 function alienOrder(words) {
   const g = new Graph();
-  if (!words || words.length < 2) return words && words.join('');
+  if (!words || words.length < 2) return words && words.join("");
 
-  for (let i = 1; i < words.length; i++) { // O(n) * O(k)
+  for (let i = 1; i < words.length; i++) {
+    // O(n) * O(k)
     const w1 = words[i - 1];
     const w2 = words[i];
     let j = 0;
 
-    while (j < w1.length && j < w2.length && w1[j] === w2[j]) { // O(k), k = max word length
+    while (j < w1.length && j < w2.length && w1[j] === w2[j]) {
+      // O(k), k = max word length
       g.add(w1[j++]);
     }
 
     if (j === w2.length && w1.length > w2.length) {
-      return ''; // shorter words should come first.
+      return ""; // shorter words should come first.
     }
 
     if (w1[j]) g.add(w1[j], w2[j]);
@@ -83,13 +91,15 @@ function alienOrder(words) {
   // console.log({ g: g.nodes });
 
   const set = new Set();
-  for (const [node] of g.nodes) { // O(?)
-    if (hasLoopOrAddToSet(g, node, set)) { // DFS: O(E + V), V: total unique letters
-      return '';
+  for (const [node] of g.nodes) {
+    // O(?)
+    if (hasLoopOrAddToSet(g, node, set)) {
+      // DFS: O(E + V), V: total unique letters
+      return "";
     }
   }
 
-  return [...set].join('');
+  return [...set].join("");
 }
 
 module.exports = alienOrder;
@@ -97,13 +107,13 @@ module.exports = alienOrder;
 // Find the order of the alien alphabet given a list of words on lexicographical order.
 
 // take words in pair, and build a dependency graph.
-  // skip while w1.char === w2.char
-  // add the first diff chars as a adj nodes
-  // add each letter as a node in the graph.
+// skip while w1.char === w2.char
+// add the first diff chars as a adj nodes
+// add each letter as a node in the graph.
 
 // find the order of the alien alph
-  // iterate over each node
-  // dfs + tarjan to detect loops
-  // add each visited node to a set
-  // if there’s a loop return ‘’
-  // return set
+// iterate over each node
+// dfs + tarjan to detect loops
+// add each visited node to a set
+// if there’s a loop return ‘’
+// return set

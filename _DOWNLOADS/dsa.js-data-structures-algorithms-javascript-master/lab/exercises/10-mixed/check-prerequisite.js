@@ -1,16 +1,19 @@
 const checkIfPrerequisite = function (n, prerequisites, queries) {
   const graph = new Map();
 
-  Array(n).fill(0).forEach((v, i) => graph.set(i, {
-    children: [],
-    // connected: new Set(),
-  }));
+  Array(n)
+    .fill(0)
+    .forEach((v, i) =>
+      graph.set(i, {
+        children: [],
+        // connected: new Set(),
+      })
+    );
 
   prerequisites.forEach(([u, v]) => {
     graph.get(u).children.push(v);
     // graph.get(u).connected.add(v);
   });
-
 
   return queries.map(([u, v]) => isConnected(graph, u, v, new Set(), u));
 };
@@ -28,6 +31,5 @@ function isConnected(graph, u, v, path = new Set(), p) {
 
   return false;
 }
-
 
 module.exports = checkIfPrerequisite;
