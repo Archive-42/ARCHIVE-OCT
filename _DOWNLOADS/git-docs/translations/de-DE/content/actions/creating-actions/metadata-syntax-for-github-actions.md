@@ -1,17 +1,17 @@
 ---
 title: Metadaten-Syntax für GitHub-Aktionen
 shortTitle: Metadaten-Syntax
-intro: 'Du kannst Aktionen erstellen, um Aufgaben in Ihrem Repository zu erledigen. Für Aktionen ist eine Metadaten-Datei erforderlich, welche die YAML-Syntax verwendet.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Aktionen erstellen, um Aufgaben in Ihrem Repository zu erledigen. Für Aktionen ist eine Metadaten-Datei erforderlich, welche die YAML-Syntax verwendet."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/metadata-syntax-for-github-actions
   - /github/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
   - /actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
   - /actions/building-actions/metadata-syntax-for-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: reference
 ---
 
@@ -48,11 +48,11 @@ In diesem Beispiel werden zwei Eingaben konfiguriert: „numOctocats“ und „o
 ```yaml
 inputs:
   numOctocats:
-    description: 'Number of Octocats'
+    description: "Number of Octocats"
     required: false
-    default: '1'
+    default: "1"
   octocatEyeColor:
-    description: 'Eye color of the Octocats'
+    description: "Eye color of the Octocats"
     required: true
 ```
 
@@ -82,7 +82,7 @@ For example, if a workflow defined the `numOctocats` and `octocatEyeColor` input
 
 ### `outputs`
 
-**Optional**: Ausgabeparameter erlauben Dir, Daten zu deklarieren, die eine Aktion setzt. Aktionen, die in einem Workflow später ausgeführt werden, können die Ausgabedaten der zuvor ausgeführten Aktionen verwenden.  Wenn beispielsweise eine Aktion vorliegt, die zwei Eingaben addiert hat (x + y = z), kann die Aktion die Summe (z) für andere Aktionen ausgeben, damit sie als Eingabe verwendet wird.
+**Optional**: Ausgabeparameter erlauben Dir, Daten zu deklarieren, die eine Aktion setzt. Aktionen, die in einem Workflow später ausgeführt werden, können die Ausgabedaten der zuvor ausgeführten Aktionen verwenden. Wenn beispielsweise eine Aktion vorliegt, die zwei Eingaben addiert hat (x + y = z), kann die Aktion die Summe (z) für andere Aktionen ausgeben, damit sie als Eingabe verwendet wird.
 
 Auch wenn Du in der Metadaten-Datei Deiner Aktion keine Ausgabe deklarierst, kannst Du dennoch Ausgaben festlegen und in einem Workflow verwenden. Weitere Informationen zum Festlegen von Ausgaben in einer Aktion findest Du unter "[Workflow-Befehle für {% data variables.product.prodname_actions %}](/actions/reference/workflow-commands-for-github-actions/#setting-an-output-parameter)."
 
@@ -91,7 +91,7 @@ Auch wenn Du in der Metadaten-Datei Deiner Aktion keine Ausgabe deklarierst, kan
 ```yaml
 outputs:
   sum: # ID der Ausgabe
-    description: 'Die Summe der Eingaben'
+    description: "Die Summe der Eingaben"
 ```
 
 #### `outputs.<output_id>`
@@ -109,6 +109,7 @@ outputs:
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 outputs:
   random-number:
@@ -121,6 +122,7 @@ runs:
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
 ```
+
 {% endraw %}
 
 #### `outputs.<output_id>.value`
@@ -137,8 +139,8 @@ For more information on how to use context and expression syntax, see "[Context 
 
 ```yaml
 runs:
-  using: 'node12'
-  main: 'main.js'
+  using: "node12"
+  main: "main.js"
 ```
 
 #### `runs.using`
@@ -157,10 +159,10 @@ In diesem Beispiel führt die `pre:`-Aktion ein Skript namens `setup.js` aus:
 
 ```yaml
 runs:
-  using: 'node12'
-  pre: 'setup.js'
-  main: 'index.js'
-  post: 'cleanup.js'
+  using: "node12"
+  pre: "setup.js"
+  main: "index.js"
+  post: "cleanup.js"
 ```
 
 #### `pre-if`
@@ -170,8 +172,8 @@ runs:
 In diesem Beispiel läuft `cleanup.js` nur auf Linux-basierten Runnern:
 
 ```yaml
-  pre: 'cleanup.js'
-  pre-if: runner.os == 'linux'
+pre: "cleanup.js"
+pre-if: runner.os == 'linux'
 ```
 
 #### `Beitrag`
@@ -182,9 +184,9 @@ In diesem Beispiel führt die `post:`-Aktion ein Skript namens `cleanup.js` aus:
 
 ```yaml
 runs:
-  using: 'node12'
-  main: 'index.js'
-  post: 'cleanup.js'
+  using: "node12"
+  main: "index.js"
+  post: "cleanup.js"
 ```
 
 Die `post:`-Aktion wird normalerweise immer ausgeführt, aber Du kannst dies mit `post-if` ändern.
@@ -196,8 +198,8 @@ Die `post:`-Aktion wird normalerweise immer ausgeführt, aber Du kannst dies mit
 In diesem Beispiel läuft `cleanup.js` nur auf Linux-basierten Runnern:
 
 ```yaml
-  post: 'cleanup.js'
-  post-if: runner.os == 'linux'
+post: "cleanup.js"
+post-if: runner.os == 'linux'
 ```
 
 ### `runs` for composite run steps actions
@@ -217,6 +219,7 @@ In diesem Beispiel läuft `cleanup.js` nur auf Linux-basierten Runnern:
 **Required** The command you want to run. This can be inline or a script in your action repository:
 
 {% raw %}
+
 ```yaml
 runs:
   using: "composite"
@@ -224,6 +227,7 @@ runs:
     - run: ${{ github.action_path }}/test/script.sh
       shell: bash
 ```
+
 {% endraw %}
 
 Alternatively, you can use `$GITHUB_ACTION_PATH`:
@@ -252,11 +256,11 @@ For more information, see "[`github context`](/actions/reference/context-and-exp
 
 ##### `runs.steps[*].env`
 
-**Optional**  Sets a `map` of environment variables for only that step. If you want to modify the environment variable stored in the workflow, use {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}`echo "{name}={value}" >> $GITHUB_ENV`{% else %}`echo "::set-env name={name}::{value}"`{% endif %} in a composite run step.
+**Optional** Sets a `map` of environment variables for only that step. If you want to modify the environment variable stored in the workflow, use {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}`echo "{name}={value}" >> $GITHUB_ENV`{% else %}`echo "::set-env name={name}::{value}"`{% endif %} in a composite run step.
 
 ##### `runs.steps[*].working-directory`
 
-**Optional**  Specifies the working directory where the command is run.
+**Optional** Specifies the working directory where the command is run.
 
 ### `runs` for Docker actions
 
@@ -266,16 +270,16 @@ For more information, see "[`github context`](/actions/reference/context-and-exp
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
 ```
 
 #### Beispiel zur Nutzung des öffentlichen Docker-Registry-Containers
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'docker://debian:stretch-slim'
+  using: "docker"
+  image: "docker://debian:stretch-slim"
 ```
 
 #### `runs.using`
@@ -292,12 +296,12 @@ In diesem Beispiel führt die `pre-entrypoint:`-Aktion ein Skript namens `setup.
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
-    - 'bzz'
-  pre-entrypoint: 'setup.sh'
-  entrypoint: 'main.sh'
+    - "bzz"
+  pre-entrypoint: "setup.sh"
+  entrypoint: "main.sh"
 ```
 
 #### `runs.image`
@@ -320,12 +324,12 @@ Weitere Informationen dazu, wie die `Entrypoint` ausgeführt wird, findest Du un
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
-    - 'bzz'
-  entrypoint: 'main.sh'
-  post-entrypoint: 'cleanup.sh'
+    - "bzz"
+  entrypoint: "main.sh"
+  post-entrypoint: "cleanup.sh"
 ```
 
 #### `runs.args`
@@ -343,15 +347,17 @@ Weitere Informationen zur Verwendung der Anweisung `CMD` mit {% data variables.p
 ##### Beispiel
 
 {% raw %}
+
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.greeting }}
-    - 'foo'
-    - 'bar'
+    - "foo"
+    - "bar"
 ```
+
 {% endraw %}
 
 ### `branding`
@@ -362,8 +368,8 @@ Du kannst mit einer Farbe und [Feder](https://feathericons.com/) ein Badge zu er
 
 ```yaml
 branding:
-  icon: 'award'  
-  color: 'green'
+  icon: "award"
+  color: "green"
 ```
 
 #### `branding.color`

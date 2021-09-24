@@ -11,9 +11,9 @@ redirect_from:
   - /actions/automating-your-workflow-with-github-actions/managing-a-workflow-run
   - /actions/configuring-and-managing-workflows/configuring-and-managing-workflow-files-and-runs
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 children:
   - /using-the-visualization-graph
   - /viewing-workflow-run-history

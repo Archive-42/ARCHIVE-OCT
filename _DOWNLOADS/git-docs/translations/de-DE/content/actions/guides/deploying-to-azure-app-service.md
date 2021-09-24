@@ -1,11 +1,11 @@
 ---
 title: Deploying to Azure App Service
 intro: You can deploy to Azure App Service as part of your continuous deployment (CD) workflows.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CD
@@ -42,8 +42,8 @@ Before creating your {% data variables.product.prodname_actions %} workflow, you
 
    See the Azure documentation for more information on using the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/):
 
-   * For authentication, see "[Sign in with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli)".
-   * If you need to create a new resource group, see "[az group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az_group_create)."
+   - For authentication, see "[Sign in with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli)".
+   - If you need to create a new resource group, see "[az group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az_group_create)."
 
 2. Create a web app.
 
@@ -74,6 +74,7 @@ The following example workflow demonstrates how to build, test, and deploy the N
 Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of the web app you created.
 
 {% raw %}
+
 ```yaml{:copy}
 on:
   release:
@@ -111,12 +112,13 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 ```
+
 {% endraw %}
 
 ### Additional resources
 
 The following resources may also be useful:
 
-* For the original starter workflow, see [`azure.yml`](https://github.com/actions/starter-workflows/blob/master/ci/azure.yml) in the {% data variables.product.prodname_actions %} `starter-workflows` repository.
-* The action used to deploy the web app is the official Azure [`Azure/webapps-deploy`](https://github.com/Azure/webapps-deploy) action.
-* The "[Create a Node.js web app in Azure](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs)" quickstart in the Azure web app documentation demonstrates using VS Code with the [Azure App Service extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice).
+- For the original starter workflow, see [`azure.yml`](https://github.com/actions/starter-workflows/blob/master/ci/azure.yml) in the {% data variables.product.prodname_actions %} `starter-workflows` repository.
+- The action used to deploy the web app is the official Azure [`Azure/webapps-deploy`](https://github.com/Azure/webapps-deploy) action.
+- The "[Create a Node.js web app in Azure](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs)" quickstart in the Azure web app documentation demonstrates using VS Code with the [Azure App Service extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice).

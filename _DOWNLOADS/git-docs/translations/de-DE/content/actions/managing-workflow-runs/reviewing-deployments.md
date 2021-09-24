@@ -1,11 +1,11 @@
 ---
 title: Reviewing deployments
 intro: You can approve or reject jobs awaiting review.
-product: '{% data reusables.gated-features.environments %}'
+product: "{% data reusables.gated-features.environments %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=3.1'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=3.1"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.environments-beta %}

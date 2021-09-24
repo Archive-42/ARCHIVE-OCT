@@ -1,16 +1,16 @@
 ---
 title: Informationen zu Aktionen
-intro: 'Aktionen sind einzelne Aufgaben, die Du kombinieren kannst, um Aufträge zu erstellen und Deinen Workflow anzupassen. You can create your own actions, or use and customize actions shared by the {% data variables.product.prodname_dotcom %} community.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Aktionen sind einzelne Aufgaben, die Du kombinieren kannst, um Aufträge zu erstellen und Deinen Workflow anzupassen. You can create your own actions, or use and customize actions shared by the {% data variables.product.prodname_dotcom %} community."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/about-actions
   - /github/automating-your-workflow-with-github-actions/about-actions
   - /actions/automating-your-workflow-with-github-actions/about-actions
   - /actions/building-actions/about-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 topics:
   - Action development
@@ -108,14 +108,14 @@ This example demonstrates how a user can reference a major release tag:
 
 ```yaml
 Schritte:
-    - verwendet: actions/javascript-action@v1
+  - verwendet: actions/javascript-action@v1
 ```
 
 This example demonstrates how a user can reference a specific patch release tag:
 
 ```yaml
 Schritte:
-    - verwendet: actions/javascript-action@v1.0.1
+  - verwendet: actions/javascript-action@v1.0.1
 ```
 
 #### Verwenden von Zweigen für die Releaseverwaltung
@@ -124,7 +124,7 @@ If you prefer to use branch names for release management, this example demonstra
 
 ```yaml
 Schritte:
-    - verwendet: actions/javascript-action@v1-beta
+  - verwendet: actions/javascript-action@v1-beta
 ```
 
 #### Verwenden des SHA eines Commits für die Releaseverwaltung
@@ -133,7 +133,7 @@ Each Git commit receives a calculated SHA value, which is unique and immutable. 
 
 ```yaml
 Schritte:
-    - verwendet: actions/javascript-action@172239021f7ba04fe7327647b213799853a9eb89
+  - verwendet: actions/javascript-action@172239021f7ba04fe7327647b213799853a9eb89
 ```
 
 ### Eine README-Datei für die Aktion erstellen
@@ -156,17 +156,19 @@ Wenn Du Deine Aktion öffentlich bereitstellen möchten, empfehlen wir, eine REA
 Beide, sowohl {% data variables.product.prodname_actions %} als auch {% data variables.product.prodname_github_app %}s unterstützen die Erstellung von Automatisierungs- und Workflow-Tools. Dennoch haben beide ihre unterschiedlichen nützlichen Stärken.
 
 {% data variables.product.prodname_github_apps %}:
-* Laufen dauerhaft und können schnell auf Ereignisse reagieren.
-* Funktionieren hervorragend, wenn persistente Daten benötigt werden.
-* Funktionieren am besten mit API-Anforderungen, die nicht zeitaufwändig sind.
-* Laufen auf Deinem Server oder auf Deiner Rechner-Infrastruktur.
+
+- Laufen dauerhaft und können schnell auf Ereignisse reagieren.
+- Funktionieren hervorragend, wenn persistente Daten benötigt werden.
+- Funktionieren am besten mit API-Anforderungen, die nicht zeitaufwändig sind.
+- Laufen auf Deinem Server oder auf Deiner Rechner-Infrastruktur.
 
 {% data variables.product.prodname_actions %}:
-* Bieten Automatisierung für eine kontinuierliche Integration und kontinuierliche Bereitstellung.
-* Können direkt auf Runner-Maschinen oder in Docker-Containern laufen.
-* Können auch Zugriff auf einen Clone Ihres Repositorys einschließen und dadurch Bereitstellungs- und Veröffentlichungs-Tools, Code-Formatierer und Befehlszeilen-Tools den Zugriff auf Ihren Code erlauben.
-* Erfordern weder, dass Du Code noch eine App bereitstellst.
-* Verfügen Sie über eine einfache Schnittstelle zum Erstellen und Verwenden von Geheimnissen. Dadurch können die Aktionen mit Diensten von Drittanbietern interagieren, ohne die Anmelde-Informationen des Aktions-Benutzers speichern zu müssen.
+
+- Bieten Automatisierung für eine kontinuierliche Integration und kontinuierliche Bereitstellung.
+- Können direkt auf Runner-Maschinen oder in Docker-Containern laufen.
+- Können auch Zugriff auf einen Clone Ihres Repositorys einschließen und dadurch Bereitstellungs- und Veröffentlichungs-Tools, Code-Formatierer und Befehlszeilen-Tools den Zugriff auf Ihren Code erlauben.
+- Erfordern weder, dass Du Code noch eine App bereitstellst.
+- Verfügen Sie über eine einfache Schnittstelle zum Erstellen und Verwenden von Geheimnissen. Dadurch können die Aktionen mit Diensten von Drittanbietern interagieren, ohne die Anmelde-Informationen des Aktions-Benutzers speichern zu müssen.
 
 ### Weiterführende Informationen
 

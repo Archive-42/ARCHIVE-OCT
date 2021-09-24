@@ -1,13 +1,13 @@
 ---
 title: Sharing workflows with your organization
 shortTitle: Sharing workflows with your organization
-intro: 'Learn how you can use organization features to collaborate with your team, by sharing workflow templates, secrets, and self-hosted runners.'
+intro: "Learn how you can use organization features to collaborate with your team, by sharing workflow templates, secrets, and self-hosted runners."
 redirect_from:
   - /actions/configuring-and-managing-workflows/sharing-workflow-templates-within-your-organization
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: how_to
 ---
 
@@ -38,9 +38,9 @@ In diesem Verfahren wird veranschaulicht, wie eine Workflowvorlage und eine Meta
 
    on:
      push:
-       branches: [ $default-branch ]
+       branches: [$default-branch]
      pull_request:
-       branches: [ $default-branch ]
+       branches: [$default-branch]
 
    jobs:
      build:
@@ -52,7 +52,9 @@ In diesem Verfahren wird veranschaulicht, wie eine Workflowvorlage und eine Meta
          - name: Run a one-line script
            run: echo Hello from Octo Organization
    ```
+
 4. Erstellen Sie eine Metadatendatei im `Workflow-Vorlagen` Verzeichnis. Die Metadatendatei muss denselben Namen wie die Workflowdatei haben, aber anstelle der Erweiterung `.yml` muss sie mit `.properties.json`angehängt werden. Diese Datei mit dem Namen `octo-organization-ci.properties.json enthält` beispielsweise die Metadaten für eine Workflowdatei mit dem Namen `octo-organization-ci.yml`:
+
    ```yaml
    •
        "Name": "Octo Organization Workflow",
@@ -63,16 +65,17 @@ In diesem Verfahren wird veranschaulicht, wie eine Workflowvorlage und eine Meta
        ],
        "filePatterns": [
            "package.json
-   
-       
-           
+
+
+
            "
    ```
-   * `Name` - **erforderlich.** Der Name der Workflowvorlage. Dies wird in der Liste der verfügbaren Vorlagen angezeigt.
-   * `Beschreibung` - **erforderlich.** Die Beschreibung der Workflowvorlage. Dies wird in der Liste der verfügbaren Vorlagen angezeigt.
-   * `iconName` - **Erforderlich.** Definiert ein Symbol für den Eintrag des Workflows in der Vorlagenliste. Der `iconName` muss ein SVG-Symbol mit demselben Namen sein und in den `Workflow-Vorlagen` Verzeichnis gespeichert werden. Beispielsweise wird eine SVG-Datei mit dem Namen `example-icon.svg` als `Beispielsymbol`referenziert.
-   * `Kategorien` - **Optional.** Definiert die Sprachkategorie des Workflows. Wenn ein Benutzer die verfügbaren Vorlagen anzeigt, werden die Vorlagen, die derselben Sprache entsprechen, stärker in den Vordergrund gerückt. Informationen zu den verfügbaren Sprachkategorien finden Sie unter https://github.com/github/linguist/blob/master/lib/linguist/languages.yml.
-   * `filePatterns` - **Optional.** Ermöglicht die Verwendung der Vorlage, wenn das Repository des Benutzers eine Datei im Stammverzeichnis enthält, die einem definierten regulären Ausdruck entspricht.
+
+   - `Name` - **erforderlich.** Der Name der Workflowvorlage. Dies wird in der Liste der verfügbaren Vorlagen angezeigt.
+   - `Beschreibung` - **erforderlich.** Die Beschreibung der Workflowvorlage. Dies wird in der Liste der verfügbaren Vorlagen angezeigt.
+   - `iconName` - **Erforderlich.** Definiert ein Symbol für den Eintrag des Workflows in der Vorlagenliste. Der `iconName` muss ein SVG-Symbol mit demselben Namen sein und in den `Workflow-Vorlagen` Verzeichnis gespeichert werden. Beispielsweise wird eine SVG-Datei mit dem Namen `example-icon.svg` als `Beispielsymbol`referenziert.
+   - `Kategorien` - **Optional.** Definiert die Sprachkategorie des Workflows. Wenn ein Benutzer die verfügbaren Vorlagen anzeigt, werden die Vorlagen, die derselben Sprache entsprechen, stärker in den Vordergrund gerückt. Informationen zu den verfügbaren Sprachkategorien finden Sie unter https://github.com/github/linguist/blob/master/lib/linguist/languages.yml.
+   - `filePatterns` - **Optional.** Ermöglicht die Verwendung der Vorlage, wenn das Repository des Benutzers eine Datei im Stammverzeichnis enthält, die einem definierten regulären Ausdruck entspricht.
 
 Um eine weitere Workflowvorlage hinzuzufügen, fügen Sie Ihre Dateien `Workflow-Vorlagen` -Verzeichnis hinzu. Ein Beispiel:
 
@@ -84,9 +87,9 @@ In diesem Verfahren wird veranschaulicht, wie ein Mitglied Ihrer Organisation ei
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.actions-tab %}
-1. Wenn Ihr Repository bereits über vorhandene Workflows verfügt: Klicken Sie in der linken oberen Ecke auf **Neuer Workflow**. ![Erstelle einen neuen Workflow](/assets/images/help/repository/actions-new-workflow.png)
-1. Die Workflowvorlagen Ihrer Organisation befinden sich in ihrem eigenen Abschnitt mit dem Titel "Workflows, die von _Organisationsnamen_erstellt wurden". Klicke unter dem Namen der zu verwendenden Vorlage auf **Set up this workflow** (Workflow einrichten). ![Einrichten dieses Workflows](/assets/images/help/settings/actions-create-starter-workflow.png)
 
+1. Wenn Ihr Repository bereits über vorhandene Workflows verfügt: Klicken Sie in der linken oberen Ecke auf **Neuer Workflow**. ![Erstelle einen neuen Workflow](/assets/images/help/repository/actions-new-workflow.png)
+1. Die Workflowvorlagen Ihrer Organisation befinden sich in ihrem eigenen Abschnitt mit dem Titel "Workflows, die von \_Organisationsnamen_erstellt wurden". Klicke unter dem Namen der zu verwendenden Vorlage auf **Set up this workflow** (Workflow einrichten). ![Einrichten dieses Workflows](/assets/images/help/settings/actions-create-starter-workflow.png)
 
 ### Sharing secrets within an organization
 
@@ -99,6 +102,7 @@ Beim Erstellen eines geheimen Schlüssels in einer Organisation können Sie eine
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Klicken Sie auf **Neue geheime**.
 1. Geben Sie einen Namen für Ihr Geheimnis in das Eingabefeld **Name** ein.
 1. Geben Sie den **Value** für Ihr Geheimnis ein.
@@ -110,7 +114,6 @@ Beim Erstellen eines geheimen Schlüssels in einer Organisation können Sie eine
 Organization admins can add their self-hosted runners to groups, and then create policies that control which repositories can access the group.
 
 For more information, see "[Managing access to self-hosted runners using groups](/actions/hosting-your-own-runners/managing-access-to-self-hosted-runners-using-groups)."
-
 
 ### Nächste Schritte:
 

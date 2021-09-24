@@ -1,6 +1,6 @@
 ---
 title: Gemeinsame Suche zwischen GitHub Enterprise Server und GitHub.com aktivieren
-intro: 'Nachdem Sie {% data variables.product.prodname_github_connect %} aktiviert haben, können Sie die Suche nach {% data variables.product.prodname_dotcom_the_website %} von Ihrer {% data variables.product.product_location_enterprise %} aus zulassen.'
+intro: "Nachdem Sie {% data variables.product.prodname_github_connect %} aktiviert haben, können Sie die Suche nach {% data variables.product.prodname_dotcom_the_website %} von Ihrer {% data variables.product.product_location_enterprise %} aus zulassen."
 redirect_from:
   - /enterprise/admin/guides/developer-workflow/enabling-unified-search-between-github-enterprise-and-github-com/
   - /enterprise/admin/guides/developer-workflow/enabling-unified-search-between-github-enterprise-server-and-github-com/
@@ -8,9 +8,9 @@ redirect_from:
   - /enterprise/admin/installation/enabling-unified-search-between-github-enterprise-server-and-githubcom
   - /enterprise/admin/configuration/enabling-unified-search-between-github-enterprise-server-and-githubcom
   - /admin/configuration/enabling-unified-search-between-github-enterprise-server-and-githubcom
-permissions: 'Site administrators for {% data variables.product.prodname_ghe_server %} who are also owners of the connected {% data variables.product.prodname_ghe_cloud %} organization or enterprise account can enable unified search between {% data variables.product.prodname_ghe_server %} and {% data variables.product.prodname_dotcom_the_website %}.'
+permissions: "Site administrators for {% data variables.product.prodname_ghe_server %} who are also owners of the connected {% data variables.product.prodname_ghe_cloud %} organization or enterprise account can enable unified search between {% data variables.product.prodname_ghe_server %} and {% data variables.product.prodname_dotcom_the_website %}."
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 topics:
   - Enterprise
   - GitHub Connect
@@ -26,9 +26,7 @@ Bei der Suche über die REST und GraphQL-APIs sind die {% data variables.product
 {% data reusables.github-connect.access-dotcom-and-enterprise %}
 {% data reusables.enterprise_site_admin_settings.access-settings %}{% data reusables.enterprise_site_admin_settings.business %}
 {% data reusables.enterprise-accounts.settings-tab %}
-{% data reusables.enterprise-accounts.github-connect-tab %}
-5. Verwenden Sie unter „Users can search {% data variables.product.prodname_dotcom_the_website %}“ (Benutzer können {% data variables.product.prodname_dotcom_the_website %} durchsuchen) das Dropdownmenü, und klicken Sie auf **Enabled** (Aktiviert). ![Option zum Aktivieren der Suche im Dropdownmenü zum Durchsuchen von GitHub.com](/assets/images/enterprise/site-admin-settings/github-dotcom-enable-search.png)
-6. Verwenden Sie optional unter „Users can search private repositories on {% data variables.product.prodname_dotcom_the_website %}“ (Benutzer können private Repositorys auf {% data variables.product.prodname_dotcom_the_website %} durchsuchen) das Dropdownmenü, und klicken Sie auf **Enabled** (Aktiviert). ![Option zum Aktivieren der Suche nach privaten Repositorys im Dropdownmenü zum Durchsuchen von GitHub.com](/assets/images/enterprise/site-admin-settings/enable-private-search.png)
+{% data reusables.enterprise-accounts.github-connect-tab %} 5. Verwenden Sie unter „Users can search {% data variables.product.prodname_dotcom_the_website %}“ (Benutzer können {% data variables.product.prodname_dotcom_the_website %} durchsuchen) das Dropdownmenü, und klicken Sie auf **Enabled** (Aktiviert). ![Option zum Aktivieren der Suche im Dropdownmenü zum Durchsuchen von GitHub.com](/assets/images/enterprise/site-admin-settings/github-dotcom-enable-search.png) 6. Verwenden Sie optional unter „Users can search private repositories on {% data variables.product.prodname_dotcom_the_website %}“ (Benutzer können private Repositorys auf {% data variables.product.prodname_dotcom_the_website %} durchsuchen) das Dropdownmenü, und klicken Sie auf **Enabled** (Aktiviert). ![Option zum Aktivieren der Suche nach privaten Repositorys im Dropdownmenü zum Durchsuchen von GitHub.com](/assets/images/enterprise/site-admin-settings/enable-private-search.png)
 
 ### Weiterführende Informationen
 

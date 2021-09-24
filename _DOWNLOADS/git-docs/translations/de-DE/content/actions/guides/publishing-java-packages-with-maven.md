@@ -1,13 +1,13 @@
 ---
 title: Java-Pakete mit Maven veröffentlichen
-intro: 'Du kannst Maven verwenden, um Java-Pakete als Teil Deines Workflows zur kontinuierlichen Integrations (CI) in eine Registry zu veröffentlichen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Maven verwenden, um Java-Pakete als Teil Deines Workflows zur kontinuierlichen Integrations (CI) in eine Registry zu veröffentlichen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/publishing-java-packages-with-maven
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Packaging
@@ -39,7 +39,7 @@ Vielleicht findest Du es auch hilfreich, ein grundlegendes Verständnis von Folg
 
 ### Informationen zur Paketkonfiguration
 
-Die Felder `groupId` und `artifactId` in der Datei _pom.xml_ bilden eine eindeutige Kennung für Dein Paket. Registries verwenden diese Kennung, um Dein Paket mit einer Registry zu verknüpfen.  Weitere Informationen findest Du unter [Leitfaden zum Hochladen von Artefakten in das Central Repository](http://maven.apache.org/repository/guide-central-repository-upload.html) in der „Apache Maven“-Dokumentation.
+Die Felder `groupId` und `artifactId` in der Datei _pom.xml_ bilden eine eindeutige Kennung für Dein Paket. Registries verwenden diese Kennung, um Dein Paket mit einer Registry zu verknüpfen. Weitere Informationen findest Du unter [Leitfaden zum Hochladen von Artefakten in das Central Repository](http://maven.apache.org/repository/guide-central-repository-upload.html) in der „Apache Maven“-Dokumentation.
 
 Die Datei _pom.xml_ enthält auch die Konfiguration für die Distributionsverwaltungs-Repositories, in denen Maven Pakete veröffentlicht. Jedes Repository braucht einen Namen und eine „Deployment-URL“ (Bereitstellungs-URL). Die Authentifizierung für diese Repositories kann in der Datei _.m2/settings.xml_ im Home-Verzeichnis des Benutzers konfiguriert werden, der Maven verwendet.
 
@@ -51,9 +51,10 @@ Jedes Mal, wenn Du ein neues Release erstellst, kannst Du einen Workflow anstoß
 
 In diesem Workflow kannst Du die Aktion `setup-java` verwenden. Diese Aktion installiert die angegebene JDK-Version in den `PATH`, aber sie konfiguriert auch eine _settings.xml_ für Maven, um Pakete zu veröffentlichen. Standardmäßig wird die Settings-Datei für {% data variables.product.prodname_registry %} konfiguriert, aber sie kann dazu konfiguriert werden, in eine andere Paket-Registry wie z.B. das „Maven Central Repository“ zu deployen. Wenn Du bereits ein Distributions-Management-Repository im _pom.xml_ konfiguriert hast, dann kannst Du beim Aufruf der Aktion `setup-java` diese `id` angeben.
 
-Wenn Du zum Beispiel über das OSSRH-Hosting-Projekt ins „Maven Central Repository“ deployst, kann Deine _pom.xml_ ein  Distributions-Management-Repository mit `ossrh` als `id` angeben.
+Wenn Du zum Beispiel über das OSSRH-Hosting-Projekt ins „Maven Central Repository“ deployst, kann Deine _pom.xml_ ein Distributions-Management-Repository mit `ossrh` als `id` angeben.
 
 {% raw %}
+
 ```xml{:copy}
 <project ...>
   ...
@@ -66,14 +67,15 @@ Wenn Du zum Beispiel über das OSSRH-Hosting-Projekt ins „Maven Central Reposi
   </distributionManagement>
 </project>
 ```
+
 {% endraw %}
 
 Mit dieser Konfiguration kannst Du einen Workflow erstellen, der Dein Paket im „Maven Central Repository“ veröffentlicht, indem Du die Repository-Verwaltungs-`id` in der Aktion `setup-java` angibst. Du musst auch Umgebungsvariablen bereitstellen, die den Benutzernamen und das Kennwort enthalten, um Dich im Repository zu authentifizieren.
 
-Im Deploy-Schritt musst Du die Umgebungsvariablen auf den Benutzernamen setzen, mit dem Du Dich im Repository anmeldest, und auf ein Geheimnis, das Du mit dem Passwort oder dem Token konfiguriert hast, mit dem Du Dich authentifizierst.  Weitere Informationen findest Du unter "[Verschlüsselte Geheimnisse erstellen und verwenden](/github/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)".
-
+Im Deploy-Schritt musst Du die Umgebungsvariablen auf den Benutzernamen setzen, mit dem Du Dich im Repository anmeldest, und auf ein Geheimnis, das Du mit dem Passwort oder dem Token konfiguriert hast, mit dem Du Dich authentifizierst. Weitere Informationen findest Du unter "[Verschlüsselte Geheimnisse erstellen und verwenden](/github/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)".
 
 {% raw %}
+
 ```yaml{:copy}
 name: Publish package to the Maven Central Repository
 on:
@@ -98,12 +100,13 @@ jobs:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 ```
+
 {% endraw %}
 
 Dieser Workflow führt die folgenden Schritte aus:
 
 1. Checkt eine Kopie des Projekt-Repositorys aus.
-1. Richtet das „Java JDK“ ein und konfiguriert die Maven-Datei _settings.xml_, um die Authentifizierung für das  Repository `ossrh` mit den Umgebungsvariablen `MAVEN_USERNAME` und `MAVEN_PASSWORD` hinzuzufügen.
+1. Richtet das „Java JDK“ ein und konfiguriert die Maven-Datei _settings.xml_, um die Authentifizierung für das Repository `ossrh` mit den Umgebungsvariablen `MAVEN_USERNAME` und `MAVEN_PASSWORD` hinzuzufügen.
 1. {% data reusables.github-actions.publish-to-maven-workflow-step %}
 
    Weitere Informationen zur Verwendung von Geheimnissen in Deinem Workflow findest Du unter „[Verschlüsselte Geheimnisse erstellen und verwenden](/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)“.
@@ -121,6 +124,7 @@ Für ein Maven-basiertes Projekt kannst Du diese Einstellungen nutzen, indem Du 
 Wenn beispielsweise Deine Organisation „octocat“ und Dein Repository „hello-world“ heißt, sieht die {% data variables.product.prodname_registry %}-Konfiguration in _pom.xml_ so ähnlich wie im folgenden Beispiel aus.
 
 {% raw %}
+
 ```xml{:copy}
 <project ...>
   ...
@@ -133,6 +137,7 @@ Wenn beispielsweise Deine Organisation „octocat“ und Dein Repository „hell
   </distributionManagement>
 </project>
 ```
+
 {% endraw %}
 
 Mit dieser Konfiguration kannst Du einen Workflow erstellen, der Dein Paket in der {% data variables.product.prodname_registry %} veröffentlicht, indem Du die automatisch generierte _settings.xml_ verwendest.
@@ -145,7 +150,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.1" or currentVersion == "github-ae@next" %}
-    permissions: 
+    permissions:
       contents: read
       packages: write {% endif %}
     steps:
@@ -182,7 +187,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.1" or currentVersion == "github-ae@next" %}
-    permissions: 
+    permissions:
       contents: read
       packages: write {% endif %}
     steps:
@@ -211,7 +216,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}{% endraw %}
 ```
 
-Dieser Workflow ruft die Aktion `setup-java` zweimal auf.  Jedes Mal, wenn die Aktion `setup-java` ausgeführt wird, überschriebt sie die Maven-Datei _settings.xml_ zum Publizieren von Paketen.  Für die Authentifizierung im Repository verweist die Datei _settings.xml_ auf die `id` des Distributionsverwaltungs-Repositorys sowie den Benutzernamen und das Kennwort.
+Dieser Workflow ruft die Aktion `setup-java` zweimal auf. Jedes Mal, wenn die Aktion `setup-java` ausgeführt wird, überschriebt sie die Maven-Datei _settings.xml_ zum Publizieren von Paketen. Für die Authentifizierung im Repository verweist die Datei _settings.xml_ auf die `id` des Distributionsverwaltungs-Repositorys sowie den Benutzernamen und das Kennwort.
 
 Dieser Workflow führt die folgenden Schritte aus:
 

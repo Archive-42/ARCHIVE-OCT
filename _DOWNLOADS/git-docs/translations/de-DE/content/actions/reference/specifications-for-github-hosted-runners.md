@@ -1,7 +1,7 @@
 ---
 title: Specifications for GitHub-hosted runners
-intro: '{% data variables.product.prodname_dotcom %} offers hosted virtual machines to run workflows. The virtual machine contains an environment of tools, packages, and settings available for {% data variables.product.prodname_actions %} to use.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "{% data variables.product.prodname_dotcom %} offers hosted virtual machines to run workflows. The virtual machine contains an environment of tools, packages, and settings available for {% data variables.product.prodname_actions %} to use."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/virtual-environments-for-github-actions
   - /github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions
@@ -10,8 +10,8 @@ redirect_from:
   - /actions/reference/virtual-environments-for-github-hosted-runners
   - /actions/reference/software-installed-on-github-hosted-runners
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -41,13 +41,14 @@ Windows virtual machines are configured to run as administrators with User Accou
 
 ### Supported runners and hardware resources
 
-
 Hardware specification for Windows and Linux virtual machines:
+
 - 2-core CPU
 - 7 GB of RAM memory
 - 14 GB of SSD disk space
 
 Hardware specification for macOS virtual machines:
+
 - 3-core CPU
 - 14 GB of RAM memory
 - 14 GB of SSD disk space
@@ -63,24 +64,25 @@ Workflow logs list the runner used to run a job. For more information, see "[Vie
 
 The software tools included in {% data variables.product.prodname_dotcom %}-hosted runners are updated weekly. For the latest list of included tools for each runner operating system, see the links below:
 
-* [Ubuntu 20.04 LTS](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md)
-* [Ubuntu 18.04 LTS](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu1804-README.md)
-* [Ubuntu 16.04 LTS](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu1604-README.md)
-* [Windows Server 2019](https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md)
-* [Windows Server 2016](https://github.com/actions/virtual-environments/blob/main/images/win/Windows2016-Readme.md)
-* [macOS 10.15](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-10.15-Readme.md)
-* [macOS 11.0](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-11.0-Readme.md)
+- [Ubuntu 20.04 LTS](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md)
+- [Ubuntu 18.04 LTS](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu1804-README.md)
+- [Ubuntu 16.04 LTS](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu1604-README.md)
+- [Windows Server 2019](https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md)
+- [Windows Server 2016](https://github.com/actions/virtual-environments/blob/main/images/win/Windows2016-Readme.md)
+- [macOS 10.15](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-10.15-Readme.md)
+- [macOS 11.0](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-11.0-Readme.md)
 
 {% data reusables.github-actions.ubuntu-runner-preview %}
 {% data reusables.github-actions.macos-runner-preview %}
 
-{% data variables.product.prodname_dotcom %}-hosted runners include the operating system's default built-in tools, in addition to the packages listed in the above references. For example, Ubuntu and macOS runners include `grep`, `find`, and `which`, among other default tools. 
+{% data variables.product.prodname_dotcom %}-hosted runners include the operating system's default built-in tools, in addition to the packages listed in the above references. For example, Ubuntu and macOS runners include `grep`, `find`, and `which`, among other default tools.
 
 Workflow logs include a link to the preinstalled tools on the exact runner. To find this information in the workflow log, expand the `Set up job` section. Under that section, expand the `Virtual Environment` section. The link following `Included Software` will tell you the the preinstalled tools on the runner that ran the workflow.
 ![Installed software link](/assets/images/actions-runner-installed-software-link.png)
 For more information, see "[Viewing workflow run history](/actions/managing-workflow-runs/viewing-workflow-run-history)."
 
 We recommend using actions to interact with the software installed on runners. This approach has several benefits:
+
 - Usually, actions provide more flexible functionality like versions selection, ability to pass arguments, and parameters
 - It ensures the tool versions used in your workflow will remain the same regardless of software updates
 
@@ -98,17 +100,17 @@ Windows and Ubuntu runners are hosted in Azure and subsequently have the same IP
 
 To get a list of IP address ranges that {% data variables.product.prodname_actions %} uses for {% data variables.product.prodname_dotcom %}-hosted runners, you can use the {% data variables.product.prodname_dotcom %} REST API . For more information, see the `actions` key in the response of the "[Get GitHub meta information](/rest/reference/meta#get-github-meta-information)" endpoint. You can use this list of IP addresses if you require an allow-list to prevent unauthorized access to your internal resources.
 
-The list of {% data variables.product.prodname_actions %} IP addresses returned by the API is updated once a week. 
+The list of {% data variables.product.prodname_actions %} IP addresses returned by the API is updated once a week.
 
 ### File systems
 
 {% data variables.product.prodname_dotcom %} executes actions and shell commands in specific directories on the virtual machine. The file paths on virtual machines are not static. Use the environment variables {% data variables.product.prodname_dotcom %} provides to construct file paths for the `home`, `workspace`, and `workflow` directories.
 
-| Directory | Environment variable | Description |
-|-----------|----------------------|-------------|
-| `home` | `HOME` | Contains user-related data. For example, this directory could contain credentials from a login attempt. |
-| `workspace` | `GITHUB_WORKSPACE` | Actions and shell commands execute in this directory. An action can modify the contents of this directory, which subsequent actions can access. |
-| `workflow/event.json` | `GITHUB_EVENT_PATH` | The `POST` payload of the webhook event that triggered the workflow. {% data variables.product.prodname_dotcom %} rewrites this each time an action executes to isolate file content between actions.
+| Directory             | Environment variable | Description                                                                                                                                                                                           |
+| --------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `home`                | `HOME`               | Contains user-related data. For example, this directory could contain credentials from a login attempt.                                                                                               |
+| `workspace`           | `GITHUB_WORKSPACE`   | Actions and shell commands execute in this directory. An action can modify the contents of this directory, which subsequent actions can access.                                                       |
+| `workflow/event.json` | `GITHUB_EVENT_PATH`  | The `POST` payload of the webhook event that triggered the workflow. {% data variables.product.prodname_dotcom %} rewrites this each time an action executes to isolate file content between actions. |
 
 For a list of the environment variables {% data variables.product.prodname_dotcom %} creates for each workflow, see "[Using environment variables](/github/automating-your-workflow-with-github-actions/using-environment-variables)."
 
@@ -125,6 +127,7 @@ Actions that run in Docker containers have static directories under the `/github
 {% if currentVersion == "free-pro-team@latest" %}
 
 ### Further reading
+
 - "[Managing billing for {% data variables.product.prodname_actions %}](/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)"
 
 {% endif %}

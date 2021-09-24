@@ -12,11 +12,9 @@
 
 ============================================================================= */
 
-
 /* ============================================================================= 
 1. Main
 ============================================================================= */
-
 
 .blog-sidebar {
   background-color: #222;
@@ -27,9 +25,11 @@
   border-color: #444;
 }
 
-
-.portfolio-filters li.active a, .portfolio-filters li.active a:hover,
-.portfolio-filters li a, .portfolio-filters li a:hover, .portfolio-filters li a:not([href]) {
+.portfolio-filters li.active a,
+.portfolio-filters li.active a:hover,
+.portfolio-filters li a,
+.portfolio-filters li a:hover,
+.portfolio-filters li a:not([href]) {
   color: #aaa;
 }
 
@@ -71,7 +71,7 @@ blockquote {
 }
 
 .info-block-w-icon i {
-    color: #aaa;
+  color: #aaa;
 }
 
 .lm-info-block.gray-bg {
@@ -95,19 +95,19 @@ blockquote {
 }
 
 ul.social-links li a {
-    display: inline-block;
-    width: 34px;
-    height: 34px;
-    color: #e5e5e5;
-    background-color: transparent;
-    border: 1px solid #555;
-    text-align: center;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  color: #e5e5e5;
+  background-color: transparent;
+  border: 1px solid #555;
+  text-align: center;
 }
 
 ul.social-links li a:hover {
-    color: #fff;
-    background-color: #ff724c;
-    border-color: transparent;
+  color: #fff;
+  background-color: #ff724c;
+  border-color: transparent;
 }
 
 .clients.owl-carousel .owl-dot span,
@@ -192,7 +192,10 @@ ul.social-links li a:hover {
   border: 2px solid #444;
 }
 
-.testimonials.owl-carousel .owl-nav .owl-prev, .testimonials.owl-carousel .owl-nav .owl-next, .clients.owl-carousel .owl-nav .owl-prev, .clients.owl-carousel .owl-nav .owl-next {
+.testimonials.owl-carousel .owl-nav .owl-prev,
+.testimonials.owl-carousel .owl-nav .owl-next,
+.clients.owl-carousel .owl-nav .owl-prev,
+.clients.owl-carousel .owl-nav .owl-next {
   background-color: #444;
   border: 1px solid #444;
   color: #d5d5d5;
@@ -238,10 +241,6 @@ ul.social-links li a:hover {
   color: #aaa;
 }
 
-
-
-
-
 /* ============================================================================= 
 2. Tables
 ============================================================================= */
@@ -282,13 +281,31 @@ ul.social-links li a:hover {
 .home-bgvideo {
   background-color: #444;
   border: 18px solid #444;
-  -webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,.8);
-  -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,.8);
-  box-shadow: 0px 0px 25px 0px rgba(0,0,0,.8);
+  -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
 }
 
 .hp-dots {
-  background-image: -webkit-repeating-radial-gradient(center center, #fff, #fff 3px, transparent 0px, transparent 100%);
-  background-image: -moz-repeating-radial-gradient(center center, #fff, #fff 3px, transparent 0px, transparent 100%);
-  background-image: -ms-repeating-radial-gradient(center center, #fff, #fff 3px, transparent 0px, transparent 100%);
+  background-image: -webkit-repeating-radial-gradient(
+    center center,
+    #fff,
+    #fff 3px,
+    transparent 0px,
+    transparent 100%
+  );
+  background-image: -moz-repeating-radial-gradient(
+    center center,
+    #fff,
+    #fff 3px,
+    transparent 0px,
+    transparent 100%
+  );
+  background-image: -ms-repeating-radial-gradient(
+    center center,
+    #fff,
+    #fff 3px,
+    transparent 0px,
+    transparent 100%
+  );
 }

@@ -10,20 +10,27 @@
  * CSS for both Frontend+Backend.
  */
 @font-face {
-  font-family: 'easy-image-gallery';
+  font-family: "easy-image-gallery";
   src: url("../../fonts/easy-image-gallery.eot");
-  src: url("../../fonts/easy-image-galleryd41d.eot?#iefix") format("embedded-opentype"), url("../../fonts/easy-image-gallery.woff") format("woff"), url("../../fonts/easy-image-gallery.ttf") format("truetype"), url("../../fonts/easy-image-gallery.svg#easy-image-gallery") format("svg");
+  src: url("../../fonts/easy-image-galleryd41d.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../fonts/easy-image-gallery.woff") format("woff"),
+    url("../../fonts/easy-image-gallery.ttf") format("truetype"),
+    url("../../fonts/easy-image-gallery.svg#easy-image-gallery") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 
 .popup {
-  display: block; }
+  display: block;
+}
 
 .popup .icon-view:before {
-  content: "\e005"; }
+  content: "\e005";
+}
 
 .popup .icon-view {
-  font-family: 'easy-image-gallery';
+  font-family: "easy-image-gallery";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -43,7 +50,8 @@
   -webkit-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
-  z-index: 1; }
+  z-index: 1;
+}
 
 .popup .overlay {
   visibility: hidden;
@@ -54,34 +62,42 @@
   opacity: 0.4;
   -webkit-transition: all 0.1s linear;
   -o-transition: all 0.1s linear;
-  transition: all 0.1s linear; }
+  transition: all 0.1s linear;
+}
 
 .popup:hover .overlay {
   visibility: visible;
-  background: #000; }
+  background: #000;
+}
 
 .popup:hover .icon-view {
-  opacity: 0.8; }
+  opacity: 0.8;
+}
 
 .image-gallery-block {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 .image-gallery-block li {
   display: inline-block;
   padding: 0 20px 20px 0;
-  margin: 0; }
+  margin: 0;
+}
 
 .image-gallery-block a {
   position: relative;
-  display: block; }
+  display: block;
+}
 
 .image-gallery-block a img {
   display: block;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 150px;
-  height: 150px; }
+  height: 150px;
+}
 
 .image-gallery-block-block ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+}

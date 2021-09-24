@@ -2,16 +2,16 @@
 title: Storing workflow data as artifacts
 shortTitle: Storing workflow artifacts
 intro: Mit Artefakten kannst Du Daten zwischen Aufträgen in einem Workflow freigeben und Daten nach Abschluss des Workflows speichern.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/persisting-workflow-data-using-artifacts
   - /github/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts
   - /actions/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts
   - /actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -50,8 +50,8 @@ Artefakte werden während eines Workflow-Laufs hochgeladen und Du kannst den Nam
 
 Daten zwischen Aufträgen freigeben:
 
-* **Dateien hochladen**: Gib der hochgeladenen Datei einen Namen und lade die Daten hoch, bevor der Job endet.
-* **Dateien herunterladen**: Du kannst nur Artefakte herunterladen, die während des gleichen Workflow-Laufs hochgeladen wurden. Wenn Du eine Datei herunterlädst, kannst Du sie mit Namen referenzieren.
+- **Dateien hochladen**: Gib der hochgeladenen Datei einen Namen und lade die Daten hoch, bevor der Job endet.
+- **Dateien herunterladen**: Du kannst nur Artefakte herunterladen, die während des gleichen Workflow-Laufs hochgeladen wurden. Wenn Du eine Datei herunterlädst, kannst Du sie mit Namen referenzieren.
 
 Die Steps („Schritte“) eines Jobs teilen sich die selbe Umgebung auf der Runner-Maschine, laufen aber in ihren eigenen individuellen Prozessen. Mithilfe von Ein- und Ausgaben können Sie Daten zwischen den Schritten in einem Auftrag weitergeben. Weitere Informationen zu Ein- und Ausgaben findest Du unter „[Metadatensyntax für {% data variables.product.prodname_actions %}](/articles/metadata-syntax-for-github-actions)“.
 
@@ -76,7 +76,7 @@ Zum Beispiel kann Dein Projektarchiv oder eine Webanwendung SASS- und TypeScript
 |       └── app.ts
 |   └── output
 |       └── test
-|   
+|
 ```
 
 In diesem Beispiel wird gezeigt, wie Sie einen Workflow für ein Node.js-Projekt erstellen, das den Code im src-Verzeichnis `erstellt` und die Tests im `tests`-Verzeichnis ausführt. Wenn `npm test` ausgeführt wird, wird im Verzeichnis `output/test/` ein Bericht zur Codeabdeckung mit dem Namen `code-coverage.html` erstellt und gespeichert.
@@ -114,6 +114,7 @@ jobs:
 ```
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}
+
 ### Configuring a custom artifact retention period
 
 You can define a custom retention period for individual artifacts created by a workflow. When using a workflow to create a new artifact, you can use `retention-days` with the `upload-artifact` action. This example demonstrates how to set a custom retention period of 5 days for the artifact named `my-artifact`:
@@ -173,15 +174,18 @@ Du kannst die Aktionen `upload-artifact` und `download-artifact` verwenden, um i
 Von den Artefakten eines vorherigen Auftrags abhängige Aufträge müssen auf den erfolgreichen Abschluss des abhängigen Auftrags warten. Bei diesem Workflow kommt das Stichwort `needs` zum Einsatz, um sicherzustellen, dass `job_1`, `job_2` und `job_3` sequenziell ausgeführt werden. Beispielsweise schreibt `job_2` vor, dass `job_1` die Syntax `needs: job_1` verwendet.
 
 Auftrag 1 führt die folgenden Schritte durch:
+
 - Führt eine mathematische Berechnung aus und speichert das Ergebnis in einer Textdatei namens `math-homework.txt`.
 - Uses the `upload-artifact` action to upload the `math-homework.txt` file with the artifact name `homework`.
 
 Auftrag 2 verwendet das Ergebnis des vorherigen Auftrags:
+
 - Lädt das im vorherigen Auftrag hochgeladene `homework`-Artefakt herunter. Die Aktion `download-artifact` lädt die Artefakte standardmäßig in das Verzeichnis der Arbeitsoberfläche, in dem der Schritt ausgeführt wird. Du kannst den Eingabeparameter `path` verwenden, um ein anderes Download-Verzeichnis anzugeben.
 - Reads the value in the `math-homework.txt` file, performs a math calculation, and saves the result to `math-homework.txt` again, overwriting its contents.
 - Lädt die Datei `math-homework.txt` hoch. This upload overwrites the previously uploaded artifact because they share the same name.
 
 Auftrag 3 zeigt das im vorherigen Auftrag hochgeladene Ergebnis an:
+
 - Lädt das `homework`-Artefakt herunter.
 - Gibt das Ergebnis der mathematischen Gleichung im Protokoll aus.
 
@@ -213,8 +217,8 @@ Jobs:
     Schritte:
       - Name: Download Mathe-Ergebnis für Job 1
         verwendet: Aktionen
-        
-      
+
+
           artifact@v2
         /
           value='cat math-homework.txt'

@@ -8,9 +8,9 @@ redirect_from:
   - /enterprise/admin/installation/network-ports
   - /enterprise/admin/configuration/network-ports
   - /admin/configuration/network-ports
-intro: 'Öffnen Sie Netzwerkports anhand dessen, welche Netzwerkdienste Sie für Administratoren, Endbenutzer und für die E-Mail-Unterstützung bereitstellen müssen.'
+intro: "Öffnen Sie Netzwerkports anhand dessen, welche Netzwerkdienste Sie für Administratoren, Endbenutzer und für die E-Mail-Unterstützung bereitstellen müssen."
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: reference
 topics:
   - Enterprise
@@ -41,7 +41,7 @@ Mit Anwendungsports können Endbenutzer auf Webanwendungen und Git zugreifen.
 | 443  | HTTPS  | Zugriff auf die Webanwendung und Git über HTTPS.                                                                                                                                                                 |
 | 80   | HTTP   | Webanwendungszugriff. Alle Anforderungen werden an den HTTPS-Port weitergeleitet, wenn SSL aktiviert ist.                                                                                                        |
 | 22   | SSH    | Zugriff auf Git über SSH. Unterstützt das Klonen, Abrufen und Übertragen von Vorgängen an öffentliche/private Repositorys.                                                                                       |
-| 9418 | Git    | Der Git-Protokollport unterstützt das Klonen und Abrufen von Vorgängen für öffentliche Repositorys mit unverschlüsselter Netzwerkkommunikation. {% data reusables.enterprise_installation.when-9418-necessary %}
+| 9418 | Git    | Der Git-Protokollport unterstützt das Klonen und Abrufen von Vorgängen für öffentliche Repositorys mit unverschlüsselter Netzwerkkommunikation. {% data reusables.enterprise_installation.when-9418-necessary %} |
 
 {% data reusables.enterprise_installation.terminating-tls %}
 

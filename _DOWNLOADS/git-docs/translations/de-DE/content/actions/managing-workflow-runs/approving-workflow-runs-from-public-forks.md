@@ -1,9 +1,9 @@
 ---
 title: Approving workflow runs from public forks
-intro: 'When a first-time contributor submits a pull request to a public repository, a maintainer with write access must approve any workflow runs.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "When a first-time contributor submits a pull request to a public repository, a maintainer with write access must approve any workflow runs."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 ---
 
 Forks of public repositories can submit pull requests that propose changes to a repository's {% data variables.product.prodname_actions %} workflows. Although workflows from forks do not have access to sensitive data such as secrets, they can be an annoyance for maintainers if they are modified for abusive purposes. To help prevent this, workflows on pull requests are not run automatically if they are received from first-time contributors, and must be approved first.
@@ -13,6 +13,7 @@ Maintainers with write access to the repository can use the following procedure 
 {% data reusables.repositories.sidebar-pr %}
 {% data reusables.repositories.choose-pr-review %}
 {% data reusables.repositories.changed-files %}
+
 1. Inspect the proposed changes in the pull request and ensure that you are comfortable running your workflows on the pull request branch. You should be especially alert to any proposed changes in the `.github/workflows/` directory that affect workflow files.
 1. If you are comfortable with running workflows on the pull request branch, return to the {% octicon "comment-discussion" aria-label="The discussion icon" %} **Conversation** tab, and under "Workflow(s) awaiting approval", click **Approve and run**.
 

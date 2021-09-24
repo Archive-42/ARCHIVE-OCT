@@ -1,11 +1,11 @@
 ---
 title: Downloading workflow artifacts
 intro: You can download archived artifacts before they automatically expire.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -23,12 +23,13 @@ versions:
 {% data reusables.repositories.actions-tab %}
 {% data reusables.repositories.navigate-to-workflow %}
 {% data reusables.repositories.view-run %}
+
 1. Under **Artifacts**, click the artifact you want to download.
-    {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
-    ![Dropdown-Menü zum Herunterladen von Artefakten](/assets/images/help/repository/artifact-drop-down-updated.png)
-    {% else %}
-    ![Dropdown-Menü zum Herunterladen von Artefakten](/assets/images/help/repository/artifact-drop-down.png)
-    {% endif %}
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+   ![Dropdown-Menü zum Herunterladen von Artefakten](/assets/images/help/repository/artifact-drop-down-updated.png)
+   {% else %}
+   ![Dropdown-Menü zum Herunterladen von Artefakten](/assets/images/help/repository/artifact-drop-down.png)
+   {% endif %}
 
 ### Download artifacts with {% data variables.product.prodname_cli %}
 

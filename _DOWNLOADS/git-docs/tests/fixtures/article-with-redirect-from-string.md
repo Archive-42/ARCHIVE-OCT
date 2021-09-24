@@ -1,5 +1,5 @@
 ---
 title: Article with redirect_from string
-versions: '*'
+versions: "*"
 redirect_from: /redirect-string
 ---

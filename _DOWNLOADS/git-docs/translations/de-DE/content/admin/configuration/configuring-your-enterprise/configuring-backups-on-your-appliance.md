@@ -14,9 +14,9 @@ redirect_from:
   - /enterprise/admin/installation/configuring-backups-on-your-appliance
   - /enterprise/admin/configuration/configuring-backups-on-your-appliance
   - /admin/configuration/configuring-backups-on-your-appliance
-intro: 'Im Rahmen eines Disaster Recovery-Plans können Sie die Produktionsdaten auf {% data variables.product.product_location %} schützen, indem Sie automatisierte Backups konfigurieren.'
+intro: "Im Rahmen eines Disaster Recovery-Plans können Sie die Produktionsdaten auf {% data variables.product.product_location %} schützen, indem Sie automatisierte Backups konfigurieren."
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Backups
@@ -60,21 +60,26 @@ Entsprechend Ihrer Nutzung, beispielsweise in Bezug auf die Benutzeraktivität u
 {% endnote %}
 
 1. Laden Sie die neueste [{% data variables.product.prodname_enterprise_backup_utilities %}-Version](https://github.com/github/backup-utils/releases) herunter, und extrahieren Sie die Datei mit dem Befehl `tar`.
-  ```shell
-  $ tar -xzvf /path/to/github-backup-utils-v<em>MAJOR.MINOR.PATCH</em>.tar.gz     
-  ```
+
+```shell
+$ tar -xzvf /path/to/github-backup-utils-v<em>MAJOR.MINOR.PATCH</em>.tar.gz
+```
+
 2. Kopieren Sie die enthaltene Datei `backup.config-example` nach `backup.config`, und öffnen Sie sie in einem Editor.
 3. Legen Sie den Wert `GHE_HOSTNAME` auf den Hostnamen oder die IP-Adresse Ihrer primären {% data variables.product.prodname_ghe_server %}-Instanz fest.
 4. Legen Sie den Wert `GHE_DATA_DIR` auf den Dateisystempfad fest, unter dem Sie Backup-Snapshots speichern möchten.
 5. Öffnen Sie unter `https://HOSTNAME/setup/settings` die Seite mit den Einstellungen Ihrer primären Instanz, und fügen Sie der Liste der autorisierten SSH-Schlüssel den SSH-Schlüssel des Backup-Hosts hinzu. Weitere Informationen finden Sie unter „[Auf die Verwaltungsshell (SSH) zugreifen](/enterprise/{{ currentVersion }}/admin/guides/installation/accessing-the-administrative-shell-ssh/)“.
-5. Führen Sie den Befehl `ghe-host-check` aus, um die SSH-Konnektivität mit {% data variables.product.product_location %} zu verifizieren.
-  ```shell
-  $ bin/ghe-host-check        
-  ```
-  6. Führen Sie den Befehl `ghe-backup` aus, um ein anfängliches vollständiges Backup zu erstellen.
-  ```shell
-  $ bin/ghe-backup        
-  ```
+6. Führen Sie den Befehl `ghe-host-check` aus, um die SSH-Konnektivität mit {% data variables.product.product_location %} zu verifizieren.
+
+```shell
+$ bin/ghe-host-check
+```
+
+6. Führen Sie den Befehl `ghe-backup` aus, um ein anfängliches vollständiges Backup zu erstellen.
+
+```shell
+$ bin/ghe-backup
+```
 
 Weitere Informationen zur erweiterten Nutzung finden Sie in der [{% data variables.product.prodname_enterprise_backup_utilities %}-Datei 'README.md'](https://github.com/github/backup-utils#readme).
 
@@ -122,5 +127,6 @@ $ ghe-restore -c 169.154.1.1
 {% endnote %}
 
 Sie können diese zusätzlichen Optionen mit dem Befehl `ghe-restore` verwenden:
+
 - Das Flag `-c` überschreibt die Einstellungen, Zertifikate und Lizenzdaten auf dem Ziel-Host, selbst wenn es bereits konfiguriert ist. Lassen Sie dieses Flag weg, wenn Sie eine Testinstanz für Testzwecke einrichten und Sie die vorhandene Konfiguration auf dem Ziel beibehalten möchten. Weitere Informationen finden Sie unter „Backup- und Wiederherstellungsbefehle verwenden“ der [{% data variables.product.prodname_enterprise_backup_utilities %} README](https://github.com/github/backup-utils#using-the-backup-and-restore-commands).
 - Mit dem Flag `-s` können Sie einen anderen Backup-Snapshot auswählen.

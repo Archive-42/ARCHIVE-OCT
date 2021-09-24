@@ -1,6 +1,5 @@
 ---
 title: A sample article
 versions:
-  enterprise-server: '>2.16'
+  enterprise-server: ">2.16"
 ---
-

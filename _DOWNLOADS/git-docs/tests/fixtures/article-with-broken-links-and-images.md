@@ -1,8 +1,8 @@
 ---
 title: Article with broken images and links
 versions:
-  free-pro-team: '*'
-  enterprise-server: '*'
+  free-pro-team: "*"
+  enterprise-server: "*"
 ---
 
 ### Images
@@ -12,6 +12,7 @@ This image is broken on all versions because the file is not in assets: ![missin
 This image is OK on all versions because the file is in assets: ![missing image](/assets/images/site/logo.png)
 
 ### Anchors
+
 This anchor is broken on all versions because it points to a heading that does not exist: [Non-existent Heading](#this-anchor-goes-nowhere)
 
 This anchor is broken on all versions because it points to a heading that does not exist: [Non-existent Heading](/github/setting-up-and-managing-your-github-user-account/permission-levels-for-a-user-account-repository#this-anchor-goes-nowhere)

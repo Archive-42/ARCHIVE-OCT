@@ -1,11 +1,11 @@
 ---
 title: Viewing workflow run history
 intro: You can view logs for each run of a workflow. Logs include the status for each job and step in a workflow.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -39,7 +39,7 @@ To specify the maximum number of runs to return, you can use the `-L` or `--limi
 gh run list --limit 5
 ```
 
-To only return runs for the specified workflow, you can use the `-w` or `--workflow` flag.  Replace `workflow` with either the workflow name, workflow ID, or workflow file name. For example, `"Link Checker"`, `1234567`, or `"link-check-test.yml"`.
+To only return runs for the specified workflow, you can use the `-w` or `--workflow` flag. Replace `workflow` with either the workflow name, workflow ID, or workflow file name. For example, `"Link Checker"`, `1234567`, or `"link-check-test.yml"`.
 
 ```shell
 gh run list --workflow <em>workflow</em>
@@ -59,7 +59,7 @@ To include job steps in the output, use the `-v` or `--verbose` flag.
 gh run view <em>run-id</em> --verbose
 ```
 
-To view details for a specific job in the run, use the `-j` or `--job` flag.  Replace `job-id` with the ID of the job that you want to view.
+To view details for a specific job in the run, use the `-j` or `--job` flag. Replace `job-id` with the ID of the job that you want to view.
 
 ```shell
 gh run view --job <em>job-id</em>

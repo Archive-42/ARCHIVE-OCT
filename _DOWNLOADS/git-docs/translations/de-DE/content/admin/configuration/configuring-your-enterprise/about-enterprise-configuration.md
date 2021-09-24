@@ -2,8 +2,8 @@
 title: About enterprise configuration
 intro: 'You can use the site admin dashboard{% if enterpriseServerVersions contains currentVersion %}, {% data variables.enterprise.management_console %}, and administrative shell (SSH) {% elsif currentVersion == "github-ae@latest" %} and enterprise settings or contact support{% endif %} to manage your enterprise.'
 versions:
-  enterprise-server: '*'
-  github-ae: '*'
+  enterprise-server: "*"
+  github-ae: "*"
 type: overview
 topics:
   - Enterprise

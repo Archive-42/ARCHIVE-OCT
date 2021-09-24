@@ -1,14 +1,14 @@
 ---
 title: Abhängigkeiten zwischenspeichern um Workflows zu beschleunigen
 shortTitle: Abhängigkeiten „cachen“ (zwischenspeichern)
-intro: 'Um Deine Workflows schneller und effizienter zu gestalten, kannst Du Caches für Abhängigkeiten und andere häufig wiederverwendete Dateien erstellen und verwenden.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Um Deine Workflows schneller und effizienter zu gestalten, kannst Du Caches für Abhängigkeiten und andere häufig wiederverwendete Dateien erstellen und verwenden."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/caching-dependencies-to-speed-up-workflows
   - /actions/automating-your-workflow-with-github-actions/caching-dependencies-to-speed-up-workflows
   - /actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 type: tutorial
 topics:
   - Workflows
@@ -81,6 +81,7 @@ Weitere Informationen findest Du unter [`Aktionen/Cache`](https://github.com/act
 Dieses Beispiel erzeugt einen neuen Cache, wenn sich die Pakete in `package-lock.json` ändern oder wenn das Betriebssystem des Runners wechselt. Das folgende Beispiel verwendet Kontexte und Ausdrücke, um einen Schlüssel zu erzeugen, der eine Kennung des Runner-Betriebssystems und einen SHA-256-Hash der Datei `package-lock.json` enthält.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Caching with npm
 
@@ -115,6 +116,7 @@ jobs:
       - name: Test
         run: npm test
 ```
+
 {% endraw %}
 
 Wenn `key` mit einem existierenden Cache übereinstimmt, wird das als „cache hit“ (Cache-Treffer) bezeichnet, und die Aktion stellt die zwischengespeicherten Dateien wieder her und legt sie in den `path`.
@@ -136,9 +138,11 @@ Ein Cache-Key (Cache-Schlüssel) kann Kontexte, Funktionen, Literale und Operato
 Wenn Du zum Erstellen eines `key`s Ausdrücke verwendest, kannst Du automatisch einen neuen Cache zu erstellen, sobald sich die Abhängigkeiten geändert haben. Zum Beispiel kannst Du einen `key` mittels eines Ausdrucks erstellen, der den Hash-Code einer npm-Datei `package-lock.json` errechnet.
 
 {% raw %}
+
 ```yaml
 npm-${{ hashFiles('package-lock.json') }}
 ```
+
 {% endraw %}
 
 {% data variables.product.prodname_dotcom %} wertet den Ausdruck aus `hash "package-lock.json"` um daraus den endgültigen `key` abzuleiten.
@@ -156,23 +160,27 @@ Du kannst eine Liste der `restore-keys` angeben, die verwendet werden sollen, we
 #### Beispiel für die Verwendung mehrerer Restore-Keys
 
 {% raw %}
+
 ```yaml
 restore-keys: |
   npm-foobar-${{ hashFiles('package-lock.json') }}
   npm-foobar-
   npm-
 ```
+
 {% endraw %}
 
 Der Runner bewertet die Ausdrücke, die sich in folgende `restore-keys` auflösen lassen:
 
 {% raw %}
+
 ```yaml
 restore-keys: |
   npm-foobar-d5ea0750
   npm-foobar-
   npm-
 ```
+
 {% endraw %}
 
 Der Restore-Key `npm-foobar-` passt auf jeden Schlüssel, der mit dem String `npm-foobar-` beginnt. Zum Beispiel passen zu ihm die beiden Schlüssel `npm-foobar-fd3052de` und `npm-foobar-a9b253ff`. Der Cache mit dem neuesten Erstellungsdatum wird verwendet. Die Schlüssel in diesem Beispiel werden in der folgenden Reihenfolge durchsucht:
@@ -184,8 +192,7 @@ Der Restore-Key `npm-foobar-` passt auf jeden Schlüssel, der mit dem String `np
 ##### Beispiel für die Suchpriorität
 
 ```yaml
-key:
-  npm-feature-d5ea0750
+key: npm-feature-d5ea0750
 restore-keys: |
   npm-feature-
   npm-
@@ -195,10 +202,10 @@ For example, if a pull request contains a `feature` branch (the current scope) a
 
 1. Schlüssel `npm-feature-d5eaa0750` im Zweig `feature`
 1. Schlüssel `npm-feature-` im Zweig `feature`
-2. Schlüssel `npm-` im Zweig `feature`
+1. Schlüssel `npm-` im Zweig `feature`
 1. Key `npm-feature-d5ea0750` in the `main` branch scope
-3. Key `npm-feature-` in the `main` branch scope
-4. Key `npm-` in the `main` branch scope
+1. Key `npm-feature-` in the `main` branch scope
+1. Key `npm-` in the `main` branch scope
 
 ### Nutzungsbeschränkungen und Räumungsrichtlinien
 

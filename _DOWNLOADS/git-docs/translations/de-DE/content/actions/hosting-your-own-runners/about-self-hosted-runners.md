@@ -1,13 +1,13 @@
 ---
 title: Informationen zu selbst-gehosteten Runnern
-intro: 'Du kannst deine eigenen Runner hosten und die Umgebung anpassen, die für die Ausführung von Jobs in deinen {% data variables.product.prodname_actions %}-Workflows verwendet wird.'
+intro: "Du kannst deine eigenen Runner hosten und die Umgebung anpassen, die für die Ausführung von Jobs in deinen {% data variables.product.prodname_actions %}-Workflows verwendet wird."
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/about-self-hosted-runners
   - /actions/automating-your-workflow-with-github-actions/about-self-hosted-runners
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 ---
 
@@ -21,6 +21,7 @@ type: overview
 {% data reusables.github-actions.self-hosted-runner-description %} Selbst gehostete Runner können physisch, virtuell, in einem Container, lokal oder in einer Cloud sein.
 
 You can add self-hosted runners at various levels in the management hierarchy:
+
 - Repository-level runners are dedicated to a single repository.
 - Organization-level runners can process jobs for multiple repositories in an organization.
 - Enterprise-level runners can be assigned to multiple organizations in an enterprise account.
@@ -36,12 +37,14 @@ For more information about installing and using self-hosted runners, see "[Addin
 {% data variables.product.prodname_dotcom %}-hosted runners offer a quicker, simpler way to run your workflows, while self-hosted runners are a highly configurable way to run workflows in your own custom environment.
 
 **{% data variables.product.prodname_dotcom %}-gehostete Runner:**
+
 - Erhalten automatische Updates für das Betriebssystem, vorinstallierte Pakete und Tools sowie die Anwendung für selbst-gehostete Runner.
 - Werden von {% data variables.product.prodname_dotcom %} verwaltet und gepflegt.
 - Stellen für jede Jobausführung eine saubere Instanz bereit.
 - Verwenden freie Minuten von Ihrem {% data variables.product.prodname_dotcom %}-Konto. Nach Überschreiten der Freiminuten gelten Minutentarife.
 
 **Selbst-gehostete Runner:**
+
 - Erhalten automatische Updates nur für die Anwendung für selbst-gehostete Runner. Du bist für die Aktualisierung des Betriebssystems und aller anderen Software selbst verantwortlich.
 - Kann Cloud-Dienste oder lokale Computer verwenden, für die Du bereits bezahlst.
 - Können an Deine Hardware-, Betriebssystem-, Software- und Sicherheitsanforderungen angepasst werden.
@@ -52,20 +55,21 @@ For more information about installing and using self-hosted runners, see "[Addin
 
 You can use any machine as a self-hosted runner as long at it meets these requirements:
 
-* Du kannst die Anwendung für selbst-gehostete Runner auf dem Rechner installieren und ausführen. For more information, see "[Supported architectures and operating systems for self-hosted runners](#supported-architectures-and-operating-systems-for-self-hosted-runners)."
-* Die Maschine kann mit {% data variables.product.prodname_actions %} kommunizieren. Weitere Informationen findest Du unter „[Kommunikation zwischen selbst-gehosteten Runnern und {% data variables.product.prodname_dotcom %}](#communication-between-self-hosted-runners-and-github)“.
-* Der Rechner verfügt über genügend Hardwareressourcen für den Typ der Workflows, den Du ausführen möchtest. Die Anwendung für selbst-gehostete Runner selbst erfordert nur minimale Ressourcen.
-* Wenn Du Workflows ausführen willst, die Docker-Container-Aktionen oder Service-Container verwenden, brauchst Du eine Linux-Maschine und Docker muss installiert sein.
+- Du kannst die Anwendung für selbst-gehostete Runner auf dem Rechner installieren und ausführen. For more information, see "[Supported architectures and operating systems for self-hosted runners](#supported-architectures-and-operating-systems-for-self-hosted-runners)."
+- Die Maschine kann mit {% data variables.product.prodname_actions %} kommunizieren. Weitere Informationen findest Du unter „[Kommunikation zwischen selbst-gehosteten Runnern und {% data variables.product.prodname_dotcom %}](#communication-between-self-hosted-runners-and-github)“.
+- Der Rechner verfügt über genügend Hardwareressourcen für den Typ der Workflows, den Du ausführen möchtest. Die Anwendung für selbst-gehostete Runner selbst erfordert nur minimale Ressourcen.
+- Wenn Du Workflows ausführen willst, die Docker-Container-Aktionen oder Service-Container verwenden, brauchst Du eine Linux-Maschine und Docker muss installiert sein.
 
 ### Nutzungseinschränkungen
 
 There are some limits on {% data variables.product.prodname_actions %} usage when using self-hosted runners. Die Einschränkungen können sich jederzeit ändern.
 
 {% data reusables.github-actions.usage-workflow-run-time %}
+
 - **Job queue time** (Job-Warteschlangenzeit) - Jeder Auftrag für selbst-gehostete Läufer kann maximal 24 Stunden lang in die Warteschlange gestellt werden. Wenn ein selbst-gehosteter Läufer die Ausführung des Auftrags nicht innerhalb dieses Limits startet, wird der Auftrag beendet und kann nicht abgeschlossen werden.
-{% data reusables.github-actions.usage-api-requests %}
+  {% data reusables.github-actions.usage-api-requests %}
 - **Auftrags-Matrix** - {% data reusables.github-actions.usage-matrix-limits %}
-{% data reusables.github-actions.usage-workflow-queue-limits %}
+  {% data reusables.github-actions.usage-workflow-queue-limits %}
 
 ### Workflow continuity for self-hosted runners
 
@@ -164,7 +168,7 @@ This is not an issue with {% data variables.product.prodname_dotcom %}-hosted ru
 
 Untrusted workflows running on your self-hosted runner poses significant security risks for your machine and network environment, especially if your machine persists its environment between jobs. Some of the risks include:
 
-* Schadprogramme, die auf dem Rechner laufen.
-* Ausbruch aus der Runner-Sandbox der Maschine.
-* Der Zugriff auf die Netzwerkumgebung der Maschine wird offengelegt.
-* Unerwünschte oder gefährliche Daten werden dauerhaft auf der Maschine gespeichert.
+- Schadprogramme, die auf dem Rechner laufen.
+- Ausbruch aus der Runner-Sandbox der Maschine.
+- Der Zugriff auf die Netzwerkumgebung der Maschine wird offengelegt.
+- Unerwünschte oder gefährliche Daten werden dauerhaft auf der Maschine gespeichert.

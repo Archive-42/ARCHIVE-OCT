@@ -1,11 +1,11 @@
 ---
 title: Canceling a workflow
-intro: 'You can cancel a workflow run that is in progress. When you cancel a workflow run, {% data variables.product.prodname_dotcom %} cancels all jobs and steps that are a part of that workflow.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can cancel a workflow run that is in progress. When you cancel a workflow run, {% data variables.product.prodname_dotcom %} cancels all jobs and steps that are a part of that workflow."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -19,13 +19,14 @@ versions:
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.actions-tab %}
 {% data reusables.repositories.navigate-to-workflow %}
+
 1. From the list of workflow runs, click the name of the `queued` or `in progress` run that you want to cancel. ![Name der Workflow-Ausführung](/assets/images/help/repository/in-progress-run.png)
 1. In the upper-right corner of the workflow, click **Cancel workflow**.
-{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
- ![Schaltfläche zum Abbrechen der Prüfsuite](/assets/images/help/repository/cancel-check-suite-updated.png)
-{% else %}
- ![Schaltfläche zum Abbrechen der Prüfsuite](/assets/images/help/repository/cancel-check-suite.png)
-{% endif %}
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+   ![Schaltfläche zum Abbrechen der Prüfsuite](/assets/images/help/repository/cancel-check-suite-updated.png)
+   {% else %}
+   ![Schaltfläche zum Abbrechen der Prüfsuite](/assets/images/help/repository/cancel-check-suite.png)
+   {% endif %}
 
 ### Steps {% data variables.product.prodname_dotcom %} takes to cancel a workflow run
 
@@ -35,4 +36,4 @@ Beim Abbrechen der Workflowausführung führen Sie möglicherweise andere Softwa
 2. Bei Aufträgen, die abgebrochen werden müssen, sendet der Server eine Abbruchnachricht an alle Läufercomputer mit Aufträgen, die abgebrochen werden müssen.
 3. Bei Aufträgen, die weiterhin ausgeführt werden, wertet der Server `neu aus, ob` Bedingungen für die unvollendeten Schritte. Wenn die Bedingung als true</code>`wird, wird der Schritt weiterhin ausgeführt.</li>
 <li>Für Schritte, die abgebrochen werden müssen, sendet die Läufermaschine <code>SIGINT/Ctrl-C-` an den Schritteingabeprozess (`Knoten` für Javascript-Aktion, `docker` für Containeraktion und `bash/cmd/pwd` , wenn sie</code> in einem Schritt verwenden `ausführen). Wenn der Prozess nicht innerhalb von 7500 ms beendet wird, sendet der Läufer <code>SIGTERM/Ctrl-Break-` an den Prozess, und wartet dann 2500 ms, bis der Prozess beendet wird. Wenn der Prozess noch ausgeführt wird, tötet der Läufer den Prozessbaum.
-5. Nach ablaufen 5 Minuten Abbruchzeit zeitoutt der Server das Beenden aller Aufträge und Schritte, die die Ausführung nicht beenden oder den Abbruchvorgang nicht abschließen können.
+4. Nach ablaufen 5 Minuten Abbruchzeit zeitoutt der Server das Beenden aller Aufträge und Schritte, die die Ausführung nicht beenden oder den Abbruchvorgang nicht abschließen können.

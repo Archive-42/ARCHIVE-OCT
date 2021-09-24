@@ -1,11 +1,11 @@
 ---
 title: Using GitHub Actions for project management
-intro: 'You can use {% data variables.product.prodname_actions %} to automate many of your project management tasks.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to automate many of your project management tasks."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 topics:
   - Project management

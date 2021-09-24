@@ -1,11 +1,11 @@
 ---
 title: Managing GitHub Actions with GitHub CLI
-intro: 'You can use {% data variables.product.prodname_cli %} to interact with {% data variables.product.prodname_actions %}.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_cli %} to interact with {% data variables.product.prodname_actions %}."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 topics:
   - Workflows

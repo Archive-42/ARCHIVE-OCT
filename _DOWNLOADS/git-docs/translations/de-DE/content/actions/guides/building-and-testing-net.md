@@ -1,11 +1,11 @@
 ---
 title: Building and testing .NET
 intro: You can create a continuous integration (CI) workflow to build and test your .NET project.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -33,6 +33,7 @@ We recommend that you have a basic understanding of the .NET Core SDK. For more 
 Um schnell loszulegen, füge die Vorlage in das Verzeichnis `.github/workflows` Deines Repositorys ein.
 
 {% raw %}
+
 ```yaml
 name: dotnet package
 
@@ -40,11 +41,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x' ]
+        dotnet-version: ["3.0", "3.1.x", "5.0.x"]
 
     steps:
       - uses: actions/checkout@v2
@@ -59,6 +59,7 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
 ```
+
 {% endraw %}
 
 ### Specifying a .NET version
@@ -70,6 +71,7 @@ The `setup-dotnet` action is the recommended way of using .NET with {% data vari
 #### Using multiple .NET versions
 
 {% raw %}
+
 ```yaml
 name: dotnet package
 
@@ -77,11 +79,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet: [ '3.0', '3.1.x', '5.0.x' ]
+        dotnet: ["3.0", "3.1.x", "5.0.x"]
 
     steps:
       - uses: actions/checkout@v2
@@ -93,6 +94,7 @@ jobs:
       - name: Display dotnet version
         run: dotnet --version
 ```
+
 {% endraw %}
 
 #### Using a specific .NET version
@@ -100,13 +102,15 @@ jobs:
 You can configure your job to use a specific version of .NET, such as `3.1.3`. Alternatively, you can use semantic version syntax to get the latest minor release. This example uses the latest minor release of .NET 3.
 
 {% raw %}
+
 ```yaml
-    - name: Setup .NET 3.x
-      uses: actions/setup-dotnet@v1
-      with:
-        # Semantic version range syntax or exact version of a dotnet version
-        dotnet-version: '3.x' 
+- name: Setup .NET 3.x
+  uses: actions/setup-dotnet@v1
+  with:
+    # Semantic version range syntax or exact version of a dotnet version
+    dotnet-version: "3.x"
 ```
+
 {% endraw %}
 
 ### Abhängigkeiten installieren
@@ -114,16 +118,18 @@ You can configure your job to use a specific version of .NET, such as `3.1.3`. A
 {% data variables.product.prodname_dotcom %}-hosted runners have the NuGet package manager installed. You can use the dotnet CLI to install dependencies from the NuGet package registry before building and testing your code. For example, the YAML below installs the `Newtonsoft` package.
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/checkout@v2
-- name: Setup dotnet
-  uses: actions/setup-dotnet@v1
-  with:
-    dotnet-version: '3.1.x'
-- name: Install dependencies
-  run: dotnet add package Newtonsoft.Json --version 12.0.1
+  - uses: actions/checkout@v2
+  - name: Setup dotnet
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: "3.1.x"
+  - name: Install dependencies
+    run: dotnet add package Newtonsoft.Json --version 12.0.1
 ```
+
 {% endraw %}
 
 {% if currentVersion == "free-pro-team@latest" %}
@@ -135,23 +141,25 @@ You can cache NuGet dependencies using a unique key, which allows you to restore
 Weitere Informationen findest Du unter „[Abhängigkeiten zur Beschleunigung von Workflows im Cache zwischenspeichern](/actions/guides/caching-dependencies-to-speed-up-workflows)“.
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/checkout@v2
-- name: Setup dotnet
-  uses: actions/setup-dotnet@v1
-  with:
-    dotnet-version: '3.1.x'
-- uses: actions/cache@v2
-  with:
-    path: ~/.nuget/packages
-    # Look to see if there is a cache hit for the corresponding requirements file
-    key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-    restore-keys: |
-      ${{ runner.os }}-nuget
-- name: Install dependencies
-  run: dotnet add package Newtonsoft.Json --version 12.0.1
+  - uses: actions/checkout@v2
+  - name: Setup dotnet
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: "3.1.x"
+  - uses: actions/cache@v2
+    with:
+      path: ~/.nuget/packages
+      # Look to see if there is a cache hit for the corresponding requirements file
+      key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+      restore-keys: |
+        ${{ runner.os }}-nuget
+  - name: Install dependencies
+    run: dotnet add package Newtonsoft.Json --version 12.0.1
 ```
+
 {% endraw %}
 
 {% note %}
@@ -167,20 +175,22 @@ steps:
 Du kannst die gleichen Befehle verwenden, die Du auch lokal verwendest, um Deinen Code zu erstellen und zu testen. This example demonstrates how to use `dotnet build` and `dotnet test` in a job:
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/checkout@v2
-- name: Setup dotnet
-  uses: actions/setup-dotnet@v1
-  with:
-    dotnet-version: '3.1.x'
-- name: Install dependencies
-  run: dotnet restore
-- name: Build
-  run: dotnet build
-- name: Test with the dotnet CLI
-  run: dotnet test
+  - uses: actions/checkout@v2
+  - name: Setup dotnet
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: "3.1.x"
+  - name: Install dependencies
+    run: dotnet restore
+  - name: Build
+    run: dotnet build
+  - name: Test with the dotnet CLI
+    run: dotnet test
 ```
+
 {% endraw %}
 
 ### Workflow-Daten als Artefakte paketieren
@@ -190,6 +200,7 @@ After a workflow completes, you can upload the resulting artifacts for analysis.
 Weitere Informationen findest Du unter "[Workflow-Daten mittels Artefakten persistieren](/github/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts)."
 
 {% raw %}
+
 ```yaml
 name: dotnet package
 
@@ -197,11 +208,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: [ '3.0', '3.1.x', '5.0.x' ]
+        dotnet-version: ["3.0", "3.1.x", "5.0.x"]
 
       steps:
         - uses: actions/checkout@v2
@@ -221,6 +231,7 @@ jobs:
           # Use always() to always run this step to publish test results when there are test failures
           if: ${{ always() }}
 ```
+
 {% endraw %}
 
 ### In Paket-Registries veröffentlichen

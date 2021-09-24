@@ -1,8 +1,8 @@
 ---
 title: Initializing GitHub AE
-intro: 'To get your enterprise ready to use, you can complete the initial configuration of {% data variables.product.product_name %}.'
+intro: "To get your enterprise ready to use, you can complete the initial configuration of {% data variables.product.product_name %}."
 versions:
-  github-ae: '*'
+  github-ae: "*"
 type: how_to
 topics:
   - Enterprise
@@ -32,14 +32,13 @@ During initialization, the enterprise owner will name your enterprise, configure
 
 To begin initialization, you will receive an invitation email from {% data variables.product.company_short %}. Before you configure {% data variables.product.prodname_ghe_managed %}, review the following prerequisites.
 
-
 1. To initialize {% data variables.product.product_location %}, you must have a SAML identity provider (IdP). {% data reusables.saml.ae-uses-saml-sso %} To connect your IdP to your enterprise during initialization, you should have your IdP's Entity ID (SSO) URL, Issuer ID URL, and public signing certificate (Base64-encoded). For more information, see "[About identity and access management for your enterprise](/admin/authentication/about-identity-and-access-management-for-your-enterprise)."
 
-    {% note %}
+   {% note %}
 
-    **Hinweis**: {% data reusables.saml.create-a-machine-user %}
+   **Hinweis**: {% data reusables.saml.create-a-machine-user %}
 
-    {% endnote %}
+   {% endnote %}
 
 2. {% data reusables.saml.assert-the-administrator-attribute %}
 
@@ -91,11 +90,12 @@ Once this is initialized, you can reconfigure any settings after the initializat
 1. To the right of "Configure email settings", click **Configure**. !["Configure" button for email settings configuration](/assets/images/enterprise/configuration/ae-email-configure.png)
 2. Wählen Sie **Enable email** (E-Mail aktivieren) aus. This will enable both outbound and inbound email, however, for inbound email to work you will also need to configure your DNS settings. For more information, see "[Configuring DNS and firewall settings to allow incoming emails](/admin/configuration/configuring-email-for-notifications#configuring-dns-and-firewall-settings-to-allow-incoming-emails)." !["Enable" checkbox for email settings configuration](/assets/images/enterprise/configuration/ae-enable-email-configure.png)
 3. Complete your email server settings:
-    - Geben Sie im Feld **Server address** (Serveradresse) die Adresse Ihres SMTP-Servers ein.
-    - Geben Sie im Feld **Port** den Port ein, der von Ihrem SMTP-Server zum Senden von E-Mails verwendet wird.
-    - Geben Sie im Feld **Domain** den Domain-Namen ein, der ggf. von Ihrem SMTP-Server mit einer HELO-Antwort gesendet wird.
-    - Wählen Sie im Dropdownmenü **Authentication** (Authentifizierung) den von Ihrem SMTP-Server verwendeten Verschlüsselungstyp aus.
-    - Geben Sie im Feld **No-reply email address** („no-reply“-E-Mail-Adresse) die E-Mail-Adresse ein, die für alle Benachrichtigungs-E-Mails in den Feldern „From“ (Von) und „To“ (An) verwendet werden soll.
+
+   - Geben Sie im Feld **Server address** (Serveradresse) die Adresse Ihres SMTP-Servers ein.
+   - Geben Sie im Feld **Port** den Port ein, der von Ihrem SMTP-Server zum Senden von E-Mails verwendet wird.
+   - Geben Sie im Feld **Domain** den Domain-Namen ein, der ggf. von Ihrem SMTP-Server mit einer HELO-Antwort gesendet wird.
+   - Wählen Sie im Dropdownmenü **Authentication** (Authentifizierung) den von Ihrem SMTP-Server verwendeten Verschlüsselungstyp aus.
+   - Geben Sie im Feld **No-reply email address** („no-reply“-E-Mail-Adresse) die E-Mail-Adresse ein, die für alle Benachrichtigungs-E-Mails in den Feldern „From“ (Von) und „To“ (An) verwendet werden soll.
 
 4. Wenn Sie alle eingehenden E-Mails verwerfen möchten, die an die „no-reply“-E-Mail-Adresse adressiert sind, sollten Sie **Discard email addressed to the no-reply email address** (An die „no-reply“-E-Mail-Adresse adressierte E-Mails verwerfen) aktivieren. !["Discard" checkbox for email settings configuration](/assets/images/enterprise/configuration/ae-discard-email.png)
 5. Click **Test email settings**. !["Test email settings" button for email settings configuration](/assets/images/enterprise/configuration/ae-test-email.png)

@@ -1,6 +1,6 @@
 ---
 title: Accessing the management console
-intro: '{% data reusables.enterprise_site_admin_settings.about-the-management-console %}'
+intro: "{% data reusables.enterprise_site_admin_settings.about-the-management-console %}"
 redirect_from:
   - /enterprise/admin/articles/about-the-management-console/
   - /enterprise/admin/articles/management-console-for-emergency-recovery/
@@ -12,7 +12,7 @@ redirect_from:
   - /enterprise/admin/configuration/accessing-the-management-console
   - /admin/configuration/accessing-the-management-console
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Enterprise
@@ -22,6 +22,7 @@ topics:
 ### Informationen zur {% data variables.enterprise.management_console %}
 
 {% data variables.enterprise.management_console %} für grundlegende Verwaltungsaktivitäten verwenden:
+
 - **Initial setup** (Ersteinrichtung): Durchlaufen Sie beim ersten Start von {% data variables.product.product_location %} den Ersteinrichtungsprozess. Rufen Sie dazu in Ihrem Browser die IP-Adresse Ihrer {% data variables.product.product_location %} auf.
 - **Configuring basic settings for your instance** (Grundlegende Einstellungen für Ihre Instanz konfigurieren): Auf der Seite „Settings“ (Einstellungen) können Sie DNS, den Hostnamen, SSL, die Benutzerauthentifizierung, E-Mail, Überwachungsdienste und die Protokollweiterleitung konfigurieren.
 - **Scheduling maintenance windows**: Take {% data variables.product.product_location %} offline while performing maintenance using the {% data variables.enterprise.management_console %} or administrative shell.
@@ -43,9 +44,11 @@ The first time that you access the {% data variables.enterprise.management_conso
 ### Auf die {% data variables.enterprise.management_console %} als ein nicht authentifizierter Benutzer zugreifen
 
 1. Besuchen Sie diese URL in Ihrem Browser, und ersetzen Sie `hostname` durch Ihren tatsächlichen {% data variables.product.prodname_ghe_server %}-Hostnamen oder durch Ihre tatsächliche -IP-Adresse.
-  ```shell
-  http(s)://HOSTNAME/setup
-  ```
+
+```shell
+http(s)://HOSTNAME/setup
+```
+
 {% data reusables.enterprise_management_console.type-management-console-password %}
 
 ### {% data variables.enterprise.management_console %} nach fehlerhaften Anmeldeversuchen entsperren

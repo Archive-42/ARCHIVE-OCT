@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Aktionen
-intro: 'Du kannst deine eigenen Aktionen erstellen sowie Aktionen verwenden und anpassen, die von der {% data variables.product.prodname_dotcom %}-Community bereitgestellt werden, oder Deine eigenen Aktionen der Communitz bereitstellen.'
+intro: "Du kannst deine eigenen Aktionen erstellen sowie Aktionen verwenden und anpassen, die von der {% data variables.product.prodname_dotcom %}-Community bereitgestellt werden, oder Deine eigenen Aktionen der Communitz bereitstellen."
 redirect_from:
   - /articles/building-actions
   - /github/automating-your-workflow-with-github-actions/building-actions
@@ -8,9 +8,9 @@ redirect_from:
   - /actions/building-actions
   - /articles/creating-a-github-action/
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 children:
   - /about-actions
   - /creating-a-docker-container-action

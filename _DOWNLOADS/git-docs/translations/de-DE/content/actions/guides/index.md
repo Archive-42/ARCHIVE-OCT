@@ -1,7 +1,7 @@
 ---
 title: Leitfäden
 shortTitle: Leitfäden
-intro: 'These guides for {% data variables.product.prodname_actions %} include specific use cases and examples to help you configure workflows.'
+intro: "These guides for {% data variables.product.prodname_actions %} include specific use cases and examples to help you configure workflows."
 redirect_from:
   - /actions/guides/caching-and-storing-workflow-data
   - /actions/automating-your-workflow-with-github-actions/using-databases-and-services
@@ -15,9 +15,9 @@ redirect_from:
   - /actions/publishing-packages-with-github-actions
   - /actions/building-and-testing-code-with-continuous-integration
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 learningTracks:
   - getting_started
   - continuous_integration

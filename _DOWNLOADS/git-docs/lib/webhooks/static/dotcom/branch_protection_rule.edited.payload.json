@@ -12,9 +12,7 @@
     "require_code_owner_review": false,
     "authorized_dismissal_actors_only": false,
     "ignore_approvals_from_contributors": false,
-    "required_status_checks": [
-      "basic-CI"
-    ],
+    "required_status_checks": ["basic-CI"],
     "required_status_checks_enforcement_level": "non_admins",
     "strict_required_status_checks_policy": false,
     "signature_requirement_enforcement_level": "off",
@@ -26,9 +24,7 @@
     "required_deployments_enforcement_level": "off",
     "required_conversation_resolution_level": "off",
     "authorized_actors_only": true,
-    "authorized_actor_names": [
-      "Codertocat"
-    ]
+    "authorized_actor_names": ["Codertocat"]
   },
   "changes": {
     "authorized_actors_only": {

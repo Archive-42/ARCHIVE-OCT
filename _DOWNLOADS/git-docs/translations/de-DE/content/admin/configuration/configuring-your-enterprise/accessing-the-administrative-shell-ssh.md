@@ -11,9 +11,9 @@ redirect_from:
   - /enterprise/admin/installation/accessing-the-administrative-shell-ssh
   - /enterprise/admin/configuration/accessing-the-administrative-shell-ssh
   - /admin/configuration/accessing-the-administrative-shell-ssh
-intro: '{% data reusables.enterprise_site_admin_settings.about-ssh-access %}'
+intro: "{% data reusables.enterprise_site_admin_settings.about-ssh-access %}"
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Enterprise
@@ -36,8 +36,7 @@ Zum Aktivieren des SSH-Verwaltungszugriffs müssen Sie Ihren öffentlichen SSH-S
 {% endtip %}
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
-{% data reusables.enterprise_site_admin_settings.management-console %}
-3. Fügen Sie unter „SSH access“ (SSH-Zugriff) Ihren Schlüssel in das Textfeld ein, und klicken Sie anschließend auf **Add key** (Schlüssel hinzufügen). ![Textfeld und Schaltfläche zum Hinzufügen eines SSH-Schlüssels](/assets/images/enterprise/settings/add-authorized-ssh-key-admin-shell.png)
+{% data reusables.enterprise_site_admin_settings.management-console %} 3. Fügen Sie unter „SSH access“ (SSH-Zugriff) Ihren Schlüssel in das Textfeld ein, und klicken Sie anschließend auf **Add key** (Schlüssel hinzufügen). ![Textfeld und Schaltfläche zum Hinzufügen eines SSH-Schlüssels](/assets/images/enterprise/settings/add-authorized-ssh-key-admin-shell.png)
 {% data reusables.enterprise_management_console.save-settings %}
 
 ### Verbindung zur Verwaltungsshell über SSH herstellen

@@ -1,11 +1,11 @@
 ---
 title: Using workflow run logs
-intro: 'You can view, search, and download the logs for each job in a workflow run.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can view, search, and download the logs for each job in a workflow run."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -46,16 +46,17 @@ Sie können die Build-Protokolle für einen bestimmten Schritt durchsuchen. Beim
 {% data reusables.repositories.view-run-superlinter %}
 {% data reusables.repositories.navigate-to-job-superlinter %}
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}
+
 1. Gib in der oberen rechten Ecke der Protokollausgabe im Suchfeld **Search logs** (Protokolle durchsuchen) eine Suchanfrage ein.
-{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
-  ![Suchfeld zum Durchsuchen von Protokollen](/assets/images/help/repository/search-log-box-updated-2.png)
-{% else %}
-  ![Suchfeld zum Durchsuchen von Protokollen](/assets/images/help/repository/search-log-box-updated.png)
-{% endif %}
-{% else %}
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+   ![Suchfeld zum Durchsuchen von Protokollen](/assets/images/help/repository/search-log-box-updated-2.png)
+   {% else %}
+   ![Suchfeld zum Durchsuchen von Protokollen](/assets/images/help/repository/search-log-box-updated.png)
+   {% endif %}
+   {% else %}
 1. Um jeden Schritt, den Sie in Ihre Suche einbeziehen möchten, einzublenden, klicken Sie auf den Schritt. ![Name des Schrittes](/assets/images/help/repository/failed-check-step.png)
 1. Gib in der oberen rechten Ecke der Protokollausgabe im Suchfeld **Search logs** (Protokolle durchsuchen) eine Suchanfrage ein. ![Suchfeld zum Durchsuchen von Protokollen](/assets/images/help/repository/search-log-box.png)
-{% endif %}
+   {% endif %}
 
 ### Herunterladen von Protokollen
 
@@ -67,18 +68,19 @@ Sie können die Protokolldateien von Ihrem Workflowlauf herunterladen. Sie könn
 {% data reusables.repositories.view-run-superlinter %}
 {% data reusables.repositories.navigate-to-job-superlinter %}
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}
+
 1. In the upper right corner, click
-{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}{% octicon "gear" aria-label="The gear icon" %}{% else %}{% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}{% endif %} and select **Download log archive**.
-  {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
-  ![Dropdownmenü zum Herunterladen von Protokollen](/assets/images/help/repository/download-logs-drop-down-updated-2.png)
-  {% else %}
-  ![Dropdownmenü zum Herunterladen von Protokollen](/assets/images/help/repository/download-logs-drop-down-updated.png)
-  {% endif %}
-{% else %}
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}{% octicon "gear" aria-label="The gear icon" %}{% else %}{% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}{% endif %} and select **Download log archive**.
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+   ![Dropdownmenü zum Herunterladen von Protokollen](/assets/images/help/repository/download-logs-drop-down-updated-2.png)
+   {% else %}
+   ![Dropdownmenü zum Herunterladen von Protokollen](/assets/images/help/repository/download-logs-drop-down-updated.png)
+   {% endif %}
+   {% else %}
 1. In the upper right corner, click
-{% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %} and select **Download log archive**.
-  ![Dropdownmenü zum Herunterladen von Protokollen](/assets/images/help/repository/download-logs-drop-down.png)
-{% endif %}
+   {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %} and select **Download log archive**.
+   ![Dropdownmenü zum Herunterladen von Protokollen](/assets/images/help/repository/download-logs-drop-down.png)
+   {% endif %}
 
 ### Logs löschen
 
@@ -89,24 +91,25 @@ Du kannst die Logdateien aus Deiner Workflow-Ausführung löschen. {% data reusa
 {% data reusables.repositories.navigate-to-workflow-superlinter %}
 {% data reusables.repositories.view-run-superlinter %}
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}
+
 1. In the upper right corner, click
-{% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}.
-    {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
- ![Kebab-horizontal icon](/assets/images/help/repository/workflow-run-kebab-horizontal-icon-updated-2.png)
-    {% else %}
-    ![Kebab-horizontal icon](/assets/images/help/repository/workflow-run-kebab-horizontal-icon-updated.png)
-    {% endif %}
+   {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}.
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+   ![Kebab-horizontal icon](/assets/images/help/repository/workflow-run-kebab-horizontal-icon-updated-2.png)
+   {% else %}
+   ![Kebab-horizontal icon](/assets/images/help/repository/workflow-run-kebab-horizontal-icon-updated.png)
+   {% endif %}
 2. Um die Logdateien zu löschen, klicke auf **Delete all logs** (Alle Logs löschen) und überprüfe die Bestätigungsanfrage.
-  {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
-  ![Delete all logs](/assets/images/help/repository/delete-all-logs-updated-2.png)
-  {% else %}
-  ![Delete all logs](/assets/images/help/repository/delete-all-logs-updated.png)
-  {% endif %}
-After deleting logs, the **Delete all logs** button is removed to indicate that no log files remain in the workflow run.
-{% else %}
-1. In the upper right corner, click {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}. ![Kebab-horizontal icon](/assets/images/help/repository/workflow-run-kebab-horizontal-icon.png)
-2. Um die Logdateien zu löschen, klicke auf **Delete all logs** (Alle Logs löschen) und überprüfe die Bestätigungsanfrage. ![Delete all logs](/assets/images/help/repository/delete-all-logs.png) After the logs have been deleted, the **Delete all logs** button is removed to indicate that no log files remain in the workflow run.
-{% endif %}
+   {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+   ![Delete all logs](/assets/images/help/repository/delete-all-logs-updated-2.png)
+   {% else %}
+   ![Delete all logs](/assets/images/help/repository/delete-all-logs-updated.png)
+   {% endif %}
+   After deleting logs, the **Delete all logs** button is removed to indicate that no log files remain in the workflow run.
+   {% else %}
+3. In the upper right corner, click {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}. ![Kebab-horizontal icon](/assets/images/help/repository/workflow-run-kebab-horizontal-icon.png)
+4. Um die Logdateien zu löschen, klicke auf **Delete all logs** (Alle Logs löschen) und überprüfe die Bestätigungsanfrage. ![Delete all logs](/assets/images/help/repository/delete-all-logs.png) After the logs have been deleted, the **Delete all logs** button is removed to indicate that no log files remain in the workflow run.
+   {% endif %}
 
 ### Viewing logs with {% data variables.product.prodname_cli %}
 

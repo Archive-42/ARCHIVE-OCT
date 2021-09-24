@@ -1,6 +1,6 @@
 ---
 title: Befehlszeilenprogramme
-intro: '{% data variables.product.prodname_ghe_server %} enthält eine Vielzahl an Dienstprogrammen, mit denen bestimmte Probleme behoben oder bestimmte Aufgaben ausgeführt werden können.'
+intro: "{% data variables.product.prodname_ghe_server %} enthält eine Vielzahl an Dienstprogrammen, mit denen bestimmte Probleme behoben oder bestimmte Aufgaben ausgeführt werden können."
 redirect_from:
   - /enterprise/admin/articles/viewing-all-services/
   - /enterprise/admin/articles/command-line-utilities/
@@ -9,7 +9,7 @@ redirect_from:
   - /admin/configuration/command-line-utilities
 miniTocMaxHeadingLevel: 4
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: reference
 topics:
   - Enterprise
@@ -52,6 +52,7 @@ Dieses Dienstprogramm bereinigt eine Vielzahl von Caches auf dem Root-Volume, di
 ```shell
 ghe-cleanup-caches
 ```
+
 #### ghe-cleanup-settings
 
 Dieses Dienstprogramm löscht alle vorhandenen {% data variables.enterprise.management_console %}-Einstellungen.
@@ -78,6 +79,7 @@ $ ghe-config <em>core.github-hostname</em> <em>'example.com'</em>
 $ ghe-config -l
 # Listet alle Konfigurationswerte auf
 ```
+
 Allows you to find the universally unique identifier (UUID) of your node in `cluster.conf`.
 
 ```shell
@@ -87,10 +89,11 @@ Allows you to find the universally unique identifier (UUID) of your node in `clu
 {% if currentVersion ver_gt "enterprise-server@2.21" %}
 Allows you to exempt a list of users from API rate limits. For more information, see "[Rate Limiting](/enterprise/{{ page.version }}/v3/#rate-limiting)."
 
-``` shell
+```shell
 $ ghe-config app.github.rate-limiting-exempt-users "<em>hubot</em> <em>github-actions</em>"
 # Exempts the users hubot and github-actions from rate limits
 ```
+
 {% endif %}
 
 #### ghe-config-apply
@@ -120,9 +123,11 @@ ghe-dbconsole
 ```
 
 #### ghe-es-index-status
+
 Dieses Dienstprogramm gibt eine Zusammenfassung der ElasticSearch-Indizes im CSV-Format zurück.
 
 Eine Indexzusammenfassung mit einer Header-Kopfzeile für `STDOUT` ausgeben:
+
 ```shell
 $ ghe-es-index-status -do
 > warning: parser/current is loading parser/ruby23, which recognizes
@@ -253,10 +258,10 @@ Dieses Dienstprogramm zeigt Informationen zu aktiven und zu in der Warteschlange
 
 Mit diesem Dienstprogramm kann ermittelt werden, ob der Resque-Server beim Verarbeiten der Hintergrundaufträge Probleme hat. Eines der folgenden Szenarien kann auf ein Problem mit Resque hinweisen:
 
-* Die Anzahl der Hintergrundaufträge wird erhöht, während die aktiven Aufträge identisch bleiben.
-* Die Ereignis-Feeds werden nicht aktualisiert.
-* Webhooks are not being triggered.
-* Die Weboberfläche wird nach einem Git-Push nicht aktualisiert.
+- Die Anzahl der Hintergrundaufträge wird erhöht, während die aktiven Aufträge identisch bleiben.
+- Die Ereignis-Feeds werden nicht aktualisiert.
+- Webhooks are not being triggered.
+- Die Weboberfläche wird nach einem Git-Push nicht aktualisiert.
 
 Wenn Sie vermuten, dass Resque fehlschlägt, wenden Sie sich zur Unterstützung an {% data variables.contact.contact_ent_support %}.
 
@@ -276,16 +281,19 @@ $ ghe-resque-info -r <em>QUEUE</em>
 Dieses Dienstprogramm kann dabei helfen, SAML-Datensätze zuzuordnen.
 
 Um eine CSV-Datei mit allen SAML-Zuordnungen für Deine {% data variables.product.product_name %}-Benutzer zu erstellen:
+
 ```shell
 $ ghe-saml-mapping-csv -d
 ```
 
 Um einen Trockenlauf der Aktualisierung von SAML-Zuordnungen mit neuen Werten durchzuführen:
+
 ```shell
 $ ghe-saml-mapping-csv -u -n -f /path/to/file
 ```
 
 Um SAML-Zuordnungen mit neuen Werten zu aktualisieren:
+
 ```shell
 $ ghe-saml-mapping-csv -u -f /path/to/file
 ```
@@ -346,12 +354,14 @@ $ ghe-ssh-check-host-keys
 ```
 
 Wenn ein kompromittierter Hostschlüssel gefunden wird, wird das Dienstprogramm mit dem Status `1` und der folgenden Meldung beendet:
+
 ```shell
 > One or more of your SSH host keys were found in the blacklist.
 > Please reset your host keys using ghe-ssh-roll-host-keys.
 ```
 
 Wenn kein kompromittierter Hostschlüssel gefunden wurde, wird das Dienstprogramm mit dem Status `0` und der folgenden Meldung beendet:
+
 ```shell
 > The SSH host keys were not found in the SSH host key blacklist.
 > No additional steps are needed/recommended at this time.
@@ -414,7 +424,7 @@ SSL-Session:
     Verify return code: 0 (ok)
 ```
 
-Wenn das SSL-Zertifikat des Remote-Servers *nicht* verifiziert werden kann, sollte Ihre `SSL-Sitzung` einen Rückgabecode ungleich null zurückgeben:
+Wenn das SSL-Zertifikat des Remote-Servers _nicht_ verifiziert werden kann, sollte Ihre `SSL-Sitzung` einen Rückgabecode ungleich null zurückgeben:
 
 ```
 SSL-Session:
@@ -430,6 +440,7 @@ SSL-Session:
 ```
 
 Sie können die folgenden zusätzlichen Optionen mit dem Dienstprogramm verwenden:
+
 - Mit dem Flag `-r` können Sie ein CA-Zertifikat deinstallieren.
 - Mit dem Flag `-h` werden mehr Nutzungsinformationen angezeigt.
 
@@ -473,26 +484,33 @@ ghe-webhook-logs
 
 Um alle fehlgeschlagenen Hook-Auslieferungen vom Vortag anzuzeigen:
 {% if currentVersion ver_gt "enterprise-server@2.22" %}
+
 ```shell
 ghe-webhook-logs -f -a <em>YYYY-MM-DD</em>
 ```
 
 The date format should be `YYYY-MM-DD`, `YYYY-MM-DD HH:MM:SS`, or `YYYY-MM-DD HH:MM:SS (+/-) HH:M`.
 {% else %}
+
 ```shell
 ghe-webhook-logs -f -a <em>YYYYMMDD</em>
 ```
+
 {% endif %}
 
 Um die vollständige Hook-Nutzlast, das Ergebnis und alle Ausnahmen für die Lieferung anzuzeigen:
 {% if currentVersion ver_gt "enterprise-server@2.22" %}
+
 ```shell
 ghe-webhook-logs -g <em>delivery-guid</em>
 ```
+
 {% else %}
+
 ```shell
 ghe-webhook-logs -g <em>delivery-guid</em> -v
 ```
+
 {% endif %}
 
 ### Clustering
@@ -509,29 +527,34 @@ $ ghe-cluster-status
 
 Dieses Dienstprogramm erstellt eine Support-Bundle-Tarball-Datei, die wichtige Protokolle von jedem Knoten in einer Geo-Replikation oder Clustering-Konfiguration enthält.
 
-Der Befehl erstellt standardmäßig die Tarball-Datei in */tmp*. Sie können die Tarball-Datei für das einfache Streaming über SSH auch mittels `cat` an `STDOUT` übertragen. Dies ist nützlich, wenn die Webbenutzeroberfläche nicht antwortet oder wenn der Download eines Support-Bundles von */setup/support* nicht funktioniert. Sie müssen diesen Befehl ausführen, wenn Sie ein *erweitertes* Bundle generieren möchten, das ältere Protokolle enthält. Sie können diesen Befehl auch ausführen, um das Cluster-Support-Bundle direkt für den {% data variables.product.prodname_enterprise %}-Support hochzuladen.
+Der Befehl erstellt standardmäßig die Tarball-Datei in _/tmp_. Sie können die Tarball-Datei für das einfache Streaming über SSH auch mittels `cat` an `STDOUT` übertragen. Dies ist nützlich, wenn die Webbenutzeroberfläche nicht antwortet oder wenn der Download eines Support-Bundles von _/setup/support_ nicht funktioniert. Sie müssen diesen Befehl ausführen, wenn Sie ein _erweitertes_ Bundle generieren möchten, das ältere Protokolle enthält. Sie können diesen Befehl auch ausführen, um das Cluster-Support-Bundle direkt für den {% data variables.product.prodname_enterprise %}-Support hochzuladen.
 
 Um ein Standardpaket zu erstellen:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-cluster-support-bundle -o' > cluster-support-bundle.tgz
 ```
 
 Um ein erweitertes Paket zu erstellen:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-cluster-support-bundle -x -o' > cluster-support-bundle.tgz
 ```
 
 Um ein Paket an {% data variables.contact.github_support %} zu senden:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-cluster-support-bundle -u'
 ```
 
 Um ein Paket an {% data variables.contact.github_support %} zu senden und das Paket mit einem Ticket zu verknüpfen:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-cluster-support-bundle -t <em>ticket-id</em>'
 ```
 
 {% if currentVersion ver_gt "enterprise-server@2.21" %}
+
 #### ghe-cluster-failover
 
 Fail over from active cluster nodes to passive cluster nodes. For more information, see "[Initiating a failover to your replica cluster](/enterprise/admin/enterprise-management/initiating-a-failover-to-your-replica-cluster)."
@@ -539,6 +562,7 @@ Fail over from active cluster nodes to passive cluster nodes. For more informati
 ```shell
 ghe-cluster-failover
 ```
+
 {% endif %}
 
 #### ghe-dpages
@@ -550,11 +574,13 @@ ghe-dpages
 ```
 
 Um eine Zusammenfassung des Repository-Standorts und -Zustands anzuzeigen:
+
 ```shell
 ghe-dpages status
 ```
 
 Um einen {% data variables.product.prodname_pages %}-Speicherdienst zu evakuieren, bevor ein Cluster-Knoten evakuiert wird:
+
 ```shell
 ghe-dpages evacuate pages-server-<em>UUID</em>
 ```
@@ -632,6 +658,7 @@ Weitere Informationen finden Sie in unserem Leitfaden [Benutzer-, Organisations-
 #### git-import-detect
 
 Ermittelt anhand einer URL, welcher Quellcodeverwaltungssystem-Typ sich am anderen Ende befindet. Während eines manuellen Imports ist dieser wahrscheinlich bereits bekannt. Dies kann jedoch bei automatisierten Skripts sehr nützlich sein.
+
 ```shell
 git-import-detect
 ```
@@ -639,6 +666,7 @@ git-import-detect
 #### git-import-hg-raw
 
 Dieses Hilfsprogramm importiert ein Mercurial-Repository in dieses Git-Repository. Weitere Informationen findest Du unter „[Daten aus Versionskontroll-Systemen von Drittanbietern importieren](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)“.
+
 ```shell
 git-import-hg-raw
 ```
@@ -646,6 +674,7 @@ git-import-hg-raw
 #### git-import-svn-raw
 
 Dieses Dienstprogramm importiert Daten über den Subversion-Verlauf und über Dateien in einen Git-Branch. Dies ist eine direkte Kopie der Struktur, wobei Trunk- oder Branch-Unterscheidungen ignoriert werden. Weitere Informationen findest Du unter „[Daten aus Versionskontroll-Systemen von Drittanbietern importieren](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)“.
+
 ```shell
 git-import-svn-raw
 ```
@@ -653,6 +682,7 @@ git-import-svn-raw
 #### git-import-tfs-raw
 
 This utility imports from Team Foundation Version Control (TFVC). Weitere Informationen findest Du unter „[Daten aus Versionskontroll-Systemen von Drittanbietern importieren](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)“.
+
 ```shell
 git-import-tfs-raw
 ```
@@ -660,6 +690,7 @@ git-import-tfs-raw
 #### git-import-rewrite
 
 Dieses Dienstprogramm schreibt das importierte Repository erneut. This gives you a chance to rename authors and, for Subversion and TFVC, produces Git branches based on folders. Weitere Informationen findest Du unter „[Daten aus Versionskontroll-Systemen von Drittanbietern importieren](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)“.
+
 ```shell
 git-import-rewrite
 ```
@@ -681,19 +712,22 @@ ghe-diagnostics
 {% data reusables.enterprise_enterprise_support.use_ghe_cluster_support_bundle %}
 Dieses Dienstprogramm erstellt eine Support-Bundle-Tarball-Datei, die wichtige Protokolle aus Ihrer Instanz enthält.
 
-Der Befehl erstellt standardmäßig die Tarball-Datei in */tmp*. Sie können die Tarball-Datei für das einfache Streaming über SSH auch mittels `cat` an `STDOUT` übertragen. Dies ist nützlich, wenn die Webbenutzeroberfläche nicht antwortet oder wenn der Download eines Support-Bundles von */setup/support* nicht funktioniert. Sie müssen diesen Befehl ausführen, wenn Sie ein *erweitertes* Bundle generieren möchten, das ältere Protokolle enthält. Sie können diesen Befehl auch ausführen, um das Support-Bundle direkt für den {% data variables.product.prodname_enterprise %}-Support hochzuladen.
+Der Befehl erstellt standardmäßig die Tarball-Datei in _/tmp_. Sie können die Tarball-Datei für das einfache Streaming über SSH auch mittels `cat` an `STDOUT` übertragen. Dies ist nützlich, wenn die Webbenutzeroberfläche nicht antwortet oder wenn der Download eines Support-Bundles von _/setup/support_ nicht funktioniert. Sie müssen diesen Befehl ausführen, wenn Sie ein _erweitertes_ Bundle generieren möchten, das ältere Protokolle enthält. Sie können diesen Befehl auch ausführen, um das Support-Bundle direkt für den {% data variables.product.prodname_enterprise %}-Support hochzuladen.
 
 Um ein Standardpaket zu erstellen:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-support-bundle -o' > support-bundle.tgz
 ```
 
 Um ein erweitertes Paket zu erstellen:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-support-bundle -x -o' > support-bundle.tgz
 ```
 
 Um ein Paket an {% data variables.contact.github_support %} zu senden:
+
 ```shell
 $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-support-bundle -u'
 ```
@@ -709,11 +743,13 @@ $ ssh -p 122 admin@<em>hostname</em> -- 'ghe-support-bundle -t <em>ticket-id</em
 Dieses Dienstprogramm sendet Informationen von Ihrer Appliance an den {% data variables.product.prodname_enterprise %}-Support. Sie können eine lokale Datei oder einen Datenstrom von bis zu 100 MB über `STDIN` angeben. Optional können die hochgeladenen Daten einem Supportticket zugeordnet werden.
 
 Um eine Datei an {% data variables.contact.github_support %} zu senden und die Datei mit einem Ticket zu verknüpfen:
+
 ```shell
 ghe-support-upload -f <em>path/to/your/file</em> -t <em>ticket-id</em>
 ```
 
 Um Daten über `STDIN` hochzuladen und die Daten mit einem Ticket verknüpfen:
+
 ```shell
 <em>ghe-repl-status -vv</em> | ghe-support-upload -t <em>ticket-id</em> -d "<em>Verbose Replication Status</em>"
 ```
@@ -727,11 +763,13 @@ In diesem Beispiel sendet `ghe-repl-status -vv` ausführliche Statusinformatione
 Dieses Dienstprogramm installiert oder verifiziert ein Upgrade-Paket. Darüber hinaus können Sie dieses Dienstprogramm verwenden, um ein Rollback einer Patch-Veröffentlichung auszuführen, wenn ein Upgrade fehlschlägt oder unterbrochen wird. Weitere Informationen finden Sie unter „[Upgrade von {% data variables.product.prodname_ghe_server %}](/enterprise/{{ currentVersion }}/admin/guides/installation/upgrading-github-enterprise-server/)“.
 
 Um ein Upgrade-Paket zu überprüfen:
+
 ```shell
 ghe-upgrade --verify <em>UPGRADE-PACKAGE-FILENAME</em>
 ```
 
 Um ein Upgrade-Paket zu installieren:
+
 ```shell
 ghe-upgrade <em>UPGRADE-PACKAGE-FILENAME</em>
 ```
@@ -743,26 +781,29 @@ ghe-upgrade <em>UPGRADE-PACKAGE-FILENAME</em>
 Dieses Dienstprogramm verwaltet die geplante Installation von Upgrade-Paketen. Sie können geplante Installationen anzeigen, neu erstellen oder entfernen. Pläne müssen mit Cron-Ausdrücken erstellt werden. Weitere Informationen finden Sie im [Wikipedia-Eintrag zu Cron](https://de.wikipedia.org/wiki/Cron#Overview).
 
 Um eine neue Installation für ein Paket einzuplanen:
+
 ```shell
 $ ghe-upgrade-scheduler -c "0 2 15 12 *" <em>UPGRADE-PACKAGE-FILENAME</em>
 ```
 
 Um eingeplante Installationen für ein Paket anzuzeigen:
+
 ```shell
 $ ghe-upgrade-scheduler -s <em>UPGRADE PACKAGE FILENAME</em>
 > 0 2 15 12 * /usr/local/bin/ghe-upgrade -y -s <em>UPGRADE-PACKAGE-FILENAME</em> > /data/user/common/<em>UPGRADE-PACKAGE-FILENAME</em>.log 2>&1
 ```
 
 Um eingeplante Installationen für ein Paket zu entfernen:
+
 ```shell
 $ ghe-upgrade-scheduler -r <em>UPGRADE PACKAGE FILENAME</em>
 ```
 
 #### ghe-update-check
 
-Dieses Dienstprogramm überprüft, ob eine neue Patch-Veröffentlichung von {% data variables.product.prodname_enterprise %} verfügbar ist. Falls dies der Fall und auf Ihrer Instanz Speicherplatz verfügbar ist, wird das Paket heruntergeladen. Es wird standardmäßig unter */var/lib/ghe-updates* gespeichert. Anschließend kann ein Administrator [das Upgrade durchführen](/enterprise/admin/guides/installation/updating-the-virtual-machine-and-physical-resources/).
+Dieses Dienstprogramm überprüft, ob eine neue Patch-Veröffentlichung von {% data variables.product.prodname_enterprise %} verfügbar ist. Falls dies der Fall und auf Ihrer Instanz Speicherplatz verfügbar ist, wird das Paket heruntergeladen. Es wird standardmäßig unter _/var/lib/ghe-updates_ gespeichert. Anschließend kann ein Administrator [das Upgrade durchführen](/enterprise/admin/guides/installation/updating-the-virtual-machine-and-physical-resources/).
 
-Eine Datei mit dem enthaltenen Downloadstatus ist unter */var/lib/ghe-updates/ghe-update-check.status* verfügbar.
+Eine Datei mit dem enthaltenen Downloadstatus ist unter _/var/lib/ghe-updates/ghe-update-check.status_ verfügbar.
 
 Verwenden Sie den Switch `-i`, um nach der neuesten {% data variables.product.prodname_enterprise %}-Version zu suchen.
 

@@ -1,16 +1,16 @@
 ---
 title: Eine JavaScript-Aktion erstellen
-intro: 'In diesem Handbuch erfährst Du, wie Du mit dem Toolkit für Aktionen eine JavaScript-Aktion erstellen kannst.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "In diesem Handbuch erfährst Du, wie Du mit dem Toolkit für Aktionen eine JavaScript-Aktion erstellen kannst."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/creating-a-javascript-action
   - /github/automating-your-workflow-with-github-actions/creating-a-javascript-action
   - /actions/automating-your-workflow-with-github-actions/creating-a-javascript-action
   - /actions/building-actions/creating-a-javascript-action
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Action development
@@ -39,7 +39,7 @@ Before you begin, you'll need to download Node.js and create a public {% data va
 
 1. Lade die Anwendung Node.js 12.x, welche npm enthält, herunter, und installiere sie.
 
-  https://nodejs.org/de/download/current/
+https://nodejs.org/de/download/current/
 
 1. Create a new public repository on {% data variables.product.product_location %} and call it "hello-world-javascript-action". Weitere Informationen finden Sie unter „[Neues Repository erstellen](/articles/creating-a-new-repository)“.
 
@@ -47,34 +47,34 @@ Before you begin, you'll need to download Node.js and create a public {% data va
 
 1. Gehe in Deinem Terminal zum Verzeichnisse Deines neuen Repositorys.
 
-  ```shell
-  cd hello-world-javascript-action
-  ```
+```shell
+cd hello-world-javascript-action
+```
 
 1. From your terminal, initialize the directory with npm to generate a `package.json` file.
 
-  ```shell
-  npm init -y
-  ```
+```shell
+npm init -y
+```
 
 ### Eine Datei für die Metadaten der Aktion erstellen
 
 Create a new file named `action.yml` in the `hello-world-javascript-action` directory with the following example code. Weitere Informationen findest Du unter „[Metadaten-Syntax für {% data variables.product.prodname_actions %}](/actions/creating-actions/metadata-syntax-for-github-actions)“.
 
 ```yaml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: "Hello World"
+description: "Greet someone and record the time"
 inputs:
-  who-to-greet:  # ID der Eingabe
-    description: 'Who to greet'
+  who-to-greet: # ID der Eingabe
+    description: "Who to greet"
     required: true
-    default: 'World'
+    default: "World"
 outputs:
   time: # ID der Ausgabe
-    description: 'The time we greeted you'
+    description: "The time we greeted you"
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: "node12"
+  main: "index.js"
 ```
 
 Diese Datei definiert die Eingabe `who-to-greet` und die Ausgabe `time`. Sie gibt dem Action-Runner auch an, wie diese JavaScript-Aktion ausgeführt werden soll.
@@ -107,27 +107,28 @@ GitHub Actions stellt Kontextinformationen zum Webhook-Ereignis, zu den Git-Refs
 Füge eine neue Datei mit der Bezeichnung `index.js` mit dem folgenden Code hinzu.
 
 {% raw %}
+
 ```javascript
-const core = require('@actions/core');
-const github = require('@actions/github');
+const core = require("@actions/core");
+const github = require("@actions/github");
 
 try {
   // `who-to-greet` Eingabedaten, in der Metadaten-Datei der Aktion definiert
-  const nameToGreet = core.getInput('who-to-greet');
+  const nameToGreet = core.getInput("who-to-greet");
   console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
+  const time = new Date().toTimeString();
   core.setOutput("time", time);
   // Hole die JSON Webhook Nutzlast fuer das Ereignis, das den Workflow angestossen hat
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  const payload = JSON.stringify(github.context.payload, undefined, 2);
   console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
 }
 ```
+
 {% endraw %}
 
 Wenn im o. g. `index.js`-Beispiel ein Fehler ausgegeben wird, nutzt `core.setFailed(error.message);` das Aktions-Toolkit-Paket [`@actions/core`](https://github.com/actions/toolkit/tree/main/packages/core), um eine Meldung zu protokollieren und einen Fehler-Exit-Code festzulegen. Weitere Informationen findest Du unter "[Exit Codes für Aktionen setzen](/actions/creating-actions/setting-exit-codes-for-actions)."
-
 
 ### Eine README erstellen
 
@@ -163,7 +164,7 @@ Beispielverwendung
 
 verwendet: actions/hello-world-javascript-action@v1.1
 mit:
-  who-to-greet: 'Mona the Octocat'
+who-to-greet: 'Mona the Octocat'
 ```
 
 ### Committe, tagge und pushe Deine Aktion auf GitHub
@@ -173,7 +174,6 @@ mit:
 Committen Sie in Ihrem Terminal Ihre Dateien `action.yml`, `index.js`, `node_modules`, `package.json`, `package-lock.json` und `README.md`. Falls Sie eine `.gitignore`-Datei hinzugefügt haben, die `node_modules` auflistet, müssen Sie diese Zeile entfernen, um das Verzeichnis `node_modules` zu committen.
 
 Es hat sich bewährt, auch ein Versions-Tag für Releases Deiner Aktion hinzuzufügen. Weitere Informationen zur Versionierung Deiner Aktion findest Du unter "[Informationen zu Aktionen](/actions/automating-your-workflow-with-github-actions/about-actions#using-release-management-for-actions)."
-
 
 ```shell
 git add action.yml index.js node_modules/* package.json package-lock.json README.md
@@ -188,13 +188,14 @@ Checking in your `node_modules` directory can cause problems. As an alternative,
 
 1. Kompiliere die Datei `index.js`. `ncc build index.js --license licenses.txt`
 
-  Es wird die neue Datei `dist/index.js` mit Deinem Code und den kompilierten Modulen angezeigt. You will also see an accompanying `dist/licenses.txt` file containing all the licenses of the `node_modules` you are using.
+Es wird die neue Datei `dist/index.js` mit Deinem Code und den kompilierten Modulen angezeigt. You will also see an accompanying `dist/licenses.txt` file containing all the licenses of the `node_modules` you are using.
 
 1. Ändere das Schlüsselwort `main` in der Datei `action.yml` so, dass die neue Datei `dist/index.js` verwendet wird. `main: 'dist/index.js'`
 
 1. Falls Du Dein Verzeichnis `node_modules` bereits eingecheckt hast, entferne es. `rm -rf node_modules/*`
 
 1. Committe in Deinem Terminal die Updates für Deine Dateien `action.yml`, `dist/index.js` und `node_modules`.
+
 ```shell
 git add action.yml dist/index.js node_modules/*
 git commit -m "Use vercel/ncc"
@@ -215,6 +216,7 @@ This example demonstrates how your new public action can be run from within an e
 Copy the following YAML into a new file at `.github/workflows/main.yml`, and update the `uses: octocat/hello-world-javascript-action@v1.1` line with your username and the name of the public repository you created above. Darüber hinaus können Sie die Eingabe `who-to-greet` durch Ihren Namen ersetzen.
 
 {% raw %}
+
 ```yaml
 on: [push]
 
@@ -227,11 +229,12 @@ jobs:
         id: hello
         uses: octocat/hello-world-javascript-action@v1.1
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: "Mona the Octocat"
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
+
 {% endraw %}
 
 When this workflow is triggered, the runner will download the `hello-world-javascript-action` action from your public repository and then execute it.
@@ -242,6 +245,7 @@ Kopieren Sie den Workflow-Code im Repository Ihrer Aktion in eine `.github/workf
 
 {% raw %}
 **.github/workflows/main.yml**
+
 ```yaml
 zu: [push]
 
@@ -263,6 +267,7 @@ Jobs:
       - Name: Get the output time
         run:{{ steps.hello.outputs.time }}echo
 ```
+
 {% endraw %}
 
 Klicke in Deinem Repository auf die Registerkarte **Actions** (Aktionen), und wähle die neueste Workflow-Ausführung aus. {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}Under **Jobs** or in the visualization graph, click **A job to say hello**. {% endif %}You should see "Hello Mona the Octocat" or the name you used for the `who-to-greet` input and the timestamp printed in the log.

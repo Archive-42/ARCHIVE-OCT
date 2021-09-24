@@ -1,15 +1,15 @@
 ---
 title: Encrypted secrets
 intro: 'Encrypted secrets allow you to store sensitive information in your organization{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" %}, repository, or repository environments{% else %} or repository{% endif %}.'
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
   - /actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
   - /actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -31,9 +31,9 @@ For secrets stored at the environment level, you can enable required reviewers t
 
 {% data reusables.codespaces.secrets-naming %}
 
-  For example, {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}a secret created at the environment level must have a unique name in that environment, {% endif %}a secret created at the repository level must have a unique name in that repository, and a secret created at the organization level must have a unique name at that level.
+For example, {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}a secret created at the environment level must have a unique name in that environment, {% endif %}a secret created at the repository level must have a unique name in that repository, and a secret created at the organization level must have a unique name at that level.
 
-  {% data reusables.codespaces.secret-precedence %}{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %} Similarly, if an organization, repository, and environment all have a secret with the same name, the environment-level secret takes precedence.{% endif %}
+{% data reusables.codespaces.secret-precedence %}{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %} Similarly, if an organization, repository, and environment all have a secret with the same name, the environment-level secret takes precedence.{% endif %}
 
 To help ensure that {% data variables.product.prodname_dotcom %} redacts your secret in logs, avoid using structured data as the values of secrets. Vermeide beispielsweise Geheimnisse zu erstellen, die JSON oder codierte Git-Blobs enthalten.
 
@@ -66,6 +66,7 @@ Beim Generieren von Anmeldeinformationen wird empfohlen, möglichst geringe Bere
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Click **New repository secret**.
 1. Geben Sie einen Namen für Ihr Geheimnis in das Eingabefeld **Name** ein.
 1. Geben Sie den Wert für Ihr Geheimnis ein.
@@ -88,12 +89,13 @@ If your repository {% if currentVersion == "free-pro-team@latest" or currentVers
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.github-actions.sidebar-environment %}
+
 1. Click on the environment that you want to add a secret to.
 1. Under **Environment secrets**, click **Add secret**.
 1. Geben Sie einen Namen für Ihr Geheimnis in das Eingabefeld **Name** ein.
 1. Geben Sie den Wert für Ihr Geheimnis ein.
 1. Klicken Sie auf **Add secret** (Geheimnis hinzufügen).
-{% endif %}
+   {% endif %}
 
 ### Erstellen verschlüsselter Geheimnisse für eine Organisation
 
@@ -104,6 +106,7 @@ Beim Erstellen eines geheimen Schlüssels in einer Organisation können Sie eine
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Click **New organization secret**.
 1. Geben Sie einen Namen für Ihr Geheimnis in das Eingabefeld **Name** ein.
 1. Geben Sie den **Value** für Ihr Geheimnis ein.
@@ -117,6 +120,7 @@ Sie können überprüfen, welche Zugriffsrichtlinien auf einen geheimen Schlüss
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Die Liste der Geheimnisse enthält alle konfigurierten Berechtigungen und Richtlinien. Ein Beispiel: ![Geheimliste](/assets/images/help/settings/actions-org-secrets-list.png)
 1. Weitere Informationen zu den konfigurierten Berechtigungen für jeden geheimen Schlüssel finden Sie unter **Aktualisieren**.
 
@@ -131,6 +135,7 @@ Sie können überprüfen, welche Zugriffsrichtlinien auf einen geheimen Schlüss
 Um eine Aktion mit einem Geheimnis als Eingabe- oder Umgebungsvariable zu versehen, kannst Du den `secrets` Kontext verwenden, um auf Geheimnisse zuzugreifen, die Du in Deinem Repository erstellt hast. Weitere Informationen findest Du unter "[Kontext und Ausdrucks-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions)" und "[Workflow-Syntax für {% data variables.product.prodname_actions %}](/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)."
 
 {% raw %}
+
 ```yaml
 steps:
   - name: Hello world action
@@ -139,6 +144,7 @@ steps:
     env: # Oder als Umgebunsvariable ("environment variable")
       super_secret: ${{ secrets.SuperSecret }}
 ```
+
 {% endraw %}
 
 Wann immer dies möglich ist, vermeide die Übergabe von Geheimnissen zwischen Prozessen von der Befehlszeile aus. Befehlszeilen-Prozesse können für andere Benutzer (mithilfe des Befehls `ps`) sichtbar sein oder von [„security audit events“ (Ereignissen zur Sicherheits-Überprüfung)](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing) erfasst werden. Um den Schutz von Geheimnissen zu unterstützen, solltest Du die Verwendung von Umgebungsvariablen, `STDIN` oder andere vom Zielprozess unterstützte Mechanismen in Betracht ziehen.
@@ -148,6 +154,7 @@ Wenn Sie Geheimnisse innerhalb einer Kommandozeile übergeben müssen, umschlie�
 #### Beispiel mit Bash
 
 {% raw %}
+
 ```yaml
 steps:
   - shell: bash
@@ -156,11 +163,13 @@ steps:
     run: |
       example-command "$SUPER_SECRET"
 ```
+
 {% endraw %}
 
 #### Beispiel mit PowerShell
 
 {% raw %}
+
 ```yaml
 steps:
   - shell: pwsh
@@ -169,11 +178,13 @@ steps:
     run: |
       example-command "$env:SUPER_SECRET"
 ```
+
 {% endraw %}
 
 #### Beispiel mit Cmd.exe
 
 {% raw %}
+
 ```yaml
 steps:
   - shell: cmd
@@ -182,6 +193,7 @@ steps:
     run: |
       example-command "%SUPER_SECRET%"
 ```
+
 {% endraw %}
 
 ### Einschränkungen für Geheimnisse
@@ -190,9 +202,9 @@ You can store up to 1,000 organization secrets{% if currentVersion == "free-pro-
 
 A workflow created in a repository can access the following number of secrets:
 
-* All 100 repository secrets.
-* If the repository is assigned access to more than 100 organization secrets, the workflow can only use the first 100 organization secrets (sorted alphabetically by secret name).
-{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}* All 100 environment secrets.{% endif %}
+- All 100 repository secrets.
+- If the repository is assigned access to more than 100 organization secrets, the workflow can only use the first 100 organization secrets (sorted alphabetically by secret name).
+  {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}\* All 100 environment secrets.{% endif %}
 
 Geheimnisse sind auf 64 KB beschränkt. Um Geheimnisse zu verwenden, die größer als 64 KB sind, können Sie verschlüsselte Geheimnisse in Ihrem Repository speichern und die Passphrase zur Entschlüsselung als Geheimnis auf {% data variables.product.prodname_dotcom %} speichern. Sie können beispielsweise `gpg` verwenden, um Ihre Anmeldeinformationen lokal zu verschlüsseln, bevor Sie die Datei in Ihrem Repository auf {% data variables.product.prodname_dotcom %} einchecken. Weitere Informationen finden Sie auf der „[gpg-Manpage](https://www.gnupg.org/gph/de/manual/r1023.html)“.
 
@@ -204,9 +216,9 @@ Geheimnisse sind auf 64 KB beschränkt. Um Geheimnisse zu verwenden, die größ
 
 1. Führe den folgenden Befehl von Deinem Terminal aus, um die Datei `my_secret.json` mit `gpg` und dem Verschlüsselungs-Algorithmus AES256 zu verschlüsseln.
 
- ``` shell
- $ gpg --symmetric --cipher-algo AES256 my_secret.json
- ```
+```shell
+$ gpg --symmetric --cipher-algo AES256 my_secret.json
+```
 
 1. Du wirst aufgefordert, eine Passphrase einzugeben. Merken Sie sich die Passphrase, denn Sie müssen ein neues Geheimnis auf {% data variables.product.prodname_dotcom %} mit der Passphrase als Wert erstellen.
 
@@ -216,48 +228,50 @@ Geheimnisse sind auf 64 KB beschränkt. Um Geheimnisse zu verwenden, die größ
 
 1. Erstellen Sie ein Shell-Skript, um das Passwort zu entschlüsseln. Speichern Sie diese Datei als `decrypt_secret.sh`.
 
-  ``` shell
-  
+```shell
 
-  Die Datei
-  mkdir $HOME/secrets
-  --batch entschlüsseln, um den interaktiven Befehl
-  zu verhindern - --ja, um "Ja" für Fragen
-  gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE"
-  --output $HOME/secrets/my_secret.json my_secret.json.gp
-  ```
+
+Die Datei
+mkdir $HOME/secrets
+--batch entschlüsseln, um den interaktiven Befehl
+zu verhindern - --ja, um "Ja" für Fragen
+gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE"
+--output $HOME/secrets/my_secret.json my_secret.json.gp
+```
 
 1. Stellen Sie sicher, dass Ihr Shell-Skript ausführbar ist, bevor Sie es in Ihrem Repository einchecken.
 
-  ``` shell
-  $ chmod +x decrypt_secret.sh
-  $ git add decrypt_secret.sh
-  $ git commit -m "Add new decryption script"
-  $ git push
-  ```
+```shell
+$ chmod +x decrypt_secret.sh
+$ git add decrypt_secret.sh
+$ git commit -m "Add new decryption script"
+$ git push
+```
 
 1. Verwenden Sie in Ihrem Workflow einen `step`, um das Shell-Skript aufzurufen und das Geheimnis zu entschlüsseln. Um in der Umgebung, in der Dein Workflow läuft, eine Kopie Deines Projektarchivs zu haben, musst Du die Aktion [`actions/checkout`](https://github.com/actions/checkout) verwenden. Referenzieren Sie Ihr Shell-Skript mit dem Befehl `run` relativ zum Root Ihres Repositorys.
 
 {% raw %}
-  ```yaml
-  name: Workflows with large secrets
 
-  on: push
+```yaml
+name: Workflows with large secrets
 
-  jobs:
-    my-job:
-      name: My Job
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Decrypt large secret
-          run: ./.github/scripts/decrypt_secret.sh
-          env:
-            LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-        # Dieser Befehl ist nur ein Beispiel, um zu zeigen, dass Dein Geheimnis ausgegeben wird
-        # Stelle sicher, dass Du alle Druckanweisungen Deiner Geheimnisse entfernst. Github
-        # verbirgt keine Geheimnisse, die diese Umgehung verwenden.
-        - name: Test printing your secret (Remove this step in production)
-          run: cat $HOME/secrets/my_secret.json
-  ```
+on: push
+
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # Dieser Befehl ist nur ein Beispiel, um zu zeigen, dass Dein Geheimnis ausgegeben wird
+      # Stelle sicher, dass Du alle Druckanweisungen Deiner Geheimnisse entfernst. Github
+      # verbirgt keine Geheimnisse, die diese Umgehung verwenden.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/secrets/my_secret.json
+```
+
 {% endraw %}

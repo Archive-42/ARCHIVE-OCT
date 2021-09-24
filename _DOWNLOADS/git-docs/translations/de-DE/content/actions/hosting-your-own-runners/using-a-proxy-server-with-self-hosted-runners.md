@@ -1,12 +1,12 @@
 ---
 title: Einen Proxy-Server für selbst-gehostete Runner verwenden
-intro: 'Du kannst selbst gehostete Runner so konfigurieren, dass sie einen Proxy-Server verwenden, um mit {% data variables.product.product_name %} zu kommunizieren.'
+intro: "Du kannst selbst gehostete Runner so konfigurieren, dass sie einen Proxy-Server verwenden, um mit {% data variables.product.product_name %} zu kommunizieren."
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/using-a-proxy-server-with-self-hosted-runners
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 ---
 
@@ -19,17 +19,17 @@ type: tutorial
 
 Wenn Dein selbst-gehosteten Runner über einen Proxy-Server kommunizieren soll, verwendet die Anwendung für selbst-gehostete Runner die Proxy-Konfigurationen in den folgenden Umgebungsvariablen:
 
-* `https_proxy`: Proxy-URL für HTTPS-Datenverkehr. Du kannst bei Bedarf auch Anmeldeinformationen zur einfachen Authentifizierung angeben. Ein Beispiel:
-  * `http://proxy.local`
-  * `http://192.168.1.1:8080`
-  * `http://username:password@proxy.local`
-* `http_proxy`: Proxy-URL für den HTTP-Verkehr. Du kannst bei Bedarf auch Anmeldeinformationen zur einfachen Authentifizierung angeben. Ein Beispiel:
-  * `http://proxy.local`
-  * `http://192.168.1.1:8080`
-  * `http://username:password@proxy.local`
-* `no_proxy`: Durch Kommas getrennte Liste von Hosts, die keinen Proxy verwenden sollten. In `no_proxy` sind nur Host-Namen erlaubt; Du kannst keine IP-Adressen verwenden. Ein Beispiel:
-  * `example.com`
-  * `example.com,myserver.local:443,example.org`
+- `https_proxy`: Proxy-URL für HTTPS-Datenverkehr. Du kannst bei Bedarf auch Anmeldeinformationen zur einfachen Authentifizierung angeben. Ein Beispiel:
+  - `http://proxy.local`
+  - `http://192.168.1.1:8080`
+  - `http://username:password@proxy.local`
+- `http_proxy`: Proxy-URL für den HTTP-Verkehr. Du kannst bei Bedarf auch Anmeldeinformationen zur einfachen Authentifizierung angeben. Ein Beispiel:
+  - `http://proxy.local`
+  - `http://192.168.1.1:8080`
+  - `http://username:password@proxy.local`
+- `no_proxy`: Durch Kommas getrennte Liste von Hosts, die keinen Proxy verwenden sollten. In `no_proxy` sind nur Host-Namen erlaubt; Du kannst keine IP-Adressen verwenden. Ein Beispiel:
+  - `example.com`
+  - `example.com,myserver.local:443,example.org`
 
 Die Proxy-Umgebungsvariablen werden beim Starten der Anwendung für selbst-gehostete Runner gelesen. Daher musst Du die Umgebungsvariablen festlegen, bevor Du die Anwendung für selbst-gehostete Runner konfigurierst oder startest. Wenn sich Deine Proxy-Konfiguration ändert, musst Du die Anwendung für selbst-gehostete Runner neu starten.
 

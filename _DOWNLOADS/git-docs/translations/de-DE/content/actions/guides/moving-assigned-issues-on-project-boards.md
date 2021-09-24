@@ -1,11 +1,11 @@
 ---
 title: Moving assigned issues on project boards
-intro: 'You can use {% data variables.product.prodname_actions %} to automatically move an issue to a specific column on a project board when the issue is assigned.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to automatically move an issue to a specific column on a project board when the issue is assigned."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -30,24 +30,27 @@ In the tutorial, you will first make a workflow file that uses the [`alex-page/g
 3. {% data reusables.actions.make-workflow-file %}
 4. Copy the following YAML contents into your workflow file.
 
-    {% raw %}
-    ```yaml{:copy}
-    name: Move assigned card
-    on:
-      issues:
-        types:
-          - assigned
-    jobs:
-      move-assigned-card:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: alex-page/github-project-automation-plus@v0.3.0
-            with:
-              project: Docs Work
-              column: In Progress
-              repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-    ```
-    {% endraw %}
+   {% raw %}
+
+   ```yaml{:copy}
+   name: Move assigned card
+   on:
+     issues:
+       types:
+         - assigned
+   jobs:
+     move-assigned-card:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: alex-page/github-project-automation-plus@v0.3.0
+           with:
+             project: Docs Work
+             column: In Progress
+             repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+   ```
+
+   {% endraw %}
+
 5. Customize the parameters in your workflow file:
    - Change the value for `project` to the name of your project board. If you have multiple project boards with the same name, the `alex-page/github-project-automation-plus` action will act on all projects with the specified name.
    - Change the value for `column` to the name of the column where you want issues to move when they are assigned.

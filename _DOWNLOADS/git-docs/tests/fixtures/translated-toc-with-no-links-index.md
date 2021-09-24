@@ -1,7 +1,7 @@
 ---
 title: Translated TOC
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 ---
 
 ### 目次

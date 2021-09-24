@@ -1,8 +1,8 @@
 ---
 title: Workflow-Befehle für GitHub-Aktionen
 shortTitle: Workflow-Befehle
-intro: 'Du kannst Workflow-Befehle verwenden, wenn Du Shell-Befehle in einem Workflow oder im Code einer Aktion ausführst.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Workflow-Befehle verwenden, wenn Du Shell-Befehle in einem Workflow oder im Code einer Aktion ausführst."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/development-tools-for-github-actions
   - /github/automating-your-workflow-with-github-actions/development-tools-for-github-actions
@@ -10,9 +10,9 @@ redirect_from:
   - /actions/reference/development-tools-for-github-actions
   - /actions/reference/logging-commands-for-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -29,7 +29,7 @@ Most workflow commands use the `echo` command in a specific format, while others
 Workflow-Befehle verwenden den Befehl `echo` in einem bestimmten Format.
 {% endif %}
 
-``` bash
+```bash
 echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
 ```
 
@@ -50,19 +50,21 @@ echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
 Das [actions/toolkit](https://github.com/actions/toolkit) enthält eine Reihe von Funktionen, die als Workflow-Befehle ausgeführt werden können. Verwende die Syntax `::`, um die Workflow-Befehle in Deiner YAML-Datei auszuführen. Diese Befehle werden dann über `stdout` an den Runner gesandt. For example, instead of using code to set an output, as below:
 
 ```javascript
-core.setOutput('SELECTED_COLOR', 'green');
+core.setOutput("SELECTED_COLOR", "green");
 ```
 
 You can use the `set-output` command in your workflow to set the same value:
 
 {% raw %}
-``` yaml
-      - name: Set selected color
-        run: echo '::set-output name=SELECTED_COLOR::green'
-        id: random-color-generator
-      - name: Get color
-        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+
+```yaml
+- name: Set selected color
+  run: echo '::set-output name=SELECTED_COLOR::green'
+  id: random-color-generator
+- name: Get color
+  run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
 ```
+
 {% endraw %}
 
 Die folgende Tabelle zeigt, welche Toolkit-Funktionen innerhalb eines Workflows verfügbar sind:
@@ -89,6 +91,7 @@ Die folgende Tabelle zeigt, welche Toolkit-Funktionen innerhalb eines Workflows 
 | `core.warning`                                                                                                                                                                                                              | `warning file`                                          |
 
 {% if currentVersion ver_lt "enterprise-server@2.23" %}
+
 ### Setting an environment variable
 
 `::set-env name={name}::{value}`
@@ -97,9 +100,10 @@ Erstellt oder aktualisiert eine Umgebungsvariable für alle Aktionen, die als n�
 
 #### Beispiel
 
-``` bash
+```bash
 echo "::set-env name=action_state::yellow"
 ```
+
 {% endif %}
 
 ### Setting an output parameter
@@ -112,11 +116,12 @@ Optional kannst Du auch Ausgabeparameter in der Metadaten-Datei einer Aktion dek
 
 #### Beispiel
 
-``` bash
+```bash
 echo "::set-output name=action_fruit::strawberry"
 ```
 
 {% if currentVersion ver_lt "enterprise-server@2.23" %}
+
 ### Adding a system path
 
 `::add-path::{path}`
@@ -125,9 +130,10 @@ Fügt für alle nachfolgenden Aktionen im aktuellen Auftrag vor der Systemvariab
 
 #### Beispiel
 
-``` bash
+```bash
 echo "::add-path::/path/to/dir"
 ```
+
 {% endif %}
 
 ### Setting a debug message
@@ -138,7 +144,7 @@ Gibt eine Debugging-Meldung im Protokoll aus. Sie müssen ein Geheimnis mit dem 
 
 #### Beispiel
 
-``` bash
+```bash
 echo "::debug::Set the Octocat variable"
 ```
 
@@ -150,7 +156,7 @@ Erstellt eine Warnmeldung und fügt die Mitteilung in das Protokoll ein. Optiona
 
 #### Beispiel
 
-``` bash
+```bash
 echo "::warning file=app.js,line=1,col=5::Missing semicolon"
 ```
 
@@ -162,7 +168,7 @@ Erstellt eine Fehlermeldung und fügt die Mitteilung in das Protokoll ein. Optio
 
 #### Beispiel
 
-``` bash
+```bash
 echo "::error file=app.js,line=10,col=15::Something went wrong"
 ```
 
@@ -216,7 +222,7 @@ Stops processing any workflow commands. This special command allows you to log a
 
 #### Beispiel zum Anhalten von Workflow-Befehlen
 
-``` bash
+```bash
 echo "::stop-commands::pause-logging"
 ```
 
@@ -226,7 +232,7 @@ To start workflow commands, pass the token that you used to stop workflow comman
 
 #### Beispiel zum Starten von Workflow-Befehlen
 
-``` bash
+```bash
 echo "::pause-logging::"
 ```
 
@@ -240,17 +246,20 @@ Der Befehl `save-state` kann nur innerhalb einer Aktion ausgeführt werden und i
 
 Dieses Beispiel verwendet JavaScript, um den Befehl `save-state` auszuführen. Die resultierende Umgebungsvariable heißt `STATE_processID` und hat den Wert `12345`:
 
-``` javascript
-console.log('::save-state name=processID::12345')
+```javascript
+console.log("::save-state name=processID::12345");
 ```
 
 Die Variable `STATE_processID` ist dann exklusiv für das Bereinigungsskript verfügbar, das unter der `main`-Aktion ausgeführt wird. Dieses Beispiel läuft in `main` und verwendet JavaScript, um den Wert anzuzeigen, der der `STATE_processID` Umgebungsvariable zugewiesen wurde:
 
-``` javascript
-console.log("The running PID from the main action is: " +  process.env.STATE_processID);
+```javascript
+console.log(
+  "The running PID from the main action is: " + process.env.STATE_processID
+);
 ```
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@2.22" or currentVersion == "github-ae@latest" %}
+
 ## Environment Files
 
 During the execution of a workflow, the runner generates temporary files that can be used to perform certain actions. The path to these files are exposed via environment variables. You will need to use UTF-8 encoding when writing to these files to ensure proper processing of the commands. Multiple commands can be written to the same file, separated by newlines.
@@ -275,6 +284,7 @@ Erstellt oder aktualisiert eine Umgebungsvariable für alle Aktionen, die als n�
 #### Beispiel
 
 {% raw %}
+
 ```
 steps:
   - name: Set the value
@@ -286,6 +296,7 @@ steps:
     run: |
       echo "${{ env.action_state }}" # This will output 'yellow'
 ```
+
 {% endraw %}
 
 #### Multiline strings
@@ -301,6 +312,7 @@ For multiline strings, you may use a delimiter with the following syntax.
 ##### Beispiel
 
 In this example, we use `EOF` as a delimiter and set the `JSON_RESPONSE` environment variable to the value of the curl response.
+
 ```yaml
 steps:
   - name: Set the value
@@ -321,7 +333,8 @@ Prepends a directory to the system `PATH` variable and makes it available to all
 
 This example demonstrates how to add the user `$HOME/.local/bin` directory to `PATH`:
 
-``` bash
+```bash
 echo "$HOME/.local/bin" >> $GITHUB_PATH
 ```
+
 {% endif %}

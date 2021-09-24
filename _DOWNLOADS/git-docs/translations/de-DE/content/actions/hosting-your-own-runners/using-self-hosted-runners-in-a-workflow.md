@@ -1,13 +1,13 @@
 ---
 title: Selbst-gehostete Runner in einem Workflow benutzen
-intro: 'Um selbst-gehostete Runner in einem Workflow zu verwenden, kannst Du mittels Labels den Runner-Typ für einen Job angeben.'
+intro: "Um selbst-gehostete Runner in einem Workflow zu verwenden, kannst Du mittels Labels den Runner-Typ für einen Job angeben."
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/using-self-hosted-runners-in-a-workflow
   - /actions/automating-your-workflow-with-github-actions/using-self-hosted-runners-in-a-workflow
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 ---
 
@@ -30,9 +30,9 @@ Weitere Informationen findest Du unter „[Workflow Syntax für {% data variable
 
 Ein selbst-gehosteter Runner erhält automatisch bestimmte Labels, wenn er zu {% data variables.product.prodname_actions %} hinzugefügt wird. Diese werden verwendet, um das Betriebssystem und die Hardwareplattform anzuzeigen:
 
-* `self-hosted`: Standard-Label, welches allen selbst-gehosteten Runnern zugeteilt wird.
-* `Linux`, `windows`, oder `macOS`: Je nach Betriebssystem zugeteilt.
-* `x64`, `ARM`, or `ARM64`: Applied depending on hardware architecture.
+- `self-hosted`: Standard-Label, welches allen selbst-gehosteten Runnern zugeteilt wird.
+- `Linux`, `windows`, oder `macOS`: Je nach Betriebssystem zugeteilt.
+- `x64`, `ARM`, or `ARM64`: Applied depending on hardware architecture.
 
 Du kannst die YAML Deines Workflows verwenden, um Jobs an eine Kombination dieser Labels zu senden. In diesem Beispiel ist ein selbst-gehosteter Runner, der allen drei Labels entspricht, berechtigt, den Job auszuführen:
 

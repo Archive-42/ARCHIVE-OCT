@@ -1,5 +1,5 @@
 .block-title.element-title {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .elementor-widget.elementor-widget-spacer {
@@ -51,10 +51,10 @@
   margin-bottom: 30px;
 }
 
-.skills-info.skills-first-style h4 { 
+.skills-info.skills-first-style h4 {
   font-size: 13px;
   line-height: 1.1em;
-  position: relative; 
+  position: relative;
   float: left;
   margin: 0 0 4px;
 }
@@ -75,12 +75,12 @@
 }
 
 .skills-first-style .skill-value {
-    font-size: 11px;
-    line-height: 1.1em;
-    position: relative;
-    float: right;
-    margin: 0 0 4px;
-    color: #888;
+  font-size: 11px;
+  line-height: 1.1em;
+  position: relative;
+  float: right;
+  margin: 0 0 4px;
+  color: #888;
 }
 
 .skills-first-style .skill-percentage {
@@ -93,34 +93,32 @@
   padding: 0;
 }
 
-
 /* Services */
 .info-block-w-icon {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .info-block-w-icon .ci-icon {
-    display: table-cell;
-    width: 54px;
-    padding-right: 25px;
+  display: table-cell;
+  width: 54px;
+  padding-right: 25px;
 }
 
 .info-block-w-icon i {
-    position: relative;
-    font-size: 42px;
-    color: #04b4e0;
-    opacity: .7;
-    margin-bottom: 10px;
+  position: relative;
+  font-size: 42px;
+  color: #04b4e0;
+  opacity: 0.7;
+  margin-bottom: 10px;
 }
 
 .info-block-w-icon .ci-text h4 {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 
 .info-block-w-icon .ci-text p {
-    font-size: .95em;
+  font-size: 0.95em;
 }
-
 
 /* Info List */
 .info-list ul {
@@ -153,7 +151,7 @@
   max-height: 90px;
   margin: -45px auto 20px;
   border-radius: 90px;
-  box-shadow: 0px 10px 10px -8px rgba(0,0,0,.22);
+  box-shadow: 0px 10px 10px -8px rgba(0, 0, 0, 0.22);
 }
 
 .testimonial .text {
@@ -168,13 +166,13 @@
 }
 
 .testimonial .author-info .icon {
-  content: '';
+  content: "";
   position: absolute;
   font-size: 30px;
   right: 0;
   top: 7px;
   color: #04b4e0;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .testimonial .author-info .author {
@@ -224,7 +222,7 @@
 
 .testimonials.owl-carousel .owl-nav .owl-prev,
 .clients.owl-carousel .owl-nav .owl-prev {
-    margin-right: 3px;
+  margin-right: 3px;
 }
 
 .testimonials.owl-carousel .owl-nav .owl-prev:before,
@@ -245,21 +243,21 @@
 
 .testimonials.owl-carousel .owl-nav .owl-prev:before,
 .clients.owl-carousel .owl-nav .owl-prev:before {
-    content: "\e875";
+  content: "\e875";
 }
 
 .testimonials.owl-carousel .owl-nav .owl-next:before,
 .clients.owl-carousel .owl-nav .owl-next:before {
-    content: "\e876";
+  content: "\e876";
 }
 
 .testimonials.owl-carousel .owl-nav .owl-prev:hover,
 .testimonials.owl-carousel .owl-nav .owl-next:hover,
 .clients.owl-carousel .owl-nav .owl-prev:hover,
 .clients.owl-carousel .owl-nav .owl-next:hover {
-    background-color: #04b4e0;
-    border-color: #04b4e0;
-    color: #fff;
+  background-color: #04b4e0;
+  border-color: #04b4e0;
+  color: #fff;
 }
 /* --- End of Sliders Nav --- */
 
@@ -282,7 +280,7 @@
 }
 
 .client-block img {
-	max-width: 90%;
+  max-width: 90%;
 }
 /* --- End of Clients --- */
 
@@ -370,7 +368,6 @@
   padding-bottom: 0;
 }
 
-
 .timeline .left-part {
   width: 30%;
   display: table-cell;
@@ -403,7 +400,7 @@
 }
 
 .timeline .divider:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   margin-top: 4px;
@@ -413,12 +410,12 @@
   margin-left: -8px;
   border-radius: 10px;
   background-color: #04b4e0;
-  opacity: .25;
+  opacity: 0.25;
   z-index: 0;
 }
 
 .timeline .divider:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   margin-top: 8px;
@@ -476,21 +473,21 @@
   border-radius: 8px;
   margin-bottom: 20px;
   -webkit-transition: all 2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 a > .certificate-item:hover {
-	-webkit-transform: translateY(-5px);
-	-ms-transform: translateY(-5px);
-	-o-transform: translateY(-5px);
-	transform: translateY(-5px);
-	-webkit-box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
-	-moz-box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
-	-o-box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
-	box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
+  transform: translateY(-5px);
+  -webkit-box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
+  -o-box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 17px rgba(0, 0, 0, 0.12);
 }
 
 .certi-logo {
@@ -522,14 +519,14 @@ a > .certificate-item:hover {
 }
 
 .certi-id {
-  font-size: .9em;
+  font-size: 0.9em;
   color: #777;
 }
 
 .certi-date {
-  font-size: .7em;
+  font-size: 0.7em;
   color: #777;
-  opacity: .7;
+  opacity: 0.7;
 }
 /* --- End of Certificates --- */
 
@@ -540,7 +537,7 @@ a > .certificate-item:hover {
   padding: 0;
 }
 
-.knowledges li {;
+.knowledges li {
   display: inline-block;
   background-color: #0ba376;
   border-radius: 3px;
@@ -572,10 +569,10 @@ a > .certificate-item:hover {
   -ms-transform: translateY(-5px);
   -o-transform: translateY(-5px);
   transform: translateY(-5px);
-  -webkit-box-shadow: 0 7px 12px rgba(0, 0, 0, .12);
-  -moz-box-shadow: 0 7px 12px rgba(0, 0, 0, .12);
-  -o-box-shadow: 0 7px 12px rgba(0, 0, 0, .12);
-  box-shadow: 0 7px 12px rgba(0, 0, 0, .12);
+  -webkit-box-shadow: 0 7px 12px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 7px 12px rgba(0, 0, 0, 0.12);
+  -o-box-shadow: 0 7px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.12);
 }
 
 .fw-pricing .fw-package:hover,
@@ -584,10 +581,10 @@ a > .certificate-item:hover {
   -ms-transform: translateY(-9px);
   -o-transform: translateY(-9px);
   transform: translateY(-9px);
-  -webkit-box-shadow: 0 18px 24px rgba(0, 0, 0, .15);
-  -moz-box-shadow: 0 18px 24px rgba(0, 0, 0, .15);
-  -o-box-shadow: 0 18px 24px rgba(0, 0, 0, .15);
-  box-shadow: 0 18px 24px rgba(0, 0, 0, .15);
+  -webkit-box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
 }
 
 .fw-pricing .fw-package.highlight .fw-heading-row span {
@@ -596,7 +593,7 @@ a > .certificate-item:hover {
 }
 
 .fw-pricing .fw-package.highlight .fw-heading-row span:after {
-  content: '';
+  content: "";
   height: 2px;
   margin-top: 0;
   background-color: #04b4e0;
@@ -632,13 +629,13 @@ a > .certificate-item:hover {
 }
 
 .fw-pricing .fw-price-icon-no:before {
-    content: "\f068";
-    color: #e87878;
+  content: "\f068";
+  color: #e87878;
 }
 
 .fw-pricing .fw-price-icon-yes:before {
-    content: "\f058";
-    color: #ade878;
+  content: "\f058";
+  color: #ade878;
 }
 /* /Pricing */
 
@@ -685,12 +682,10 @@ a > .certificate-item:hover {
   color: #04b4e0;
 }
 
-
 .lm-info-block .lm-info-block-value:empty {
   margin: 0;
 }
 /* --- End of Info Block with Borders --- */
-
 
 @media only screen and (max-width: 480px) {
   .timeline-second-style .timeline-item {
@@ -717,8 +712,6 @@ a > .certificate-item:hover {
     padding-right: 0;
   }
 }
-
-
 
 .flex-v-align {
   vertical-align: middle;
@@ -807,9 +800,9 @@ a > .certificate-item:hover {
   border-radius: 1000px;
   border: 18px solid #fff;
   overflow: hidden;
-  -webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,.1);
-  -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,.1);
-  box-shadow: 0px 0px 25px 0px rgba(0,0,0,.1);
+  -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
 }
 
 .home-photo .hp-inner {
@@ -836,12 +829,30 @@ a > .certificate-item:hover {
   opacity: 0.04;
   top: -5%;
   left: -3%;
-  content: '';
+  content: "";
   height: 70%;
   width: 38%;
-  background-image: -webkit-repeating-radial-gradient(center center, #000, #000 3px, transparent 0px, transparent 100%);
-  background-image: -moz-repeating-radial-gradient(center center, #000, #000 3px, transparent 0px, transparent 100%);
-  background-image: -ms-repeating-radial-gradient(center center, #000, #000 3px, transparent 0px, transparent 100%);
+  background-image: -webkit-repeating-radial-gradient(
+    center center,
+    #000,
+    #000 3px,
+    transparent 0px,
+    transparent 100%
+  );
+  background-image: -moz-repeating-radial-gradient(
+    center center,
+    #000,
+    #000 3px,
+    transparent 0px,
+    transparent 100%
+  );
+  background-image: -ms-repeating-radial-gradient(
+    center center,
+    #000,
+    #000 3px,
+    transparent 0px,
+    transparent 100%
+  );
   -webkit-background-size: 18px 18px;
   -moz-background-size: 18px 18px;
   background-size: 18px 18px;
@@ -850,58 +861,58 @@ a > .certificate-item:hover {
 
 @media only screen and (max-width: 1100px) {
   .home-content {
-      margin: 5% 0;
+    margin: 5% 0;
   }
 }
 
 @media only screen and (max-width: 767px) {
   .home-photo {
-      width: 60%;
-      padding-bottom: calc(60% - 36px);
-      margin: 30px auto;
+    width: 60%;
+    padding-bottom: calc(60% - 36px);
+    margin: 30px auto;
   }
 
   .home-text {
-      padding-right: 0;
-      padding-left: 0;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .home-text.hp-left {
-      padding-right: 0;
-      padding-left: 0;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .home-text h1,
   .home-text h4 {
-      text-align: center;
+    text-align: center;
   }
 
   .home-buttons {
-      text-align: center;
+    text-align: center;
   }
 }
 
 @media only screen and (max-width: 648px) {
   .home-photo,
   .home-photo.hp-left {
-      width: 70%;
-      padding-bottom: calc(70% - 36px);
+    width: 70%;
+    padding-bottom: calc(70% - 36px);
   }
 }
 
 @media only screen and (max-width: 500px) {
   .home-photo,
   .home-photo.hp-left {
-      width: 90%;
-      padding-bottom: calc(90% - 36px);
+    width: 90%;
+    padding-bottom: calc(90% - 36px);
   }
 
   .home-text h1 {
-      font-size: 36px;
-      line-height: 42px;
+    font-size: 36px;
+    line-height: 42px;
   }
 
   .home-text h4 {
-      font-size: 14px;
+    font-size: 14px;
   }
 }

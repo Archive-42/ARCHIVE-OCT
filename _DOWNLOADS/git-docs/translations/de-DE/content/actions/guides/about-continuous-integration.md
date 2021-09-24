@@ -1,16 +1,16 @@
 ---
 title: Informationen zur fortlaufenden Integration
-intro: 'Sie können benutzerdefinierte Continuous Integration (CI) und Continuous Deployment (CD)-Workflows direkt in Ihrem {% data variables.product.prodname_dotcom %} Repository mit {% data variables.product.prodname_actions %}erstellen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Sie können benutzerdefinierte Continuous Integration (CI) und Continuous Deployment (CD)-Workflows direkt in Ihrem {% data variables.product.prodname_dotcom %} Repository mit {% data variables.product.prodname_actions %}erstellen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/about-continuous-integration
   - /github/automating-your-workflow-with-github-actions/about-continuous-integration
   - /actions/automating-your-workflow-with-github-actions/about-continuous-integration
   - /actions/building-and-testing-code-with-continuous-integration/about-continuous-integration
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 topics:
   - CI
@@ -48,6 +48,7 @@ Sie können nicht nur ci-Workflows für Ihr Projekt einrichten, sondern auch {% 
 Eine Definition von gebräuchliche Begriffe finden Sie unter "[Kernkonzepte für {% data variables.product.prodname_actions %}](/github/automating-your-workflow-with-github-actions/core-concepts-for-github-actions)".
 
 ### Unterstützte Sprachen
+
 <!-- If you make changes to this feature, update /getting-started-with-github/github-language-support to reflect any changes to supported languages. -->
 
 {% data variables.product.product_name %} bietet CI-Workflowvorlagen für eine Vielzahl von Sprachen und Frameworks.
@@ -55,15 +56,16 @@ Eine Definition von gebräuchliche Begriffe finden Sie unter "[Kernkonzepte für
 Browse the complete list of CI workflow templates offered by {% data variables.product.product_name %} in the {% if currentVersion == "free-pro-team@latest" %}[actions/starter-workflows](https://github.com/actions/starter-workflows/tree/main/ci) repository{% else %} `actions/starter-workflows` repository on {% data variables.product.product_location %}{% endif %}.
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@next" %}
+
 ### Skipping workflow runs
 
 If you want to temporarily prevent a workflow from being triggered, you can add a skip instruction to the commit message. Workflows that would otherwise be triggered `on: push` or `on: pull_request`, won't be triggered if you add any any of the following strings to the commit message in a push, or the HEAD commit of a pull request:
 
-* `[skip ci]`
-* `[ci skip]`
-* `[no ci]`
-* `[skip actions]`
-* `[actions skip]`
+- `[skip ci]`
+- `[ci skip]`
+- `[no ci]`
+- `[skip actions]`
+- `[actions skip]`
 
 Alternatively, you can end the commit message with two empty lines followed by either `skip-checks: true` or `skip-checks:true`.
 
@@ -89,6 +91,6 @@ Weitere Informationen finden Sie unter „[Einen Workflow konfigurieren](/articl
 ### Weiterführende Informationen
 
 - "[Einrichtung einer kontinuierlichen Integration mit {% data variables.product.prodname_actions %}](/articles/setting-up-continuous-integration-using-github-actions)"
-{% if currentVersion == "free-pro-team@latest" %}
+  {% if currentVersion == "free-pro-team@latest" %}
 - „[Abrechnung für {{ site.data.variables.product.prodname_actions }} verwalten](/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)“
-{% endif %}
+  {% endif %}

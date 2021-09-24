@@ -1,13 +1,13 @@
 ---
 title: Websiteadministrator-Dashboard
-intro: '{% data reusables.enterprise_site_admin_settings.about-the-site-admin-dashboard %}'
+intro: "{% data reusables.enterprise_site_admin_settings.about-the-site-admin-dashboard %}"
 redirect_from:
   - /enterprise/admin/articles/site-admin-dashboard/
   - /enterprise/admin/installation/site-admin-dashboard
   - /enterprise/admin/configuration/site-admin-dashboard
   - /admin/configuration/site-admin-dashboard
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: reference
 topics:
   - Enterprise
@@ -78,7 +78,7 @@ Ersetzen Sie für den programmatischen Zugriff auf die anderen Berichte `all_use
 #### Benutzerberichte
 
 |         Schlüssel | Beschreibung                                                                         |
-| -----------------:| ------------------------------------------------------------------------------------ |
+| ----------------: | ------------------------------------------------------------------------------------ |
 |      `created_at` | Zeitpunkt der Benutzerkontoerstellung (als ein ISO 8601-Zeitstempel)                 |
 |              `id` | Konto-ID für den Benutzer oder für die Organisation                                  |
 |           `login` | Anmeldename des Kontos                                                               |
@@ -97,7 +97,7 @@ Ersetzen Sie für den programmatischen Zugriff auf die anderen Berichte `all_use
 #### Organisationsberichte
 
 |       Schlüssel | Beschreibung                                                                        |
-| ---------------:| ----------------------------------------------------------------------------------- |
+| --------------: | ----------------------------------------------------------------------------------- |
 |            `id` | Organisations-ID                                                                    |
 |    `created_at` | Zeitpunkt der Organisationserstellung                                               |
 |         `login` | Anmeldename der Organisation                                                        |
@@ -111,7 +111,7 @@ Ersetzen Sie für den programmatischen Zugriff auf die anderen Berichte `all_use
 #### Repository-Berichte
 
 |                  Schlüssel | Beschreibung                                                             |
-| --------------------------:| ------------------------------------------------------------------------ |
+| -------------------------: | ------------------------------------------------------------------------ |
 |               `created_at` | Zeitpunkt der Repository-Erstellung                                      |
 |                 `owner_id` | ID des Repository-Inhabers                                               |
 |               `owner_type` | Gibt an, ob das Repository einem Benutzer oder einer Organisation gehört |
@@ -181,7 +181,7 @@ Dies ist eine Liste der Repositorys auf {% data variables.product.product_locati
 
 ### Alle Benutzer
 
-Hier können Sie alle Benutzer auf Ihrer {% data variables.product.product_location %} anzeigen und  [eine SSH-Schlüsselüberwachung initiieren](/enterprise/{{ currentVersion }}/admin/guides/user-management/auditing-ssh-keys).
+Hier können Sie alle Benutzer auf Ihrer {% data variables.product.product_location %} anzeigen und [eine SSH-Schlüsselüberwachung initiieren](/enterprise/{{ currentVersion }}/admin/guides/user-management/auditing-ssh-keys).
 
 ### Websiteadministratoren
 
@@ -201,9 +201,7 @@ Hier können Sie alle inaktiven Benutzer auf {% data variables.product.product_l
 
 Hier können Sie alle Benutzer anzeigen, die auf {% data variables.product.product_location %} gesperrt wurden, und [eine SSH-Schlüsselüberwachung initiieren](/enterprise/{{ currentVersion }}/admin/guides/user-management/auditing-ssh-keys).
 
-  [Seite mit Trends]: https://github.com/blog/1585-explore-what-is-trending-on-github
-
-  [Codesuche]: https://github.com/blog/1381-a-whole-new-code-search
-  [ElasticSearch]: http://www.elasticsearch.org/
-
-  [Issues]: https://github.com/blog/831-issues-2-0-the-next-generation
+[seite mit trends]: https://github.com/blog/1585-explore-what-is-trending-on-github
+[codesuche]: https://github.com/blog/1381-a-whole-new-code-search
+[elasticsearch]: http://www.elasticsearch.org/
+[issues]: https://github.com/blog/831-issues-2-0-the-next-generation

@@ -1,14 +1,14 @@
 ---
 title: Dockerfile Unterstützung für GitHub Aktionen
 shortTitle: Docker
-intro: 'Beim Erstellen eines ‚Dockerfiles‘ für eine Dockercontainer-Aktion sollten Sie sich darüber im Klaren sein, wie einige Docker-Anweisungen mit GitHub-Aktionen und der Metadaten-Datei einer Aktion interagieren.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Beim Erstellen eines ‚Dockerfiles‘ für eine Dockercontainer-Aktion sollten Sie sich darüber im Klaren sein, wie einige Docker-Anweisungen mit GitHub-Aktionen und der Metadaten-Datei einer Aktion interagieren."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/building-actions/dockerfile-support-for-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: reference
 ---
 
@@ -54,15 +54,15 @@ Wenn Du Deinen Container so konfigurierst, dass er die _exec_-Form der Anweisung
 ENTRYPOINT ["echo $GITHUB_SHA"]
 ```
 
- Wenn Du Variablensubstitution willst, verwende entweder die _Shell_-Form oder führe direkt eine Shell aus. Zum Beispiel kannst Du mit dem folgenden _exec_-Format eine Shell ausführen, um den Wert auszugeben, der in der Umgebungsvariable `GITHUB_SHA` gespeichert ist.
+Wenn Du Variablensubstitution willst, verwende entweder die _Shell_-Form oder führe direkt eine Shell aus. Zum Beispiel kannst Du mit dem folgenden _exec_-Format eine Shell ausführen, um den Wert auszugeben, der in der Umgebungsvariable `GITHUB_SHA` gespeichert ist.
 
 ```dockerfile
 ENTRYPOINT ["sh", "-c", "echo $GITHUB_SHA"]
 ```
 
- Um `args` aus der Metadaten-Datei der Aktion an einen Docker Container zu übergeben, der die _exec_-Form im `ENTRYPOINT` verwendet, empfehlen wir, ein Shell-Skript namens `entrypoint.sh` zu erstellen und dieses von der `ENTRYPOINT`-Anweisung aus anrufen:
+Um `args` aus der Metadaten-Datei der Aktion an einen Docker Container zu übergeben, der die _exec_-Form im `ENTRYPOINT` verwendet, empfehlen wir, ein Shell-Skript namens `entrypoint.sh` zu erstellen und dieses von der `ENTRYPOINT`-Anweisung aus anrufen:
 
-##### Beispiel *Dockerfile*
+##### Beispiel _Dockerfile_
 
 ```dockerfile
 # Container image that runs your code
@@ -75,11 +75,11 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ```
 
-##### Beispiel für die Datei *entrypoint.sh*
+##### Beispiel für die Datei _entrypoint.sh_
 
-Mit dem obigen Dockerfile-Beispiel sendet {% data variables.product.product_name %} die Metadaten-Datei der Aktion konfigurierten `args` als Argumente an `entrypoint.sh`. Füge `#!/bin/sh` [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) oben in die Datei `entrypoint.sh` ein, um explizit die [POSIX](https://en.wikipedia.org/wiki/POSIX)-konforme Shell des Systems zu verwenden.
+Mit dem obigen Dockerfile-Beispiel sendet {% data variables.product.product_name %} die Metadaten-Datei der Aktion konfigurierten `args` als Argumente an `entrypoint.sh`. Füge `#!/bin/sh` [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) oben in die Datei `entrypoint.sh` ein, um explizit die [POSIX](https://en.wikipedia.org/wiki/POSIX)-konforme Shell des Systems zu verwenden.
 
-``` sh
+```sh
 #!/bin/sh
 
 # `$*` expands the `args` supplied in an `array` individually
@@ -88,13 +88,14 @@ sh -c "echo $*"
 ```
 
 Dein Code muss ausführbar sein. Stelle sicher, dass die Datei `entrypoint.sh` die Berechtigunge `execute` hat, bevor Du sie in einem Workflow verwendest. Du kannst die Berechtigung von Deinem Terminal aus mit diesem Befehl ändern:
-  ``` sh
-  chmod +x entrypoint.sh
-  ```
+
+```sh
+chmod +x entrypoint.sh
+```
 
 Wenn ein `ENTRYPOINT`-Shell-Skript nicht ausführbar ist, erhältst Du einen Fehler, der ungefähr so aussieht:
 
-``` sh
+```sh
 Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "exec: \"/entrypoint.sh\": permission denied": unknown
 ```
 

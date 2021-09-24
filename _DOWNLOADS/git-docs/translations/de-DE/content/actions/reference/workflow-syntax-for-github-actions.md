@@ -1,16 +1,16 @@
 ---
 title: Workflow-Syntax für GitHub Actions
 shortTitle: Syntax für Workflows
-intro: 'Ein Workflow ist ein konfigurierbarer automatisierter Prozess, der aus einem oder mehreren Jobs besteht. Du musst eine YAML-Datei erstellen, um Deine Workflow-Konfiguration zu definieren.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Ein Workflow ist ein konfigurierbarer automatisierter Prozess, der aus einem oder mehreren Jobs besteht. Du musst eine YAML-Datei erstellen, um Deine Workflow-Konfiguration zu definieren."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/workflow-syntax-for-github-actions
   - /github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
   - /actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -35,7 +35,7 @@ Name des Workflows. {% data variables.product.prodname_dotcom %} zeigt die Namen
 
 ### `on.<event_name>.types`
 
-Legt die Aktivitätstypen fest, die die Ausführung eines Workflows auslösen. Die meisten GitHub-Ereignisse werden von mehreren Aktivitätstypen ausgelöst.  Beispielsweise wird das Ereignis für die Veröffentlichungsressource ausgelöst, wenn eine Veröffentlichung veröffentlicht (`published`), erstellt (`created`), bearbeitet (`edited`), gelöscht (`deleted`), vorab veröffentlicht (`prereleased`) oder ihre Veröffentlichung zurückgezogen (`unpublished`) wird. Mit dem Stichwort `types` grenzt Du die Aktivitäten ein, die die Ausführung des Workflows auslösen. Wird ein Webhook-Ereignis nur von einem einzigen Aktivitätstyp ausgelöst, ist das Stichwort `types` nicht erforderlich.
+Legt die Aktivitätstypen fest, die die Ausführung eines Workflows auslösen. Die meisten GitHub-Ereignisse werden von mehreren Aktivitätstypen ausgelöst. Beispielsweise wird das Ereignis für die Veröffentlichungsressource ausgelöst, wenn eine Veröffentlichung veröffentlicht (`published`), erstellt (`created`), bearbeitet (`edited`), gelöscht (`deleted`), vorab veröffentlicht (`prereleased`) oder ihre Veröffentlichung zurückgezogen (`unpublished`) wird. Mit dem Stichwort `types` grenzt Du die Aktivitäten ein, die die Ausführung des Workflows auslösen. Wird ein Webhook-Ereignis nur von einem einzigen Aktivitätstyp ausgelöst, ist das Stichwort `types` nicht erforderlich.
 
 Du kannst ein Array mit Ereignis-`types` benutzen. Weitere Informationen zu den einzelnen Ereignissen und den zugehörigen Aktivitätstypen findest Du unter „[Ereignisse, die Workflows auslösen](/articles/events-that-trigger-workflows#webhook-events)“.
 
@@ -61,17 +61,17 @@ Die in `branches` und `tags` definierten Muster werden anhand des Namens des Git
 on:
   push:
     # Sequence of patterns matched against refs/heads
-    branches:    
+    branches:
       # Push events on main branch
       - main
       # Push events to branches matching refs/heads/mona/octocat
-      - 'mona/octocat'
+      - "mona/octocat"
       # Push events to branches matching refs/heads/releases/10
-      - 'releases/**'
+      - "releases/**"
     # Sequence of patterns matched against refs/tags
-    tags:        
-      - v1             # Push events to v1 tag
-      - v1.*           # Push events to v1.0, v1.1, and v1.9 tags
+    tags:
+      - v1 # Push events to v1 tag
+      - v1.* # Push events to v1.0, v1.1, and v1.9 tags
 ```
 
 #### Example: Ignoring branches and tags
@@ -84,34 +84,36 @@ on:
     # Folge von Mustern zum Abgleich mit refs/heads
     branches-ignore:
       # Push-Ereignisse zu Branches, die zu refs/heads/mona/octocat passen
-      - 'mona/octocat'
+      - "mona/octocat"
       # Push-Ereignisse zu Branches, die zu refs/heads/releases/beta/3-alpha passen
-      - 'releases/**-alpha'
+      - "releases/**-alpha"
     # Folge von Mustern zum Abgleich mit refs/tags
     tags-ignore:
-      - v1.*           # Push-Ereignisse zu den Tags v1.0, v1.1 und v1.9
+      - v1.* # Push-Ereignisse zu den Tags v1.0, v1.1 und v1.9
 ```
 
 #### Branches und Tags ausschließen
 
 Es stehen zwei Arten von Filtern zur Verfügung, mit denen Du die Ausführung eines Workflows bei Push-Vorgängen und Pull-Requests an Tags und Branches unterbinden kannst.
+
 - `branches` oder `branches-ignore` - Du kannst die beiden Filter `branches` und `branches-ignore` nicht gleichzeitig für dasselbe Ereignis in einem Workflow verwenden. Mit dem Filter `branches` kannst Du die Branches auf positive Übereinstimmungen filtern und Branches ausschließen. Nutze den Filter `branches-ignore`, wenn Du lediglich Branch-Namen ausschließen musst.
 - `tags` oder `tags-ignore` - Du kannst die beiden Filter `tags` und den Filter `tags-ignore` nicht gleichzeitig für dasselbe Ereignis in einem Workflow verwenden. Mit dem Filter `tags` kannst Du die Tags auf positive Übereinstimmungen filtern und Tags ausschließen. Nutze den Filter `branches-ignore`, wenn Du lediglich Tag-Namen ausschließen musst.
 
 #### Example: Using positive and negative patterns
 
 Mit dem Zeichen `!` kannst Du `tags` und `branches` ausschließen. Die Reihenfolge, in der Du die Muster definierst, ist entscheidend.
-  - Wenn eine Übereinstimmung mit einem negativen Muster (mit vorangestelltem `!`) nach einem positiven Abgleich vorliegt, wird die Git-Ref ausgeschlossen.
-  - Ein übereinstimmendes positives Muster nach einem negativen Abgleich schließt die Git-Ref wieder ein.
+
+- Wenn eine Übereinstimmung mit einem negativen Muster (mit vorangestelltem `!`) nach einem positiven Abgleich vorliegt, wird die Git-Ref ausgeschlossen.
+- Ein übereinstimmendes positives Muster nach einem negativen Abgleich schließt die Git-Ref wieder ein.
 
 Der folgende Workflow wird bei Push-Vorgängen an `releases/10` oder `releases/beta/mona` ausgeführt, nicht jedoch bei Push-Vorgängen an `releases/10-alpha` oder `releases/beta/3-alpha`, da das negative Muster `!releases/**-alpha` nach dem positiven Muster steht.
 
 ```yaml
 on:
   push:
-    branches:    
-      - 'releases/**'
-      - '!releases/**-alpha'
+    branches:
+      - "releases/**"
+      - "!releases/**-alpha"
 ```
 
 ### `on.<push|pull_request>.paths`
@@ -128,7 +130,7 @@ When all the path names match patterns in `paths-ignore`, the workflow will not 
 on:
   push:
     paths-ignore:
-      - 'docs/**'
+      - "docs/**"
 ```
 
 #### Example: Including paths
@@ -139,20 +141,22 @@ Wenn mindestens ein Pfad zu einem Muster im Filter `paths` passt, wird der Workf
 on:
   push:
     paths:
-      - '**.js'
+      - "**.js"
 ```
 
 #### Pfade ausschließen
 
 Pfade können mit zwei Arten von Filtern ausgeschlossen werden. Du kannst nicht beide Filter gleichzeitig für dasselbe Ereignis in einem Workflow nutzen.
+
 - `paths-ignore` - Verwende den Filter `paths-ignore`, wenn Du lediglich Pfadnamen ausschließen musst.
 - `paths` - Mit dem Filter `paths` kannst Du die Pfade auf positive Übereinstimmungen filtern und Pfade ausschließen.
 
 #### Example: Using positive and negative patterns
 
 Mit dem Zeichen `!` kannst Du `paths` ausschließen. Die Reihenfolge, in der Sie Muster definieren, ist entscheidend:
-  - Wenn nach einem positiven Abgleich ein negatives Muster (mit vorangestelltem `!`) passt, wird der Pfad ausgeschlossen.
-  - Ein passendes positives Muster nach einem negativen Abgleich schließt den Pfad wieder ein.
+
+- Wenn nach einem positiven Abgleich ein negatives Muster (mit vorangestelltem `!`) passt, wird der Pfad ausgeschlossen.
+- Ein passendes positives Muster nach einem negativen Abgleich schließt den Pfad wieder ein.
 
 Dieses Beispiel wird stets ausgeführt, wenn das `push`-Ereignis eine Datei im Verzeichnis `sub-project` oder in einem Unterverzeichnis davon umfasst, jedoch nur dann, wenn sich die Datei nicht im Verzeichnis `sub-project/docs` befindet. Ein Push-Vorgang, mit dem beispielsweise die Datei `sub-project/index.js` oder `sub-project/src/index.js` geändert wird, löst eine Ausführung des Workflows aus, aber ein Push-Vorgang, mit dem lediglich `sub-project/docs/readme.md` geändert wird, tut dies nicht.
 
@@ -160,8 +164,8 @@ Dieses Beispiel wird stets ausgeführt, wenn das `push`-Ereignis eine Datei im V
 on:
   push:
     paths:
-      - 'sub-project/**'
-      - '!sub-project/docs/**'
+      - "sub-project/**"
+      - "!sub-project/docs/**"
 ```
 
 #### Git-Diff-Vergleiche
@@ -175,6 +179,7 @@ on:
 Zur Ermittlung, ob ein Workflow ausgeführt werden soll, wertet der Filter die geänderten Dateien anhand der Liste `paths-ignore` oder `paths` aus. Wurden keine Dateien geändert, wird der Workflow nicht ausgeführt.
 
 {% data variables.product.prodname_dotcom %} erzeugt die Liste der geänderten Dateien mithilfe von „Two-Dot-Diffs“ (Vergleiche mittels 2 Punkt-Syntax „..“) für Push-Vorgänge und „Three-Dot-Diffs“ (Vergleiche mittels 3 Punkt-Syntax „...“) für Pull-Requests:
+
 - **Pull Requests:** Three-Dot-Diffs ziehen den Vergleich zwischen der jüngsten Version des Themen-Branches und jenem Commit, bei welchem der Themen-Branch zuletzt mit dem Basis-Branch synchronisiert wurde.
 - **Push-Vorgänge an bestehende Branches:** Eine Two-Dot-Diff vergleicht die Kopf- und Basis-SHAs direkt miteinander.
 - **Push-Vorgänge an neue Branches:** Ein Two-Dot-Diff wird mit dem übergeordneten Element des Vorgängers des tiefsten gepushten Commits durchgeführt.
@@ -188,11 +193,12 @@ Weitere Informationen findest Du unter „[Informationen zum Vergleich von Branc
 Weitere Informationen zur Cron-Syntax findest Du unter „[Ereignisse, die Workflows auslösen](/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events)“.
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.1" or currentVersion == "github-ae@next" %}
+
 ### `permissions`
 
 You can modify the default permissions granted to the `GITHUB_TOKEN`, adding or removing access as required, so that you only allow the minimum required access. For more information, see "[Authentication in a workflow](/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)."
 
-You can use `permissions` either as a top-level key, to apply to all jobs in the workflow, or within specific jobs. When you add the `permissions` key within a specific job, all actions and run commands within that job that use the `GITHUB_TOKEN` gain the access rights you specify.  For more information, see [`jobs.<job_id>.permissions`](#jobsjob_idpermissions).
+You can use `permissions` either as a top-level key, to apply to all jobs in the workflow, or within specific jobs. When you add the `permissions` key within a specific job, all actions and run commands within that job that use the `GITHUB_TOKEN` gain the access rights you specify. For more information, see [`jobs.<job_id>.permissions`](#jobsjob_idpermissions).
 
 {% data reusables.github-actions.github-token-available-permissions %}
 {% data reusables.github-actions.forked-write-permission %}
@@ -204,13 +210,13 @@ This example shows permissions being set for the `GITHUB_TOKEN` that will apply 
 ```yaml
 name: "My workflow"
 
-on: [ push ]
+on: [push]
 
 permissions: read-all
 
-jobs:
-  ...
+jobs: ...
 ```
+
 {% endif %}
 
 ### `env`
@@ -248,6 +254,7 @@ defaults:
 ```
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@next" %}
+
 ### `concurrency`
 
 {% data reusables.actions.concurrency-beta %}
@@ -259,6 +266,7 @@ You can also specify `concurrency` at the job level. For more information, see [
 {% data reusables.actions.actions-group-concurrency %}
 
 {% endif %}
+
 ### `jobs`
 
 Ein Workflow-Lauf besteht aus mindestens einem Job. Die Aufträge werden standardmäßig parallel ausgeführt. Sollen Jobs sequenziell ausgeführt werden, kannst Du mit dem Schlüsselwort `jobs.<job_id>.needs` eine Abhängigkeit von anderen Jobs definieren.
@@ -329,6 +337,7 @@ In this example, `job3` uses the `always()` conditional expression so that it al
 **Required**. The type of machine to run the job on. Die Maschine kann entweder ein {% data variables.product.prodname_dotcom %}-gehosteter oder ein selbst-gehosteter Runner sein.
 
 {% if currentVersion == "github-ae@latest" %}
+
 #### {% data variables.actions.hosted_runner %}s
 
 If you use an {% data variables.actions.hosted_runner %}, each job runs in a fresh instance of a virtual environment specified by `runs-on`.
@@ -378,6 +387,7 @@ runs-on: [self-hosted, linux]
 Weitere Informationen findest Du unter „[Informationen zu selbst-gehosteten Runnern](/github/automating-your-workflow-with-github-actions/about-self-hosted-runners)“ und „[Selbst-gehostete Runner in einem Workflow verwenden](/github/automating-your-workflow-with-github-actions/using-self-hosted-runners-in-a-workflow)“.
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.1" or currentVersion == "github-ae@next" %}
+
 ### `jobs.<job_id>.permissions`
 
 You can modify the default permissions granted to the `GITHUB_TOKEN`, adding or removing access as required, so that you only allow the minimum required access. For more information, see "[Authentication in a workflow](/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)."
@@ -403,9 +413,11 @@ jobs:
     steps:
       - uses: actions/stale@v3
 ```
+
 {% endif %}
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+
 ### `jobs.<job_id>.environment`
 
 The environment that the job references. All environment protection rules must pass before a job referencing the environment is sent to a runner. For more information, see "[Environments](/actions/reference/environments)."
@@ -413,10 +425,13 @@ The environment that the job references. All environment protection rules must p
 You can provide the environment as only the environment `name`, or as an environment object with the `name` and `url`. The URL maps to `environment_url` in the deployments API. For more information about the deployments API, see "[Deployments](/rest/reference/repos#deployments)."
 
 ##### Example using a single environment name
+
 {% raw %}
+
 ```yaml
 environment: staging_environment
 ```
+
 {% endraw %}
 
 ##### Example using environment name and URL
@@ -430,17 +445,20 @@ environment:
 The URL can be an expression and can use any context except for the `secrets` context. For more information about expressions, see "[Context and expression syntax for {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions)."
 
 #### Beispiel
+
 {% raw %}
+
 ```yaml
 environment:
   name: production_environment
   url: ${{ steps.step_id.outputs.url_output }}
 ```
+
 {% endraw %}
 {% endif %}
 
-
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@next" %}
+
 ### `jobs.<job_id>.concurrency`
 
 {% data reusables.actions.concurrency-beta %}
@@ -458,6 +476,7 @@ You can also specify `concurrency` at the workflow level. For more information, 
 {% data reusables.actions.actions-group-concurrency %}
 
 {% endif %}
+
 ### `jobs.<job_id>.outputs`
 
 Eine `map` der Ausgaben eines Jobs. Ausgaben eines Jobs stehen allen nachgelagerten Jobs zur Verfügung, die von diesem Job abhängen. Weitere Informationen zur Definition von Abhängigkeiten zwischen Jobs findest Du unter [`Jobs.<job_id>.needs`](#jobsjob_idneeds).
@@ -469,6 +488,7 @@ Um Jobausgaben in einem abhängigen Job zu verwenden, kannst Du den Kontext `nee
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 jobs:
   job1:
@@ -488,6 +508,7 @@ jobs:
     steps:
       - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
 ```
+
 {% endraw %}
 
 ### `jobs.<job_id>.env`
@@ -515,7 +536,7 @@ Eine `map` mit Standardeinstellungen, die für alle Schritte im Job gelten. Du k
 
 Standards für `shell` und `working-directory` (Arbeitsverzeichnis) bereitstellen, die für alle `run`-Schritte des Jobs gelten. Kontext und Ausdruck sind in diesem Abschnitt nicht zulässig.
 
-Du kannst Standardeinstellungen der Optionen `shell` und `working-directory` (Arbeitsverzeichnis) für alle [`run`](#jobsjob_idstepsrun)-Schritte in einem Job angeben. Du kannst auch Standardeinstellungen für  `run` für den gesamten Workflow festlegen. Weitere Informationen findest Du unter [`jobs.defaults.run`](#defaultsrun). In diesem Schlüsselwort kannst Du keine Kontexte oder Ausdrücke verwenden.
+Du kannst Standardeinstellungen der Optionen `shell` und `working-directory` (Arbeitsverzeichnis) für alle [`run`](#jobsjob_idstepsrun)-Schritte in einem Job angeben. Du kannst auch Standardeinstellungen für `run` für den gesamten Workflow festlegen. Weitere Informationen findest Du unter [`jobs.defaults.run`](#defaultsrun). In diesem Schlüsselwort kannst Du keine Kontexte oder Ausdrücke verwenden.
 
 {% data reusables.github-actions.defaults-override %}
 
@@ -546,6 +567,7 @@ Innerhalb der Nutzungsbeschränkungen des Workflows kannst Du unbegrenzt viele S
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 name: Greeting from Mona
 
@@ -565,6 +587,7 @@ jobs:
         run: |
           echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
 ```
+
 {% endraw %}
 
 ### `jobs.<job_id>.steps[*].id`
@@ -579,13 +602,13 @@ Mit der Bedingung `if` gibst Du an, dass ein Schritt nur dann ausgeführt werden
 
 #### Example: Using contexts
 
- Dieser Schritt wird nur ausgeführt, wenn der Ereignistyp ein `pull_request` ist und die Ereignisaktion `unassigned` ist.
+Dieser Schritt wird nur ausgeführt, wenn der Ereignistyp ein `pull_request` ist und die Ereignisaktion `unassigned` ist.
 
- ```yaml
+```yaml
 steps:
-  - name: My first step
-    if: {% raw %}${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}{% endraw %}
-    run: echo This event is a pull request that had an assignee removed.
+ - name: My first step
+   if: {% raw %}${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}{% endraw %}
+   run: echo This event is a pull request that had an assignee removed.
 ```
 
 #### Example: Using status check functions
@@ -610,6 +633,7 @@ Name Deines Schritts, der auf {% data variables.product.prodname_dotcom %} angez
 Wählt eine Aktion aus, die als Teil eines Schritts im Auftrag ausgeführt wird. Eine Aktion ist eine wiederverwendbare Code-Einheit. Sie können eine Aktion verwenden, die im selben Repository wie der Workflow, in einem öffentlichen Repository oder in einem [veröffentlichten Docker-Container-Image](https://hub.docker.com/) definiert ist.
 
 Es wird dringend empfohlen, die verwendete Version der Aktion zu nennen (Git-Ref, SHA oder Docker-Tag-Nummer angeben). Wenn Sie keine Version angeben, könnten damit die Workflows gestört werden, oder es wird ein unerwartetes Verhalten hervorgerufen, wenn der Inhaber der Aktion eine Aktualisierung veröffentlicht.
+
 - Am besten in Hinblick auf Stabilität und Sicherheit ist es, die Commit-SHA einer freigegebenen Version einer Aktion zu verwenden.
 - Wenn Du Dich auf die Hauptversion der Aktion beziehst, kannst Du kritische Fehlerbehebungen und Sicherheits-Patches erhalten und gleichzeitig die Kompatibilität wahren. Außerdem ist damit sichergestellt, dass der Workflow weiterhin problemlos arbeiteten sollte.
 - Using the default branch of an action may be convenient, but if someone releases a new major version with a breaking change, your workflow could break.
@@ -621,7 +645,7 @@ Aktionen sind entweder JavaScript-Dateien oder Docker-Container. Bei Docker-Cont
 #### Example: Using versioned actions
 
 ```yaml
-steps:    
+steps:
   # Reference a specific commit
   - uses: actions/setup-node@c46424eee26de4078d34105d3de3cc4992202b1e
   # Reference the major version of a release
@@ -695,6 +719,7 @@ jobs:
 ```
 
 {% if currentVersion == "free-pro-team@latest" %}
+
 ##### Example: Using the {% data variables.product.prodname_registry %} {% data variables.product.prodname_container_registry %}
 
 `docker://{host}/{image}:{tag}`
@@ -708,7 +733,9 @@ jobs:
       - name: My first step
         uses: docker://ghcr.io/OWNER/IMAGE_NAME
 ```
+
 {% endif %}
+
 ##### Example: Using a Docker public registry action
 
 `docker://{host}/{image}:{tag}`
@@ -730,6 +757,7 @@ Your workflow must checkout the private repository and reference the action loca
 Replace `PERSONAL_ACCESS_TOKEN` in the example with the name of your secret.
 
 {% raw %}
+
 ```yaml
 jobs:
   my_first_job:
@@ -744,6 +772,7 @@ jobs:
       - name: Run my action
         uses: ./.github/actions/my-private-repo/my-action
 ```
+
 {% endraw %}
 
 ### `jobs.<job_id>.steps[*].run`
@@ -754,14 +783,14 @@ Befehle greifen standardmäßig auf Shells zurück, für die keine Anmeldung erf
 
 Jedes Schlüsselwort `run` stellt einen neuen Prozess und eine neue Shell in der Runnerumgebung dar. Wenn Du mehrzeilige Befehle angibst, werden alle Zeilen in derselben Shell ausgeführt. Ein Beispiel:
 
-* Einzeiliger Befehl:
+- Einzeiliger Befehl:
 
   ```yaml
   - name: Install Dependencies
     run: npm install
   ```
 
-* Mehrzeiliger Befehl:
+- Mehrzeiliger Befehl:
 
   ```yaml
   - name: Clean install dependencies and build
@@ -855,7 +884,6 @@ steps:
 
 The command used, `perl` in this example, must be installed on the runner.
 
-
 {% if currentVersion == "github-ae@latest" %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images)."
 {% else %}
 For information about the software included on GitHub-hosted runners, see "[Specifications for GitHub-hosted runners](/actions/reference/specifications-for-github-hosted-runners#supported-software)."
@@ -866,11 +894,13 @@ For information about the software included on GitHub-hosted runners, see "[Spec
 Für integrierte Shell-Stichwörter gelten die folgenden Standards, die durch auf {% data variables.product.prodname_dotcom %} gehostete Runner ausgeführt werden. Beachte diese Richtlinien beim Ausführen von Shell-Skripts.
 
 - `bash`/`sh`:
+
   - Fail-fast behavior using `set -eo pipefail`: Default for `bash` and built-in `shell`. Dies ist außerdem der Standard, wenn Du eine Option für eine Plattform außer Windows angibst.
   - Wenn Du auf Fail-Fast verzichtest und stattdessen die volle Kontrolle übernehmen möchtest, stelle einen Vorlagen-String für die Shell-Optionen bereit. Beispiel: `bash {0}`.
   - sh-ähnliche Shells liefern beim Beenden als ihren eigenen Exit-Code den Exit-Code des letzten Befehls, der im Skript ausgeführt wurde. Dies ist auch das Standardverhalten für Aktionen. Der Runner meldet den Status des Schritts gemäß diesem Exit-Code als Fehler/Erfolg.
 
 - `powershell`/`pwsh`
+
   - Fail-Fast-Verhalten, soweit möglich. Bei `pwsh` und der integrierten Shell `powershell` setzen wir `$ErrorActionPreference = 'stop'` vor den Inhalt des Skripts.
   - An Powershell-Skripte hängen wir `if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }` an, sodass der Status der Aktionen den letzten Exit-Code im Skript wiedergibt.
   - Die Benutzer können jederzeit auf die integrierte Shell verzichten und eine benutzerdefinierte Shell-Option angeben, beispielsweise `pwsh -File {0}` oder `powershell -Command "& '{0}'"`, je nach Bedarf.
@@ -896,7 +926,7 @@ jobs:
         with:
           first_name: Mona
           middle_name: The
-          last_name: Octocat      
+          last_name: Octocat
 ```
 
 ### `jobs.<job_id>.steps[*].with.args`
@@ -906,6 +936,7 @@ Ein `string`, der die Eingaben für einen Docker-Container definiert. Beim Start
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 steps:
   - name: Explain why this job ran
@@ -914,6 +945,7 @@ steps:
       entrypoint: /bin/echo
       args: The ${{ github.event_name }} event triggered this step.
 ```
+
 {% endraw %}
 
 Die `args`-Anweisungen werden anstelle der `CMD`-Anweisung in einem `Dockerfile` verwendet. Falls Sie `CMD` in Ihrem `Dockerfile` verwenden, sollten Sie sich an die nach Präferenz angeordneten Richtlinien halten:
@@ -949,6 +981,7 @@ Die erwarteten Umgebungsvariablen können durch öffentliche Aktionen in der REA
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 steps:
   - name: My first action
@@ -957,6 +990,7 @@ steps:
       FIRST_NAME: Mona
       LAST_NAME: Octocat
 ```
+
 {% endraw %}
 
 ### `jobs.<job_id>.steps[*].continue-on-error`
@@ -992,6 +1026,7 @@ Zum Erstellen einer Matrix geben Sie ein Array für die Konfigurationsoptionen a
 Dieses Beispiel erzeugt eine Matrix von drei Jobs, indem der Schlüssel `node` auf ein Array von drei Node.js-Versionen gesetzt wird. Um die Matrix zu verwenden, setzt das Beispiel die Kontexteigenschaft `matrix.node` als Wert des Eingabeparameters `node-version` der Aktion `setup-node`. Daher werden drei Jobs ausgeführt, die jeweils eine andere Version von Node.js verwenden.
 
 {% raw %}
+
 ```yaml
 strategy:
   matrix:
@@ -1003,6 +1038,7 @@ steps:
       # The Node.js version to configure
       node-version: ${{ matrix.node }}
 ```
+
 {% endraw %}
 
 Die Aktion `setup-node` ist das empfohlene Mittel zur Konfiguration einer Node.js-Version, wenn {% data variables.product.prodname_dotcom %}-gehostete Runner verwendet werden. Weitere Informationen findest Du in der Aktion [`setup-node`](https://github.com/actions/setup-node).
@@ -1017,6 +1053,7 @@ Du kannst eine Matrix erstellen, um Workflows auf mehreren Runner-Betriebssystem
 {% data reusables.repositories.actions-matrix-builds-os %}
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1028,6 +1065,7 @@ steps:
     with:
       node-version: ${{ matrix.node }}
 ```
+
 {% endraw %}
 
 {% if currentVersion == "github-ae@latest" %}To find supported configuration options for {% data variables.actions.hosted_runner %}s, see "[Software specifications](/actions/using-github-hosted-runners/about-ae-hosted-runners#software-specifications)."
@@ -1039,6 +1077,7 @@ steps:
 Zu einem bereits vorhandenen Job mit Buildmatrix kannst Du weitere Konfigurationsoptionen hinzufügen. Wenn Du beispielsweise eine bestimmte Version von `npm` verwenden willst, wenn der Auftrag mit `windows-latest` und Version 8 von `node` ausgeführt wird, kannst Du `include` verwenden, um diese zusätzliche Option anzugeben.
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1052,6 +1091,7 @@ strategy:
         node: 8
         npm: 6
 ```
+
 {% endraw %}
 
 #### Example: Including new combinations
@@ -1059,6 +1099,7 @@ strategy:
 Du kannst `include` verwenden, um neue Jobs zu einer Build-Matrix hinzuzufügen. Alle Include-Konfigurationen, die nicht passen, werden zur Matrix hinzugefügt. Wenn Du beispielsweise `node` Version 14 verwenden willst, um auf mehreren Betriebssystemen zu bauen, aber Du willst einen zusätzlichen experimentellen Job mit Node Version 15 auf Ubuntu, kannst Du `include` verwenden, um diesen zusätzlichen Job anzugeben.
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1070,6 +1111,7 @@ strategy:
         os: ubuntu-18.04
         experimental: true
 ```
+
 {% endraw %}
 
 #### Example: Excluding configurations from a matrix
@@ -1077,6 +1119,7 @@ strategy:
 Mit der Option `exclude` kannst Du bestimmte in der Build-Matrix definierte Konfigurationen entfernen. Durch die Verwendung von `exclude` wird ein durch die Build-Matrix definierter Job entfernt. Die Anzahl der Jobs ist das Kreuzprodukt der Anzahl der Betriebssysteme (`os`), die in den von Dir bereitgestellten Arrays enthalten sind, abzüglich etwaiger Subtraktionen (`exclude`).
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1088,6 +1131,7 @@ strategy:
       - os: macos-latest
         node: 8
 ```
+
 {% endraw %}
 
 {% note %}
@@ -1124,6 +1168,7 @@ Verhindert, dass ein Workflow scheitert, wenn ein Job scheitert. Setze es auf `t
 Du kannst zulassen, dass bestimmte Jobs in einer Jobmatrix scheitert, ohne dass der Workflow-Lauf scheitert. Das gilt beispielsweise, wenn Du nur einem experimentellen Job, bei dem `node` auf `15` gesetzt wurde, das Scheitern erlauben willst, ohne dass dadurch der Workflow-Lauf scheitert.
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 continue-on-error: ${{ matrix.experimental }}
@@ -1138,6 +1183,7 @@ strategy:
         os: ubuntu-18.04
         experimental: true
 ```
+
 {% endraw %}
 
 ### `jobs.<job_id>.container`
@@ -1183,13 +1229,15 @@ Docker-Image, das beim Ausführen der Aktion als Container herangezogen wird. Th
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 container:
   image: ghcr.io/owner/image
   credentials:
-     username: ${{ github.actor }}
-     password: ${{ secrets.ghcr_token }}
+    username: ${{ github.actor }}
+    password: ${{ secrets.ghcr_token }}
 ```
+
 {% endraw %}
 {% endif %}
 
@@ -1267,6 +1315,7 @@ Docker-Image, das beim Ausführen der Aktion als Dienstcontainer herangezogen wi
 #### Beispiel
 
 {% raw %}
+
 ```yaml
 services:
   myservice1:
@@ -1280,6 +1329,7 @@ services:
       username: ${{ secrets.DOCKER_USER }}
       password: ${{ secrets.DOCKER_PASSWORD }}
 ```
+
 {% endraw %}
 {% endif %}
 
@@ -1340,35 +1390,35 @@ Weitere Informationen zur Syntax für Branch-, Tag- und Pfadfilter findest Du un
 
 #### Muster für den Abgleich von Branches und Tags
 
-| Muster                                                 | Beschreibung                                                                                                                                                                                                  | Beispiele für Übereinstimmungen                                                                                       |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `feature/*`                                            | Das Platzhalterzeichen `*` steht für ein beliebiges Zeichen, nicht jedoch für den Schrägstrich (`/`).                                                                                                         | `feature/my-branch`<br/><br/>`feature/your-branch`                                                        |
-| `feature/**`                                           | Das Platzhalterzeichen `**` steht für ein beliebiges Zeichen, also auch für den Schrägstrich (`/`), in Branch- und Tag-Namen.                                                                                 | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
-| `main`<br/><br/>`releases/mona-the-octcat` | Abgleich mit dem exakten Branch- oder Tag-Namen.                                                                                                                                                              | `main`<br/><br/>`releases/mona-the-octocat`                                                               |
-| `'*'`                                                  | Abgleich mit allen Branch- und Tag-Namen, die keinen Schrägstrich (`/`) enthalten. Das Zeichen `*` ist ein Sonderzeichen in YAML. Wenn ein Muster mit `*` beginnen soll, sind Anführungszeichen erforderlich. | `main`<br/><br/>`releases`                                                                                |
-| `'**'`                                                 | Abgleich mit allen Branch- und Tag-Namen. Dies ist das Standardverhalten, wenn Sie keinen `branches`- oder `tags`-Filter angeben.                                                                             | `all/the/branches`<br/><br/>`every/tag`                                                                   |
-| `'*feature'`                                           | Das Zeichen `*` ist ein Sonderzeichen in YAML. Wenn ein Muster mit `*` beginnen soll, sind Anführungszeichen erforderlich.                                                                                    | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature`                                   |
-| `v2*`                                                  | Abgleich mit Branch- und Tag-Namen, die mit `v2` beginnen.                                                                                                                                                    | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9`                                                          |
-| `v[12].[0-9]+.[0-9]+`                                  | Matches all semantic versioning branches and tags with major version 1 or 2                                                                                                                                   | `v1.10.1`<br/><br/>`v2.0.0`                                                                               |
+| Muster                                     | Beschreibung                                                                                                                                                                                                  | Beispiele für Übereinstimmungen                                                               |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `feature/*`                                | Das Platzhalterzeichen `*` steht für ein beliebiges Zeichen, nicht jedoch für den Schrägstrich (`/`).                                                                                                         | `feature/my-branch`<br/><br/>`feature/your-branch`                                            |
+| `feature/**`                               | Das Platzhalterzeichen `**` steht für ein beliebiges Zeichen, also auch für den Schrägstrich (`/`), in Branch- und Tag-Namen.                                                                                 | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
+| `main`<br/><br/>`releases/mona-the-octcat` | Abgleich mit dem exakten Branch- oder Tag-Namen.                                                                                                                                                              | `main`<br/><br/>`releases/mona-the-octocat`                                                   |
+| `'*'`                                      | Abgleich mit allen Branch- und Tag-Namen, die keinen Schrägstrich (`/`) enthalten. Das Zeichen `*` ist ein Sonderzeichen in YAML. Wenn ein Muster mit `*` beginnen soll, sind Anführungszeichen erforderlich. | `main`<br/><br/>`releases`                                                                    |
+| `'**'`                                     | Abgleich mit allen Branch- und Tag-Namen. Dies ist das Standardverhalten, wenn Sie keinen `branches`- oder `tags`-Filter angeben.                                                                             | `all/the/branches`<br/><br/>`every/tag`                                                       |
+| `'*feature'`                               | Das Zeichen `*` ist ein Sonderzeichen in YAML. Wenn ein Muster mit `*` beginnen soll, sind Anführungszeichen erforderlich.                                                                                    | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature`                                   |
+| `v2*`                                      | Abgleich mit Branch- und Tag-Namen, die mit `v2` beginnen.                                                                                                                                                    | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9`                                                          |
+| `v[12].[0-9]+.[0-9]+`                      | Matches all semantic versioning branches and tags with major version 1 or 2                                                                                                                                   | `v1.10.1`<br/><br/>`v2.0.0`                                                                   |
 
 #### Muster für den Abgleich von Dateinamen
 
 Pfadmuster müssen mit dem gesamten Pfad übereinstimmen und mit dem Root des Repositorys beginnen.
 
-| Muster                                                                  | Beschreibung der Übereinstimmungen                                                                                                                                                                                                   | Beispiele für Übereinstimmungen                                                                                          |
-| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `'*'`                                                                   | Das Platzhalterzeichen `*` steht für ein beliebiges Zeichen, nicht jedoch für den Schrägstrich (`/`). Das Zeichen `*` ist ein Sonderzeichen in YAML. Wenn ein Muster mit `*` beginnen soll, sind Anführungszeichen erforderlich.     | `README.md`<br/><br/>`server.rb`                                                                             |
-| `'*.jsx?'`                                                              | Das Zeichen `?` steht für null Instanzen oder genau eine Instanz des vorangegangenen Zeichens.                                                                                                                                       | `page.js`<br/><br/>`page.jsx`                                                                                |
-| `'**'`                                                                  | Das Platzhalterzeichen `**` steht für ein beliebiges Zeichen, auch für den Schrägstrich (`/`). Dies ist das Standardverhalten, wenn Sie keinen `path`-Filter angeben.                                                                | `all/the/files.md`                                                                                                       |
-| `'*.js'`                                                                | Das Platzhalterzeichen `*` steht für ein beliebiges Zeichen, nicht jedoch für den Schrägstrich (`/`). Abgleich mit allen `.js`-Dateien im Root des Repositorys.                                                                      | `app.js`<br/><br/>`index.js`                                                                                 |
-| `'**.js'`                                                               | Abgleich mit allen `.js`-Dateien im Repository.                                                                                                                                                                                      | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js`                                       |
-| `docs/*`                                                                | Alle Dateien im Root des Verzeichnisses `docs` im Root des Repositorys.                                                                                                                                                              | `docs/README.md`<br/><br/>`docs/file.txt`                                                                    |
-| `docs/**`                                                               | Beliebige Dateien im Verzeichnis `docs` im Root des Repositorys.                                                                                                                                                                     | `docs/README.md`<br/><br/>`docs/mona/octocat.txt`                                                            |
-| `docs/**/*.md`                                                          | Eine Datei mit dem Suffix `.md` an beliebiger Stelle im Verzeichnis `docs`.                                                                                                                                                          | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md`          |
-| `'**/docs/**'`                                                          | Beliebige Dateien im Verzeichnis `docs` an beliebiger Stelle im Repository.                                                                                                                                                          | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`             |
-| `'**/README.md'`                                                        | Eine Datei mit dem Namen „README.md“ an beliebiger Stelle im Repository.                                                                                                                                                             | `README.md`<br/><br/>`js/README.md`                                                                          |
-| `'**/*src/**'`                                                          | Eine beliebige Datei in einem Ordner mit dem Suffix `src` an beliebiger Stelle im Repository.                                                                                                                                        | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`                                                              |
-| `'**/*-post.md'`                                                        | Eine Datei mit dem Suffix `-post.md` an beliebiger Stelle im Repository.                                                                                                                                                             | `my-post.md`<br/><br/>`path/their-post.md`                                                                   |
-| `'**/migrate-*.sql'`                                                    | Eine Datei mit dem Präfix `migrate-` und dem Suffix `.sql` an beliebiger Stelle im Repository.                                                                                                                                       | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`             |
-| `*.md`<br/><br/>`!README.md`                                | Ein Ausrufezeichen (`!`) vor einem Muster negiert das Muster. Wenn eine Datei sowohl mit einem Muster übereinstimmt als auch mit einem negativen Muster, das später in der Datei definiert ist, wird die Datei nicht berücksichtigt. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md` |
-| `*.md`<br/><br/>`!README.md`<br/><br/>`README*` | Die Muster werden sequenziell geprüft. Wenn ein Muster ein vorangegangenes Muster negiert, werden die Dateipfade wieder berücksichtigt.                                                                                              | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                            |
+| Muster                                          | Beschreibung der Übereinstimmungen                                                                                                                                                                                                   | Beispiele für Übereinstimmungen                                                         |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `'*'`                                           | Das Platzhalterzeichen `*` steht für ein beliebiges Zeichen, nicht jedoch für den Schrägstrich (`/`). Das Zeichen `*` ist ein Sonderzeichen in YAML. Wenn ein Muster mit `*` beginnen soll, sind Anführungszeichen erforderlich.     | `README.md`<br/><br/>`server.rb`                                                        |
+| `'*.jsx?'`                                      | Das Zeichen `?` steht für null Instanzen oder genau eine Instanz des vorangegangenen Zeichens.                                                                                                                                       | `page.js`<br/><br/>`page.jsx`                                                           |
+| `'**'`                                          | Das Platzhalterzeichen `**` steht für ein beliebiges Zeichen, auch für den Schrägstrich (`/`). Dies ist das Standardverhalten, wenn Sie keinen `path`-Filter angeben.                                                                | `all/the/files.md`                                                                      |
+| `'*.js'`                                        | Das Platzhalterzeichen `*` steht für ein beliebiges Zeichen, nicht jedoch für den Schrägstrich (`/`). Abgleich mit allen `.js`-Dateien im Root des Repositorys.                                                                      | `app.js`<br/><br/>`index.js`                                                            |
+| `'**.js'`                                       | Abgleich mit allen `.js`-Dateien im Repository.                                                                                                                                                                                      | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js`                              |
+| `docs/*`                                        | Alle Dateien im Root des Verzeichnisses `docs` im Root des Repositorys.                                                                                                                                                              | `docs/README.md`<br/><br/>`docs/file.txt`                                               |
+| `docs/**`                                       | Beliebige Dateien im Verzeichnis `docs` im Root des Repositorys.                                                                                                                                                                     | `docs/README.md`<br/><br/>`docs/mona/octocat.txt`                                       |
+| `docs/**/*.md`                                  | Eine Datei mit dem Suffix `.md` an beliebiger Stelle im Verzeichnis `docs`.                                                                                                                                                          | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
+| `'**/docs/**'`                                  | Beliebige Dateien im Verzeichnis `docs` an beliebiger Stelle im Repository.                                                                                                                                                          | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`    |
+| `'**/README.md'`                                | Eine Datei mit dem Namen „README.md“ an beliebiger Stelle im Repository.                                                                                                                                                             | `README.md`<br/><br/>`js/README.md`                                                     |
+| `'**/*src/**'`                                  | Eine beliebige Datei in einem Ordner mit dem Suffix `src` an beliebiger Stelle im Repository.                                                                                                                                        | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`                                         |
+| `'**/*-post.md'`                                | Eine Datei mit dem Suffix `-post.md` an beliebiger Stelle im Repository.                                                                                                                                                             | `my-post.md`<br/><br/>`path/their-post.md`                                              |
+| `'**/migrate-*.sql'`                            | Eine Datei mit dem Präfix `migrate-` und dem Suffix `.sql` an beliebiger Stelle im Repository.                                                                                                                                       | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
+| `*.md`<br/><br/>`!README.md`                    | Ein Ausrufezeichen (`!`) vor einem Muster negiert das Muster. Wenn eine Datei sowohl mit einem Muster übereinstimmt als auch mit einem negativen Muster, das später in der Datei definiert ist, wird die Datei nicht berücksichtigt. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md`      |
+| `*.md`<br/><br/>`!README.md`<br/><br/>`README*` | Die Muster werden sequenziell geprüft. Wenn ein Muster ein vorangegangenes Muster negiert, werden die Dateipfade wieder berücksichtigt.                                                                                              | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |

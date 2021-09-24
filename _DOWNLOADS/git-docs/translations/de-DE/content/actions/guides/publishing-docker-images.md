@@ -1,13 +1,13 @@
 ---
 title: Docker-Images veröffentlichen
-intro: 'Du kannst Docker-Images im Rahmen Deines Workflows zur kontinuierlichen Integration (CI) in einer Registry wie zum Beispiel „Docker Hub“ oder {% data variables.product.prodname_registry %} veröffentlichen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Docker-Images im Rahmen Deines Workflows zur kontinuierlichen Integration (CI) in einer Registry wie zum Beispiel „Docker Hub“ oder {% data variables.product.prodname_registry %} veröffentlichen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/publishing-docker-images
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Packaging
@@ -57,13 +57,15 @@ Um zum „Docker Hub“ zu pushen, benötigst Du ein Benutzerkonto auf „Docker
 
 The `login-action` options required for Docker Hub are:
 
-* `username` und `password`: Dies ist Dein Benutzername und Passwort auf „Docker Hub“. We recommend storing your Docker Hub username and password as secrets so they aren't exposed in your workflow file. Weitere Informationen findest Du unter „[Verschlüsselte Geheimnisse erstellen und verwenden](/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)“.
+- `username` und `password`: Dies ist Dein Benutzername und Passwort auf „Docker Hub“. We recommend storing your Docker Hub username and password as secrets so they aren't exposed in your workflow file. Weitere Informationen findest Du unter „[Verschlüsselte Geheimnisse erstellen und verwenden](/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)“.
 
 „Docker Hub“ benötigt für `build-push-action` die folgenden Optionen:
-* `tags`: The tag of your new image in the format `DOCKER-HUB-NAMESPACE/DOCKER-HUB-REPOSITORY:VERSION`. You can set a single tag as shown below, or specify multiple tags in a list.
-* `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.
+
+- `tags`: The tag of your new image in the format `DOCKER-HUB-NAMESPACE/DOCKER-HUB-REPOSITORY:VERSION`. You can set a single tag as shown below, or specify multiple tags in a list.
+- `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Publish Docker image
 on:
@@ -87,6 +89,7 @@ jobs:
           push: true
           tags: my-docker-hub-namespace/my-docker-hub-repository:latest
 ```
+
 {% endraw %}
 
 {% data reusables.github-actions.docker-tag-with-ref %}
@@ -98,13 +101,15 @@ jobs:
 In the example workflow below, we use the Docker `login-action` and `build-push-action` actions to build the Docker image, and if the build succeeds, push the built image to {% data variables.product.prodname_registry %}.
 
 The `login-action` options required for {% data variables.product.prodname_registry %} are:
-* `registry`: Muss auf `docker.pkg.github.com` gesetzt werden.
-* `username`: Du kannst mithilfe des Kontexts von {% raw %}`${{ github.actor }}`{% endraw %} automatisch den Benutzernamen des Benutzers zu verwenden, der die Workflow-Ausführung angestoßen hat. Weitere Informationen findest Du unter „[Kontext- und Ausdrucks-Syntax für GitHub-Aktionen](/actions/reference/context-and-expression-syntax-for-github-actions#github-context)“.
-* `password`: Du kannst das automatisch generierte Geheimnis `GITHUB_TOKEN` als Passwort verwenden. Weitere Informationen findest Du unter „[Authentifizierung mit dem GITHUB_TOKEN](/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)".
+
+- `registry`: Muss auf `docker.pkg.github.com` gesetzt werden.
+- `username`: Du kannst mithilfe des Kontexts von {% raw %}`${{ github.actor }}`{% endraw %} automatisch den Benutzernamen des Benutzers zu verwenden, der die Workflow-Ausführung angestoßen hat. Weitere Informationen findest Du unter „[Kontext- und Ausdrucks-Syntax für GitHub-Aktionen](/actions/reference/context-and-expression-syntax-for-github-actions#github-context)“.
+- `password`: Du kannst das automatisch generierte Geheimnis `GITHUB_TOKEN` als Passwort verwenden. Weitere Informationen findest Du unter „[Authentifizierung mit dem GITHUB_TOKEN](/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)".
 
 Die für {% data variables.product.prodname_registry %} erforderlichen `build-push-action`-Optionen sind:
-* `tags`: Must be set in the format `docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION`. For example, for an image named `octo-image` stored on {% data variables.product.prodname_dotcom %} at `http://github.com/octo-org/octo-repo`, the `tags` option should be set to `docker.pkg.github.com/octo-org/octo-repo/octo-image:latest`. You can set a single tag as shown below, or specify multiple tags in a list.
-* `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.
+
+- `tags`: Must be set in the format `docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION`. For example, for an image named `octo-image` stored on {% data variables.product.prodname_dotcom %} at `http://github.com/octo-org/octo-repo`, the `tags` option should be set to `docker.pkg.github.com/octo-org/octo-repo/octo-image:latest`. You can set a single tag as shown below, or specify multiple tags in a list.
+- `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.
 
 ```yaml{:copy}
 name: Publish Docker image

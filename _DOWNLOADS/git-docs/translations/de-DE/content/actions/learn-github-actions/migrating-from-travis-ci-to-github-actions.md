@@ -1,12 +1,12 @@
 ---
 title: Migrating from Travis CI to GitHub Actions
-intro: '{% data variables.product.prodname_actions %} and Travis CI share multiple similarities, which helps make it relatively straightforward to migrate to {% data variables.product.prodname_actions %}.'
+intro: "{% data variables.product.prodname_actions %} and Travis CI share multiple similarities, which helps make it relatively straightforward to migrate to {% data variables.product.prodname_actions %}."
 redirect_from:
   - /actions/migrating-to-github-actions/migrating-from-travis-ci-to-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Travis CI
@@ -203,12 +203,13 @@ The concurrent jobs and workflow execution times in {% data variables.product.pr
 #### Using different languages in {% data variables.product.prodname_actions %}
 
 When working with different languages in {% data variables.product.prodname_actions %}, you can create a step in your job to set up your language dependencies. For more information about working with a particular language, see the specific guide:
-  - [Building and testing Node.js](/actions/guides/building-and-testing-nodejs)
-  - [Building and testing PowerShell](/actions/guides/building-and-testing-powershell)
-  - [Building and testing Python](/actions/guides/building-and-testing-python)
-  - [Java bauen und testen mit Maven](/actions/guides/building-and-testing-java-with-maven)
-  - [Java bauen und testen mit Gradle](/actions/guides/building-and-testing-java-with-gradle)
-  - [Java bauen und testen mit Ant](/actions/guides/building-and-testing-java-with-ant)
+
+- [Building and testing Node.js](/actions/guides/building-and-testing-nodejs)
+- [Building and testing PowerShell](/actions/guides/building-and-testing-powershell)
+- [Building and testing Python](/actions/guides/building-and-testing-python)
+- [Java bauen und testen mit Maven](/actions/guides/building-and-testing-java-with-maven)
+- [Java bauen und testen mit Gradle](/actions/guides/building-and-testing-java-with-gradle)
+- [Java bauen und testen mit Ant](/actions/guides/building-and-testing-java-with-ant)
 
 ### Executing scripts
 
@@ -233,7 +234,7 @@ When migrating to {% data variables.product.prodname_actions %}, there are diffe
 
 #### Job error handling
 
-{% data variables.product.prodname_actions %} uses `if` conditionals to execute jobs or steps in certain situations. For example, you can run a step when another step results in a `failure()`. Weitere Informationen findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/workflow-syntax-for-github-actions#example-using-status-check-functions)“.  You can also use [`continue-on-error`](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idcontinue-on-error) to prevent a workflow run from stopping when a job fails.
+{% data variables.product.prodname_actions %} uses `if` conditionals to execute jobs or steps in certain situations. For example, you can run a step when another step results in a `failure()`. Weitere Informationen findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/workflow-syntax-for-github-actions#example-using-status-check-functions)“. You can also use [`continue-on-error`](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idcontinue-on-error) to prevent a workflow run from stopping when a job fails.
 
 ### Migrating syntax for conditionals and expressions
 
@@ -274,8 +275,10 @@ python:
   - "3.7"
 
 script:
-  - python script.py
-```
+
+- python script.py
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -290,8 +293,10 @@ jobs:
           python-version: '3.7'
           architecture: 'x64'
       - run: python script.py
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -333,7 +338,7 @@ cache: npm
 </tr>
 </table>
 
-{% data variables.product.prodname_actions %} caching is only applicable to {% data variables.product.prodname_dotcom %}-hosted runners.  Weitere Informationen findest Du unter „<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Abhängigkeiten zur Beschleunigung von Workflows im Cache zwischenspeichern</a>“.
+{% data variables.product.prodname_actions %} caching is only applicable to {% data variables.product.prodname_dotcom %}-hosted runners. Weitere Informationen findest Du unter „<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Abhängigkeiten zur Beschleunigung von Workflows im Cache zwischenspeichern</a>“.
 
 ### Beispiele für häufige Aufgaben
 
@@ -367,7 +372,7 @@ env:
 jobs:
   maven-build:
     env:
-      MAVEN_PATH: '/usr/local/maven'
+      MAVEN_PATH: "/usr/local/maven"
 ```
 
 </td>
@@ -422,4 +427,4 @@ jobs:
 
 ### Nächste Schritte:
 
-To continue learning about the main features of  {% data variables.product.prodname_actions %}, see "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)."
+To continue learning about the main features of {% data variables.product.prodname_actions %}, see "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)."

@@ -9,4 +9,3 @@ In general, we use Primer's [utility classes](https://styleguide.github.com/prim
 as much as we can, and avoid writing custom styles whenever possible.
 
 See [styleguide.github.com/primer](https://styleguide.github.com/primer/) for reference.
-
