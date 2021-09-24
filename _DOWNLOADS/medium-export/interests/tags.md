@@ -99,4 +99,4 @@
 97. [Arrays](https://medium.com/tag/arrays)
 98. [Complexity](https://medium.com/tag/complexity)
 99. [Prototype Chain](https://medium.com/tag/prototype-chain)
-100. [Tech](https://medium.com/tag/tech)
+100.  [Tech](https://medium.com/tag/tech)

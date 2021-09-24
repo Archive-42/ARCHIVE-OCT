@@ -12,16 +12,15 @@
 
 ============================================================================= */
 
-
 /* ============================================================================= 
 1. Main
 ============================================================================= */
 @media only screen and (min-width: 1025px) {
   ul.main-menu {
     background-color: #444;
-    -webkit-box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
-    -moz-box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
-    box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
   }
   ul.main-menu a {
     color: #b5b6b7;
@@ -30,31 +29,34 @@
 
 .lmpixels-arrows-nav {
   background-color: #444;
-  -webkit-box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
-  box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
 }
 
 .lmpixels-arrows-nav div {
   color: #b5b6b7;
 }
 
-.btn-primary, .btn-secondary, button, input[type="button"], input[type="submit"], .wp-block-button .wp-block-button__link, .elementor .btn-primary, .elementor .btn-secondary {
+.btn-primary,
+.btn-secondary,
+button,
+input[type="button"],
+input[type="submit"],
+.wp-block-button .wp-block-button__link,
+.elementor .btn-primary,
+.elementor .btn-secondary {
   background-color: transparent;
   color: #f5f5f5;
 }
 
-.btn-secondary, .elementor .btn-secondary {
-  box-shadow: 0 10px 10px -8px rgba(0,0,0,.3);
+.btn-secondary,
+.elementor .btn-secondary {
+  box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.3);
 }
 
-
-
-
-
-
-
-.preloader, .preloader-portfolio {
+.preloader,
+.preloader-portfolio {
   background-color: #222;
 }
 
@@ -62,7 +64,8 @@
   color: #fff;
 }
 
-.block-title h2:before, h3.comment-reply-title:before {
+.block-title h2:before,
+h3.comment-reply-title:before {
   background-color: #353535;
 }
 
@@ -113,20 +116,31 @@ p {
   color: #555;
 }
 
-input[type=submit],
-input[type=button],
+input[type="submit"],
+input[type="button"],
 button,
 a.button {
   color: #fff;
 }
 
-.btn-primary, .btn-secondary, button, input[type="button"], input[type="submit"], .wp-block-button .wp-block-button__link {
+.btn-primary,
+.btn-secondary,
+button,
+input[type="button"],
+input[type="submit"],
+.wp-block-button .wp-block-button__link {
   color: #fff;
   background-color: #333;
-  box-shadow: 0px 10px 10px -8px rgba(0,0,0,.78);
+  box-shadow: 0px 10px 10px -8px rgba(0, 0, 0, 0.78);
 }
 
-.form-control, .form-control:focus, .has-error .form-control, .has-error .form-control:focus, input[type="search"], input[type="password"], input[type="text"] {
+.form-control,
+.form-control:focus,
+.has-error .form-control,
+.has-error .form-control:focus,
+input[type="search"],
+input[type="password"],
+input[type="text"] {
   color: #eee;
   background-color: transparent;
   border-color: #555;
@@ -180,18 +194,20 @@ a.button {
 }
 
 .entry-meta .share-buttons a,
-.tags a, .tags li a, .tagcloud a {
+.tags a,
+.tags li a,
+.tagcloud a {
   background-color: #666;
   border: 1px solid transparent;
   color: #fff;
 }
 
 .blog-sidebar .sidebar-item {
-  border-color: #444; 
+  border-color: #444;
 }
 
 .blog-sidebar a {
-    color: #e5e5e5;
+  color: #e5e5e5;
 }
 
 .sidebar-toggle {
@@ -235,7 +251,9 @@ a.button {
   color: #777;
 }
 
-.comment-list .trackback a, .comment-list .pingback a, .comment-metadata a {
+.comment-list .trackback a,
+.comment-list .pingback a,
+.comment-metadata a {
   color: #777;
 }
 
@@ -247,9 +265,12 @@ a.button {
 .wp-block-button:not(.is-style-outline) .wp-block-button__link:active,
 .wp-block-button:not(.is-style-outline) .wp-block-button__link:focus,
 .wp-block-button:not(.is-style-outline) .wp-block-button__link:hover,
-.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):active,
-.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):focus,
-.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):hover {
+.wp-block-button:not(.is-style-outline)
+  .wp-block-button__link:not(.has-background):active,
+.wp-block-button:not(.is-style-outline)
+  .wp-block-button__link:not(.has-background):focus,
+.wp-block-button:not(.is-style-outline)
+  .wp-block-button__link:not(.has-background):hover {
   color: #fff;
 }
 
@@ -263,7 +284,9 @@ a.button {
   color: #eee;
 }
 
-.paging-navigation .page-numbers.current, .paging-navigation .page-numbers.current:hover, .paging-navigation .page-numbers.current:focus {
+.paging-navigation .page-numbers.current,
+.paging-navigation .page-numbers.current:hover,
+.paging-navigation .page-numbers.current:focus {
   color: #eee;
 }
 
@@ -281,8 +304,10 @@ a.button {
     color: #f5f5f5;
   }
 
-  .mobile-site-title a, .mobile-site-title a:hover, .mobile-site-title a:focus {
-    background-color: rgba(34,34,34,.8);
+  .mobile-site-title a,
+  .mobile-site-title a:hover,
+  .mobile-site-title a:focus {
+    background-color: rgba(34, 34, 34, 0.8);
   }
 }
 
@@ -291,7 +316,6 @@ a.button {
     background-color: #555;
   }
 }
-
 
 /* ============================================================================= 
 2. Tables

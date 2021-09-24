@@ -1,8 +1,6 @@
-Interviewing
-============
+# Interviewing
 
-Interviewing
-------------
+## Interviewing
 
 [Data Structures & Algorithms Resource List Part 1](https://medium.com/p/8bad647a8ad8)
 

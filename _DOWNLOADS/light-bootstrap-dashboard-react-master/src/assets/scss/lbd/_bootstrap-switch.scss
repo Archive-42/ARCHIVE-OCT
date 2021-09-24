@@ -20,8 +20,9 @@
   -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-transition: border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
 .bootstrap-switch .bootstrap-switch-container {
@@ -37,23 +38,23 @@
 .bootstrap-switch .bootstrap-switch-handle-on,
 .bootstrap-switch .bootstrap-switch-handle-off,
 .bootstrap-switch .bootstrap-switch-label {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block !important;
-    height: 100%;
-    color: #fff;
-    padding: 6px 10px;
-    font-size: 11px;
-    text-indent: -5px;
-    line-height: 15px;
-    -webkit-transition: 0.25s ease-out;
-    transition: 0.25s ease-out;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block !important;
+  height: 100%;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 11px;
+  text-indent: -5px;
+  line-height: 15px;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
 
-    i{
-        font-size: 12px;
-        line-height: 14px;
+  i {
+    font-size: 12px;
+    line-height: 14px;
   }
 }
 
@@ -65,7 +66,6 @@
   width: 50% !important;
   background-color: $info-color;
 }
-
 
 .bootstrap-switch .bootstrap-switch-label {
   text-align: center;
@@ -79,8 +79,8 @@
   position: relative;
   float: left;
   padding: 0;
-  background-color: #FFFFFF;
-  box-shadow: 0 1px 1px #FFFFFF inset, 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px #ffffff inset, 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on {
@@ -92,8 +92,8 @@
   text-indent: 6px;
 }
 
-.bootstrap-switch input[type='radio'],
-.bootstrap-switch input[type='checkbox'] {
+.bootstrap-switch input[type="radio"],
+.bootstrap-switch input[type="checkbox"] {
   position: absolute !important;
   top: 0;
   left: 0;
@@ -102,12 +102,10 @@
   z-index: -1;
 }
 
-
 .bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
   -webkit-transition: margin-left 0.5s;
   transition: margin-left 0.5s;
 }
-
 
 .bootstrap-switch.bootstrap-switch-on .bootstrap-switch-container {
   margin-left: -2px !important;

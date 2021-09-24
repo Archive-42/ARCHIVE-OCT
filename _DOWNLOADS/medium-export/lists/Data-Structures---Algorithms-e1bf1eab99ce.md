@@ -1,8 +1,6 @@
-Data Structures & Algorithms
-============================
+# Data Structures & Algorithms
 
-Data Structures & Algorithms
-----------------------------
+## Data Structures & Algorithms
 
 [Notes I Wish I Had When I Started Learning Python](https://medium.com/p/16ce4244be12)
 

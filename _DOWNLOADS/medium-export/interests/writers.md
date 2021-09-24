@@ -19,7 +19,7 @@
 17. [Rebecca Vickery](https://medium.com/@rebecca-vickery)
 18. [Siddharth Kothari](https://medium.com/@siddharthlatest)
 19. [Joseph Odunsi](https://medium.com/@dhatguy)
-20. [Gen\_Yap](https://medium.com/@fengyuan-yap)
+20. [Gen_Yap](https://medium.com/@fengyuan-yap)
 21. [Dinesh Kumar K B](https://medium.com/@dineshkumarkb)
 22. [Keno Leon](https://medium.com/@k3no)
 23. [Hucker Marius](https://medium.com/@hucker.marius)

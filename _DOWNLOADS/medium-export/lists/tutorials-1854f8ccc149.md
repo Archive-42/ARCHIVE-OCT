@@ -1,8 +1,6 @@
-tutorials
-=========
+# tutorials
 
-tutorials
----------
+## tutorials
 
 [Understanding Git (A Beginners Guide Containing Cheat Sheets & Resources)](https://medium.com/p/b50c9c01a107)
 

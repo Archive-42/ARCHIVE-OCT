@@ -1,8 +1,6 @@
-web-dev-tools
-=============
+# web-dev-tools
 
-web-dev-tools
--------------
+## web-dev-tools
 
 [7 Useful CSS Cheat Sheets to Improve Your Skills](https://medium.com/p/66d7d3a7cc8)
 

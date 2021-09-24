@@ -1,8 +1,6 @@
-Reading list
-============
+# Reading list
 
-Reading list
-------------
+## Reading list
 
 [Auto Formatting Code Using Prettier and GitHub Actions](https://medium.com/p/ed458f58b7df)
 

@@ -1,8 +1,6 @@
-React
-=====
+# React
 
-React
------
+## React
 
 [Super Simple Intro To React](https://medium.com/p/5c78e4207b7f)
 

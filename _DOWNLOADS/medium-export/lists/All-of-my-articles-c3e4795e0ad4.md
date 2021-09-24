@@ -1,8 +1,6 @@
-All-of-my-articles
-==================
+# All-of-my-articles
 
-All-of-my-articles
-------------------
+## All-of-my-articles
 
 [Understanding Git (A Beginners Guide Containing Cheat Sheets & Resources)](https://medium.com/p/b50c9c01a107)
 

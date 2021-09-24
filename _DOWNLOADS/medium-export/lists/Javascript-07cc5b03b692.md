@@ -1,8 +1,6 @@
-Javascript
-==========
+# Javascript
 
-Javascript
-----------
+## Javascript
 
 [Data Structures… Under The Hood](https://medium.com/p/660256c2e4e3)
 

@@ -1,8 +1,6 @@
-research
-========
+# research
 
-research
---------
+## research
 
 [Here’s the expanded list:](https://medium.com/p/f1bbcd632fd0)
 
