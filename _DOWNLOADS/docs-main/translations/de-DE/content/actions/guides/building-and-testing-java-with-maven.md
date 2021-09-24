@@ -1,13 +1,13 @@
 ---
 title: Java bauen und testen mit Maven
-intro: 'Du kannst einen Workflow für kontinuierliche Integration (CI) in GitHub-Aktionen erstellen, um Dein Java-Projekt mit Maven zu bauen und zu testen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst einen Workflow für kontinuierliche Integration (CI) in GitHub-Aktionen erstellen, um Dein Java-Projekt mit Maven zu bauen und zu testen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/building-and-testing-java-with-maven
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CI
@@ -31,6 +31,7 @@ Dieser Leitfaden zeigt Dir, wie Du einen Workflow erstellen kannst, der eine kon
 ### Vorrausetzungen
 
 Du solltest mit YAML und der Syntax für {% data variables.product.prodname_actions %} vertraut sein. Weitere Informationen findest Du unter:
+
 - „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)“
 - "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)"
 
@@ -47,6 +48,7 @@ Um schnell loszulegen, kannst Du beim Erstellen eines neuen Workflows die vorkon
 Du kannst auch manuell diesen Workflow hinzufügen, indem Du eine neue Datei im Verzeichnis `.github/workflows` Deines Reporitorys erstellst.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Java CI
 
@@ -66,6 +68,7 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
 ```
+
 {% endraw %}
 
 Dieser Workflow führt die folgenden Schritte aus:
@@ -89,6 +92,7 @@ Der Starter-Workflow führt standardmäßig das „target“ (Ziel) `package` au
 Wenn Du zum Bauen Deines Projekts andere Befehle verwenden oder ein anderes Ziel auszuführen möchtest, kannst Du dies angeben. Vielleicht möchtest Du beispielsweise das Ziel `verify` ausführen, das in Deiner Datei _pom-ci.xml_ konfiguriert ist.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -99,6 +103,7 @@ steps:
   - name: Run the Maven verify phase
     run: mvn --batch-mode --update-snapshots verify
 ```
+
 {% endraw %}
 
 ### Abhängigkeiten „cachen“ (zwischenspeichern)
@@ -106,6 +111,7 @@ steps:
 When using {% data variables.product.prodname_dotcom %}-hosted runners, you can cache your dependencies to speed up your workflow runs. Nach einem erfolgreichen Lauf wird Dein lokales Maven-Repository in der Aktions-Infrastruktur auf GitHub gespeichert. Bei zukünftigen Workflow-Ausführungen wird der Cache wiederhergestellt, so dass Abhängigkeiten nicht aus entfernten Maven-Repositories heruntergeladen werden müssen. Weitere Informationen findest Du unter „<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Caching-Abhängigkeiten zur Beschleunigung von Workflows</a>“ und der [Aktion `cache`](https://github.com/marketplace/actions/cache).
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -123,9 +129,10 @@ steps:
   - name: Build with Maven
     run: mvn --batch-mode --update-snapshots verify
 ```
+
 {% endraw %}
 
-Dieser Workflow speichert den Inhalt Deines lokalen Maven-Repositiorys im Verzeichnis `.m2` des Home-Verzeichnisses auf dem Runner. Der Cache-Schlüssel wird der gehashte Inhalt von _pom.xml_sein, so dass Änderungen an _pom.xml_ den Cache ungültig machen.
+Dieser Workflow speichert den Inhalt Deines lokalen Maven-Repositiorys im Verzeichnis `.m2` des Home-Verzeichnisses auf dem Runner. Der Cache-Schlüssel wird der gehashte Inhalt von _pom.xml_sein, so dass Änderungen an \_pom.xml_ den Cache ungültig machen.
 
 ### Workflow-Daten als Artefakte paketieren
 
@@ -134,6 +141,7 @@ Nachdem sowohl Build erfolgreich war und Deine Tests bestanden hat, wirst Du die
 Maven erstellt normalerweise Ausgabedateien wie JARs, EARs oder WARs im Verzeichnis `target`. Um diese als Artefakte hochzuladen, kannst du sie in ein neues Verzeichnis kopieren, welches Artefakte zum Hochladen enthält. Zum Beispiel kannst Du ein Verzeichnis namens `staging` erstellen. Dann kannst Du den Inhalt dieses Verzeichnisses mit der Aktion `upload-artifact` hochladen.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -148,4 +156,5 @@ steps:
       name: Package
       path: staging
 ```
+
 {% endraw %}

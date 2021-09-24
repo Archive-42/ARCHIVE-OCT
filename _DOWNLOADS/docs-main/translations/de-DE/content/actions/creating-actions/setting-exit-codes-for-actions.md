@@ -1,14 +1,14 @@
 ---
 title: Exitcodes für Aktionen setzen
 shortTitle: Exitcodes setzen
-intro: 'Du kannst mittels Exitcodes den Status einer Aktion setzen. {% data variables.product.prodname_dotcom %} zeigt Status, um erfolgreiche oder fehlgeschlagene Aktionen kenntlich zu machen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst mittels Exitcodes den Status einer Aktion setzen. {% data variables.product.prodname_dotcom %} zeigt Status, um erfolgreiche oder fehlgeschlagene Aktionen kenntlich zu machen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/building-actions/setting-exit-codes-for-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: how_to
 ---
 

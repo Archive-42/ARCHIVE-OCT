@@ -3,7 +3,7 @@ title: Restricting network traffic to your enterprise
 shortTitle: Restricting network traffic
 intro: You can use an IP allow list to restrict access to your enterprise to connections from specified IP addresses.
 versions:
-  github-ae: '*'
+  github-ae: "*"
 type: how_to
 topics:
   - Access management
@@ -47,8 +47,9 @@ For instance-level restrictions using Azure NSGs, contact {% data variables.cont
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.security-tab %}
+
 1. Wähle unter „IP allow list“ (Liste der zulässigen IP-Adressen) **Enable IP allow list** (Liste der zulässigen IP-Adressen aktivieren) aus. ![Kontrollkästchen, um IP-Adressen zuzulassen](/assets/images/help/security/enable-ip-allowlist-enterprise-checkbox.png)
-4. Klicke auf **Save** (Speichern).
+2. Klicke auf **Save** (Speichern).
 
 ### Eine zulässige IP-Adresse bearbeiten
 
@@ -57,8 +58,7 @@ For instance-level restrictions using Azure NSGs, contact {% data variables.cont
 {% data reusables.enterprise-accounts.security-tab %}
 {% data reusables.identity-and-permissions.ip-allow-lists-edit-entry %}
 {% data reusables.identity-and-permissions.ip-allow-lists-edit-ip %}
-{% data reusables.identity-and-permissions.ip-allow-lists-edit-description %}
-8. Klicke auf **Update** (Aktualisieren).
+{% data reusables.identity-and-permissions.ip-allow-lists-edit-description %} 8. Klicke auf **Update** (Aktualisieren).
 
 ### Eine zulässige IP-Adresse löschen
 

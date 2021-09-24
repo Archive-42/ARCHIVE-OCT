@@ -1,6 +1,6 @@
 ---
 title: Privaten Modus aktivieren
-intro: 'Im privaten Modus erfordert {% data variables.product.prodname_ghe_server %}, dass sich jeder Benutzer anmeldet, um auf die Installation zuzugreifen.'
+intro: "Im privaten Modus erfordert {% data variables.product.prodname_ghe_server %}, dass sich jeder Benutzer anmeldet, um auf die Installation zuzugreifen."
 redirect_from:
   - /enterprise/admin/articles/private-mode/
   - /enterprise/admin/guides/installation/security/
@@ -9,7 +9,7 @@ redirect_from:
   - /enterprise/admin/configuration/enabling-private-mode
   - /admin/configuration/enabling-private-mode
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Access management
@@ -30,6 +30,5 @@ Wenn der private Modus aktiviert ist, können Sie festlegen, dass nicht authenti
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
-{% data reusables.enterprise_management_console.privacy %}
-4. Wählen Sie **Private mode** (Privater Modus) aus. ![Kontrollkästchen zum Aktivieren des privaten Modus](/assets/images/enterprise/management-console/private-mode-checkbox.png)
+{% data reusables.enterprise_management_console.privacy %} 4. Wählen Sie **Private mode** (Privater Modus) aus. ![Kontrollkästchen zum Aktivieren des privaten Modus](/assets/images/enterprise/management-console/private-mode-checkbox.png)
 {% data reusables.enterprise_management_console.save-settings %}

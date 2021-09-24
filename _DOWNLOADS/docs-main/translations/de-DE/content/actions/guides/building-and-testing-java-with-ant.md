@@ -1,13 +1,13 @@
 ---
 title: Java bauen und testen mit Ant
-intro: 'Du kannst einen Workflow für kontinuierliche Integration (CI) in GitHub-Aktionen erstellen, um Dein Java-Projekt mit Ant zu bauen und zu testen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst einen Workflow für kontinuierliche Integration (CI) in GitHub-Aktionen erstellen, um Dein Java-Projekt mit Ant zu bauen und zu testen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/building-and-testing-java-with-ant
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CI
@@ -31,6 +31,7 @@ Dieser Leitfaden zeigt Dir, wie Du einen Workflow erstellen kannst, der eine kon
 ### Vorrausetzungen
 
 Du solltest mit YAML und der Syntax für {% data variables.product.prodname_actions %} vertraut sein. Weitere Informationen findest Du unter:
+
 - „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)“
 - "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)"
 
@@ -47,6 +48,7 @@ Um schnell loszulegen, kannst Du beim Erstellen eines neuen Workflows die vorkon
 Du kannst auch manuell diesen Workflow hinzufügen, indem Du eine neue Datei im Verzeichnis `.github/workflows` Deines Reporitorys erstellst.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Java CI
 
@@ -66,6 +68,7 @@ jobs:
       - name: Build with Ant
         run: ant -noinput -buildfile build.xml
 ```
+
 {% endraw %}
 
 Dieser Workflow führt die folgenden Schritte aus:
@@ -84,11 +87,12 @@ Die Standard-Workflow-Vorlagen sind ausgezeichnete Ausgangspunkte beim Erstellen
 
 Du kannst die gleichen Befehle verwenden, die Du auch lokal verwendest, um Deinen Code zu erstellen und zu testen.
 
-Der Starter-Workflow führt das in der Datei _build.xml_ angegebene „default target“ (Standardziel) aus.  Dein Standard-Ziel wird normalerweise eingestellt, um Klassen zu bauen, Tests durchzuführen und Klassen in ihr verteilbares Format (z.B . eine JAR-Datei) zu paketieren.
+Der Starter-Workflow führt das in der Datei _build.xml_ angegebene „default target“ (Standardziel) aus. Dein Standard-Ziel wird normalerweise eingestellt, um Klassen zu bauen, Tests durchzuführen und Klassen in ihr verteilbares Format (z.B . eine JAR-Datei) zu paketieren.
 
 Wenn Du zum Bauen Deines Projekts andere Befehle verwenden oder ein anderes Ziel auszuführen möchtest, kannst Du dies angeben. Vielleicht möchtest Du beispielsweise das Ziel `jar` ausführen, das in Deiner Datei _build-ci.xml_ konfiguriert ist.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -99,6 +103,7 @@ steps:
   - name: Run the Ant jar target
     run: ant -noinput -buildfile build-ci.xml jar
 ```
+
 {% endraw %}
 
 ### Workflow-Daten als Artefakte paketieren
@@ -108,6 +113,7 @@ Nachdem sowohl Build erfolgreich war und Deine Tests bestanden hat, wirst Du die
 Ant erstellt normalerweise Ausgabedateien wie JARs, EARs oder WARs im Verzeichnis `build/jar`. Du kannst den Inhalt dieses Verzeichnisses mit der Aktion `upload-artifact` hochladen.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -122,4 +128,5 @@ steps:
       name: Package
       path: build/jar
 ```
+
 {% endraw %}

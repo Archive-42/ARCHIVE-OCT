@@ -1,15 +1,15 @@
 ---
 title: Authentication in a workflow
-intro: '{% data variables.product.prodname_dotcom %} stellt ein Token zur Verfügung, mit dem Du Dich im Namen von {% data variables.product.prodname_actions %} authentifizieren kannst.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "{% data variables.product.prodname_dotcom %} stellt ein Token zur Verfügung, mit dem Du Dich im Namen von {% data variables.product.prodname_actions %} authentifizieren kannst."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/authenticating-with-the-github_token
   - /actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token
   - /actions/configuring-and-managing-workflows/authenticating-with-the-github_token
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -99,36 +99,38 @@ For information about the API endpoints {% data variables.product.prodname_githu
 The following table shows the permissions granted to the `GITHUB_TOKEN` by default. People with admin permissions to an enterprise, organization, or repository can set the default permissions to be either permissive or restricted. For information on how to set the default permissions for the `GITHUB_TOKEN` for your enterprise, organization, or repository, see "[Enforcing {% data variables.product.prodname_actions %} policies in your enterprise account](/github/setting-up-and-managing-your-enterprise/enforcing-github-actions-policies-in-your-enterprise-account#setting-the-permissions-of-the-github_token-for-your-enterprise)," "[Disabling or limiting {% data variables.product.prodname_actions %} for your organization](/github/setting-up-and-managing-organizations-and-teams/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)," or "[Disabling or limiting {% data variables.product.prodname_actions %} for a repository](/github/administering-a-repository/disabling-or-limiting-github-actions-for-a-repository#setting-the-permissions-of-the-github_token-for-a-repository)."
 
 | Scope                    | Default access<br>(permissive) | Default access<br>(restricted) | Maximum access<br>by forked repos |
-| ------------------------ | ------------------------------------ | ------------------------------------ | --------------------------------------- |
-| actions                  | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| checks (Prüfungen)       | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| contents (Inhalte)       | Lesen/Schreiben                      | Lesen                                | Lesen                                   |
-| deployments              | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| Issues (Lieferungen)     | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| Metadaten                | Lesen                                | Lesen                                | Lesen                                   |
-| Pakete                   | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| pull requests            | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| repository projects      | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| security events          | Lesen/Schreiben                      | none                                 | Lesen                                   |
-| statuses (Statusangaben) | Lesen/Schreiben                      | none                                 | Lesen                                   |
+| ------------------------ | ------------------------------ | ------------------------------ | --------------------------------- |
+| actions                  | Lesen/Schreiben                | none                           | Lesen                             |
+| checks (Prüfungen)       | Lesen/Schreiben                | none                           | Lesen                             |
+| contents (Inhalte)       | Lesen/Schreiben                | Lesen                          | Lesen                             |
+| deployments              | Lesen/Schreiben                | none                           | Lesen                             |
+| Issues (Lieferungen)     | Lesen/Schreiben                | none                           | Lesen                             |
+| Metadaten                | Lesen                          | Lesen                          | Lesen                             |
+| Pakete                   | Lesen/Schreiben                | none                           | Lesen                             |
+| pull requests            | Lesen/Schreiben                | none                           | Lesen                             |
+| repository projects      | Lesen/Schreiben                | none                           | Lesen                             |
+| security events          | Lesen/Schreiben                | none                           | Lesen                             |
+| statuses (Statusangaben) | Lesen/Schreiben                | none                           | Lesen                             |
+
 {% else %}
-| Scope                    | Zugriffstyp     | Zugriff durch geforktes Repository |
+| Scope | Zugriffstyp | Zugriff durch geforktes Repository |
 | ------------------------ | --------------- | ---------------------------------- |
-| actions                  | Lesen/Schreiben | Lesen                              |
-| checks (Prüfungen)       | Lesen/Schreiben | Lesen                              |
-| contents (Inhalte)       | Lesen/Schreiben | Lesen                              |
-| deployments              | Lesen/Schreiben | Lesen                              |
-| Issues (Lieferungen)     | Lesen/Schreiben | Lesen                              |
-| Metadaten                | Lesen           | Lesen                              |
-| Pakete                   | Lesen/Schreiben | Lesen                              |
-| pull requests            | Lesen/Schreiben | Lesen                              |
-| repository projects      | Lesen/Schreiben | Lesen                              |
-| statuses (Statusangaben) | Lesen/Schreiben | Lesen                              |
+| actions | Lesen/Schreiben | Lesen |
+| checks (Prüfungen) | Lesen/Schreiben | Lesen |
+| contents (Inhalte) | Lesen/Schreiben | Lesen |
+| deployments | Lesen/Schreiben | Lesen |
+| Issues (Lieferungen) | Lesen/Schreiben | Lesen |
+| Metadaten | Lesen | Lesen |
+| Pakete | Lesen/Schreiben | Lesen |
+| pull requests | Lesen/Schreiben | Lesen |
+| repository projects | Lesen/Schreiben | Lesen |
+| statuses (Statusangaben) | Lesen/Schreiben | Lesen |
 {% endif %}
 
 {% data reusables.actions.workflow-runs-dependabot-note %}
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.1" or currentVersion == "github-ae@next" %}
+
 #### Modifying the permissions for the `GITHUB_TOKEN`
 
 You can modify the permissions for the `GITHUB_TOKEN` in individual workflow files. If the default permissions for the `GITHUB_TOKEN` are restrictive, you may have to elevate the permissions to allow some actions and commands to run successfully. If the default permissions are permissive, you can edit the workflow file to remove some permissions from the `GITHUB_TOKEN`. As a good security practice, you should grant the `GITHUB_TOKEN` the least required access.
@@ -148,6 +150,7 @@ For full details of the `permissions` key, see "[Workflow syntax for {% data var
 The permissions for the `GITHUB_TOKEN` are initially set to the default setting for the enterprise, organization, or repository. If the default is set to the restricted permissions at any of these levels then this will apply to the relevant repositories. For example, if you choose the restricted default at the organization level then all repositories in that organization will use the restricted permissions as the default. The permissions are then adjusted based on any configuration within the workflow file, first at the workflow level and then at the job level. Finally, if the workflow was triggered by a pull request from a forked repository, and the **Send write tokens to workflows from pull requests** setting is not selected, the permissions are adjusted to change any write permissions to read only.
 
 #### Granting additional permissions
+
 {% endif %}
 
 Wenn Du ein Token benötigst, für das Berechtigungen erforderlich sind, die nicht im `GITHUB_TOKEN`-Geheimnis vorhanden sind, kannst Du ein persönliches Zugangstoken erstellen und als Geheimnis im Repository festlegen:

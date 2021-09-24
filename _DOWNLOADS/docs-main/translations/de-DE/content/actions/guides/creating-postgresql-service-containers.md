@@ -1,15 +1,15 @@
 ---
 title: PostgreSQL-Service-Container erstellen
 shortTitle: PostgreSQL service containers
-intro: 'Du kannst einen PostgreSQL-Service-Container zur Verwendung in Deinem Workflow erstellen. Dieser Leitfaden zeigt Beispiele für die Erstellung eines PostgreSQL-Dienstes für Jobs, die in Containern oder direkt auf der Runner-Maschine laufen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst einen PostgreSQL-Service-Container zur Verwendung in Deinem Workflow erstellen. Dieser Leitfaden zeigt Beispiele für die Erstellung eines PostgreSQL-Dienstes für Jobs, die in Containern oder direkt auf der Runner-Maschine laufen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/creating-postgresql-service-containers
   - /actions/configuring-and-managing-workflows/creating-postgresql-service-containers
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Containers
@@ -42,6 +42,7 @@ Es kann Dir auch helfen, YAML, die Syntax für {% data variables.product.prodnam
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: PostgreSQL service example
 on: push
@@ -91,6 +92,7 @@ jobs:
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
 ```
+
 {% endraw %}
 
 #### Runner-Job konfigurieren
@@ -164,6 +166,7 @@ Wenn Du einen Job direkt auf der Runner-Maschine ausführst, musst Du die Ports 
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: PostgreSQL Service Example
 on: push
@@ -215,6 +218,7 @@ jobs:
           # Standardmaessiger PostgreSQL-Port
           POSTGRES_PORT: 5432
 ```
+
 {% endraw %}
 
 #### Runner-Job konfigurieren
@@ -288,7 +292,7 @@ steps:
 
 You can test your workflow using the following script, which connects to the PostgreSQL service and adds a new table with some placeholder data. The script then prints the values stored in the PostgreSQL table to the terminal. Dein Skript kann jede beliebige Sprache verwenden, aber in diesem Beispiel wird Node.js mit dem npm-Modul `pg` genutzt. Weitere Informationen findest Du unter [npm-Modul pg](https://www.npmjs.com/package/pg).
 
-Du kannst *client.js* anpassen, um alle PostgreSQL-Vorgänge einzuschließen, die für Deinen Workflow erforderlich sind. In this example, the script connects to the PostgreSQL service, adds a table to the `postgres` database, inserts some placeholder data, and then retrieves the data.
+Du kannst _client.js_ anpassen, um alle PostgreSQL-Vorgänge einzuschließen, die für Deinen Workflow erforderlich sind. In this example, the script connects to the PostgreSQL service, adds a table to the `postgres` database, inserts some placeholder data, and then retrieves the data.
 
 {% data reusables.github-actions.service-container-add-script %}
 

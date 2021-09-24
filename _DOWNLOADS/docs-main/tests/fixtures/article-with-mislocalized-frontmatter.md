@@ -1,9 +1,8 @@
 ---
 title: GitHub 上でプロジェクトを探索する
-intro: ''
+intro: ""
 mapTopic: verdadero
 versions:
-  free-pro-team: '*'
-  enterprise-server: '*'
+  free-pro-team: "*"
+  enterprise-server: "*"
 ---
-

@@ -1,11 +1,11 @@
 ---
 title: Installing an Apple certificate on macOS runners for Xcode development
-intro: 'You can sign Xcode apps within your continuous integration (CI) workflow by installing an Apple code signing certificate on {% data variables.product.prodname_actions %} runners.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can sign Xcode apps within your continuous integration (CI) workflow by installing an Apple code signing certificate on {% data variables.product.prodname_actions %} runners."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CI
@@ -37,7 +37,7 @@ To use your certificate and provisioning profile on a runner, we strongly recomm
 
 Create secrets in your repository or organization for the following items:
 
-* Your Apple signing certificate.
+- Your Apple signing certificate.
 
   - This is your `p12` certificate file. For more information on exporting your signing certificate from Xcode, see the [Xcode documentation](https://help.apple.com/xcode/mac/current/#/dev154b28f09).
 
@@ -48,10 +48,12 @@ Create secrets in your repository or organization for the following items:
     ```shell
     base64 <em>build_certificate</em>.p12 | pbcopy
     ```
-* The password for your Apple signing certificate.
+
+- The password for your Apple signing certificate.
+
   - In this example, the secret is named `P12_PASSWORD`.
 
-* Your Apple provisioning profile.
+- Your Apple provisioning profile.
 
   - For more information on exporting your provisioning profile from Xcode, see the [Xcode documentation](https://help.apple.com/xcode/mac/current/#/deva899b4fe5).
 
@@ -63,7 +65,7 @@ Create secrets in your repository or organization for the following items:
     base64 <em>provisioning_profile.mobileprovision</em> | pbcopy
     ```
 
-* A keychain password.
+- A keychain password.
 
   - A new keychain will be created on the runner, so the password for the new keychain can be any new random string. In this example, the secret is named `KEYCHAIN_PASSWORD`.
 
@@ -72,6 +74,7 @@ Create secrets in your repository or organization for the following items:
 This example workflow includes a step that imports the Apple certificate and provisioning profile from the {% data variables.product.prodname_dotcom %} secrets, and installs them on the runner.
 
 {% raw %}
+
 ```yaml{:copy}
 name: App build
 on: push
@@ -114,6 +117,7 @@ jobs:
       - name: Build app
         ...
 ```
+
 {% endraw %}
 
 ### Required clean-up on self-hosted runners
@@ -125,6 +129,7 @@ On self-hosted runners, the `$RUNNER_TEMP` directory is cleaned up at the end of
 If you use self-hosted runners, you should add a final step to your workflow to help ensure that these sensitive files are deleted at the end of the job. The workflow step shown below is an example of how to do this.
 
 {% raw %}
+
 ```yaml
 - name: Clean up keychain and provisioning profile
   if: ${{ always() }}
@@ -132,4 +137,5 @@ If you use self-hosted runners, you should add a final step to your workflow to 
     security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
     rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
 ```
+
 {% endraw %}

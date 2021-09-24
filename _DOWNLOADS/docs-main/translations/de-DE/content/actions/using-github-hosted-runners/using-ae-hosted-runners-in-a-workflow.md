@@ -1,8 +1,8 @@
 ---
 title: Using AE hosted runners in a workflow
-intro: 'You can use labels to send jobs to a pool of {% data variables.actions.hosted_runner %}s.'
+intro: "You can use labels to send jobs to a pool of {% data variables.actions.hosted_runner %}s."
 versions:
-  github-ae: '*'
+  github-ae: "*"
 ---
 
 {% data reusables.actions.ae-beta %}

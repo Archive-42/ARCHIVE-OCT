@@ -1,13 +1,10 @@
 ---
 title: About AE hosted runners
-intro: '{% data variables.product.prodname_ghe_managed %} offers customizable and security hardened hosted virtual machines to run {% data variables.product.prodname_actions %} workflows. You can select the hardware, bring your own machine image, and enable an IP address for networking with your {% data variables.actions.hosted_runner %}.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "{% data variables.product.prodname_ghe_managed %} offers customizable and security hardened hosted virtual machines to run {% data variables.product.prodname_actions %} workflows. You can select the hardware, bring your own machine image, and enable an IP address for networking with your {% data variables.actions.hosted_runner %}."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  github-ae: '*'
+  github-ae: "*"
 ---
-
-
-
 
 {% data reusables.actions.ae-beta %}
 
@@ -38,6 +35,7 @@ During the {% data variables.actions.hosted_runner %} beta, you can manage your 
 {% data variables.product.prodname_actions %} is currently in beta for {% data variables.product.prodname_ghe_managed %}. During this beta period, {% data variables.actions.hosted_runner %}s are not billed, and can be used for free.
 
 Once the beta ends, billed usage will include the full uptime of active instances in your AE hosted runner sets. This includes:
+
 - Job time - minutes spent running Actions job.
 - Management - minutes spent re-imaging machines and any idle time created as a result of desired auto-scale behavior.
 

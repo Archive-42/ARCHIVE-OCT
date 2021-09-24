@@ -1,11 +1,11 @@
 ---
 title: Configuring user provisioning for your enterprise
 shortTitle: Configuring user provisioning
-intro: 'You can configure System for Cross-domain Identity Management (SCIM) for your enterprise, which automatically provisions user accounts on {% data variables.product.product_location %} when you assign the application for {% data variables.product.product_location %} to a user on your identity provider (IdP).'
-permissions: 'Enterprise owners can configure user provisioning for an enterprise on {% data variables.product.product_name %}.'
-product: '{% data reusables.gated-features.saml-sso %}'
+intro: "You can configure System for Cross-domain Identity Management (SCIM) for your enterprise, which automatically provisions user accounts on {% data variables.product.product_location %} when you assign the application for {% data variables.product.product_location %} to a user on your identity provider (IdP)."
+permissions: "Enterprise owners can configure user provisioning for an enterprise on {% data variables.product.product_name %}."
+product: "{% data reusables.gated-features.saml-sso %}"
 versions:
-  github-ae: '*'
+  github-ae: "*"
 type: how_to
 topics:
   - Accounts
@@ -54,36 +54,38 @@ You must have administrative access on your IdP to configure the application for
 {% if currentVersion == "github-ae@latest" %}
 
 1. While signed into {% data variables.product.product_location %} as an enterprise owner, create a personal access token with **admin:enterprise** scope. Weitere Informationen finden Sie unter "[Erstellen eines persönlichen Zugriffstokens](/github/authenticating-to-github/creating-a-personal-access-token)."
-  {% note %}
+   {% note %}
 
-  **Hinweise**:
-    - To create the personal access token, we recommend using the account for the first enterprise owner that you created during initialization. For more information, see "[Initializing {% data variables.product.prodname_ghe_managed %}](/admin/configuration/initializing-github-ae)."
-    - You'll need this personal access token to configure the application for SCIM on your IdP. Store the token securely in a password manager until you need the token again later in these instructions.
+   **Hinweise**:
 
-  {% endnote %}
-  {% warning %}
+   - To create the personal access token, we recommend using the account for the first enterprise owner that you created during initialization. For more information, see "[Initializing {% data variables.product.prodname_ghe_managed %}](/admin/configuration/initializing-github-ae)."
+   - You'll need this personal access token to configure the application for SCIM on your IdP. Store the token securely in a password manager until you need the token again later in these instructions.
 
-  **Warning**: If the user account for the enterprise owner who creates the personal access token is deactivated or deprovisioned, your IdP will no longer provision and deprovision user accounts for your enterprise automatically. Another enterprise owner must create a new personal access token and reconfigure provisioning on the IdP.
+{% endnote %}
+{% warning %}
 
-  {% endwarning %}
+**Warning**: If the user account for the enterprise owner who creates the personal access token is deactivated or deprovisioned, your IdP will no longer provision and deprovision user accounts for your enterprise automatically. Another enterprise owner must create a new personal access token and reconfigure provisioning on the IdP.
+
+{% endwarning %}
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.security-tab %}
+
 1. Under "SCIM User Provisioning", select **Require SCIM user provisioning**. ![Checkbox for "Require SCIM user provisioning" within enterprise security settings](/assets/images/help/enterprises/settings-require-scim-user-provisioning.png)
 1. Klicke auf **Save** (Speichern). ![Save button under "Require SCIM user provisioning" within enterprise security settings](/assets/images/help/enterprises/settings-scim-save.png)
 1. Configure user provisioning in the application for {% data variables.product.product_name %} on your IdP.
 
-  The following IdPs provide documentation about configuring provisioning for {% data variables.product.product_name %}. If your IdP isn't listed, please contact your IdP to request support for {% data variables.product.product_name %}.
+The following IdPs provide documentation about configuring provisioning for {% data variables.product.product_name %}. If your IdP isn't listed, please contact your IdP to request support for {% data variables.product.product_name %}.
 
-  | IdP      | Weitere Informationen                                                                                                                                                                                                        |
-  |:-------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Azure AD | [Tutorial: Configure {% data variables.product.prodname_ghe_managed %} for automatic user provisioning](https://docs.microsoft.com/azure/active-directory/saas-apps/github-ae-provisioning-tutorial) in the Microsoft Docs |
+| IdP      | Weitere Informationen                                                                                                                                                                                                      |
+| :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Azure AD | [Tutorial: Configure {% data variables.product.prodname_ghe_managed %} for automatic user provisioning](https://docs.microsoft.com/azure/active-directory/saas-apps/github-ae-provisioning-tutorial) in the Microsoft Docs |
 
-  The application on your IdP requires two values to provision or deprovision user accounts on {% data variables.product.product_location %}.
+The application on your IdP requires two values to provision or deprovision user accounts on {% data variables.product.product_location %}.
 
-  | Wert          | Other names                         | Beschreibung                                                                                                | Beispiel                                    |
-  |:------------- |:----------------------------------- |:----------------------------------------------------------------------------------------------------------- |:------------------------------------------- |
-  | URL           | Tenant URL                          | URL to the SCIM provisioning API for your enterprise on {% data variables.product.prodname_ghe_managed %} | <pre>https&colon;//api.<em>YOUR-GITHUB-AE-HOSTNAME</em>/scim/v2</pre>                   |
-  | Shared secret | Personal access token, secret token | Token for application on your IdP to perform provisioning tasks on behalf of an enterprise owner            | Personal access token you created in step 1 |
+| Wert          | Other names                         | Beschreibung                                                                                              | Beispiel                                                              |
+| :------------ | :---------------------------------- | :-------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- |
+| URL           | Tenant URL                          | URL to the SCIM provisioning API for your enterprise on {% data variables.product.prodname_ghe_managed %} | <pre>https&colon;//api.<em>YOUR-GITHUB-AE-HOSTNAME</em>/scim/v2</pre> |
+| Shared secret | Personal access token, secret token | Token for application on your IdP to perform provisioning tasks on behalf of an enterprise owner          | Personal access token you created in step 1                           |
 
 {% endif %}

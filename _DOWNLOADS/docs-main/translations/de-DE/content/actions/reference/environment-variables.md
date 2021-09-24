@@ -1,15 +1,15 @@
 ---
 title: Umgebungsvariablen
-intro: '{% data variables.product.prodname_dotcom %} setzt Standard-Umgebungsvariablen für jeden {% data variables.product.prodname_actions %}-Workflow-Lauf. Du kannst auch benutzerdefinierte Umgebungsvariablen in Deiner Workflow-Datei festlegen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "{% data variables.product.prodname_dotcom %} setzt Standard-Umgebungsvariablen für jeden {% data variables.product.prodname_actions %}-Workflow-Lauf. Du kannst auch benutzerdefinierte Umgebungsvariablen in Deiner Workflow-Datei festlegen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/using-environment-variables
   - /actions/automating-your-workflow-with-github-actions/using-environment-variables
   - /actions/configuring-and-managing-workflows/using-environment-variables
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -23,6 +23,7 @@ versions:
 Um benutzerdefinierte Umgebungsvariablen festzulegen, musst Du die Variablen in der Workflow-Datei angeben. You can define environment variables for a step, job, or entire workflow using the [`jobs.<job_id>.steps[*].env`](/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#jobsjob_idstepsenv), [`jobs.<job_id>.env`](/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#jobsjob_idenv), and [`env`](/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#env) keywords. Weitere Informationen finden Sie unter „[Workflow-Syntax für {% data variables.product.prodname_dotcom %}](/articles/workflow-syntax-for-github-actions/#jobsjob_idstepsenv)“.
 
 {% raw %}
+
 ```yaml
 jobs:
   weekday_job:
@@ -38,6 +39,7 @@ jobs:
           middle_name: The
           Last_Name: Octocat
 ```
+
 {% endraw %}
 
 To use the value of an environment variable in a workflow file, you should use the [`env` context](/actions/reference/context-and-expression-syntax-for-github-actions#env-context). If you want to use the value of an environment variable inside a runner, you can use the runner operating system's normal method for reading environment variables.
@@ -54,12 +56,12 @@ Es wird dringend empfohlen, dass Aktionen Umgebungsvariablen verwenden, um auf d
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CI`                 | Immer auf `true` gesetzt.                                                                                                                                                                                                                                                                                                                                                              |
 | `GITHUB_WORKFLOW`    | Der Name des Workflows.                                                                                                                                                                                                                                                                                                                                                                |
-| `GITHUB_RUN_ID`      | {% data reusables.github-actions.run_id_description %}
-| `GITHUB_RUN_NUMBER`  | {% data reusables.github-actions.run_number_description %}
+| `GITHUB_RUN_ID`      | {% data reusables.github-actions.run_id_description %}                                                                                                                                                                                                                                                                                                                                 |
+| `GITHUB_RUN_NUMBER`  | {% data reusables.github-actions.run_number_description %}                                                                                                                                                                                                                                                                                                                             |
 | `GITHUB_JOB`         | The [job_id](/actions/reference/workflow-syntax-for-github-actions#jobsjob_id) of the current job.                                                                                                                                                                                                                                                                                     |
 | `GITHUB_ACTION`      | Die eindeutige Kennung (`id`) der Aktion.                                                                                                                                                                                                                                                                                                                                              |
 | `GITHUB_ACTION_PATH` | The path where your action is located. You can use this path to access files located in the same repository as your action. This variable is only supported in composite run steps actions.                                                                                                                                                                                            |
-| `GITHUB_ACTIONS`     | Immer auf `true` gesetzt, wenn {% data variables.product.prodname_actions %} den Workflow ausführt. Du kannst diese Variable verwenden, um zu differenzieren, wann Tests lokal oder von {% data variables.product.prodname_actions %} durchgeführt werden.                                                                                                                           |
+| `GITHUB_ACTIONS`     | Immer auf `true` gesetzt, wenn {% data variables.product.prodname_actions %} den Workflow ausführt. Du kannst diese Variable verwenden, um zu differenzieren, wann Tests lokal oder von {% data variables.product.prodname_actions %} durchgeführt werden.                                                                                                                             |
 | `GITHUB_ACTOR`       | Name der Person oder App, die den Workflow initiiert hat. Beispiel: `octocat`.                                                                                                                                                                                                                                                                                                         |
 | `GITHUB_REPOSITORY`  | Der Inhaber- und Repository-Name, Beispiel: `octocat/Hello-World`.                                                                                                                                                                                                                                                                                                                     |
 | `GITHUB_EVENT_NAME`  | Name des Webhook-Ereignisses, das den Workflow ausgelöst hat.                                                                                                                                                                                                                                                                                                                          |

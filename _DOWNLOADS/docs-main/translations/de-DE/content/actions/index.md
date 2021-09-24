@@ -1,7 +1,7 @@
 ---
 title: Dokumentation zu GitHub Actions
 shortTitle: GitHub Actions
-intro: 'Mit {% data variables.product.prodname_actions %} kannst Du Deine Softwareentwicklungs-Workflows direkt in Ihrem Repository automatisieren, anpassen und ausführen. Du kannst Actions entdecken, erstellen und weitergeben, um beliebige Aufträge (einschließlich CI/CD) auszuführen. Du kannst auch Actions in einem vollständig angepassten Workflow kombinieren.'
+intro: "Mit {% data variables.product.prodname_actions %} kannst Du Deine Softwareentwicklungs-Workflows direkt in Ihrem Repository automatisieren, anpassen und ausführen. Du kannst Actions entdecken, erstellen und weitergeben, um beliebige Aufträge (einschließlich CI/CD) auszuführen. Du kannst auch Actions in einem vollständig angepassten Workflow kombinieren."
 introLinks:
   quickstart: /actions/quickstart
   reference: /actions/reference
@@ -23,8 +23,8 @@ featuredLinks:
     - /actions/reference/encrypted-secrets
 changelog:
   label: actions
-  prefix: 'GitHub Actions: '
-product_video: 'https://www.youtube-nocookie.com/embed/cP0I9w2coGU'
+  prefix: "GitHub Actions: "
+product_video: "https://www.youtube-nocookie.com/embed/cP0I9w2coGU"
 redirect_from:
   - /articles/automating-your-workflow-with-github-actions/
   - /articles/customizing-your-project-with-github-actions/
@@ -34,9 +34,9 @@ redirect_from:
   - /marketplace/actions
 layout: product-landing
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 children:
   - /quickstart
   - /guides
@@ -47,4 +47,3 @@ children:
   - /hosting-your-own-runners
   - /reference
 ---
-

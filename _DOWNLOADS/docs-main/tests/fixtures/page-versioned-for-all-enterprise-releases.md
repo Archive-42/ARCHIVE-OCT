@@ -1,8 +1,8 @@
 ---
 title: Page versioned for all Enterprise releases
 versions:
-  free-pro-team: '*'
-  enterprise-server: '*'
+  free-pro-team: "*"
+  enterprise-server: "*"
 ---
 
 {% if currentVersion == 'free-pro-team@latest' %}
@@ -10,7 +10,6 @@ versions:
 This text should only render on non-Enterprise
 
 {% endif %}
-
 
 {% if enterpriseServerVersions contains currentVersion %}
 

@@ -1,12 +1,12 @@
 ---
 title: Die Anwendung für selbst-gehostete Runner als Dienst konfigurieren
-intro: 'Du kannst die Anwendung für selbst-gehostete Runner als Dienst konfigurieren, um die Runner-Anwendung automatisch zu starten, wenn der Rechner hochfährt.'
+intro: "Du kannst die Anwendung für selbst-gehostete Runner als Dienst konfigurieren, um die Runner-Anwendung automatisch zu starten, wenn der Rechner hochfährt."
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/configuring-the-self-hosted-runner-application-as-a-service
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 defaultPlatform: linux
 ---
@@ -19,8 +19,7 @@ defaultPlatform: linux
 {% capture service_first_step %}1. Beende die Anwendung für selbst-gehostete Runner, falls sie gerade läuft.{% endcapture %}
 {% capture service_non_windows_intro_shell %}Öffne auf der Runner-Maschine eine Shell in dem Verzeichnis, in dem Du die Anwendung für selbst-gehostete Runner installiert hast. Verwende die folgenden Befehle, um den Dienst für selbst-gehosteten Runner zu installieren und zu verwalten.{% endcapture %}
 {% capture service_nonwindows_intro %}Du musst einen Runner zu {% data variables.product.product_name %} hinzufügen, bevor du die Anwendung für selbst-gehostete Runner als Dienst konfigurieren kannst. Weitere Informationen findest Du unter "[selbst-gehostete Runner hinzufügen](/github/automating-your-workflow-with-github-actions/adding-self-hosted-runners)."{% endcapture %}
-{% capture service_win_name %}actions.runner.*{% endcapture %}
-
+{% capture service_win_name %}actions.runner.\*{% endcapture %}
 
 {% linux %}
 
@@ -59,6 +58,7 @@ Du kannst den Runner-Dienst in der Windows-Anwendung **Services** verwalten oder
 ### Den Dienst installieren
 
 {{ service_first_step }}
+
 1. Installiere den Dienst mit folgendem Befehl:
 
    ```shell
@@ -71,31 +71,39 @@ Du kannst den Runner-Dienst in der Windows-Anwendung **Services** verwalten oder
 ### Den Dienst installieren
 
 {{ service_first_step }}
+
 1. Installiere den Dienst mit folgendem Befehl:
 
    ```shell
    ./svc.sh install
    ```
-{% endmac %}
+
+   {% endmac %}
 
 ### Den Dienst starten
 
 Starte den Dienst mit folgendem Befehl:
 
 {% linux %}
+
 ```shell
 sudo ./svc.sh start
 ```
+
 {% endlinux %}
 {% windows %}
+
 ```shell
 Start-Service "{{ service_win_name }}"
 ```
+
 {% endwindows %}
 {% mac %}
+
 ```shell
 ./svc.sh start
 ```
+
 {% endmac %}
 
 ### Den Status des Dienstes überprüfen
@@ -103,41 +111,53 @@ Start-Service "{{ service_win_name }}"
 Überprüfe den Status des Dienstes mit folgendem Befehl:
 
 {% linux %}
+
 ```shell
 sudo ./svc.sh status
 ```
+
 {% endlinux %}
 {% windows %}
+
 ```shell
 Get-Service "{{ service_win_name }}"
 ```
+
 {% endwindows %}
 {% mac %}
+
 ```shell
 ./svc.sh status
 ```
+
 {% endmac %}
 
- Weitere Informationen zum Ansehen des Status Deines selbst-gehosteten Runners findest Du unter „[Überwachung und Fehlerbehebung selbst-gehosteter Runner](/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners)“.
+Weitere Informationen zum Ansehen des Status Deines selbst-gehosteten Runners findest Du unter „[Überwachung und Fehlerbehebung selbst-gehosteter Runner](/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners)“.
 
 ### Den Dienst beenden
 
 Beende den Dienst mit dem folgenden Befehl:
 
 {% linux %}
+
 ```shell
 sudo ./svc.sh stop
 ```
+
 {% endlinux %}
 {% windows %}
+
 ```shell
 Stop-Service "{{ service_win_name }}"
 ```
+
 {% endwindows %}
 {% mac %}
+
 ```shell
 ./svc.sh stop
 ```
+
 {% endmac %}
 
 ### Den Dienst de-installieren
@@ -145,22 +165,27 @@ Stop-Service "{{ service_win_name }}"
 1. Beende den Dienst, falls er gerade läuft.
 1. De-installiere den Dienst mit folgendem Befehl:
 
-    {% linux %}
-    ```shell
-    sudo ./svc.sh uninstall
-    ```
-    {% endlinux %}
-    {% windows %}
-    ```shell
-    Remove-Service "{{ service_win_name }}"
-    ```
-    {% endwindows %}
-    {% mac %}
-    ```shell
-    ./svc.sh uninstall
-    ```
-    {% endmac %}
+   {% linux %}
 
+   ```shell
+   sudo ./svc.sh uninstall
+   ```
+
+   {% endlinux %}
+   {% windows %}
+
+   ```shell
+   Remove-Service "{{ service_win_name }}"
+   ```
+
+   {% endwindows %}
+   {% mac %}
+
+   ```shell
+   ./svc.sh uninstall
+   ```
+
+   {% endmac %}
 
 {% linux %}
 

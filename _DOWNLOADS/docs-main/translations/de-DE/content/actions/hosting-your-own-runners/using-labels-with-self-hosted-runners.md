@@ -2,9 +2,9 @@
 title: Labels mit selbst-gehosteten Runnern verwenden
 intro: Mit Labels kannst Du Deine selbst-gehosteten Runner nach ihren Eigenschaften organisieren.
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 ---
 
@@ -23,6 +23,7 @@ Informationen zum Einsatz von Labels zur Weiterleitung von Jobs an bestimmte Typ
 {% data reusables.github-actions.self-hosted-runner-list %}
 {% data reusables.github-actions.self-hosted-runner-list-group %}
 {% data reusables.github-actions.self-hosted-runner-labels-view-assigned-labels %}
+
 1. Gib im Feld „Filter-Labels“ den Namen Deines neuen Labels ein und klicke auf **Neues Label erstellen**. ![Runner-Label hinzufügen](/assets/images/help/settings/actions-add-runner-label.png)
 
 Das benutzerdefinierte Label wird erstellt und dem selbst-gehosteten Runner zugewiesen. Benutzerdefinierte Labels können von selbst-gehosteten Runnern entfernt werden, aber sie können derzeit nicht manuell gelöscht werden. {% data reusables.github-actions.actions-unused-labels %}
@@ -33,6 +34,7 @@ Das benutzerdefinierte Label wird erstellt und dem selbst-gehosteten Runner zuge
 {% data reusables.github-actions.self-hosted-runner-list %}
 {% data reusables.github-actions.self-hosted-runner-list-group %}
 {% data reusables.github-actions.self-hosted-runner-labels-view-assigned-labels %}
+
 1. Klicke auf ein Label, um es Deinem selbst-gehosteten Runner zuzuweisen.
 
 ### Ein benutzerdefiniertes Labels von einem selbst-gehosteten Runner entfernen
@@ -41,6 +43,7 @@ Das benutzerdefinierte Label wird erstellt und dem selbst-gehosteten Runner zuge
 {% data reusables.github-actions.self-hosted-runner-list %}
 {% data reusables.github-actions.self-hosted-runner-list-group %}
 {% data reusables.github-actions.self-hosted-runner-labels-view-assigned-labels %}
+
 1. Klicke auf das zugewiesene Label, um es von Deinem selbst gehosteten Runner zu entfernen. {% data reusables.github-actions.actions-unused-labels %}
 
 ### Das Konfigurationsskript zum Erstellen und Zuweisen von Labels verwenden

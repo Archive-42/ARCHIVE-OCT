@@ -1,14 +1,14 @@
 ---
 title: Überwachung und Fehlerbehebung selbst-gehosteter Runner
-intro: 'Du kannst Deine selbst gehosteten Runner überwachen, um ihre Aktivität zu sehen und gewöhnliche Probleme zu diagnostizieren.'
+intro: "Du kannst Deine selbst gehosteten Runner überwachen, um ihre Aktivität zu sehen und gewöhnliche Probleme zu diagnostizieren."
 redirect_from:
   - /actions/hosting-your-own-runners/checking-the-status-of-self-hosted-runners
   - /github/automating-your-workflow-with-github-actions/checking-the-status-of-self-hosted-runners
   - /actions/automating-your-workflow-with-github-actions/checking-the-status-of-self-hosted-runners
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 defaultPlatform: linux
 ---
@@ -24,26 +24,26 @@ defaultPlatform: linux
 
 {% data reusables.github-actions.self-hosted-runner-navigate-repo-and-org %}
 {% data reusables.github-actions.settings-sidebar-actions-runners %}
+
 1. Under {% if currentVersion == "free-pro-team@latest" %}"Runners"{% else %}"Self-hosted runners"{% endif %}, you can view a list of registered runners, including the runner's name, labels, and status.
 
-    ![Runner-Liste](/assets/images/help/settings/actions-runner-list.png)
+   ![Runner-Liste](/assets/images/help/settings/actions-runner-list.png)
 
-    Der Status kann einer der folgenden sein:
+   Der Status kann einer der folgenden sein:
 
-    * **Idle** (Leerlauf): Der Runner ist mit {% data variables.product.product_name %} verbunden und bereit, Jobs auszuführen.
-    * **Active**: Der Runner führt derzeit einen Job aus.
-    * **Offline**: Der Runner ist nicht mit {% data variables.product.product_name %} verbunden. Dies könnte daran liegen, dass der Rechner offline ist, die Anwendung für selbst-gehostete Runner nicht auf dem Rechner läuft, oder die Anwendung für selbst-gehostete Runner kann nicht mit {% data variables.product.product_name %} kommunizieren.
-
+   - **Idle** (Leerlauf): Der Runner ist mit {% data variables.product.product_name %} verbunden und bereit, Jobs auszuführen.
+   - **Active**: Der Runner führt derzeit einen Job aus.
+   - **Offline**: Der Runner ist nicht mit {% data variables.product.product_name %} verbunden. Dies könnte daran liegen, dass der Rechner offline ist, die Anwendung für selbst-gehostete Runner nicht auf dem Rechner läuft, oder die Anwendung für selbst-gehostete Runner kann nicht mit {% data variables.product.product_name %} kommunizieren.
 
 ### Die Logdateien der Anwendung für selbst-gehostete Runner überprüfen
 
-You can monitor the status of the self-hosted runner application and its activities. Log files are kept in the `_diag` directory, and a new one is generated each time the application is started. The filename begins with *Runner_*, and is followed by a UTC timestamp of when the application was started.
+You can monitor the status of the self-hosted runner application and its activities. Log files are kept in the `_diag` directory, and a new one is generated each time the application is started. The filename begins with _Runner\__, and is followed by a UTC timestamp of when the application was started.
 
-For detailed logs on workflow job executions, see the next section describing the *Worker_* files.
+For detailed logs on workflow job executions, see the next section describing the _Worker\__ files.
 
 ### Logdatei eines Jobs überprüfen
 
-The self-hosted runner application creates a detailed log file for each job that it processes. These files are stored in the `_diag` directory, and the filename begins with *Worker_*.
+The self-hosted runner application creates a detailed log file for each job that it processes. These files are stored in the `_diag` directory, and the filename begins with _Worker\__.
 
 {% linux %}
 
@@ -105,7 +105,6 @@ To view the launchd configuration, you can locate the service file here: `/Users
 
 {% endmac %}
 
-
 {% windows %}
 
 ### Den Anwendungs-Dienst für selbst-gehostete Runner mittels PowerShell überprüfen
@@ -149,7 +148,7 @@ PS C:\actions-runner> Get-EventLog -LogName Application -Source ActionsRunnerSer
 
 We recommend that you regularly check the automatic update process, as the self-hosted runner will not be able to process jobs if it falls below a certain version threshold. The self-hosted runner application automatically updates itself, but note that this process does not include any updates to the operating system or other software; you will need to separately manage these updates.
 
-You can view the update activities in the *Runner_* log files. Ein Beispiel:
+You can view the update activities in the _Runner\__ log files. Ein Beispiel:
 
 ```shell
 [Feb 12 12:37:07 INFO SelfUpdater] An update is available.

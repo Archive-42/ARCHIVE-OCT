@@ -1,10 +1,10 @@
 ---
 title: Customizing GitHub-hosted runners
 intro: You can install additional software on GitHub-hosted runners as a part of your workflow.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
 type: tutorial
 topics:
   - Workflows
@@ -23,6 +23,7 @@ This guide demonstrates how to create a job that installs additional software on
 The following example demonstrates how to install an `apt` package as part of a job.
 
 {% raw %}
+
 ```yaml
 name: Build on Ubuntu
 on: push
@@ -38,6 +39,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install jq
 ```
+
 {% endraw %}
 
 {% note %}
@@ -51,6 +53,7 @@ jobs:
 The following example demonstrates how to install Brew packages and casks as part of a job.
 
 {% raw %}
+
 ```yaml
 name: Build on macOS
 on: push
@@ -70,6 +73,7 @@ jobs:
           brew update
           brew install --cask microsoft-edge
 ```
+
 {% endraw %}
 
 ### Installing software on Windows runners
@@ -77,6 +81,7 @@ jobs:
 The following example demonstrates how to use [Chocolatey](https://community.chocolatey.org/packages) to install the {% data variables.product.prodname_dotcom %} CLI as part of a job.
 
 {% raw %}
+
 ```yaml
 name: Build on Windows
 on: push
@@ -87,4 +92,5 @@ jobs:
       - run: choco install gh
       - run: gh version
 ```
+
 {% endraw %}

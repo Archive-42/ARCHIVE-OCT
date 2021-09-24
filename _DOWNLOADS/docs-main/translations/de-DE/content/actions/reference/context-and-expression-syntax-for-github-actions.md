@@ -2,16 +2,16 @@
 title: Syntax für Kontext und Ausdrücke bei GitHub-Aktionen
 shortTitle: Kontext- und Ausdruckssyntax
 intro: Du kannst in Workflows und Aktionen auf Kontextinformationen zugreifen und Ausdrücke auswerten.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/contexts-and-expression-syntax-for-github-actions
   - /github/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
   - /actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
   - /actions/reference/contexts-and-expression-syntax-for-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 miniTocMaxHeadingLevel: 4
 ---
 
@@ -46,10 +46,12 @@ steps:
 ##### Beispiel zum Setzen einer Umgebungsvariablen
 
 {% raw %}
+
 ```yaml
 env:
   MY_ENV_VAR: ${{ <expression> }}
 ```
+
 {% endraw %}
 
 ### Kontexte
@@ -73,10 +75,12 @@ Kontexte sind eine Möglichkeit, auf Informationen zu Workflow-Läufen, Runner-U
 | `needs`     | `Objekt` | Ermöglicht den Zugriff auf die Ausgaben aller Jobs, die als Abhängigkeit des aktuellen Jobs definiert sind. Weitere Informationen findest Du unter [`needs`-Kontext](#needs-context).                                                                                                       |
 
 Als Teil eines Ausdrucks kannst Du mit einer der beiden folgenden Syntaxarten auf Kontextinformationen zugreifen.
+
 - Index-Syntax: `github['sha']`
 - Syntax zur Dereferenzierung von Eigenschaften: `github.sha`
 
 Bei der Eigenschaftsdereferenzierungs-Syntax muss der Eigenschaftsname
+
 - mit `a-Z` oder `_` beginnen,
 - mit `a-Z`, `0-9`, `-` oder `_` weitergehen.
 
@@ -91,27 +95,27 @@ Der `github`-Kontext enthält Informationen zum Workflow-Lauf und zu dem Ereigni
 {% data reusables.github-actions.github-context-warning %}
 {% data reusables.github-actions.context-injection-warning %}
 
-| Name der Eigenschaft      | Typ      | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `github`                  | `Objekt` | Der Top-Level-Kontext, der bei jedem Job oder Schritt im Workflow verfügbar ist.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `github.action`           | `string` | Der Name der aktuell laufenden Aktion. {% data variables.product.prodname_dotcom %} entfernt Sonderzeichen oder verwendet den Namen `run` wenn der aktuelle Schritt ein Skript ausführt.  Wenn Du dieselbe Aktion mehr als einmal im selben Job verwendest, enthält der Name ein Suffix mit der Sequenznummer.  Zum Beispiel wird das erste Skript, das Du ausführst, den Namen `run1`haben, und das zweite Skript heißt `run2`. Ebenso wird die zweite Anrufung von `actions/checkout` `actionscheckout2` sein. |
-| `github.action_path`      | `string` | The path where your action is located. You can use this path to easily access files located in the same repository as your action. This attribute is only supported in composite run steps actions.                                                                                                                                                                                                                                                                                                              |
-| `github.actor`            | `string` | Der Anmeldename des Benutzers, der den Workflow-Lauf initiiert hat                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `github.base_ref`         | `string` | Das `base_ref` oder der Ziel-Branch des Pull Requests in einem Workflow-Lauf. This property is only available when the event that triggers a workflow run is either `pull_request` or `pull_request_target`.                                                                                                                                                                                                                                                                                                     |
-| `github.event`            | `Objekt` | Die vollständige Nutzlast des Ereignis-Webhooks. Weitere Informationen findest Du unter „[Ereignisse, die Workflows auslösen](/articles/events-that-trigger-workflows)“. You can access individual properties of the event using this context.                                                                                                                                                                                                                                                                   |
-| `github.event_name`       | `string` | Der Name des Ereignisses, das den Workflow-Lauf ausgelöst hat.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `github.event_path`       | `string` | Der Pfad zur vollständigen Event-Webhook-Nutzlast auf dem Runner.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `github.head_ref`         | `string` | Das `head_ref` oder der Quell-Branch des Pull Requests in einem Workflow-Lauf. This property is only available when the event that triggers a workflow run is either `pull_request` or `pull_request_target`.                                                                                                                                                                                                                                                                                                    |
-| `github.job`              | `string` | Die [`job_id`](/actions/reference/workflow-syntax-for-github-actions#jobsjob_id) des aktuellen Jobs.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `github.ref`              | `string` | Das Branch- oder Tag-Ref, das den Workflow-Lauf ausgelöst hat. For branches this in the format  `refs/heads/<branch_name>`, and for tags it is `refs/tags/<tag_name>`.                                                                                                                                                                                                                                                                                                                               |
-| `github.repository`       | `string` | Der Inhaber- und Repository-Name, z. B. `Codertocat/Hello-World`.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `github.repository_owner` | `string` | Der Name des Repository-Besitzers. Beispielsweise `Codertocat`.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `github.run_id`           | `string` | {% data reusables.github-actions.run_id_description %}
-| `github.run_number`       | `string` | {% data reusables.github-actions.run_number_description %}
-| `github.sha`              | `string` | Die Commit-SHA, die den Workflow-Lauf ausgelöst hat.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `github.token`            | `string` | Ein Token zum Authentifizieren im Namen der in Deinem Repository installierten GitHub-App. Funktionell entspricht dies dem Geheimnis `GITHUB_TOKEN`. Weitere Informationen findest Du unter „[Authentifizierung mit dem GITHUB_TOKEN](/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)".                                                                                                                                                                              |
-| `github.workflow`         | `string` | Der Name des Workflows. Wenn in der Workflow-Datei kein `name` (Name) festgelegt ist, entspricht der Wert dieser Eigenschaft dem vollständigen Pfad der Workflow-Datei im Repository.                                                                                                                                                                                                                                                                                                                            |
-| `github.workspace`        | `string` | Das Standardarbeitsverzeichnis für Schritte und der Standardspeicherort Deines Repositorys bei Verwendung der Aktion [ `checkout`](https://github.com/actions/checkout).                                                                                                                                                                                                                                                                                                                                         |
+| Name der Eigenschaft      | Typ      | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `github`                  | `Objekt` | Der Top-Level-Kontext, der bei jedem Job oder Schritt im Workflow verfügbar ist.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `github.action`           | `string` | Der Name der aktuell laufenden Aktion. {% data variables.product.prodname_dotcom %} entfernt Sonderzeichen oder verwendet den Namen `run` wenn der aktuelle Schritt ein Skript ausführt. Wenn Du dieselbe Aktion mehr als einmal im selben Job verwendest, enthält der Name ein Suffix mit der Sequenznummer. Zum Beispiel wird das erste Skript, das Du ausführst, den Namen `run1`haben, und das zweite Skript heißt `run2`. Ebenso wird die zweite Anrufung von `actions/checkout` `actionscheckout2` sein. |
+| `github.action_path`      | `string` | The path where your action is located. You can use this path to easily access files located in the same repository as your action. This attribute is only supported in composite run steps actions.                                                                                                                                                                                                                                                                                                            |
+| `github.actor`            | `string` | Der Anmeldename des Benutzers, der den Workflow-Lauf initiiert hat                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `github.base_ref`         | `string` | Das `base_ref` oder der Ziel-Branch des Pull Requests in einem Workflow-Lauf. This property is only available when the event that triggers a workflow run is either `pull_request` or `pull_request_target`.                                                                                                                                                                                                                                                                                                   |
+| `github.event`            | `Objekt` | Die vollständige Nutzlast des Ereignis-Webhooks. Weitere Informationen findest Du unter „[Ereignisse, die Workflows auslösen](/articles/events-that-trigger-workflows)“. You can access individual properties of the event using this context.                                                                                                                                                                                                                                                                 |
+| `github.event_name`       | `string` | Der Name des Ereignisses, das den Workflow-Lauf ausgelöst hat.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `github.event_path`       | `string` | Der Pfad zur vollständigen Event-Webhook-Nutzlast auf dem Runner.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `github.head_ref`         | `string` | Das `head_ref` oder der Quell-Branch des Pull Requests in einem Workflow-Lauf. This property is only available when the event that triggers a workflow run is either `pull_request` or `pull_request_target`.                                                                                                                                                                                                                                                                                                  |
+| `github.job`              | `string` | Die [`job_id`](/actions/reference/workflow-syntax-for-github-actions#jobsjob_id) des aktuellen Jobs.                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `github.ref`              | `string` | Das Branch- oder Tag-Ref, das den Workflow-Lauf ausgelöst hat. For branches this in the format `refs/heads/<branch_name>`, and for tags it is `refs/tags/<tag_name>`.                                                                                                                                                                                                                                                                                                                                          |
+| `github.repository`       | `string` | Der Inhaber- und Repository-Name, z. B. `Codertocat/Hello-World`.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `github.repository_owner` | `string` | Der Name des Repository-Besitzers. Beispielsweise `Codertocat`.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `github.run_id`           | `string` | {% data reusables.github-actions.run_id_description %}                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `github.run_number`       | `string` | {% data reusables.github-actions.run_number_description %}                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `github.sha`              | `string` | Die Commit-SHA, die den Workflow-Lauf ausgelöst hat.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `github.token`            | `string` | Ein Token zum Authentifizieren im Namen der in Deinem Repository installierten GitHub-App. Funktionell entspricht dies dem Geheimnis `GITHUB_TOKEN`. Weitere Informationen findest Du unter „[Authentifizierung mit dem GITHUB_TOKEN](/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)".                                                                                                                                                                            |
+| `github.workflow`         | `string` | Der Name des Workflows. Wenn in der Workflow-Datei kein `name` (Name) festgelegt ist, entspricht der Wert dieser Eigenschaft dem vollständigen Pfad der Workflow-Datei im Repository.                                                                                                                                                                                                                                                                                                                          |
+| `github.workspace`        | `string` | Das Standardarbeitsverzeichnis für Schritte und der Standardspeicherort Deines Repositorys bei Verwendung der Aktion [ `checkout`](https://github.com/actions/checkout).                                                                                                                                                                                                                                                                                                                                       |
 
 #### `env`-Kontext
 
@@ -121,37 +125,37 @@ Mit der Syntax für den `env`-Kontext kannst Du den Wert einer Umgebungsvariable
 
 Wenn Du den Wert einer Umgebungsvariable innerhalb eines Runners verwenden willst, dann verwende die normale Methode des Runner-Betriebssystems zum Lesen von Umgebungsvariablen.
 
-| Name der Eigenschaft   | Typ      | Beschreibung                                                                                                                              |
-| ---------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `env`                  | `Objekt` | Dieser Kontext ändert sich bei jedem Schritt in einem Auftrag. Du kannst bei jedem Schritt in einem Auftrag auf diesen Kontext zugreifen. |
-| `env.<env_name>` | `string` | Der Wert einer bestimmten Umgebungsvariable.                                                                                              |
+| Name der Eigenschaft | Typ      | Beschreibung                                                                                                                              |
+| -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                | `Objekt` | Dieser Kontext ändert sich bei jedem Schritt in einem Auftrag. Du kannst bei jedem Schritt in einem Auftrag auf diesen Kontext zugreifen. |
+| `env.<env_name>`     | `string` | Der Wert einer bestimmten Umgebungsvariable.                                                                                              |
 
 #### `job`-Kontext
 
 Der `job`-Kontext enthält Informationen zum gerade ausgeführten Auftrag.
 
-| Name der Eigenschaft                      | Typ      | Beschreibung                                                                                                                                                                                                                                         |
-| ----------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Auftrag`                                 | `Objekt` | Dieser Kontext ändert sich bei jedem Auftrag in einem Workflow-Lauf. Du kannst bei jedem Schritt in einem Auftrag auf diesen Kontext zugreifen.                                                                                                      |
-| `job.container`                           | `Objekt` | Informationen zum Container des Auftrags. Weitere Informationen zu Containern findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/articles/workflow-syntax-for-github-actions#jobsjob_idcontainer)“.              |
-| `job.container.id`                        | `string` | Die ID des Containers                                                                                                                                                                                                                                |
-| `job.container.network`                   | `string` | Die ID des Container-Netzwerks. Der Runner erstellt das Netzwerk, das von allen Containern in einem Auftrag genutzt wird.                                                                                                                            |
-| `job.services`                            | `Objekt` | Die für einen Auftrag erstellten Dienstcontainer. Weitere Informationen zu Dienstcontainern findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/articles/workflow-syntax-for-github-actions#jobsjob_idservices)“. |
+| Name der Eigenschaft                | Typ      | Beschreibung                                                                                                                                                                                                                                         |
+| ----------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Auftrag`                           | `Objekt` | Dieser Kontext ändert sich bei jedem Auftrag in einem Workflow-Lauf. Du kannst bei jedem Schritt in einem Auftrag auf diesen Kontext zugreifen.                                                                                                      |
+| `job.container`                     | `Objekt` | Informationen zum Container des Auftrags. Weitere Informationen zu Containern findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/articles/workflow-syntax-for-github-actions#jobsjob_idcontainer)“.              |
+| `job.container.id`                  | `string` | Die ID des Containers                                                                                                                                                                                                                                |
+| `job.container.network`             | `string` | Die ID des Container-Netzwerks. Der Runner erstellt das Netzwerk, das von allen Containern in einem Auftrag genutzt wird.                                                                                                                            |
+| `job.services`                      | `Objekt` | Die für einen Auftrag erstellten Dienstcontainer. Weitere Informationen zu Dienstcontainern findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/articles/workflow-syntax-for-github-actions#jobsjob_idservices)“. |
 | `job.services.<service id>.id`      | `string` | Die ID des Dienstcontainers                                                                                                                                                                                                                          |
 | `job.services.<service id>.network` | `string` | Die ID des Dienstcontainer-Netzwerks. Der Runner erstellt das Netzwerk, das von allen Containern in einem Auftrag genutzt wird.                                                                                                                      |
 | `job.services.<service id>.ports`   | `Objekt` | Die offengelegten Ports des Service-Containers                                                                                                                                                                                                       |
-| `job.status`                              | `string` | Der aktuelle Status des Auftrags. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen) oder `cancelled` (abgebrochen).                                                                                                            |
+| `job.status`                        | `string` | Der aktuelle Status des Auftrags. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen) oder `cancelled` (abgebrochen).                                                                                                            |
 
 #### `steps`-Kontext
 
 Der `steps`-Kontext enthält Informationen zu den Schritten im aktuellen Job, die bereits ausgeführt wurden.
 
-| Name der Eigenschaft                                | Typ      | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| --------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `steps`                                             | `Objekt` | Dieser Kontext ändert sich bei jedem Schritt in einem Auftrag. Du kannst bei jedem Schritt in einem Auftrag auf diesen Kontext zugreifen.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `steps.<step id>.outputs`                     | `Objekt` | Der Satz an Ausgaben, die für diesen Schritt definiert wurden. Weitere Informationen findest Du unter „[Metadaten-Syntax für {% data variables.product.prodname_actions %}](/articles/metadata-syntax-for-github-actions#outputs)“.                                                                                                                                                                                                                                                                                                                   |
-| `steps.<step id>.conclusion`                  | `string` | Das Ergebnis eines abgeschlossenen Schritts nachdem[`continue-on-error` (bei Fehler weitermachen)](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error) angewendet wurde. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen), `cancelled` (abgebrochen) oder `skipped` (übersprungen). Wenn ein Schritt mit `continue-on-error` (bei Fehler weitermachen) fehlschlägt, ist `outcome` (Ergebnis) `failure` zwar (Fehler), aber `conclusion` (Schlussfolgerung) ist am Ende `success` (Erfolg). |
-| `steps.<step id>.outcome`                     | `string` | Das Ergebnis eines abgeschlossenen Schritts bevor [`continue-on-error` (bei Fehler weitermachen)](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error) angewendet wird. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen), `cancelled` (abgebrochen) oder `skipped` (übersprungen). Wenn ein Schritt mit `continue-on-error` (bei Fehler weitermachen) fehlschlägt, ist `outcome` (Ergebnis) `failure` zwar (Fehler), aber `conclusion` (Schlussfolgerung) ist am Ende `success` (Erfolg).   |
+| Name der Eigenschaft                    | Typ      | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `steps`                                 | `Objekt` | Dieser Kontext ändert sich bei jedem Schritt in einem Auftrag. Du kannst bei jedem Schritt in einem Auftrag auf diesen Kontext zugreifen.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `steps.<step id>.outputs`               | `Objekt` | Der Satz an Ausgaben, die für diesen Schritt definiert wurden. Weitere Informationen findest Du unter „[Metadaten-Syntax für {% data variables.product.prodname_actions %}](/articles/metadata-syntax-for-github-actions#outputs)“.                                                                                                                                                                                                                                                                                                                   |
+| `steps.<step id>.conclusion`            | `string` | Das Ergebnis eines abgeschlossenen Schritts nachdem[`continue-on-error` (bei Fehler weitermachen)](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error) angewendet wurde. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen), `cancelled` (abgebrochen) oder `skipped` (übersprungen). Wenn ein Schritt mit `continue-on-error` (bei Fehler weitermachen) fehlschlägt, ist `outcome` (Ergebnis) `failure` zwar (Fehler), aber `conclusion` (Schlussfolgerung) ist am Ende `success` (Erfolg). |
+| `steps.<step id>.outcome`               | `string` | Das Ergebnis eines abgeschlossenen Schritts bevor [`continue-on-error` (bei Fehler weitermachen)](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error) angewendet wird. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen), `cancelled` (abgebrochen) oder `skipped` (übersprungen). Wenn ein Schritt mit `continue-on-error` (bei Fehler weitermachen) fehlschlägt, ist `outcome` (Ergebnis) `failure` zwar (Fehler), aber `conclusion` (Schlussfolgerung) ist am Ende `success` (Erfolg).   |
 | `steps.<step id>.outputs.<output name>` | `string` | Der Wert einer bestimmten Ausgabe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 #### `runner`-Kontext
@@ -163,18 +167,19 @@ Der `runner`-Kontext enthält Informationen über den Runner, der den aktuellen 
 | `runner.os`          | `string` | Das Betriebssystem des Runners, der den Job ausführt. Mögliche Werte sind `Linux`, `Windows` oder `macOS`.                                                                                                                                                          |
 | `runner.temp`        | `string` | Der Pfad des temporären Verzeichnisses für den Runner. Dieses Verzeichnis ist zu Beginn jedes Auftrags garantiert leer, sogar bei selbst-gehosteten Runnern.                                                                                                        |
 | `runner.tool_cache`  | `string` | {% if currentVersion == "github-ae@latest" %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images)." |
+
 {% else %}The path of the directory containing some of the preinstalled tools for {% data variables.product.prodname_dotcom %}-hosted runners. For more information, see "[Specifications for {% data variables.product.prodname_dotcom %}-hosted runners](/actions/reference/specifications-for-github-hosted-runners/#supported-software)". {% endif %}
 
 #### `needs`-Kontext
 
 Der `needs`-Kontext enthält Ausgaben von allen Jobs, die als Abhängigkeit des aktuellen Jobs definiert sind. Weitere Informationen zur Definition von Jobabhängigkeiten findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idneeds)“.
 
-| Name der Eigenschaft                               | Typ      | Beschreibung                                                                                                                                                                                 |
-| -------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `needs.<job id>`                             | `Objekt` | Ein einzelner Job, von dem der aktuelle Job abhängt.                                                                                                                                         |
-| `needs.<job id>.outputs`                     | `Objekt` | Die Menge aller Ausgaben eines Jobs, von dem der aktuelle Job abhängt.                                                                                                                       |
+| Name der Eigenschaft                   | Typ      | Beschreibung                                                                                                                                                                                 |
+| -------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `needs.<job id>`                       | `Objekt` | Ein einzelner Job, von dem der aktuelle Job abhängt.                                                                                                                                         |
+| `needs.<job id>.outputs`               | `Objekt` | Die Menge aller Ausgaben eines Jobs, von dem der aktuelle Job abhängt.                                                                                                                       |
 | `needs.<job id>.outputs.<output name>` | `string` | Der Wert einer bestimmten Ausgabe für einen Job, von dem der aktuelle Job abhängt.                                                                                                           |
-| `needs.<job id>.result`                      | `string` | Das Ergebnis eines Jobs, von dem der aktuelle Job abhängt. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen), `cancelled` (abgebrochen) oder `skipped` (übersprungen). |
+| `needs.<job id>.result`                | `string` | Das Ergebnis eines Jobs, von dem der aktuelle Job abhängt. Mögliche Werte sind `success` (erfolgreich), `failure` (fehlgeschlagen), `cancelled` (abgebrochen) oder `skipped` (übersprungen). |
 
 ##### Beispiel für die Ausgabe von Kontextinformationen in die Protokolldatei
 
@@ -184,6 +189,7 @@ Mit dem folgenden Beispiel einer Workflow-Datei kannst Du die Informationen eins
 
 **.github/workflows/main.yml**
 {% raw %}
+
 ```yaml
 on: push
 
@@ -216,6 +222,7 @@ jobs:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
 ```
+
 {% endraw %}
 
 ### Literale
@@ -232,6 +239,7 @@ In einem Ausdruck kannst Du die Datentypen `boolean`, `null`, `number` oder `str
 ##### Beispiel
 
 {% raw %}
+
 ```yaml
 env:
   myNull: ${{ null }}
@@ -243,39 +251,41 @@ env:
   myString: ${{ 'Mona the Octocat' }}
   myEscapedString: ${{ 'It''s open source!' }}
 ```
+
 {% endraw %}
 
 ### Operatoren
 
-| Operator                  | Beschreibung                       |
-| ------------------------- | ---------------------------------- |
-| `( )`                     | Logische Gruppierung               |
-| `[ ]`                     | Index                              |
-| `.`                       | Dereferenzierung einer Eigenschaft |
-| `!`                       | Nicht                              |
-| `<`                    | Kleiner als                        |
-| `<=`                   | Kleiner oder gleich                |
-| `>`                    | Größer als                         |
-| `>=`                   | Größer oder gleich                 |
-| `==`                      | Gleich                             |
-| `!=`                      | Ungleich                           |
+| Operator          | Beschreibung                       |
+| ----------------- | ---------------------------------- |
+| `( )`             | Logische Gruppierung               |
+| `[ ]`             | Index                              |
+| `.`               | Dereferenzierung einer Eigenschaft |
+| `!`               | Nicht                              |
+| `<`               | Kleiner als                        |
+| `<=`              | Kleiner oder gleich                |
+| `>`               | Größer als                         |
+| `>=`              | Größer oder gleich                 |
+| `==`              | Gleich                             |
+| `!=`              | Ungleich                           |
 | `&&`              | Und                                |
 | <code>\|\|</code> | Oder                               |
 
 {% data variables.product.prodname_dotcom %} führt einen nicht strengen Gleichheitsvergleich aus.
 
-* Wenn die Typen nicht übereinstimmen, wandelt {% data variables.product.prodname_dotcom %} den Typ in eine Zahl um. {% data variables.product.prodname_dotcom %} wandelt Daten verschiedener Typen folgendermaßen in eine Zahl um:
+- Wenn die Typen nicht übereinstimmen, wandelt {% data variables.product.prodname_dotcom %} den Typ in eine Zahl um. {% data variables.product.prodname_dotcom %} wandelt Daten verschiedener Typen folgendermaßen in eine Zahl um:
 
-  | Typ     | Ergebnis                                                                                                         |
-  | ------- | ---------------------------------------------------------------------------------------------------------------- |
-  | Null    | `0`                                                                                                              |
+  | Typ     | Ergebnis                                                                                                   |
+  | ------- | ---------------------------------------------------------------------------------------------------------- |
+  | Null    | `0`                                                                                                        |
   | Boolean | `true` gibt `1` zurück <br /> `false` gibt `0` zurück                                                      |
   | String  | Aus zulässigem JSON-Zahlenformat geparst, ansonsten `NaN`. <br /> Hinweis: Leere Strings geben `0` zurück. |
-  | Array   | `NaN`                                                                                                            |
-  | Object  | `NaN`                                                                                                            |
-* Der Vergleich von einem `NaN` mit einem anderen `NaN` ergibt nicht `true`. Weitere Informationen findest Du in der „[NaN-Mozilla-Dokumentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)“.
-* {% data variables.product.prodname_dotcom %} ignoriert beim Vergleichen der Strings die Groß- und Kleinschreibung.
-* Objekte und Arrays werden nur dann als gleich betrachtet, wenn sie dieselbe Instanz sind.
+  | Array   | `NaN`                                                                                                      |
+  | Object  | `NaN`                                                                                                      |
+
+- Der Vergleich von einem `NaN` mit einem anderen `NaN` ergibt nicht `true`. Weitere Informationen findest Du in der „[NaN-Mozilla-Dokumentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)“.
+- {% data variables.product.prodname_dotcom %} ignoriert beim Vergleichen der Strings die Groß- und Kleinschreibung.
+- Objekte und Arrays werden nur dann als gleich betrachtet, wenn sie dieselbe Instanz sind.
 
 ### Funktionen
 
@@ -340,9 +350,11 @@ Gibt „Hello Mona the Octocat“ zurück:
 Gibt „{Hello Mona the Octocat}“ zurück
 
 {% raw %}
+
 ```js
-format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat')
+format("{{Hello {0} {1} {2}!}}", "Mona", "the", "Octocat");
 ```
+
 {% endraw %}
 
 #### join
@@ -376,6 +388,7 @@ Returns a JSON object or JSON data type for `value`. You can use this function t
 Dieser Workflow legt eine JSON-Matrix in einem Job fest und übergibt sie mittels einer Ausgabe und `fromJSON` an den nächsten Job.
 
 {% raw %}
+
 ```yaml
 name: build
 on: push
@@ -395,6 +408,7 @@ jobs:
     steps:
       - run: build
 ```
+
 {% endraw %}
 
 ##### Example returning a JSON data type
@@ -402,10 +416,11 @@ jobs:
 This workflow uses `fromJSON` to convert environment variables from a string to a Boolean or integer.
 
 {% raw %}
+
 ```yaml
 name: print
 on: push
-env: 
+env:
   continue: true
   time: 3
 jobs:
@@ -416,6 +431,7 @@ jobs:
         timeout-minutes: ${{ fromJSON(env.time) }}
         run: echo ...
 ```
+
 {% endraw %}
 
 #### hashFiles

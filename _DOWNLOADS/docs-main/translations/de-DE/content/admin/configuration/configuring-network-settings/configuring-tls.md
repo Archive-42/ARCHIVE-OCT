@@ -1,6 +1,6 @@
 ---
 title: TLS konfigurieren
-intro: 'Sie können Transport Layer Security (TLS) auf {% data variables.product.product_location %} konfigurieren, damit Sie ein von einer vertrauenswürdigen Zertifizierungsstelle signiertes Zertifikat verwenden können.'
+intro: "Sie können Transport Layer Security (TLS) auf {% data variables.product.product_location %} konfigurieren, damit Sie ein von einer vertrauenswürdigen Zertifizierungsstelle signiertes Zertifikat verwenden können."
 redirect_from:
   - /enterprise/admin/articles/ssl-configuration/
   - /enterprise/admin/guides/installation/about-tls/
@@ -8,7 +8,7 @@ redirect_from:
   - /enterprise/admin/configuration/configuring-tls
   - /admin/configuration/configuring-tls
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Enterprise
@@ -41,16 +41,13 @@ Du kannst mit dem Befehl `ghe-ssl-generate-csr` eine Anfrage zur Signierung des 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
 {% data reusables.enterprise_management_console.privacy %}
-{% data reusables.enterprise_management_console.select-tls-only %}
-4. Wählen Sie unter „TLS Protocol support“ (TLS-Protokollunterstützung) die Protokolle aus, die zugelassen werden sollen. ![Optionsfelder mit Optionen zur Auswahl von TLS-Protokollen](/assets/images/enterprise/management-console/tls-protocol-support.png)
-5. Klicken Sie unter „Certificate“ (Zertifikat) auf **Choose File** (Datei auswählen), um ein TLS-Zertifikat oder eine Zertifikatskette (im PEM-Format) zur Installation auszuwählen. Diese Datei hat in der Regel eine *.pem*-, *.crt*- oder *.cer*-Erweiterung. ![Schaltfläche zum Suchen der TLS-Zertifikatsdatei](/assets/images/enterprise/management-console/install-tls-certificate.png)
-6. Klicken Sie unter „Unencrypted key“ (Unverschlüsselter Schlüssel) auf **Choose File** (Datei auswählen), um einen TLS-Schlüssel (im PEM-Format) zur Installation auszuwählen. Diese Datei hat in der Regel eine *.key*-Erweiterung. ![Schaltfläche zum Suchen der TLS-Schlüsseldatei](/assets/images/enterprise/management-console/install-tls-key.png)
+{% data reusables.enterprise_management_console.select-tls-only %} 4. Wählen Sie unter „TLS Protocol support“ (TLS-Protokollunterstützung) die Protokolle aus, die zugelassen werden sollen. ![Optionsfelder mit Optionen zur Auswahl von TLS-Protokollen](/assets/images/enterprise/management-console/tls-protocol-support.png) 5. Klicken Sie unter „Certificate“ (Zertifikat) auf **Choose File** (Datei auswählen), um ein TLS-Zertifikat oder eine Zertifikatskette (im PEM-Format) zur Installation auszuwählen. Diese Datei hat in der Regel eine _.pem_-, _.crt_- oder _.cer_-Erweiterung. ![Schaltfläche zum Suchen der TLS-Zertifikatsdatei](/assets/images/enterprise/management-console/install-tls-certificate.png) 6. Klicken Sie unter „Unencrypted key“ (Unverschlüsselter Schlüssel) auf **Choose File** (Datei auswählen), um einen TLS-Schlüssel (im PEM-Format) zur Installation auszuwählen. Diese Datei hat in der Regel eine _.key_-Erweiterung. ![Schaltfläche zum Suchen der TLS-Schlüsseldatei](/assets/images/enterprise/management-console/install-tls-key.png)
 
-  {% warning %}
+{% warning %}
 
-  **Warnung**: Ihr TLS-Schlüssel darf keine Passphrase aufweisen. Weitere Informationen finden Sie unter „[Passphrase aus Ihrer Schlüsseldatei entfernen](/enterprise/{{ currentVersion }}/admin/guides/installation/troubleshooting-ssl-errors#removing-the-passphrase-from-your-key-file)“.
+**Warnung**: Ihr TLS-Schlüssel darf keine Passphrase aufweisen. Weitere Informationen finden Sie unter „[Passphrase aus Ihrer Schlüsseldatei entfernen](/enterprise/{{ currentVersion }}/admin/guides/installation/troubleshooting-ssl-errors#removing-the-passphrase-from-your-key-file)“.
 
-  {% endwarning %}
+{% endwarning %}
 {% data reusables.enterprise_management_console.save-settings %}
 
 ### Informationen zur Let's Encrypt-Unterstützung
@@ -70,9 +67,6 @@ Darüber hinaus können Sie das Befehlszeilenprogramm `ghe-ssl-acme` auf {% data
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
 {% data reusables.enterprise_management_console.privacy %}
-{% data reusables.enterprise_management_console.select-tls-only %}
-5. Wählen Sie **Enable automation of TLS certificate management using Let's Encrypt** (Automatisierung der TLS-Zertifikatsverwaltung mit Let's Encrypt aktivieren) aus. ![Kontrollkästchen zum Aktivieren von Let's Encrypt](/assets/images/enterprise/management-console/lets-encrypt-checkbox.png)
+{% data reusables.enterprise_management_console.select-tls-only %} 5. Wählen Sie **Enable automation of TLS certificate management using Let's Encrypt** (Automatisierung der TLS-Zertifikatsverwaltung mit Let's Encrypt aktivieren) aus. ![Kontrollkästchen zum Aktivieren von Let's Encrypt](/assets/images/enterprise/management-console/lets-encrypt-checkbox.png)
 {% data reusables.enterprise_management_console.save-settings %}
-{% data reusables.enterprise_management_console.privacy %}
-7. Klicken Sie auf **Request TLS certificate** (TLS-Zertifikat anfordern). ![Schaltfläche „Request TLS certificate“ (TLS-Zertifikat anfordern)](/assets/images/enterprise/management-console/request-tls-button.png)
-8. Klicken Sie auf **Save configuration** (Konfiguration speichern).
+{% data reusables.enterprise_management_console.privacy %} 7. Klicken Sie auf **Request TLS certificate** (TLS-Zertifikat anfordern). ![Schaltfläche „Request TLS certificate“ (TLS-Zertifikat anfordern)](/assets/images/enterprise/management-console/request-tls-button.png) 8. Klicken Sie auf **Save configuration** (Konfiguration speichern).

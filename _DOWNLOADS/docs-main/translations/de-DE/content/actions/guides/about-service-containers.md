@@ -1,14 +1,14 @@
 ---
 title: Informationen zu Service-Containern
-intro: 'Du kannst Service-Container verwenden, um Datenbanken, Webdienste, Speicher-Caches und andere Tools mit Deinem Workflow zu verbinden.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Service-Container verwenden, um Datenbanken, Webdienste, Speicher-Caches und andere Tools mit Deinem Workflow zu verbinden."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/about-service-containers
   - /actions/configuring-and-managing-workflows/about-service-containers
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 topics:
   - Containers
@@ -52,6 +52,7 @@ Du kannst das Schlüsselwort `Services` verwenden, um Service-Container zu erste
 Dieses Beispiel erstellt einen Dienst namens `redis` in einem Job namens `container-job`. Der Docker-Host in diesem Beispiel ist der Container `node:10.18-jessie`.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis container example
 on: push
@@ -71,6 +72,7 @@ jobs:
         # Docker-Hub-Image
         image: redis
 ```
+
 {% endraw %}
 
 ### Ports von Docker-Host und Service-Container zuordnen
@@ -87,13 +89,14 @@ Du kannst Service-Container-Ports mit Hilfe des Schlüsseworts `ports` dem Docke
 
 Wenn Du Ports mittels `ports` zuordnest, publiziert {% data variables.product.prodname_dotcom %} die Ports des Containers auf dem Docker-Host mit dem Befehl `--publish`. Weitere Informationen findest Du unter "[Vernetzung von Docker-Containern](https://docs.docker.com/config/containers/container-networking/)" in der Docker Dokumentation.
 
-Wenn Du den Port des Docker-Hosts angibst, aber nicht den des Containers, dann wird der Container-Port zufällig einem freien Port zugewiesen. {% data variables.product.prodname_dotcom %} setzt den zugewiesenen Container-Port im Kontext des Service-Containers. Wenn Du beispielsweise den Port 5432 für den Docker-Host konfiguriert hast, kannst Du für einen Service Container `redis` mit dem Kontext  code>job.services.redis.ports[5432]</code> auf den entsprechenden Port des Containers zugreifen. Weitere Informationen findest Du unter "[Kontext- und Ausdrucks-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions#job-context)."
+Wenn Du den Port des Docker-Hosts angibst, aber nicht den des Containers, dann wird der Container-Port zufällig einem freien Port zugewiesen. {% data variables.product.prodname_dotcom %} setzt den zugewiesenen Container-Port im Kontext des Service-Containers. Wenn Du beispielsweise den Port 5432 für den Docker-Host konfiguriert hast, kannst Du für einen Service Container `redis` mit dem Kontext code>job.services.redis.ports[5432]</code> auf den entsprechenden Port des Containers zugreifen. Weitere Informationen findest Du unter "[Kontext- und Ausdrucks-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions#job-context)."
 
 #### Beispiel zur Zuordnung von Redis-Ports
 
 Dieses Beispiel ordnet den Port 6379 des Service-Containers `redis` dem Port 6379 des Docker-Hosts zu.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis Service Example
 on: push
@@ -115,6 +118,7 @@ jobs:
           # Oeffnet TCP-Port 6379 auf dem Host und Service-Container
           - 6379:6379
 ```
+
 {% endraw %}
 
 ### Weiterführende Informationen

@@ -4,6 +4,7 @@ intro: Remove liquid only
 ---
 
 ## 1
+
 <div class="example1">
 
 {% ifversion ghes > 2.13 %}
@@ -15,6 +16,7 @@ Alpha
 </div>
 
 ## 2
+
 <div class="example2">
 
 {% ifversion fpt or ghes > 2.13 %}
@@ -26,6 +28,7 @@ Alpha
 </div>
 
 ## 3
+
 <div class="example3">
 
 {% ifversion ghes > 2.13 %}
@@ -41,6 +44,7 @@ Bravo
 </div>
 
 ## 4
+
 <div class="example4">
 
 {% ifversion ghes > 2.16 %}
@@ -62,6 +66,7 @@ Charlie
 </div>
 
 ## 5
+
 <div class="example5">
 
 {% ifversion ghes < 2.16 %}
@@ -83,6 +88,7 @@ Charlie
 </div>
 
 ## 6
+
 <div class="example6">
 
 {% ifversion ghes > 2.13 %}
@@ -104,6 +110,7 @@ Charlie
 </div>
 
 ## 7
+
 <div class="example7">
 
 {% ifversion ghes > 2.13 %}
@@ -121,9 +128,11 @@ Charlie
 {% endif %}
 
 {% endif %}
+
 </div>
 
 ## 8
+
 <div class="example8">
 
 {% ifversion ghes > 2.13 %}
@@ -147,6 +156,7 @@ Delta
 </div>
 
 ## 9
+
 <div class="example9">
 
 {% ifversion fpt %}
@@ -174,6 +184,7 @@ Delta
 </div>
 
 ## 10
+
 <div class="example10">
 
 {% ifversion ghes > 2.13 %}

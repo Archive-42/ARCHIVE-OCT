@@ -5,8 +5,8 @@ intro: You can configure your enterprise to suit your organization's needs.
 redirect_from:
   - /enterprise/admin/configuration
 versions:
-  enterprise-server: '*'
-  github-ae: '*'
+  enterprise-server: "*"
+  github-ae: "*"
 topics:
   - Enterprise
 children:

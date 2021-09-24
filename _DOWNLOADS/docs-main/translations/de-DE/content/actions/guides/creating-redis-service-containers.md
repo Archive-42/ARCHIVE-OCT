@@ -1,15 +1,15 @@
 ---
 title: Redis-Service-Container erstellen
 shortTitle: Redis service containers
-intro: 'Du kannst Service-Container verwenden, um einen Redis-Client in Deinem Workflow zu erstellen. Dieser Leitfaden zeigt Beispiele für die Erstellung eines Redis-Dienstes für Jobs, die in Containern oder direkt auf der Runner-Maschine ausgeführt werden.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Service-Container verwenden, um einen Redis-Client in Deinem Workflow zu erstellen. Dieser Leitfaden zeigt Beispiele für die Erstellung eines Redis-Dienstes für Jobs, die in Containern oder direkt auf der Runner-Maschine ausgeführt werden."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/creating-redis-service-containers
   - /actions/configuring-and-managing-workflows/creating-redis-service-containers
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - Containers
@@ -42,6 +42,7 @@ Es kannst Dir helfen, wenn Du ein grundlegendes Verständnis von YAML, der Synta
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis container example
 on: push
@@ -88,6 +89,7 @@ jobs:
           # Standarmaessiger Redis-Port
           REDIS_PORT: 6379
 ```
+
 {% endraw %}
 
 #### Den Container-Job konfigurieren
@@ -157,6 +159,7 @@ Wenn Du einen Job direkt auf der Runner-Maschine ausführst, musst Du die Ports 
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis runner example
 on: push
@@ -197,7 +200,7 @@ jobs:
         # Fuehrt ein Skript aus, das einen Redis-Cient erzeugt,
         # den Client mit Daten fuellt, und Daten abruft
         run: node client.js
-        # Umgebungsvariable, mittels der das Skript `client.js` 
+        # Umgebungsvariable, mittels der das Skript `client.js`
         # einen neuen Redis-Client erzeugt.
         env:
           # Der Hostname fuer die Kommunikation mit dem Redis-Service-Container
@@ -205,6 +208,7 @@ jobs:
           # Standarmaessiger Redis-Port
           REDIS_PORT: 6379
 ```
+
 {% endraw %}
 
 #### Runner-Job konfigurieren
@@ -275,7 +279,7 @@ steps:
 
 Du kannst Deinen Workflow mit dem folgenden Skript testen, das einen Redis-Client erstellt und den Client mit Platzhalter-Daten füllt. Das Skript gibt dann die im Redis-Client gespeicherten Werte auf dem Terminal aus. Dein Skript kann jede beliebige Sprache verwenden, aber dieses Beispiel verwendet Node.js und das `redis`-npm-Modul. Weitere Informationen findest Du unter [npm-Redis-Modul](https://www.npmjs.com/package/redis).
 
-Du kannst *client.js* anpassen, um alle Redis-Operationen abzudecken, die Dein Workflow braucht. In diesem Beispiel erstellt das Skript die Redis-Client-Instanz, fügt Platzhalter-Daten hinzu und ruft dann die Daten ab.
+Du kannst _client.js_ anpassen, um alle Redis-Operationen abzudecken, die Dein Workflow braucht. In diesem Beispiel erstellt das Skript die Redis-Client-Instanz, fügt Platzhalter-Daten hinzu und ruft dann die Daten ab.
 
 {% data reusables.github-actions.service-container-add-script %}
 
@@ -287,7 +291,7 @@ const redis = require("redis");
 // Falls REDIS_PORT nicht definiert ist, ist der Standard-Port 6379
 const redisClient = redis.createClient({
   host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT  
+  port: process.env.REDIS_PORT
 });
 
 redisClient.on("error", function(err) {
@@ -323,7 +327,7 @@ Wenn Du diesen Workflow ausführst, solltest Du im Schritt „Mit Redis verbinde
 Reply: OK
 Reply: 1
 Reply: 1
-Reply: 1  
+Reply: 1
 3 replies:
     0: octocat
     1: dinotocat

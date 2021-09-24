@@ -1,6 +1,6 @@
 ---
 title: Einheitliche Beiträge zwischen GitHub Enterprise Server und GitHub.com aktivieren
-intro: 'Nach der Aktivierung von {% data variables.product.prodname_github_connect %} können Sie festlegen, dass {% data variables.product.prodname_ghe_cloud %}-Mitglieder ihre Arbeit auf {% data variables.product.prodname_ghe_server %} hervorheben können, indem sie die Beitragsanzahlen an ihre {% data variables.product.prodname_dotcom_the_website %}-Profile senden.'
+intro: "Nach der Aktivierung von {% data variables.product.prodname_github_connect %} können Sie festlegen, dass {% data variables.product.prodname_ghe_cloud %}-Mitglieder ihre Arbeit auf {% data variables.product.prodname_ghe_server %} hervorheben können, indem sie die Beitragsanzahlen an ihre {% data variables.product.prodname_dotcom_the_website %}-Profile senden."
 redirect_from:
   - /enterprise/admin/guides/developer-workflow/enabling-unified-contributions-between-github-enterprise-and-github-com/
   - /enterprise/admin/guides/developer-workflow/enabling-unified-contributions-between-github-enterprise-server-and-github-com/
@@ -8,9 +8,9 @@ redirect_from:
   - /enterprise/admin/installation/enabling-unified-contributions-between-github-enterprise-server-and-githubcom
   - /enterprise/admin/configuration/enabling-unified-contributions-between-github-enterprise-server-and-githubcom
   - /admin/configuration/enabling-unified-contributions-between-github-enterprise-server-and-githubcom
-permissions: 'Site administrators for {% data variables.product.prodname_ghe_server %} who are also owners of the connected {% data variables.product.prodname_ghe_cloud %} organization or enterprise account can enable unified contributions between {% data variables.product.prodname_ghe_server %} and {% data variables.product.prodname_dotcom_the_website %}.'
+permissions: "Site administrators for {% data variables.product.prodname_ghe_server %} who are also owners of the connected {% data variables.product.prodname_ghe_cloud %} organization or enterprise account can enable unified contributions between {% data variables.product.prodname_ghe_server %} and {% data variables.product.prodname_dotcom_the_website %}."
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Enterprise
@@ -30,8 +30,6 @@ Vor der Aktivierung von {% data variables.product.prodname_unified_contributions
 {% data reusables.github-connect.access-dotcom-and-enterprise %}
 {% data reusables.enterprise_site_admin_settings.access-settings %}{% data reusables.enterprise_site_admin_settings.business %}
 {% data reusables.enterprise-accounts.settings-tab %}
-{% data reusables.enterprise-accounts.github-connect-tab %}
-4. Klicken Sie unter „Users can share contribution counts to {% data variables.product.prodname_dotcom_the_website %}“ (Benutzer können ihre Beitragsanzahlen auf {% data variables.product.prodname_dotcom_the_website %} freigeben) auf **Request access** (Zugriff anfordern). ![Option zum Anfordern des Zugriffs auf einheitliche Beiträge](/assets/images/enterprise/site-admin-settings/dotcom-ghe-connection-request-access.png)
-5. Weitere Anweisungen erhalten Sie, wenn Sie sich bei der {% data variables.product.prodname_ghe_server %}-Website [anmelden](https://enterprise.github.com/login).
+{% data reusables.enterprise-accounts.github-connect-tab %} 4. Klicken Sie unter „Users can share contribution counts to {% data variables.product.prodname_dotcom_the_website %}“ (Benutzer können ihre Beitragsanzahlen auf {% data variables.product.prodname_dotcom_the_website %} freigeben) auf **Request access** (Zugriff anfordern). ![Option zum Anfordern des Zugriffs auf einheitliche Beiträge](/assets/images/enterprise/site-admin-settings/dotcom-ghe-connection-request-access.png) 5. Weitere Anweisungen erhalten Sie, wenn Sie sich bei der {% data variables.product.prodname_ghe_server %}-Website [anmelden](https://enterprise.github.com/login).
 
 Wenn Sie den Zugriff anfordern, werden Sie zur {% data variables.product.prodname_ghe_server %}-Website weitergeleitet, um Ihre aktuellen Nutzungsbedingungen zu überprüfen. Wenn {% data variables.product.product_location_enterprise %} die Standardnutzungsbedingungen verwendet, werden Sie durch die Anforderung automatisch zu den Anweisungen für die Aktivierung von {% data variables.product.prodname_unified_contributions %} weitergeleitet. Wenn Sie benutzerdefinierte Nutzungsbedingungen verwenden, wird Ihre Anforderung protokolliert, und Sie werden zum Einrichten des Zugriffs kontaktiert.

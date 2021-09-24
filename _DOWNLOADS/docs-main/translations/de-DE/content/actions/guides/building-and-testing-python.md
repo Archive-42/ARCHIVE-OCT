@@ -1,13 +1,13 @@
 ---
 title: Building and testing Python
-intro: 'Du kannst einen Workflow für kontinuierliche Integration (CI) erstellen, um Dein Python-Projekt zu bauen und zu testen.'
+intro: "Du kannst einen Workflow für kontinuierliche Integration (CI) erstellen, um Dein Python-Projekt zu bauen und zu testen."
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/using-python-with-github-actions
   - /actions/language-and-framework-guides/using-python-with-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CI
@@ -31,6 +31,7 @@ Diese Anleitung zeigt Dir, wie Du ein Python-Paket baust, testest und veröffent
 Du solltest mit YAML und der Syntax für {% data variables.product.prodname_actions %} vertraut sein. For more information, see "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)."
 
 Du solltest ein grundlegendes Verständnis von Python, PyPy und pip haben. Weitere Informationen findest Du unter:
+
 - [Erste Schritte mit Python](https://www.python.org/about/gettingstarted/)
 - [PyPy](https://pypy.org/)
 - [Paketmanager pip](https://pypi.org/project/pip/)
@@ -44,6 +45,7 @@ Du solltest ein grundlegendes Verständnis von Python, PyPy und pip haben. Weite
 Um schnell loszulegen, füge die Vorlage in das Verzeichnis `.github/workflows` Deines Repositorys ein.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Python package
 
@@ -78,6 +80,7 @@ jobs:
         run: |
           pytest
 ```
+
 {% endraw %}
 
 ### Eine Python-Version angeben
@@ -88,9 +91,9 @@ Die `setup-action` ist die empfohlene Methode, Python mit {% data variables.prod
 
 Die folgende Tabelle zeigt für jeden {% data variables.product.prodname_dotcom %}-gehosteten Runner, wo der Tools-Cache liegt.
 
-|                            | Ubuntu                          | Mac                                      | Windows                                    |
-| -------------------------- | ------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| **Tool-Cache-Verzeichnis** | `/opt/hostedtoolcache/*`        | `/Users/runner/hostedtoolcache/*`        | `C:\hostedtoolcache\windows\*`         |
+|                            | Ubuntu                          | Mac                                      | Windows                               |
+| -------------------------- | ------------------------------- | ---------------------------------------- | ------------------------------------- |
+| **Tool-Cache-Verzeichnis** | `/opt/hostedtoolcache/*`        | `/Users/runner/hostedtoolcache/*`        | `C:\hostedtoolcache\windows\*`        |
 | **Tool-Cache für Python**  | `/opt/hostedtoolcache/Python/*` | `/Users/runner/hostedtoolcache/Python/*` | `C:\hostedtoolcache\windows\Python\*` |
 | **Tool-Cache für PyPy**    | `/opt/hostedtoolcache/PyPy/*`   | `/Users/runner/hostedtoolcache/PyPy/*`   | `C:\hostedtoolcache\windows\PyPy\*`   |
 
@@ -101,6 +104,7 @@ Wenn Du einen selbst gehosteten Runner verwendest, kannst Du den Runner so konfi
 #### Mehrere Python-Versionen verwenden
 
 {% raw %}
+
 ```yaml{:copy}
 name: Python package
 
@@ -126,6 +130,7 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 ```
+
 {% endraw %}
 
 #### Eine bestimmten Python-Version verwenden
@@ -133,6 +138,7 @@ jobs:
 Du kannst eine bestimmte Version von Python konfigurieren, For example, 3.8. Alternatively, you can use semantic version syntax to get the latest minor release. Dieses Beispiel verwendet das neueste Minor Release von Python 3.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Python package
 
@@ -156,6 +162,7 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 ```
+
 {% endraw %}
 
 #### Eine Version ausschließen
@@ -165,6 +172,7 @@ Wenn du eine Version von Python angibst, die nicht verfügbar ist, schlägt `set
 Du kannst in Deinem Workflow auch das Schlüsselwort `exclude` verwenden, wenn Du eine bestimmte Konfiguration von Python nicht laufen lassen möchtest. Weitere Informationen findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#jobsjob_idstrategy)“.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Python package
 
@@ -184,6 +192,7 @@ jobs:
           - os: windows-latest
             python-version: 3.6
 ```
+
 {% endraw %}
 
 #### Die Standard-Version von Python verwenden
@@ -203,6 +212,7 @@ Auf {% data variables.product.prodname_dotcom %}-gehosteten Runnern ist der Pake
 When using {% data variables.product.prodname_dotcom %}-hosted runners, you can also cache dependencies to speed up your workflow. Weitere Informationen findest Du unter „<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Abhängigkeiten zur Beschleunigung von Workflows im Cache zwischenspeichern</a>“.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -213,13 +223,15 @@ steps:
 - name: Install dependencies
   run: python -m pip install --upgrade pip setuptools wheel
 ```
+
 {% endraw %}
 
 #### Datei für „Requirements“ (Anforderungen)
 
-Nach dem Update von `pip` werden üblicherweise im nächsten Schritt die Abhängigkeiten aus *requirements.txt* installiert.
+Nach dem Update von `pip` werden üblicherweise im nächsten Schritt die Abhängigkeiten aus _requirements.txt_ installiert.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -232,6 +244,7 @@ steps:
     python -m pip install --upgrade pip
     pip install -r requirements.txt
 ```
+
 {% endraw %}
 
 #### Abhängigkeiten im Cache zwischenspeichern
@@ -241,6 +254,7 @@ When using {% data variables.product.prodname_dotcom %}-hosted runners, you can 
 Pip caches dependencies in different locations, depending on the operating system of the runner. The path you'll need to cache may differ from the Ubuntu example below depending on the operating system you use. For more information, see [Python caching examples](https://github.com/actions/cache/blob/main/examples.md#python---pip).
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -261,6 +275,7 @@ steps:
 - name: Install dependencies
   run: pip install -r requirements.txt
 ```
+
 {% endraw %}
 
 {% note %}
@@ -278,6 +293,7 @@ Du kannst die gleichen Befehle verwenden, die Du auch lokal verwendest, um Deine
 This example installs or upgrades `pytest` and `pytest-cov`. Tests are then run and output in JUnit format while code coverage results are output in Cobertura. For more information, see [JUnit](https://junit.org/junit5/) and [Cobertura](https://cobertura.github.io/cobertura/).
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -295,6 +311,7 @@ steps:
     pip install pytest-cov
     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 ```
+
 {% endraw %}
 
 #### Mit Flake8 den Code von „Fusseln“ reinigen
@@ -302,6 +319,7 @@ steps:
 The following example installs or upgrades `flake8` and uses it to lint all files. For more information, see [Flake8](http://flake8.pycqa.org/en/latest/).
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -318,6 +336,7 @@ steps:
     pip install flake8
     flake8 .
 ```
+
 {% endraw %}
 
 #### Tests mit Tox ausführen
@@ -325,6 +344,7 @@ steps:
 With {% data variables.product.prodname_actions %}, you can run tests with tox and spread the work across multiple jobs. You'll need to invoke tox using the `-e py` option to choose the version of Python in your `PATH`, rather than specifying a specific version. For more information, see [tox](https://tox.readthedocs.io/en/latest/).
 
 {% raw %}
+
 ```yaml{:copy}
 name: Python package
 
@@ -350,6 +370,7 @@ jobs:
         # Run tox using the version of Python in `PATH`
         run: tox -e py
 ```
+
 {% endraw %}
 
 ### Workflow-Daten als Artefakte paketieren
@@ -359,6 +380,7 @@ You can upload artifacts to view after a workflow completes. Zum Beispiel kann e
 The following example demonstrates how you can use the `upload-artifact` action to archive test results from running `pytest`. For more information, see the [`upload-artifact` action](https://github.com/actions/upload-artifact).
 
 {% raw %}
+
 ```yaml{:copy}
 name: Python package
 
@@ -393,6 +415,7 @@ jobs:
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
 ```
+
 {% endraw %}
 
 ### In Paket-Registries veröffentlichen
@@ -402,6 +425,7 @@ You can configure your workflow to publish your Python package to any package re
 You can store any access tokens or credentials needed to publish your package using secrets. The following example creates and publishes a package to PyPI using `twine` and `dist`. Weitere Informationen findest Du unter "[Verschlüsselte Geheimnisse erstellen und verwenden](/github/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)".
 
 {% raw %}
+
 ```yaml{:copy}
 name: Upload Python Package
 
@@ -430,6 +454,7 @@ jobs:
           python setup.py sdist bdist_wheel
           twine upload dist/*
 ```
+
 {% endraw %}
 
 For more information about the template workflow, see [`python-publish`](https://github.com/actions/starter-workflows/blob/main/ci/python-publish.yml).

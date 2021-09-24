@@ -3,9 +3,9 @@ title: Managing complex workflows
 shortTitle: Managing complex workflows
 intro: 'This guide shows you how to use the advanced features of {% data variables.product.prodname_actions %}, with secret management, dependent jobs, caching, build matrices,{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %} environments,{% endif %} and labels.'
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: how_to
 topics:
   - Workflows
@@ -26,6 +26,7 @@ If your workflows use sensitive data, such as passwords or certificates, you can
 This example action demonstrates how to reference an existing secret as an environment variable, and send it as a parameter to an example command.
 
 {% raw %}
+
 ```yaml
 jobs:
   example-job:
@@ -37,6 +38,7 @@ jobs:
         run: |
           example-command "$super_secret"
 ```
+
 {% endraw %}
 
 Weitere Informationen findest Du unter „[Verschlüsselte Geheimnisse erstellen und speichern](/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)“.
@@ -72,6 +74,7 @@ For more information, see [`jobs.<job_id>.needs`](/actions/reference/workflow-sy
 You can use a build matrix if you want your workflow to run tests across multiple combinations of operating systems, platforms, and languages. The build matrix is created using the `strategy` keyword, which receives the build options as an array. For example, this build matrix will run the job multiple times, using different versions of Node.js:
 
 {% raw %}
+
 ```yaml
 jobs:
   build:
@@ -84,11 +87,13 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 ```
+
 {% endraw %}
 
 For more information, see [`jobs.<job_id>.strategy.matrix`](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix).
 
 {% if currentVersion == "free-pro-team@latest" %}
+
 ### Abhängigkeiten „cachen“ (zwischenspeichern)
 
 {% data variables.product.prodname_dotcom %}-hosted runners are started as fresh environments for each job, so if your jobs regularly reuse dependencies, you can consider caching these files to help improve performance. Once the cache is created, it is available to all workflows in the same repository.
@@ -96,6 +101,7 @@ For more information, see [`jobs.<job_id>.strategy.matrix`](/actions/reference/w
 This example demonstrates how to cache the `~/.npm` directory:
 
 {% raw %}
+
 ```yaml
 jobs:
   example-job:
@@ -110,6 +116,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 ```
+
 {% endraw %}
 
 Weitere Informationen findest Du unter „<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Abhängigkeiten zur Beschleunigung von Workflows im Cache zwischenspeichern</a>“.
@@ -156,6 +163,7 @@ jobs:
 
 For more information, see ["Using labels with {% data variables.actions.hosted_runner %}](/actions/using-github-hosted-runners/using-labels-with-ae-hosted-runners)."
 {% else %}
+
 ```yaml
 jobs:
   example-job:
@@ -166,6 +174,7 @@ For more information, see ["Using labels with self-hosted runners](/actions/host
 {% endif %}
 
 {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" %}
+
 ### Using environments
 
 You can configure environments with protection rules and secrets. Each job in a workflow can reference a single environment. Any protection rules configured for the environment must pass before a job referencing the environment is sent to a runner. For more information, see "[Environments](/actions/reference/environments)."
@@ -177,6 +186,7 @@ You can configure environments with protection rules and secrets. Each job in a 
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.actions-tab %}
+
 1. Wenn Ihr Repository bereits über vorhandene Workflows verfügt: Klicken Sie in der linken oberen Ecke auf **Neuer Workflow**. ![Erstelle einen neuen Workflow](/assets/images/help/repository/actions-new-workflow.png)
 1. Klicke unter dem Namen der zu verwendenden Vorlage auf **Set up this workflow** (Workflow einrichten). ![Einrichten dieses Workflows](/assets/images/help/settings/actions-create-starter-workflow.png)
 

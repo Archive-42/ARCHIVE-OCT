@@ -1,13 +1,13 @@
 ---
 title: Hostname konfigurieren
-intro: 'Es wird empfohlen, dass Sie einen Hostnamen für Ihre Appliance festlegen, anstatt eine hartcodierte IP-Adresse zu verwenden.'
+intro: "Es wird empfohlen, dass Sie einen Hostnamen für Ihre Appliance festlegen, anstatt eine hartcodierte IP-Adresse zu verwenden."
 redirect_from:
   - /enterprise/admin/guides/installation/configuring-hostnames/
   - /enterprise/admin/installation/configuring-a-hostname
   - /enterprise/admin/configuration/configuring-a-hostname
   - /admin/configuration/configuring-a-hostname
 versions:
-  enterprise-server: '*'
+  enterprise-server: "*"
 type: how_to
 topics:
   - Enterprise
@@ -23,9 +23,7 @@ Die Einstellung des Hostnamens in der {% data variables.enterprise.management_co
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
-{% data reusables.enterprise_management_console.hostname-menu-item %}
-4. Geben Sie den Hostnamen ein, den Sie für {% data variables.product.product_location %} festlegen möchten.![Feld zum Festlegen eines Hostnamens](/assets/images/enterprise/management-console/hostname-field.png)
-5. Klicken Sie zum Testen der DNS- und SSL-Einstellungen für den neuen Hostnamen auf **Test domain settings** (Domain-Einstellungen testen). ![Schaltfläche zum Testen der Domain-Einstellungen](/assets/images/enterprise/management-console/test-domain-settings.png)
+{% data reusables.enterprise_management_console.hostname-menu-item %} 4. Geben Sie den Hostnamen ein, den Sie für {% data variables.product.product_location %} festlegen möchten.![Feld zum Festlegen eines Hostnamens](/assets/images/enterprise/management-console/hostname-field.png) 5. Klicken Sie zum Testen der DNS- und SSL-Einstellungen für den neuen Hostnamen auf **Test domain settings** (Domain-Einstellungen testen). ![Schaltfläche zum Testen der Domain-Einstellungen](/assets/images/enterprise/management-console/test-domain-settings.png)
 {% data reusables.enterprise_management_console.test-domain-settings-failure %}
 {% data reusables.enterprise_management_console.save-settings %}
 

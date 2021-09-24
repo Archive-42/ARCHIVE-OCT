@@ -1,11 +1,11 @@
 ---
 title: Debug-Protokollierung aktivieren
-intro: 'Wenn die Workflow-Logs nicht genügend Details zur Diagnose enthalten, warum ein Workflow, ein Job oder ein Schritt nicht wie erwartet abläuft, können Sie die zusätzliche Debug-Protokollierung aktivieren.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Wenn die Workflow-Logs nicht genügend Details zur Diagnose enthalten, warum ein Workflow, ein Job oder ein Schritt nicht wie erwartet abläuft, können Sie die zusätzliche Debug-Protokollierung aktivieren."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -15,9 +15,9 @@ versions:
 Diese zusätzlichen Protokolle werden aktiviert, indem Geheimnisse im Repository, die den Workflow enthalten, gesetzt werden, sodass die gleichen Berechtigungsanforderungen gelten:
 
 - {% data reusables.github-actions.permissions-statement-secrets-repository %}
-{% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
+  {% if currentVersion == "free-pro-team@latest" or currentVersion ver_gt "enterprise-server@3.0" or currentVersion == "github-ae@latest" %}
 - {% data reusables.github-actions.permissions-statement-secrets-environment %}
-{% endif %}
+  {% endif %}
 - {% data reusables.github-actions.permissions-statement-secrets-organization %}
 - {% data reusables.github-actions.permissions-statement-secrets-api %}
 
@@ -27,8 +27,8 @@ Weitere Informationen zum Festlegen von Geheimnissen finden Sie unter "[Erstelle
 
 Die Runner-Diagnoseprotokollierung stellt zusätzliche Protokolldateien bereit, die Informationen darüber enthalten, wie ein Läufer einen Auftrag ausführt. In das Protokollarchiv werden zwei weitere Protokolldateien aufgenommen:
 
-* das Runner-Prozessprotokoll mit Informationen zur Koordinierung und Einrichtung von Runnern für die Ausführung von Aufträgen
-* das Worker-Prozessprotokoll, in dem die Ausführung eines Auftrags protokolliert wird
+- das Runner-Prozessprotokoll mit Informationen zur Koordinierung und Einrichtung von Runnern für die Ausführung von Aufträgen
+- das Worker-Prozessprotokoll, in dem die Ausführung eines Auftrags protokolliert wird
 
 1. Zum Aktivieren der Runner-Diagnoseprotokollierung legen Sie das folgende Geheimnis im Repository fest, in dem sich der Workflow befindet: `ACTIONS_RUNNER_DEBUG` auf `true`.
 

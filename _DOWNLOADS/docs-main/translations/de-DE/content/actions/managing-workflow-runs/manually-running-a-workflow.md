@@ -1,11 +1,11 @@
 ---
 title: Manuelle Ausführung eines Workflows
-intro: 'When a workflow is configured to run on the `workflow_dispatch` event, you can run the workflow using the Actions tab on {% data variables.product.prodname_dotcom %}, {% data variables.product.prodname_cli %}, or the REST API.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "When a workflow is configured to run on the `workflow_dispatch` event, you can run the workflow using the Actions tab on {% data variables.product.prodname_dotcom %}, {% data variables.product.prodname_cli %}, or the REST API."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -24,6 +24,7 @@ To trigger the `workflow_dispatch` event on {% data variables.product.prodname_d
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.actions-tab %}
+
 1. Klicken Sie in der linken Seitenleiste auf den Workflow, den Sie ausführen möchten. ![Aktionen auswählen Workflow](/assets/images/actions-select-workflow.png)
 1. Wählen Sie über der Liste der Workflowausführungen **Workflow ausführen**. ![Aktionsworkflow-Dispatch](/assets/images/actions-workflow-dispatch.png)
 1. Wählen Sie die Verzweigung aus, in der der Workflow ausgeführt wird, und geben Sie die Eingabeparameter ein, die vom Workflow verwendet werden. Klicken Sie auf **Workflow ausführen**. ![Aktionen manuell ausgeführt Workflow](/assets/images/actions-manually-run-workflow.png)

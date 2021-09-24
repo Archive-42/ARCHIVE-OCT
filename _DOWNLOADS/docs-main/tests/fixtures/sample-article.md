@@ -1,6 +1,5 @@
 ---
 title: A sample article
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 ---
-

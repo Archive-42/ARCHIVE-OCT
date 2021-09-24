@@ -1,6 +1,6 @@
 ---
 title: Some GitHub article
 versions:
-  free-pro-team: '*'
-  enterprise-server: '*'
+  free-pro-team: "*"
+  enterprise-server: "*"
 ---

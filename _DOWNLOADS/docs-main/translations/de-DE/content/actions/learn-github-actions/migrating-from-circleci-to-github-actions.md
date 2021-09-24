@@ -1,12 +1,12 @@
 ---
 title: Von CircleCI zu GitHub-Aktionen migrieren
-intro: 'GitHub-Aktionen und CircleCI haben mehrere Ähnlichkeiten in der Konfiguration, was die Migration zu GitHub-Aktionen relativ einfach macht.'
+intro: "GitHub-Aktionen und CircleCI haben mehrere Ähnlichkeiten in der Konfiguration, was die Migration zu GitHub-Aktionen relativ einfach macht."
 redirect_from:
   - /actions/migrating-to-github-actions/migrating-from-circleci-to-github-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CircleCI
@@ -35,13 +35,13 @@ Weitere Informationen findest Du unter „[Kernkonzepte für {% data variables.p
 Betrachte bei der Migration von CircleCI folgende Unterschiede:
 
 - Die automatische Testparallelität des CircleCI gruppiert die Tests automatisch nach benutzerdefinierten Regeln oder historischen Zeitinformationen. Diese Funktionalität ist in {% data variables.product.prodname_actions %} nicht eingebaut.
-- Aktionen, die in Docker-Containern ausgeführt werden, sind sensibel für Berechtigungsprobleme, da Container eine andere Zuordnung von Benutzern haben. Du kannst viele dieser Probleme vermeiden, indem Du die Anweisung `USER` in Deinem *Dockerfile* nicht verwendest. {% if currentVersion == "github-ae@latest" %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images).".
-{% else %}For more information about the Docker filesystem on {% data variables.product.product_name %}-hosted runners, see "[Virtual environments for {% data variables.product.product_name %}-hosted runners](/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem)."
-{% endif %}
+- Aktionen, die in Docker-Containern ausgeführt werden, sind sensibel für Berechtigungsprobleme, da Container eine andere Zuordnung von Benutzern haben. Du kannst viele dieser Probleme vermeiden, indem Du die Anweisung `USER` in Deinem _Dockerfile_ nicht verwendest. {% if currentVersion == "github-ae@latest" %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images).".
+  {% else %}For more information about the Docker filesystem on {% data variables.product.product_name %}-hosted runners, see "[Virtual environments for {% data variables.product.product_name %}-hosted runners](/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem)."
+  {% endif %}
 
 ### Workflows und Jobs migrieren
 
-CircleCI definiert `Workflows` in der Datei *config.yml*, wodurch Du mehrere Workflows konfigurieren kannst. {% data variables.product.product_name %} benötigt pro Workflow eine Workflow-Datei und erfordert daher nicht `Workflows` zu deklarieren. Du musst für jeden Workflow, der in *config.yml* konfiguriert ist, eine neue Workflow-Datei erstellen.
+CircleCI definiert `Workflows` in der Datei _config.yml_, wodurch Du mehrere Workflows konfigurieren kannst. {% data variables.product.product_name %} benötigt pro Workflow eine Workflow-Datei und erfordert daher nicht `Workflows` zu deklarieren. Du musst für jeden Workflow, der in _config.yml_ konfiguriert ist, eine neue Workflow-Datei erstellen.
 
 Sowohl CircleCI als auch {% data variables.product.prodname_actions %} konfigurieren `Jobs` in der Konfigurationsdatei, und das mit ähnlicher Syntax. Wenn Du Abhängigkeiten zwischen Jobs in Deinem CircleCI-Workflow mit `requires` konfigurierst, kannst Du in {% data variables.product.prodname_actions %} die äquivalente Syntax `needs` verwenden. Weitere Informationen findest Du unter „[Workflow-Syntax für {% data variables.product.prodname_actions %}](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idneeds)“.
 
@@ -52,7 +52,6 @@ Sowohl CircleCI als auch {% data variables.product.prodname_actions %} bieten ei
 CircleCI kann Workflows mit YAML-Ankern und Aliasen wiederverwenden. {% data variables.product.prodname_actions %} unterstützen den üblichen Bedarf an Wiederverwendbarkeit durch Build-Matrizen. For more information about build matrixes, see "[Managing complex workflows](/actions/learn-github-actions/managing-complex-workflows/#using-a-build-matrix)."
 
 ### Docker-Images verwenden
-
 
 Sowohl CircleCI als auch {% data variables.product.prodname_actions %} können Schritte innerhalb eines Docker-Images ausführen.
 
@@ -150,8 +149,9 @@ GitHub Actions
 ...
 
 - attach_workspace:
-    at: /tmp/workspace
-```
+  at: /tmp/workspace
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -169,8 +169,10 @@ GitHub Actions
   uses: actions/download-artifact@v2
   with:
     name: homework
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -181,7 +183,7 @@ Weitere Informationen findest Du unter „[Workflow-Daten mittels Artefakten per
 
 Mit beiden Systemen kannst Du zusätzliche Container für Datenbanken, Zwischenspeicherung im Cache oder andere Abhängigkeiten einbinden.
 
-In CircleCI ist das erste in der *config.yaml* aufgelistete Image, das primäre Image, welches benutzt wird, um Befehle auszuführen. {% data variables.product.prodname_actions %} verwendet explizite Abschnitte: `container` für den primären Container und zusätzliche Container aufgelistet in `services`.
+In CircleCI ist das erste in der _config.yaml_ aufgelistete Image, das primäre Image, welches benutzt wird, um Befehle auszuführen. {% data variables.product.prodname_actions %} verwendet explizite Abschnitte: `container` für den primären Container und zusätzliche Container aufgelistet in `services`.
 
 Nachfolgend siehst Du ein Beispiel in der Konfigurationssyntax von CircleCI und {% data variables.product.prodname_actions %}.
 
@@ -203,18 +205,16 @@ version: 2.1
 
 jobs:
 
-  ruby-26:
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          PGHOST: localhost
-          PGUSER: administrate
-          RAILS_ENV: test
-      - image: postgres:10.1-alpine
-        environment:
-          POSTGRES_USER: administrate
-          POSTGRES_DB: ruby26
-          POSTGRES_PASSWORD: ""
+ruby-26:
+docker: - image: circleci/ruby:2.6.3-node-browsers-legacy
+environment:
+PGHOST: localhost
+PGUSER: administrate
+RAILS_ENV: test - image: postgres:10.1-alpine
+environment:
+POSTGRES_USER: administrate
+POSTGRES_DB: ruby26
+POSTGRES_PASSWORD: ""
 
     working_directory: ~/administrate
 
@@ -236,17 +236,16 @@ jobs:
       # Tests durchfuehren
       - run: bundle exec rake
 
-
 workflows:
-  version: 2
-  build:
-    jobs:
-      - ruby-26
+version: 2
+build:
+jobs: - ruby-26
 ...
 
 - attach_workspace:
-    at: /tmp/workspace
-```
+  at: /tmp/workspace
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -293,8 +292,10 @@ jobs:
         run: bundle exec rake db:setup
       - name: Run tests
         run: bundle exec rake
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -303,7 +304,7 @@ Weitere Informationen findest Du unter „[Informationen zu Servicecontainern](/
 
 ### Vollständiges Beispiel
 
-Nachfolgend siehst Du ein Beispiel aus der realen Welt. Die linke Seite zeigt die tatsächliche *config.yml* unter CircleCI für das Repository [thoughtbot/administrator](https://github.com/thoughtbot/administrate). Die rechte Seite zeigt das Äquivalent unter {% data variables.product.prodname_actions %}.
+Nachfolgend siehst Du ein Beispiel aus der realen Welt. Die linke Seite zeigt die tatsächliche _config.yml_ unter CircleCI für das Repository [thoughtbot/administrator](https://github.com/thoughtbot/administrate). Die rechte Seite zeigt das Äquivalent unter {% data variables.product.prodname_actions %}.
 
 <table class="d-block">
 <tr>
@@ -322,9 +323,8 @@ GitHub Actions
 version: 2.1
 
 commands:
-  shared_steps:
-    steps:
-      - checkout
+shared_steps:
+steps: - checkout
 
       # Abhaengigkeiten aus dem Cache wiederherstellen
       - restore_cache:
@@ -354,50 +354,40 @@ commands:
       - run: bundle exec rake
 
 default_job: &default_job
-  working_directory: ~/administrate
-  steps:
-    - shared_steps
-    # Test mit verschiedenen Versionen von Rails durchfuehren
-    - run: bundle exec appraisal install
-    - run: bundle exec appraisal rake
+working_directory: ~/administrate
+steps: - shared_steps # Test mit verschiedenen Versionen von Rails durchfuehren - run: bundle exec appraisal install - run: bundle exec appraisal rake
 
 jobs:
-  ruby-25:
-    <<: *default_job
-    docker:
-      - image: circleci/ruby:2.5.0-node-browsers
-        environment:
-          PGHOST: localhost
-          PGUSER: administrate
-          RAILS_ENV: test
-      - image: postgres:10.1-alpine
-        environment:
-          POSTGRES_USER: administrate
-          POSTGRES_DB: ruby25
-          POSTGRES_PASSWORD: ""
+ruby-25:
+<<: \*default_job
+docker: - image: circleci/ruby:2.5.0-node-browsers
+environment:
+PGHOST: localhost
+PGUSER: administrate
+RAILS_ENV: test - image: postgres:10.1-alpine
+environment:
+POSTGRES_USER: administrate
+POSTGRES_DB: ruby25
+POSTGRES_PASSWORD: ""
 
-  ruby-26:
-    <<: *default_job
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          PGHOST: localhost
-          PGUSER: administrate
-          RAILS_ENV: test
-      - image: postgres:10.1-alpine
-        environment:
-          POSTGRES_USER: administrate
-          POSTGRES_DB: ruby26
-          POSTGRES_PASSWORD: ""
-
+ruby-26:
+<<: \*default_job
+docker: - image: circleci/ruby:2.6.3-node-browsers-legacy
+environment:
+PGHOST: localhost
+PGUSER: administrate
+RAILS_ENV: test - image: postgres:10.1-alpine
+environment:
+POSTGRES_USER: administrate
+POSTGRES_DB: ruby26
+POSTGRES_PASSWORD: ""
 
 workflows:
-  version: 2
-  multiple-rubies:
-    jobs:
-      - ruby-26
-      - ruby-25
-```
+version: 2
+multiple-rubies:
+jobs: - ruby-26 - ruby-25
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -460,8 +450,10 @@ jobs:
         run: bundle exec appraisal install
       - name: Run appraisal
         run: bundle exec appraisal rake
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>

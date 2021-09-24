@@ -1,13 +1,13 @@
 ---
 title: Aktionen auf dem GitHub-Marktplatz veröffentlichen
-intro: 'Du kannst Aktionen auf dem {% data variables.product.prodname_marketplace %} veröffentlichen und der {% data variables.product.prodname_dotcom %}-Gemeinschaft zur Verfügung stellen.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Du kannst Aktionen auf dem {% data variables.product.prodname_marketplace %} veröffentlichen und der {% data variables.product.prodname_dotcom %}-Gemeinschaft zur Verfügung stellen."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace
   - /actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace
   - /actions/building-actions/publishing-actions-in-github-marketplace
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 type: how_to
 ---
 
@@ -39,6 +39,7 @@ Du kannst die von Dir erstellte Aktion auf den {% data variables.product.prodnam
 Um ein neues Release zu entwerfen und die Aktion auf dem {% data variables.product.prodname_marketplace %} zu veröffentlichen, folge diesen Anweisungen:
 
 {% data reusables.repositories.navigate-to-repo %}
+
 1. Wenn ein Repository für eine Aktion eine Metadaten-Datei (`action.yml` oder `Aktion. aml`) enthält, siehst Du ein Banner, um die Aktion auf dem {% data variables.product.prodname_marketplace %} zu veröffentlichen. Klicke auf **Draft a release** (Ein neues Release entwerfen). ![Schaltfläche um diese Aktion auf dem Marktplatz zu veröffentlichen](/assets/images/help/repository/publish-github-action-to-markeplace-button.png)
 1. Wähle **Publish this action to the {% data variables.product.prodname_marketplace %}** (Diese Aktion auf dem {% data variables.product.prodname_marketplace %} veröffentlichen). Wenn Du das Ankreuzfeld **Publish this action to the {% data variables.product.prodname_marketplace %}** nicht auswählen kannst, musst Du zuerst die {% data variables.product.prodname_marketplace %}-Vereinbarung lesen und akzeptieren. ![Veröffentlichung auf dem Marktplatz auswählen](/assets/images/help/repository/marketplace_actions_publish.png)
 1. Wenn die Bezeichnungen in Deiner Metadaten-Datei irgendwelche Probleme verursachen, wird Dir eine Fehlermeldung angezeigt. ![Siehe Benachrichtigung](/assets/images/help/repository/marketplace_actions_fixerrors.png)
@@ -52,7 +53,4 @@ Um ein neues Release zu entwerfen und die Aktion auf dem {% data variables.produ
 Um eine veröffentlichte Aktion vom {% data variables.product.prodname_marketplace %} zu entfernen, musst Du jedes veröffentlichte Release aktualisieren. Führe die folgenden Schritte für jedes auf dem {% data variables.product.prodname_marketplace %} veröffentlichte Release der Aktion aus.
 
 {% data reusables.repositories.navigate-to-repo %}
-{% data reusables.repositories.releases %}
-3. Klicke auf der Seite „Releases“ (Veröffentlichungen) rechts neben dem zu bearbeitenden Release auf **Edit** (Bearbeiten). ![Schaltfläche um das Release zu bearbeiten](/assets/images/help/releases/release-edit-btn.png)
-4. Klicke auf **Publish this action to the {% data variables.product.prodname_marketplace %}** (...veröffentlichen) um die Markierung aus dem Kontrollkästchen zu entfernen. ![Schaltfläche um diese Aktion zu verröffentlichen](/assets/images/help/repository/actions-marketplace-unpublish.png)
-5. Klicke auf **Update release** (Release aktualisieren) am Ende der Seite. ![Schaltfläche um das Release zu aktualisieren](/assets/images/help/repository/actions-marketplace-update-release.png)
+{% data reusables.repositories.releases %} 3. Klicke auf der Seite „Releases“ (Veröffentlichungen) rechts neben dem zu bearbeitenden Release auf **Edit** (Bearbeiten). ![Schaltfläche um das Release zu bearbeiten](/assets/images/help/releases/release-edit-btn.png) 4. Klicke auf **Publish this action to the {% data variables.product.prodname_marketplace %}** (...veröffentlichen) um die Markierung aus dem Kontrollkästchen zu entfernen. ![Schaltfläche um diese Aktion zu verröffentlichen](/assets/images/help/repository/actions-marketplace-unpublish.png) 5. Klicke auf **Update release** (Release aktualisieren) am Ende der Seite. ![Schaltfläche um das Release zu aktualisieren](/assets/images/help/repository/actions-marketplace-update-release.png)

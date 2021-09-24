@@ -1,7 +1,7 @@
 ---
 title: Article with learning tracks
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 learningTracks:
   - track_1
   - track_2

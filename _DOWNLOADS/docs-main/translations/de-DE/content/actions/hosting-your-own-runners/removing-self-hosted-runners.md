@@ -1,13 +1,13 @@
 ---
 title: Selbst-gehostete Runner entfernen
-intro: 'Du kannst einen selbst-gehosteten Runner dauerhaft von {{ site.data.variables.product.prodname_actions }} entfernen.'
+intro: "Du kannst einen selbst-gehosteten Runner dauerhaft von {{ site.data.variables.product.prodname_actions }} entfernen."
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/removing-self-hosted-runners
   - /actions/automating-your-workflow-with-github-actions/removing-self-hosted-runners
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 ---
 

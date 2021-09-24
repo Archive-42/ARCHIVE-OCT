@@ -2,9 +2,9 @@
 title: About identity and access management for your enterprise
 shortTitle: About identity and access management
 intro: 'You can use {% if enterpriseServerVersions contains currentVersion %}{% data variables.product.prodname_ghe_server %}''s built-in authentication, or choose between CAS, LDAP, or SAML{% else %}SAML single sign-on (SSO) and System for Cross-domain Identity Management (SCIM){% endif %} to centrally manage access {% if currentVersion == "free-pro-team@latest" %}to organizations owned by your enterprise on {% data variables.product.prodname_dotcom_the_website %}{% endif %}{% if enterpriseServerVersions contains currentVersion or currentVersion == "github-ae@latest" %}to {% data variables.product.product_location %}{% endif %}.'
-product: '{% data reusables.gated-features.saml-sso %}'
+product: "{% data reusables.gated-features.saml-sso %}"
 versions:
-  github-ae: '*'
+  github-ae: "*"
 type: overview
 topics:
   - Accounts

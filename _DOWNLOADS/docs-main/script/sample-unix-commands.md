@@ -4,27 +4,30 @@ Here are some native commands available when you work in a Unix terminal (or a B
 
 ## Table of contents
 
-* [Redirecting output](#redirecting-output)
-* [`grep`](#grep)
-* [`find`](#find)
-* [`for` loops](#for-loops)
-* [`sed`](#sed)
+- [Redirecting output](#redirecting-output)
+- [`grep`](#grep)
+- [`find`](#find)
+- [`for` loops](#for-loops)
+- [`sed`](#sed)
 
 ## Redirecting output
 
 When you type commands in the terminal, that’s **standard input**. When you run the command, the results typically go to **standard output**. This input/output model allows you to chain commands together to build custom one-liners.
 
 Send (or "pipe") output of one command to another with `|`:
+
 ```
 $ ls | wc -l
 ```
 
 Send output to a file with `>`:
+
 ```
 $ ls > files.txt
 ```
 
 Run multiple commands with `&&`:
+
 ```
 $ ls > files.txt && head files.txt
 ```
@@ -36,11 +39,13 @@ $ ls > files.txt && head files.txt
 `grep` stands for "global regular expression print," although you don’t have to use regex. See [Rubular.com](https://rubular.com/) for a handy regex editor and cheat sheet.
 
 Basic format:
+
 ```
 $ grep [options] pattern [file or directory]
 ```
 
 Sample `grep`s:
+
 ```
 # Recursive search
 $ grep -r 'title' content
@@ -76,11 +81,13 @@ $ grep -Lr '^intro' content | egrep -v '(index|README).md'
 `find` is helpful for finding files, whereas `grep` is more useful for matching patterns. `find` is recursive by default. You can pass `find` a `-depth` flag to limit recursion.
 
 Basic format:
+
 ```
 $ find [directory] [option] pattern
 ```
 
 Sample `find`s:
+
 ```
 $ find content -name 'about-actions.md'
 
@@ -104,11 +111,13 @@ $ find content/actions -type d | grep getting-started
 Every programming language has a way to iterate through a list. The following examples show the Unix shell syntax. The semicolons can be hard to read, but they make it possible to run these commands on a single line.
 
 Basic format:
+
 ```
 $ for var in list; do [commands]; done
 ```
 
 Sample `for` loops:
+
 ```
 $ for i in $(ls content); do echo $i; done
 
@@ -130,15 +139,19 @@ $ for i in $(cat prs.txt); do curl -su <username>:$token -X "GET" "https://api.g
 `sed` is one way to do find/replace on the command line.
 
 Basic format:
+
 ```
 $ sed 's/pattern/replacement/[flags]'
 ```
+
 The `/` is the most common delimiter, but other characters work too:
+
 ```
 $ sed 's_pattern_replacement_[flags]'
 ```
 
 Sample `sed`s:
+
 ```
 # Do a substitution on standard output
 $ grep -hr 'title: ' content | sed 's/title: //g' | sort

@@ -1,11 +1,11 @@
 ---
 title: Essential features of GitHub Actions
 shortTitle: Essential features
-intro: '{% data variables.product.prodname_actions %} are designed to help you build robust and dynamic automations. This guide will show you how to craft {% data variables.product.prodname_actions %} workflows that include environment variables, customized scripts, and more.'
+intro: "{% data variables.product.prodname_actions %} are designed to help you build robust and dynamic automations. This guide will show you how to craft {% data variables.product.prodname_actions %} workflows that include environment variables, customized scripts, and more."
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: overview
 topics:
   - Fundamentals
@@ -26,12 +26,12 @@ topics:
 ```yaml
 jobs:
   example-job:
-      steps:
-        - name: Connect to PostgreSQL
-          run: node client.js
-          env:
-            POSTGRES_HOST: postgres
-            POSTGRES_PORT: 5432
+    steps:
+      - name: Connect to PostgreSQL
+        run: node client.js
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
 ```
 
 Weitere Informationen findest Du unter „[Umgebungsvariablen verwenden](/actions/configuring-and-managing-workflows/using-environment-variables)“.

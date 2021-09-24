@@ -1,16 +1,16 @@
 ---
 title: Finding and customizing actions
 shortTitle: Finding and customizing actions
-intro: 'Actions are the building blocks that power your workflow. A workflow can contain actions created by the community, or you can create your own actions directly within your application''s repository. This guide will show you how to discover, use, and customize actions.'
+intro: "Actions are the building blocks that power your workflow. A workflow can contain actions created by the community, or you can create your own actions directly within your application's repository. This guide will show you how to discover, use, and customize actions."
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/using-github-marketplace-actions
   - /actions/automating-your-workflow-with-github-actions/using-actions-from-github-marketplace-in-your-workflow
   - /actions/getting-started-with-github-actions/using-actions-from-github-marketplace
   - /actions/getting-started-with-github-actions/using-community-workflows-and-actions
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: how_to
 topics:
   - Fundamentals
@@ -67,7 +67,7 @@ Tags are useful for letting you decide when to switch between major and minor ve
 
 ```yaml
 Schritte:
-    - verwendet: actions/javascript-action@v1.0.1
+  - verwendet: actions/javascript-action@v1.0.1
 ```
 
 #### Using SHAs
@@ -76,7 +76,7 @@ If you need more reliable versioning, you should use the SHA value associated wi
 
 ```yaml
 Schritte:
-    - verwendet: actions/javascript-action@172239021f7ba04fe7327647b213799853a9eb89
+  - verwendet: actions/javascript-action@172239021f7ba04fe7327647b213799853a9eb89
 ```
 
 #### Using branches
@@ -85,7 +85,7 @@ Specifying a target branch for the action means it will always run the version c
 
 ```yaml
 steps:
-    - uses: actions/javascript-action@main
+  - uses: actions/javascript-action@main
 ```
 
 For more information, see "[Using release management for actions](/actions/creating-actions/about-actions#using-release-management-for-actions)."
@@ -99,20 +99,22 @@ To see the inputs and outputs of an action, check the `action.yml` or `action.ya
 In this example `action.yml`, the `inputs` keyword defines a required input called `file-path`, and includes a default value that will be used if none is specified. The `outputs` keyword defines an output called `results-file`, which tells you where to locate the results.
 
 ```yaml
-name: 'Example'
-description: 'Receives file and generates output'
+name: "Example"
+description: "Receives file and generates output"
 inputs:
-  file-path:  # id of input
+  file-path: # id of input
     description: "Path to test script"
     required: true
-    default: 'test-file.js'
+    default: "test-file.js"
 outputs:
   results-file: # id of output
     description: "Path to results file"
 ```
 
 {% if currentVersion == "github-ae@latest" %}
+
 ### Using the actions included with {% data variables.product.prodname_ghe_managed %}
+
 By default, you can use most of the official
 
 {% data variables.product.prodname_dotcom %}-authored actions in {% data variables.product.prodname_ghe_managed %}. For more information, see "[Using actions in {% data variables.product.prodname_ghe_managed %}](/admin/github-actions/using-actions-in-github-ae)."

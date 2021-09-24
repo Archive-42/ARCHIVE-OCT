@@ -1,8 +1,8 @@
 ---
 title: Using groups to manage access to AE hosted runners
-intro: 'You can use policies to limit access to {% data variables.actions.hosted_runner %}s that have been added to an organization or enterprise.'
+intro: "You can use policies to limit access to {% data variables.actions.hosted_runner %}s that have been added to an organization or enterprise."
 versions:
-  github-ae: '*'
+  github-ae: "*"
 ---
 
 {% data reusables.actions.ae-beta %}
@@ -26,13 +26,14 @@ When creating a group, you must choose a policy that defines which repositories 
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.organizations.settings-sidebar-actions %}
+
 1. In the **Self-hosted runners** section, click **Add new**, and then **New group**.
 
-    ![Add runner group](/assets/images/help/settings/actions-hosted-runner-add-new-group.png)
+   ![Add runner group](/assets/images/help/settings/actions-hosted-runner-add-new-group.png)
 
 1. Enter a name for your runner group, and assign a policy for repository access.
 
-     You can configure a runner group to be accessible to a specific list of repositories, or to all repositories in the organization. By default, only private repositories can access runners in a runner group, but you can override this. ![Add runner group options](/assets/images/help/settings/actions-org-add-runner-group-options.png)
+   You can configure a runner group to be accessible to a specific list of repositories, or to all repositories in the organization. By default, only private repositories can access runners in a runner group, but you can override this. ![Add runner group options](/assets/images/help/settings/actions-org-add-runner-group-options.png)
 
 1. Click **Save group** to create the group and apply the policy.
 
@@ -47,14 +48,15 @@ When creating a group, you must choose a policy that defines which organizations
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.policies-tab %}
 {% data reusables.enterprise-accounts.actions-tab %}
+
 1. Click the **Self-hosted runners** tab.
 1. Click **Add new**, and then **New group**.
 
-    ![Add runner group](/assets/images/help/settings/actions-hosted-runner-add-new-group.png)
+   ![Add runner group](/assets/images/help/settings/actions-hosted-runner-add-new-group.png)
 
 1. Enter a name for your runner group, and assign a policy for organization access.
 
-   You can configure a runner group to be accessible to a specific list of organizations, or all organizations in the enterprise.  By default, only private repositories can access runners in a runner group, but you can override this. ![Add runner group options](/assets/images/help/settings/actions-enterprise-account-add-runner-group-options.png)
+   You can configure a runner group to be accessible to a specific list of organizations, or all organizations in the enterprise. By default, only private repositories can access runners in a runner group, but you can override this. ![Add runner group options](/assets/images/help/settings/actions-enterprise-account-add-runner-group-options.png)
 
 1. Click **Save group** to create the group and apply the policy.
 
@@ -80,6 +82,6 @@ New {% data variables.actions.hosted_runner %}s are automatically assigned to th
 
 1. To remove the group, click **Remove group**.
 
-    ![View runner group settings](/assets/images/help/settings/actions-hosted-runner-group-remove.png)
+   ![View runner group settings](/assets/images/help/settings/actions-hosted-runner-group-remove.png)
 
 1. Review the confirmation prompts, and click **Remove this runner group**.

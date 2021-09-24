@@ -1,11 +1,11 @@
 ---
 title: Configuring secret scanning for your appliance
 shortTitle: Configuring secret scanning
-intro: 'You can enable, configure, and disable {% data variables.product.prodname_secret_scanning %} for {% data variables.product.product_location %}. {% data variables.product.prodname_secret_scanning_caps %} allows users to scan code for accidentally committed secrets.'
-product: '{% data reusables.gated-features.secret-scanning %}'
+intro: "You can enable, configure, and disable {% data variables.product.prodname_secret_scanning %} for {% data variables.product.product_location %}. {% data variables.product.prodname_secret_scanning_caps %} allows users to scan code for accidentally committed secrets."
+product: "{% data reusables.gated-features.secret-scanning %}"
 miniTocMaxHeadingLevel: 4
 versions:
-  enterprise-server: '>=3.0'
+  enterprise-server: ">=3.0"
 topics:
   - Enterprise
 ---
@@ -43,6 +43,7 @@ If this doesn't return `0`, SSSE3 is not enabled on your VM/KVM. You need to ref
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
+
 1. Check if there is an **{% data variables.product.prodname_advanced_security %}** entry in the left sidebar. ![Advanced Security sidebar](/assets/images/enterprise/management-console/sidebar-advanced-security.png)
 
 {% data reusables.enterprise_management_console.advanced-security-license %}
@@ -54,10 +55,11 @@ If this doesn't return `0`, SSSE3 is not enabled on your VM/KVM. You need to ref
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
 {% data reusables.enterprise_management_console.advanced-security-tab %}
+
 1. Under "
-{% data variables.product.prodname_advanced_security %}," click **{% data variables.product.prodname_secret_scanning_caps %}**.
-![Checkbox to enable or disable {% data variables.product.prodname_secret_scanning %}](/assets/images/enterprise/management-console/enable-secret-scanning-checkbox.png)
-{% data reusables.enterprise_management_console.save-settings %}
+   {% data variables.product.prodname_advanced_security %}," click **{% data variables.product.prodname_secret_scanning_caps %}**.
+   ![Checkbox to enable or disable {% data variables.product.prodname_secret_scanning %}](/assets/images/enterprise/management-console/enable-secret-scanning-checkbox.png)
+   {% data reusables.enterprise_management_console.save-settings %}
 
 ### Disabling {% data variables.product.prodname_secret_scanning %}
 
@@ -66,7 +68,8 @@ If this doesn't return `0`, SSSE3 is not enabled on your VM/KVM. You need to ref
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
 {% data reusables.enterprise_management_console.advanced-security-tab %}
+
 1. Under "
-{% data variables.product.prodname_advanced_security %}", unselect **{% data variables.product.prodname_secret_scanning_caps %}**.
-![Checkbox to enable or disable {% data variables.product.prodname_secret_scanning %}](/assets/images/enterprise/management-console/secret-scanning-disable.png)
-{% data reusables.enterprise_management_console.save-settings %}
+   {% data variables.product.prodname_advanced_security %}", unselect **{% data variables.product.prodname_secret_scanning_caps %}**.
+   ![Checkbox to enable or disable {% data variables.product.prodname_secret_scanning %}](/assets/images/enterprise/management-console/secret-scanning-disable.png)
+   {% data reusables.enterprise_management_console.save-settings %}

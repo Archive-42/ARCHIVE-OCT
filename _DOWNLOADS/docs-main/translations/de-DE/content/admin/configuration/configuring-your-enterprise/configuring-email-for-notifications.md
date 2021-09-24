@@ -1,6 +1,6 @@
 ---
 title: E-Mail für Benachrichtigungen konfigurieren
-intro: 'To make it easy for users to respond quickly to activity on {% data variables.product.product_name %}, you can configure {% data variables.product.product_location %} to send email notifications for issue, pull request, and commit comments.'
+intro: "To make it easy for users to respond quickly to activity on {% data variables.product.product_name %}, you can configure {% data variables.product.product_location %} to send email notifications for issue, pull request, and commit comments."
 redirect_from:
   - /enterprise/admin/guides/installation/email-configuration/
   - /enterprise/admin/articles/configuring-email/
@@ -9,8 +9,8 @@ redirect_from:
   - /enterprise/admin/user-management/configuring-email-for-notifications
   - /admin/configuration/configuring-email-for-notifications
 versions:
-  enterprise-server: '*'
-  github-ae: '*'
+  enterprise-server: "*"
+  github-ae: "*"
 type: how_to
 topics:
   - Enterprise
@@ -22,54 +22,31 @@ topics:
 {% if currentVersion == "github-ae@latest" %}
 Enterprise owners can configure email for notifications.
 {% endif %}
+
 ### Configuring SMTP for your enterprise
 
 {% if enterpriseServerVersions contains currentVersion %}
 {% data reusables.enterprise_site_admin_settings.access-settings %}
-{% data reusables.enterprise_site_admin_settings.management-console %}
-2. Klicken Sie im oberen Bereich der Seite auf **Settings** (Einstellungen). ![Registerkarte „Settings“ (Einstellungen)](/assets/images/enterprise/management-console/settings-tab.png)
-3. Klicken Sie auf der linken Seitenleiste auf **Email** (E-Mail). ![Registerkarte „Email“ (E-Mail)](/assets/images/enterprise/management-console/email-sidebar.png)
-4. Wählen Sie **Enable email** (E-Mail aktivieren) aus. Dadurch werden aus- und eingehende E-Mails aktiviert. Damit eingehende E-Mails funktionieren, müssen Sie jedoch auch Ihre DNS-Einstellungen konfigurieren, wie dies im Folgenden unter „[DNS- und Firewalleinstellungen zum Zulassen eingehender E-Mails konfigurieren](#configuring-dns-and-firewall-settings-to-allow-incoming-emails)“ beschrieben ist. ![Option zum Aktivieren ausgehender E-Mails](/assets/images/enterprise/management-console/enable-outbound-email.png)
-5. Type the settings for your SMTP server.
-      - Geben Sie im Feld **Server address** (Serveradresse) die Adresse Ihres SMTP-Servers ein.
-      - Geben Sie im Feld **Port** den Port ein, der von Ihrem SMTP-Server zum Senden von E-Mails verwendet wird.
-      - Geben Sie im Feld **Domain** den Domain-Namen ein, der ggf. von Ihrem SMTP-Server mit einer HELO-Antwort gesendet wird.
-      - Select the **Authentication** dropdown, and choose the type of encryption used by your SMTP server.
-      - Geben Sie im Feld **No-reply email address** („no-reply“-E-Mail-Adresse) die E-Mail-Adresse ein, die für alle Benachrichtigungs-E-Mails in den Feldern „From“ (Von) und „To“ (An) verwendet werden soll.
-6. Wenn Sie alle eingehenden E-Mails verwerfen möchten, die an die „no-reply“-E-Mail-Adresse adressiert sind, sollten Sie **Discard email addressed to the no-reply email address** (An die „no-reply“-E-Mail-Adresse adressierte E-Mails verwerfen) aktivieren. ![Kontrollkästchen zum Verwerfen der an die „no-reply“-E-Mail-Adresse adressierten E-Mails](/assets/images/enterprise/management-console/discard-noreply-emails.png)
-7. Under **Support**, choose a type of link to offer additional support to your users.
-    - **Email** (E-Mail): Eine interne E-Mail-Adresse.
-    - **URL:** Ein Link zu einer internen Supportwebsite. Sie müssen `http://` oder `https://` verwenden. ![Support-E-Mail oder -URL](/assets/images/enterprise/management-console/support-email-url.png)
-8. [Testen Sie die E-Mail-Zustellung](#testing-email-delivery).
+{% data reusables.enterprise_site_admin_settings.management-console %} 2. Klicken Sie im oberen Bereich der Seite auf **Settings** (Einstellungen). ![Registerkarte „Settings“ (Einstellungen)](/assets/images/enterprise/management-console/settings-tab.png) 3. Klicken Sie auf der linken Seitenleiste auf **Email** (E-Mail). ![Registerkarte „Email“ (E-Mail)](/assets/images/enterprise/management-console/email-sidebar.png) 4. Wählen Sie **Enable email** (E-Mail aktivieren) aus. Dadurch werden aus- und eingehende E-Mails aktiviert. Damit eingehende E-Mails funktionieren, müssen Sie jedoch auch Ihre DNS-Einstellungen konfigurieren, wie dies im Folgenden unter „[DNS- und Firewalleinstellungen zum Zulassen eingehender E-Mails konfigurieren](#configuring-dns-and-firewall-settings-to-allow-incoming-emails)“ beschrieben ist. ![Option zum Aktivieren ausgehender E-Mails](/assets/images/enterprise/management-console/enable-outbound-email.png) 5. Type the settings for your SMTP server. - Geben Sie im Feld **Server address** (Serveradresse) die Adresse Ihres SMTP-Servers ein. - Geben Sie im Feld **Port** den Port ein, der von Ihrem SMTP-Server zum Senden von E-Mails verwendet wird. - Geben Sie im Feld **Domain** den Domain-Namen ein, der ggf. von Ihrem SMTP-Server mit einer HELO-Antwort gesendet wird. - Select the **Authentication** dropdown, and choose the type of encryption used by your SMTP server. - Geben Sie im Feld **No-reply email address** („no-reply“-E-Mail-Adresse) die E-Mail-Adresse ein, die für alle Benachrichtigungs-E-Mails in den Feldern „From“ (Von) und „To“ (An) verwendet werden soll. 6. Wenn Sie alle eingehenden E-Mails verwerfen möchten, die an die „no-reply“-E-Mail-Adresse adressiert sind, sollten Sie **Discard email addressed to the no-reply email address** (An die „no-reply“-E-Mail-Adresse adressierte E-Mails verwerfen) aktivieren. ![Kontrollkästchen zum Verwerfen der an die „no-reply“-E-Mail-Adresse adressierten E-Mails](/assets/images/enterprise/management-console/discard-noreply-emails.png) 7. Under **Support**, choose a type of link to offer additional support to your users. - **Email** (E-Mail): Eine interne E-Mail-Adresse. - **URL:** Ein Link zu einer internen Supportwebsite. Sie müssen `http://` oder `https://` verwenden. ![Support-E-Mail oder -URL](/assets/images/enterprise/management-console/support-email-url.png) 8. [Testen Sie die E-Mail-Zustellung](#testing-email-delivery).
 {% elsif currentVersion == "github-ae@latest" %}
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.settings-tab %}
-{% data reusables.enterprise-accounts.email-tab %}
-2. Wählen Sie **Enable email** (E-Mail aktivieren) aus. !["Enable" checkbox for email settings configuration](/assets/images/enterprise/configuration/ae-enable-email-configure.png)
-3. Type the settings for your email server.
-    - Geben Sie im Feld **Server address** (Serveradresse) die Adresse Ihres SMTP-Servers ein.
-    - Geben Sie im Feld **Port** den Port ein, der von Ihrem SMTP-Server zum Senden von E-Mails verwendet wird.
-    - Geben Sie im Feld **Domain** den Domain-Namen ein, der ggf. von Ihrem SMTP-Server mit einer HELO-Antwort gesendet wird.
-    - Select the **Authentication** dropdown, and choose the type of encryption used by your SMTP server.
-    - Geben Sie im Feld **No-reply email address** („no-reply“-E-Mail-Adresse) die E-Mail-Adresse ein, die für alle Benachrichtigungs-E-Mails in den Feldern „From“ (Von) und „To“ (An) verwendet werden soll.
-4. Wenn Sie alle eingehenden E-Mails verwerfen möchten, die an die „no-reply“-E-Mail-Adresse adressiert sind, sollten Sie **Discard email addressed to the no-reply email address** (An die „no-reply“-E-Mail-Adresse adressierte E-Mails verwerfen) aktivieren. !["Discard" checkbox for email settings configuration](/assets/images/enterprise/configuration/ae-discard-email.png)
-5. Click **Test email settings**. !["Test email settings" button for email settings configuration](/assets/images/enterprise/configuration/ae-test-email.png)
-6. Under "Send test email to," type the email address where you want to send a test email, then click **Send test email**. !["Send test email" button for email settings configuration](/assets/images/enterprise/configuration/ae-send-test-email.png)
-7. Klicke auf **Save** (Speichern). !["Save" button for enterprise support contact configuration](/assets/images/enterprise/configuration/ae-save.png)
+{% data reusables.enterprise-accounts.email-tab %} 2. Wählen Sie **Enable email** (E-Mail aktivieren) aus. !["Enable" checkbox for email settings configuration](/assets/images/enterprise/configuration/ae-enable-email-configure.png) 3. Type the settings for your email server. - Geben Sie im Feld **Server address** (Serveradresse) die Adresse Ihres SMTP-Servers ein. - Geben Sie im Feld **Port** den Port ein, der von Ihrem SMTP-Server zum Senden von E-Mails verwendet wird. - Geben Sie im Feld **Domain** den Domain-Namen ein, der ggf. von Ihrem SMTP-Server mit einer HELO-Antwort gesendet wird. - Select the **Authentication** dropdown, and choose the type of encryption used by your SMTP server. - Geben Sie im Feld **No-reply email address** („no-reply“-E-Mail-Adresse) die E-Mail-Adresse ein, die für alle Benachrichtigungs-E-Mails in den Feldern „From“ (Von) und „To“ (An) verwendet werden soll. 4. Wenn Sie alle eingehenden E-Mails verwerfen möchten, die an die „no-reply“-E-Mail-Adresse adressiert sind, sollten Sie **Discard email addressed to the no-reply email address** (An die „no-reply“-E-Mail-Adresse adressierte E-Mails verwerfen) aktivieren. !["Discard" checkbox for email settings configuration](/assets/images/enterprise/configuration/ae-discard-email.png) 5. Click **Test email settings**. !["Test email settings" button for email settings configuration](/assets/images/enterprise/configuration/ae-test-email.png) 6. Under "Send test email to," type the email address where you want to send a test email, then click **Send test email**. !["Send test email" button for email settings configuration](/assets/images/enterprise/configuration/ae-send-test-email.png) 7. Klicke auf **Save** (Speichern). !["Save" button for enterprise support contact configuration](/assets/images/enterprise/configuration/ae-save.png)
 {% endif %}
 
 {% if enterpriseServerVersions contains currentVersion %}
+
 ### E-Mail-Zustellung testen
 
 1. Klicken Sie im oberen Bereich des Abschnitts **Email** (E-Mail) auf **Test email settings** (Einstellungen für Test-E-Mail). ![Test email settings (Einstellungen für Test-E-Mail)](/assets/images/enterprise/management-console/test-email.png)
 2. Geben Sie im Feld **Send test email to** (Test-E-Mail senden an) eine Adresse ein, an welche die Test-E-Mail gesendet werden soll. ![Test der E-Mail-Adresse](/assets/images/enterprise/management-console/test-email-address.png)
 3. Klicken Sie auf **Send test email** (Test-E-Mail senden). ![„Send test email“ (Test-E-Mail senden)](/assets/images/enterprise/management-console/test-email-address-send.png)
 
-  {% tip %}
+{% tip %}
 
-  **Tipp:** Wenn beim Senden einer Test-E-Mail SMTP-Fehler auftreten, werden diese im Dialogfeld „Test email settings“ (Einstellungen für Test-E-Mail) angezeigt.
+**Tipp:** Wenn beim Senden einer Test-E-Mail SMTP-Fehler auftreten, werden diese im Dialogfeld „Test email settings“ (Einstellungen für Test-E-Mail) angezeigt.
 
-  {% endtip %}
+{% endtip %}
 
 4. Wenn die Test-E-Mail nicht zugestellt werden kann, führen Sie eine [Fehlerbehebung bei Ihren E-Mail-Einstellungen durch](#troubleshooting-email-delivery).
 5. Wenn die Test-E-Mail erfolgreich war, klicken Sie im unteren Bereich der Seite auf **Save settings** (Einstellungen speichern). ![Schaltfläche „Save settings“ (Einstellungen speichern)](/assets/images/enterprise/management-console/save-settings.png)
@@ -88,7 +65,7 @@ Wenn Sie E-Mail-Antworten auf Benachrichtigungen zulassen möchten, müssen Sie 
 
 #### Support-Bundle erstellen
 
-Wenn Sie anhand der angezeigten Fehlermeldung nicht ermitteln können, was falsch ist, können Sie ein [Support-Bundle](/enterprise/{{ currentVersion }}/admin/guides/enterprise-support/providing-data-to-github-support) herunterladen, das die gesamte SMTP-Kommunikation zwischen Ihrem E-Mail-Server und {% data variables.product.prodname_ghe_server %} enthält. Überprüfen Sie nach dem Herunterladen und Extrahieren des Bundles die Einträge in *enterprise-manage-logs/unicorn.log* für das gesamte SMTP-Kommunikationsprotokoll und auf die zugehörigen Fehler.
+Wenn Sie anhand der angezeigten Fehlermeldung nicht ermitteln können, was falsch ist, können Sie ein [Support-Bundle](/enterprise/{{ currentVersion }}/admin/guides/enterprise-support/providing-data-to-github-support) herunterladen, das die gesamte SMTP-Kommunikation zwischen Ihrem E-Mail-Server und {% data variables.product.prodname_ghe_server %} enthält. Überprüfen Sie nach dem Herunterladen und Extrahieren des Bundles die Einträge in _enterprise-manage-logs/unicorn.log_ für das gesamte SMTP-Kommunikationsprotokoll und auf die zugehörigen Fehler.
 
 Das Unicorn-Protokoll sollte in etwa folgende Transaktion anzeigen:
 
@@ -124,16 +101,16 @@ TLS connection started
 
 Dieses Protokoll zeigt, dass die Appliance
 
-* eine Verbindung mit dem SMTP-Server hergestellt hat (`Connection opened: smtp.yourdomain.com:587`),
-* eine erfolgreiche Verbindung hergestellt hat und dazu TLS  (`TLS connection started`) ausgewählt hat,
-* der Authentifizierungstyp `login` durchgeführt wurde (`<- "AUTH LOGIN\r\n"`),
-* der SMTP-Server die Authentifizierung als ungültig (`-> "535-5.7.1 Username and Password not accepted.`) abgelehnt hat.
+- eine Verbindung mit dem SMTP-Server hergestellt hat (`Connection opened: smtp.yourdomain.com:587`),
+- eine erfolgreiche Verbindung hergestellt hat und dazu TLS (`TLS connection started`) ausgewählt hat,
+- der Authentifizierungstyp `login` durchgeführt wurde (`<- "AUTH LOGIN\r\n"`),
+- der SMTP-Server die Authentifizierung als ungültig (`-> "535-5.7.1 Username and Password not accepted.`) abgelehnt hat.
 
 #### {% data variables.product.product_location %}-Protokolle überprüfen
 
-If you need to verify that your inbound email is functioning, there are two log files that you can examine on your instance: To verify that */var/log/mail.log* and */var/log/mail-replies/metroplex.log*.
+If you need to verify that your inbound email is functioning, there are two log files that you can examine on your instance: To verify that _/var/log/mail.log_ and _/var/log/mail-replies/metroplex.log_.
 
-*/var/log/mail.log* verifiziert, dass die Nachrichten Ihren Server erreichen. Im Folgenden finden Sie ein Beispiel einer erfolgreichen E-Mail-Antwort:
+_/var/log/mail.log_ verifiziert, dass die Nachrichten Ihren Server erreichen. Im Folgenden finden Sie ein Beispiel einer erfolgreichen E-Mail-Antwort:
 
 ```
 Oct 30 00:47:18 54-171-144-1 postfix/smtpd[13210]: connect from st11p06mm-asmtp002.mac.com[17.172.124.250]
@@ -147,7 +124,7 @@ Oct 30 00:47:19 54-171-144-1 postfix/smtpd[13210]: disconnect from st11p06mm-asm
 
 Beachten Sie, dass der Client zunächst eine Verbindung herstellt und anschließend die Warteschlange aktiv wird. Anschließend wird die Nachricht zugestellt, der Client aus der Warteschlange entfernt und die Sitzung getrennt.
 
-*/var/log/mail-replies/metroplex.log* zeigt an, ob eingehende E-Mails verarbeitet werden, um Issues und Pull Requests als Antworten hinzuzufügen. Im Folgenden finden Sie ein Beispiel einer erfolgreichen Nachricht:
+_/var/log/mail-replies/metroplex.log_ zeigt an, ob eingehende E-Mails verarbeitet werden, um Issues und Pull Requests als Antworten hinzuzufügen. Im Folgenden finden Sie ein Beispiel einer erfolgreichen Nachricht:
 
 ```
 [2014-10-30T00:47:23.306 INFO (5284) #] metroplex: processing <b2b9c260-4aaa-4a93-acbb-0b2ddda68579@me.com>
@@ -166,6 +143,7 @@ Damit eingehende E-Mails ordnungsgemäß verarbeitet werden, müssen Sie eine g�
 Wenn sich {% data variables.product.product_location %} hinter einer Firewall befindet oder durch eine AWS-Sicherheitsgruppe betrieben wird, muss Port 25 auf allen E-Mail-Servern geöffnet sein, auf denen E-Mails an `reply@reply.[hostname]` gesendet werden.
 
 #### Support kontaktieren
+
 {% if enterpriseServerVersions contains currentVersion %}
 Kontaktieren Sie {% data variables.contact.contact_ent_support %}, falls Sie das Problem weiterhin nicht beheben können. Hängen Sie die Ausgabedatei von `http(s)://[hostname]/setup/diagnostics` an Ihre E-Mail an, um uns bei der Fehlerbehebung zu unterstützen.
 {% elsif currentVersion == "github-ae@latest" %}

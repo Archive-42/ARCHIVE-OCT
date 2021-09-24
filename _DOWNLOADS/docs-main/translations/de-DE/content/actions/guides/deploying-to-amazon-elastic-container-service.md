@@ -1,11 +1,11 @@
 ---
 title: Deploying to Amazon Elastic Container Service
 intro: You can deploy to Amazon Elastic Container Service (ECS) as part of your continuous deployment (CD) workflows.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-  github-ae: '*'
+  free-pro-team: "*"
+  enterprise-server: ">=2.22"
+  github-ae: "*"
 type: tutorial
 topics:
   - CD
@@ -33,11 +33,14 @@ Before creating your {% data variables.product.prodname_actions %} workflow, you
 
    {% raw %}```bash{:copy}
    aws ecr create-repository \ --repository-name MY_ECR_REPOSITORY \ --region MY_AWS_REGION
+
    ```{% endraw %}
 
    Ensure that you use the same Amazon ECR repository name (represented here by `MY_ECR_REPOSITORY`) for the `ECR_REPOSITORY` variable in the workflow below.
 
    Ensure that you use the same AWS region value for the `AWS_REGION` (represented here by `MY_AWS_REGION`) variable in the workflow below.
+
+   ```
 
 2. Create an Amazon ECS task definition, cluster, and service.
 
@@ -51,11 +54,14 @@ Before creating your {% data variables.product.prodname_actions %} workflow, you
 
    {% raw %}```bash{:copy}
    aws ecs register-task-definition --generate-cli-skeleton
+
    ```{% endraw %}
 
    Ensure that you set the `ECS_TASK_DEFINITION` variable in the workflow below as the path to the JSON file.
 
    Ensure that you set the `CONTAINER_NAME` variable in the workflow below as the container name in the `containerDefinitions` section of the task definition.
+
+   ```
 
 4. Create {% data variables.product.prodname_actions %} secrets named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to store the values for your Amazon IAM access key.
 
@@ -145,13 +151,12 @@ jobs:
           wait-for-service-stability: true{% endraw %}
 ```
 
-
 ### Additional resources
 
 For more information on the services used in these examples, see the following documentation:
 
-* "[Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)" in the Amazon AWS documentation.
-* Official AWS "[Configure AWS Credentials](https://github.com/aws-actions/configure-aws-credentials)" action.
-* Official AWS [Amazon ECR "Login"](https://github.com/aws-actions/amazon-ecr-login) action.
-* Official AWS [Amazon ECS "Render Task Definition"](https://github.com/aws-actions/amazon-ecs-render-task-definition) action.
-* Official AWS [Amazon ECS "Deploy Task Definition"](https://github.com/aws-actions/amazon-ecs-deploy-task-definition) action.
+- "[Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)" in the Amazon AWS documentation.
+- Official AWS "[Configure AWS Credentials](https://github.com/aws-actions/configure-aws-credentials)" action.
+- Official AWS [Amazon ECR "Login"](https://github.com/aws-actions/amazon-ecr-login) action.
+- Official AWS [Amazon ECS "Render Task Definition"](https://github.com/aws-actions/amazon-ecs-render-task-definition) action.
+- Official AWS [Amazon ECS "Deploy Task Definition"](https://github.com/aws-actions/amazon-ecs-deploy-task-definition) action.
