@@ -1,9 +1,8 @@
-Exploring Promises
-==================
+# Exploring Promises
 
 Create a new folder with a JavaScript file within it (such as, promises.js).
 
-------------------------------------------------------------------------
+---
 
 ### Exploring Promises
 
@@ -38,7 +37,7 @@ Notice that the “plain” function just returns the value and the “async” 
 
 Run your program again and now you will see the plain number returned from the second function.
 
-> *What have you learned so far?*
+> _What have you learned so far?_
 
 Whenever the `async` keyword is used, the function automatically returns a promise. Wow!
 
@@ -234,8 +233,8 @@ Before you run your program, you can challenge yourself to predict the order and
 
     //! Phase 1:
     //- create two similar functions.
-    //- Each can return a number or string. 
-    //-Before the second function, place the async keyword. 
+    //- Each can return a number or string.
+    //-Before the second function, place the async keyword.
     //-Use the console to log the calls to both functions.
 
     //function num1() {
@@ -254,15 +253,15 @@ Before you run your program, you can challenge yourself to predict the order and
      *       2
      *   }
      */
-    //-Notice that the "plain" function just returns the value 
-    //-the "async" function returns a promise. 
+    //-Notice that the "plain" function just returns the value
+    //-the "async" function returns a promise.
     //#Now add another call to the async function and attach the then function to get its result and log it.
 
     //num2().then( (result) => console.log( result ) ); //2
 
     //!Phase 2: await
-    //-Declare a constant that awaits the call to your other async function and logs the value. 
-    //-remember to call your new function so it will run 
+    //-Declare a constant that awaits the call to your other async function and logs the value.
+    //-remember to call your new function so it will run
     //-(since functions are only stored, but not run, when defined).
 
     //-Run your program again and now you should see something like this:
@@ -291,7 +290,7 @@ Before you run your program, you can challenge yourself to predict the order and
     //-This time when you run your program, you will need to wait one second (1000 milliseconds) before the final message will appear.
     //*my promise is done!!!
     //!Phase 4: And then ...
-    //- you could also use (then) to wait for a promise; even a custom one. 
+    //- you could also use (then) to wait for a promise; even a custom one.
     //- you can create another new Promise and attach .then() to it.
 
     //new Promise( ( resolve ) => {
@@ -337,10 +336,10 @@ Before you run your program, you can challenge yourself to predict the order and
 
     //!Phase 6: reject ... catch
 
-    //-explore the negative side of async calls and Promises for those times they are unable to do what they were asked to do. 
+    //-explore the negative side of async calls and Promises for those times they are unable to do what they were asked to do.
     //-In other words, the Promise triggers reject instead of resolve .
 
-    //#Start by creating yourself a function that returns a promise. 
+    //#Start by creating yourself a function that returns a promise.
     //#Give it one argument that is a random value,
     //# and use that value to determine if the promise is successful (resolve ) or unsuccessful (reject ).
 

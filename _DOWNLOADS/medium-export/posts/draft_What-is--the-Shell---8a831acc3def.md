@@ -1,19 +1,14 @@
-What is “the Shell”?
-====================
+# What is “the Shell”?
 
 The magic conch is an almighty authority in SpongeBob. This godly item makes items like the Ultimate Nullifier and the Heart Of The…
 
-------------------------------------------------------------------------
+---
 
 ### **What is “the Shell”?**
 
 #### **The magic conch is an almighty authority in SpongeBob. This godly item makes items like the Ultimate Nullifier and the Heart Of The Universe look like playthings for babies.**
 
-  
-
-  
-
-**The shell is a program that takes commands from the keyboard and gives them to the operating system to perform. In the old days, it was the only user interface available on a Unix-like system such as Linux. Nowadays, we have *graphical user interfaces (GUIs)* in addition to *command line interfaces (CLIs)* such as the shell.**
+**The shell is a program that takes commands from the keyboard and gives them to the operating system to perform. In the old days, it was the only user interface available on a Unix-like system such as Linux. Nowadays, we have _graphical user interfaces (GUIs)_ in addition to _command line interfaces (CLIs)_ such as the shell.**
 
 **On most Linux systems a program called** <a href="http://linuxcommand.org/lc3_man_pages/bash1.html" class="markup--anchor markup--p-anchor"><strong>bash</strong></a> **(which stands for Bourne Again SHell) an enhanced version of the original Unix shell program, sh, written by Steve Bourne) acts as the shell program. Besides bash, there are other shell programs available for Linux systems. These include: ksh, tcsh and zsh.**
 
@@ -21,7 +16,7 @@ The magic conch is an almighty authority in SpongeBob. This godly item makes ite
 
 **What’s a “Terminal?”**
 
-It’s a program called a *terminal emulator*. This is a program that opens a window and lets you interact with the shell. There are a bunch of different terminal emulators we can use. Some Linux distributions install several. These might include **gnome-terminal**, **konsole**, **xterm**, **rxvt**, **kvt**, **nxterm**, and **eterm**.
+It’s a program called a _terminal emulator_. This is a program that opens a window and lets you interact with the shell. There are a bunch of different terminal emulators we can use. Some Linux distributions install several. These might include **gnome-terminal**, **konsole**, **xterm**, **rxvt**, **kvt**, **nxterm**, and **eterm**.
 
 **Starting a Terminal**
 
@@ -29,7 +24,7 @@ Window managers usually have a way to launch a terminal from the menu. Look thro
 
 **Testing the Keyboard**
 
-OK, let’s try some typing. Bring up a terminal window. The first thing we should see is a *shell prompt* that contains our user name and the name of the machine followed by a dollar sign. Something like this:
+OK, let’s try some typing. Bring up a terminal window. The first thing we should see is a _shell prompt_ that contains our user name and the name of the machine followed by a dollar sign. Something like this:
 
 \[me@bgoonz me\]$
 
@@ -41,13 +36,13 @@ If all went well, we should have gotten an error message complaining that it can
 
 \[me@bgoonz me\]$ **kdkjflajfks** bash: kdkjflajfks: command not found
 
-Wonderful! Now press the up-arrow key. Watch how our previous command “kdkjflajfks” returns. Yes, we have *command history*. Press the down-arrow and we get the blank line again.
+Wonderful! Now press the up-arrow key. Watch how our previous command “kdkjflajfks” returns. Yes, we have _command history_. Press the down-arrow and we get the blank line again.
 
 Recall the “kdkjflajfks” command using the up-arrow key if needed. Now, try the left and right-arrow keys. We can position the text cursor anywhere in the command line. This allows us to easily correct mistakes.
 
 **You’re not operating as root, are you?**
 
-If the last character of your shell prompt is \# rather than $, you are operating as the *superuser*. This means that you have administrative privileges. This can be dangerous, since you are able to delete or overwrite any file on the system. Unless you absolutely need administrative privileges, do not operate as the superuser.
+If the last character of your shell prompt is \# rather than $, you are operating as the _superuser_. This means that you have administrative privileges. This can be dangerous, since you are able to delete or overwrite any file on the system. Unless you absolutely need administrative privileges, do not operate as the superuser.
 
 **Using the Mouse**
 
@@ -61,7 +56,7 @@ Those new to the command line will need to pay close attention to this lesson si
 
 **File System Organization**
 
-Like Windows, the files on a Linux system are arranged in what is called a *hierarchical directory structure*. This means that they are organized in a tree-like pattern of *directories* (called folders in other systems), which may contain files and *subdirectories*. The first directory in the file system is called the *root directory*. The root directory contains files and subdirectories, which contain more files and subdirectories and so on and so on.
+Like Windows, the files on a Linux system are arranged in what is called a _hierarchical directory structure_. This means that they are organized in a tree-like pattern of _directories_ (called folders in other systems), which may contain files and _subdirectories_. The first directory in the file system is called the _root directory_. The root directory contains files and subdirectories, which contain more files and subdirectories and so on and so on.
 
 Most graphical environments include a file manager program used to view and manipulate the contents of the file system. Often we will see the file system represented like this:
 
@@ -69,13 +64,13 @@ One important difference between Windows and Unix-like operating systems such as
 
 **pwd**
 
-Since the command line interface cannot provide graphic pictures of the file system structure, we must have a different way of representing it. To do this, think of the file system tree as a maze, and that we are standing in it. At any given moment, we are located in a single directory. Inside that directory, we can see its files and the pathway to its *parent directory* and the pathways to the subdirectories of the directory in which we are standing.
+Since the command line interface cannot provide graphic pictures of the file system structure, we must have a different way of representing it. To do this, think of the file system tree as a maze, and that we are standing in it. At any given moment, we are located in a single directory. Inside that directory, we can see its files and the pathway to its _parent directory_ and the pathways to the subdirectories of the directory in which we are standing.
 
-The directory we are standing in is called the *working directory*. To see the name of the working directory, we use the **pwd** command.
+The directory we are standing in is called the _working directory_. To see the name of the working directory, we use the **pwd** command.
 
 \[me@bgoonz me\]$ **pwd** /home/me
 
-When we first log on to our Linux system, the working directory is set to our *home directory*. This is where we put our files. On most systems, the home directory will be called /home/user\_name, but it can be anything according to the whims of the system administrator.
+When we first log on to our Linux system, the working directory is set to our _home directory_. This is where we put our files. On most systems, the home directory will be called /home/user_name, but it can be anything according to the whims of the system administrator.
 
 To list the files in the working directory, we use the **ls** command.
 
@@ -85,13 +80,13 @@ We will come back to **ls** in the next lesson. There are a lot of fun things yo
 
 **cd**
 
-To change the working directory (where we are standing in the maze) we use the **cd** command. To do this, we type **cd** followed by the *pathname* of the desired working directory. A pathname is the route we take along the branches of the tree to get to the directory we want. Pathnames can be specified two different ways; *absolute pathnames* or *relative pathnames*. Let’s look with absolute pathnames first.
+To change the working directory (where we are standing in the maze) we use the **cd** command. To do this, we type **cd** followed by the _pathname_ of the desired working directory. A pathname is the route we take along the branches of the tree to get to the directory we want. Pathnames can be specified two different ways; _absolute pathnames_ or _relative pathnames_. Let’s look with absolute pathnames first.
 
 An absolute pathname begins with the root directory and follows the tree branch by branch until the path to the desired directory or file is completed. For example, there is a directory on your system in which most programs are installed. The pathname of the directory is /usr/bin. This means from the root directory (represented by the leading slash in the pathname) there is a directory called “usr” which contains a directory called “bin”.
 
 Let’s try this out:
 
-me@bgoonz me\]$ **cd /usr/bin** me@bgoonz bin\]$ **pwd** /usr/bin me@bgoonz bin\]$ **ls** ‘\[‘ mshortname 2to3–2.7 mshowfat 411toppm mtools a2ps mtoolstest a2ps-lpr-wrapper mtr aa-enabled mtrace aa-exec mtr-packet aclocal mtvtoppm aclocal-1.15 mtype aconnect mutter acpi\_listen mxtar add-apt-repository mzip addpart namei and many more…
+me@bgoonz me\]$ **cd /usr/bin** me@bgoonz bin\]$ **pwd** /usr/bin me@bgoonz bin\]$ **ls** ‘\[‘ mshortname 2to3–2.7 mshowfat 411toppm mtools a2ps mtoolstest a2ps-lpr-wrapper mtr aa-enabled mtrace aa-exec mtr-packet aclocal mtvtoppm aclocal-1.15 mtype aconnect mutter acpi_listen mxtar add-apt-repository mzip addpart namei and many more…
 
 Now we can see that we have changed the current working directory to /usr/bin and that it is full of files. Notice how the shell prompt has changed? As a convenience, it is usually set up to display the name of the working directory.
 
@@ -129,13 +124,13 @@ would do the same thing. In general, if we do not specify a pathname to somethin
 
 If we type **cd** followed by nothing, **cd** will change the working directory to our home directory.
 
-A related shortcut is to type **cd ~*user\_name***. In this case, **cd** will change the working directory to the home directory of the specified user.
+A related shortcut is to type **cd ~_user_name_**. In this case, **cd** will change the working directory to the home directory of the specified user.
 
 Typing **cd **— changes the working directory to the previous one.
 
 **Important facts about file names**
 
-1. File names that begin with a period character are hidden. This only means that **ls** will not list them unless we say **ls -a**. When your account was created, several hidden files were placed in your home directory to configure things for your account. Later on we will take a closer look at some of these files to see how you can customize our *environment*. In addition, some applications will place their configuration and settings files in your home directory as hidden files.
+1. File names that begin with a period character are hidden. This only means that **ls** will not list them unless we say **ls -a**. When your account was created, several hidden files were placed in your home directory to configure things for your account. Later on we will take a closer look at some of these files to see how you can customize our _environment_. In addition, some applications will place their configuration and settings files in your home directory as hidden files.
 
 2. File names in Linux, like Unix, are case sensitive. The file names “File1” and “file1” refer to different files.
 
@@ -147,9 +142,9 @@ Typing **cd **— changes the working directory to the previous one.
 
 Now that we know how to move from working directory to working directory, we’re going to take a tour of our Linux system and, along the way, learn some things about what makes it tick. But before we begin, we have to learn about some tools that will come in handy during our journey. These are:
 
--   <span id="c3f1"><a href="http://linuxcommand.org/lc3_man_pages/ls1.html" class="markup--anchor markup--li-anchor"><strong>ls</strong></a> (list files and directories)</span>
--   <span id="6a5c"><a href="http://linuxcommand.org/lc3_man_pages/less1.html" class="markup--anchor markup--li-anchor"><strong>less</strong></a> (view text files)</span>
--   <span id="d334"><a href="http://linuxcommand.org/lc3_man_pages/file1.html" class="markup--anchor markup--li-anchor"><strong>file</strong></a> (classify a file’s contents)</span>
+- <span id="c3f1"><a href="http://linuxcommand.org/lc3_man_pages/ls1.html" class="markup--anchor markup--li-anchor"><strong>ls</strong></a> (list files and directories)</span>
+- <span id="6a5c"><a href="http://linuxcommand.org/lc3_man_pages/less1.html" class="markup--anchor markup--li-anchor"><strong>less</strong></a> (view text files)</span>
+- <span id="d334"><a href="http://linuxcommand.org/lc3_man_pages/file1.html" class="markup--anchor markup--li-anchor"><strong>file</strong></a> (classify a file’s contents)</span>
 
 **ls**
 
@@ -157,9 +152,9 @@ The **ls** command is used to list the contents of a directory. It is probably t
 
 These examples also point out an important concept about commands. Most commands operate like this:
 
-*command -options arguments*
+_command -options arguments_
 
-where *command* is the name of the command, *-options* is one or more adjustments to the command’s behavior, and *arguments* is one or more “things” upon which the command operates.
+where _command_ is the name of the command, _-options_ is one or more adjustments to the command’s behavior, and _arguments_ is one or more “things” upon which the command operates.
 
 In the case of **ls**, we see that **ls** is the name of the command, and that it can have one or more options, such as **-a** and **-l**, and it can operate on one or more files or directories.
 
@@ -167,11 +162,12 @@ In the case of **ls**, we see that **ls** is the name of the command, and that i
 
 If we use the **-l** option with **ls**, you will get a file listing that contains a wealth of information about the files being listed. Here’s an example:
 
-**-rw — — — — 1 me me 576 Apr 17 2019 weather.txt  
- drwxr-xr-x 6 me me 1024 Oct 9 2019 web\_page  
- -rw-rw-r — 1 me me 276480 Feb 11 20:41 web\_site.tar  
- -rw — — — — 1 me me 5743 Dec 16 2018 xmas\_file.txt  
-   
+\*\*-rw — — — — 1 me me 576 Apr 17 2019 weather.txt  
+ drwxr-xr-x 6 me me 1024 Oct 9 2019 web_page  
+ -rw-rw-r — 1 me me 276480 Feb 11 20:41 web_site.tar  
+ -rw — — — — 1 me me 5743 Dec 16 2018 xmas_file.txt
+
+  
  — — — — — — — — — — — — — — — — — — — — — — — — — — — — — -  
  | | | | | |  
  | | | | | File Name  
@@ -184,7 +180,7 @@ If we use the **-l** option with **ls**, you will get a file listing that contai
  | |  
  | + — — — — — — — — — — — — — — — — Owner  
  |  
- + — — — — — — — — — — — — — — — — — — — — — — — File Permissions**
+ + — — — — — — — — — — — — — — — — — — — — — — — File Permissions\*\*
 
 **File Name**The name of the file or directory.**Modification Time**The last time the file was modified. If the last modification occurred more than six months in the past, the date and year are displayed. Otherwise, the time of day is shown.**Size**The size of the file in bytes.**Group**The name of the group that has file permissions in addition to the file’s owner.**Owner**The name of the user who owns the file.**File Permissions**A representation of the file’s access permissions. The first character is the type of file. A “-” indicates a regular (ordinary) file. A “d” indicates a directory. The second set of three characters represent the read, write, and execution rights of the file’s owner. The next three represent the rights of the file’s group, and the final three represent the rights granted to everybody else. We’ll discuss this in more detail in a later lesson.
 
@@ -196,13 +192,13 @@ If we use the **-l** option with **ls**, you will get a file listing that contai
 
 There are many ways to represent information on a computer. All methods involve defining a relationship between the information and some numbers that will be used to represent it. Computers, after all, only understand numbers and all data is converted to numeric representation.
 
-Some of these representation systems are very complex (such as compressed multimedia files), while others are rather simple. One of the earliest and simplest is called *ASCII text*. <a href="http://linuxcommand.org/lc3_man_pages/ascii7.html" class="markup--anchor markup--p-anchor">ASCII</a> (pronounced “As-Key”) is short for American Standard Code for Information Interchange. This is a simple encoding scheme that was first used on Teletype machines to map keyboard characters to numbers.
+Some of these representation systems are very complex (such as compressed multimedia files), while others are rather simple. One of the earliest and simplest is called _ASCII text_. <a href="http://linuxcommand.org/lc3_man_pages/ascii7.html" class="markup--anchor markup--p-anchor">ASCII</a> (pronounced “As-Key”) is short for American Standard Code for Information Interchange. This is a simple encoding scheme that was first used on Teletype machines to map keyboard characters to numbers.
 
 Text is a simple one-to-one mapping of characters to numbers. It is very compact. Fifty characters of text translates to fifty bytes of data. Throughout a Linux system, many files are stored in text format and there are many Linux tools that work with text files. Even Windows systems recognize the importance of this format. The well-known NOTEPAD.EXE program is an editor for plain ASCII text files.
 
 The **less** program is invoked by simply typing:
 
-less *text\_file*
+less _text_file_
 
 This will display the file.
 
@@ -216,7 +212,7 @@ As we wander around our Linux system, it is helpful to determine what kind of da
 
 To use the **file** program, we just type:
 
-file *name\_of\_file*
+file _name_of_file_
 
 The **file** program can recognize most types of files, such as:
 
@@ -224,10 +220,10 @@ While it may seem that most files cannot be viewed as text, a surprising number 
 
 For each of the directories listed below, do the following:
 
--   <span id="b096">**cd** into each directory.</span>
--   <span id="9adc">Use **ls** to list the contents of the directory.</span>
--   <span id="d400">If there is an interesting file, use the **file** command to determine its contents.</span>
--   <span id="f869">For text files, use **less** to view them.</span>
+- <span id="b096">**cd** into each directory.</span>
+- <span id="9adc">Use **ls** to list the contents of the directory.</span>
+- <span id="d400">If there is an interesting file, use the **file** command to determine its contents.</span>
+- <span id="f869">For text files, use **less** to view them.</span>
 
 **A weird kind of file…**
 
@@ -247,7 +243,7 @@ lrwxrwxrwx 25 Jul 3 16:42 System.map -&gt; /boot/System.map-4.0.36–3
 
 Notice the files, System.map, module-info and vmlinuz. See the strange notation after the file names?
 
-Files such as this are called *symbolic links*. Symbolic links are a special type of file that points to another file. With symbolic links, it is possible for a single file to have multiple names. Here’s how it works: Whenever the system is given a file name that is a symbolic link, it transparently maps it to the file it is pointing to.
+Files such as this are called _symbolic links_. Symbolic links are a special type of file that points to another file. With symbolic links, it is possible for a single file to have multiple names. Here’s how it works: Whenever the system is given a file name that is a symbolic link, it transparently maps it to the file it is pointing to.
 
 Just what is this good for? This is a very handy feature. Let’s consider the directory listing above (which is the /boot directory of an old system). This system has had multiple versions of the Linux kernel installed. We can see this from the files vmlinuz-4.0.36–0.7 and vmlinuz-4.0.36–3. These file names suggest that both version 4.0.36–0.7 and 4.0.36–3 are installed. Because the file names contain the version it is easy to see the differences in the directory listing. However, this would be confusing to programs that rely on a fixed name for the kernel file. These programs might expect the kernel to simply be called “vmlinuz”. Here is where the beauty of the symbolic link comes in. By creating a symbolic link called vmlinuz that points to vmlinuz-4.0.36–3, we have solved the problem.
 
@@ -257,10 +253,10 @@ To create symbolic links, we use the <a href="http://linuxcommand.org/lc3_man_pa
 
 This lesson will introduce the following commands:
 
--   <span id="423a"><a href="http://linuxcommand.org/lc3_man_pages/cp1.html" class="markup--anchor markup--li-anchor"><strong>cp</strong></a> — copy files and directories</span>
--   <span id="ba49"><a href="http://linuxcommand.org/lc3_man_pages/mv1.html" class="markup--anchor markup--li-anchor"><strong>mv</strong></a> — move or rename files and directories</span>
--   <span id="0684"><a href="http://linuxcommand.org/lc3_man_pages/rm1.html" class="markup--anchor markup--li-anchor"><strong>rm</strong></a> — remove files and directories</span>
--   <span id="2cdc"><a href="http://linuxcommand.org/lc3_man_pages/mkdir1.html" class="markup--anchor markup--li-anchor"><strong>mkdir</strong></a> — create directories</span>
+- <span id="423a"><a href="http://linuxcommand.org/lc3_man_pages/cp1.html" class="markup--anchor markup--li-anchor"><strong>cp</strong></a> — copy files and directories</span>
+- <span id="ba49"><a href="http://linuxcommand.org/lc3_man_pages/mv1.html" class="markup--anchor markup--li-anchor"><strong>mv</strong></a> — move or rename files and directories</span>
+- <span id="0684"><a href="http://linuxcommand.org/lc3_man_pages/rm1.html" class="markup--anchor markup--li-anchor"><strong>rm</strong></a> — remove files and directories</span>
+- <span id="2cdc"><a href="http://linuxcommand.org/lc3_man_pages/mkdir1.html" class="markup--anchor markup--li-anchor"><strong>mkdir</strong></a> — create directories</span>
 
 These four commands are among the most frequently used Linux commands. They are the basic commands for manipulating both files and directories.
 
@@ -272,7 +268,7 @@ The answer is power and flexibility. While it is easy to perform simple file man
 
 **Wildcards**
 
-Before we begin with our commands, we’ll first look at a shell feature that makes these commands so powerful. Since the shell uses filenames so much, it provides special characters to help you rapidly specify groups of filenames. These special characters are called *wildcards*. Wildcards allow you to select filenames based on patterns of characters. The table below lists the wildcards and what they select:
+Before we begin with our commands, we’ll first look at a shell feature that makes these commands so powerful. Since the shell uses filenames so much, it provides special characters to help you rapidly specify groups of filenames. These special characters are called _wildcards_. Wildcards allow you to select filenames based on patterns of characters. The table below lists the wildcards and what they select:
 
 We can use wildcards with any command that accepts filename arguments.
 
@@ -280,11 +276,11 @@ We can use wildcards with any command that accepts filename arguments.
 
 The **cp** program copies files and directories. In its simplest form, it copies a single file:
 
-\[me@bgoonz me\]$ **cp *file1 file2***
+\[me@bgoonz me\]$ **cp _file1 file2_**
 
 It can also be used to copy multiple files (and/or directories) to a different directory:
 
-\[me@bgoonz me\]$ **cp *file… directory***
+\[me@bgoonz me\]$ **cp _file… directory_**
 
 **A note on notation:** … signifies that an item can be repeated one or more times.
 
@@ -294,11 +290,11 @@ Other useful examples of **cp** and its options include:
 
 The **mv** command moves or renames files and directories depending on how it is used. It will either move one or more files to a different directory, or it will rename a file or directory. To rename a file, it is used like this:
 
-\[me@bgoonz me\]$ **mv *filename1 filename2***
+\[me@bgoonz me\]$ **mv _filename1 filename2_**
 
 To move files (and/or directories) to a different directory:
 
-\[me@bgoonz me\]$ **mv *file… directory***
+\[me@bgoonz me\]$ **mv _file… directory_**
 
 Examples of **mv** and its options include:
 
@@ -306,13 +302,13 @@ Be careful with rm!
 
 Linux does not have an undelete command. Once you delete something with **rm**, it’s gone. You can inflict terrific damage on your system with **rm** if you are not careful, particularly with wildcards.
 
-***Before you use* rm *with wildcards, try this helpful trick:*** construct your command using **ls** instead. By doing this, you can see the effect of your wildcards before you delete files. After you have tested your command with **ls**, recall the command with the up-arrow key and then substitute **rm** for **ls** in the command.
+**_Before you use_ rm _with wildcards, try this helpful trick:_** construct your command using **ls** instead. By doing this, you can see the effect of your wildcards before you delete files. After you have tested your command with **ls**, recall the command with the up-arrow key and then substitute **rm** for **ls** in the command.
 
 **mkdir**
 
 The **mkdir** command is used to create directories. To use it, you simply type:
 
-\[me@bgoonz me\]$ **mkdir *directory…***
+\[me@bgoonz me\]$ **mkdir _directory…_**
 
 **Using Commands with Wildcards**
 
@@ -322,20 +318,20 @@ Since the commands we have covered here accept multiple file and directories nam
 
 Up until now, we have seen a number of commands and their mysterious options and arguments. In this lesson, we will try to remove some of that mystery. We will introduce the following commands.
 
--   <span id="289a"><a href="http://linuxcommand.org/lc3_man_pages/typeh.html" class="markup--anchor markup--li-anchor"><strong>type</strong></a> — Display information about command type</span>
--   <span id="bbc4"><a href="http://linuxcommand.org/lc3_man_pages/which1.html" class="markup--anchor markup--li-anchor"><strong>which</strong></a> — Locate a command</span>
--   <span id="b142"><a href="http://linuxcommand.org/lc3_man_pages/helph.html" class="markup--anchor markup--li-anchor"><strong>help</strong></a> — Display reference page for shell builtin</span>
--   <span id="19b8"><a href="http://linuxcommand.org/lc3_man_pages/man1.html" class="markup--anchor markup--li-anchor"><strong>man</strong></a> — Display an on-line command reference</span>
+- <span id="289a"><a href="http://linuxcommand.org/lc3_man_pages/typeh.html" class="markup--anchor markup--li-anchor"><strong>type</strong></a> — Display information about command type</span>
+- <span id="bbc4"><a href="http://linuxcommand.org/lc3_man_pages/which1.html" class="markup--anchor markup--li-anchor"><strong>which</strong></a> — Locate a command</span>
+- <span id="b142"><a href="http://linuxcommand.org/lc3_man_pages/helph.html" class="markup--anchor markup--li-anchor"><strong>help</strong></a> — Display reference page for shell builtin</span>
+- <span id="19b8"><a href="http://linuxcommand.org/lc3_man_pages/man1.html" class="markup--anchor markup--li-anchor"><strong>man</strong></a> — Display an on-line command reference</span>
 
 **What are “Commands?”**
 
 Commands can be one of 4 different kinds:
 
-1. **An executable program** like all those files we saw in /usr/bin. Within this category, programs can be *compiled binaries* such as programs written in C and C++, or programs written in *scripting languages* such as the shell, Perl, Python, Ruby, etc.
+1. **An executable program** like all those files we saw in /usr/bin. Within this category, programs can be _compiled binaries_ such as programs written in C and C++, or programs written in _scripting languages_ such as the shell, Perl, Python, Ruby, etc.
 
-2. **A command built into the shell itself.** bash provides a number of commands internally called *shell builtins*. The **cd** command, for example, is a shell builtin.
+2. **A command built into the shell itself.** bash provides a number of commands internally called _shell builtins_. The **cd** command, for example, is a shell builtin.
 
-3. **A shell function.** These are miniature shell scripts incorporated into the *environment*. We will cover configuring the environment and writing shell functions in later lessons, but for now, just be aware that they exist.
+3. **A shell function.** These are miniature shell scripts incorporated into the _environment_. We will cover configuring the environment and writing shell functions in later lessons, but for now, just be aware that they exist.
 
 4. **An alias.** Commands that we can define ourselves, built from other commands. This will be covered in a later lesson.
 
@@ -347,7 +343,7 @@ It is often useful to know exactly which of the four kinds of commands is being 
 
 The **type** command is a shell builtin that displays the kind of command the shell will execute, given a particular command name. It works like this:
 
-type *command*
+type _command_
 
 where “command” is the name of the command we want to examine. Here are some examples:
 
@@ -371,7 +367,7 @@ With this knowledge of what a command is, we can now search for the documentatio
 
 **bash** has a built-in help facility available for each of the shell builtins. To use it, type “help” followed by the name of the shell builtin. Optionally, we can add the -m option to change the format of the output. For example:
 
-\[me@bgoonz me\]$ **help -m cd** NAME cd — Change the shell working directory. SYNOPSIS cd \[-L|-P\] \[dir\] DESCRIPTION Change the shell working directory. Change the current directory to DIR. The default DIR is the value of the HOME shell variable. The variable CDPATH defines the search path for the directory containing DIR. Alternative directory names in CDPATH are separated by a colon (:). A null directory name is the same as the current directory. If DIR begins with a slash (/), then CDPATH is not used. If the directory is not found, and the shell option \`cdable\_vars’ is set, the word is assumed to be a variable name. If that variable has a value, its value is used for DIR. Options: -L force symbolic links to be followed -P use the physical directory structure without following symbolic links The default is to follow symbolic links, as if \`-L’ were specified. Exit Status: Returns 0 if the directory is changed; non-zero otherwise. SEE ALSO bash(1) IMPLEMENTATION GNU bash, version 4.1.5(1)-release (i486-pc-linux-gnu) Copyright © 2009 Free Software Foundation, Inc.
+\[me@bgoonz me\]$ **help -m cd** NAME cd — Change the shell working directory. SYNOPSIS cd \[-L|-P\] \[dir\] DESCRIPTION Change the shell working directory. Change the current directory to DIR. The default DIR is the value of the HOME shell variable. The variable CDPATH defines the search path for the directory containing DIR. Alternative directory names in CDPATH are separated by a colon (:). A null directory name is the same as the current directory. If DIR begins with a slash (/), then CDPATH is not used. If the directory is not found, and the shell option \`cdable_vars’ is set, the word is assumed to be a variable name. If that variable has a value, its value is used for DIR. Options: -L force symbolic links to be followed -P use the physical directory structure without following symbolic links The default is to follow symbolic links, as if \`-L’ were specified. Exit Status: Returns 0 if the directory is changed; non-zero otherwise. SEE ALSO bash(1) IMPLEMENTATION GNU bash, version 4.1.5(1)-release (i486-pc-linux-gnu) Copyright © 2009 Free Software Foundation, Inc.
 
 **A note on notation:** When square brackets appear in the description of a command’s syntax, they indicate optional items. A vertical bar character indicates mutually exclusive items. In the case of the **cd** command above:
 
@@ -389,9 +385,9 @@ Some programs don’t support the “ — help” option, but try it anyway.
 
 **man**
 
-Most executable programs intended for command line use provide a formal piece of documentation called a *manual* or *man page*. A special paging program called **man** is used to view them. It is used like this:
+Most executable programs intended for command line use provide a formal piece of documentation called a _manual_ or _man page_. A special paging program called **man** is used to view them. It is used like this:
 
-man *program*
+man _program_
 
 where “program” is the name of the command to view. Man pages vary somewhat in format but generally contain a title, a synopsis of the command’s syntax, a description of the command’s purpose, and a listing and description of each of the command’s options. Man pages, however, do not usually include examples, and are intended as a reference, not a tutorial. Let’s try viewing the man page for the **ls** command:
 
@@ -405,37 +401,37 @@ Many software packages installed on your system have documentation files residin
 
 **I/O Redirection**
 
-In this lesson, we will explore a powerful feature used by command line programs called *input/output redirection*. As we have seen, many commands such as **ls** print their output on the display. This does not have to be the case, however. By using some special notations we can *redirect* the output of many commands to files, devices, and even to the input of other commands.
+In this lesson, we will explore a powerful feature used by command line programs called _input/output redirection_. As we have seen, many commands such as **ls** print their output on the display. This does not have to be the case, however. By using some special notations we can _redirect_ the output of many commands to files, devices, and even to the input of other commands.
 
 **Standard Output**
 
-Most command line programs that display their results do so by sending their results to a facility called *standard output*. By default, standard output directs its contents to the display. To redirect standard output to a file, the “&gt;” character is used like this:
+Most command line programs that display their results do so by sending their results to a facility called _standard output_. By default, standard output directs its contents to the display. To redirect standard output to a file, the “&gt;” character is used like this:
 
-\[me@bgoonz me\]$ **ls &gt; file\_list.txt**
+\[me@bgoonz me\]$ **ls &gt; file_list.txt**
 
-In this example, the **ls** command is executed and the results are written in a file named file\_list.txt. Since the output of **ls** was redirected to the file, no results appear on the display.
+In this example, the **ls** command is executed and the results are written in a file named file_list.txt. Since the output of **ls** was redirected to the file, no results appear on the display.
 
-Each time the command above is repeated, file\_list.txt is overwritten from the beginning with the output of the command **ls**. To have the new results *appended* to the file instead, we use “&gt;&gt;” like this:
+Each time the command above is repeated, file_list.txt is overwritten from the beginning with the output of the command **ls**. To have the new results _appended_ to the file instead, we use “&gt;&gt;” like this:
 
-\[me@bgoonz me\]$**ls &gt;&gt; file\_list.txt**
+\[me@bgoonz me\]$**ls &gt;&gt; file_list.txt**
 
 When the results are appended, the new results are added to the end of the file, thus making the file longer each time the command is repeated. If the file does not exist when we attempt to append the redirected output, the file will be created.
 
 **Standard Input**
 
-Many commands can accept input from a facility called *standard input*. By default, standard input gets its contents from the keyboard, but like standard output, it can be redirected. To redirect standard input from a file instead of the keyboard, the “&lt;” character is used like this:
+Many commands can accept input from a facility called _standard input_. By default, standard input gets its contents from the keyboard, but like standard output, it can be redirected. To redirect standard input from a file instead of the keyboard, the “&lt;” character is used like this:
 
-\[me@bgoonz me\]$ **sort &lt; file\_list.txt**
+\[me@bgoonz me\]$ **sort &lt; file_list.txt**
 
-In the example above, we used the <a href="http://linuxcommand.org/lc3_man_pages/sort1.html" class="markup--anchor markup--p-anchor"><strong>sort</strong></a> command to process the contents of file\_list.txt. The results are output on the display since the standard output was not redirected. We could redirect standard output to another file like this:
+In the example above, we used the <a href="http://linuxcommand.org/lc3_man_pages/sort1.html" class="markup--anchor markup--p-anchor"><strong>sort</strong></a> command to process the contents of file_list.txt. The results are output on the display since the standard output was not redirected. We could redirect standard output to another file like this:
 
-\[me@bgoonz me\]$ **sort &lt; file\_list.txt &gt; sorted\_file\_list.txt**
+\[me@bgoonz me\]$ **sort &lt; file_list.txt &gt; sorted_file_list.txt**
 
 As we can see, a command can have both its input and output redirected. Be aware that the order of the redirection does not matter. The only requirement is that the redirection operators (the “&lt;” and “&gt;”) must appear after the other options and arguments in the command.
 
 **Pipelines**
 
-The most useful and powerful thing we can do with I/O redirection is to connect multiple commands together to form what are called *pipelines*. With pipelines, the standard output of one command is fed into the standard input of another. Here is a very useful example:
+The most useful and powerful thing we can do with I/O redirection is to connect multiple commands together to form what are called _pipelines_. With pipelines, the standard output of one command is fed into the standard input of another. Here is a very useful example:
 
 \[me@bgoonz me\]$ **ls -l | less**
 
@@ -447,17 +443,17 @@ By connecting commands together, we can accomplish amazing feats. Here are some 
 
 1. **Printing from the command line.** Linux provides a program called <a href="http://linuxcommand.org/lc3_man_pages/lpr1.html" class="markup--anchor markup--p-anchor"><strong>lpr</strong></a> that accepts standard input and sends it to the printer. It is often used with pipes and filters. Here are a couple of examples:
 
-cat poorly\_formatted\_report.txt | fmt | pr | lpr cat unsorted\_list\_with\_dupes.txt | sort | uniq | pr | lpr
+cat poorly_formatted_report.txt | fmt | pr | lpr cat unsorted_list_with_dupes.txt | sort | uniq | pr | lpr
 
 1. In the first example, we use **cat** to read the file and output it to standard output, which is piped into the standard input of **fmt. fmt** formats the text into neat paragraphs and outputs it to standard output, which is piped into the standard input of **pr. pr** splits the text neatly into pages and outputs it to standard output, which is piped into the standard input of **lpr. lpr** takes its standard input and sends it to the printer.
 
 2. The second example starts with an unsorted list of data with duplicate entries. First, **cat** sends the list into **sort** which sorts it and feeds it into **uniq** which removes any duplicates. Next **pr** and **lpr** are used to paginate and print the list.
 
-3. **Viewing the contents of tar files** Often you will see software distributed as a *gzipped tar file*. This is a traditional Unix style tape archive file (created with <a href="http://linuxcommand.org/lc3_man_pages/tar1.html" class="markup--anchor markup--p-anchor"><strong>tar</strong></a>) that has been compressed with <a href="http://linuxcommand.org/lc3_man_pages/gzip1.html" class="markup--anchor markup--p-anchor"><strong>gzip</strong></a>. You can recognize these files by their traditional file extensions, “.tar.gz” or “.tgz”. You can use the following command to view the directory of such a file on a Linux system:
+3. **Viewing the contents of tar files** Often you will see software distributed as a _gzipped tar file_. This is a traditional Unix style tape archive file (created with <a href="http://linuxcommand.org/lc3_man_pages/tar1.html" class="markup--anchor markup--p-anchor"><strong>tar</strong></a>) that has been compressed with <a href="http://linuxcommand.org/lc3_man_pages/gzip1.html" class="markup--anchor markup--p-anchor"><strong>gzip</strong></a>. You can recognize these files by their traditional file extensions, “.tar.gz” or “.tgz”. You can use the following command to view the directory of such a file on a Linux system:
 
-tar tzvf name\_of\_file.tar.gz | less
+tar tzvf name_of_file.tar.gz | less
 
-Each time we type a command line and press the enter key, bash performs several processes upon the text before it carries out our command. We have seen a couple of cases of how a simple character sequence, for example “\*”, can have a lot of meaning to the shell. The process that makes this happen is called *expansion*. With expansion, we type something and it is expanded into something else before the shell acts upon it. To demonstrate what we mean by this, let’s take a look at the <a href="http://linuxcommand.org/lc3_man_pages/echoh.html" class="markup--anchor markup--p-anchor"><strong>echo</strong></a> command. **echo** is a shell builtin that performs a very simple task. It prints out its text arguments on standard output:
+Each time we type a command line and press the enter key, bash performs several processes upon the text before it carries out our command. We have seen a couple of cases of how a simple character sequence, for example “\*”, can have a lot of meaning to the shell. The process that makes this happen is called _expansion_. With expansion, we type something and it is expanded into something else before the shell acts upon it. To demonstrate what we mean by this, let’s take a look at the <a href="http://linuxcommand.org/lc3_man_pages/echoh.html" class="markup--anchor markup--p-anchor"><strong>echo</strong></a> command. **echo** is a shell builtin that performs a very simple task. It prints out its text arguments on standard output:
 
 \[me@bgoonz me\]$ **echo this is a test** this is a test
 
@@ -469,7 +465,7 @@ So what just happened? Why didn’t **echo** print “\*”? As we recall from o
 
 **Pathname Expansion**
 
-The mechanism by which wildcards work is called *pathname expansion*. If we try some of the techniques that we employed in our earlier lessons, we will see that they are really expansions. Given a home directory that looks like this:
+The mechanism by which wildcards work is called _pathname expansion_. If we try some of the techniques that we employed in our earlier lessons, we will see that they are really expansions. Given a home directory that looks like this:
 
 \[me@bgoonz me\]$ **ls** Desktop ls-output.txt Documents Music Pictures Public Templates Videos
 
@@ -527,13 +523,13 @@ Here is an example using the division and remainder operators. Notice the effect
 
 **Brace Expansion**
 
-Perhaps the strangest expansion is called *brace expansion*. With it, we can create multiple text strings from a pattern containing braces. Here’s an example:
+Perhaps the strangest expansion is called _brace expansion_. With it, we can create multiple text strings from a pattern containing braces. Here’s an example:
 
 \[me@bgoonz me\]$ **echo Front-{A,B,C}-Back** Front-A-Back Front-B-Back Front-C-Back
 
-Patterns to be brace expanded may contain a leading portion called a *preamble* and a trailing portion called a *postscript*. The brace expression itself may contain either a comma-separated list of strings, or a range of integers or single characters. The pattern may not contain embedded whitespace. Here is an example using a range of integers:
+Patterns to be brace expanded may contain a leading portion called a _preamble_ and a trailing portion called a _postscript_. The brace expression itself may contain either a comma-separated list of strings, or a range of integers or single characters. The pattern may not contain embedded whitespace. Here is an example using a range of integers:
 
-\[me@bgoonz me\]$ **echo Number\_{1..5}** Number\_1 Number\_2 Number\_3 Number\_4 Number\_5
+\[me@bgoonz me\]$ **echo Number\_{1..5}** Number_1 Number_2 Number_3 Number_4 Number_5
 
 A range of letters in reverse order:
 
@@ -551,7 +547,7 @@ Pretty slick!
 
 **Parameter Expansion**
 
-We’re only going to touch briefly on *parameter expansion* in this lesson, but we’ll be covering it more later. It’s a feature that is more useful in shell scripts than directly on the command line. Many of its capabilities have to do with the system’s ability to store small chunks of data and to give each chunk a name. Many such chunks, more properly called *variables*, are available for our examination. For example, the variable named “USER” contains our user name. To invoke parameter expansion and reveal the contents of USER we would do this:
+We’re only going to touch briefly on _parameter expansion_ in this lesson, but we’ll be covering it more later. It’s a feature that is more useful in shell scripts than directly on the command line. Many of its capabilities have to do with the system’s ability to store small chunks of data and to give each chunk a name. Many such chunks, more properly called _variables_, are available for our examination. For example, the variable named “USER” contains our user name. To invoke parameter expansion and reveal the contents of USER we would do this:
 
 \[me@bgoonz me\]$ **echo $USER** me
 
@@ -565,7 +561,7 @@ With other types of expansion, if we mistype a pattern, the expansion will not t
 
 **Command Substitution**
 
-*Command substitution* allows us to use the output of a command as an expansion:
+_Command substitution_ allows us to use the output of a command as an expansion:
 
 \[me@bgoonz me\]$ **echo $(ls)** Desktop Documents ls-output.txt Music Pictures Public Templates Videos
 
@@ -591,7 +587,7 @@ or:
 
 \[me@bgoonz me\]$ **\[me@bgoonz ~\]$ echo The total is $100.00** The total is 00.00
 
-In the first example, word-splitting by the shell removed extra whitespace from the echo command’s list of arguments. In the second example, parameter expansion substituted an empty string for the value of “$1” because it was an undefined variable. The shell provides a mechanism called *quoting* to selectively suppress unwanted expansions.
+In the first example, word-splitting by the shell removed extra whitespace from the echo command’s list of arguments. In the second example, parameter expansion substituted an empty string for the value of “$1” because it was an undefined variable. The shell provides a mechanism called _quoting_ to selectively suppress unwanted expansions.
 
 **Double Quotes**
 
@@ -601,7 +597,7 @@ The first type of quoting we will look at is double quotes. If we place text ins
 
 By using double quotes, we can stop the word-splitting and get the desired result; further, we can even repair the damage:
 
-\[me@bgoonz me\]$ **ls -l “two words.txt”** -rw-rw-r — 1 me me 18 2020–02–20 13:03 two words.txt \[me@bgoonz me\]$ **mv “two words.txt” two\_words.txt**
+\[me@bgoonz me\]$ **ls -l “two words.txt”** -rw-rw-r — 1 me me 18 2020–02–20 13:03 two words.txt \[me@bgoonz me\]$ **mv “two words.txt” two_words.txt**
 
 There! Now we don’t have to keep typing those pesky double quotes. Remember, parameter expansion, arithmetic expansion, and command substitution still take place within double quotes:
 
@@ -631,13 +627,13 @@ As we can see, with each succeeding level of quoting, more and more of the expan
 
 **Escaping Characters**
 
-Sometimes we only want to quote a single character. To do this, we can precede a character with a backslash, which in this context is called the *escape character*. Often this is done inside double quotes to selectively prevent an expansion:
+Sometimes we only want to quote a single character. To do this, we can precede a character with a backslash, which in this context is called the _escape character_. Often this is done inside double quotes to selectively prevent an expansion:
 
 \[me@bgoonz me\]$ **echo “The balance for user $USER is: \\$5.00”** The balance for user me is: $5.00
 
 It is also common to use escaping to eliminate the special meaning of a character in a filename. For example, it is possible to use characters in filenames that normally have special meaning to the shell. These would include “$”, “!”, “&”, “ “, and others. To include a special character in a filename we can to this:
 
-\[me@bgoonz me\]$ **mv bad\\&filename good\_filename**
+\[me@bgoonz me\]$ **mv bad\\&filename good_filename**
 
 To allow a backslash character to appear, escape it by typing “\\\\”. Note that within single quotes, the backslash loses its special meaning and is treated as an ordinary character.
 
@@ -653,29 +649,29 @@ As we might suspect, using the long form options can make a single command line 
 
 ls -l \\ — reverse \\ — human-readable \\ — full-time
 
-Using the backslash in this way allows us to embed newlines in our command. Note that for this trick to work, the newline must be typed immediately after the backslash. If we put a space after the backslash, the space will be ignored, not the newline. Backslashes are also used to insert special characters into our text. These are called *backslash escape characters*. Here are the common ones:
+Using the backslash in this way allows us to embed newlines in our command. Note that for this trick to work, the newline must be typed immediately after the backslash. If we put a space after the backslash, the space will be ignored, not the newline. Backslashes are also used to insert special characters into our text. These are called _backslash escape characters_. Here are the common ones:
 
 The use of the backslash escape characters is very common. This idea first appeared in the C programming language. Today, the shell, C++, Perl, python, awk, tcl, and many other programming languages use this concept. Using the **echo** command with the -e option will allow us to demonstrate:
 
-\[me@bgoonz me\]$ **echo -e “Inserting several blank lines\\n\\n\\n”** Inserting several blank lines \[me@bgoonz me\]$ **echo -e “Words\\tseparated\\tby\\thorizontal\\ttabs.”** Words separated by horizontal tabs \[me@bgoonz me\]$ **echo -e “\\aMy computer went \\”beep\\”.”** My computer went “beep”. \[me@bgoonz me\]$ **echo -e “DEL C:\\\\WIN2K\\\\LEGACY\_OS.EXE”** DEL C:\\WIN2K\\LEGACY\_OS.EXE
+\[me@bgoonz me\]$ **echo -e “Inserting several blank lines\\n\\n\\n”** Inserting several blank lines \[me@bgoonz me\]$ **echo -e “Words\\tseparated\\tby\\thorizontal\\ttabs.”** Words separated by horizontal tabs \[me@bgoonz me\]$ **echo -e “\\aMy computer went \\”beep\\”.”** My computer went “beep”. \[me@bgoonz me\]$ **echo -e “DEL C:\\\\WIN2K\\\\LEGACY_OS.EXE”** DEL C:\\WIN2K\\LEGACY_OS.EXE
 
 **Permissions**
 
-The Unix-like operating systems, such as Linux differ from other computing systems in that they are not only *multitasking* but also *multi-user*.
+The Unix-like operating systems, such as Linux differ from other computing systems in that they are not only _multitasking_ but also _multi-user_.
 
 What exactly does this mean? It means that more than one user can be operating the computer at the same time. While a desktop or laptop computer only has one keyboard and monitor, it can still be used by more than one user. For example, if the computer is attached to a network, or the Internet, remote users can log in via <a href="http://linuxcommand.org/lc3_man_pages/ssh1.html" class="markup--anchor markup--p-anchor"><strong>ssh</strong></a> (secure shell) and operate the computer. In fact, remote users can execute graphical applications and have the output displayed on a remote computer. The X Window system supports this.
 
-The multi-user capability of Unix-like systems is a feature that is deeply ingrained into the design of the operating system. If we remember the environment in which Unix was created, this makes perfect sense. Years ago before computers were “personal,” they were large, expensive, and centralized. A typical university computer system consisted of a large mainframe computer located in some building on campus and *terminals* were located throughout the campus, each connected to the large central computer. The computer would support many users at the same time.
+The multi-user capability of Unix-like systems is a feature that is deeply ingrained into the design of the operating system. If we remember the environment in which Unix was created, this makes perfect sense. Years ago before computers were “personal,” they were large, expensive, and centralized. A typical university computer system consisted of a large mainframe computer located in some building on campus and _terminals_ were located throughout the campus, each connected to the large central computer. The computer would support many users at the same time.
 
 In order to make this practical, a method had to be devised to protect the users from each other. After all, we wouldn’t want the actions of one user to crash the computer, nor would we allow one user to interfere with the files belonging to another user.
 
 This lesson will cover the following commands:
 
--   <span id="681f"><a href="http://linuxcommand.org/lc3_man_pages/chmod1.html" class="markup--anchor markup--li-anchor"><strong>chmod</strong></a> — modify file access rights</span>
--   <span id="22e9"><a href="http://linuxcommand.org/lc3_man_pages/su1.html" class="markup--anchor markup--li-anchor"><strong>su</strong></a> — temporarily become the superuser</span>
--   <span id="ca99"><a href="http://linuxcommand.org/lc3_man_pages/sudo8.html" class="markup--anchor markup--li-anchor"><strong>sudo</strong></a> — temporarily become the superuser</span>
--   <span id="b794"><a href="http://linuxcommand.org/lc3_man_pages/chown1.html" class="markup--anchor markup--li-anchor"><strong>chown</strong></a> — change file ownership</span>
--   <span id="87bd"><a href="http://linuxcommand.org/lc3_man_pages/chgrp1.html" class="markup--anchor markup--li-anchor"><strong>chgrp</strong></a> — change a file’s group ownership</span>
+- <span id="681f"><a href="http://linuxcommand.org/lc3_man_pages/chmod1.html" class="markup--anchor markup--li-anchor"><strong>chmod</strong></a> — modify file access rights</span>
+- <span id="22e9"><a href="http://linuxcommand.org/lc3_man_pages/su1.html" class="markup--anchor markup--li-anchor"><strong>su</strong></a> — temporarily become the superuser</span>
+- <span id="ca99"><a href="http://linuxcommand.org/lc3_man_pages/sudo8.html" class="markup--anchor markup--li-anchor"><strong>sudo</strong></a> — temporarily become the superuser</span>
+- <span id="b794"><a href="http://linuxcommand.org/lc3_man_pages/chown1.html" class="markup--anchor markup--li-anchor"><strong>chown</strong></a> — change file ownership</span>
+- <span id="87bd"><a href="http://linuxcommand.org/lc3_man_pages/chgrp1.html" class="markup--anchor markup--li-anchor"><strong>chgrp</strong></a> — change a file’s group ownership</span>
 
 **File Permissions**
 
@@ -687,17 +683,17 @@ To see the permission settings for a file, we can use the **ls** command. As an 
 
 Here we can see:
 
--   <span id="c022">The file “/bin/bash” is owned by user “root”</span>
--   <span id="3508">The superuser has the right to read, write, and execute this file</span>
--   <span id="7354">The file is owned by the group “root”</span>
--   <span id="8400">Members of the group “root” can also read and execute this file</span>
--   <span id="2ccd">Everybody else can read and execute this file</span>
+- <span id="c022">The file “/bin/bash” is owned by user “root”</span>
+- <span id="3508">The superuser has the right to read, write, and execute this file</span>
+- <span id="7354">The file is owned by the group “root”</span>
+- <span id="8400">Members of the group “root” can also read and execute this file</span>
+- <span id="2ccd">Everybody else can read and execute this file</span>
 
 In the diagram below, we see how the first portion of the listing is interpreted. It consists of a character indicating the file type, followed by three sets of three characters that convey the reading, writing and execution permission for the owner, group, and everybody else.
 
 **chmod**
 
-The **chmod** command is used to change the permissions of a file or directory. To use it, we specify the desired permission settings and the file or files that we wish to modify. There are two ways to specify the permissions. In this lesson we will focus on one of these, called the *octal notation* method.
+The **chmod** command is used to change the permissions of a file or directory. To use it, we specify the desired permission settings and the file or files that we wish to modify. There are two ways to specify the permissions. In this lesson we will focus on one of these, called the _octal notation_ method.
 
 It is easy to think of the permission settings as a series of bits (which is how the computer thinks about them). Here’s how it works:
 
@@ -712,9 +708,9 @@ rwx = 111 in binary = 7
  r-x = 101 in binary = 5  
  r — = 100 in binary = 4
 
-Now, if we represent each of the three sets of permissions (owner, group, and other) as a single digit, we have a pretty convenient way of expressing the possible permissions settings. For example, if we wanted to set some\_file to have read and write permission for the owner, but wanted to keep the file private from others, we would:
+Now, if we represent each of the three sets of permissions (owner, group, and other) as a single digit, we have a pretty convenient way of expressing the possible permissions settings. For example, if we wanted to set some_file to have read and write permission for the owner, but wanted to keep the file private from others, we would:
 
-\[me@bgoonz me\]$ **chmod 600 some\_file**
+\[me@bgoonz me\]$ **chmod 600 some_file**
 
 Here is a table of numbers that covers all the common settings. The ones beginning with “7” are used with programs (since they enable execution) and the rest are for other kinds of files.
 
@@ -728,7 +724,7 @@ After executing the **su** command, we have a new shell session as the superuser
 
 In most modern distributions, an alternate method is used. Rather than using **su**, these systems employ the **sudo** command instead. With **sudo**, one or more users are granted superuser privileges on an as needed basis. To execute a command as the superuser, the desired command is simply preceded with the **sudo** command. After the command is entered, the user is prompted for the their own password rather than the superuser’s:
 
-\[me@bgoonz me\]$ **sudo some\_command** Password for me: \[me@bgoonz me\]$
+\[me@bgoonz me\]$ **sudo some_command** Password for me: \[me@bgoonz me\]$
 
 In fact, modern distributions don’t even set the root account password thus making it impossible to log in as the root user. A root shell is still possible with **sudo** by using the “-i” option:
 
@@ -736,9 +732,9 @@ In fact, modern distributions don’t even set the root account password thus ma
 
 **Changing File Ownership**
 
-We can change the owner of a file by using the **chown** command. Here’s an example: Suppose we wanted to change the owner of some\_file from “me” to “you”. We could:
+We can change the owner of a file by using the **chown** command. Here’s an example: Suppose we wanted to change the owner of some_file from “me” to “you”. We could:
 
-\[me@bgoonz me\]$ **sudo chown you some\_file**
+\[me@bgoonz me\]$ **sudo chown you some_file**
 
 Notice that in order to change the owner of a file, we must have superuser privileges. To do this, our example employed the **sudo** command to execute **chown**.
 
@@ -748,17 +744,13 @@ Notice that in order to change the owner of a file, we must have superuser privi
 
 The group ownership of a file or directory may be changed with **chgrp**. This command is used like this:
 
-\[me@bgoonz me\]$ **chgrp new\_group some\_file**
+\[me@bgoonz me\]$ **chgrp new_group some_file**
 
-In the example above, we changed the group ownership of some\_file from its previous group to “new\_group”. We must be the owner of the file or directory to perform a **chgrp**.
+In the example above, we changed the group ownership of some_file from its previous group to “new_group”. We must be the owner of the file or directory to perform a **chgrp**.
 
 ### Writing Scripts:
 
-  
-
 ### Writing Your First Script!
-
-  
 
 To successfully write a shell script, we have to do three things:
 
@@ -768,11 +760,9 @@ To successfully write a shell script, we have to do three things:
 
 ### Writing a Script
 
-A shell script is a file that contains ASCII text. To create a shell script, we use a *text editor*. A text editor is a program, like a word processor, that reads and writes ASCII text files. There are many, many text editors available for Linux systems, both for the command line and GUI environments. Here is a list of some common ones:
+A shell script is a file that contains ASCII text. To create a shell script, we use a _text editor_. A text editor is a program, like a word processor, that reads and writes ASCII text files. There are many, many text editors available for Linux systems, both for the command line and GUI environments. Here is a list of some common ones:
 
 <figure><img src="https://cdn-images-1.medium.com/max/1200/1*hkhhUZbaqqg2zO9DvyyRjA.png" class="graf-image" /></figure>
-
-  
 
 Let’s fire up our text editor and type in our first script as follows:
 
@@ -782,9 +772,9 @@ Clever readers will have figured out how to copy and paste the text into the tex
 
 This is a traditional “Hello World” program. Forms of this program appear in almost introductory programming book. We’ll save the file with some descriptive name. How about `hello_world`?
 
-The first line of the script is important. It is a special construct, called a *shebang*, given to the system indicating what program is to be used to interpret the script. In this case, `/bin/bash`. Other scripting languages such as `Perl, awk, tcl, Tk,` and `python` also use this mechanism.
+The first line of the script is important. It is a special construct, called a _shebang_, given to the system indicating what program is to be used to interpret the script. In this case, `/bin/bash`. Other scripting languages such as `Perl, awk, tcl, Tk,` and `python` also use this mechanism.
 
-The second line is a *comment*. Everything that appears after a “\#” symbol is ignored by `bash`. As our scripts become bigger and more complicated, comments become vital. They are used by programmers to explain what is going on so that others can figure it out. The last line is the `echo` command. This command simply prints its arguments on the display.
+The second line is a _comment_. Everything that appears after a “\#” symbol is ignored by `bash`. As our scripts become bigger and more complicated, comments become vital. They are used by programmers to explain what is going on so that others can figure it out. The last line is the `echo` command. This command simply prints its arguments on the display.
 
 ### Setting Permissions
 
@@ -806,13 +796,13 @@ Before we go any further, we need to talk about paths. When we type the name of 
 
 Well, that’s correct. The shell does know. Here’s how: the shell maintains a list of directories where executable files (programs) are kept, and only searches the directories on that list. If it does not find the program after searching each directory on the list, it will issue the famous `command not found` error message.
 
-This list of directories is called our *path*. We can view the list of directories with the following command:
+This list of directories is called our _path_. We can view the list of directories with the following command:
 
 \[me@linuxbox me\]$ `echo $PATH`
 
 This will return a colon separated list of directories that will be searched if a specific path name is not given when a command is entered. In our first attempt to execute our new script, we specified a pathname (“./”) to the file.
 
-We can add directories to our path with the following command, where *directory* is the name of the directory we want to add:
+We can add directories to our path with the following command, where _directory_ is the name of the directory we want to add:
 
 \[me@linuxbox me\]$ `export PATH=$PATH:directory`
 
@@ -834,13 +824,13 @@ Before we start writing new scripts, We’ll take a look at some scripts we alre
 
 In this lesson, we will look at a couple of these scripts and learn a few important new concepts about the shell.
 
-During our shell session, the system is holding a number of facts about the world in its memory. This information is called the *environment*. The environment contains such things as our path, our user name, and much more. We can examine a complete list of what is in the environment with the `set` command.
+During our shell session, the system is holding a number of facts about the world in its memory. This information is called the _environment_. The environment contains such things as our path, our user name, and much more. We can examine a complete list of what is in the environment with the `set` command.
 
-Two types of commands are often contained in the environment. They are *aliases* and *shell functions*.
+Two types of commands are often contained in the environment. They are _aliases_ and _shell functions_.
 
 ### How is the Environment Established?
 
-When we log on to the system, the bash program starts, and reads a series of configuration scripts called *startup files*. These define the default environment shared by all users. This is followed by more startup files in our home directory that define our personal environment. The exact sequence depends on the type of shell session being started. There are two kinds: a *login shell session* and a *non-login shell session*. A login shell session is one in which we are prompted for our user name and password; when we start a virtual console session, for example. A non-login shell session typically occurs when we launch a terminal session in the GUI.
+When we log on to the system, the bash program starts, and reads a series of configuration scripts called _startup files_. These define the default environment shared by all users. This is followed by more startup files in our home directory that define our personal environment. The exact sequence depends on the type of shell session being started. There are two kinds: a _login shell session_ and a _non-login shell session_. A login shell session is one in which we are prompted for our user name and password; when we start a virtual console session, for example. A non-login shell session typically occurs when we launch a terminal session in the GUI.
 
 Login shells read one or more startup files as shown below:
 
@@ -852,13 +842,13 @@ The `~/.bashrc` file is probably the most important startup file from the ordina
 
 If we take a look inside a typical `.bash_profile` (this one taken from a CentOS system), it looks something like this:
 
-\# .bash\_profile \# Get the aliases and functions if \[ -f ~/.bashrc \]; then . ~/.bashrc fi \# User specific environment and startup programs PATH=$PATH:$HOME/bin export PATH
+\# .bash_profile \# Get the aliases and functions if \[ -f ~/.bashrc \]; then . ~/.bashrc fi \# User specific environment and startup programs PATH=$PATH:$HOME/bin export PATH
 
 Lines that begin with a “\#” are comments and are not read by the shell. These are there for human readability. The first interesting thing occurs on the fourth line, with the following code:
 
 if \[ -f ~/.bashrc \]; then . ~/.bashrc fi
 
-This is called an *if compound command*, which we will cover fully in a later lesson, but for now we will translate:
+This is called an _if compound command_, which we will cover fully in a later lesson, but for now we will translate:
 
 If the file “~/.bashrc” exists, then read the “~/.bashrc” file.
 
@@ -876,7 +866,7 @@ An alias is an easy way to create a new command which acts as an abbreviation fo
 
 `alias name=value`
 
-where *name* is the name of the new command and *value* is the text to be executed whenever *name* is entered on the command line.
+where _name_ is the name of the new command and _value_ is the text to be executed whenever _name_ is entered on the command line.
 
 Let’s create an alias called “l” and make it an abbreviation for the command “ls -l”. We’ll move to our home directory and using our favorite text editor, open the file `.bashrc` and add this line to the end of the file:
 
@@ -894,7 +884,7 @@ By the way, the `alias` command is just another shell builtin. We can create our
 
 ### Shell Functions
 
-Aliases are good for very simple commands, but to create something more complex, we need *shell functions*. Shell functions can be thought of as “scripts within scripts” or little sub-scripts. Let’s try one. Open `.bashrc` with our text editor again and replace the alias for "today" with the following:
+Aliases are good for very simple commands, but to create something more complex, we need _shell functions_. Shell functions can be thought of as “scripts within scripts” or little sub-scripts. Let’s try one. Open `.bashrc` with our text editor again and replace the alias for "today" with the following:
 
 today() { echo -n “Today’s date is: “ date +”%A, %B %-d, %Y” }
 
@@ -904,10 +894,6 @@ Believe it or not, `()` is a shell builtin too, and as with `alias`, we can ente
 
 However, like `alias`, shell functions defined directly on the command line only last as long as the current shell session.
 
-  
-
-  
-
 ### Here Scripts
 
 Beginning with this lesson, we will construct a useful application. This application will produce an HTML document that contains information about our system. As we construct our script, we will discover step by step the tools needed to solve the problem at hand.
@@ -915,8 +901,6 @@ Beginning with this lesson, we will construct a useful application. This applica
 ### Writing an HTML File with a Script
 
 As we may be aware, a well formed HTML file contains the following content:
-
-  
 
     <html>
     <head>
@@ -929,8 +913,6 @@ As we may be aware, a well formed HTML file contains the following content:
         Your page content goes here.
     </body>
     </html>
-
-  
 
 Now, with what we already know, we could write a script to produce the above content:
 
@@ -950,8 +932,6 @@ Now, with what we already know, we could write a script to produce the above con
     echo "</body>"
     echo "</html>"
 
-  
-
 This script can be used as follows:
 
 \[me@linuxbox me\]$ `sysinfo_page > sysinfo_page.html`
@@ -970,7 +950,7 @@ The first improvement to this script will be to replace the repeated use of the 
        The title of your page
        </title>
      </head>
-     
+
      <body>
        Your page content goes here.
      </body>
@@ -980,7 +960,7 @@ Using quotation, it is possible to embed carriage returns in our text and have t
 
 While this is certainly an improvement, it does have a limitation. Since many types of markup used in HTML incorporate quotation marks themselves, it makes using a quoted string a little awkward. A quoted string can be used but each embedded quotation mark will need to be escaped with a backslash character.
 
-In order to avoid the additional typing, we need to look for a better way to produce our text. Fortunately, the shell provides one. It’s called a *here script*.
+In order to avoid the additional typing, we need to look for a better way to produce our text. Fortunately, the shell provides one. It’s called a _here script_.
 
     #!/bin/bash
 
@@ -1006,7 +986,7 @@ A here script is constructed like this:
 
 `command` &lt;&lt; token content to be used as command's standard input token
 
-*token* can be any string of characters. “\_EOF\_” (EOF is short for “End Of File”) is traditional, but we can use anything as long as it does not conflict with a bash reserved word. The token that ends the here script must exactly match the one that starts it, or else the remainder of our script will be interpreted as more standard input to the command which can lead to some really exciting script failures.
+_token_ can be any string of characters. “\_EOF\_” (EOF is short for “End Of File”) is traditional, but we can use anything as long as it does not conflict with a bash reserved word. The token that ends the here script must exactly match the one that starts it, or else the remainder of our script will be interpreted as more standard input to the command which can lead to some really exciting script failures.
 
 There is one additional trick that can be used with a here script. Often, we might want to indent the content portion of the here script to improve the readability of the script. We can do this if we change the script as follows:
 
@@ -1049,8 +1029,6 @@ O.k., let’s make our page. We will edit our page to get it to say something:
         </body>
         </html>
     _EOF_
-
-  
 
 [View original.](https://medium.com/p/8a831acc3def)
 

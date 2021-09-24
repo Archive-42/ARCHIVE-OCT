@@ -1,5 +1,4 @@
-Archive for Bryan Guner
-=======================
+# Archive for Bryan Guner
 
 ### Folder Structure
 
@@ -9,56 +8,56 @@ Each folder will contain one or more HTML files with available data.
 
 #### /blocks
 
--   Blocked users
+- Blocked users
 
 #### /bookmarks
 
--   Bookmarked Posts
+- Bookmarked Posts
 
 #### /claps
 
--   Posts you’ve clapped for
+- Posts you’ve clapped for
 
 #### /highlights
 
--   Posts you’ve highlighted
+- Posts you’ve highlighted
 
 #### /interests
 
--   Topics you’re interested in
+- Topics you’re interested in
 
 #### /ips
 
--   IP history
+- IP history
 
 #### /lists
 
--   Lists you’ve created
+- Lists you’ve created
 
 #### /posts
 
--   Posts you’ve written
+- Posts you’ve written
 
 #### /profile
 
--   Profile information
+- Profile information
 
 #### /pubs-following
 
--   Publications you follow
+- Publications you follow
 
 #### /sessions
 
--   Your active and inactive sessions
+- Your active and inactive sessions
 
 #### /topics-following
 
--   Topics you follow
+- Topics you follow
 
 #### /twitter
 
--   Your Twitter friends who are also on Medium
+- Your Twitter friends who are also on Medium
 
 #### /users-following
 
--   Users you follow
+- Users you follow

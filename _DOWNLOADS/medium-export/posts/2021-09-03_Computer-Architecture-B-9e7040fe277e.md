@@ -1,9 +1,8 @@
-Computer Architecture B
-=======================
+# Computer Architecture B
 
 Introduction to Computer Architecture
 
-------------------------------------------------------------------------
+---
 
 ### Computer Architecture Basics
 
@@ -98,7 +97,7 @@ In our emulator, you’ll see this in the emulator.js file
 
 If key gets hit, raises a voltage on a wire, which goes to the interrupt handler which sets a value in the interrupt status register and the CPU sees it. When it goes to execute the next instruction, a complicated set of steps happen where it finds another location in memory to begin executing instructions. That other location will handle the interrupt handler program. Interrupt handler returns and code continues executing like it did before the interrupt occurred.
 
--   <span id="bb81">Interrupt flow of execution, perform some action in the handler, and then resume the flow of execution where the interrupt left off.</span>
+- <span id="bb81">Interrupt flow of execution, perform some action in the handler, and then resume the flow of execution where the interrupt left off.</span>
 
 Can decide which interrupts you’re interested in by using the interrupt mask register — gets bitwise ANDed with the status register and masks out interrupts you’re not interested in.
 

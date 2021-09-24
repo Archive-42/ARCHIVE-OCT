@@ -1,9 +1,8 @@
-Basic Git Workflow
-==================
+# Basic Git Workflow
 
 A quick intermediate level summary (Exp …approx. 1 year)
 
-------------------------------------------------------------------------
+---
 
 ### Basic Git Workflow
 
@@ -73,15 +72,15 @@ Now you are able to push your changes to the selected remote server
 
 ### branching
 
-Branches are used to develop features isolated from each other. The *master* branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion.
+Branches are used to develop features isolated from each other. The _master_ branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion.
 
-create a new branch named “feature\_x” and switch to it using  
+create a new branch named “feature_x” and switch to it using  
 `git checkout -b feature_x`  
 switch back to master  
 `git checkout master`  
 and delete the branch again  
 `git branch -d feature_x`  
-a branch is *not available to others* unless you push the branch to your remote repository  
+a branch is _not available to others_ unless you push the branch to your remote repository  
 `git push origin <branch>`
 
 ### branch
@@ -118,9 +117,9 @@ before merging changes, you can also preview them by using
 
 ### tagging
 
-it’s recommended to create tags for software releases. this is a known concept, which also exists in SVN. You can create a new tag named *1.0.0* by executing  
+it’s recommended to create tags for software releases. this is a known concept, which also exists in SVN. You can create a new tag named _1.0.0_ by executing  
 `git tag 1.0.0 1b2e1d63ff`  
-the *1b2e1d63ff* stands for the first 10 characters of the commit id you want to reference with your tag. You can get the commit id by looking at the...
+the _1b2e1d63ff_ stands for the first 10 characters of the commit id you want to reference with your tag. You can get the commit id by looking at the...
 
 ### log
 
@@ -201,7 +200,7 @@ Stores the current contents of the index in a new “commit.” This commit cont
 <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1#pull" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1#pull"><strong>🌳🚀 CS Visualized: Useful Git Commands</strong><br />
 <em>Although Git is a very powerful tool, I think most people would agree when I say it can also be... a total nightmare 😐…</em>dev.to</a><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1#pull" class="js-mixtapeImage mixtapeImage u-ignoreBlock"></a>
 
-------------------------------------------------------------------------
+---
 
 ### More Resources:
 

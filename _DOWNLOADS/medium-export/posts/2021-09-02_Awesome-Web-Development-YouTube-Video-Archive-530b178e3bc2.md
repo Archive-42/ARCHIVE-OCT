@@ -1,9 +1,8 @@
-Awesome Web Development YouTube Video Archive
-=============================================
+# Awesome Web Development YouTube Video Archive
 
 This is going to be a running list of YouTube videos and channels that I discover as I learn web development. It will not be strictly…
 
-------------------------------------------------------------------------
+---
 
 ### Awesome Web Development YouTube Video Archive
 

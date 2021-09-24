@@ -12,11 +12,10 @@ MDN Documentation: CSS
 [ShortHand Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#Background_Properties)
 
 [Fetch Api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-[CSS Overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Overflow )
+[CSS Overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Overflow)
 [css transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions)
 [BEM](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)
 [CSS common properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
-
 
 ## Week 10
 

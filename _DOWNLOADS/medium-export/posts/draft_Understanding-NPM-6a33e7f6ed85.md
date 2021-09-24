@@ -1,17 +1,14 @@
-Understanding NPM
-=================
+# Understanding NPM
 
 npm is the package manager for the Node JavaScript platform. It puts modules in place so that node can find them, and manages dependency…
 
-------------------------------------------------------------------------
+---
 
 ### Understanding NPM
 
 #### npm is the package manager for the Node JavaScript platform. It puts modules in place so that node can find them, and manages dependency conflicts intelligently.
 
-###  
-
-  
+###
 
 It is extremely configurable to support a wide variety of use cases. Most commonly, it is used to publish, discover, install, and develop node programs.
 
@@ -43,8 +40,8 @@ See `folders` to learn about where npm puts stuff.
 
 In particular, npm has two modes of operation:
 
--   <span id="e073">global mode: npm installs packages into the install prefix at `prefix/lib/node_modules` and bins are installed in `prefix/bin`.</span>
--   <span id="20a4">local mode: npm installs packages into the current project directory, which defaults to the current working directory. Packages are installed to `./node_modules`, and bins are installed to `./node_modules/.bin`.</span>
+- <span id="e073">global mode: npm installs packages into the install prefix at `prefix/lib/node_modules` and bins are installed in `prefix/bin`.</span>
+- <span id="20a4">local mode: npm installs packages into the current project directory, which defaults to the current working directory. Packages are installed to `./node_modules`, and bins are installed to `./node_modules/.bin`.</span>
 
 Local mode is the default. Use `-g` or `--global` on any command to operate in global mode instead.
 
@@ -52,23 +49,21 @@ Local mode is the default. Use `-g` or `--global` on any command to operate in g
 
 If you’re using npm to develop and publish your code, check out the following help topics:
 
--   <span id="0211">json: Make a package.json file. See `package.json`.</span>
--   <span id="4edd">link: For linking your current working code into Node’s path, so that you don’t have to reinstall every time you make a change. Use `npm link` to do this.</span>
--   <span id="b6f6">install: It’s a good idea to install things if you don’t need the symbolic link. Especially, installing other peoples code from the registry is done via `npm install`</span>
--   <span id="f15a">adduser: Create an account or log in. Credentials are stored in the user config file.</span>
--   <span id="e374">publish: Use the `npm publish` command to upload your code to the registry.</span>
+- <span id="0211">json: Make a package.json file. See `package.json`.</span>
+- <span id="4edd">link: For linking your current working code into Node’s path, so that you don’t have to reinstall every time you make a change. Use `npm link` to do this.</span>
+- <span id="b6f6">install: It’s a good idea to install things if you don’t need the symbolic link. Especially, installing other peoples code from the registry is done via `npm install`</span>
+- <span id="f15a">adduser: Create an account or log in. Credentials are stored in the user config file.</span>
+- <span id="e374">publish: Use the `npm publish` command to upload your code to the registry.</span>
 
 #### Configuration
 
 npm is extremely configurable. It reads its configuration options from 5 places.
 
--   <span id="600e">Command line switches: Set a config with `--key val`. All keys take a value, even if they are booleans (the config parser doesn't know what the options are at the time of parsing). If no value is provided, then the option is set to boolean `true`.</span>
--   <span id="8b92">Environment Variables: Set any config by prefixing the name in an environment variable with `npm_config_`. For example, `export npm_config_key=val`.</span>
--   <span id="5960">User Configs: The file at $HOME/.npmrc is an ini-formatted list of configs. If present, it is parsed. If the `userconfig` option is set in the cli or env, then that will be used instead.</span>
--   <span id="dc52">Global Configs: The file found at ../etc/npmrc (from the node executable, by default this resolves to /usr/local/etc/npmrc) will be parsed if it is found. If the `globalconfig` option is set in the cli, env, or user config, then that file is parsed instead.</span>
--   <span id="55ff">Defaults: npm’s default configuration options are defined in lib/utils/config-defs.js. These must not be changed.</span>
-
-  
+- <span id="600e">Command line switches: Set a config with `--key val`. All keys take a value, even if they are booleans (the config parser doesn't know what the options are at the time of parsing). If no value is provided, then the option is set to boolean `true`.</span>
+- <span id="8b92">Environment Variables: Set any config by prefixing the name in an environment variable with `npm_config_`. For example, `export npm_config_key=val`.</span>
+- <span id="5960">User Configs: The file at $HOME/.npmrc is an ini-formatted list of configs. If present, it is parsed. If the `userconfig` option is set in the cli or env, then that will be used instead.</span>
+- <span id="dc52">Global Configs: The file found at ../etc/npmrc (from the node executable, by default this resolves to /usr/local/etc/npmrc) will be parsed if it is found. If the `globalconfig` option is set in the cli, env, or user config, then that file is parsed instead.</span>
+- <span id="55ff">Defaults: npm’s default configuration options are defined in lib/utils/config-defs.js. These must not be changed.</span>
 
 ### Synopsis
 
@@ -129,20 +124,20 @@ By default, the audit command will exit with a non-zero code if any vulnerabilit
 
 ### Content Submitted
 
--   <span id="754e">npm\_version</span>
--   <span id="fac8">node\_version</span>
--   <span id="ef57">platform</span>
--   <span id="373e">node\_env</span>
--   <span id="a765">A scrubbed version of your package-lock.json or npm-shrinkwrap.json</span>
+- <span id="754e">npm_version</span>
+- <span id="fac8">node_version</span>
+- <span id="ef57">platform</span>
+- <span id="373e">node_env</span>
+- <span id="a765">A scrubbed version of your package-lock.json or npm-shrinkwrap.json</span>
 
 #### Scrubbing
 
 In order to ensure that potentially sensitive information is not included in the audit data bundle, some dependencies may have their names (and sometimes versions) replaced with opaque non-reversible identifiers. It is done for the following dependency types:
 
--   <span id="0763">Any module referencing a scope that is configured for a non-default registry has its name scrubbed. (That is, a scope you did a `npm login --scope=@ourscope` for.)</span>
--   <span id="0046">All git dependencies have their names and specifiers scrubbed.</span>
--   <span id="0f8f">All remote tarball dependencies have their names and specifiers scrubbed.</span>
--   <span id="6ae2">All local directory and tarball dependencies have their names and specifiers scrubbed.</span>
+- <span id="0763">Any module referencing a scope that is configured for a non-default registry has its name scrubbed. (That is, a scope you did a `npm login --scope=@ourscope` for.)</span>
+- <span id="0046">All git dependencies have their names and specifiers scrubbed.</span>
+- <span id="0f8f">All remote tarball dependencies have their names and specifiers scrubbed.</span>
+- <span id="6ae2">All local directory and tarball dependencies have their names and specifiers scrubbed.</span>
 
 The non-reversible identifiers are a sha256 of a session-specific UUID and the value being replaced, ensuring a consistent value within the payload that is different between runs.
 
@@ -152,15 +147,11 @@ The `npm audit` command will exit with a 0 exit code if no vulnerabilities were 
 
 If vulnerabilities were found the exit code will depend on the `audit-level` configuration setting.
 
-  
-
-  
-
 ### Synopsis
 
     npm build [<package-folder>]
 
--   <span id="69ab">`<package-folder>`: A folder containing a `package.json` file in its root.</span>
+- <span id="69ab">`<package-folder>`: A folder containing a `package.json` file in its root.</span>
 
 ### Description
 
@@ -173,10 +164,6 @@ It should generally be called during installation, but if you need to run it dir
 The `npm bundle` command has been removed in 1.0, for the simple reason that it is no longer necessary, as the default behavior is now to install packages into the local space.
 
 Just use `npm install` now to do what `npm bundle` used to do.
-
-  
-
-  
 
 ### npm cache
 
@@ -198,9 +185,9 @@ Just use `npm install` now to do what `npm bundle` used to do.
 
 Used to add, list, or clean the npm cache folder.
 
--   <span id="ffac">add: Add the specified package to the local cache. This command is primarily intended to be used internally by npm, but it can provide a way to add data to the local installation cache explicitly.</span>
--   <span id="0f00">clean: Delete all data out of the cache folder.</span>
--   <span id="4d73">verify: Verify the contents of the cache folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.</span>
+- <span id="ffac">add: Add the specified package to the local cache. This command is primarily intended to be used internally by npm, but it can provide a way to add data to the local installation cache explicitly.</span>
+- <span id="0f00">clean: Delete all data out of the cache folder.</span>
+- <span id="4d73">verify: Verify the contents of the cache folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.</span>
 
 ### Details
 
@@ -264,13 +251,11 @@ This command is similar to `npm install`, except it's meant to be used in automa
 
 In short, the main differences between using `npm install` and `npm ci` are:
 
--   <span id="8cf0">The project **must** have an existing `package-lock.json` or `npm-shrinkwrap.json`.</span>
--   <span id="fb09">If dependencies in the package lock do not match those in `package.json`, `npm ci` will exit with an error, instead of updating the package lock.</span>
--   <span id="a1d5">`npm ci` can only install entire projects at a time: individual dependencies cannot be added with this command.</span>
--   <span id="a666">If a `node_modules` is already present, it will be automatically removed before `npm ci` begins its install.</span>
--   <span id="2bcb">It will never write to `package.json` or any of the package-locks: installs are essentially frozen.</span>
-
-  
+- <span id="8cf0">The project **must** have an existing `package-lock.json` or `npm-shrinkwrap.json`.</span>
+- <span id="fb09">If dependencies in the package lock do not match those in `package.json`, `npm ci` will exit with an error, instead of updating the package lock.</span>
+- <span id="a1d5">`npm ci` can only install entire projects at a time: individual dependencies cannot be added with this command.</span>
+- <span id="a666">If a `node_modules` is already present, it will be automatically removed before `npm ci` begins its install.</span>
+- <span id="2bcb">It will never write to `package.json` or any of the package-locks: installs are essentially frozen.</span>
 
 ### npm config
 
@@ -334,10 +319,6 @@ Deletes the key from all configuration files.
 
 Opens the config file in an editor. Use the `--global` flag to edit the global config.
 
-  
-
-  
-
 ### npm init
 
 ### create a package.json file
@@ -377,17 +358,13 @@ Generate it without having it ask any questions:
 
 The init command is transformed to a corresponding `npx` operation as follows:
 
--   <span id="6d24">`npm init foo` -&gt; `npx create-foo`</span>
--   <span id="159c">`npm init @usr/foo` -&gt; `npx @usr/create-foo`</span>
--   <span id="675f">`npm init @usr` -&gt; `npx @usr/create`</span>
+- <span id="6d24">`npm init foo` -&gt; `npx create-foo`</span>
+- <span id="159c">`npm init @usr/foo` -&gt; `npx @usr/create-foo`</span>
+- <span id="675f">`npm init @usr` -&gt; `npx @usr/create`</span>
 
 Any additional options will be passed directly to the command, so `npm init foo --hello` will map to `npx create-foo --hello`.
 
 If the initializer is omitted (by just calling `npm init`), init will fall back to legacy init behavior. It will ask you a bunch of questions, and then write a package.json for you. It will attempt to make reasonable guesses based on existing fields, dependencies, and options selected. It is strictly additive, so it will keep any fields and values that were already set. You can also use `-y`/`--yes` to skip the questionnaire altogether. If you pass `--scope`, it will create a scoped package.
-
-  
-
-  
 
 ### npm install
 
@@ -416,362 +393,362 @@ This command installs a package, and any packages that it depends on. If the pac
 
 A `package` is:
 
--   <span id="1e36">a) a folder containing a program described by a `package.json` file</span>
--   <span id="1312">b) a gzipped tarball containing (a)</span>
--   <span id="30f3">c) a url that resolves to (b)</span>
--   <span id="8563">d) a `<name>@<version>` that is published on the registry (see `registry`) with (c)</span>
--   <span id="4635">e) a `<name>@<tag>` (see `npm dist-tag`) that points to (d)</span>
--   <span id="9a02">f) a `<name>` that has a "latest" tag satisfying (e)</span>
--   <span id="23de">g) a `<git remote url>` that resolves to (a)</span>
+- <span id="1e36">a) a folder containing a program described by a `package.json` file</span>
+- <span id="1312">b) a gzipped tarball containing (a)</span>
+- <span id="30f3">c) a url that resolves to (b)</span>
+- <span id="8563">d) a `<name>@<version>` that is published on the registry (see `registry`) with (c)</span>
+- <span id="4635">e) a `<name>@<tag>` (see `npm dist-tag`) that points to (d)</span>
+- <span id="9a02">f) a `<name>` that has a "latest" tag satisfying (e)</span>
+- <span id="23de">g) a `<git remote url>` that resolves to (a)</span>
 
 Even if you never publish your package, you can still get a lot of benefits of using npm if you just want to write a node program (a), and perhaps if you also want to be able to easily install it elsewhere after packing it up into a tarball (b).
 
--   <span id="8f35">`npm install` (in package directory, no arguments):</span>
--   <span id="6a58">  
-    </span>
--   <span id="c00a">Install the dependencies in the local node\_modules folder.</span>
--   <span id="d3c3">  
-    </span>
--   <span id="a36b">In global mode (ie, with `-g` or `--global` appended to the command), it installs the current package context (ie, the current working directory) as a global package.</span>
--   <span id="665f">  
-    </span>
--   <span id="cda2">By default, `npm install` will install all modules listed as dependencies in `package.json`.</span>
--   <span id="8d16">  
-    </span>
--   <span id="a0a9">With the `--production` flag (or when the `NODE_ENV` environment variable is set to `production`), npm will not install modules listed in `devDependencies`. To install all modules listed in both `dependencies` and `devDependencies` when `NODE_ENV` environment variable is set to `production`, you can use `--production=false`.</span>
+- <span id="8f35">`npm install` (in package directory, no arguments):</span>
+- <span id="6a58">  
+  </span>
+- <span id="c00a">Install the dependencies in the local node_modules folder.</span>
+- <span id="d3c3">  
+  </span>
+- <span id="a36b">In global mode (ie, with `-g` or `--global` appended to the command), it installs the current package context (ie, the current working directory) as a global package.</span>
+- <span id="665f">  
+  </span>
+- <span id="cda2">By default, `npm install` will install all modules listed as dependencies in `package.json`.</span>
+- <span id="8d16">  
+  </span>
+- <span id="a0a9">With the `--production` flag (or when the `NODE_ENV` environment variable is set to `production`), npm will not install modules listed in `devDependencies`. To install all modules listed in both `dependencies` and `devDependencies` when `NODE_ENV` environment variable is set to `production`, you can use `--production=false`.</span>
 
->   
+>
 
--   <span id="81e1">NOTE: The `--production` flag has no particular meaning when adding a dependency to a project.</span>
--   <span id="fbf8">  
-    </span>
+- <span id="81e1">NOTE: The `--production` flag has no particular meaning when adding a dependency to a project.</span>
+- <span id="fbf8">  
+  </span>
 
->   
+>
 
->   
+>
 
--   <span id="9720">  
-    </span>
--   <span id="708e">`npm install <folder>`:</span>
--   <span id="994a">  
-    </span>
--   <span id="b9be">Install the package in the directory as a symlink in the current project. Its dependencies will be installed before it’s linked. If `<folder>` sits inside the root of your project, its dependencies may be hoisted to the toplevel `node_modules` as they would for other types of dependencies.</span>
--   <span id="6212">  
-    </span>
--   <span id="447d">`npm install <tarball file>`:</span>
--   <span id="1b3d">  
-    </span>
--   <span id="0354">Install a package that is sitting on the filesystem. Note: if you just want to link a dev directory into your npm root, you can do this more easily by using `npm link`.</span>
--   <span id="aeea">  
-    </span>
--   <span id="d85a">Tarball requirements:</span>
--   <span id="3da8">  
-    </span>
--   <span id="921e">The filename must use `.tar`, `.tar.gz`, or `.tgz` as the extension.</span>
--   <span id="1afb">The package contents should reside in a subfolder inside the tarball (usually it is called `package/`). npm strips one directory layer when installing the package (an equivalent of `tar x --strip-components=1` is run).</span>
--   <span id="bb85">The package must contain a `package.json` file with `name` and `version` properties.</span>
--   <span id="8e6f">Example:</span>
-
-<!-- -->
-
--   <span id="f589">`npm install ./package.tgz`</span>
+- <span id="9720">  
+  </span>
+- <span id="708e">`npm install <folder>`:</span>
+- <span id="994a">  
+  </span>
+- <span id="b9be">Install the package in the directory as a symlink in the current project. Its dependencies will be installed before it’s linked. If `<folder>` sits inside the root of your project, its dependencies may be hoisted to the toplevel `node_modules` as they would for other types of dependencies.</span>
+- <span id="6212">  
+  </span>
+- <span id="447d">`npm install <tarball file>`:</span>
+- <span id="1b3d">  
+  </span>
+- <span id="0354">Install a package that is sitting on the filesystem. Note: if you just want to link a dev directory into your npm root, you can do this more easily by using `npm link`.</span>
+- <span id="aeea">  
+  </span>
+- <span id="d85a">Tarball requirements:</span>
+- <span id="3da8">  
+  </span>
+- <span id="921e">The filename must use `.tar`, `.tar.gz`, or `.tgz` as the extension.</span>
+- <span id="1afb">The package contents should reside in a subfolder inside the tarball (usually it is called `package/`). npm strips one directory layer when installing the package (an equivalent of `tar x --strip-components=1` is run).</span>
+- <span id="bb85">The package must contain a `package.json` file with `name` and `version` properties.</span>
+- <span id="8e6f">Example:</span>
 
 <!-- -->
 
--   <span id="0b33">  
-    </span>
--   <span id="5eac">  
-    </span>
--   <span id="0278">`npm install <tarball url>`:</span>
--   <span id="854f">  
-    </span>
--   <span id="07bd">Fetch the tarball url, and then install it. In order to distinguish between this and other options, the argument must start with “http://” or “https://”</span>
--   <span id="c17f">  
-    </span>
--   <span id="bd5d">Example:</span>
+- <span id="f589">`npm install ./package.tgz`</span>
 
 <!-- -->
 
--   <span id="4e98">`npm install https://github.com/indexzero/forever/tarball/v0.5.6`</span>
+- <span id="0b33">  
+  </span>
+- <span id="5eac">  
+  </span>
+- <span id="0278">`npm install <tarball url>`:</span>
+- <span id="854f">  
+  </span>
+- <span id="07bd">Fetch the tarball url, and then install it. In order to distinguish between this and other options, the argument must start with “http://” or “https://”</span>
+- <span id="c17f">  
+  </span>
+- <span id="bd5d">Example:</span>
 
 <!-- -->
 
--   <span id="7d7a">  
-    </span>
--   <span id="5a94">  
-    </span>
--   <span id="59ea">`npm install [<@scope>/]<name>`:</span>
--   <span id="c94c">  
-    </span>
--   <span id="135e">Do a `<name>@<tag>` install, where `<tag>` is the "tag" config. (See `config`. The config's default value is `latest`.)</span>
--   <span id="e79b">  
-    </span>
--   <span id="82c5">In most cases, this will install the version of the modules tagged as `latest` on the npm registry.</span>
--   <span id="fd03">  
-    </span>
--   <span id="0898">Example:</span>
+- <span id="4e98">`npm install https://github.com/indexzero/forever/tarball/v0.5.6`</span>
 
 <!-- -->
 
--   <span id="7941">`npm install sax`</span>
+- <span id="7d7a">  
+  </span>
+- <span id="5a94">  
+  </span>
+- <span id="59ea">`npm install [<@scope>/]<name>`:</span>
+- <span id="c94c">  
+  </span>
+- <span id="135e">Do a `<name>@<tag>` install, where `<tag>` is the "tag" config. (See `config`. The config's default value is `latest`.)</span>
+- <span id="e79b">  
+  </span>
+- <span id="82c5">In most cases, this will install the version of the modules tagged as `latest` on the npm registry.</span>
+- <span id="fd03">  
+  </span>
+- <span id="0898">Example:</span>
 
 <!-- -->
 
--   <span id="d5fd">  
-    </span>
--   <span id="4b24">  
-    </span>
--   <span id="d317">`npm install <alias>@npm:<name>`:</span>
--   <span id="877b">  
-    </span>
--   <span id="a7b6">Install a package under a custom alias. Allows multiple versions of a same-name package side-by-side, more convenient import names for packages with otherwise long ones and using git forks replacements or forked npm packages as replacements. Aliasing works only on your project and does not rename packages in transitive dependencies. Aliases should follow the naming conventions stated in `validate-npm-package-name`.</span>
--   <span id="d14f">  
-    </span>
--   <span id="9cdd">Examples:</span>
+- <span id="7941">`npm install sax`</span>
 
 <!-- -->
 
--   <span id="091f">`npm install my-react@npm:react   npm install jquery2@npm:jquery@2   npm install jquery3@npm:jquery@3   npm install npa@npm:npm-package-arg`</span>
+- <span id="d5fd">  
+  </span>
+- <span id="4b24">  
+  </span>
+- <span id="d317">`npm install <alias>@npm:<name>`:</span>
+- <span id="877b">  
+  </span>
+- <span id="a7b6">Install a package under a custom alias. Allows multiple versions of a same-name package side-by-side, more convenient import names for packages with otherwise long ones and using git forks replacements or forked npm packages as replacements. Aliasing works only on your project and does not rename packages in transitive dependencies. Aliases should follow the naming conventions stated in `validate-npm-package-name`.</span>
+- <span id="d14f">  
+  </span>
+- <span id="9cdd">Examples:</span>
 
 <!-- -->
 
--   <span id="2ac1">  
-    </span>
--   <span id="0b7d">`npm install` saves any specified packages into `dependencies` by default. Additionally, you can control where and how they get saved with some additional flags:</span>
--   <span id="eee4">  
-    </span>
--   <span id="d1c7">`-P, --save-prod`: Package will appear in your `dependencies`. This is the default unless `-D` or `-O` are present.</span>
--   <span id="e4be">`-D, --save-dev`: Package will appear in your `devDependencies`.</span>
--   <span id="fe2f">`-O, --save-optional`: Package will appear in your `optionalDependencies`.</span>
--   <span id="b312">`--no-save`: Prevents saving to `dependencies`.</span>
--   <span id="7c51">When using any of the above options to save dependencies to your package.json, there are two additional, optional flags:</span>
--   <span id="cc21">  
-    </span>
--   <span id="e759">`-E, --save-exact`: Saved dependencies will be configured with an exact version rather than using npm's default semver range operator.</span>
--   <span id="3d6b">`-B, --save-bundle`: Saved dependencies will also be added to your `bundleDependencies` list.</span>
--   <span id="b547">Further, if you have an `npm-shrinkwrap.json` or `package-lock.json` then it will be updated as well.</span>
--   <span id="49f1">  
-    </span>
--   <span id="bbe4">`<scope>` is optional. The package will be downloaded from the registry associated with the specified scope. If no registry is associated with the given scope the default registry is assumed. See `scope`.</span>
--   <span id="8edc">  
-    </span>
--   <span id="9e5d">Note: if you do not include the @-symbol on your scope name, npm will interpret this as a GitHub repository instead, see below. Scopes names must also be followed by a slash.</span>
--   <span id="8978">  
-    </span>
--   <span id="a914">Examples:</span>
+- <span id="091f">`npm install my-react@npm:react npm install jquery2@npm:jquery@2 npm install jquery3@npm:jquery@3 npm install npa@npm:npm-package-arg`</span>
 
 <!-- -->
 
--   <span id="2f95">`npm install sax npm install githubname/reponame npm install @myorg/privatepackage npm install node-tap --save-dev npm install dtrace-provider --save-optional npm install readable-stream --save-exact npm install ansi-regex --save-bundle`</span>
+- <span id="2ac1">  
+  </span>
+- <span id="0b7d">`npm install` saves any specified packages into `dependencies` by default. Additionally, you can control where and how they get saved with some additional flags:</span>
+- <span id="eee4">  
+  </span>
+- <span id="d1c7">`-P, --save-prod`: Package will appear in your `dependencies`. This is the default unless `-D` or `-O` are present.</span>
+- <span id="e4be">`-D, --save-dev`: Package will appear in your `devDependencies`.</span>
+- <span id="fe2f">`-O, --save-optional`: Package will appear in your `optionalDependencies`.</span>
+- <span id="b312">`--no-save`: Prevents saving to `dependencies`.</span>
+- <span id="7c51">When using any of the above options to save dependencies to your package.json, there are two additional, optional flags:</span>
+- <span id="cc21">  
+  </span>
+- <span id="e759">`-E, --save-exact`: Saved dependencies will be configured with an exact version rather than using npm's default semver range operator.</span>
+- <span id="3d6b">`-B, --save-bundle`: Saved dependencies will also be added to your `bundleDependencies` list.</span>
+- <span id="b547">Further, if you have an `npm-shrinkwrap.json` or `package-lock.json` then it will be updated as well.</span>
+- <span id="49f1">  
+  </span>
+- <span id="bbe4">`<scope>` is optional. The package will be downloaded from the registry associated with the specified scope. If no registry is associated with the given scope the default registry is assumed. See `scope`.</span>
+- <span id="8edc">  
+  </span>
+- <span id="9e5d">Note: if you do not include the @-symbol on your scope name, npm will interpret this as a GitHub repository instead, see below. Scopes names must also be followed by a slash.</span>
+- <span id="8978">  
+  </span>
+- <span id="a914">Examples:</span>
 
 <!-- -->
 
--   <span id="e919">  
-    </span>
--   <span id="c557">**Note**: If there is a file or folder named `<name>` in the current working directory, then it will try to install that, and only try to fetch the package by name if it is not valid.</span>
--   <span id="96d9">  
-    </span>
--   <span id="6899">`npm install [<@scope>/]<name>@<tag>`:</span>
--   <span id="f410">  
-    </span>
--   <span id="aa9a">Install the version of the package that is referenced by the specified tag. If the tag does not exist in the registry data for that package, then this will fail.</span>
--   <span id="d07d">  
-    </span>
--   <span id="3d31">Example:</span>
+- <span id="2f95">`npm install sax npm install githubname/reponame npm install @myorg/privatepackage npm install node-tap --save-dev npm install dtrace-provider --save-optional npm install readable-stream --save-exact npm install ansi-regex --save-bundle`</span>
 
 <!-- -->
 
--   <span id="41c2">`npm install sax@latest npm install @myorg/mypackage@latest`</span>
+- <span id="e919">  
+  </span>
+- <span id="c557">**Note**: If there is a file or folder named `<name>` in the current working directory, then it will try to install that, and only try to fetch the package by name if it is not valid.</span>
+- <span id="96d9">  
+  </span>
+- <span id="6899">`npm install [<@scope>/]<name>@<tag>`:</span>
+- <span id="f410">  
+  </span>
+- <span id="aa9a">Install the version of the package that is referenced by the specified tag. If the tag does not exist in the registry data for that package, then this will fail.</span>
+- <span id="d07d">  
+  </span>
+- <span id="3d31">Example:</span>
 
 <!-- -->
 
--   <span id="98e6">  
-    </span>
--   <span id="c032">  
-    </span>
--   <span id="5999">`npm install [<@scope>/]<name>@<version>`:</span>
--   <span id="6104">  
-    </span>
--   <span id="3d5e">Install the specified version of the package. This will fail if the version has not been published to the registry.</span>
--   <span id="16c5">  
-    </span>
--   <span id="4f6a">Example:</span>
+- <span id="41c2">`npm install sax@latest npm install @myorg/mypackage@latest`</span>
 
 <!-- -->
 
--   <span id="c722">`npm install sax@0.1.1 npm install @myorg/privatepackage@1.5.0`</span>
+- <span id="98e6">  
+  </span>
+- <span id="c032">  
+  </span>
+- <span id="5999">`npm install [<@scope>/]<name>@<version>`:</span>
+- <span id="6104">  
+  </span>
+- <span id="3d5e">Install the specified version of the package. This will fail if the version has not been published to the registry.</span>
+- <span id="16c5">  
+  </span>
+- <span id="4f6a">Example:</span>
 
 <!-- -->
 
--   <span id="b893">  
-    </span>
--   <span id="13d4">  
-    </span>
--   <span id="5091">`npm install [<@scope>/]<name>@<version range>`:</span>
--   <span id="c73b">  
-    </span>
--   <span id="e303">Install a version of the package matching the specified version range. This will follow the same rules for resolving dependencies described in `package.json`.</span>
--   <span id="cc74">  
-    </span>
--   <span id="1426">Note that most version ranges must be put in quotes so that your shell will treat it as a single argument.</span>
--   <span id="d0ee">  
-    </span>
--   <span id="829e">Example:</span>
+- <span id="c722">`npm install sax@0.1.1 npm install @myorg/privatepackage@1.5.0`</span>
 
 <!-- -->
 
--   <span id="8844">`npm install sax@">=0.1.0 <0.2.0" npm install @myorg/privatepackage@">=0.1.0 <0.2.0"`</span>
+- <span id="b893">  
+  </span>
+- <span id="13d4">  
+  </span>
+- <span id="5091">`npm install [<@scope>/]<name>@<version range>`:</span>
+- <span id="c73b">  
+  </span>
+- <span id="e303">Install a version of the package matching the specified version range. This will follow the same rules for resolving dependencies described in `package.json`.</span>
+- <span id="cc74">  
+  </span>
+- <span id="1426">Note that most version ranges must be put in quotes so that your shell will treat it as a single argument.</span>
+- <span id="d0ee">  
+  </span>
+- <span id="829e">Example:</span>
 
 <!-- -->
 
--   <span id="63bb">  
-    </span>
--   <span id="4a3d">  
-    </span>
--   <span id="78db">`npm install <git remote url>`:</span>
--   <span id="274b">  
-    </span>
--   <span id="c2f4">Installs the package from the hosted git provider, cloning it with `git`. For a full git remote url, only that URL will be attempted.</span>
+- <span id="8844">`npm install sax@">=0.1.0 <0.2.0" npm install @myorg/privatepackage@">=0.1.0 <0.2.0"`</span>
 
 <!-- -->
 
--   <span id="8da5">`<protocol>://[<user>[:<password>]@]<hostname>[:<port>][:][/]<path>[#<commit-ish> | #semver:<semver>]`</span>
+- <span id="63bb">  
+  </span>
+- <span id="4a3d">  
+  </span>
+- <span id="78db">`npm install <git remote url>`:</span>
+- <span id="274b">  
+  </span>
+- <span id="c2f4">Installs the package from the hosted git provider, cloning it with `git`. For a full git remote url, only that URL will be attempted.</span>
 
 <!-- -->
 
--   <span id="2e3e">  
-    </span>
--   <span id="d169">`<protocol>` is one of `git`, `git+ssh`, `git+http`, `git+https`, or `git+file`.</span>
--   <span id="352c">  
-    </span>
--   <span id="5bf2">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then the default branch of the repository is used.</span>
--   <span id="1881">  
-    </span>
--   <span id="c468">If the repository makes use of submodules, those submodules will be cloned as well.</span>
--   <span id="43bf">  
-    </span>
--   <span id="33df">If the package being installed contains a `prepare` script, its `dependencies` and `devDependencies` will be installed, and the prepare script will be run, before the package is packaged and installed.</span>
--   <span id="d549">  
-    </span>
--   <span id="3946">The following git environment variables are recognized by npm and will be added to the environment when running git:</span>
--   <span id="3f36">  
-    </span>
--   <span id="5809">`GIT_ASKPASS`</span>
--   <span id="a901">`GIT_EXEC_PATH`</span>
--   <span id="4c5e">`GIT_PROXY_COMMAND`</span>
--   <span id="de94">`GIT_SSH`</span>
--   <span id="96dc">`GIT_SSH_COMMAND`</span>
--   <span id="2855">`GIT_SSL_CAINFO`</span>
--   <span id="1fef">`GIT_SSL_NO_VERIFY`</span>
--   <span id="96d5">See the git man page for details.</span>
--   <span id="8626">  
-    </span>
--   <span id="0fc0">Examples:</span>
+- <span id="8da5">`<protocol>://[<user>[:<password>]@]<hostname>[:<port>][:][/]<path>[#<commit-ish> | #semver:<semver>]`</span>
 
 <!-- -->
 
--   <span id="bf37">`npm install git+ssh://git@github.com:npm/cli.git#v1.0.27 npm install git+ssh://git@github.com:npm/cli#semver:^5.0 npm install git+https://isaacs@github.com/npm/cli.git npm install git://github.com/npm/cli.git#v1.0.27 GIT_SSH_COMMAND='ssh -i ~/.ssh/custom_ident' npm install git+ssh://git@github.com:npm/cli.git`</span>
+- <span id="2e3e">  
+  </span>
+- <span id="d169">`<protocol>` is one of `git`, `git+ssh`, `git+http`, `git+https`, or `git+file`.</span>
+- <span id="352c">  
+  </span>
+- <span id="5bf2">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then the default branch of the repository is used.</span>
+- <span id="1881">  
+  </span>
+- <span id="c468">If the repository makes use of submodules, those submodules will be cloned as well.</span>
+- <span id="43bf">  
+  </span>
+- <span id="33df">If the package being installed contains a `prepare` script, its `dependencies` and `devDependencies` will be installed, and the prepare script will be run, before the package is packaged and installed.</span>
+- <span id="d549">  
+  </span>
+- <span id="3946">The following git environment variables are recognized by npm and will be added to the environment when running git:</span>
+- <span id="3f36">  
+  </span>
+- <span id="5809">`GIT_ASKPASS`</span>
+- <span id="a901">`GIT_EXEC_PATH`</span>
+- <span id="4c5e">`GIT_PROXY_COMMAND`</span>
+- <span id="de94">`GIT_SSH`</span>
+- <span id="96dc">`GIT_SSH_COMMAND`</span>
+- <span id="2855">`GIT_SSL_CAINFO`</span>
+- <span id="1fef">`GIT_SSL_NO_VERIFY`</span>
+- <span id="96d5">See the git man page for details.</span>
+- <span id="8626">  
+  </span>
+- <span id="0fc0">Examples:</span>
 
 <!-- -->
 
--   <span id="0fb5">  
-    </span>
--   <span id="8911">  
-    </span>
--   <span id="44d6">`npm install <githubname>/<githubrepo>[#<commit-ish>]`:</span>
--   <span id="4383">`npm install github:<githubname>/<githubrepo>[#<commit-ish>]`:</span>
--   <span id="9c79">  
-    </span>
--   <span id="aee0">Install the package at `https://github.com/githubname/githubrepo` by attempting to clone it using `git`.</span>
--   <span id="7019">  
-    </span>
--   <span id="641e">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then `master` is used.</span>
--   <span id="809e">  
-    </span>
--   <span id="2492">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
--   <span id="cd4e">  
-    </span>
--   <span id="9336">Examples:</span>
+- <span id="bf37">`npm install git+ssh://git@github.com:npm/cli.git#v1.0.27 npm install git+ssh://git@github.com:npm/cli#semver:^5.0 npm install git+https://isaacs@github.com/npm/cli.git npm install git://github.com/npm/cli.git#v1.0.27 GIT_SSH_COMMAND='ssh -i ~/.ssh/custom_ident' npm install git+ssh://git@github.com:npm/cli.git`</span>
 
 <!-- -->
 
--   <span id="2e9b">`npm install mygithubuser/myproject npm install github:mygithubuser/myproject`</span>
+- <span id="0fb5">  
+  </span>
+- <span id="8911">  
+  </span>
+- <span id="44d6">`npm install <githubname>/<githubrepo>[#<commit-ish>]`:</span>
+- <span id="4383">`npm install github:<githubname>/<githubrepo>[#<commit-ish>]`:</span>
+- <span id="9c79">  
+  </span>
+- <span id="aee0">Install the package at `https://github.com/githubname/githubrepo` by attempting to clone it using `git`.</span>
+- <span id="7019">  
+  </span>
+- <span id="641e">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then `master` is used.</span>
+- <span id="809e">  
+  </span>
+- <span id="2492">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
+- <span id="cd4e">  
+  </span>
+- <span id="9336">Examples:</span>
 
 <!-- -->
 
--   <span id="5535">  
-    </span>
--   <span id="0075">  
-    </span>
--   <span id="5d5e">`npm install gist:[<githubname>/]<gistID>[#<commit-ish>|#semver:<semver>]`:</span>
--   <span id="096b">  
-    </span>
--   <span id="eecb">Install the package at `https://gist.github.com/gistID` by attempting to clone it using `git`. The GitHub username associated with the gist is optional and will not be saved in `package.json`.</span>
--   <span id="4851">  
-    </span>
--   <span id="7541">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
--   <span id="9498">  
-    </span>
--   <span id="b4f6">Example:</span>
+- <span id="2e9b">`npm install mygithubuser/myproject npm install github:mygithubuser/myproject`</span>
 
 <!-- -->
 
--   <span id="e50b">`npm install gist:101a11beef`</span>
+- <span id="5535">  
+  </span>
+- <span id="0075">  
+  </span>
+- <span id="5d5e">`npm install gist:[<githubname>/]<gistID>[#<commit-ish>|#semver:<semver>]`:</span>
+- <span id="096b">  
+  </span>
+- <span id="eecb">Install the package at `https://gist.github.com/gistID` by attempting to clone it using `git`. The GitHub username associated with the gist is optional and will not be saved in `package.json`.</span>
+- <span id="4851">  
+  </span>
+- <span id="7541">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
+- <span id="9498">  
+  </span>
+- <span id="b4f6">Example:</span>
 
 <!-- -->
 
--   <span id="7ee4">  
-    </span>
--   <span id="22a7">  
-    </span>
--   <span id="18f5">`npm install bitbucket:<bitbucketname>/<bitbucketrepo>[#<commit-ish>]`:</span>
--   <span id="8c24">  
-    </span>
--   <span id="d419">Install the package at `https://bitbucket.org/bitbucketname/bitbucketrepo` by attempting to clone it using `git`.</span>
--   <span id="d251">  
-    </span>
--   <span id="0499">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then `master` is used.</span>
--   <span id="4199">  
-    </span>
--   <span id="66d5">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
--   <span id="bb2c">  
-    </span>
--   <span id="53cb">Example:</span>
+- <span id="e50b">`npm install gist:101a11beef`</span>
 
 <!-- -->
 
--   <span id="665c">`npm install bitbucket:mybitbucketuser/myproject`</span>
+- <span id="7ee4">  
+  </span>
+- <span id="22a7">  
+  </span>
+- <span id="18f5">`npm install bitbucket:<bitbucketname>/<bitbucketrepo>[#<commit-ish>]`:</span>
+- <span id="8c24">  
+  </span>
+- <span id="d419">Install the package at `https://bitbucket.org/bitbucketname/bitbucketrepo` by attempting to clone it using `git`.</span>
+- <span id="d251">  
+  </span>
+- <span id="0499">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then `master` is used.</span>
+- <span id="4199">  
+  </span>
+- <span id="66d5">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
+- <span id="bb2c">  
+  </span>
+- <span id="53cb">Example:</span>
 
 <!-- -->
 
--   <span id="b9e8">  
-    </span>
--   <span id="e5f4">  
-    </span>
--   <span id="5ff2">`npm install gitlab:<gitlabname>/<gitlabrepo>[#<commit-ish>]`:</span>
--   <span id="0652">  
-    </span>
--   <span id="0a7e">Install the package at `https://gitlab.com/gitlabname/gitlabrepo` by attempting to clone it using `git`.</span>
--   <span id="deef">  
-    </span>
--   <span id="4201">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then `master` is used.</span>
--   <span id="566a">  
-    </span>
--   <span id="3536">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
--   <span id="cf94">  
-    </span>
--   <span id="a26e">Example:</span>
+- <span id="665c">`npm install bitbucket:mybitbucketuser/myproject`</span>
 
 <!-- -->
 
--   <span id="bba2">`npm install gitlab:mygitlabuser/myproject npm install gitlab:myusr/myproj#semver:^5.0`</span>
+- <span id="b9e8">  
+  </span>
+- <span id="e5f4">  
+  </span>
+- <span id="5ff2">`npm install gitlab:<gitlabname>/<gitlabrepo>[#<commit-ish>]`:</span>
+- <span id="0652">  
+  </span>
+- <span id="0a7e">Install the package at `https://gitlab.com/gitlabname/gitlabrepo` by attempting to clone it using `git`.</span>
+- <span id="deef">  
+  </span>
+- <span id="4201">If `#<commit-ish>` is provided, it will be used to clone exactly that commit. If the commit-ish has the format `#semver:<semver>`, `<semver>` can be any valid semver range or exact version, and npm will look for any tags or refs matching that range in the remote repository, much as it would for a registry dependency. If neither `#<commit-ish>` or `#semver:<semver>` is specified, then `master` is used.</span>
+- <span id="566a">  
+  </span>
+- <span id="3536">As with regular git dependencies, `dependencies` and `devDependencies` will be installed if the package has a `prepare` script, before the package is done installing.</span>
+- <span id="cf94">  
+  </span>
+- <span id="a26e">Example:</span>
 
 <!-- -->
 
--   <span id="3601">  
-    </span>
--   <span id="be00">  
-    </span>
+- <span id="bba2">`npm install gitlab:mygitlabuser/myproject npm install gitlab:myusr/myproj#semver:^5.0`</span>
+
+<!-- -->
+
+- <span id="3601">  
+  </span>
+- <span id="be00">  
+  </span>
 
 You may combine multiple arguments, and even multiple types of arguments. For example:
 
@@ -862,10 +839,6 @@ There are some very rare and pathological edge-cases where a cycle can cause npm
 where `A` is some version of a package, and `A'` is a different version of the same package. Because `B` depends on a different version of `A` than the one that is already in the tree, it must install a separate copy. The same is true of `A'`, which must install `B'`. Because `B'` depends on the original version of `A`, which has been overridden, the cycle falls into infinite regress.
 
 To avoid this situation, npm flat-out refuses to install any `name@version` that is already present anywhere in the tree of package folder ancestors. A more correct, but more complex, solution would be to symlink the existing version into the new location. If this ever affects a real use-case, it will be investigated.
-
-  
-
-  
 
 [View original.](https://medium.com/p/6a33e7f6ed85)
 

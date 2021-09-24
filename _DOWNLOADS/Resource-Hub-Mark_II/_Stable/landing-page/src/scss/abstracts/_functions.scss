@@ -3,7 +3,7 @@
 // Used in _mixins.scss [@mixin font-size] ----------------------------
 // --------------------------------------------------------------------
 @function get-font-size($size, $elem) {
-	@return nth(map-get(map-get($font__scale, $elem), $size), 1);
+  @return nth(map-get(map-get($font__scale, $elem), $size), 1);
 }
 
 // --------------------------------------------------------------------
@@ -11,7 +11,7 @@
 // Used in _mixins.scss [@mixin font-size] ----------------------------
 // --------------------------------------------------------------------
 @function get-line-height($size, $elem) {
-	@return nth(map-get(map-get($font__scale, $elem), $size), 2);
+  @return nth(map-get(map-get($font__scale, $elem), $size), 2);
 }
 
 // --------------------------------------------------------------------
@@ -19,7 +19,7 @@
 // Used in _mixins.scss [@mixin font-size] ----------------------------
 // --------------------------------------------------------------------
 @function get-kerning($size, $elem) {
-	@return nth(map-get(map-get($font__scale, $elem), $size), 3);
+  @return nth(map-get(map-get($font__scale, $elem), $size), 3);
 }
 
 // --------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Used in _mixins.scss [@mixin font-family] --------------------------
 // --------------------------------------------------------------------
 @function get-font-family($elem) {
-	@return map-get($font__family, $elem);
+  @return map-get($font__family, $elem);
 }
 
 // --------------------------------------------------------------------
@@ -35,7 +35,7 @@
 // Used in _mixins.scss [@mixin font-weight] --------------------------
 // --------------------------------------------------------------------
 @function get-font-weight($elem) {
-	@return map-get($font__weight, $elem);
+  @return map-get($font__weight, $elem);
 }
 
 // --------------------------------------------------------------------
@@ -43,7 +43,7 @@
 // Used in _mixins.scss [@mixin font-size] ----------------------------
 // --------------------------------------------------------------------
 @function get-content-padding($elem) {
-	@return map-get($content__padding, $elem);
+  @return map-get($content__padding, $elem);
 }
 
 // --------------------------------------------------------------------
@@ -51,5 +51,5 @@
 // Usage: color(typography, 1) ----------------------------------------------
 // --------------------------------------------------------------------
 @function color($elem, $variant) {
-	@return map-get(map-get($color, $elem), $variant);
+  @return map-get(map-get($color, $elem), $variant);
 }

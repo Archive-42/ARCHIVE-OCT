@@ -1,9 +1,8 @@
-Getting Comfortable With Python
-===============================
+# Getting Comfortable With Python
 
 Disclaimer: There’s a super awesome cheatsheet at the bottom of this article…
 
-------------------------------------------------------------------------
+---
 
 ### Getting Comfortable With Python
 
@@ -25,18 +24,18 @@ My other Python articles:
 <a href="https://medium.com/webdevhub/notes-i-wish-i-had-when-i-started-learning-python-16ce4244be12" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://medium.com/webdevhub/notes-i-wish-i-had-when-i-started-learning-python-16ce4244be12"><strong>Notes I Wish I Had When I Started Learning Python</strong><br />
 <em>Plus resources for learning data structures and algorithms in python at the bottom of this article!</em>medium.com</a><a href="https://medium.com/webdevhub/notes-i-wish-i-had-when-i-started-learning-python-16ce4244be12" class="js-mixtapeImage mixtapeImage u-ignoreBlock"></a>
 
-------------------------------------------------------------------------
+---
 
 ### Use a print statement
 
 **Overview**
 
-Learning to use the print function in Python is the perfect way to start writing Python code. When learning to write in any new programming language, one of the first things you want to do is get some *output* from your program. The print function is how you output the value of an object to the screen. You will learn how to use the print function in Python.
+Learning to use the print function in Python is the perfect way to start writing Python code. When learning to write in any new programming language, one of the first things you want to do is get some _output_ from your program. The print function is how you output the value of an object to the screen. You will learn how to use the print function in Python.
 
 Using print with no arguments:
 
     >>> print()
-     
+
      >>>
 
 Note: the empty line after calling the print function. The default end value when calling print is the newline character \\\\n.
@@ -133,7 +132,7 @@ Now, get some practice using the print function by completing the Try: below.
 
 **Additional Resources**
 
--   <span id="b977"><a href="https://www.w3schools.com/python/ref_func_print.asp" class="markup--anchor markup--li-anchor">https://www.w3schools.com/python/ref_func_print.asp</a></span>
+- <span id="b977"><a href="https://www.w3schools.com/python/ref_func_print.asp" class="markup--anchor markup--li-anchor">https://www.w3schools.com/python/ref_func_print.asp</a></span>
 
 **Use white space to denote blocks**
 

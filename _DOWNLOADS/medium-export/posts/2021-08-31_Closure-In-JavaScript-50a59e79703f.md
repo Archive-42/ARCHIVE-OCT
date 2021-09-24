@@ -1,9 +1,8 @@
-Closure In JavaScript
-=====================
+# Closure In JavaScript
 
 And why you’ve been stressed about it for no reason.
 
-------------------------------------------------------------------------
+---
 
 ### Closure In JavaScript
 
@@ -15,9 +14,9 @@ And why you’ve been stressed about it for no reason.
 
 A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
 
--   <span id="5a64">Variables declared in its own scope</span>
--   <span id="f46e">Variables declared in the scope of the parent function</span>
--   <span id="97c3">Variables declared in the global scope</span>
+- <span id="5a64">Variables declared in its own scope</span>
+- <span id="f46e">Variables declared in the scope of the parent function</span>
+- <span id="97c3">Variables declared in the global scope</span>
 
 In JavaScript, all functions are closures because they have access to the outer scope, but most functions don’t utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
 
@@ -25,15 +24,15 @@ In addition, closures are the only way to store private data that can’t be acc
 
 #### Good to hear
 
--   <span id="d813">Closures are useful because they let you associate data with a function that operates on that data.</span>
--   <span id="ce0c">A closure can substitute an object with only a single method.</span>
--   <span id="19d5">Closures can be used to emulate private properties and methods.</span>
+- <span id="d813">Closures are useful because they let you associate data with a function that operates on that data.</span>
+- <span id="ce0c">A closure can substitute an object with only a single method.</span>
+- <span id="19d5">Closures can be used to emulate private properties and methods.</span>
 
 Additional links
 
--   <span id="5977"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" class="markup--anchor markup--li-anchor">MDN docs for closures</a></span>
--   <span id="f18b"><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" class="markup--anchor markup--li-anchor">What is a closure</a></span>
--   <span id="62c7"><a href="https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8" class="markup--anchor markup--li-anchor">I never understood JavaScript closures</a></span>
+- <span id="5977"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" class="markup--anchor markup--li-anchor">MDN docs for closures</a></span>
+- <span id="f18b"><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" class="markup--anchor markup--li-anchor">What is a closure</a></span>
+- <span id="62c7"><a href="https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8" class="markup--anchor markup--li-anchor">I never understood JavaScript closures</a></span>
 
 A closure is the combination of a function bundled together (enclosed) with **references to its surrounding state (the lexical environment)**. In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
 
@@ -113,15 +112,15 @@ If a variable is not found anywhere, that’s an error in strict mode. Without u
 
 ### Closure
 
--   <span id="41d3">A closure is a function that remembers its outer variables and can access them.</span>
--   <span id="5536">Combination of a function and the lexical environment within which that function was declared</span>
--   <span id="2ba2">The `closure` is the function object itself.</span>
--   <span id="4f31">Accessing variables outside of the immediate lexical scope creates a closure.</span>
--   <span id="7958">Happens when we have a nested functions.</span>
--   <span id="6fe2">JavaScript engines also may optimize, discard variables that are unused to save memory.</span>
--   <span id="071c">A `Lexical Environment` object lives in the `heap` as long as there is a function which may use it. And when there are none, it is cleared.</span>
--   <span id="e081">All functions in JavaScript are closures.</span>
--   <span id="a0ab">The internal property `[[Environment]]` of a function, refers to the outer lexical environment</span>
+- <span id="41d3">A closure is a function that remembers its outer variables and can access them.</span>
+- <span id="5536">Combination of a function and the lexical environment within which that function was declared</span>
+- <span id="2ba2">The `closure` is the function object itself.</span>
+- <span id="4f31">Accessing variables outside of the immediate lexical scope creates a closure.</span>
+- <span id="7958">Happens when we have a nested functions.</span>
+- <span id="6fe2">JavaScript engines also may optimize, discard variables that are unused to save memory.</span>
+- <span id="071c">A `Lexical Environment` object lives in the `heap` as long as there is a function which may use it. And when there are none, it is cleared.</span>
+- <span id="e081">All functions in JavaScript are closures.</span>
+- <span id="a0ab">The internal property `[[Environment]]` of a function, refers to the outer lexical environment</span>
 
 ### Question: Look at the code below, you have a for loop if you have setTimeout inside it. If log the loop counter inside setTimeout, what will be logged?
 
@@ -186,11 +185,11 @@ So the closure function **inner**() is getting the value of **b = 10** from its 
 
 #### Let’s see step-by-step what happens when the outer() function is first invoked:
 
--   <span id="d0f8">1. Variable b is created, its scope is limited to the outer() function, and its value is set to 10.</span>
--   <span id="0887">2. The next line is a function declaration, so nothing to execute.</span>
--   <span id="9d15">3. On the last line, return inner looks for a variable called inner, finds that this variable inner is actually a function, and so returns the entire body of the function inner.</span>
--   <span id="1344">4. Note that the return statement does not execute the inner function — a function is executed only when followed by () — , but rather the return statement returns the entire body of the function.</span>
--   <span id="4e55">5. The contents returned by the return statement are stored in X.</span>
+- <span id="d0f8">1. Variable b is created, its scope is limited to the outer() function, and its value is set to 10.</span>
+- <span id="0887">2. The next line is a function declaration, so nothing to execute.</span>
+- <span id="9d15">3. On the last line, return inner looks for a variable called inner, finds that this variable inner is actually a function, and so returns the entire body of the function inner.</span>
+- <span id="1344">4. Note that the return statement does not execute the inner function — a function is executed only when followed by () — , but rather the return statement returns the entire body of the function.</span>
+- <span id="4e55">5. The contents returned by the return statement are stored in X.</span>
 
 Thus, X will store the following:
 
@@ -203,8 +202,8 @@ This can be easily verified by adding the following to the JavaScript code:
 
     console.log(typeof X) //X is of type function
 
--   <span id="fc52">6. Function outer() finishes execution, and all variables within the scope of outer() now no longer exist.</span>
--   <span id="f9cd">7. This last part is important to understand. Once a function completes its execution, any variables that were defined inside the function scope cease to exist.</span>
+- <span id="fc52">6. Function outer() finishes execution, and all variables within the scope of outer() now no longer exist.</span>
+- <span id="f9cd">7. This last part is important to understand. Once a function completes its execution, any variables that were defined inside the function scope cease to exist.</span>
 
 > The lifespan of a variable defined inside of a function is the lifespan of the function execution.
 
@@ -214,27 +213,27 @@ This is the most important point to realize. The variables inside the functions 
 
 Now see the main point of this exercise — that how a closure function retains its enclosing function’s variable values, even after the enclosing function has returned.
 
--   <span id="2c6b">A. When we execute X(), we are essentially executing the `inner` function.</span>
--   <span id="2f2e">B. If I run &lt; console.log(X()) &gt; the output will be below</span>
+- <span id="2c6b">A. When we execute X(), we are essentially executing the `inner` function.</span>
+- <span id="2f2e">B. If I run &lt; console.log(X()) &gt; the output will be below</span>
 
 <!-- -->
 
     30
     undefined
 
--   <span id="1b5c">C. So the closure function **inner**() is getting the value of **b = 10** from its enclosing **outer()** function ever after **outer()** function has returned.</span>
+- <span id="1b5c">C. So the closure function **inner**() is getting the value of **b = 10** from its enclosing **outer()** function ever after **outer()** function has returned.</span>
 
 #### Let us examine step-by-step what happens when X() is executed the first time:
 
--   <span id="881a">1. Variable a is created, and its value is set to 20.</span>
--   <span id="8b24">2. JavaScript now tries to execute a + b. Here is where things get interesting. JavaScript knows that a exists since it just created it. However, variable b no longer exists. Since b is part of the outer function, b would only exist while the outer() function is in execution. Since the outer() function finished execution long before we invoked X(), any variables within the scope of the outer function cease to exist, and hence variable b no longer exists.</span>
+- <span id="881a">1. Variable a is created, and its value is set to 20.</span>
+- <span id="8b24">2. JavaScript now tries to execute a + b. Here is where things get interesting. JavaScript knows that a exists since it just created it. However, variable b no longer exists. Since b is part of the outer function, b would only exist while the outer() function is in execution. Since the outer() function finished execution long before we invoked X(), any variables within the scope of the outer function cease to exist, and hence variable b no longer exists.</span>
 
 #### Closures
 
--   <span id="bc72">A. The inner function can access the variables of the enclosing function due to closures in JavaScript. In other words, the inner function preserves the scope chain of the enclosing function at the time the enclosing function was executed, and thus can access the enclosing function’s variables.</span>
--   <span id="d87c">B. In our example, the inner function had preserved the value of b=10 when the outer() function was executed, and continued to preserve (closure) it.</span>
--   <span id="1f8f">C. It now refers to its scope chain and notices that it does have the value of variable b within its scope chain, since it had enclosed the value of b within a closure at the point when the outer function had executed.</span>
--   <span id="cbcc">D. Thus, JavaScript knows a=20 and b=10, and can calculate a+b.</span>
+- <span id="bc72">A. The inner function can access the variables of the enclosing function due to closures in JavaScript. In other words, the inner function preserves the scope chain of the enclosing function at the time the enclosing function was executed, and thus can access the enclosing function’s variables.</span>
+- <span id="d87c">B. In our example, the inner function had preserved the value of b=10 when the outer() function was executed, and continued to preserve (closure) it.</span>
+- <span id="1f8f">C. It now refers to its scope chain and notices that it does have the value of variable b within its scope chain, since it had enclosed the value of b within a closure at the point when the outer function had executed.</span>
+- <span id="cbcc">D. Thus, JavaScript knows a=20 and b=10, and can calculate a+b.</span>
 
 So the inner function has three scope chains:
 
@@ -308,9 +307,9 @@ access to any global variables that may be defined
         return result;
     }
 
-------------------------------------------------------------------------
+---
 
-    // In the following examples we will predict what will 
+    // In the following examples we will predict what will
     // be printed to the terminal
 
     // 1
@@ -359,7 +358,7 @@ access to any global variables that may be defined
     console.log(breakfastOrder('cappuccino'));
     console.log(breakfastOrder('pancakes'));
 
-------------------------------------------------------------------------
+---
 
     /* Problem statement - we would like to display numbers 1 to 5 at once sequentially. But we want to delay the output and have each number display 1 second apart from each other consecutively.
 
@@ -428,7 +427,7 @@ access to any global variables that may be defined
 
     /***********************************************************************
     Let's practice writing closures by creating a function named `sandwichMaker()`.
-    This function will return another function that will accept a string to add 
+    This function will return another function that will accept a string to add
     to the sandwich order (which will start off with a default "tomato" ingredient),
     separating each incoming ingredient with "and".
 

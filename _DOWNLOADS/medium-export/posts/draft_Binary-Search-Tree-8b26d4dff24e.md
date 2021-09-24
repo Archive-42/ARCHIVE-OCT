@@ -1,11 +1,10 @@
-Binary Search Tree
-==================
+# Binary Search Tree
 
 Google Colaboratory
 
-------------------------------------------------------------------------
+---
 
-###  
+###
 
 <a href="https://www.cs.usfca.edu/~galles/visualization/BST.html" class="markup--anchor markup--p-anchor">Binary Search Tree</a>
 

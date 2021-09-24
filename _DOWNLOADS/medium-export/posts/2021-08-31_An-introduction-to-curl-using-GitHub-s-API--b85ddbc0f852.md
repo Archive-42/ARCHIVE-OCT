@@ -1,15 +1,14 @@
-An introduction to curl using GitHub’s API.
-===========================================
+# An introduction to curl using GitHub’s API.
 
 An introduction to curl using GitHub's API.
 
-------------------------------------------------------------------------
+---
 
 ### An introduction to curl using GitHub’s API.
 
 #### An introduction to `curl `using <a href="https://gist.github.com/bgoonz/bc5d219c0cccbba674e232f5dab8f357" class="markup--anchor markup--h4-anchor">GitHub's API.</a>
 
-***CURL GIT*** <a href="https://github.com/curl/curl/" class="markup--anchor markup--p-anchor"><strong><em>REPO</em></strong></a>
+**_CURL GIT_** <a href="https://github.com/curl/curl/" class="markup--anchor markup--p-anchor"><strong><em>REPO</em></strong></a>
 
 <figure><img src="https://cdn-images-1.medium.com/max/800/0*MORqHd-XjD6oKRuq.gif" class="graf-image" /></figure>### The Basics
 
@@ -107,8 +106,8 @@ List the authorizations you already have
 
 ### Resources
 
--   <span id="6a9d">HTTParty — Ruby library that makes it easy to create HTTP requests <a href="https://github.com/jnunemaker/httparty" class="markup--anchor markup--li-anchor">https://github.com/jnunemaker/httparty</a></span>
--   <span id="1ba9">Hurl IT — An open source web application to play with curl options <a href="http://hurl.it/" class="markup--anchor markup--li-anchor">http://hurl.it</a></span>
+- <span id="6a9d">HTTParty — Ruby library that makes it easy to create HTTP requests <a href="https://github.com/jnunemaker/httparty" class="markup--anchor markup--li-anchor">https://github.com/jnunemaker/httparty</a></span>
+- <span id="1ba9">Hurl IT — An open source web application to play with curl options <a href="http://hurl.it/" class="markup--anchor markup--li-anchor">http://hurl.it</a></span>
 
 By <a href="https://medium.com/@bryanguner" class="p-author h-card">Bryan Guner</a> on [August 31, 2021](https://medium.com/p/b85ddbc0f852).
 
