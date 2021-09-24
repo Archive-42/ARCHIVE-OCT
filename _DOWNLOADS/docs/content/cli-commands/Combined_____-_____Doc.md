@@ -1,4 +1,3 @@
-
 ---
 section: cli-commands
 title: npm-access
@@ -192,9 +191,11 @@ username/password entry in legacy npm.
 - [npm whoami](/cli-commands/npm-whoami)
 
 ---
+
 section: cli-commands
 title: npm-audit
 description: Run a security audit
+
 ---
 
 # npm-audit(1)
@@ -337,9 +338,11 @@ configuration setting.
 - [config](/using-npm/config)
 
 ---
+
 section: cli-commands
 title: npm-bin
 description: Display npm bin folder
+
 ---
 
 # npm-bin(1)
@@ -365,9 +368,11 @@ Print the folder where npm will install executables.
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-bugs
 description: Bugs for a package in a web browser maybe
+
 ---
 
 # npm-bugs(1)
@@ -416,9 +421,11 @@ The base URL of the npm package registry.
 - [package.json](/configuring-npm/package-json)
 
 ---
+
 section: cli-commands
 title: npm-build
 description: Build a package
+
 ---
 
 # npm-build(1)
@@ -453,9 +460,11 @@ directly, run:
 - [package.json](/configuring-npm/package-json)
 
 ---
+
 section: cli-commands
 title: npm-bundle
 description: REMOVED
+
 ---
 
 # npm-bundle(1)
@@ -475,9 +484,11 @@ Just use `npm install` now to do what `npm bundle` used to do.
 - [npm install](/cli-commands/npm-install)
 
 ---
+
 section: cli-commands
 title: npm-cache
 description: Manipulates packages cache
+
 ---
 
 # npm-cache(1)
@@ -566,9 +577,11 @@ The root cache folder.
 - https://npm.im/pacote
 
 ---
+
 section: cli-commands
 title: npm-ci
 description: Install a project with a clean slate
+
 ---
 
 # npm-ci(1)
@@ -635,9 +648,11 @@ In short, the main differences between using `npm install` and `npm ci` are:
 - [package-locks](/configuring-npm/package-locks)
 
 ---
+
 section: cli-commands
 title: npm-completion
 description: Tab Completion for npm
+
 ---
 
 # npm-completion(1)
@@ -679,9 +694,11 @@ completions based on the arguments.
 - [npm](/cli-commands/npm)
 
 ---
+
 section: cli-commands
 title: npm-config
 description: Manage the npm configuration files
+
 ---
 
 # npm-config(1)
@@ -772,9 +789,11 @@ global config.
 - [npm](/cli-commands/npm)
 
 ---
+
 section: cli-commands
 title: npm-dedupe
 description: Reduce duplication
+
 ---
 
 # npm-dedupe(1)
@@ -841,9 +860,11 @@ result in new modules being installed.
 - [npm install](/cli-commands/npm-install)
 
 ---
+
 section: cli-commands
 title: npm-deprecate
 description: Deprecate a version of a package
+
 ---
 
 # npm-deprecate(1)
@@ -984,9 +1005,11 @@ begin with a number or the letter `v`.
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-docs
 description: Docs for a package in a web browser maybe
+
 ---
 
 # npm-docs(1)
@@ -1036,9 +1059,11 @@ The base URL of the npm package registry.
 - [package.json](/configuring-npm/package-json)
 
 ---
+
 section: cli-commands
 title: npm-doctor
 description: Check your environments
+
 ---
 
 # npm-doctor(1)
@@ -1146,9 +1171,11 @@ cache, you should probably run `npm cache clean` and reset the cache.
 - [npm ping](/cli-commands/npm-ping)
 
 ---
+
 section: cli-commands
 title: npm-edit
 description: Edit an installed package
+
 ---
 
 # npm-edit(1)
@@ -1247,9 +1274,11 @@ The shell to run for the `npm explore` command.
 - [npm install](/cli-commands/npm-install)
 
 ---
+
 section: cli-commands
 title: npm-fund
 description: Retrieve funding information
+
 ---
 
 # npm-fund(1)
@@ -1315,9 +1344,11 @@ If there are multiple funding sources, which 1-indexed source URL to open.
 - [npm ls](/cli-commands/npm-ls)
 
 ---
+
 section: cli-commands
 title: npm-help-search
 description: Search npm help documentation
+
 ---
 
 # npm-help-search(1)
@@ -1359,9 +1390,11 @@ If false, then help-search will just list out the help topics found.
 - [npm help](/cli-commands/npm-help)
 
 ---
+
 section: cli-commands
 title: npm-help
 description: Get help on npm
+
 ---
 
 # npm-help(1)
@@ -1404,9 +1437,11 @@ Set to `"browser"` to view html help content in the default web browser.
 - [npm help-search](/cli-commands/npm-help-search)
 
 ---
+
 section: cli-commands
 title: npm-hook
 description: Manage registry hooks
+
 ---
 
 # npm-hook(1)
@@ -1492,9 +1527,11 @@ request came from your own configured hook.
 - ["Introducing Hooks" blog post](https://blog.npmjs.org/post/145260155635/introducing-hooks-get-notifications-of-npm)
 
 ---
+
 section: cli-commands
 title: npm-init
 description: create a package.json file
+
 ---
 
 # npm-init(1)
@@ -1571,9 +1608,11 @@ will create a scoped package.
 - [npm scope](/using-npm/scope)
 
 ---
+
 section: cli-commands
 title: npm-install-ci-test
 description: Install a project with a clean slate and run tests
+
 ---
 
 # npm install-ci-test(1)
@@ -1598,9 +1637,11 @@ This command runs an `npm ci` followed immediately by an `npm test`.
 - [npm test](/cli-commands/npm-test)
 
 ---
+
 section: cli-commands
 title: npm-install-test
 description: Install package(s) and run tests
+
 ---
 
 # npm install-test(1)
@@ -1634,9 +1675,11 @@ takes exactly the same arguments as `npm install`.
 - [npm test](/cli-commands/npm-test)
 
 ---
+
 section: cli-commands
 title: npm-install
 description: Install a package
+
 ---
 
 # npm-install(1)
@@ -2155,9 +2198,11 @@ affects a real use-case, it will be investigated.
 - [package.json](/configuring-npm/package-json)
 
 ---
+
 section: cli-commands
 title: npm-link
 description: Symlink a package folder
+
 ---
 
 # npm-link(1)
@@ -2247,9 +2292,11 @@ npm link @myorg/privatepackage
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-logout
 description: Log out of the registry
+
 ---
 
 # npm-logout(1)
@@ -2302,9 +2349,11 @@ npm logout --scope=@myco
 - [npm whoami](/cli-commands/npm-whoami)
 
 ---
+
 section: cli-commands
 title: npm-ls
 description: List installed packages
+
 ---
 
 # npm-ls(1)
@@ -2432,9 +2481,11 @@ Set it to false in order to use all-ansi output.
 - [npm update](/cli-commands/npm-update)
 
 ---
+
 section: cli-commands
 title: npm-org
 description: Manage orgs
+
 ---
 
 # npm-org(1)
@@ -2498,9 +2549,11 @@ finding specific ones and their roles.
 - [Documentation on npm Orgs](https://docs.npmjs.com/orgs/)
 
 ---
+
 section: cli-commands
 title: npm-outdated
 description: Check for outdated packages
+
 ---
 
 # npm-outdated(1)
@@ -2624,9 +2677,11 @@ Max depth for checking dependency tree.
 - [npm folders](/configuring-npm/folders)
 
 ---
+
 section: cli-commands
 title: npm-owner
 description: Manage package owners
+
 ---
 
 # npm-owner(1)
@@ -2673,9 +2728,11 @@ with `--otp`.
 - [npm disputes](/using-npm/disputes)
 
 ---
+
 section: cli-commands
 title: npm-pack
 description: Create a tarball from a package
+
 ---
 
 # npm-pack(1)
@@ -2712,9 +2769,11 @@ actually packing anything. Reports on what would have gone into the tarball.
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-ping
 description: Ping npm registry
+
 ---
 
 # npm-ping(1)
@@ -2748,9 +2807,11 @@ Ping error: {*Detail about error}
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-prefix
 description: Display prefix
+
 ---
 
 # npm-prefix(1)
@@ -2781,9 +2842,11 @@ If `-g` is specified, this will be the value of the global prefix. See
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-profile
 description: Change settings on your registry profile
+
 ---
 
 # npm-profile(1)
@@ -2866,9 +2929,11 @@ available on non npmjs.com registries.
 - [npm config](/cli-commands/npm-config)
 
 ---
+
 section: cli-commands
 title: npm-prune
 description: Remove extraneous packages
+
 ---
 
 # npm-prune(1)
@@ -2914,9 +2979,11 @@ and it's up to you to run `npm prune` from time-to-time to remove them.
 - [npm ls](/cli-commands/npm-ls)
 
 ---
+
 section: cli-commands
 title: npm-publish
 description: Publish a package
+
 ---
 
 # npm-publish(1)
@@ -2996,9 +3063,11 @@ included and packs them into a tarball to be uploaded to the registry.
 - [npm profile](/cli-commands/profile)
 
 ---
+
 section: cli-commands
 title: npm-rebuild
 description: Rebuild a package
+
 ---
 
 # npm-rebuild(1)
@@ -3023,9 +3092,11 @@ This command runs the `npm build` command on the matched folders. This is useful
 - [npm install](/cli-commands/npm-install)
 
 ---
+
 section: cli-commands
 title: npm-repo
 description: Open package repository page in the browser
+
 ---
 
 # npm-repo(1)
@@ -3060,9 +3131,11 @@ The browser that is called by the `npm repo` command to open websites.
 - [npm config](/cli-commands/npm-config)
 
 ---
+
 section: cli-commands
 title: npm-restart
 description: Restart a package
+
 ---
 
 # npm-restart(1)
@@ -3110,9 +3183,11 @@ behavior will be accompanied by an increase in major version number
 - [npm restart](/cli-commands/npm-restart)
 
 ---
+
 section: cli-commands
 title: npm-root
 description: Display npm root
+
 ---
 
 # npm-root(1)
@@ -3138,9 +3213,11 @@ Print the effective `node_modules` folder to standard out.
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-run-script
 description: Run arbitrary package scripts
+
 ---
 
 # npm-run-script(1)
@@ -3236,9 +3313,11 @@ without breaking the execution chain.
 - [npm config](/cli-commands/npm-config)
 
 ---
+
 section: cli-commands
 title: npm-search
 description: Search for packages
+
 ---
 
 # npm-search(1)
@@ -3351,9 +3430,11 @@ setting.
 - [npm view](/cli-commands/npm-view)
 
 ---
+
 section: cli-commands
 title: npm-shrinkwrap
 description: Lock down dependency versions for publication
+
 ---
 
 # npm-shrinkwrap(1)
@@ -3386,9 +3467,11 @@ of package locks in npm, see [package-locks](/configuring-npm/package-locks).
 - [npm ls](/cli-commands/npm-ls)
 
 ---
+
 section: cli-commands
 title: npm-star
 description: Mark your favorite packages
+
 ---
 
 # npm-star(1)
@@ -3418,9 +3501,11 @@ It's a boolean thing. Starring repeatedly has no additional effect.
 - [npm adduser](/cli-commands/npm-adduser)
 
 ---
+
 section: cli-commands
 title: npm-stars
 description: View packages marked as favorites
+
 ---
 
 # npm-stars(1)
@@ -3449,9 +3534,11 @@ you will most certainly enjoy this command.
 - [npm adduser](/cli-commands/npm-adduser)
 
 ---
+
 section: cli-commands
 title: npm-start
 description: Start a package
+
 ---
 
 # npm-start(1)
@@ -3482,9 +3569,11 @@ use custom arguments when executing scripts. Refer to [`npm run-script`](/cli-co
 - [npm stop](/cli-commands/npm-stop)
 
 ---
+
 section: cli-commands
 title: npm-stop
 description: Stop a package
+
 ---
 
 # npm-stop(1)
@@ -3510,9 +3599,11 @@ This runs a package's "stop" script, if one was provided.
 - [npm restart](/cli-commands/npm-restart)
 
 ---
+
 section: cli-commands
 title: npm-team
 description: Manage organization teams and team memberships
+
 ---
 
 # npm-team(1)
@@ -3577,9 +3668,11 @@ use the `npm access` command to grant or revoke the appropriate permissions.
 - [npm registry](/using-npm/registry)
 
 ---
+
 section: cli-commands
 title: npm-test
 description: Test a package
+
 ---
 
 # npm-test(1)
@@ -3607,9 +3700,11 @@ This runs a package's "test" script, if one was provided.
 - [npm stop](/cli-commands/npm-stop)
 
 ---
+
 section: cli-commands
 title: npm-token
 description: Manage your authentication tokens
+
 ---
 
 # npm-token(1)
@@ -3677,9 +3772,11 @@ This lets you list, create and revoke authentication tokens.
   This will NOT accept the truncated token found in `npm token list` output.
 
 ---
+
 section: cli-commands
 title: npm-uninstall
 description: Remove a package
+
 ---
 
 # npm-uninstall(1)
@@ -3743,9 +3840,11 @@ npm uninstall lodash --no-save
 - [npmrc](/configuring-npm/npmrc)
 
 ---
+
 section: cli-commands
 title: npm-unpublish
 description: Remove a package from the registry
+
 ---
 
 # npm-unpublish(1)
@@ -3793,9 +3892,11 @@ To learn more about how unpublish is treated on the npm registry, see our <a hre
 - [npm owner](/cli-commands/npm-owner)
 
 ---
+
 section: cli-commands
 title: npm-update
 description: Update a package
+
 ---
 
 # npm-update(1)
@@ -3932,9 +4033,11 @@ be _downgraded_.
 - [npm ls](/cli-commands/npm-ls)
 
 ---
+
 section: cli-commands
 title: npm-version
 description: Bump a package version
+
 ---
 
 # npm-version(1)
@@ -4068,9 +4171,11 @@ Note that you must have a default GPG key set up in your git config for this to 
 - [config](/using-npm/config)
 
 ---
+
 section: cli-commands
 title: npm-view
 description: View registry info
+
 ---
 
 # npm-view(1)
@@ -4193,9 +4298,11 @@ the field name.
 - [npm docs](/cli-commands/npm-docs)
 
 ---
+
 section: cli-commands
 title: npm-whoami
 description: Display npm username
+
 ---
 
 # npm-whoami(1)
@@ -4219,9 +4326,11 @@ Print the `username` config to standard output.
 - [npm adduser](/cli-commands/npm-adduser)
 
 ---
+
 section: cli-commands
 title: npm
 description: javascript package manager
+
 ---
 
 # npm(1)
@@ -4387,4 +4496,3 @@ reproduction to report.
 - [npm install](/cli-commands/npm-install)
 - [npm config](/cli-commands/npm-config)
 - [npmrc](/configuring-npm/npmrc)
-

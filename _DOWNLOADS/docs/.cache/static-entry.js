@@ -1,8 +1,8 @@
-const React = require(`react`)
-const fs = require(`fs`)
-const { join } = require(`path`)
-const { renderToString, renderToStaticMarkup } = require(`react-dom/server`)
-const { ServerLocation, Router, isRedirect } = require(`@reach/router`)
+const React = require(`react`);
+const fs = require(`fs`);
+const { join } = require(`path`);
+const { renderToString, renderToStaticMarkup } = require(`react-dom/server`);
+const { ServerLocation, Router, isRedirect } = require(`@reach/router`);
 const {
   get,
   merge,
@@ -11,165 +11,167 @@ const {
   uniqBy,
   flattenDeep,
   replace,
-} = require(`lodash`)
+} = require(`lodash`);
 
-const apiRunner = require(`./api-runner-ssr`)
-const syncRequires = require(`./sync-requires`)
-const { version: gatsbyVersion } = require(`gatsby/package.json`)
+const apiRunner = require(`./api-runner-ssr`);
+const syncRequires = require(`./sync-requires`);
+const { version: gatsbyVersion } = require(`gatsby/package.json`);
 
 const stats = JSON.parse(
   fs.readFileSync(`${process.cwd()}/public/webpack.stats.json`, `utf-8`)
-)
+);
 
 const chunkMapping = JSON.parse(
   fs.readFileSync(`${process.cwd()}/public/chunk-map.json`, `utf-8`)
-)
+);
 
 // const testRequireError = require("./test-require-error")
 // For some extremely mysterious reason, webpack adds the above module *after*
 // this module so that when this code runs, testRequireError is undefined.
 // So in the meantime, we'll just inline it.
 const testRequireError = (moduleName, err) => {
-  const regex = new RegExp(`Error: Cannot find module\\s.${moduleName}`)
-  const firstLine = err.toString().split(`\n`)[0]
-  return regex.test(firstLine)
-}
+  const regex = new RegExp(`Error: Cannot find module\\s.${moduleName}`);
+  const firstLine = err.toString().split(`\n`)[0];
+  return regex.test(firstLine);
+};
 
-let Html
+let Html;
 try {
-  Html = require(`../src/html`)
+  Html = require(`../src/html`);
 } catch (err) {
   if (testRequireError(`../src/html`, err)) {
-    Html = require(`./default-html`)
+    Html = require(`./default-html`);
   } else {
-    throw err
+    throw err;
   }
 }
 
-Html = Html && Html.__esModule ? Html.default : Html
+Html = Html && Html.__esModule ? Html.default : Html;
 
-const getPageDataPath = path => {
-  const fixedPagePath = path === `/` ? `index` : path
-  return join(`page-data`, fixedPagePath, `page-data.json`)
-}
+const getPageDataPath = (path) => {
+  const fixedPagePath = path === `/` ? `index` : path;
+  return join(`page-data`, fixedPagePath, `page-data.json`);
+};
 
-const getPageDataUrl = pagePath => {
-  const pageDataPath = getPageDataPath(pagePath)
-  return `${__PATH_PREFIX__}/${pageDataPath}`
-}
+const getPageDataUrl = (pagePath) => {
+  const pageDataPath = getPageDataPath(pagePath);
+  return `${__PATH_PREFIX__}/${pageDataPath}`;
+};
 
-const getPageDataFile = pagePath => {
-  const pageDataPath = getPageDataPath(pagePath)
-  return join(process.cwd(), `public`, pageDataPath)
-}
+const getPageDataFile = (pagePath) => {
+  const pageDataPath = getPageDataPath(pagePath);
+  return join(process.cwd(), `public`, pageDataPath);
+};
 
-const loadPageDataSync = pagePath => {
-  const pageDataPath = getPageDataPath(pagePath)
-  const pageDataFile = join(process.cwd(), `public`, pageDataPath)
+const loadPageDataSync = (pagePath) => {
+  const pageDataPath = getPageDataPath(pagePath);
+  const pageDataFile = join(process.cwd(), `public`, pageDataPath);
   try {
-    const pageDataJson = fs.readFileSync(pageDataFile)
-    return JSON.parse(pageDataJson)
+    const pageDataJson = fs.readFileSync(pageDataFile);
+    return JSON.parse(pageDataJson);
   } catch (error) {
     // not an error if file is not found. There's just no page data
-    return null
+    return null;
   }
-}
+};
 
-const createElement = React.createElement
+const createElement = React.createElement;
 
-export const sanitizeComponents = components => {
-  const componentsArray = ensureArray(components)
-  return componentsArray.map(component => {
+export const sanitizeComponents = (components) => {
+  const componentsArray = ensureArray(components);
+  return componentsArray.map((component) => {
     // Ensure manifest is always loaded from content server
     // And not asset server when an assetPrefix is used
     if (__ASSET_PREFIX__ && component.props.rel === `manifest`) {
       return React.cloneElement(component, {
         href: replace(component.props.href, __ASSET_PREFIX__, ``),
-      })
+      });
     }
-    return component
-  })
-}
+    return component;
+  });
+};
 
-const ensureArray = components => {
+const ensureArray = (components) => {
   if (Array.isArray(components)) {
     // remove falsy items and flatten
     return flattenDeep(
-      components.filter(val => (Array.isArray(val) ? val.length > 0 : val))
-    )
+      components.filter((val) => (Array.isArray(val) ? val.length > 0 : val))
+    );
   } else {
     // we also accept single components, so we need to handle this case as well
-    return components ? [components] : []
+    return components ? [components] : [];
   }
-}
+};
 
 export default (pagePath, callback) => {
-  let bodyHtml = ``
+  let bodyHtml = ``;
   let headComponents = [
     <meta
       name="generator"
       content={`Gatsby ${gatsbyVersion}`}
       key={`generator-${gatsbyVersion}`}
     />,
-  ]
-  let htmlAttributes = {}
-  let bodyAttributes = {}
-  let preBodyComponents = []
-  let postBodyComponents = []
-  let bodyProps = {}
+  ];
+  let htmlAttributes = {};
+  let bodyAttributes = {};
+  let preBodyComponents = [];
+  let postBodyComponents = [];
+  let bodyProps = {};
 
-  const replaceBodyHTMLString = body => {
-    bodyHtml = body
-  }
+  const replaceBodyHTMLString = (body) => {
+    bodyHtml = body;
+  };
 
-  const setHeadComponents = components => {
-    headComponents = headComponents.concat(sanitizeComponents(components))
-  }
+  const setHeadComponents = (components) => {
+    headComponents = headComponents.concat(sanitizeComponents(components));
+  };
 
-  const setHtmlAttributes = attributes => {
-    htmlAttributes = merge(htmlAttributes, attributes)
-  }
+  const setHtmlAttributes = (attributes) => {
+    htmlAttributes = merge(htmlAttributes, attributes);
+  };
 
-  const setBodyAttributes = attributes => {
-    bodyAttributes = merge(bodyAttributes, attributes)
-  }
+  const setBodyAttributes = (attributes) => {
+    bodyAttributes = merge(bodyAttributes, attributes);
+  };
 
-  const setPreBodyComponents = components => {
-    preBodyComponents = preBodyComponents.concat(sanitizeComponents(components))
-  }
+  const setPreBodyComponents = (components) => {
+    preBodyComponents = preBodyComponents.concat(
+      sanitizeComponents(components)
+    );
+  };
 
-  const setPostBodyComponents = components => {
+  const setPostBodyComponents = (components) => {
     postBodyComponents = postBodyComponents.concat(
       sanitizeComponents(components)
-    )
-  }
+    );
+  };
 
-  const setBodyProps = props => {
-    bodyProps = merge({}, bodyProps, props)
-  }
+  const setBodyProps = (props) => {
+    bodyProps = merge({}, bodyProps, props);
+  };
 
-  const getHeadComponents = () => headComponents
+  const getHeadComponents = () => headComponents;
 
-  const replaceHeadComponents = components => {
-    headComponents = sanitizeComponents(components)
-  }
+  const replaceHeadComponents = (components) => {
+    headComponents = sanitizeComponents(components);
+  };
 
-  const getPreBodyComponents = () => preBodyComponents
+  const getPreBodyComponents = () => preBodyComponents;
 
-  const replacePreBodyComponents = components => {
-    preBodyComponents = sanitizeComponents(components)
-  }
+  const replacePreBodyComponents = (components) => {
+    preBodyComponents = sanitizeComponents(components);
+  };
 
-  const getPostBodyComponents = () => postBodyComponents
+  const getPostBodyComponents = () => postBodyComponents;
 
-  const replacePostBodyComponents = components => {
-    postBodyComponents = sanitizeComponents(components)
-  }
+  const replacePostBodyComponents = (components) => {
+    postBodyComponents = sanitizeComponents(components);
+  };
 
-  const pageDataRaw = fs.readFileSync(getPageDataFile(pagePath))
-  const pageData = JSON.parse(pageDataRaw)
-  const pageDataUrl = getPageDataUrl(pagePath)
-  const { componentChunkName } = pageData
+  const pageDataRaw = fs.readFileSync(getPageDataFile(pagePath));
+  const pageData = JSON.parse(pageDataRaw);
+  const pageDataUrl = getPageDataUrl(pagePath);
+  const { componentChunkName } = pageData;
 
   class RouteHandler extends React.Component {
     render() {
@@ -178,23 +180,23 @@ export default (pagePath, callback) => {
         ...pageData.result,
         // pathContext was deprecated in v2. Renamed to pageContext
         pathContext: pageData.result ? pageData.result.pageContext : undefined,
-      }
+      };
 
       const pageElement = createElement(
         syncRequires.components[componentChunkName],
         props
-      )
+      );
 
       const wrappedPage = apiRunner(
         `wrapPageElement`,
         { element: pageElement, props },
         pageElement,
         ({ result }) => {
-          return { element: result, props }
+          return { element: result, props };
         }
-      ).pop()
+      ).pop();
 
-      return wrappedPage
+      return wrappedPage;
     }
   }
 
@@ -209,16 +211,16 @@ export default (pagePath, callback) => {
       },
       createElement(RouteHandler, { path: `/*` })
     )
-  )
+  );
 
   const bodyComponent = apiRunner(
     `wrapRootElement`,
     { element: routerElement, pathname: pagePath },
     routerElement,
     ({ result }) => {
-      return { element: result, pathname: pagePath }
+      return { element: result, pathname: pagePath };
     }
-  ).pop()
+  ).pop();
 
   // Let the site or plugin render the page component.
   apiRunner(`replaceRenderer`, {
@@ -232,65 +234,65 @@ export default (pagePath, callback) => {
     setBodyProps,
     pathname: pagePath,
     pathPrefix: __PATH_PREFIX__,
-  })
+  });
 
   // If no one stepped up, we'll handle it.
   if (!bodyHtml) {
     try {
-      bodyHtml = renderToString(bodyComponent)
+      bodyHtml = renderToString(bodyComponent);
     } catch (e) {
       // ignore @reach/router redirect errors
-      if (!isRedirect(e)) throw e
+      if (!isRedirect(e)) throw e;
     }
   }
 
   // Create paths to scripts
   let scriptsAndStyles = flatten(
-    [`app`, componentChunkName].map(s => {
-      const fetchKey = `assetsByChunkName[${s}]`
+    [`app`, componentChunkName].map((s) => {
+      const fetchKey = `assetsByChunkName[${s}]`;
 
-      let chunks = get(stats, fetchKey)
-      let namedChunkGroups = get(stats, `namedChunkGroups`)
+      let chunks = get(stats, fetchKey);
+      let namedChunkGroups = get(stats, `namedChunkGroups`);
 
       if (!chunks) {
-        return null
+        return null;
       }
 
-      chunks = chunks.map(chunk => {
+      chunks = chunks.map((chunk) => {
         if (chunk === `/`) {
-          return null
+          return null;
         }
-        return { rel: `preload`, name: chunk }
-      })
+        return { rel: `preload`, name: chunk };
+      });
 
-      namedChunkGroups[s].assets.forEach(asset =>
+      namedChunkGroups[s].assets.forEach((asset) =>
         chunks.push({ rel: `preload`, name: asset })
-      )
+      );
 
-      const childAssets = namedChunkGroups[s].childAssets
+      const childAssets = namedChunkGroups[s].childAssets;
       for (const rel in childAssets) {
         chunks = merge(
           chunks,
-          childAssets[rel].map(chunk => {
-            return { rel, name: chunk }
+          childAssets[rel].map((chunk) => {
+            return { rel, name: chunk };
           })
-        )
+        );
       }
 
-      return chunks
+      return chunks;
     })
   )
-    .filter(s => isObject(s))
-    .sort((s1, s2) => (s1.rel == `preload` ? -1 : 1)) // given priority to preload
+    .filter((s) => isObject(s))
+    .sort((s1, s2) => (s1.rel == `preload` ? -1 : 1)); // given priority to preload
 
-  scriptsAndStyles = uniqBy(scriptsAndStyles, item => item.name)
+  scriptsAndStyles = uniqBy(scriptsAndStyles, (item) => item.name);
 
   const scripts = scriptsAndStyles.filter(
-    script => script.name && script.name.endsWith(`.js`)
-  )
+    (script) => script.name && script.name.endsWith(`.js`)
+  );
   const styles = scriptsAndStyles.filter(
-    style => style.name && style.name.endsWith(`.css`)
-  )
+    (style) => style.name && style.name.endsWith(`.css`)
+  );
 
   apiRunner(`onRenderBody`, {
     setHeadComponents,
@@ -305,12 +307,12 @@ export default (pagePath, callback) => {
     scripts,
     styles,
     pathPrefix: __PATH_PREFIX__,
-  })
+  });
 
   scripts
     .slice(0)
     .reverse()
-    .forEach(script => {
+    .forEach((script) => {
       // Add preload/prefetch <link>s for scripts.
       headComponents.push(
         <link
@@ -319,8 +321,8 @@ export default (pagePath, callback) => {
           key={script.name}
           href={`${__PATH_PREFIX__}/${script.name}`}
         />
-      )
-    })
+      );
+    });
 
   if (pageData) {
     headComponents.push(
@@ -331,13 +333,13 @@ export default (pagePath, callback) => {
         href={pageDataUrl}
         crossOrigin="anonymous"
       />
-    )
+    );
   }
 
   styles
     .slice(0)
     .reverse()
-    .forEach(style => {
+    .forEach((style) => {
       // Add <link>s for styles that should be prefetched
       // otherwise, inline as a <style> tag
 
@@ -349,7 +351,7 @@ export default (pagePath, callback) => {
             key={style.name}
             href={`${__PATH_PREFIX__}/${style.name}`}
           />
-        )
+        );
       } else {
         headComponents.unshift(
           <style
@@ -361,12 +363,12 @@ export default (pagePath, callback) => {
               ),
             }}
           />
-        )
+        );
       }
-    })
+    });
 
   // Add page metadata for the current page
-  const windowPageData = `/*<![CDATA[*/window.pagePath="${pagePath}";/*]]>*/`
+  const windowPageData = `/*<![CDATA[*/window.pagePath="${pagePath}";/*]]>*/`;
 
   postBodyComponents.push(
     <script
@@ -376,12 +378,12 @@ export default (pagePath, callback) => {
         __html: windowPageData,
       }}
     />
-  )
+  );
 
   // Add chunk mapping metadata
   const scriptChunkMapping = `/*<![CDATA[*/window.___chunkMapping=${JSON.stringify(
     chunkMapping
-  )};/*]]>*/`
+  )};/*]]>*/`;
 
   postBodyComponents.push(
     <script
@@ -391,21 +393,21 @@ export default (pagePath, callback) => {
         __html: scriptChunkMapping,
       }}
     />
-  )
+  );
 
   // Filter out prefetched bundles as adding them as a script tag
   // would force high priority fetching.
   const bodyScripts = scripts
-    .filter(s => s.rel !== `prefetch`)
-    .map(s => {
+    .filter((s) => s.rel !== `prefetch`)
+    .map((s) => {
       const scriptPath = `${__PATH_PREFIX__}/${JSON.stringify(s.name).slice(
         1,
         -1
-      )}`
-      return <script key={scriptPath} src={scriptPath} async />
-    })
+      )}`;
+      return <script key={scriptPath} src={scriptPath} async />;
+    });
 
-  postBodyComponents.push(...bodyScripts)
+  postBodyComponents.push(...bodyScripts);
 
   apiRunner(`onPreRenderHTML`, {
     getHeadComponents,
@@ -416,7 +418,7 @@ export default (pagePath, callback) => {
     replacePostBodyComponents,
     pathname: pagePath,
     pathPrefix: __PATH_PREFIX__,
-  })
+  });
 
   const html = `<!DOCTYPE html>${renderToStaticMarkup(
     <Html
@@ -429,7 +431,7 @@ export default (pagePath, callback) => {
       body={bodyHtml}
       path={pagePath}
     />
-  )}`
+  )}`;
 
-  callback(null, html)
-}
+  callback(null, html);
+};
