@@ -1,12 +1,12 @@
 ---
 title: Installing GitHub Enterprise Server on XenServer
-intro: 'To install {% data variables.product.prodname_ghe_server %} on XenServer, you must deploy the {% data variables.product.prodname_ghe_server %} disk image to a XenServer host.'
+intro: "To install {% data variables.product.prodname_ghe_server %} on XenServer, you must deploy the {% data variables.product.prodname_ghe_server %} disk image to a XenServer host."
 redirect_from:
   - /enterprise/admin/guides/installation/installing-github-enterprise-on-xenserver/
   - /enterprise/admin/installation/installing-github-enterprise-server-on-xenserver
   - /admin/installation/installing-github-enterprise-server-on-xenserver
 versions:
-  ghes: '*'
+  ghes: "*"
 topics:
   - Enterprise
 shortTitle: Install on XenServer
@@ -14,7 +14,7 @@ shortTitle: Install on XenServer
 
 {% note %}
 
-  **Note:** Support for {% data variables.product.prodname_ghe_server %} on XenServer will be discontinued in {% data variables.product.prodname_ghe_server %} 3.3. For more information, see the [{% data variables.product.prodname_ghe_server %} 3.1 release notes](/admin/release-notes#3.1.0)
+**Note:** Support for {% data variables.product.prodname_ghe_server %} on XenServer will be discontinued in {% data variables.product.prodname_ghe_server %} 3.3. For more information, see the [{% data variables.product.prodname_ghe_server %} 3.1 release notes](/admin/release-notes#3.1.0)
 
 {% endnote %}
 
@@ -32,18 +32,14 @@ shortTitle: Install on XenServer
 
 {% data reusables.enterprise_installation.enterprise-download-procedural %}
 {% data reusables.enterprise_installation.download-license %}
-{% data reusables.enterprise_installation.download-appliance %}
-4. Select {% data variables.product.prodname_dotcom %} On-premises, then click **XenServer (VHD)**.
-5. To download your license file, click **Download license**.
+{% data reusables.enterprise_installation.download-appliance %} 4. Select {% data variables.product.prodname_dotcom %} On-premises, then click **XenServer (VHD)**. 5. To download your license file, click **Download license**.
 
 ## Creating the {% data variables.product.prodname_ghe_server %} instance
 
 {% data reusables.enterprise_installation.create-ghe-instance %}
 
-1. In XenCenter, import the {% data variables.product.prodname_ghe_server %} image you downloaded. For instructions, see the XenCenter guide "[Import Disk Images](https://docs.citrix.com/en-us/xencenter/current-release/vms-importdiskimage.html)."
-    - For the "Enable Operating System Fixup" step, select **Don't use Operating System Fixup**.
-    - Leave the VM powered off when you're finished.
-{% data reusables.enterprise_installation.create-attached-storage-volume %} For instructions, see the XenCenter guide "[Add Virtual Disks](https://docs.citrix.com/en-us/xencenter/current-release/vms-storage-addnewdisk.html)."
+1. In XenCenter, import the {% data variables.product.prodname_ghe_server %} image you downloaded. For instructions, see the XenCenter guide "[Import Disk Images](https://docs.citrix.com/en-us/xencenter/current-release/vms-importdiskimage.html)." - For the "Enable Operating System Fixup" step, select **Don't use Operating System Fixup**. - Leave the VM powered off when you're finished.
+   {% data reusables.enterprise_installation.create-attached-storage-volume %} For instructions, see the XenCenter guide "[Add Virtual Disks](https://docs.citrix.com/en-us/xencenter/current-release/vms-storage-addnewdisk.html)."
 
 ## Configuring the {% data variables.product.prodname_ghe_server %} instance
 

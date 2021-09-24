@@ -1,7 +1,7 @@
 ---
 title: Guides
 shortTitle: Guides
-intro: 'These guides for {% data variables.product.prodname_actions %} include specific use cases and examples to help you configure workflows.'
+intro: "These guides for {% data variables.product.prodname_actions %} include specific use cases and examples to help you configure workflows."
 redirect_from:
   - /actions/guides/caching-and-storing-workflow-data
   - /actions/automating-your-workflow-with-github-actions/using-databases-and-services
@@ -15,9 +15,9 @@ redirect_from:
   - /actions/publishing-packages-with-github-actions
   - /actions/building-and-testing-code-with-continuous-integration
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 learningTracks:
   - getting_started
   - continuous_integration
@@ -111,4 +111,3 @@ children:
   - /removing-a-label-when-a-card-is-added-to-a-project-board-column
   - /using-github-cli-in-workflows
 ---
-

@@ -1,18 +1,19 @@
 ---
 title: Site admin dashboard
-intro: '{% data reusables.enterprise_site_admin_settings.about-the-site-admin-dashboard %}'
+intro: "{% data reusables.enterprise_site_admin_settings.about-the-site-admin-dashboard %}"
 redirect_from:
   - /enterprise/admin/articles/site-admin-dashboard/
   - /enterprise/admin/installation/site-admin-dashboard
   - /enterprise/admin/configuration/site-admin-dashboard
   - /admin/configuration/site-admin-dashboard
 versions:
-  ghes: '*'
+  ghes: "*"
 type: reference
 topics:
   - Enterprise
   - Fundamentals
 ---
+
 To access the dashboard, in the upper-right corner of any page, click {% octicon "rocket" aria-label="The rocket ship" %}.
 ![Rocket ship icon for accessing site admin settings](/assets/images/enterprise/site-admin-settings/access-new-settings.png)
 
@@ -38,7 +39,7 @@ Here you can launch the {% data variables.enterprise.management_console %} to ma
 
 Data for GitHub's [trending page][] is calculated into daily, weekly, and monthly time spans for both repositories and developers. You can see when this data was last cached and queue up new trending calculation jobs from the **Explore** section.
 
-  [trending page]: https://github.com/blog/1585-explore-what-is-trending-on-github
+[trending page]: https://github.com/blog/1585-explore-what-is-trending-on-github
 
 ## Audit log
 
@@ -79,60 +80,60 @@ To access the other reports programmatically, replace `all_users` with `active_u
 
 ### User reports
 
-Key               | Description
------------------:| ------------------------------------------------------------
-`created_at`      | When the user account was created (as an ISO 8601 timestamp)
-`id`              | Account ID for the user or organization
-`login`           | Account's login name
-`email`           | Account's primary email address
-`role`            | Whether the account is an admin or an ordinary user
-`suspended?`      | Whether the account has been suspended
-`last_logged_ip`  | Most recent IP address to log into the account
-`repos`           | Number of repositories owned by the account
-`ssh_keys`        | Number of SSH keys registered to the account
-`org_memberships` | Number of organizations to which the account belongs
-`dormant?`        | Whether the account is dormant
-`last_active`     | When the account was last active (as an ISO 8601 timestamp)
-`raw_login`       | Raw login information (in JSON format)
-`2fa_enabled?`    | Whether the user has enabled two-factor authentication
+|               Key | Description                                                  |
+| ----------------: | ------------------------------------------------------------ |
+|      `created_at` | When the user account was created (as an ISO 8601 timestamp) |
+|              `id` | Account ID for the user or organization                      |
+|           `login` | Account's login name                                         |
+|           `email` | Account's primary email address                              |
+|            `role` | Whether the account is an admin or an ordinary user          |
+|      `suspended?` | Whether the account has been suspended                       |
+|  `last_logged_ip` | Most recent IP address to log into the account               |
+|           `repos` | Number of repositories owned by the account                  |
+|        `ssh_keys` | Number of SSH keys registered to the account                 |
+| `org_memberships` | Number of organizations to which the account belongs         |
+|        `dormant?` | Whether the account is dormant                               |
+|     `last_active` | When the account was last active (as an ISO 8601 timestamp)  |
+|       `raw_login` | Raw login information (in JSON format)                       |
+|    `2fa_enabled?` | Whether the user has enabled two-factor authentication       |
 
 ### Organization reports
 
-Key            | Description
---------------:| ------------------------------------
-`id`           | Organization ID
-`created_at`   | When the organization was created
-`login`        | Organization's login name
-`email`        | Organization's primary email address
-`owners`       | Number of organization owners
-`members`      | Number of organization members
-`teams`        | Number of organization teams
-`repos`        | Number of organization repositories
-`2fa_required?`| Whether the organization requires two-factor authentication
+|             Key | Description                                                 |
+| --------------: | ----------------------------------------------------------- |
+|            `id` | Organization ID                                             |
+|    `created_at` | When the organization was created                           |
+|         `login` | Organization's login name                                   |
+|         `email` | Organization's primary email address                        |
+|        `owners` | Number of organization owners                               |
+|       `members` | Number of organization members                              |
+|         `teams` | Number of organization teams                                |
+|         `repos` | Number of organization repositories                         |
+| `2fa_required?` | Whether the organization requires two-factor authentication |
 
 ### Repository reports
 
-Key             | Description
----------------:| ------------------------------------------------------------
-`created_at`    | When the repository was created
-`owner_id`      | ID of the repository's owner
-`owner_type`    | Whether the repository is owned by a user or an organization
-`owner_name`    | Name of the repository's owner
-`id`            | Repository ID
-`name`          | Repository name
-`visibility`    | Whether the repository is public or private
-`readable_size` | Repository's size in a human-readable format
-`raw_size`      | Repository's size as a number
-`collaborators` | Number of repository collaborators
-`fork?`         | Whether the repository is a fork
-`deleted?`      | Whether the repository has been deleted
+|             Key | Description                                                  |
+| --------------: | ------------------------------------------------------------ |
+|    `created_at` | When the repository was created                              |
+|      `owner_id` | ID of the repository's owner                                 |
+|    `owner_type` | Whether the repository is owned by a user or an organization |
+|    `owner_name` | Name of the repository's owner                               |
+|            `id` | Repository ID                                                |
+|          `name` | Repository name                                              |
+|    `visibility` | Whether the repository is public or private                  |
+| `readable_size` | Repository's size in a human-readable format                 |
+|      `raw_size` | Repository's size as a number                                |
+| `collaborators` | Number of repository collaborators                           |
+|         `fork?` | Whether the repository is a fork                             |
+|      `deleted?` | Whether the repository has been deleted                      |
 
 ## Indexing
 
 GitHub's [code search][] features are powered by [ElasticSearch][]. This section of the site admin dashboard shows you the current status of your ElasticSearch cluster and provides you with several tools to control the behavior of searching and indexing. These tools are split into the following three categories.
 
-  [Code Search]: https://github.com/blog/1381-a-whole-new-code-search
-  [ElasticSearch]: http://www.elasticsearch.org/
+[code search]: https://github.com/blog/1381-a-whole-new-code-search
+[elasticsearch]: http://www.elasticsearch.org/
 
 ### Code search
 
@@ -164,7 +165,7 @@ You can start a new code-search index repair job at any time. It will use a sing
 
 This controls how the [Issues][] index is repaired. You can
 
-  [Issues]: https://github.com/blog/831-issues-2-0-the-next-generation
+[issues]: https://github.com/blog/831-issues-2-0-the-next-generation
 
 - enable or disable index repair jobs
 - start a new index repair job

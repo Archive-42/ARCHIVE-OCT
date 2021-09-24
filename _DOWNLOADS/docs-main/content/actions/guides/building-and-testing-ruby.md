@@ -1,11 +1,11 @@
 ---
 title: Building and testing Ruby
 intro: You can create a continuous integration (CI) workflow to build and test your Ruby project.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CI
@@ -71,29 +71,33 @@ Using Ruby's `ruby/setup-ruby` action is the recommended way of using Ruby with 
 The `setup-ruby` action takes a Ruby version as an input and configures that version on the runner.
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/checkout@v2
-- uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
-  with:
-    ruby-version: 2.6 # Not needed with a .ruby-version file
-- run: bundle install
-- run: bundle exec rake
+  - uses: actions/checkout@v2
+  - uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
+    with:
+      ruby-version: 2.6 # Not needed with a .ruby-version file
+  - run: bundle install
+  - run: bundle exec rake
 ```
+
 {% endraw %}
 
-Alternatively, you can check a `.ruby-version` file  into the root of your repository and `setup-ruby` will use the version defined in that file.
+Alternatively, you can check a `.ruby-version` file into the root of your repository and `setup-ruby` will use the version defined in that file.
 
 ## Testing with multiple versions of Ruby
 
 You can add a matrix strategy to run your workflow with more than one version of Ruby. For example, you can test your code against the latest patch releases of versions 2.7, 2.6, and 2.5. The 'x' is a wildcard character that matches the latest patch release available for a version.
 
 {% raw %}
+
 ```yaml
 strategy:
   matrix:
     ruby-version: [2.7.x, 2.6.x, 2.5.x]
 ```
+
 {% endraw %}
 
 Each version of Ruby specified in the `ruby-version` array creates a job that runs the same steps. The {% raw %}`${{ matrix.ruby-version }}`{% endraw %} context is used to access the current job's version. For more information about matrix strategies and contexts, see "Workflow syntax for GitHub Actions" and "Context and expression syntax for GitHub Actions."
@@ -137,14 +141,16 @@ jobs:
 The `setup-ruby` action will automatically install bundler for you. The version is determined by your `gemfile.lock` file. If no version is present in your lockfile, then the latest compatible version will be installed.
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/checkout@v2
-- uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
-  with:
-    ruby-version: 2.6
-- run: bundle install
+  - uses: actions/checkout@v2
+  - uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
+    with:
+      ruby-version: 2.6
+  - run: bundle install
 ```
+
 {% endraw %}
 
 ### Caching dependencies
@@ -154,12 +160,14 @@ If you are using {% data variables.product.prodname_dotcom %}-hosted runners, th
 To enable caching, set the following.
 
 {% raw %}
+
 ```yaml
 steps:
 - uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
     with:
       bundler-cache: true
 ```
+
 {% endraw %}
 
 This will configure bundler to install your gems to `vendor/cache`. For each successful run of your workflow, this folder will be cached by Actions and re-downloaded for subsequent workflow runs. A hash of your gemfile.lock and the Ruby version are used as the cache key. If you install any new gems, or change a version, the cache will be invalidated and bundler will do a fresh install.
@@ -169,37 +177,41 @@ This will configure bundler to install your gems to `vendor/cache`. For each suc
 For greater control over caching, if you are using {% data variables.product.prodname_dotcom %}-hosted runners, you can use the `actions/cache` Action directly. For more information, see "<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Caching dependencies to speed up workflows</a>."
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/cache@v2
-  with:
-    path: vendor/bundle
-    key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-    restore-keys: |
-      ${{ runner.os }}-gems-
-- name: Bundle install
-  run: |
-    bundle config path vendor/bundle
-    bundle install --jobs 4 --retry 3
+  - uses: actions/cache@v2
+    with:
+      path: vendor/bundle
+      key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+      restore-keys: |
+        ${{ runner.os }}-gems-
+  - name: Bundle install
+    run: |
+      bundle config path vendor/bundle
+      bundle install --jobs 4 --retry 3
 ```
+
 {% endraw %}
 
 If you're using a matrix build, you will want to include the matrix variables in your cache key. For example, if you have a matrix strategy for different ruby versions (`matrix.ruby-version`) and different operating systems (`matrix.os`), your workflow steps might look like this:
 
 {% raw %}
+
 ```yaml
 steps:
-- uses: actions/cache@v2
-  with:
-    path: vendor/bundle
-    key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-    restore-keys: |
-      bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby-version }}-
-- name: Bundle install
-  run: |
-    bundle config path vendor/bundle
-    bundle install --jobs 4 --retry 3
+  - uses: actions/cache@v2
+    with:
+      path: vendor/bundle
+      key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
+      restore-keys: |
+        bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby-version }}-
+  - name: Bundle install
+    run: |
+      bundle config path vendor/bundle
+      bundle install --jobs 4 --retry 3
 ```
+
 {% endraw %}
 
 ## Matrix testing your code

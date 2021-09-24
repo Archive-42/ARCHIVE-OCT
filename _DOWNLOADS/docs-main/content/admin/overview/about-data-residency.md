@@ -1,8 +1,8 @@
 ---
 title: About data residency
-intro: 'You can choose the geography where {% data variables.product.product_name %} stores all customer data for your enterprise.'
+intro: "You can choose the geography where {% data variables.product.product_name %} stores all customer data for your enterprise."
 versions:
-  ghae: '*'
+  ghae: "*"
 type: overview
 topics:
   - Enterprise

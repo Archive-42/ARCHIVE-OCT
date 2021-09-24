@@ -1,11 +1,11 @@
 ---
 title: Manually running a workflow
-intro: 'When a workflow is configured to run on the `workflow_dispatch` event, you can run the workflow using the Actions tab on {% data variables.product.prodname_dotcom %}, {% data variables.product.prodname_cli %}, or the REST API.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "When a workflow is configured to run on the `workflow_dispatch` event, you can run the workflow using the Actions tab on {% data variables.product.prodname_dotcom %}, {% data variables.product.prodname_cli %}, or the REST API."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 shortTitle: Manually run a workflow
 ---
 
@@ -27,12 +27,13 @@ To run a workflow manually, the workflow must be configured to run on the `workf
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.actions-tab %}
+
 1. In the left sidebar, click the workflow you want to run.
-![actions select workflow](/assets/images/actions-select-workflow.png)
+   ![actions select workflow](/assets/images/actions-select-workflow.png)
 1. Above the list of workflow runs, select **Run workflow**.
-![actions workflow dispatch](/assets/images/actions-workflow-dispatch.png)
+   ![actions workflow dispatch](/assets/images/actions-workflow-dispatch.png)
 1. Use the **Branch** dropdown to select the workflow's branch, and type the input parameters. Click **Run workflow**.
-![actions manually run workflow](/assets/images/actions-manually-run-workflow.png)
+   ![actions manually run workflow](/assets/images/actions-manually-run-workflow.png)
 
 {% endwebui %}
 

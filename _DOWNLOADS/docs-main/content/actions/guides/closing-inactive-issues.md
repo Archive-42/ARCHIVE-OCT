@@ -1,11 +1,11 @@
 ---
 title: Closing inactive issues
-intro: 'You can use {% data variables.product.prodname_actions %} to comment on or close issues that have been inactive for a certain period of time.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to comment on or close issues that have been inactive for a certain period of time."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -29,30 +29,30 @@ In the tutorial, you will first make a workflow file that uses the [`actions/sta
 2. {% data reusables.actions.make-workflow-file %}
 3. Copy the following YAML contents into your workflow file.
 
-    ```yaml{:copy}
-    name: Close inactive issues
-    on:
-      schedule:
-        - cron: "30 1 * * *"
+   ```yaml{:copy}
+   name: Close inactive issues
+   on:
+     schedule:
+       - cron: "30 1 * * *"
 
-    jobs:
-      close-issues:
-        runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
-        permissions:
-          issues: write
-          pull-requests: write{% endif %}
-        steps:
-          - uses: actions/stale@v3
-            with:
-              days-before-issue-stale: 30
-              days-before-issue-close: 14
-              stale-issue-label: "stale"
-              stale-issue-message: "This issue is stale because it has been open for 30 days with no activity."
-              close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale."
-              days-before-pr-stale: -1
-              days-before-pr-close: -1
-              repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
-    ```
+   jobs:
+     close-issues:
+       runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
+       permissions:
+         issues: write
+         pull-requests: write{% endif %}
+       steps:
+         - uses: actions/stale@v3
+           with:
+             days-before-issue-stale: 30
+             days-before-issue-close: 14
+             stale-issue-label: "stale"
+             stale-issue-message: "This issue is stale because it has been open for 30 days with no activity."
+             close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale."
+             days-before-pr-stale: -1
+             days-before-pr-close: -1
+             repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+   ```
 
 4. Customize the parameters in your workflow file:
    - Change the value for `on.schedule` to dictate when you want this workflow to run. In the example above, the workflow will run every day at 1:30 UTC. For more information about scheduled workflows, see "[Scheduled events](/actions/reference/events-that-trigger-workflows#scheduled-events)."

@@ -1,10 +1,10 @@
 ---
 title: Onboarding
-intro: ''
+intro: ""
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /getting-started-with-your-github-account
   - /getting-started-with-github-team
@@ -12,4 +12,3 @@ children:
   - /getting-started-with-github-enterprise-server
   - /getting-started-with-github-ae
 ---
-

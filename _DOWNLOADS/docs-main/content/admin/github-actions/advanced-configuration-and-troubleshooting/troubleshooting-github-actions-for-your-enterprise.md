@@ -1,15 +1,16 @@
 ---
 title: Troubleshooting GitHub Actions for your enterprise
-intro: 'Troubleshooting common issues that occur when using {% data variables.product.prodname_actions %} on {% data variables.product.prodname_ghe_server %}.'
-permissions: 'Site administrators can troubleshoot {% data variables.product.prodname_actions %} issues and modify {% data variables.product.prodname_ghe_server %} configurations.'
+intro: "Troubleshooting common issues that occur when using {% data variables.product.prodname_actions %} on {% data variables.product.prodname_ghe_server %}."
+permissions: "Site administrators can troubleshoot {% data variables.product.prodname_actions %} issues and modify {% data variables.product.prodname_ghe_server %} configurations."
 versions:
-  ghes: '>=3.0'
+  ghes: ">=3.0"
 topics:
   - Enterprise
 redirect_from:
   - /admin/github-actions/troubleshooting-github-actions-for-your-enterprise
 shortTitle: Troubleshoot GitHub Actions
 ---
+
 ## Configuring self-hosted runners when using a self-signed certificate for {% data variables.product.prodname_ghe_server %}
 
 {% data reusables.actions.enterprise-self-signed-cert %} For more information, see "[Configuring TLS](/admin/configuration/configuring-tls)."
@@ -50,8 +51,8 @@ If you change the hostname of {% data variables.product.product_location %}, sel
 
 You will need to update the configuration of your self-hosted runners to use the new hostname for {% data variables.product.product_location %}. Each self-hosted runner will require one of the following procedures:
 
-* In the self-hosted runner application directory, edit the `.runner` and `.credentials` files to replace all mentions of the old hostname with the new hostname, then restart the self-hosted runner application.
-* Remove the runner from {% data variables.product.prodname_ghe_server %} using the UI, and re-add it. For more information, see "[Removing self-hosted runners](/actions/hosting-your-own-runners/removing-self-hosted-runners)" and "[Adding self-hosted runners](/actions/hosting-your-own-runners/adding-self-hosted-runners)."
+- In the self-hosted runner application directory, edit the `.runner` and `.credentials` files to replace all mentions of the old hostname with the new hostname, then restart the self-hosted runner application.
+- Remove the runner from {% data variables.product.prodname_ghe_server %} using the UI, and re-add it. For more information, see "[Removing self-hosted runners](/actions/hosting-your-own-runners/removing-self-hosted-runners)" and "[Adding self-hosted runners](/actions/hosting-your-own-runners/adding-self-hosted-runners)."
 
 ## Stuck jobs and {% data variables.product.prodname_actions %} memory and CPU limits
 
@@ -71,12 +72,12 @@ If the overall "System Health" CPU and memory usage is OK, scroll down the monit
 
 Each plot in these graphs corresponds to one service. For {% data variables.product.prodname_actions %} services, look for:
 
-* `mps_frontend`
-* `mps_backend`
-* `token_frontend`
-* `token_backend`
-* `actions_frontend`
-* `actions_backend`
+- `mps_frontend`
+- `mps_backend`
+- `token_frontend`
+- `token_backend`
+- `actions_frontend`
+- `actions_backend`
 
 If any of these services are at or near 100% CPU utilization, or the memory is near their limit (2 GB by default), then the resource allocation for these services might need increasing. Take note of which of the above services are at or near their limit.
 
@@ -104,6 +105,7 @@ If any of these services are at or near 100% CPU utilization, or the memory is n
    **Warning:** Be careful not to allocate more than the total available resources, or services will fail to start.
 
    {% endwarning %}
+
 1. Change directory to `/etc/consul-templates/etc/nomad-jobs/actions`:
 
    ```shell
@@ -112,9 +114,10 @@ If any of these services are at or near 100% CPU utilization, or the memory is n
 
    In this directory there are three files that correspond to the {% data variables.product.prodname_actions %} services from above:
 
-   * `mps.hcl.ctmpl`
-   * `token.hcl.ctmpl`
-   * `actions.hcl.ctmpl`
+   - `mps.hcl.ctmpl`
+   - `token.hcl.ctmpl`
+   - `actions.hcl.ctmpl`
+
 1. For the services that you identified that need adjustment, open the corresponding file and locate the `resources` group that looks like the following:
 
    ```
@@ -140,8 +143,10 @@ If any of these services are at or near 100% CPU utilization, or the memory is n
      }
    }
    ```
+
 1. Save and exit the file.
 1. Run `ghe-config-apply` to apply the changes.
 
-    When running `ghe-config-apply`, if you see output like `Failed to run nomad job '/etc/nomad-jobs/<name>.hcl'`, then the change has likely over-allocated CPU or memory resources. If this happens, edit the configuration files again and lower the allocated CPU or memory, then re-run `ghe-config-apply`.
+   When running `ghe-config-apply`, if you see output like `Failed to run nomad job '/etc/nomad-jobs/<name>.hcl'`, then the change has likely over-allocated CPU or memory resources. If this happens, edit the configuration files again and lower the allocated CPU or memory, then re-run `ghe-config-apply`.
+
 1. After the configuration is applied, run `ghe-actions-check` to verify that the {% data variables.product.prodname_actions %} services are operational.

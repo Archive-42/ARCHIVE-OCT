@@ -1,14 +1,14 @@
 ---
 title: About service containers
-intro: 'You can use service containers to connect databases, web services, memory caches, and other tools to your workflow.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use service containers to connect databases, web services, memory caches, and other tools to your workflow."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/about-service-containers
   - /actions/configuring-and-managing-workflows/about-service-containers
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: overview
 topics:
   - Containers
@@ -52,6 +52,7 @@ You can use the `services` keyword to create service containers that are part of
 This example creates a service called `redis` in a job called `container-job`. The Docker host in this example is the `node:10.18-jessie` container.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis container example
 on: push
@@ -71,6 +72,7 @@ jobs:
         # Docker Hub image
         image: redis
 ```
+
 {% endraw %}
 
 ## Mapping Docker host and service container ports
@@ -79,11 +81,11 @@ If your job runs in a Docker container, you do not need to map ports on the host
 
 You can map service containers ports to the Docker host using the `ports` keyword. For more information, see [`jobs.<job_id>.services`](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#jobsjob_idservices).
 
-| Value of `ports` |	Description |
-|------------------|--------------|
-| `8080:80` |	Maps TCP port 80 in the container to port 8080 on the Docker host. |
-| `8080:80/udp` |	Maps UDP port 80 in the container to port 8080 on the Docker host. |
-| `8080/udp`	| Map a randomly chosen UDP port in the container to UDP port 8080 on the Docker host. |
+| Value of `ports` | Description                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `8080:80`        | Maps TCP port 80 in the container to port 8080 on the Docker host.                   |
+| `8080:80/udp`    | Maps UDP port 80 in the container to port 8080 on the Docker host.                   |
+| `8080/udp`       | Map a randomly chosen UDP port in the container to UDP port 8080 on the Docker host. |
 
 When you map ports using the `ports` keyword, {% data variables.product.prodname_dotcom %} uses the `--publish` command to publish the container’s ports to the Docker host. For more information, see "[Docker container networking](https://docs.docker.com/config/containers/container-networking/)" in the Docker documentation.
 
@@ -94,6 +96,7 @@ When you specify the Docker host port but not the container port, the container 
 This example maps the service container `redis` port 6379 to the Docker host port 6379.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis Service Example
 on: push
@@ -115,6 +118,7 @@ jobs:
           # Opens tcp port 6379 on the host and service container
           - 6379:6379
 ```
+
 {% endraw %}
 
 ## Further reading

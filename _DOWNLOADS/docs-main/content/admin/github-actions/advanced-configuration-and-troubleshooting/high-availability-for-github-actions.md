@@ -1,8 +1,8 @@
 ---
 title: High availability for GitHub Actions
-intro: 'There are some special considerations for administering {% data variables.product.prodname_actions %} in a high availability configuration.'
+intro: "There are some special considerations for administering {% data variables.product.prodname_actions %} in a high availability configuration."
 versions:
-  ghes: '>=3.0'
+  ghes: ">=3.0"
 type: reference
 topics:
   - Actions
@@ -14,14 +14,15 @@ redirect_from:
   - /admin/github-actions/high-availability-for-github-actions
 shortTitle: HA for GitHub Actions
 ---
+
 ## Replication or redundancy of your {% data variables.product.prodname_actions %} data
 
 {% data reusables.actions.enterprise-storage-ha-backups %}
 
 We strongly recommend that you configure your {% data variables.product.prodname_actions %} external storage to use data redundancy or replication. For more information, refer to your storage provider's documentation:
 
-* [Azure Storage redundancy documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
-* [Amazon S3 replication documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html)
+- [Azure Storage redundancy documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+- [Amazon S3 replication documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html)
 
 ## High availability replicas
 

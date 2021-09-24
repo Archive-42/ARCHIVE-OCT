@@ -1,11 +1,11 @@
 ---
 title: Downloading workflow artifacts
 intro: You can download archived artifacts before they automatically expire.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 shortTitle: Download workflow artifacts
 ---
 
@@ -26,12 +26,13 @@ shortTitle: Download workflow artifacts
 {% data reusables.repositories.actions-tab %}
 {% data reusables.repositories.navigate-to-workflow %}
 {% data reusables.repositories.view-run %}
+
 1. Under **Artifacts**, click the artifact you want to download.
-    {% ifversion fpt or ghes > 3.0 or ghae %}
-    ![Download artifact drop-down menu](/assets/images/help/repository/artifact-drop-down-updated.png)
-    {% else %}
-    ![Download artifact drop-down menu](/assets/images/help/repository/artifact-drop-down.png)
-    {% endif %}
+   {% ifversion fpt or ghes > 3.0 or ghae %}
+   ![Download artifact drop-down menu](/assets/images/help/repository/artifact-drop-down-updated.png)
+   {% else %}
+   ![Download artifact drop-down menu](/assets/images/help/repository/artifact-drop-down.png)
+   {% endif %}
 
 {% endwebui %}
 

@@ -1,13 +1,13 @@
 ---
 title: Adding a workflow status badge
 intro: You can display a status badge in your repository to indicate the status of your workflows.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/managing-workflow-runs/adding-a-workflow-status-badge
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 shortTitle: Add a status badge
 ---
 
@@ -22,6 +22,7 @@ You reference the workflow by the name of your workflow file.
 ```markdown
 ![example workflow](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
 ```
+
 ## Using the workflow file name
 
 This Markdown example adds a status badge for a workflow with the file path `.github/workflows/main.yml`. The `OWNER` of the repository is the `github` organization and the `REPOSITORY` name is `docs`.

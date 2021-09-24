@@ -1,13 +1,13 @@
 ---
 title: Building and testing Java with Ant
 intro: You can create a continuous integration (CI) workflow in GitHub Actions to build and test your Java project with Ant.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/building-and-testing-java-with-ant
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CI
@@ -32,6 +32,7 @@ This guide shows you how to create a workflow that performs continuous integrati
 ## Prerequisites
 
 You should be familiar with YAML and the syntax for {% data variables.product.prodname_actions %}. For more information, see:
+
 - "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)"
 - "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)"
 
@@ -48,6 +49,7 @@ To get started quickly, you can choose the preconfigured Ant template when you c
 You can also add this workflow manually by creating a new file in the `.github/workflows` directory of your repository.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Java CI
 
@@ -67,6 +69,7 @@ jobs:
       - name: Build with Ant
         run: ant -noinput -buildfile build.xml
 ```
+
 {% endraw %}
 
 This workflow performs the following steps:
@@ -85,11 +88,12 @@ The default workflow templates are excellent starting points when creating your 
 
 You can use the same commands that you use locally to build and test your code.
 
-The starter workflow will run the default target specified in your _build.xml_ file.  Your default target will commonly be set to build classes, run tests and package classes into their distributable format, for example, a JAR file.
+The starter workflow will run the default target specified in your _build.xml_ file. Your default target will commonly be set to build classes, run tests and package classes into their distributable format, for example, a JAR file.
 
 If you use different commands to build your project, or you want to run a different target, you can specify those. For example, you may want to run the `jar` target that's configured in your _build-ci.xml_ file.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -100,6 +104,7 @@ steps:
   - name: Run the Ant jar target
     run: ant -noinput -buildfile build-ci.xml jar
 ```
+
 {% endraw %}
 
 ## Packaging workflow data as artifacts
@@ -109,6 +114,7 @@ After your build has succeeded and your tests have passed, you may want to uploa
 Ant will usually create output files like JARs, EARs, or WARs in the `build/jar` directory. You can upload the contents of that directory using the `upload-artifact` action.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -116,11 +122,12 @@ steps:
     with:
       java-version: '11'
       distribution: 'adopt'
-  
+
   - run: ant -noinput -buildfile build.xml
   - uses: actions/upload-artifact@v2
     with:
       name: Package
       path: build/jar
 ```
+
 {% endraw %}

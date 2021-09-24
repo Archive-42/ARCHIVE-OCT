@@ -4,8 +4,8 @@ intro: You can configure policies for organizations in your enterprise.
 redirect_from:
   - /enterprise/admin/policies/enforcing-policies-for-your-enterprise
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 topics:
   - Enterprise
 children:
@@ -14,4 +14,3 @@ children:
   - /enforcing-policies-for-advanced-security-in-your-enterprise
 shortTitle: Enforce policies
 ---
-

@@ -1,19 +1,20 @@
 ---
 title: About GitHub Premium Support for GitHub Enterprise Server
-intro: '{% data variables.contact.premium_support %} is a paid, supplemental support offering for {% data variables.product.prodname_enterprise %} customers.'
+intro: "{% data variables.contact.premium_support %} is a paid, supplemental support offering for {% data variables.product.prodname_enterprise %} customers."
 redirect_from:
   - /enterprise/admin/guides/enterprise-support/about-premium-support-for-github-enterprise/
   - /enterprise/admin/guides/enterprise-support/about-premium-support/
   - /enterprise/admin/enterprise-support/about-github-premium-support-for-github-enterprise-server
   - /admin/enterprise-support/about-github-premium-support-for-github-enterprise-server
 versions:
-  ghes: '*'
+  ghes: "*"
 type: overview
 topics:
   - Enterprise
   - Support
 shortTitle: Premium Support for GHES
 ---
+
 {% note %}
 
 **Notes:**
@@ -29,12 +30,13 @@ shortTitle: Premium Support for GHES
 ## About {% data variables.contact.premium_support %}
 
 In addition to all of the benefits of {% data variables.contact.enterprise_support %}, {% data variables.contact.premium_support %} offers:
-  - Written support, in English, through our support portal 24 hours per day, 7 days per week
-  - Phone support, in English, 24 hours per day, 7 days per week
-  - A Service Level Agreement (SLA) with guaranteed initial response times
-  - Access to premium content
-  - Scheduled health checks
-  - Managed services
+
+- Written support, in English, through our support portal 24 hours per day, 7 days per week
+- Phone support, in English, 24 hours per day, 7 days per week
+- A Service Level Agreement (SLA) with guaranteed initial response times
+- Access to premium content
+- Scheduled health checks
+- Managed services
 
 {% data reusables.support.about-premium-plans %}
 
@@ -46,7 +48,7 @@ In addition to all of the benefits of {% data variables.contact.enterprise_suppo
 
 ## Hours of operation
 
-{% data variables.contact.premium_support %} is available 24 hours a day, 7 days per week.  If you purchased {% data variables.contact.premium_support %} prior to September 17, 2018, support is limited during holidays. For more information on holidays {% data variables.contact.premium_support %} observes, see the holiday schedule at "[About {% data variables.contact.github_support %}](/enterprise/admin/guides/enterprise-support/about-github-enterprise-support)."
+{% data variables.contact.premium_support %} is available 24 hours a day, 7 days per week. If you purchased {% data variables.contact.premium_support %} prior to September 17, 2018, support is limited during holidays. For more information on holidays {% data variables.contact.premium_support %} observes, see the holiday schedule at "[About {% data variables.contact.github_support %}](/enterprise/admin/guides/enterprise-support/about-github-enterprise-support)."
 
 {% data reusables.support.service-level-agreement-response-times %}
 

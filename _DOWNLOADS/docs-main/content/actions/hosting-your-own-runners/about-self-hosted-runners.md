@@ -1,13 +1,13 @@
 ---
 title: About self-hosted runners
-intro: 'You can host your own runners and customize the environment used to run jobs in your {% data variables.product.prodname_actions %} workflows.'
+intro: "You can host your own runners and customize the environment used to run jobs in your {% data variables.product.prodname_actions %} workflows."
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/about-self-hosted-runners
   - /actions/automating-your-workflow-with-github-actions/about-self-hosted-runners
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: overview
 ---
 
@@ -21,6 +21,7 @@ type: overview
 {% data reusables.github-actions.self-hosted-runner-description %} Self-hosted runners can be physical, virtual, in a container, on-premises, or in a cloud.
 
 You can add self-hosted runners at various levels in the management hierarchy:
+
 - Repository-level runners are dedicated to a single repository.
 - Organization-level runners can process jobs for multiple repositories in an organization.
 - Enterprise-level runners can be assigned to multiple organizations in an enterprise account.
@@ -36,13 +37,15 @@ For more information about installing and using self-hosted runners, see "[Addin
 {% data variables.product.prodname_dotcom %}-hosted runners offer a quicker, simpler way to run your workflows, while self-hosted runners are a highly configurable way to run workflows in your own custom environment.
 
 **{% data variables.product.prodname_dotcom %}-hosted runners:**
+
 - Receive automatic updates for the operating system, preinstalled packages and tools, and the self-hosted runner application.
 - Are managed and maintained by {% data variables.product.prodname_dotcom %}.
 - Provide a clean instance for every job execution.
 - Use free minutes on your {% data variables.product.prodname_dotcom %} plan, with per-minute rates applied after surpassing the free minutes.
 
 **Self-hosted runners:**
-- Receive automatic updates for the self-hosted runner application only. You are responsible for updating the operating system and all other software. 
+
+- Receive automatic updates for the self-hosted runner application only. You are responsible for updating the operating system and all other software.
 - Can use cloud services or local machines that you already pay for.
 - Are customizable to your hardware, operating system, software, and security requirements.
 - Don't need to have a clean instance for every job execution.
@@ -52,20 +55,21 @@ For more information about installing and using self-hosted runners, see "[Addin
 
 You can use any machine as a self-hosted runner as long at it meets these requirements:
 
-* You can install and run the self-hosted runner application on the machine. For more information, see "[Supported architectures and operating systems for self-hosted runners](#supported-architectures-and-operating-systems-for-self-hosted-runners)."
-* The machine can communicate with {% data variables.product.prodname_actions %}. For more information, see "[Communication between self-hosted runners and {% data variables.product.prodname_dotcom %}](#communication-between-self-hosted-runners-and-github)."
-* The machine has enough hardware resources for the type of workflows you plan to run. The self-hosted runner application itself only requires minimal resources.
-* If you want to run workflows that use Docker container actions or service containers, you must use a Linux machine and Docker must be installed.
+- You can install and run the self-hosted runner application on the machine. For more information, see "[Supported architectures and operating systems for self-hosted runners](#supported-architectures-and-operating-systems-for-self-hosted-runners)."
+- The machine can communicate with {% data variables.product.prodname_actions %}. For more information, see "[Communication between self-hosted runners and {% data variables.product.prodname_dotcom %}](#communication-between-self-hosted-runners-and-github)."
+- The machine has enough hardware resources for the type of workflows you plan to run. The self-hosted runner application itself only requires minimal resources.
+- If you want to run workflows that use Docker container actions or service containers, you must use a Linux machine and Docker must be installed.
 
 ## Usage limits
 
 There are some limits on {% data variables.product.prodname_actions %} usage when using self-hosted runners. These limits are subject to change.
 
 {% data reusables.github-actions.usage-workflow-run-time %}
+
 - **Job queue time** - Each job for self-hosted runners can be queued for a maximum of 24 hours. If a self-hosted runner does not start executing the job within this limit, the job is terminated and fails to complete.
-{% data reusables.github-actions.usage-api-requests %}
+  {% data reusables.github-actions.usage-api-requests %}
 - **Job matrix** - {% data reusables.github-actions.usage-matrix-limits %}
-{% data reusables.github-actions.usage-workflow-queue-limits %}
+  {% data reusables.github-actions.usage-workflow-queue-limits %}
 
 ## Workflow continuity for self-hosted runners
 
@@ -168,7 +172,7 @@ This is not an issue with {% data variables.product.prodname_dotcom %}-hosted ru
 
 Untrusted workflows running on your self-hosted runner pose significant security risks for your machine and network environment, especially if your machine persists its environment between jobs. Some of the risks include:
 
-* Malicious programs running on the machine.
-* Escaping the machine's runner sandbox.
-* Exposing access to the machine's network environment.
-* Persisting unwanted or dangerous data on the machine.
+- Malicious programs running on the machine.
+- Escaping the machine's runner sandbox.
+- Exposing access to the machine's network environment.
+- Persisting unwanted or dangerous data on the machine.

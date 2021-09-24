@@ -1,14 +1,14 @@
 ---
 title: Caching dependencies to speed up workflows
 shortTitle: Caching dependencies
-intro: 'To make your workflows faster and more efficient, you can create and use caches for dependencies and other commonly reused files.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "To make your workflows faster and more efficient, you can create and use caches for dependencies and other commonly reused files."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/caching-dependencies-to-speed-up-workflows
   - /actions/automating-your-workflow-with-github-actions/caching-dependencies-to-speed-up-workflows
   - /actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
 versions:
-  fpt: '*'
+  fpt: "*"
 type: tutorial
 topics:
   - Workflows
@@ -22,9 +22,9 @@ Workflow runs often reuse the same outputs or downloaded dependencies from one r
 
 Jobs on {% data variables.product.prodname_dotcom %}-hosted runners start in a clean virtual environment and must download dependencies each time, causing increased network utilization, longer runtime, and increased cost. To help speed up the time it takes to recreate these files, {% data variables.product.prodname_dotcom %} can cache dependencies you frequently use in workflows.
 
-To cache dependencies for a job, you'll need to use {% data variables.product.prodname_dotcom %}'s `cache` action. The action retrieves a cache identified by a unique key. For more information, see [`actions/cache`](https://github.com/actions/cache). 
+To cache dependencies for a job, you'll need to use {% data variables.product.prodname_dotcom %}'s `cache` action. The action retrieves a cache identified by a unique key. For more information, see [`actions/cache`](https://github.com/actions/cache).
 
-If you are caching Ruby gems, instead consider using the Ruby maintained action, which can cache bundle installs on initiation. For more information, see [`ruby/setup-ruby`](https://github.com/ruby/setup-ruby#caching-bundle-install-automatically). 
+If you are caching Ruby gems, instead consider using the Ruby maintained action, which can cache bundle installs on initiation. For more information, see [`ruby/setup-ruby`](https://github.com/ruby/setup-ruby#caching-bundle-install-automatically).
 
 To cache and restore dependencies for npm, Yarn, or pnpm, you can use the [`actions/setup-node` action](https://github.com/actions/setup-node).
 
@@ -87,6 +87,7 @@ For more information, see [`actions/cache`](https://github.com/actions/cache).
 This example creates a new cache when the packages in `package-lock.json` file change, or when the runner's operating system changes. The cache key uses contexts and expressions to generate a key that includes the runner's operating system and a SHA-256 hash of the `package-lock.json` file.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Caching with npm
 
@@ -121,6 +122,7 @@ jobs:
       - name: Test
         run: npm test
 ```
+
 {% endraw %}
 
 When `key` matches an existing cache, it's called a cache hit, and the action restores the cached files to the `path` directory.
@@ -142,9 +144,11 @@ A cache key can include any of the contexts, functions, literals, and operators 
 Using expressions to create a `key` allows you to automatically create a new cache when dependencies have changed. For example, you can create a `key` using an expression that calculates the hash of an npm `package-lock.json` file.
 
 {% raw %}
+
 ```yaml
 npm-${{ hashFiles('package-lock.json') }}
 ```
+
 {% endraw %}
 
 {% data variables.product.prodname_dotcom %} evaluates the expression `hash "package-lock.json"` to derive the final `key`.
@@ -162,23 +166,27 @@ You can provide a list of restore keys to use when there is a cache miss on `key
 ### Example using multiple restore keys
 
 {% raw %}
+
 ```yaml
 restore-keys: |
   npm-foobar-${{ hashFiles('package-lock.json') }}
   npm-foobar-
   npm-
 ```
+
 {% endraw %}
 
 The runner evaluates the expressions, which resolve to these `restore-keys`:
 
 {% raw %}
+
 ```yaml
 restore-keys: |
   npm-foobar-d5ea0750
   npm-foobar-
   npm-
 ```
+
 {% endraw %}
 
 The restore key `npm-foobar-` matches any key that starts with the string `npm-foobar-`. For example, both of the keys `npm-foobar-fd3052de` and `npm-foobar-a9b253ff` match the restore key. The cache with the most recent creation date would be used. The keys in this example are searched in the following order:
@@ -190,8 +198,7 @@ The restore key `npm-foobar-` matches any key that starts with the string `npm-f
 #### Example of search priority
 
 ```yaml
-key:
-  npm-feature-d5ea0750
+key: npm-feature-d5ea0750
 restore-keys: |
   npm-feature-
   npm-
@@ -201,10 +208,10 @@ For example, if a pull request contains a `feature` branch (the current scope) a
 
 1. Key `npm-feature-d5ea0750` in the `feature` branch scope
 1. Key `npm-feature-` in the `feature` branch scope
-2. Key `npm-` in the `feature` branch scope
+1. Key `npm-` in the `feature` branch scope
 1. Key `npm-feature-d5ea0750` in the `main` branch scope
-3. Key `npm-feature-` in the `main` branch scope
-4. Key `npm-` in the `main` branch scope
+1. Key `npm-feature-` in the `main` branch scope
+1. Key `npm-` in the `main` branch scope
 
 ## Usage limits and eviction policy
 

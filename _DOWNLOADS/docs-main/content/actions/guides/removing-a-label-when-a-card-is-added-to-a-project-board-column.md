@@ -1,11 +1,11 @@
 ---
 title: Removing a label when a card is added to a project board column
-intro: 'You can use {% data variables.product.prodname_actions %} to automatically remove a label when an issue or pull request is added to a specific column on a project board.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to automatically remove a label when an issue or pull request is added to a specific column on a project board."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -26,42 +26,46 @@ In the tutorial, you will first make a workflow file that uses the [`andymckay/l
 
 ## Creating the workflow
 
-1. {% data reusables.actions.choose-repo %}
-2. Choose a project that belongs to the repository. This workflow cannot be used with projects that belong to users or organizations. You can use an existing project, or you can create a new project. For more information about creating a project, see "[Creating a project board](/github/managing-your-work-on-github/creating-a-project-board)."
-3. {% data reusables.actions.make-workflow-file %}
-4. Copy the following YAML contents into your workflow file.
+1.  {% data reusables.actions.choose-repo %}
+2.  Choose a project that belongs to the repository. This workflow cannot be used with projects that belong to users or organizations. You can use an existing project, or you can create a new project. For more information about creating a project, see "[Creating a project board](/github/managing-your-work-on-github/creating-a-project-board)."
+3.  {% data reusables.actions.make-workflow-file %}
+4.  Copy the following YAML contents into your workflow file.
 
-    ```yaml{:copy}
-{% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
+        ```yaml{:copy}
 
-    name: Remove labels
-    on:
-      project_card:
-        types:
-          - moved
-    jobs:
-      remove_labels:
-        if: github.event.project_card.column_id == '12345678'
-        runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
-        permissions:
-          issues: write
-          pull-requests: write{% endif %}
-        steps:
-          - name: remove labels
-            uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
-            with:
-              remove-labels: "needs review"
-              repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
-    ```
+    {% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
 
-5. Customize the parameters in your workflow file:
-   - In `github.event.project_card.column_id == '12345678'`, replace `12345678` with the ID of the column where you want to un-label issues and pull requests that are moved there.
+        name: Remove labels
+        on:
+          project_card:
+            types:
+              - moved
+        jobs:
+          remove_labels:
+            if: github.event.project_card.column_id == '12345678'
+            runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
+            permissions:
+              issues: write
+              pull-requests: write{% endif %}
+            steps:
+              - name: remove labels
+                uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
+                with:
+                  remove-labels: "needs review"
+                  repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+        ```
+
+5.  Customize the parameters in your workflow file:
+
+    - In `github.event.project_card.column_id == '12345678'`, replace `12345678` with the ID of the column where you want to un-label issues and pull requests that are moved there.
 
     To find the column ID, navigate to your project board. Next to the title of the column, click {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %} then click **Copy column link**. The column ID is the number at the end of the copied link. For example, `24687531` is the column ID for `https://github.com/octocat/octo-repo/projects/1#column-24687531`.
 
-     If you want to act on more than one column, separate the conditions with `||`. For example, `if github.event.project_card.column_id == '12345678' || github.event.project_card.column_id == '87654321'` will act whenever a project card is added to column `12345678` or column `87654321`. The columns may be on different project boards.
-   - Change the value for `remove-labels` to the list of labels that you want to remove from issues or pull requests that are moved to the specified column(s). Separate multiple labels with commas. For example, `"help wanted, good first issue"`. For more information on labels, see "[Managing labels](/github/managing-your-work-on-github/managing-labels#applying-labels-to-issues-and-pull-requests)."
-6. {% data reusables.actions.commit-workflow %}
+    If you want to act on more than one column, separate the conditions with `||`. For example, `if github.event.project_card.column_id == '12345678' || github.event.project_card.column_id == '87654321'` will act whenever a project card is added to column `12345678` or column `87654321`. The columns may be on different project boards.
+
+    - Change the value for `remove-labels` to the list of labels that you want to remove from issues or pull requests that are moved to the specified column(s). Separate multiple labels with commas. For example, `"help wanted, good first issue"`. For more information on labels, see "[Managing labels](/github/managing-your-work-on-github/managing-labels#applying-labels-to-issues-and-pull-requests)."
+
+6.  {% data reusables.actions.commit-workflow %}
 
 ## Testing the workflow
 

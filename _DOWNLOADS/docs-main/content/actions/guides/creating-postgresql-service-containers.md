@@ -2,14 +2,14 @@
 title: Creating PostgreSQL service containers
 shortTitle: PostgreSQL service containers
 intro: You can create a PostgreSQL service container to use in your workflow. This guide shows examples of creating a PostgreSQL service for jobs that run in containers or directly on the runner machine.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/creating-postgresql-service-containers
   - /actions/configuring-and-managing-workflows/creating-postgresql-service-containers
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Containers
@@ -42,6 +42,7 @@ You may also find it helpful to have a basic understanding of YAML, the syntax f
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: PostgreSQL service example
 on: push
@@ -91,6 +92,7 @@ jobs:
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
 ```
+
 {% endraw %}
 
 ### Configuring the runner job
@@ -164,6 +166,7 @@ When you run a job directly on the runner machine, you'll need to map the ports 
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: PostgreSQL Service Example
 on: push
@@ -215,6 +218,7 @@ jobs:
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
 ```
+
 {% endraw %}
 
 ### Configuring the runner job
@@ -288,7 +292,7 @@ steps:
 
 You can test your workflow using the following script, which connects to the PostgreSQL service and adds a new table with some placeholder data. The script then prints the values stored in the PostgreSQL table to the terminal. Your script can use any language you'd like, but this example uses Node.js and the `pg` npm module. For more information, see the [npm pg module](https://www.npmjs.com/package/pg).
 
-You can modify *client.js* to include any PostgreSQL operations needed by your workflow. In this example, the script connects to the PostgreSQL service, adds a table to the `postgres` database, inserts some placeholder data, and then retrieves the data.
+You can modify _client.js_ to include any PostgreSQL operations needed by your workflow. In this example, the script connects to the PostgreSQL service, adds a table to the `postgres` database, inserts some placeholder data, and then retrieves the data.
 
 {% data reusables.github-actions.service-container-add-script %}
 

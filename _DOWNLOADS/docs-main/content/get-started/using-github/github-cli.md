@@ -1,10 +1,10 @@
 ---
 title: GitHub CLI
-intro: '{% data reusables.cli.cli-intro %}'
+intro: "{% data reusables.cli.cli-intro %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - CLI
 ---

@@ -1,13 +1,13 @@
 ---
 title: Updating the virtual machine and physical resources
-intro: 'Upgrading the virtual software and virtual hardware requires some downtime for your instance, so be sure to plan your upgrade in advance.'
+intro: "Upgrading the virtual software and virtual hardware requires some downtime for your instance, so be sure to plan your upgrade in advance."
 redirect_from:
-  - '/enterprise/{{ currentVersion }}/admin/guides/installation/upgrading-the-vm/'
-  - '/enterprise/{{ currentVersion }}/admin/guides/installation/upgrading-physical-resources/'
+  - "/enterprise/{{ currentVersion }}/admin/guides/installation/upgrading-the-vm/"
+  - "/enterprise/{{ currentVersion }}/admin/guides/installation/upgrading-physical-resources/"
   - /enterprise/admin/installation/updating-the-virtual-machine-and-physical-resources
   - /enterprise/admin/enterprise-management/updating-the-virtual-machine-and-physical-resources
 versions:
-  ghes: '*'
+  ghes: "*"
 topics:
   - Enterprise
 children:
@@ -19,4 +19,3 @@ children:
   - /migrating-from-github-enterprise-1110x-to-2123
 shortTitle: Update VM & resources
 ---
-

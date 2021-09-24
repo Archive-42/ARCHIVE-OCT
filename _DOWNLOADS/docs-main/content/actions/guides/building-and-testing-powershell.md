@@ -1,11 +1,11 @@
 ---
 title: Building and testing PowerShell
 intro: You can create a continuous integration (CI) workflow to build and test your PowerShell project.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 authors:
   - potatoqualitee
 type: tutorial
@@ -23,7 +23,7 @@ shortTitle: Build & test PowerShell
 
 This guide shows you how to use PowerShell for CI. It describes how to use Pester, install dependencies, test your module, and publish to the PowerShell Gallery.
 
-{% data variables.product.prodname_dotcom %}-hosted runners have a tools cache with pre-installed software, which includes PowerShell and Pester. 
+{% data variables.product.prodname_dotcom %}-hosted runners have a tools cache with pre-installed software, which includes PowerShell and Pester.
 
 {% ifversion ghae %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images)."
 {% else %}For a full list of up-to-date software and the pre-installed versions of PowerShell and Pester, see "[Specifications for {% data variables.product.prodname_dotcom %}-hosted runners](/actions/reference/specifications-for-github-hosted-runners/#supported-software)".
@@ -34,6 +34,7 @@ This guide shows you how to use PowerShell for CI. It describes how to use Peste
 You should be familiar with YAML and the syntax for {% data variables.product.prodname_actions %}. For more information, see "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)."
 
 We recommend that you have a basic understanding of PowerShell and Pester. For more information, see:
+
 - [Getting started with PowerShell](https://docs.microsoft.com/powershell/scripting/learn/ps101/01-getting-started)
 - [Pester](https://pester.dev)
 
@@ -46,6 +47,7 @@ To automate your testing with PowerShell and Pester, you can add a workflow that
 This example workflow file must be added to your repository's `.github/workflows/` directory:
 
 {% raw %}
+
 ```yaml
 name: Test PowerShell on Ubuntu
 on: push
@@ -65,11 +67,12 @@ jobs:
         run: |
           Invoke-Pester Unit.Tests.ps1 -Passthru
 ```
+
 {% endraw %}
 
-* `shell: pwsh` - Configures the job to use PowerShell when running the `run` commands.
-* `run: Test-Path resultsfile.log` - Check whether a file called `resultsfile.log` is present in the repository's root directory.
-* `Should -Be $true` - Uses Pester to define an expected result. If the result is unexpected, then {% data variables.product.prodname_actions %} flags this as a failed test. For example:
+- `shell: pwsh` - Configures the job to use PowerShell when running the `run` commands.
+- `run: Test-Path resultsfile.log` - Check whether a file called `resultsfile.log` is present in the repository's root directory.
+- `Should -Be $true` - Uses Pester to define an expected result. If the result is unexpected, then {% data variables.product.prodname_actions %} flags this as a failed test. For example:
 
   {% ifversion fpt or ghes > 3.0 or ghae %}
   ![Failed Pester test](/assets/images/help/repository/actions-failed-pester-test-updated.png)
@@ -77,7 +80,7 @@ jobs:
   ![Failed Pester test](/assets/images/help/repository/actions-failed-pester-test.png)
   {% endif %}
 
-* `Invoke-Pester Unit.Tests.ps1 -Passthru` - Uses Pester to execute tests defined in a file called `Unit.Tests.ps1`. For example, to perform the same test described above, the `Unit.Tests.ps1` will contain the following:
+- `Invoke-Pester Unit.Tests.ps1 -Passthru` - Uses Pester to execute tests defined in a file called `Unit.Tests.ps1`. For example, to perform the same test described above, the `Unit.Tests.ps1` will contain the following:
   ```
   Describe "Check results file is present" {
       It "Check results file is present" {
@@ -90,11 +93,11 @@ jobs:
 
 The table below describes the locations for various PowerShell modules in each {% data variables.product.prodname_dotcom %}-hosted runner.
 
-|| Ubuntu | macOS | Windows |
-|------|-------|------|----------|
-|**PowerShell system modules** |`/opt/microsoft/powershell/7/Modules/*`|`/usr/local/microsoft/powershell/7/Modules/*`|`C:\program files\powershell\7\Modules\*`|
-|**PowerShell add-on modules**|`/usr/local/share/powershell/Modules/*`|`/usr/local/share/powershell/Modules/*`|`C:\Modules\*`|
-|**User-installed modules**|`/home/runner/.local/share/powershell/Modules/*`|`/Users/runner/.local/share/powershell/Modules/*`|`C:\Users\runneradmin\Documents\PowerShell\Modules\*`|
+|                               | Ubuntu                                           | macOS                                             | Windows                                               |
+| ----------------------------- | ------------------------------------------------ | ------------------------------------------------- | ----------------------------------------------------- |
+| **PowerShell system modules** | `/opt/microsoft/powershell/7/Modules/*`          | `/usr/local/microsoft/powershell/7/Modules/*`     | `C:\program files\powershell\7\Modules\*`             |
+| **PowerShell add-on modules** | `/usr/local/share/powershell/Modules/*`          | `/usr/local/share/powershell/Modules/*`           | `C:\Modules\*`                                        |
+| **User-installed modules**    | `/home/runner/.local/share/powershell/Modules/*` | `/Users/runner/.local/share/powershell/Modules/*` | `C:\Users\runneradmin\Documents\PowerShell\Modules\*` |
 
 ## Installing dependencies
 
@@ -111,6 +114,7 @@ When using {% data variables.product.prodname_dotcom %}-hosted runners, you can 
 For example, the following job installs the `SqlServer` and `PSScriptAnalyzer` modules:
 
 {% raw %}
+
 ```yaml
 jobs:
   install-dependencies:
@@ -124,6 +128,7 @@ jobs:
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module SqlServer, PSScriptAnalyzer
 ```
+
 {% endraw %}
 
 {% note %}
@@ -139,6 +144,7 @@ When using {% data variables.product.prodname_dotcom %}-hosted runners, you can 
 PowerShell caches its dependencies in different locations, depending on the runner's operating system. For example, the `path` location used in the following Ubuntu example will be different for a Windows operating system.
 
 {% raw %}
+
 ```yaml
 steps:
   - uses: actions/checkout@v2
@@ -155,6 +161,7 @@ steps:
       Set-PSRepository PSGallery -InstallationPolicy Trusted
       Install-Module SqlServer, PSScriptAnalyzer -ErrorAction Stop
 ```
+
 {% endraw %}
 
 ## Testing your code
@@ -166,29 +173,31 @@ You can use the same commands that you use locally to build and test your code.
 The following example installs `PSScriptAnalyzer` and uses it to lint all `ps1` files in the repository. For more information, see [PSScriptAnalyzer on GitHub](https://github.com/PowerShell/PSScriptAnalyzer).
 
 {% raw %}
+
 ```yaml
-  lint-with-PSScriptAnalyzer:
-    name: Install and run PSScriptAnalyzer
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install PSScriptAnalyzer module
-        shell: pwsh
-        run: |
-          Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module PSScriptAnalyzer -ErrorAction Stop
-      - name: Lint with PSScriptAnalyzer
-        shell: pwsh
-        run: |
-          Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
-          $errors   = $issues.Where({$_.Severity -eq 'Error'})
-          $warnings = $issues.Where({$_.Severity -eq 'Warning'})
-          if ($errors) {
-              Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
-          } else {
-              Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
-          }
+lint-with-PSScriptAnalyzer:
+  name: Install and run PSScriptAnalyzer
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - name: Install PSScriptAnalyzer module
+      shell: pwsh
+      run: |
+        Set-PSRepository PSGallery -InstallationPolicy Trusted
+        Install-Module PSScriptAnalyzer -ErrorAction Stop
+    - name: Lint with PSScriptAnalyzer
+      shell: pwsh
+      run: |
+        Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
+        $errors   = $issues.Where({$_.Severity -eq 'Error'})
+        $warnings = $issues.Where({$_.Severity -eq 'Warning'})
+        if ($errors) {
+            Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+        } else {
+            Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+        }
 ```
+
 {% endraw %}
 
 ## Packaging workflow data as artifacts
@@ -198,6 +207,7 @@ You can upload artifacts to view after a workflow completes. For example, you ma
 The following example demonstrates how you can use the `upload-artifact` action to archive the test results received from `Invoke-Pester`. For more information, see the [`upload-artifact` action](https://github.com/actions/upload-artifact).
 
 {% raw %}
+
 ```yaml
 name: Upload artifact from Ubuntu
 
@@ -219,6 +229,7 @@ jobs:
           path: Unit.Tests.xml
     if: ${{ always() }}
 ```
+
 {% endraw %}
 
 The `always()` function configures the job to continue processing even if there are test failures. For more information, see "[always](/actions/reference/context-and-expression-syntax-for-github-actions#always)."
@@ -230,6 +241,7 @@ You can configure your workflow to publish your PowerShell module to the PowerSh
 The following example creates a package and uses `Publish-Module` to publish it to the PowerShell Gallery:
 
 {% raw %}
+
 ```yaml
 name: Publish PowerShell Module
 
@@ -250,4 +262,5 @@ jobs:
           ./build.ps1 -Path /tmp/samplemodule
           Publish-Module -Path /tmp/samplemodule -NuGetApiKey $env:NUGET_KEY -Verbose
 ```
+
 {% endraw %}

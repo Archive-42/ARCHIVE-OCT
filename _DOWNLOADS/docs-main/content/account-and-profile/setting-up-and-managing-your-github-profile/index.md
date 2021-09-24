@@ -6,13 +6,12 @@ redirect_from:
   - /categories/setting-up-and-managing-your-github-profile
   - /github/setting-up-and-managing-your-github-profile
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - Profiles
 children:
   - /customizing-your-profile
   - /managing-contribution-graphs-on-your-profile
 ---
-

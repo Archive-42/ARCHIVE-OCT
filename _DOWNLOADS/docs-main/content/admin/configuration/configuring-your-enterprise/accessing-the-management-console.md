@@ -1,6 +1,6 @@
 ---
 title: Accessing the management console
-intro: '{% data reusables.enterprise_site_admin_settings.about-the-management-console %}'
+intro: "{% data reusables.enterprise_site_admin_settings.about-the-management-console %}"
 redirect_from:
   - /enterprise/admin/articles/about-the-management-console/
   - /enterprise/admin/articles/management-console-for-emergency-recovery/
@@ -12,16 +12,18 @@ redirect_from:
   - /enterprise/admin/configuration/accessing-the-management-console
   - /admin/configuration/accessing-the-management-console
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Enterprise
   - Fundamentals
 shortTitle: Access the management console
 ---
+
 ## About the {% data variables.enterprise.management_console %}
 
 Use the {% data variables.enterprise.management_console %} for basic administrative activities:
+
 - **Initial setup**: Walk through the initial setup process when first launching {% data variables.product.product_location %} by visiting {% data variables.product.product_location %}'s IP address in your browser.
 - **Configuring basic settings for your instance**: Configure DNS, hostname, SSL, user authentication, email, monitoring services, and log forwarding on the Settings page.
 - **Scheduling maintenance windows**: Take {% data variables.product.product_location %} offline while performing maintenance using the {% data variables.enterprise.management_console %} or administrative shell.
@@ -43,9 +45,11 @@ The first time that you access the {% data variables.enterprise.management_conso
 ## Accessing the {% data variables.enterprise.management_console %} as an unauthenticated user
 
 1. Visit this URL in your browser, replacing `hostname` with your actual {% data variables.product.prodname_ghe_server %} hostname or IP address:
-  ```shell
-  http(s)://HOSTNAME/setup
-  ```
+
+```shell
+http(s)://HOSTNAME/setup
+```
+
 {% data reusables.enterprise_management_console.type-management-console-password %}
 
 ## Unlocking the {% data variables.enterprise.management_console %} after failed login attempts

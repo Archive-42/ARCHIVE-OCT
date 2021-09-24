@@ -1,13 +1,13 @@
 ---
 title: Building and testing Java with Maven
 intro: You can create a continuous integration (CI) workflow in GitHub Actions to build and test your Java project with Maven.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/building-and-testing-java-with-maven
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CI
@@ -32,6 +32,7 @@ This guide shows you how to create a workflow that performs continuous integrati
 ## Prerequisites
 
 You should be familiar with YAML and the syntax for {% data variables.product.prodname_actions %}. For more information, see:
+
 - "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)"
 - "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)"
 
@@ -48,6 +49,7 @@ To get started quickly, you can choose the preconfigured Maven template when you
 You can also add this workflow manually by creating a new file in the `.github/workflows` directory of your repository.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Java CI
 
@@ -67,6 +69,7 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
 ```
+
 {% endraw %}
 
 This workflow performs the following steps:
@@ -90,6 +93,7 @@ The starter workflow will run the `package` target by default. In the default Ma
 If you use different commands to build your project, or you want to use a different target, you can specify those. For example, you may want to run the `verify` target that's configured in a _pom-ci.xml_ file.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -100,13 +104,15 @@ steps:
   - name: Run the Maven verify phase
     run: mvn --batch-mode --update-snapshots verify
 ```
+
 {% endraw %}
 
 ## Caching dependencies
 
-When using {% data variables.product.prodname_dotcom %}-hosted runners, you can cache your dependencies to speed up your workflow runs. After a successful run, your local Maven repository will be stored on GitHub Actions infrastructure. In future workflow runs, the cache will be restored so that dependencies don't need to be downloaded from remote Maven repositories. You can cache dependencies simply using the [`setup-java` action](https://github.com/marketplace/actions/setup-java-jdk) or can use [`cache` action](https://github.com/actions/cache) for custom and more advanced configuration. 
+When using {% data variables.product.prodname_dotcom %}-hosted runners, you can cache your dependencies to speed up your workflow runs. After a successful run, your local Maven repository will be stored on GitHub Actions infrastructure. In future workflow runs, the cache will be restored so that dependencies don't need to be downloaded from remote Maven repositories. You can cache dependencies simply using the [`setup-java` action](https://github.com/marketplace/actions/setup-java-jdk) or can use [`cache` action](https://github.com/actions/cache) for custom and more advanced configuration.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -119,6 +125,7 @@ steps:
   - name: Build with Maven
     run: mvn --batch-mode --update-snapshots verify
 ```
+
 {% endraw %}
 
 This workflow will save the contents of your local Maven repository, located in the `.m2` directory of the runner's home directory. The cache key will be the hashed contents of _pom.xml_, so changes to _pom.xml_ will invalidate the cache.
@@ -130,6 +137,7 @@ After your build has succeeded and your tests have passed, you may want to uploa
 Maven will usually create output files like JARs, EARs, or WARs in the `target` directory. To upload those as artifacts, you can copy them into a new directory that contains artifacts to upload. For example, you can create a directory called `staging`. Then you can upload the contents of that directory using the `upload-artifact` action.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -144,4 +152,5 @@ steps:
       name: Package
       path: staging
 ```
+
 {% endraw %}

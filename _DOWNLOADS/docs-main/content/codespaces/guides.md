@@ -1,12 +1,12 @@
 ---
 title: Codespaces guides
 shortTitle: Guides
-product: '{% data reusables.gated-features.codespaces %}'
+product: "{% data reusables.gated-features.codespaces %}"
 intro: Learn how to make the most of GitHub
 allowTitleToDifferFromFilename: true
 layout: product-sublanding
 versions:
-  fpt: '*'
+  fpt: "*"
 includeGuides:
   - /codespaces/getting-started/quickstart
   - /codespaces/getting-started/deep-dive
@@ -39,4 +39,3 @@ includeGuides:
   - /codespaces/codespaces-reference/disaster-recovery-for-codespaces
   - /codespaces/codespaces-reference/security-in-codespaces
 ---
-

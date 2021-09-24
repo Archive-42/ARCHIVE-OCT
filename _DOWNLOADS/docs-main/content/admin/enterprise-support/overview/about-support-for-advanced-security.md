@@ -1,17 +1,18 @@
 ---
 title: About support for Advanced Security
-intro: '{% data variables.contact.enterprise_support %} can help you troubleshoot issues you run into while using {% data variables.product.prodname_advanced_security %}.'
+intro: "{% data variables.contact.enterprise_support %} can help you troubleshoot issues you run into while using {% data variables.product.prodname_advanced_security %}."
 redirect_from:
   - /enterprise/admin/enterprise-support/about-support-for-advanced-security
   - /admin/enterprise-support/about-support-for-advanced-security
 versions:
-  ghes: '*'
+  ghes: "*"
 type: overview
 topics:
   - Enterprise
   - Support
 shortTitle: Support for Advanced Security
 ---
+
 {% note %}
 
 **Note**: {% data reusables.support.data-protection-and-privacy %}
@@ -25,6 +26,7 @@ shortTitle: Support for Advanced Security
 ## Scope of support
 
 If your support request is outside of the scope of what our team can help you with, we may recommend next steps to resolve your issue outside of {% data variables.contact.enterprise_support %}. Your support request is possibly out of {% data variables.contact.enterprise_support %}'s scope if it's primarily about:
+
 - Third party integrations
 - Hardware setup
 - Configuration of external systems
@@ -38,6 +40,7 @@ If you're uncertain if the issue is out of scope, open a ticket and we're happy 
 ## Contacting {% data variables.contact.enterprise_support %}
 
 You can contact {% data variables.contact.enterprise_support %} through the {% data variables.contact.contact_enterprise_portal %} for help with:
+
 - Installing and using {% data variables.product.prodname_advanced_security %}
 - Identifying and verifying the causes of supported errors
 
@@ -49,9 +52,7 @@ We offer support for {% data variables.product.prodname_advanced_security %} in 
 
 {% data variables.contact.enterprise_support %} observes these U.S. holidays.
 
-
 {% data reusables.enterprise_enterprise_support.support-holiday-availability %}
-
 
 ## Installing {% data variables.product.prodname_advanced_security %} updates
 
@@ -63,11 +64,11 @@ When you contact {% data variables.contact.enterprise_support %} for help with {
 
 {% data reusables.support.github-can-modify-ticket-priority %}
 
-| Priority | Description |
-| :---: | --- |
-| {% data variables.product.support_ticket_priority_high %} | {% data variables.product.prodname_advanced_security %} is not functioning or is stopped or severely impacted such that the end user cannot reasonably continue use of the software and no workaround is available. |
-| {% data variables.product.support_ticket_priority_normal %} | {% data variables.product.prodname_advanced_security %} is functioning inconsistently, causing impaired end user usage and productivity. |
-| {% data variables.product.support_ticket_priority_low %} | {% data variables.product.prodname_advanced_security %} is functioning consistently, but the end user requests minor changes in the software, such as documentation updates, cosmetic defects, or enhancements.|
+|                          Priority                           | Description                                                                                                                                                                                                         |
+| :---------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  {% data variables.product.support_ticket_priority_high %}  | {% data variables.product.prodname_advanced_security %} is not functioning or is stopped or severely impacted such that the end user cannot reasonably continue use of the software and no workaround is available. |
+| {% data variables.product.support_ticket_priority_normal %} | {% data variables.product.prodname_advanced_security %} is functioning inconsistently, causing impaired end user usage and productivity.                                                                            |
+|  {% data variables.product.support_ticket_priority_low %}   | {% data variables.product.prodname_advanced_security %} is functioning consistently, but the end user requests minor changes in the software, such as documentation updates, cosmetic defects, or enhancements.     |
 
 ## Resolving and closing support tickets
 

@@ -2,16 +2,16 @@
 title: Metadata syntax for GitHub Actions
 shortTitle: Metadata syntax
 intro: You can create actions to perform tasks in your repository. Actions require a metadata file that uses YAML syntax.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/metadata-syntax-for-github-actions
   - /github/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
   - /actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
   - /actions/building-actions/metadata-syntax-for-github-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: reference
 ---
 
@@ -48,17 +48,17 @@ This example configures two inputs: numOctocats and octocatEyeColor. The numOcto
 ```yaml
 inputs:
   numOctocats:
-    description: 'Number of Octocats'
+    description: "Number of Octocats"
     required: false
-    default: '1'
+    default: "1"
   octocatEyeColor:
-    description: 'Eye color of the Octocats'
+    description: "Eye color of the Octocats"
     required: true
 ```
 
 When you specify an input in a workflow file or use a default input value, {% data variables.product.prodname_dotcom %} creates an environment variable for the input with the name `INPUT_<VARIABLE_NAME>`. The environment variable created converts input names to uppercase letters and replaces spaces with `_` characters.
 
-If the action is written using a [composite](/actions/creating-actions/creating-a-composite-action), then it will not automatically get `INPUT_<VARIABLE_NAME>`. If the conversion doesn't occur, you can change these inputs manually. 
+If the action is written using a [composite](/actions/creating-actions/creating-a-composite-action), then it will not automatically get `INPUT_<VARIABLE_NAME>`. If the conversion doesn't occur, you can change these inputs manually.
 
 To access the environment variable in a Docker container action, you must pass the input using the `args` keyword in the action metadata file. For more information about the action metadata file for Docker container actions, see "[Creating a Docker container action](/articles/creating-a-docker-container-action#creating-an-action-metadata-file)."
 
@@ -86,7 +86,7 @@ For example, if a workflow defined the `numOctocats` and `octocatEyeColor` input
 
 ## `outputs`
 
-**Optional** Output parameters allow you to declare data that an action sets. Actions that run later in a workflow can use the output data set in previously run actions.  For example, if you had an action that performed the addition of two inputs (x + y = z), the action could output the sum (z) for other actions to use as an input.
+**Optional** Output parameters allow you to declare data that an action sets. Actions that run later in a workflow can use the output data set in previously run actions. For example, if you had an action that performed the addition of two inputs (x + y = z), the action could output the sum (z) for other actions to use as an input.
 
 If you don't declare an output in your action metadata file, you can still set outputs and use them in a workflow. For more information on setting outputs in an action, see "[Workflow commands for {% data variables.product.prodname_actions %}](/actions/reference/workflow-commands-for-github-actions/#setting-an-output-parameter)."
 
@@ -95,7 +95,7 @@ If you don't declare an output in your action metadata file, you can still set o
 ```yaml
 outputs:
   sum: # id of the output
-    description: 'The sum of the inputs'
+    description: "The sum of the inputs"
 ```
 
 ### `outputs.<output_id>`
@@ -113,6 +113,7 @@ outputs:
 ### Example
 
 {% raw %}
+
 ```yaml
 outputs:
   random-number:
@@ -125,6 +126,7 @@ runs:
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
 ```
+
 {% endraw %}
 
 ### `outputs.<output_id>.value`
@@ -141,8 +143,8 @@ For more information on how to use context and expression syntax, see "[Context 
 
 ```yaml
 runs:
-  using: 'node12'
-  main: 'main.js'
+  using: "node12"
+  main: "main.js"
 ```
 
 ### `runs.using`
@@ -161,10 +163,10 @@ In this example, the `pre:` action runs a script called `setup.js`:
 
 ```yaml
 runs:
-  using: 'node12'
-  pre: 'setup.js'
-  main: 'index.js'
-  post: 'cleanup.js'
+  using: "node12"
+  pre: "setup.js"
+  main: "index.js"
+  post: "cleanup.js"
 ```
 
 ### `pre-if`
@@ -175,8 +177,8 @@ Note that the `step` context is unavailable, as no steps have run yet.
 In this example, `cleanup.js` only runs on Linux-based runners:
 
 ```yaml
-  pre: 'cleanup.js'
-  pre-if: runner.os == 'linux'
+pre: "cleanup.js"
+pre-if: runner.os == 'linux'
 ```
 
 ### `post`
@@ -187,9 +189,9 @@ In this example, the `post:` action runs a script called `cleanup.js`:
 
 ```yaml
 runs:
-  using: 'node12'
-  main: 'index.js'
-  post: 'cleanup.js'
+  using: "node12"
+  main: "index.js"
+  post: "cleanup.js"
 ```
 
 The `post:` action always runs by default but you can override this using `post-if`.
@@ -201,8 +203,8 @@ The `post:` action always runs by default but you can override this using `post-
 For example, this `cleanup.js` will only run on Linux-based runners:
 
 ```yaml
-  post: 'cleanup.js'
-  post-if: runner.os == 'linux'
+post: "cleanup.js"
+post-if: runner.os == 'linux'
 ```
 
 ## `runs` for composite actions
@@ -230,6 +232,7 @@ For example, this `cleanup.js` will only run on Linux-based runners:
 {% endif %}
 
 {% raw %}
+
 ```yaml
 runs:
   using: "composite"
@@ -237,6 +240,7 @@ runs:
     - run: ${{ github.action_path }}/test/script.sh
       shell: bash
 ```
+
 {% endraw %}
 
 Alternatively, you can use `$GITHUB_ACTION_PATH`:
@@ -269,18 +273,20 @@ For more information, see "[`github context`](/actions/reference/context-and-exp
 
 #### `runs.steps[*].env`
 
-**Optional**  Sets a `map` of environment variables for only that step. If you want to modify the environment variable stored in the workflow, use {% ifversion fpt or ghes > 2.22 or ghae %}`echo "{name}={value}" >> $GITHUB_ENV`{% else %}`echo "::set-env name={name}::{value}"`{% endif %} in a composite step.
+**Optional** Sets a `map` of environment variables for only that step. If you want to modify the environment variable stored in the workflow, use {% ifversion fpt or ghes > 2.22 or ghae %}`echo "{name}={value}" >> $GITHUB_ENV`{% else %}`echo "::set-env name={name}::{value}"`{% endif %} in a composite step.
 
 #### `runs.steps[*].working-directory`
 
-**Optional**  Specifies the working directory where the command is run.
+**Optional** Specifies the working directory where the command is run.
 
 {% ifversion fpt or ghes > 3.2 or ghae-issue-4853 %}
+
 #### `runs.steps[*].uses`
 
-**Optional**  Selects an action to run as part of a step in your job. An action is a reusable unit of code. You can use an action defined in the same repository as the workflow, a public repository, or in a [published Docker container image](https://hub.docker.com/).
+**Optional** Selects an action to run as part of a step in your job. An action is a reusable unit of code. You can use an action defined in the same repository as the workflow, a public repository, or in a [published Docker container image](https://hub.docker.com/).
 
 We strongly recommend that you include the version of the action you are using by specifying a Git ref, SHA, or Docker tag number. If you don't specify a version, it could break your workflows or cause unexpected behavior when the action owner publishes an update.
+
 - Using the commit SHA of a released action version is the safest for stability and security.
 - Using the specific major action version allows you to receive critical fixes and security patches while still maintaining compatibility. It also assures that your workflow should still work.
 - Using the default branch of an action may be convenient, but if someone releases a new major version with a breaking change, your workflow could break.
@@ -311,7 +317,7 @@ runs:
 
 #### `runs.steps[*].with`
 
-**Optional**  A `map` of the input parameters defined by the action. Each input parameter is a key/value pair.  Input parameters are set as environment variables. The variable is prefixed with INPUT_ and converted to upper case.
+**Optional** A `map` of the input parameters defined by the action. Each input parameter is a key/value pair. Input parameters are set as environment variables. The variable is prefixed with INPUT\_ and converted to upper case.
 
 ```yaml
 runs:
@@ -322,8 +328,9 @@ runs:
       with:
         first_name: Mona
         middle_name: The
-        last_name: Octocat  
+        last_name: Octocat
 ```
+
 {% endif %}
 
 ## `runs` for Docker actions
@@ -334,16 +341,16 @@ runs:
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
 ```
 
 ### Example using public Docker registry container
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'docker://debian:stretch-slim'
+  using: "docker"
+  image: "docker://debian:stretch-slim"
 ```
 
 ### `runs.using`
@@ -360,12 +367,12 @@ In this example, the `pre-entrypoint:` action runs a script called `setup.sh`:
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
-    - 'bzz'
-  pre-entrypoint: 'setup.sh'
-  entrypoint: 'main.sh'
+    - "bzz"
+  pre-entrypoint: "setup.sh"
+  entrypoint: "main.sh"
 ```
 
 ### `runs.image`
@@ -384,16 +391,16 @@ For more information about how the `entrypoint` executes, see "[Dockerfile suppo
 
 ### `post-entrypoint`
 
-**Optional**  Allows you to run a cleanup script once the `runs.entrypoint` action has completed. {% data variables.product.prodname_actions %} uses `docker run` to launch this action. Because  {% data variables.product.prodname_actions %} runs the script inside a new container using the same base image, the runtime state is different from the main `entrypoint` container. You can access any state you need in either the workspace, `HOME`, or as a `STATE_` variable. The `post-entrypoint:` action always runs by default but you can override this using [`post-if`](#post-if).
+**Optional** Allows you to run a cleanup script once the `runs.entrypoint` action has completed. {% data variables.product.prodname_actions %} uses `docker run` to launch this action. Because {% data variables.product.prodname_actions %} runs the script inside a new container using the same base image, the runtime state is different from the main `entrypoint` container. You can access any state you need in either the workspace, `HOME`, or as a `STATE_` variable. The `post-entrypoint:` action always runs by default but you can override this using [`post-if`](#post-if).
 
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
-    - 'bzz'
-  entrypoint: 'main.sh'
-  post-entrypoint: 'cleanup.sh'
+    - "bzz"
+  entrypoint: "main.sh"
+  post-entrypoint: "cleanup.sh"
 ```
 
 ### `runs.args`
@@ -411,15 +418,17 @@ For more information about using the `CMD` instruction with {% data variables.pr
 #### Example
 
 {% raw %}
+
 ```yaml
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.greeting }}
-    - 'foo'
-    - 'bar'
+    - "foo"
+    - "bar"
 ```
+
 {% endraw %}
 
 ## `branding`
@@ -430,8 +439,8 @@ You can use a color and [Feather](https://feathericons.com/) icon to create a ba
 
 ```yaml
 branding:
-  icon: 'award'  
-  color: 'green'
+  icon: "award"
+  color: "green"
 ```
 
 ### `branding.color`

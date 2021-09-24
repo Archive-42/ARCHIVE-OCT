@@ -1,6 +1,6 @@
 ---
 title: Enabling private mode
-intro: 'In private mode, {% data variables.product.prodname_ghe_server %} requires every user to sign in to access the installation.'
+intro: "In private mode, {% data variables.product.prodname_ghe_server %} requires every user to sign in to access the installation."
 redirect_from:
   - /enterprise/admin/articles/private-mode/
   - /enterprise/admin/guides/installation/security/
@@ -9,7 +9,7 @@ redirect_from:
   - /enterprise/admin/configuration/enabling-private-mode
   - /admin/configuration/enabling-private-mode
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Access management
@@ -21,6 +21,7 @@ topics:
   - Privacy
   - Security
 ---
+
 You must enable private mode if {% data variables.product.product_location %} is publicly accessible over the Internet. In private mode, users cannot anonymously clone repositories over `git://`. If built-in authentication is also enabled, an administrator must invite new users to create an account on the instance. For more information, see "[Using built-in authentication](/enterprise/{{ currentVersion }}/admin/guides/user-management/using-built-in-authentication)."
 
 {% data reusables.enterprise_installation.image-urls-viewable-warning %}
@@ -29,7 +30,6 @@ With private mode enabled, you can allow unauthenticated Git operations (and any
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
-{% data reusables.enterprise_management_console.privacy %}
-4. Select **Private mode**.
-  ![Checkbox for enabling private mode](/assets/images/enterprise/management-console/private-mode-checkbox.png)
+{% data reusables.enterprise_management_console.privacy %} 4. Select **Private mode**.
+![Checkbox for enabling private mode](/assets/images/enterprise/management-console/private-mode-checkbox.png)
 {% data reusables.enterprise_management_console.save-settings %}

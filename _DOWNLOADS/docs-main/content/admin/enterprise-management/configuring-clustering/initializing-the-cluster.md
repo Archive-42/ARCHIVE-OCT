@@ -1,17 +1,18 @@
 ---
 title: Initializing the cluster
-intro: 'A {% data variables.product.prodname_ghe_server %} cluster must be set up with a license and initialized using the administrative shell (SSH).'
+intro: "A {% data variables.product.prodname_ghe_server %} cluster must be set up with a license and initialized using the administrative shell (SSH)."
 redirect_from:
   - /enterprise/admin/clustering/initializing-the-cluster
   - /enterprise/admin/enterprise-management/initializing-the-cluster
   - /admin/enterprise-management/initializing-the-cluster
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Clustering
   - Enterprise
 ---
+
 {% data reusables.enterprise_clustering.clustering-requires-https %}
 
 ## Installing {% data variables.product.prodname_ghe_server %}
@@ -23,15 +24,15 @@ topics:
 
 1. Connect to the node that will be designated as MySQL primary in `cluster.conf`. For more information, see "[About the cluster configuration file](/enterprise/{{ currentVersion }}/admin/guides/clustering/initializing-the-cluster/#about-the-cluster-configuration-file)."
 2. In your web browser, visit `https://<ip address>:8443/setup/`.
-{% data reusables.enterprise_installation.upload-a-license-file %}
-{% data reusables.enterprise_installation.save-settings-in-web-based-mgmt-console %}
-{% data reusables.enterprise_installation.instance-will-restart-automatically %}
+   {% data reusables.enterprise_installation.upload-a-license-file %}
+   {% data reusables.enterprise_installation.save-settings-in-web-based-mgmt-console %}
+   {% data reusables.enterprise_installation.instance-will-restart-automatically %}
 
 ## Initializing the cluster
 
 To initialize the cluster, you need a cluster configuration file (`cluster.conf`). For more information, see “[About the cluster configuration file](/enterprise/{{ currentVersion }}/admin/guides/clustering/initializing-the-cluster/#about-the-cluster-configuration-file)".
 
-1. From the first node that was configured, run `ghe-cluster-config-init`.  This will initialize the cluster if there are nodes in the cluster configuration file that are not configured.
+1. From the first node that was configured, run `ghe-cluster-config-init`. This will initialize the cluster if there are nodes in the cluster configuration file that are not configured.
 2. Run `ghe-cluster-config-apply`. This will validate the `cluster.conf` file, apply the configuration to each node file and bring up the configured services on each node.
 
 To check the status of a running cluster use the `ghe-cluster-status` command.
@@ -43,8 +44,8 @@ For more information, see "[About cluster nodes](/enterprise/{{ currentVersion }
 
 This example `cluster.conf` defines a cluster with five nodes.
 
-  - Two nodes (called `ghe-app-node-\*`) run the `web-server` and `job-server` services responsible for responding to client requests.
-  - Three nodes (called `ghe-data-node-\*`) run the services responsible for storage and retrieval of {% data variables.product.prodname_ghe_server %} data.
+- Two nodes (called `ghe-app-node-\*`) run the `web-server` and `job-server` services responsible for responding to client requests.
+- Three nodes (called `ghe-data-node-\*`) run the services responsible for storage and retrieval of {% data variables.product.prodname_ghe_server %} data.
 
 The names of the nodes can be any valid hostname you choose. The names are set as the hostname of each node, and will also be added to `/etc/hosts` on each node, so that the nodes are locally resolvable to each other.
 
@@ -113,6 +114,6 @@ Specify the first cluster node you configured as the MySQL primary via `mysql-se
 
 Create the file `/data/user/common/cluster.conf` on the configured first node. For example, using `vim`:
 
-   ```shell
-   ghe-data-node-1:~$ sudo vim /data/user/common/cluster.conf
-   ```
+```shell
+ghe-data-node-1:~$ sudo vim /data/user/common/cluster.conf
+```

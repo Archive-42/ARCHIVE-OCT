@@ -1,11 +1,11 @@
 ---
 title: Requiring two-factor authentication for an organization
-intro: 'You can require organization members and outside collaborators to enable two-factor authentication for their personal accounts in an organization, making it harder for malicious actors to access an organization''s repositories and settings.'
+intro: "You can require organization members and outside collaborators to enable two-factor authentication for their personal accounts in an organization, making it harder for malicious actors to access an organization's repositories and settings."
 redirect_from:
   - /enterprise/admin/user-management/requiring-two-factor-authentication-for-an-organization
   - /admin/user-management/requiring-two-factor-authentication-for-an-organization
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - 2FA
@@ -15,6 +15,7 @@ topics:
   - Security
 shortTitle: Require 2FA
 ---
+
 When using LDAP or built-in authentication, two-factor authentication is supported on {% data variables.product.product_location %}. Organization administrators can require members to have two-factor authentication enabled.
 
 {% data reusables.enterprise_user_management.external_auth_disables_2fa %}
@@ -49,16 +50,11 @@ To view people who were automatically removed from your organization for non-com
 
 {% data reusables.audit_log.octicon_icon %}
 {% data reusables.enterprise_site_admin_settings.access-settings %}
-{% data reusables.audit_log.audit_log_sidebar_for_site_admins %}
-4. Enter your search query using `reason:two_factor_requirement_non_compliance`.
- ![Staff tools audit log event showing a user removed for 2FA non-compliance](/assets/images/help/2fa/2fa_noncompliance_stafftools_audit_log_search.png)
- To narrow your search for:
-    - Organizations members removed, enter `action:org.remove_member AND reason:two_factor_requirement_non_compliance`
-    - Outside collaborators removed, enter `action:org.remove_outside_collaborator AND reason:two_factor_requirement_non_compliance`
+{% data reusables.audit_log.audit_log_sidebar_for_site_admins %} 4. Enter your search query using `reason:two_factor_requirement_non_compliance`.
+![Staff tools audit log event showing a user removed for 2FA non-compliance](/assets/images/help/2fa/2fa_noncompliance_stafftools_audit_log_search.png)
+To narrow your search for: - Organizations members removed, enter `action:org.remove_member AND reason:two_factor_requirement_non_compliance` - Outside collaborators removed, enter `action:org.remove_outside_collaborator AND reason:two_factor_requirement_non_compliance`
 
-  You can also view people removed from a particular organization by using the organization name in your search:
-    - `org:octo-org AND reason:two_factor_requirement_non_compliance`
-5. Click **Search**.  
+You can also view people removed from a particular organization by using the organization name in your search: - `org:octo-org AND reason:two_factor_requirement_non_compliance` 5. Click **Search**.
 
 ## Helping removed members and outside collaborators rejoin your organization
 

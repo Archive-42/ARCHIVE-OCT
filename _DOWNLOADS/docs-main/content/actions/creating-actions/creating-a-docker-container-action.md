@@ -1,16 +1,16 @@
 ---
 title: Creating a Docker container action
-intro: 'This guide shows you the minimal steps required to build a Docker container action. '
-product: '{% data reusables.gated-features.actions %}'
+intro: "This guide shows you the minimal steps required to build a Docker container action. "
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/creating-a-docker-container-action
   - /github/automating-your-workflow-with-github-actions/creating-a-docker-container-action
   - /actions/automating-your-workflow-with-github-actions/creating-a-docker-container-action
   - /actions/building-actions/creating-a-docker-container-action
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Action development
@@ -37,11 +37,11 @@ Once you complete this project, you should understand how to build your own Dock
 You may find it helpful to have a basic understanding of {% data variables.product.prodname_actions %} environment variables and the Docker container filesystem:
 
 - "[Using environment variables](/actions/automating-your-workflow-with-github-actions/using-environment-variables)"
-{% ifversion ghae %}
+  {% ifversion ghae %}
 - "[Docker container filesystem](/actions/using-github-hosted-runners/about-ae-hosted-runners#docker-container-filesystem)."
-{% else %} 
+  {% else %}
 - "[Virtual environments for {% data variables.product.prodname_dotcom %}](/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#docker-container-filesystem)"
-{% endif %}
+  {% endif %}
 
 Before you begin, you'll need to create a {% data variables.product.prodname_dotcom %} repository.
 
@@ -51,15 +51,16 @@ Before you begin, you'll need to create a {% data variables.product.prodname_dot
 
 1. From your terminal, change directories into your new repository.
 
-  ```shell{:copy}
-  cd hello-world-docker-action
-  ```
+```shell{:copy}
+cd hello-world-docker-action
+```
 
 ## Creating a Dockerfile
 
 In your new `hello-world-docker-action` directory, create a new `Dockerfile` file. For more information, see "[Dockerfile support for {% data variables.product.prodname_actions %}](/actions/creating-actions/dockerfile-support-for-github-actions)."
 
 **Dockerfile**
+
 ```Dockerfile{:copy}
 # Container image that runs your code
 FROM alpine:3.10
@@ -77,6 +78,7 @@ Create a new `action.yml` file in the `hello-world-docker-action` directory you 
 
 {% raw %}
 **action.yml**
+
 ```yaml{:copy}
 # action.yml
 name: 'Hello World'
@@ -95,9 +97,10 @@ runs:
   args:
     - ${{ inputs.who-to-greet }}
 ```
+
 {% endraw %}
 
-This metadata defines one `who-to-greet`  input and one `time` output parameter. To pass inputs to the Docker container, you must declare the input using `inputs` and pass the input in the `args` keyword.
+This metadata defines one `who-to-greet` input and one `time` output parameter. To pass inputs to the Docker container, you must declare the input using `inputs` and pass the input in the `args` keyword.
 
 {% data variables.product.prodname_dotcom %} will build an image from your `Dockerfile`, and run commands in a new container using this image.
 
@@ -111,21 +114,23 @@ Next, the script gets the current time and sets it as an output variable that ac
 
 1. Add the following code to your `entrypoint.sh` file.
 
-  **entrypoint.sh**
-  ```shell{:copy}
-  #!/bin/sh -l
+   **entrypoint.sh**
 
-  echo "Hello $1"
-  time=$(date)
-  echo "::set-output name=time::$time"
-  ```
-  If `entrypoint.sh` executes without any errors, the action's status is set to `success`. You can also explicitly set exit codes in your action's code to provide an action's status. For more information, see "[Setting exit codes for actions](/actions/creating-actions/setting-exit-codes-for-actions)."
+```shell{:copy}
+#!/bin/sh -l
+
+echo "Hello $1"
+time=$(date)
+echo "::set-output name=time::$time"
+```
+
+If `entrypoint.sh` executes without any errors, the action's status is set to `success`. You can also explicitly set exit codes in your action's code to provide an action's status. For more information, see "[Setting exit codes for actions](/actions/creating-actions/setting-exit-codes-for-actions)."
 
 1. Make your `entrypoint.sh` file executable by running the following command on your system.
 
-  ```shell{:copy}
-  $ chmod +x entrypoint.sh
-  ```
+```shell{:copy}
+$ chmod +x entrypoint.sh
+```
 
 ## Creating a README
 
@@ -141,6 +146,7 @@ In your `hello-world-docker-action` directory, create a `README.md` file that sp
 - An example of how to use your action in a workflow.
 
 **README.md**
+
 ```markdown{:copy}
 # Hello world docker action
 
@@ -190,6 +196,7 @@ The following workflow code uses the completed _hello world_ action in the publi
 
 {% raw %}
 **.github/workflows/main.yml**
+
 ```yaml{:copy}
 on: [push]
 
@@ -207,6 +214,7 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
+
 {% endraw %}
 
 ### Example using a private action
@@ -215,6 +223,7 @@ Copy the following example workflow code into a `.github/workflows/main.yml` fil
 
 {% raw %}
 **.github/workflows/main.yml**
+
 ```yaml{:copy}
 on: [push]
 
@@ -236,6 +245,7 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
+
 {% endraw %}
 
 From your repository, click the **Actions** tab, and select the latest workflow run. {% ifversion fpt or ghes > 3.0 or ghae %}Under **Jobs** or in the visualization graph, click **A job to say hello**. {% endif %}You should see "Hello Mona the Octocat" or the name you used for the `who-to-greet` input and the timestamp printed in the log.

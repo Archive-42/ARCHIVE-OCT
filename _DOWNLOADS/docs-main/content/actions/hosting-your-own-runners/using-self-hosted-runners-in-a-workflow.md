@@ -1,13 +1,13 @@
 ---
 title: Using self-hosted runners in a workflow
-intro: 'To use self-hosted runners in a workflow, you can use labels to specify the runner type for a job.'
+intro: "To use self-hosted runners in a workflow, you can use labels to specify the runner type for a job."
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/using-self-hosted-runners-in-a-workflow
   - /actions/automating-your-workflow-with-github-actions/using-self-hosted-runners-in-a-workflow
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 shortTitle: Use runners in a workflow
 ---
@@ -31,9 +31,9 @@ For more information, see "[Workflow syntax for {% data variables.product.prodna
 
 A self-hosted runner automatically receives certain labels when it is added to {% data variables.product.prodname_actions %}. These are used to indicate its operating system and hardware platform:
 
-* `self-hosted`: Default label applied to all self-hosted runners.
-* `linux`, `windows`, or `macOS`: Applied depending on operating system.
-* `x64`, `ARM`, or `ARM64`: Applied depending on hardware architecture.
+- `self-hosted`: Default label applied to all self-hosted runners.
+- `linux`, `windows`, or `macOS`: Applied depending on operating system.
+- `x64`, `ARM`, or `ARM64`: Applied depending on hardware architecture.
 
 You can use your workflow's YAML to send jobs to a combination of these labels. In this example, a self-hosted runner that matches all three labels will be eligible to run the job:
 
@@ -49,9 +49,9 @@ The default labels are fixed and cannot be changed or removed. Consider using cu
 
 ## Using custom labels to route jobs
 
-You can create custom labels and assign them to your self-hosted runners at any time. Custom labels let you send jobs to particular types of self-hosted runners, based on how they're labeled. 
+You can create custom labels and assign them to your self-hosted runners at any time. Custom labels let you send jobs to particular types of self-hosted runners, based on how they're labeled.
 
-For example, if you have a job that requires a specific type of graphics hardware, you can create a custom label called `gpu` and assign it to the runners that have the hardware installed. A self-hosted runner that matches all the assigned labels will then be eligible to run the job. 
+For example, if you have a job that requires a specific type of graphics hardware, you can create a custom label called `gpu` and assign it to the runners that have the hardware installed. A self-hosted runner that matches all the assigned labels will then be eligible to run the job.
 
 This example shows a job that combines default and custom labels:
 
@@ -62,7 +62,7 @@ runs-on: [self-hosted, linux, x64, gpu]
 - `self-hosted` - Run this job on a self-hosted runner.
 - `linux` - Only use a Linux-based runner.
 - `x64` - Only use a runner based on x64 hardware.
-- `gpu` - This custom label has been manually assigned to self-hosted runners with the GPU hardware installed. 
+- `gpu` - This custom label has been manually assigned to self-hosted runners with the GPU hardware installed.
 
 These labels operate cumulatively, so a self-hosted runner’s labels must match all four to be eligible to process the job.
 
@@ -70,7 +70,7 @@ These labels operate cumulatively, so a self-hosted runner’s labels must match
 
 When routing a job to a self-hosted runner, {% data variables.product.prodname_dotcom %} looks for a runner that matches the job's `runs-on` labels:
 
-1. {% data variables.product.prodname_dotcom %} first searches for a runner at the repository level, then at the organization level{% ifversion ghes or ghae %}, then at the enterprise level{% endif %}. 
+1. {% data variables.product.prodname_dotcom %} first searches for a runner at the repository level, then at the organization level{% ifversion ghes or ghae %}, then at the enterprise level{% endif %}.
 2. The job is then sent to the first matching runner that is online and idle.
    - If all matching online runners are busy, the job will queue at the level with the highest number of matching online runners.
    - If all matching runners are offline, the job will queue at the level with the highest number of matching offline runners.

@@ -6,9 +6,9 @@ redirect_from:
   - /enterprise/admin/user-management/using-saml
   - /enterprise/admin/authentication/using-saml
   - /admin/authentication/using-saml
-intro: 'SAML is an XML-based standard for authentication and authorization. {% data variables.product.prodname_ghe_server %} can act as a service provider (SP) with your internal SAML identity provider (IdP).'
+intro: "SAML is an XML-based standard for authentication and authorization. {% data variables.product.prodname_ghe_server %} can act as a service provider (SP) with your internal SAML identity provider (IdP)."
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Accounts
@@ -17,6 +17,7 @@ topics:
   - Identity
   - SSO
 ---
+
 {% data reusables.enterprise_user_management.built-in-authentication %}
 
 ## Supported SAML services
@@ -61,62 +62,54 @@ To configure your identity provider manually, the Assertion Consumer Service (AC
 
 These attributes are available. You can change the attribute names in the [management console](/enterprise/{{ currentVersion }}/admin/guides/installation/accessing-the-management-console/), with the exception of the `administrator` attribute.
 
-| Default attribute name  | Type     | Description |
-|-----------------|----------|-------------|
-| `NameID` | Required | A persistent user identifier. Any persistent name identifier format may be used. The `NameID` element will be used for a {% data variables.product.prodname_ghe_server %} username unless one of the alternative assertions is provided. |
-| `administrator` | Optional | When the value is 'true', the user will automatically be promoted as an administrator. Any other value or a non-existent value will demote the user to a normal user account. |
-| `username` | Optional | The {% data variables.product.prodname_ghe_server %} username. |
-| `full_name`     | Optional | The name of the user displayed on their profile page. Users may change their names after provisioning. |
-| `emails`        | Optional | The email addresses for the user. More than one can be specified. |
-| `public_keys`   | Optional | The public SSH keys for the user. More than one can be specified. |
-| `gpg_keys`   | Optional | The GPG keys for the user. More than one can be specified.  |
+| Default attribute name | Type     | Description                                                                                                                                                                                                                              |
+| ---------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NameID`               | Required | A persistent user identifier. Any persistent name identifier format may be used. The `NameID` element will be used for a {% data variables.product.prodname_ghe_server %} username unless one of the alternative assertions is provided. |
+| `administrator`        | Optional | When the value is 'true', the user will automatically be promoted as an administrator. Any other value or a non-existent value will demote the user to a normal user account.                                                            |
+| `username`             | Optional | The {% data variables.product.prodname_ghe_server %} username.                                                                                                                                                                           |
+| `full_name`            | Optional | The name of the user displayed on their profile page. Users may change their names after provisioning.                                                                                                                                   |
+| `emails`               | Optional | The email addresses for the user. More than one can be specified.                                                                                                                                                                        |
+| `public_keys`          | Optional | The public SSH keys for the user. More than one can be specified.                                                                                                                                                                        |
+| `gpg_keys`             | Optional | The GPG keys for the user. More than one can be specified.                                                                                                                                                                               |
 
 ## Configuring SAML settings
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
-{% data reusables.enterprise_management_console.authentication %}
-3. Select **SAML**.
-![SAML authentication](/assets/images/enterprise/management-console/auth-select-saml.png)
-4. {% data reusables.enterprise_user_management.built-in-authentication-option %} ![Select SAML built-in authentication checkbox](/assets/images/enterprise/management-console/saml-built-in-authentication.png)
-5. Optionally, to enable unsolicited response SSO, select **IdP initiated SSO**. By default, {% data variables.product.prodname_ghe_server %} will reply to an unsolicited Identity Provider (IdP) initiated request with an `AuthnRequest` back to the IdP.
+{% data reusables.enterprise_management_console.authentication %} 3. Select **SAML**.
+![SAML authentication](/assets/images/enterprise/management-console/auth-select-saml.png) 4. {% data reusables.enterprise_user_management.built-in-authentication-option %} ![Select SAML built-in authentication checkbox](/assets/images/enterprise/management-console/saml-built-in-authentication.png) 5. Optionally, to enable unsolicited response SSO, select **IdP initiated SSO**. By default, {% data variables.product.prodname_ghe_server %} will reply to an unsolicited Identity Provider (IdP) initiated request with an `AuthnRequest` back to the IdP.
 ![SAML idP SSO](/assets/images/enterprise/management-console/saml-idp-sso.png)
 
-  {% tip %}
+{% tip %}
 
-  **Note**: We recommend keeping this value **unselected**. You should enable this feature **only** in the rare instance that your SAML implementation does not support service provider initiated SSO, and when advised by {% data variables.contact.enterprise_support %}.
+**Note**: We recommend keeping this value **unselected**. You should enable this feature **only** in the rare instance that your SAML implementation does not support service provider initiated SSO, and when advised by {% data variables.contact.enterprise_support %}.
 
-  {% endtip %}
+{% endtip %}
 
 5. Select **Disable administrator demotion/promotion** if you **do not** want your SAML provider to determine administrator rights for users on {% data variables.product.product_location %}.
-![SAML disable admin configuration](/assets/images/enterprise/management-console/disable-admin-demotion-promotion.png)
+   ![SAML disable admin configuration](/assets/images/enterprise/management-console/disable-admin-demotion-promotion.png)
 6. In the **Single sign-on URL** field, type the HTTP or HTTPS endpoint on your IdP for single sign-on requests. This value is provided by your IdP configuration. If the host is only available from your internal network, you may need to [configure {% data variables.product.product_location %} to use internal nameservers](/enterprise/{{ currentVersion }}/admin/guides/installation/configuring-dns-nameservers/).
-![SAML authentication](/assets/images/enterprise/management-console/saml-single-sign-url.png)
+   ![SAML authentication](/assets/images/enterprise/management-console/saml-single-sign-url.png)
 7. Optionally, in the **Issuer** field, type your SAML issuer's name. This verifies the authenticity of messages sent to {% data variables.product.product_location %}.
-![SAML issuer](/assets/images/enterprise/management-console/saml-issuer.png)
+   ![SAML issuer](/assets/images/enterprise/management-console/saml-issuer.png)
 8. In the **Signature Method** and **Digest Method** drop-down menus, choose the hashing algorithm used by your SAML issuer to verify the integrity of the requests from {% data variables.product.product_location %}. Specify the format with the **Name Identifier Format** drop-down menu.
-![SAML method](/assets/images/enterprise/management-console/saml-method.png)
+   ![SAML method](/assets/images/enterprise/management-console/saml-method.png)
 9. Under **Verification certificate**, click **Choose File** and choose a certificate to validate SAML responses from the IdP.
-![SAML authentication](/assets/images/enterprise/management-console/saml-verification-cert.png)
+   ![SAML authentication](/assets/images/enterprise/management-console/saml-verification-cert.png)
 10. Modify the SAML attribute names to match your IdP if needed, or accept the default names.
- ![SAML attribute names](/assets/images/enterprise/management-console/saml-attributes.png)
+    ![SAML attribute names](/assets/images/enterprise/management-console/saml-attributes.png)
 
 {% ifversion ghes %}
 
 ## Updating a user's SAML `NameID`
 
-{% data reusables.enterprise_site_admin_settings.access-settings %}
-2. In the left sidebar, click **All users**.
-  !["All users" sidebar item in site administrator settings](/assets/images/enterprise/site-admin-settings/all-users.png)
-3. In the list of users, click the username you'd like to update the `NameID` mapping for.
-  ![Username in list of instance user accounts](/assets/images/enterprise/site-admin-settings/all-users-click-username.png)
-{% data reusables.enterprise_site_admin_settings.security-tab %}
-5. To the right of "Update SAML NameID", click **Edit** .
-  !["Edit" button under "SAML authentication" and to the right of "Update SAML NameID"](/assets/images/enterprise/site-admin-settings/update-saml-nameid-edit.png)
-6. In the "NameID" field, type the new `NameID` for the user.
-  !["NameID" field in modal dialog with NameID typed](/assets/images/enterprise/site-admin-settings/update-saml-nameid-field-in-modal.png)
-7. Click **Update NameID**.
-  !["Update NameID" button under updated NameID value within modal](/assets/images/enterprise/site-admin-settings/update-saml-nameid-update.png)
+{% data reusables.enterprise_site_admin_settings.access-settings %} 2. In the left sidebar, click **All users**.
+!["All users" sidebar item in site administrator settings](/assets/images/enterprise/site-admin-settings/all-users.png) 3. In the list of users, click the username you'd like to update the `NameID` mapping for.
+![Username in list of instance user accounts](/assets/images/enterprise/site-admin-settings/all-users-click-username.png)
+{% data reusables.enterprise_site_admin_settings.security-tab %} 5. To the right of "Update SAML NameID", click **Edit** .
+!["Edit" button under "SAML authentication" and to the right of "Update SAML NameID"](/assets/images/enterprise/site-admin-settings/update-saml-nameid-edit.png) 6. In the "NameID" field, type the new `NameID` for the user.
+!["NameID" field in modal dialog with NameID typed](/assets/images/enterprise/site-admin-settings/update-saml-nameid-field-in-modal.png) 7. Click **Update NameID**.
+!["Update NameID" button under updated NameID value within modal](/assets/images/enterprise/site-admin-settings/update-saml-nameid-update.png)
 
 {% endif %}
 
@@ -154,7 +147,7 @@ The response message must fulfill the following requirements:
 
 ## Troubleshooting SAML authentication
 
-{% data variables.product.prodname_ghe_server %} logs error messages for failed SAML authentication in the authentication log at  _/var/log/github/auth.log_. For more information about SAML response requirements, see "[Response message requirements](#response-message-requirements)."
+{% data variables.product.prodname_ghe_server %} logs error messages for failed SAML authentication in the authentication log at _/var/log/github/auth.log_. For more information about SAML response requirements, see "[Response message requirements](#response-message-requirements)."
 
 ### Error: "Another user already owns the account"
 

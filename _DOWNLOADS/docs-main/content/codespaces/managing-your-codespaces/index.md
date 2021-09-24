@@ -1,9 +1,9 @@
 ---
 title: Managing your codespaces
-intro: 'You can use {% data variables.product.prodname_github_codespaces %} settings to manage information that your codespace might need.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "You can use {% data variables.product.prodname_github_codespaces %} settings to manage information that your codespace might need."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 topics:
   - Codespaces
 redirect_from:
@@ -16,4 +16,3 @@ children:
   - /setting-your-default-editor-for-codespaces
   - /setting-your-default-region-for-codespaces
 ---
- 

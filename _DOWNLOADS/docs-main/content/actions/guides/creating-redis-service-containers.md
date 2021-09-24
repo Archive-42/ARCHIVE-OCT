@@ -2,14 +2,14 @@
 title: Creating Redis service containers
 shortTitle: Redis service containers
 intro: You can use service containers to create a Redis client in your workflow. This guide shows examples of creating a Redis service for jobs that run in containers or directly on the runner machine.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/creating-redis-service-containers
   - /actions/configuring-and-managing-workflows/creating-redis-service-containers
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Containers
@@ -42,6 +42,7 @@ You may also find it helpful to have a basic understanding of YAML, the syntax f
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis container example
 on: push
@@ -88,6 +89,7 @@ jobs:
           # The default Redis port
           REDIS_PORT: 6379
 ```
+
 {% endraw %}
 
 ### Configuring the container job
@@ -157,6 +159,7 @@ When you run a job directly on the runner machine, you'll need to map the ports 
 {% data reusables.github-actions.copy-workflow-file %}
 
 {% raw %}
+
 ```yaml{:copy}
 name: Redis runner example
 on: push
@@ -205,6 +208,7 @@ jobs:
           # The default Redis port
           REDIS_PORT: 6379
 ```
+
 {% endraw %}
 
 ### Configuring the runner job
@@ -275,7 +279,7 @@ steps:
 
 You can test your workflow using the following script, which creates a Redis client and populates the client with some placeholder data. The script then prints the values stored in the Redis client to the terminal. Your script can use any language you'd like, but this example uses Node.js and the `redis` npm module. For more information, see the [npm redis module](https://www.npmjs.com/package/redis).
 
-You can modify *client.js* to include any Redis operations needed by your workflow. In this example, the script creates the Redis client instance, adds placeholder data, then retrieves the data.
+You can modify _client.js_ to include any Redis operations needed by your workflow. In this example, the script creates the Redis client instance, adds placeholder data, then retrieves the data.
 
 {% data reusables.github-actions.service-container-add-script %}
 
@@ -287,7 +291,7 @@ const redis = require("redis");
 // If REDIS_PORT is not set, the default port is 6379
 const redisClient = redis.createClient({
   host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT  
+  port: process.env.REDIS_PORT
 });
 
 redisClient.on("error", function(err) {
@@ -323,7 +327,7 @@ When you run this workflow, you should see the following output in the "Connect 
 Reply: OK
 Reply: 1
 Reply: 1
-Reply: 1  
+Reply: 1
 3 replies:
     0: octocat
     1: dinotocat

@@ -1,11 +1,11 @@
 ---
 title: Deploying to Google Kubernetes Engine
 intro: You can deploy to Google Kubernetes Engine as part of your continuous deployment (CD) workflows.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CD
@@ -31,6 +31,7 @@ Before you proceed with creating the workflow, you will need to complete the fol
 ### Creating a GKE cluster
 
 To create the GKE cluster, you will first need to authenticate using the `gcloud` CLI. For more information on this step, see the following articles:
+
 - [`gcloud auth login`](https://cloud.google.com/sdk/gcloud/reference/auth/login)
 - [`gcloud` CLI](https://cloud.google.com/sdk/gcloud/reference)
 - [`gcloud` CLI and Cloud SDK](https://cloud.google.com/sdk/gcloud#the_gcloud_cli_and_cloud_sdk)
@@ -38,11 +39,13 @@ To create the GKE cluster, you will first need to authenticate using the `gcloud
 For example:
 
 {% raw %}
+
 ```bash{:copy}
 $ gcloud container clusters create $GKE_CLUSTER \
 	--project=$GKE_PROJECT \
 	--zone=$GKE_ZONE
 ```
+
 {% endraw %}
 
 ### Enabling the APIs
@@ -50,11 +53,13 @@ $ gcloud container clusters create $GKE_CLUSTER \
 Enable the Kubernetes Engine and Container Registry APIs. For example:
 
 {% raw %}
+
 ```bash{:copy}
 $ gcloud services enable \
 	containerregistry.googleapis.com \
 	container.googleapis.com
 ```
+
 {% endraw %}
 
 ### Configuring a service account and storing its credentials
@@ -62,41 +67,56 @@ $ gcloud services enable \
 This procedure demonstrates how to create the service account for your GKE integration. It explains how to create the account, add roles to it, retrieve its keys, and store them as a base64-encoded [encrypted repository secret](/actions/reference/encrypted-secrets) named `GKE_SA_KEY`.
 
 1. Create a new service account:
-  {% raw %}
-  ```
-  $ gcloud iam service-accounts create $SA_NAME
-  ```
-  {% endraw %}
+   {% raw %}
+
+```
+$ gcloud iam service-accounts create $SA_NAME
+```
+
+{% endraw %}
+
 1. Retrieve the email address of the service account you just created:
-  {% raw %}
-  ```
-  $ gcloud iam service-accounts list
-  ```
-  {% endraw %}
+   {% raw %}
+
+```
+$ gcloud iam service-accounts list
+```
+
+{% endraw %}
+
 1. Add roles to the service account. Note: Apply more restrictive roles to suit your requirements.
-  {% raw %}
-  ```
-  $ gcloud projects add-iam-policy-binding $GKE_PROJECT \
-    --member=serviceAccount:$SA_EMAIL \
-    --role=roles/container.admin \
-    --role=roles/storage.admin \
-    --role=roles/container.clusterViewer
-  ```
-  {% endraw %}
+   {% raw %}
+
+```
+$ gcloud projects add-iam-policy-binding $GKE_PROJECT \
+  --member=serviceAccount:$SA_EMAIL \
+  --role=roles/container.admin \
+  --role=roles/storage.admin \
+  --role=roles/container.clusterViewer
+```
+
+{% endraw %}
+
 1. Download the JSON keyfile for the service account:
-  {% raw %}
-  ```
-  $ gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
-  ```
-  {% endraw %}
+   {% raw %}
+
+```
+$ gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
+```
+
+{% endraw %}
+
 1. Store the service account key as a secret named `GKE_SA_KEY`:
-  {% raw %}
-  ```
-  $ export GKE_SA_KEY=$(cat key.json | base64)
-  ```
-  {% endraw %}
+   {% raw %}
+
+```
+$ export GKE_SA_KEY=$(cat key.json | base64)
+```
+
+{% endraw %}
 
 ### (Optional) Configuring kustomize
+
 Kustomize is an optional tool used for managing YAML specs. After creating a _kustomization_ file, the workflow below can be used to dynamically set fields of the image and pipe in the result to `kubectl`. For more information, see [kustomize usage](https://github.com/kubernetes-sigs/kustomize#usage).
 
 ## Creating the workflow
@@ -180,7 +200,7 @@ jobs:
 
 For more information on the tools used in these examples, see the following documentation:
 
-* For the full starter workflow, see the ["Build and Deploy to GKE" workflow](https://github.com/actions/starter-workflows/blob/master/ci/google.yml).
-* For more starter workflows and accompanying code, see Google's [{% data variables.product.prodname_actions %} example workflows](https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/).
-* The Kubernetes YAML customization engine: [Kustomize](https://kustomize.io/).
-* "[Deploying a containerized web application](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)" in the Google Kubernetes Engine documentation.
+- For the full starter workflow, see the ["Build and Deploy to GKE" workflow](https://github.com/actions/starter-workflows/blob/master/ci/google.yml).
+- For more starter workflows and accompanying code, see Google's [{% data variables.product.prodname_actions %} example workflows](https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/).
+- The Kubernetes YAML customization engine: [Kustomize](https://kustomize.io/).
+- "[Deploying a containerized web application](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)" in the Google Kubernetes Engine documentation.

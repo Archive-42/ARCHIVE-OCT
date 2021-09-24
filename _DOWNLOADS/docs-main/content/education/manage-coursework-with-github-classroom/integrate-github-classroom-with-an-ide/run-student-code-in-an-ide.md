@@ -2,7 +2,7 @@
 title: Run student code in an IDE
 intro: You can run the code from a student assignment within the integrated development environment (IDE) that you configured for the assignment.
 versions:
-  fpt: '*'
+  fpt: "*"
 redirect_from:
   - /education/manage-coursework-with-github-classroom/running-student-code
   - /education/manage-coursework-with-github-classroom/run-student-code-in-an-online-ide
@@ -16,10 +16,11 @@ If you configure an integrated development environment (IDE) for an assignment, 
 
 For more information about IDEs, see "[Integrate {% data variables.product.prodname_classroom %} with an IDE](/education/manage-coursework-with-github-classroom/integrate-github-classroom-with-an-ide/integrate-github-classroom-with-an-ide)."
 
-## Running student code in the IDE 
+## Running student code in the IDE
 
 {% data reusables.classroom.sign-into-github-classroom %}
 {% data reusables.classroom.click-classroom-in-list %}
 {% data reusables.classroom.click-assignment-in-list %}
+
 1. To the right of the submission, click **View IDE**.
-  !["View IDE" button for submission using an online IDE](/assets/images/help/classroom/assignments-click-view-ide.png)
+   !["View IDE" button for submission using an online IDE](/assets/images/help/classroom/assignments-click-view-ide.png)

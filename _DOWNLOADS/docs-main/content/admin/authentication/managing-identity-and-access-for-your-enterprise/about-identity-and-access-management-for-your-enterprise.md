@@ -1,10 +1,10 @@
 ---
 title: About identity and access management for your enterprise
 shortTitle: About identity and access management
-intro: 'You can use {% ifversion ghes %}{% data variables.product.prodname_ghe_server %}''s built-in authentication, or choose between CAS, LDAP, or SAML{% else %}SAML single sign-on (SSO) and System for Cross-domain Identity Management (SCIM){% endif %} to centrally manage access {% ifversion fpt %}to organizations owned by your enterprise on {% data variables.product.prodname_dotcom_the_website %}{% endif %}{% ifversion ghes or ghae %}to {% data variables.product.product_location %}{% endif %}.'
-product: '{% data reusables.gated-features.saml-sso %}'
+intro: "You can use {% ifversion ghes %}{% data variables.product.prodname_ghe_server %}'s built-in authentication, or choose between CAS, LDAP, or SAML{% else %}SAML single sign-on (SSO) and System for Cross-domain Identity Management (SCIM){% endif %} to centrally manage access {% ifversion fpt %}to organizations owned by your enterprise on {% data variables.product.prodname_dotcom_the_website %}{% endif %}{% ifversion ghes or ghae %}to {% data variables.product.product_location %}{% endif %}."
+product: "{% data reusables.gated-features.saml-sso %}"
 versions:
-  ghae: '*'
+  ghae: "*"
 type: overview
 topics:
   - Accounts
@@ -15,6 +15,7 @@ topics:
 redirect_from:
   - /admin/authentication/about-identity-and-access-management-for-your-enterprise
 ---
+
 ## About identity and access management for your enterprise
 
 {% ifversion ghae %}

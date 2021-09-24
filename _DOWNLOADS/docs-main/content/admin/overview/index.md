@@ -1,11 +1,11 @@
 ---
 title: Overview
-intro: 'You can learn about {% data variables.product.product_name %} and manage{% ifversion ghes %} accounts and access, licenses, and{% endif %} billing.'
+intro: "You can learn about {% data variables.product.product_name %} and manage{% ifversion ghes %} accounts and access, licenses, and{% endif %} billing."
 redirect_from:
   - /enterprise/admin/overview
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 children:
   - /about-github-ae
   - /about-upgrades-to-new-releases
@@ -14,4 +14,5 @@ children:
   - /system-overview
   - /about-the-github-enterprise-api
 ---
+
 For more information, or to purchase {% data variables.product.prodname_enterprise %}, see [{% data variables.product.prodname_enterprise %}](https://github.com/enterprise).

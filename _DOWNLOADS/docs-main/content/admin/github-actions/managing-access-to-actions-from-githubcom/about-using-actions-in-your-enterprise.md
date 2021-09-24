@@ -1,13 +1,13 @@
 ---
 title: About using actions in your enterprise
-intro: '{% data variables.product.product_name %} includes most {% data variables.product.prodname_dotcom %}-authored actions, and has options for enabling access to other actions from {% data variables.product.prodname_dotcom_the_website %} and {% data variables.product.prodname_marketplace %}.'
+intro: "{% data variables.product.product_name %} includes most {% data variables.product.prodname_dotcom %}-authored actions, and has options for enabling access to other actions from {% data variables.product.prodname_dotcom_the_website %} and {% data variables.product.prodname_marketplace %}."
 redirect_from:
   - /enterprise/admin/github-actions/about-using-githubcom-actions-on-github-enterprise-server
   - /admin/github-actions/about-using-githubcom-actions-on-github-enterprise-server
   - /admin/github-actions/about-using-actions-on-github-enterprise-server
   - /admin/github-actions/about-using-actions-in-your-enterprise
 versions:
-  ghes: '*'
+  ghes: "*"
   ghae: next
 type: overview
 topics:
@@ -15,6 +15,7 @@ topics:
   - Enterprise
 shortTitle: Add actions in your enterprise
 ---
+
 {% data reusables.actions.enterprise-beta %}
 {% data reusables.actions.enterprise-github-hosted-runners %}
 {% data reusables.actions.ae-beta %}

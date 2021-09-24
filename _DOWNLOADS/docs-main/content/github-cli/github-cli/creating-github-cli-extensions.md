@@ -1,10 +1,10 @@
 ---
 title: Creating GitHub CLI extensions
-intro: 'Learn how to share new {% data variables.product.prodname_cli %} commands with other users by creating custom extensions for {% data variables.product.prodname_cli %}.'
+intro: "Learn how to share new {% data variables.product.prodname_cli %} commands with other users by creating custom extensions for {% data variables.product.prodname_cli %}."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - CLI
 ---
@@ -27,9 +27,9 @@ You can use the `gh extension create` command to create a project for your exten
 
 1. Set up a new extension by using the `gh extension create` subcommand. Replace `EXTENSION-NAME` with the name of your extension.
 
-    ```shell
-    gh extension create <em>EXTENSION-NAME</em>
-    ```
+   ```shell
+   gh extension create <em>EXTENSION-NAME</em>
+   ```
 
 1. Follow the printed instructions to finalize and optionally publish your extension.
 
@@ -39,19 +39,19 @@ You can use the `gh extension create` command to create a project for your exten
 
 1. In the directory that you created, add an executable file with the same name as the directory.
 
-  {% note %}
+{% note %}
 
-  **Note:** Make sure that your file is executable. On Unix, you can execute `chmod +x file_name` in the command line to make `file_name` executable. On Windows, you can run `git init -b main`, `git add file_name`, then `git update-index --chmod=+x file_name`.
+**Note:** Make sure that your file is executable. On Unix, you can execute `chmod +x file_name` in the command line to make `file_name` executable. On Windows, you can run `git init -b main`, `git add file_name`, then `git update-index --chmod=+x file_name`.
 
-  {% endnote %}
+{% endnote %}
 
 1. Write your script in the executable file. For example:
 
-  ```bash
-  #!/bin/bash
-  set -e
-  exec gh api user --jq '"You are @\(.login) (\(.name))."'
-  ```
+```bash
+#!/bin/bash
+set -e
+exec gh api user --jq '"You are @\(.login) (\(.name))."'
+```
 
 1. From your directory, install the extension as a local extension.
 
@@ -119,7 +119,7 @@ fi
 
 ### Calling core commands in non-interactive mode
 
-Some {% data variables.product.prodname_cli %} core commands will prompt the user for input. When scripting with those commands, a prompt is often undesirable. To avoid prompting, supply the necessary information explicitly via arguments. 
+Some {% data variables.product.prodname_cli %} core commands will prompt the user for input. When scripting with those commands, a prompt is often undesirable. To avoid prompting, supply the necessary information explicitly via arguments.
 
 For example, to create an issue programmatically, specify the title and body:
 
@@ -130,11 +130,13 @@ gh issue create --title "My Title" --body "Issue description"
 ### Fetching data programatically
 
 Many core commands support the `--json` flag for fetching data programatically. For example, to return a JSON object listing the number, title, and mergeability status of pull requests:
+
 ```bash
 gh pr list --json number,title,mergeStateStatus
 ```
 
 If there is not a core command to fetch specific data from GitHub, you can use the [`gh api`](https://cli.github.com/manual/gh_api) command to access the GitHub API. For example, to fetch information about the current user:
+
 ```bash
 gh api user
 ```

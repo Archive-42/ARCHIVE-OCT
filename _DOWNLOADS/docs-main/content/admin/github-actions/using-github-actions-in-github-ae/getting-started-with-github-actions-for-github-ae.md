@@ -1,10 +1,10 @@
 ---
 title: Getting started with GitHub Actions for GitHub AE
 shortTitle: Getting started with GitHub Actions
-intro: 'Learn configuring {% data variables.product.prodname_actions %} on {% data variables.product.prodname_ghe_managed %}.'
-permissions: 'Site administrators can enable {% data variables.product.prodname_actions %} and configure enterprise settings.'
+intro: "Learn configuring {% data variables.product.prodname_actions %} on {% data variables.product.prodname_ghe_managed %}."
+permissions: "Site administrators can enable {% data variables.product.prodname_actions %} and configure enterprise settings."
 versions:
-  ghae: '*'
+  ghae: "*"
 type: how_to
 topics:
   - Actions
@@ -12,6 +12,7 @@ topics:
 redirect_from:
   - /admin/github-actions/getting-started-with-github-actions-for-github-ae
 ---
+
 {% data reusables.actions.ae-beta %}
 
 This article explains how site administrators can configure {% data variables.product.prodname_ghe_managed %} to use {% data variables.product.prodname_actions %}.
@@ -28,9 +29,8 @@ You can use policies to manage access to {% data variables.product.prodname_acti
 
 {% endnote %}
 
-To run {% data variables.product.prodname_actions %} workflows, you need to add runners. You can add runners at the enterprise, organization, or repository levels. For more information, see  "[About {% data variables.actions.hosted_runner %}s](/actions/using-github-hosted-runners/about-ae-hosted-runners)."
+To run {% data variables.product.prodname_actions %} workflows, you need to add runners. You can add runners at the enterprise, organization, or repository levels. For more information, see "[About {% data variables.actions.hosted_runner %}s](/actions/using-github-hosted-runners/about-ae-hosted-runners)."
 
-
-## General security hardening for {% data variables.product.prodname_actions %} 
+## General security hardening for {% data variables.product.prodname_actions %}
 
 If you want to learn more about security practices for {% data variables.product.prodname_actions %}, see "[Security hardening for {% data variables.product.prodname_actions %}](/actions/learn-github-actions/security-hardening-for-github-actions)."

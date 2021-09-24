@@ -1,13 +1,13 @@
 ---
 title: Configuring collectd
-intro: '{% data variables.product.prodname_enterprise %} can gather data with `collectd` and send it to an external `collectd` server. Among other metrics, we gather a standard set of data such as CPU utilization, memory and disk consumption, network interface traffic and errors, and the VM''s overall load.'
+intro: "{% data variables.product.prodname_enterprise %} can gather data with `collectd` and send it to an external `collectd` server. Among other metrics, we gather a standard set of data such as CPU utilization, memory and disk consumption, network interface traffic and errors, and the VM's overall load."
 redirect_from:
   - /enterprise/admin/installation/configuring-collectd
   - /enterprise/admin/articles/configuring-collectd/
   - /enterprise/admin/enterprise-management/configuring-collectd
   - /admin/enterprise-management/configuring-collectd
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Enterprise
@@ -16,6 +16,7 @@ topics:
   - Monitoring
   - Performance
 ---
+
 ## Set up an external `collectd` server
 
 If you haven't already set up an external `collectd` server, you will need to do so before enabling `collectd` forwarding on {% data variables.product.product_location %}. Your `collectd` server must be running `collectd` version 5.x or higher.
@@ -23,7 +24,7 @@ If you haven't already set up an external `collectd` server, you will need to do
 1. Log into your `collectd` server.
 2. Create or edit the `collectd` configuration file to load the network plugin and populate the server and port directives with the proper values. On most distributions, this is located at `/etc/collectd/collectd.conf`
 
-An example *collectd.conf* to run a `collectd` server:
+An example _collectd.conf_ to run a `collectd` server:
 
     LoadPlugin network
     ...
@@ -38,11 +39,12 @@ By default, `collectd` forwarding is disabled on {% data variables.product.prodn
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
 {% data reusables.enterprise_site_admin_settings.management-console %}
+
 1. Below the log forwarding settings, select **Enable collectd forwarding**.
 1. In the **Server address** field, type the address of the `collectd` server to which you'd like to forward {% data variables.product.prodname_enterprise %} appliance statistics.
 1. In the **Port** field, type the port used to connect to the `collectd` server. (Defaults to 25826)
 1. In the **Cryptographic setup** dropdown menu, select the security level of communications with the `collectd` server. (None, signed packets, or encrypted packets.)
-{% data reusables.enterprise_management_console.save-settings %}
+   {% data reusables.enterprise_management_console.save-settings %}
 
 ## Exporting collectd data with `ghe-export-graphs`
 

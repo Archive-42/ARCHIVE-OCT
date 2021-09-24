@@ -1,30 +1,33 @@
 ---
 title: About cluster nodes
-intro: '*Nodes* are {% data variables.product.prodname_ghe_server %} instances that operate in a cluster. Each node runs a set of services that are provided to the cluster, and ultimately to the users.'
+intro: "*Nodes* are {% data variables.product.prodname_ghe_server %} instances that operate in a cluster. Each node runs a set of services that are provided to the cluster, and ultimately to the users."
 redirect_from:
   - /enterprise/admin/clustering/about-cluster-nodes
   - /enterprise/admin/enterprise-management/about-cluster-nodes
   - /admin/enterprise-management/about-cluster-nodes
 versions:
-  ghes: '*'
+  ghes: "*"
 type: overview
 topics:
   - Clustering
   - Enterprise
 ---
+
 {% data reusables.enterprise_clustering.clustering-requires-https %}
 
 ## Minimum hardware recommendations
+
 Each node must have a root volume, as well as a separate data volume. These are minimum recommendations. More resources may be required depending on your usage, such as user activity and selected integrations.
 
-| Services | Minimum Memory Required    | Minimum Data Volume Free Space Required |
-| :-: | :-: | :-: |
-| `job-server`,<br/>`memcache-server`,<br/>`web-server` | 14 GB | 1 GB |
-| `consul-server`,<br/>`mysql-server`,<br/>`redis-server` | 14 GB | 10 GB |
-| `git-server`,<br/>`metrics-server`,<br/>`pages-server`,<br/>`storage-server` | 7 GB | 10 GB |
-| `elasticsearch-server` | 14 GB | 10 GB |
+|                                   Services                                   | Minimum Memory Required | Minimum Data Volume Free Space Required |
+| :--------------------------------------------------------------------------: | :---------------------: | :-------------------------------------: |
+|            `job-server`,<br/>`memcache-server`,<br/>`web-server`             |          14 GB          |                  1 GB                   |
+|           `consul-server`,<br/>`mysql-server`,<br/>`redis-server`            |          14 GB          |                  10 GB                  |
+| `git-server`,<br/>`metrics-server`,<br/>`pages-server`,<br/>`storage-server` |          7 GB           |                  10 GB                  |
+|                            `elasticsearch-server`                            |          14 GB          |                  10 GB                  |
 
 ## Services required for clustering
+
 For adequate redundancy, use these minimum nodes operating each service.
 
 {% tip %}
@@ -33,13 +36,13 @@ For adequate redundancy, use these minimum nodes operating each service.
 
 {% endtip %}
 
-| Services | Minimum Nodes Required |
-| :-: | :-: |
-| `job-server`,<br/>`memcache-server`,<br/>`metrics-server`,<br/>`web-server` | 2 |
-| `mysql-server`,<br/>`redis-server` | 2 |
-| `consul-server` | 3 |
-| `git-server`,<br/>`pages-server`,<br/>`storage-server` | 3 |
-| `elasticsearch-server` | 3 |
+|                                  Services                                   | Minimum Nodes Required |
+| :-------------------------------------------------------------------------: | :--------------------: |
+| `job-server`,<br/>`memcache-server`,<br/>`metrics-server`,<br/>`web-server` |           2            |
+|                     `mysql-server`,<br/>`redis-server`                      |           2            |
+|                               `consul-server`                               |           3            |
+|           `git-server`,<br/>`pages-server`,<br/>`storage-server`            |           3            |
+|                           `elasticsearch-server`                            |           3            |
 
 ## Cluster design recommendations
 
@@ -65,6 +68,7 @@ Clustering allows services that make up {% data variables.product.prodname_ghe_s
     - `metrics-server`
 
 ### Example cluster diagram
+
 {% note %}
 
 **Note: This is only an example.** Your organization's optimal cluster design will depend on your unique needs. Talk to your dedicated representative or {% data variables.contact.contact_enterprise_sales %} so we can help you determine the best cluster configuration.

@@ -1,11 +1,11 @@
 ---
 title: Building and testing Xamarin applications
 intro: You can create a continuous integration (CI) workflow in GitHub Actions to build and test your Xamarin application.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CI
@@ -27,8 +27,8 @@ This guide shows you how to create a workflow that performs continuous integrati
 
 For a full list of available Xamarin SDK versions on the {% data variables.product.prodname_actions %}-hosted macOS runners, see the documentation:
 
-* [macOS 10.15](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-10.15-Readme.md#xamarin-bundles)
-* [macOS 11](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-11-Readme.md#xamarin-bundles)
+- [macOS 10.15](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-10.15-Readme.md#xamarin-bundles)
+- [macOS 11](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-11-Readme.md#xamarin-bundles)
 
 {% data reusables.github-actions.macos-runner-preview %}
 
@@ -45,6 +45,7 @@ We recommend that you have a basic understanding of Xamarin, .NET Core SDK, YAML
 The example below demonstrates how to change the default Xamarin SDK versions and build a Xamarin.iOS application.
 
 {% raw %}
+
 ```yaml
 name: Build Xamarin.iOS app
 
@@ -52,32 +53,32 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set default Xamarin SDK versions
-      run: |
-        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=14.10
-    
-    - name: Set default Xcode 12.3
-      run: |
-        XCODE_ROOT=/Applications/Xcode_12.3.0.app
-        echo "MD_APPLE_SDK_ROOT=$XCODE_ROOT" >> $GITHUB_ENV
-        sudo xcode-select -s $XCODE_ROOT
+      - uses: actions/checkout@v2
+      - name: Set default Xamarin SDK versions
+        run: |
+          $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=14.10
 
-    - name: Setup .NET Core SDK 5.0.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.x'
+      - name: Set default Xcode 12.3
+        run: |
+          XCODE_ROOT=/Applications/Xcode_12.3.0.app
+          echo "MD_APPLE_SDK_ROOT=$XCODE_ROOT" >> $GITHUB_ENV
+          sudo xcode-select -s $XCODE_ROOT
 
-    - name: Install dependencies
-      run: nuget restore <sln_file_path>
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
 
-    - name: Build
-      run: msbuild <csproj_file_path> /p:Configuration=Debug /p:Platform=iPhoneSimulator /t:Rebuild
+      - name: Install dependencies
+        run: nuget restore <sln_file_path>
+
+      - name: Build
+        run: msbuild <csproj_file_path> /p:Configuration=Debug /p:Platform=iPhoneSimulator /t:Rebuild
 ```
+
 {% endraw %}
 
 ## Building Xamarin.Android apps
@@ -85,6 +86,7 @@ jobs:
 The example below demonstrates how to change default Xamarin SDK versions and build a Xamarin.Android application.
 
 {% raw %}
+
 ```yaml
 name: Build Xamarin.Android app
 
@@ -92,30 +94,30 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set default Xamarin SDK versions
-      run: |
-        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.10 --android=10.2
+      - uses: actions/checkout@v2
+      - name: Set default Xamarin SDK versions
+        run: |
+          $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.10 --android=10.2
 
-    - name: Setup .NET Core SDK 5.0.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.x'
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
 
-    - name: Install dependencies
-      run: nuget restore <sln_file_path>
+      - name: Install dependencies
+        run: nuget restore <sln_file_path>
 
-    - name: Build
-      run: msbuild <csproj_file_path> /t:PackageForAndroid /p:Configuration=Debug
+      - name: Build
+        run: msbuild <csproj_file_path> /t:PackageForAndroid /p:Configuration=Debug
 ```
+
 {% endraw %}
 
 ## Specifying a .NET version
 
 To use a preinstalled version of the .NET Core SDK on a {% data variables.product.prodname_dotcom %}-hosted runner, use the `setup-dotnet` action. This action finds a specific version of .NET from the tools cache on each runner, and adds the necessary binaries to `PATH`. These changes will persist for the remainder of the job.
- 
+
 The `setup-dotnet` action is the recommended way of using .NET with {% data variables.product.prodname_actions %}, because it ensures consistent behavior across different runners and different versions of .NET. If you are using a self-hosted runner, you must install .NET and add it to `PATH`. For more information, see the [`setup-dotnet`](https://github.com/marketplace/actions/setup-net-core-sdk) action.

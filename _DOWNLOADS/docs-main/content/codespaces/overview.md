@@ -1,8 +1,8 @@
 ---
 title: GitHub Codespaces overview
 shortTitle: Overview
-product: '{% data reusables.gated-features.codespaces %}'
-intro: 'This guide introduces {% data variables.product.prodname_codespaces %} and provides details on how it works and how to use it.'
+product: "{% data reusables.gated-features.codespaces %}"
+intro: "This guide introduces {% data variables.product.prodname_codespaces %} and provides details on how it works and how to use it."
 allowTitleToDifferFromFilename: true
 redirect_from:
   - /codespaces/codespaces-reference/about-codespaces
@@ -11,7 +11,7 @@ redirect_from:
   - /codespaces/getting-started-with-codespaces/about-codespaces
   - /codespaces/about-codespaces
 versions:
-  free-pro-team: '*'
+  free-pro-team: "*"
 type: quick_start
 topics:
   - Codespaces
@@ -27,7 +27,7 @@ A codespace is a development environment that's hosted in the cloud. You can cus
 
 ## Using Codespaces
 
-You can create a codespace from any branch or commit in your repository and begin developing using cloud-based compute resources. 
+You can create a codespace from any branch or commit in your repository and begin developing using cloud-based compute resources.
 
 To customize the runtimes and tools in your codespace, you can create a custom configuration to define an environment (or _dev container_) that is specific for your repository. Using a dev container allows you to specify a Docker environment for development with a well-defined tool and runtime stack that can reference an image, Dockerfile, or docker-compose. This means that anyone using the repository will have the same tools available to them when they create a codespace.
 
@@ -40,4 +40,3 @@ You can also personalize aspects of your codespace environment by using a public
 {% data reusables.codespaces.codespaces-trial-period %}
 
 For information on billing for {% data variables.product.prodname_codespaces %}, see "[About billing for {% data variables.product.prodname_codespaces %}](/billing/managing-billing-for-github-codespaces/about-billing-for-codespaces)."
-

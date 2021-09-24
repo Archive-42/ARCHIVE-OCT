@@ -1,8 +1,8 @@
 ---
 title: Using the latest version of the official bundled actions
-intro: 'You can update the actions that are bundled with your enterprise, or use actions directly from {% data variables.product.prodname_dotcom_the_website %}.'
+intro: "You can update the actions that are bundled with your enterprise, or use actions directly from {% data variables.product.prodname_dotcom_the_website %}."
 versions:
-  ghes: '*'
+  ghes: "*"
   ghae: next
 topics:
   - Enterprise
@@ -10,6 +10,7 @@ redirect_from:
   - /admin/github-actions/using-the-latest-version-of-the-official-bundled-actions
 shortTitle: Use the latest bundled actions
 ---
+
 {% data reusables.actions.enterprise-beta %}
 {% data reusables.actions.enterprise-github-hosted-runners %}
 {% data reusables.actions.ae-beta %}
@@ -38,9 +39,10 @@ Once {% data variables.product.prodname_github_connect %} is configured, you can
      --> octocat is now an admin of the actions organization
      --> Done.
    ```
+
 1. On your {% data variables.product.product_name %} instance, delete the `checkout` repository within the `actions` organization. For information on how to delete a repository, see "[Deleting a repository
-](/github/administering-a-repository/deleting-a-repository)."
+   ](/github/administering-a-repository/deleting-a-repository)."
 1. It is recommended that you leave the `actions` organization once you no longer require administrative access. For more information, see "[Removing yourself from an organization
-](/github/setting-up-and-managing-your-github-user-account/removing-yourself-from-an-organization)."
+   ](/github/setting-up-and-managing-your-github-user-account/removing-yourself-from-an-organization)."
 1. Configure your workflow's YAML to use `actions/checkout@v2`.
 1. Each time your workflow runs, the runner will use the `v2` version of `actions/checkout` from {% data variables.product.prodname_dotcom_the_website %}.

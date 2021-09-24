@@ -1,12 +1,12 @@
 ---
 title: Increasing CPU or memory resources
-intro: 'You can increase the CPU or memory resources for a {% data variables.product.prodname_ghe_server %} instance.'
+intro: "You can increase the CPU or memory resources for a {% data variables.product.prodname_ghe_server %} instance."
 redirect_from:
   - /enterprise/admin/installation/increasing-cpu-or-memory-resources
   - /enterprise/admin/enterprise-management/increasing-cpu-or-memory-resources
   - /admin/enterprise-management/increasing-cpu-or-memory-resources
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Enterprise
@@ -14,6 +14,7 @@ topics:
   - Performance
 shortTitle: Increase CPU or memory
 ---
+
 {% data reusables.enterprise_installation.warning-on-upgrading-physical-resources %}
 
 ## Adding CPU or memory resources for AWS
@@ -52,7 +53,7 @@ It's not possible to add CPU or memory resources to an existing AWS/EC2 instance
 1. Stop the instance.
 2. Change the instance type.
 3. Start the instance.
-{% data reusables.enterprise_installation.configuration-recognized %}
+   {% data reusables.enterprise_installation.configuration-recognized %}
 
 ## Adding CPU or memory resources for OpenStack KVM
 
@@ -70,6 +71,6 @@ It's not possible to add CPU or memory resources to an existing OpenStack KVM in
 2. Shut down {% data variables.product.product_location %}.
 3. Select the virtual machine and click **Edit Settings**.
 4. Under "Hardware", adjust the CPU and/or memory resources allocated to the virtual machine as needed:
-![VMware setup resources](/assets/images/enterprise/vmware/vsphere-hardware-tab.png)
+   ![VMware setup resources](/assets/images/enterprise/vmware/vsphere-hardware-tab.png)
 5. To start the virtual machine, click **OK**.
-{% data reusables.enterprise_installation.configuration-recognized %}
+   {% data reusables.enterprise_installation.configuration-recognized %}

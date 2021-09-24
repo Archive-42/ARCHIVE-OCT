@@ -1,11 +1,11 @@
 ---
 title: Commenting on an issue when a label is added
-intro: 'You can use {% data variables.product.prodname_actions %} to automatically comment on issues when a specific label is applied.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to automatically comment on issues when a specific label is applied."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -26,37 +26,38 @@ In the tutorial, you will first make a workflow file that uses the [`peter-evans
 
 ## Creating the workflow
 
-1. {% data reusables.actions.choose-repo %}
-2. {% data reusables.actions.make-workflow-file %}
-3. Copy the following YAML contents into your workflow file.
+1.  {% data reusables.actions.choose-repo %}
+2.  {% data reusables.actions.make-workflow-file %}
+3.  Copy the following YAML contents into your workflow file.
 
-    ```yaml{:copy}
-{% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
+        ```yaml{:copy}
 
-    name: Add comment
-    on:
-      issues:
-        types:
-          - labeled
-    jobs:
-      add-comment:
-        if: github.event.label.name == 'help-wanted'
-        runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
-        permissions:
-          issues: write{% endif %}
-        steps:
-          - name: Add comment
-            uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
-            with:
-              issue-number: {% raw %}${{ github.event.issue.number }}{% endraw %}
-              body: |
-                This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
-    ```
+    {% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
 
-4. Customize the parameters in your workflow file:
-   - Replace `help-wanted` in `if: github.event.label.name == 'help-wanted'` with the label that you want to act on. If you want to act on more than one label, separate the conditions with `||`. For example, `if: github.event.label.name == 'bug' || github.event.label.name == 'fix me'` will comment whenever the `bug` or `fix me` labels are added to an issue.
-   - Change the value for `body` to the comment that you want to add. GitHub flavored markdown is supported. For more information about markdown, see "[Basic writing and formatting syntax](/github/writing-on-github/basic-writing-and-formatting-syntax)."
-5. {% data reusables.actions.commit-workflow %}
+        name: Add comment
+        on:
+          issues:
+            types:
+              - labeled
+        jobs:
+          add-comment:
+            if: github.event.label.name == 'help-wanted'
+            runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
+            permissions:
+              issues: write{% endif %}
+            steps:
+              - name: Add comment
+                uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
+                with:
+                  issue-number: {% raw %}${{ github.event.issue.number }}{% endraw %}
+                  body: |
+                    This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
+        ```
+
+4.  Customize the parameters in your workflow file:
+    - Replace `help-wanted` in `if: github.event.label.name == 'help-wanted'` with the label that you want to act on. If you want to act on more than one label, separate the conditions with `||`. For example, `if: github.event.label.name == 'bug' || github.event.label.name == 'fix me'` will comment whenever the `bug` or `fix me` labels are added to an issue.
+    - Change the value for `body` to the comment that you want to add. GitHub flavored markdown is supported. For more information about markdown, see "[Basic writing and formatting syntax](/github/writing-on-github/basic-writing-and-formatting-syntax)."
+5.  {% data reusables.actions.commit-workflow %}
 
 ## Testing the workflow
 

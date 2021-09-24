@@ -1,9 +1,9 @@
 ---
 title: Managing Codespaces for your organization
-intro: 'You can manage and review how users in your organization can use  {% data variables.product.prodname_github_codespaces %}.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "You can manage and review how users in your organization can use  {% data variables.product.prodname_github_codespaces %}."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 topics:
   - Codespaces
 children:
@@ -14,4 +14,3 @@ children:
   - /reviewing-your-organizations-audit-logs-for-codespaces
 shortTitle: Managing your organization
 ---
- 

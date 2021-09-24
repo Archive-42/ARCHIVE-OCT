@@ -1,6 +1,6 @@
 ---
 title: Configuring your enterprise
-intro: 'After {% data variables.product.product_name %} is up and running, you can configure your enterprise to suit your organization''s needs.'
+intro: "After {% data variables.product.product_name %} is up and running, you can configure your enterprise to suit your organization's needs."
 redirect_from:
   - /enterprise/admin/guides/installation/basic-configuration/
   - /enterprise/admin/guides/installation/administrative-tools/
@@ -9,8 +9,8 @@ redirect_from:
   - /enterprise/admin/installation/configuring-the-github-enterprise-server-appliance
   - /enterprise/admin/configuration/configuring-your-enterprise
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 topics:
   - Enterprise
 children:
@@ -35,4 +35,3 @@ children:
   - /configuring-github-pages-for-your-enterprise
 shortTitle: Configure your enterprise
 ---
-

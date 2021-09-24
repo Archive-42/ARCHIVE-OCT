@@ -1,13 +1,13 @@
 ---
 title: Sharing workflows with your organization
 shortTitle: Sharing workflows with your organization
-intro: 'Learn how you can use organization features to collaborate with your team, by sharing workflow templates, secrets, and self-hosted runners.'
+intro: "Learn how you can use organization features to collaborate with your team, by sharing workflow templates, secrets, and self-hosted runners."
 redirect_from:
   - /actions/configuring-and-managing-workflows/sharing-workflow-templates-within-your-organization
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: how_to
 ---
 
@@ -44,9 +44,9 @@ This procedure demonstrates how to create a workflow template and metadata file.
 
    on:
      push:
-       branches: [ $default-branch ]
+       branches: [$default-branch]
      pull_request:
-       branches: [ $default-branch ]
+       branches: [$default-branch]
 
    jobs:
      build:
@@ -58,27 +58,22 @@ This procedure demonstrates how to create a workflow template and metadata file.
          - name: Run a one-line script
            run: echo Hello from Octo Organization
    ```
+
 4. Create a metadata file inside the `workflow-templates` directory. The metadata file must have the same name as the workflow file, but instead of the `.yml` extension, it must be appended with `.properties.json`. For example, this file named `octo-organization-ci.properties.json` contains the metadata for a workflow file named `octo-organization-ci.yml`:
    ```yaml
    {
-       "name": "Octo Organization Workflow",
-       "description": "Octo Organization CI workflow template.",
-       "iconName": "example-icon",
-       "categories": [
-           "Go"
-       ],
-       "filePatterns": [
-           "package.json$",
-           "^Dockerfile",
-           ".*\\.md$"
-       ]
+     "name": "Octo Organization Workflow",
+     "description": "Octo Organization CI workflow template.",
+     "iconName": "example-icon",
+     "categories": ["Go"],
+     "filePatterns": ["package.json$", "^Dockerfile", ".*\\.md$"],
    }
    ```
-   * `name` - **Required.** The name of the workflow template. This is displayed in the list of available templates.
-   * `description` - **Required.** The description of the workflow template. This is displayed in the list of available templates.
-   * `iconName` - **Required.** Defines an icon for the workflow's entry in the template list. The `iconName` must be an SVG icon of the same name, and must be stored in the `workflow-templates` directory. For example, a SVG file named `example-icon.svg` is referenced as `example-icon`.
-   * `categories` - **Optional.** Defines the language category of the workflow. When a user views the available templates, those templates that match the same language will feature more prominently. For information on the available language categories, see https://github.com/github/linguist/blob/master/lib/linguist/languages.yml.
-   * `filePatterns` - **Optional.** Allows the template to be used if the user's repository has a file in its root directory that matches a defined regular expression.
+   - `name` - **Required.** The name of the workflow template. This is displayed in the list of available templates.
+   - `description` - **Required.** The description of the workflow template. This is displayed in the list of available templates.
+   - `iconName` - **Required.** Defines an icon for the workflow's entry in the template list. The `iconName` must be an SVG icon of the same name, and must be stored in the `workflow-templates` directory. For example, a SVG file named `example-icon.svg` is referenced as `example-icon`.
+   - `categories` - **Optional.** Defines the language category of the workflow. When a user views the available templates, those templates that match the same language will feature more prominently. For information on the available language categories, see https://github.com/github/linguist/blob/master/lib/linguist/languages.yml.
+   - `filePatterns` - **Optional.** Allows the template to be used if the user's repository has a file in its root directory that matches a defined regular expression.
 
 To add another workflow template, add your files to the same `workflow-templates` directory. For example:
 
@@ -90,11 +85,11 @@ This procedure demonstrates how a member of your organization can find and use a
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.actions-tab %}
-1. If your repository already has existing workflows: In the upper-left corner, click **New workflow**.
-  ![Create a new workflow](/assets/images/help/repository/actions-new-workflow.png)
-1. Your organization's workflow templates are located in their own section titled "Workflows created by _organization name_". Under the name of the template you'd like to use, click **Set up this workflow**.
-  ![Set up this workflow](/assets/images/help/settings/actions-create-starter-workflow.png)
 
+1. If your repository already has existing workflows: In the upper-left corner, click **New workflow**.
+   ![Create a new workflow](/assets/images/help/repository/actions-new-workflow.png)
+1. Your organization's workflow templates are located in their own section titled "Workflows created by _organization name_". Under the name of the template you'd like to use, click **Set up this workflow**.
+   ![Set up this workflow](/assets/images/help/settings/actions-create-starter-workflow.png)
 
 ## Sharing secrets within an organization
 
@@ -107,6 +102,7 @@ When creating a secret in an organization, you can use a policy to limit which r
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Click **New secret**.
 1. Type a name for your secret in the **Name** input box.
 1. Enter the **Value** for your secret.
@@ -118,7 +114,6 @@ When creating a secret in an organization, you can use a policy to limit which r
 Organization admins can add their self-hosted runners to groups, and then create policies that control which repositories can access the group.
 
 For more information, see "[Managing access to self-hosted runners using groups](/actions/hosting-your-own-runners/managing-access-to-self-hosted-runners-using-groups)."
-
 
 ## Next steps
 

@@ -5,7 +5,7 @@ redirect_from:
   - /enterprise/admin/developer-workflow/using-pre-receive-hooks-to-enforce-policy
   - /enterprise/admin/policies/enforcing-policy-with-pre-receive-hooks
 versions:
-  ghes: '*'
+  ghes: "*"
 topics:
   - Enterprise
 children:
@@ -15,4 +15,3 @@ children:
   - /managing-pre-receive-hooks-on-the-github-enterprise-server-appliance
 shortTitle: Policy with pre-receive hooks
 ---
-

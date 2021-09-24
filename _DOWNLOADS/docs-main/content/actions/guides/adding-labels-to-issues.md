@@ -1,11 +1,11 @@
 ---
 title: Adding labels to issues
-intro: 'You can use {% data variables.product.prodname_actions %} to automatically label issues.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to automatically label issues."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -25,35 +25,36 @@ In the tutorial, you will first make a workflow file that uses the [`andymckay/l
 
 ## Creating the workflow
 
-1. {% data reusables.actions.choose-repo %}
-2. {% data reusables.actions.make-workflow-file %}
-3. Copy the following YAML contents into your workflow file.
+1.  {% data reusables.actions.choose-repo %}
+2.  {% data reusables.actions.make-workflow-file %}
+3.  Copy the following YAML contents into your workflow file.
 
-    ```yaml{:copy}
-{% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
+        ```yaml{:copy}
 
-    name: Label issues
-    on:
-      issues:
-        types:
-          - reopened
-          - opened
-    jobs:
-      label_issues:
-        runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
-        permissions:
-          issues: write{% endif %}
-        steps:
-          - name: Label issues
-            uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
-            with:
-              add-labels: "triage"
-              repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
-    ```
+    {% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
 
-4. Customize the parameters in your workflow file:
-   - Change the value for `add-labels` to the list of labels that you want to add to the issue. Separate multiple labels with commas. For example, `"help wanted, good first issue"`. For more information about labels, see "[Managing labels](/github/managing-your-work-on-github/managing-labels#applying-labels-to-issues-and-pull-requests)."
-5. {% data reusables.actions.commit-workflow %}
+        name: Label issues
+        on:
+          issues:
+            types:
+              - reopened
+              - opened
+        jobs:
+          label_issues:
+            runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae-next %}
+            permissions:
+              issues: write{% endif %}
+            steps:
+              - name: Label issues
+                uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
+                with:
+                  add-labels: "triage"
+                  repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+        ```
+
+4.  Customize the parameters in your workflow file:
+    - Change the value for `add-labels` to the list of labels that you want to add to the issue. Separate multiple labels with commas. For example, `"help wanted, good first issue"`. For more information about labels, see "[Managing labels](/github/managing-your-work-on-github/managing-labels#applying-labels-to-issues-and-pull-requests)."
+5.  {% data reusables.actions.commit-workflow %}
 
 ## Testing the workflow
 
