@@ -1,5 +1,5 @@
 $(function () {
-    mkTool('idn-decode', function (text) {
-        return punycode.toUnicode(text);
-    });
+  mkTool("idn-decode", function (text) {
+    return punycode.toUnicode(text);
+  });
 });

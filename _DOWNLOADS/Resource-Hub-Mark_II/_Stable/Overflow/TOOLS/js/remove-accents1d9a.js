@@ -1,6 +1,6 @@
 $(function () {
-    mkTool('remove-accents', function (text) {
-        text = removeAccents(text);
-        return text;
-    });
+  mkTool("remove-accents", function (text) {
+    text = removeAccents(text);
+    return text;
+  });
 });

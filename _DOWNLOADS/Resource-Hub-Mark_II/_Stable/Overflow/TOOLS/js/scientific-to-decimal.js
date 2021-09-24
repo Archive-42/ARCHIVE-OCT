@@ -1,10 +1,10 @@
 // https://github.com/jam3/scientific-to-decimal
 var scientificToDecimal = function (value) {
   function getZeros(count) {
-    var rVal = '';
+    var rVal = "";
 
-    for(var i = 0; i < count; i++) {
-      rVal += '0';
+    for (var i = 0; i < count; i++) {
+      rVal += "0";
     }
 
     return rVal;
@@ -21,27 +21,25 @@ var scientificToDecimal = function (value) {
   var precision;
   var rVal;
 
-
   // is scientific
-  if(result) {
+  if (result) {
     // [ '1e+32', '1', '+', '2', index: 0, input: '1e+32' ]
-    base = result[ 1 ];
-    positiveNegative = result[ 2 ];
-    exponents = result[ 3 ];
+    base = result[1];
+    positiveNegative = result[2];
+    exponents = result[3];
 
-    if(positiveNegative === '+') {
-
+    if (positiveNegative === "+") {
       precision = parseInt(exponents);
 
       // base is a decimal
-      if(base.indexOf('.') !== -1) {
+      if (base.indexOf(".") !== -1) {
         result = /(\d+\.)(\d)/.exec(base);
 
         // [ 2 ] == right side after decimal
         // [ 1 ] == left side before decimal
-        precision -= result[ 2 ].length + result[ 1 ].length;
+        precision -= result[2].length + result[1].length;
 
-        rVal = base.split('.').join('') + getZeros(precision);
+        rVal = base.split(".").join("") + getZeros(precision);
       } else {
         rVal = base + getZeros(precision);
       }
@@ -49,7 +47,7 @@ var scientificToDecimal = function (value) {
       precision = base.length + parseInt(exponents) - 1;
 
       // if it contains a period we want to drop precision by one
-      if(base.indexOf('.') !== -1) {
+      if (base.indexOf(".") !== -1) {
         precision--;
       }
 
@@ -60,6 +58,4 @@ var scientificToDecimal = function (value) {
   }
 
   return rVal;
-  
 };
-

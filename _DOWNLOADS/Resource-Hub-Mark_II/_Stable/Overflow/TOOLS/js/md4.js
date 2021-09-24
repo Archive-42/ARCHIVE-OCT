@@ -8,22 +8,25 @@
  * @license MIT
  */
 (function (root) {
-  'use strict';
+  "use strict";
 
-  var NODE_JS = typeof process == 'object' && process.versions && process.versions.node;
+  var NODE_JS =
+    typeof process == "object" && process.versions && process.versions.node;
   if (NODE_JS) {
     root = global;
   }
-  var COMMON_JS = !root.JS_MD4_TEST && typeof module == 'object' && module.exports;
-  var AMD = typeof define == 'function' && define.amd;
+  var COMMON_JS =
+    !root.JS_MD4_TEST && typeof module == "object" && module.exports;
+  var AMD = typeof define == "function" && define.amd;
 
-  var ARRAY_BUFFER = !root.JS_MD4_TEST && typeof ArrayBuffer != 'undefined';
-  var HEX_CHARS = '0123456789abcdef'.split('');
+  var ARRAY_BUFFER = !root.JS_MD4_TEST && typeof ArrayBuffer != "undefined";
+  var HEX_CHARS = "0123456789abcdef".split("");
   var EXTRA = [128, 32768, 8388608, -2147483648];
   var SHIFT = [0, 8, 16, 24];
-  var OUTPUT_TYPES = ['hex', 'array', 'digest', 'buffer'];
+  var OUTPUT_TYPES = ["hex", "array", "digest", "buffer"];
 
-  var blocks = [], buffer8;
+  var blocks = [],
+    buffer8;
   if (ARRAY_BUFFER) {
     var buffer = new ArrayBuffer(68);
     buffer8 = new Uint8Array(buffer);
@@ -69,9 +72,9 @@
    * md4.buffer('The quick brown fox jumps over the lazy dog');
    */
   var createOutputMethod = function (outputType) {
-    return function(message) {
+    return function (message) {
       return new Md4(true).update(message)[outputType]();
-    }
+    };
   };
 
   /**
@@ -95,20 +98,19 @@
    * hash.update('The quick brown fox jumps over the lazy dog');
    */
   var createMethod = function () {
-    var method = createOutputMethod('hex');
+    var method = createOutputMethod("hex");
     method.create = function () {
       return new Md4();
     };
     method.update = function (message) {
       return method.create().update(message);
     };
-    for (var i = 0;i < OUTPUT_TYPES.length;++i) {
+    for (var i = 0; i < OUTPUT_TYPES.length; ++i) {
       var type = OUTPUT_TYPES[i];
       method[type] = createOutputMethod(type);
     }
     return method;
   };
-
 
   /**
    * Md4 class
@@ -118,10 +120,24 @@
    */
   function Md4(sharedMemory) {
     if (sharedMemory) {
-      blocks[0] = blocks[16] = blocks[1] = blocks[2] = blocks[3] =
-      blocks[4] = blocks[5] = blocks[6] = blocks[7] =
-      blocks[8] = blocks[9] = blocks[10] = blocks[11] =
-      blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
+      blocks[0] =
+        blocks[16] =
+        blocks[1] =
+        blocks[2] =
+        blocks[3] =
+        blocks[4] =
+        blocks[5] =
+        blocks[6] =
+        blocks[7] =
+        blocks[8] =
+        blocks[9] =
+        blocks[10] =
+        blocks[11] =
+        blocks[12] =
+        blocks[13] =
+        blocks[14] =
+        blocks[15] =
+          0;
       this.blocks = blocks;
       this.buffer8 = buffer8;
     } else {
@@ -151,36 +167,53 @@
     if (this.finalized) {
       return;
     }
-    var notString = typeof(message) != 'string';
-    if(notString && message.constructor == root.ArrayBuffer) {
+    var notString = typeof message != "string";
+    if (notString && message.constructor == root.ArrayBuffer) {
       message = new Uint8Array(message);
     }
-    var code, index = 0, i, length = message.length || 0, blocks = this.blocks;
+    var code,
+      index = 0,
+      i,
+      length = message.length || 0,
+      blocks = this.blocks;
     var buffer8 = this.buffer8;
 
     while (index < length) {
       if (this.hashed) {
         this.hashed = false;
         blocks[0] = blocks[16];
-        blocks[16] = blocks[1] = blocks[2] = blocks[3] =
-        blocks[4] = blocks[5] = blocks[6] = blocks[7] =
-        blocks[8] = blocks[9] = blocks[10] = blocks[11] =
-        blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
+        blocks[16] =
+          blocks[1] =
+          blocks[2] =
+          blocks[3] =
+          blocks[4] =
+          blocks[5] =
+          blocks[6] =
+          blocks[7] =
+          blocks[8] =
+          blocks[9] =
+          blocks[10] =
+          blocks[11] =
+          blocks[12] =
+          blocks[13] =
+          blocks[14] =
+          blocks[15] =
+            0;
       }
 
       if (notString) {
         if (ARRAY_BUFFER) {
-          for (i = this.start;index < length && i < 64; ++index) {
+          for (i = this.start; index < length && i < 64; ++index) {
             buffer8[i++] = message[index];
           }
         } else {
-          for (i = this.start;index < length && i < 64; ++index) {
+          for (i = this.start; index < length && i < 64; ++index) {
             blocks[i >> 2] |= message[index] << SHIFT[i++ & 3];
           }
         }
       } else {
         if (ARRAY_BUFFER) {
-          for (i = this.start;index < length && i < 64; ++index) {
+          for (i = this.start; index < length && i < 64; ++index) {
             code = message.charCodeAt(index);
             if (code < 0x80) {
               buffer8[i++] = code;
@@ -192,7 +225,10 @@
               buffer8[i++] = 0x80 | ((code >> 6) & 0x3f);
               buffer8[i++] = 0x80 | (code & 0x3f);
             } else {
-              code = 0x10000 + (((code & 0x3ff) << 10) | (message.charCodeAt(++index) & 0x3ff));
+              code =
+                0x10000 +
+                (((code & 0x3ff) << 10) |
+                  (message.charCodeAt(++index) & 0x3ff));
               buffer8[i++] = 0xf0 | (code >> 18);
               buffer8[i++] = 0x80 | ((code >> 12) & 0x3f);
               buffer8[i++] = 0x80 | ((code >> 6) & 0x3f);
@@ -200,7 +236,7 @@
             }
           }
         } else {
-          for (i = this.start;index < length && i < 64; ++index) {
+          for (i = this.start; index < length && i < 64; ++index) {
             code = message.charCodeAt(index);
             if (code < 0x80) {
               blocks[i >> 2] |= code << SHIFT[i++ & 3];
@@ -212,9 +248,13 @@
               blocks[i >> 2] |= (0x80 | ((code >> 6) & 0x3f)) << SHIFT[i++ & 3];
               blocks[i >> 2] |= (0x80 | (code & 0x3f)) << SHIFT[i++ & 3];
             } else {
-              code = 0x10000 + (((code & 0x3ff) << 10) | (message.charCodeAt(++index) & 0x3ff));
+              code =
+                0x10000 +
+                (((code & 0x3ff) << 10) |
+                  (message.charCodeAt(++index) & 0x3ff));
               blocks[i >> 2] |= (0xf0 | (code >> 18)) << SHIFT[i++ & 3];
-              blocks[i >> 2] |= (0x80 | ((code >> 12) & 0x3f)) << SHIFT[i++ & 3];
+              blocks[i >> 2] |=
+                (0x80 | ((code >> 12) & 0x3f)) << SHIFT[i++ & 3];
               blocks[i >> 2] |= (0x80 | ((code >> 6) & 0x3f)) << SHIFT[i++ & 3];
               blocks[i >> 2] |= (0x80 | (code & 0x3f)) << SHIFT[i++ & 3];
             }
@@ -239,24 +279,46 @@
       return;
     }
     this.finalized = true;
-    var blocks = this.blocks, i = this.lastByteIndex;
+    var blocks = this.blocks,
+      i = this.lastByteIndex;
     blocks[i >> 2] |= EXTRA[i & 3];
     if (i >= 56) {
       if (!this.hashed) {
         this.hash();
       }
       blocks[0] = blocks[16];
-      blocks[16] = blocks[1] = blocks[2] = blocks[3] =
-      blocks[4] = blocks[5] = blocks[6] = blocks[7] =
-      blocks[8] = blocks[9] = blocks[10] = blocks[11] =
-      blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
+      blocks[16] =
+        blocks[1] =
+        blocks[2] =
+        blocks[3] =
+        blocks[4] =
+        blocks[5] =
+        blocks[6] =
+        blocks[7] =
+        blocks[8] =
+        blocks[9] =
+        blocks[10] =
+        blocks[11] =
+        blocks[12] =
+        blocks[13] =
+        blocks[14] =
+        blocks[15] =
+          0;
     }
     blocks[14] = this.bytes << 3;
     this.hash();
   };
 
   Md4.prototype.hash = function () {
-    var a, b, c, d, ab, bc, cd, da, blocks = this.blocks;
+    var a,
+      b,
+      c,
+      d,
+      ab,
+      bc,
+      cd,
+      da,
+      blocks = this.blocks;
 
     if (this.first) {
       a = blocks[0] - 1;
@@ -396,16 +458,16 @@
     b = (b << 15) | (b >>> 17);
 
     if (this.first) {
-      this.h0 = a + 1732584193 << 0;
-      this.h1 = b - 271733879 << 0;
-      this.h2 = c - 1732584194 << 0;
-      this.h3 = d + 271733878 << 0;
+      this.h0 = (a + 1732584193) << 0;
+      this.h1 = (b - 271733879) << 0;
+      this.h2 = (c - 1732584194) << 0;
+      this.h3 = (d + 271733878) << 0;
       this.first = false;
     } else {
-      this.h0 = this.h0 + a << 0;
-      this.h1 = this.h1 + b << 0;
-      this.h2 = this.h2 + c << 0;
-      this.h3 = this.h3 + d << 0;
+      this.h0 = (this.h0 + a) << 0;
+      this.h1 = (this.h1 + b) << 0;
+      this.h2 = (this.h2 + c) << 0;
+      this.h3 = (this.h3 + d) << 0;
     }
   };
 
@@ -422,24 +484,45 @@
   Md4.prototype.hex = function () {
     this.finalize();
 
-    var h0 = this.h0, h1 = this.h1, h2 = this.h2, h3 = this.h3;
+    var h0 = this.h0,
+      h1 = this.h1,
+      h2 = this.h2,
+      h3 = this.h3;
 
-    return HEX_CHARS[(h0 >> 4) & 0x0F] + HEX_CHARS[h0 & 0x0F] +
-       HEX_CHARS[(h0 >> 12) & 0x0F] + HEX_CHARS[(h0 >> 8) & 0x0F] +
-       HEX_CHARS[(h0 >> 20) & 0x0F] + HEX_CHARS[(h0 >> 16) & 0x0F] +
-       HEX_CHARS[(h0 >> 28) & 0x0F] + HEX_CHARS[(h0 >> 24) & 0x0F] +
-       HEX_CHARS[(h1 >> 4) & 0x0F] + HEX_CHARS[h1 & 0x0F] +
-       HEX_CHARS[(h1 >> 12) & 0x0F] + HEX_CHARS[(h1 >> 8) & 0x0F] +
-       HEX_CHARS[(h1 >> 20) & 0x0F] + HEX_CHARS[(h1 >> 16) & 0x0F] +
-       HEX_CHARS[(h1 >> 28) & 0x0F] + HEX_CHARS[(h1 >> 24) & 0x0F] +
-       HEX_CHARS[(h2 >> 4) & 0x0F] + HEX_CHARS[h2 & 0x0F] +
-       HEX_CHARS[(h2 >> 12) & 0x0F] + HEX_CHARS[(h2 >> 8) & 0x0F] +
-       HEX_CHARS[(h2 >> 20) & 0x0F] + HEX_CHARS[(h2 >> 16) & 0x0F] +
-       HEX_CHARS[(h2 >> 28) & 0x0F] + HEX_CHARS[(h2 >> 24) & 0x0F] +
-       HEX_CHARS[(h3 >> 4) & 0x0F] + HEX_CHARS[h3 & 0x0F] +
-       HEX_CHARS[(h3 >> 12) & 0x0F] + HEX_CHARS[(h3 >> 8) & 0x0F] +
-       HEX_CHARS[(h3 >> 20) & 0x0F] + HEX_CHARS[(h3 >> 16) & 0x0F] +
-       HEX_CHARS[(h3 >> 28) & 0x0F] + HEX_CHARS[(h3 >> 24) & 0x0F];
+    return (
+      HEX_CHARS[(h0 >> 4) & 0x0f] +
+      HEX_CHARS[h0 & 0x0f] +
+      HEX_CHARS[(h0 >> 12) & 0x0f] +
+      HEX_CHARS[(h0 >> 8) & 0x0f] +
+      HEX_CHARS[(h0 >> 20) & 0x0f] +
+      HEX_CHARS[(h0 >> 16) & 0x0f] +
+      HEX_CHARS[(h0 >> 28) & 0x0f] +
+      HEX_CHARS[(h0 >> 24) & 0x0f] +
+      HEX_CHARS[(h1 >> 4) & 0x0f] +
+      HEX_CHARS[h1 & 0x0f] +
+      HEX_CHARS[(h1 >> 12) & 0x0f] +
+      HEX_CHARS[(h1 >> 8) & 0x0f] +
+      HEX_CHARS[(h1 >> 20) & 0x0f] +
+      HEX_CHARS[(h1 >> 16) & 0x0f] +
+      HEX_CHARS[(h1 >> 28) & 0x0f] +
+      HEX_CHARS[(h1 >> 24) & 0x0f] +
+      HEX_CHARS[(h2 >> 4) & 0x0f] +
+      HEX_CHARS[h2 & 0x0f] +
+      HEX_CHARS[(h2 >> 12) & 0x0f] +
+      HEX_CHARS[(h2 >> 8) & 0x0f] +
+      HEX_CHARS[(h2 >> 20) & 0x0f] +
+      HEX_CHARS[(h2 >> 16) & 0x0f] +
+      HEX_CHARS[(h2 >> 28) & 0x0f] +
+      HEX_CHARS[(h2 >> 24) & 0x0f] +
+      HEX_CHARS[(h3 >> 4) & 0x0f] +
+      HEX_CHARS[h3 & 0x0f] +
+      HEX_CHARS[(h3 >> 12) & 0x0f] +
+      HEX_CHARS[(h3 >> 8) & 0x0f] +
+      HEX_CHARS[(h3 >> 20) & 0x0f] +
+      HEX_CHARS[(h3 >> 16) & 0x0f] +
+      HEX_CHARS[(h3 >> 28) & 0x0f] +
+      HEX_CHARS[(h3 >> 24) & 0x0f]
+    );
   };
 
   /**
@@ -464,15 +547,30 @@
    * @example
    * hash.digest();
    */
-  Md4.prototype.digest = function() {
+  Md4.prototype.digest = function () {
     this.finalize();
 
-    var h0 = this.h0, h1 = this.h1, h2 = this.h2, h3 = this.h3;
+    var h0 = this.h0,
+      h1 = this.h1,
+      h2 = this.h2,
+      h3 = this.h3;
     return [
-      h0 & 0xFF, (h0 >> 8) & 0xFF, (h0 >> 16) & 0xFF, (h0 >> 24) & 0xFF,
-      h1 & 0xFF, (h1 >> 8) & 0xFF, (h1 >> 16) & 0xFF, (h1 >> 24) & 0xFF,
-      h2 & 0xFF, (h2 >> 8) & 0xFF, (h2 >> 16) & 0xFF, (h2 >> 24) & 0xFF,
-      h3 & 0xFF, (h3 >> 8) & 0xFF, (h3 >> 16) & 0xFF, (h3 >> 24) & 0xFF
+      h0 & 0xff,
+      (h0 >> 8) & 0xff,
+      (h0 >> 16) & 0xff,
+      (h0 >> 24) & 0xff,
+      h1 & 0xff,
+      (h1 >> 8) & 0xff,
+      (h1 >> 16) & 0xff,
+      (h1 >> 24) & 0xff,
+      h2 & 0xff,
+      (h2 >> 8) & 0xff,
+      (h2 >> 16) & 0xff,
+      (h2 >> 24) & 0xff,
+      h3 & 0xff,
+      (h3 >> 8) & 0xff,
+      (h3 >> 16) & 0xff,
+      (h3 >> 24) & 0xff,
     ];
   };
 
@@ -498,7 +596,7 @@
    * @example
    * hash.buffer();
    */
-  Md4.prototype.buffer = function() {
+  Md4.prototype.buffer = function () {
     this.finalize();
 
     var buffer = new ArrayBuffer(16);
@@ -539,4 +637,4 @@
       });
     }
   }
-}(this));
+})(this);

@@ -1,5 +1,5 @@
 $(function () {
-    mkTool('rot13', function (text) {
-        return rot(text, 13);
-    });
+  mkTool("rot13", function (text) {
+    return rot(text, 13);
+  });
 });

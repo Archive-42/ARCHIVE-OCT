@@ -219,9 +219,8 @@ $(function () {
         }
       }
 
-      var versions = browserVersions[platform + platform_version][
-        browser
-      ].slice();
+      var versions =
+        browserVersions[platform + platform_version][browser].slice();
       versions.reverse();
       updateVersionsDropdown(versions);
 
@@ -250,9 +249,8 @@ $(function () {
       }
 
       platform_version = platformVersionToShortName(platform_version);
-      var versions = browserVersions[platform + platform_version][
-        browser
-      ].slice();
+      var versions =
+        browserVersions[platform + platform_version][browser].slice();
       versions.reverse();
       updateVersionsDropdown(versions);
 

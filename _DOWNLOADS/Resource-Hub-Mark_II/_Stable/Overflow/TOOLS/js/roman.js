@@ -6,11 +6,11 @@
  */
 
 function repeat(str, num) {
-  var cache = '';
-  var res = '';
+  var cache = "";
+  var res = "";
 
-  if (typeof str !== 'string') {
-    throw new TypeError('expected a string');
+  if (typeof str !== "string") {
+    throw new TypeError("expected a string");
   }
 
   // cover common, quick use cases
@@ -18,9 +18,9 @@ function repeat(str, num) {
   if (num === 2) return str + str;
 
   var max = str.length * num;
-  if (cache !== str || typeof cache === 'undefined') {
+  if (cache !== str || typeof cache === "undefined") {
     cache = str;
-    res = '';
+    res = "";
   } else if (res.length >= max) {
     return res.substr(0, max);
   }
@@ -47,19 +47,32 @@ function repeat(str, num) {
  * Released under the MIT License.
  */
 
-
-function toRoman (num) {
-  var numerals = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
+function toRoman(num) {
+  var numerals = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1,
+  };
   var keys = Object.keys(numerals);
-  var str = '';
+  var str = "";
 
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
-    str += repeat(key, num / numerals[key] >>> 0);
+    str += repeat(key, (num / numerals[key]) >>> 0);
     num %= numerals[key];
   }
   return str;
-};
+}
 
 /*!
  * deromanize <https://github.com/jonschlinkert/deromanize>
@@ -69,10 +82,9 @@ function toRoman (num) {
  * Released under the MIT License.
  */
 
-
-function fromRoman (roman) {
+function fromRoman(roman) {
   var numerals = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
-  roman = roman.toUpperCase().split('');
+  roman = roman.toUpperCase().split("");
   var num = 0;
   var val = 0;
 
@@ -81,5 +93,4 @@ function fromRoman (roman) {
     num += val * (val < numerals[roman[0]] ? -1 : 1);
   }
   return num;
-};
-
+}

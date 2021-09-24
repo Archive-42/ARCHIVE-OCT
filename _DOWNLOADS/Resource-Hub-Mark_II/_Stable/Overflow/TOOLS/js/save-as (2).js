@@ -138,7 +138,14 @@ var saveAs =
     w.readyState = w.INIT = 0;
     w.WRITING = 1;
     w.DONE = 2;
-    w.error = w.onwritestart = w.onprogress = w.onwrite = w.onabort = w.onerror = w.onwriteend = null;
+    w.error =
+      w.onwritestart =
+      w.onprogress =
+      w.onwrite =
+      w.onabort =
+      w.onerror =
+      w.onwriteend =
+        null;
     return m;
   })(
     (typeof self !== "undefined" && self) ||

@@ -413,9 +413,8 @@ Site.pricing.updateFrontSide = function (plan) {
   var priceOnFront = plan.querySelector(".plan-side-front .plan-billing");
   if (priceOnFront) {
     if (plan.classList.contains("plan-team")) {
-      priceOnFront.querySelector(
-        ".amount"
-      ).textContent = price.textFront.replace("$", "");
+      priceOnFront.querySelector(".amount").textContent =
+        price.textFront.replace("$", "");
     } else {
       priceOnFront.querySelector(".amount").textContent = price.text.replace(
         "$",
@@ -546,12 +545,10 @@ Site.pricing.updatePlan = function (plan) {
       );
       var teamSize = planSettings.querySelector(".team-size-number");
 
-      teamSize.textContent = Site.pricing.lang.ORDER_MULTIUSER_USERS.format(
-        users
-      );
-      statusText.textContent = Site.pricing.lang.ORDER_MULTIUSER_SUBTITLE.format(
-        users
-      );
+      teamSize.textContent =
+        Site.pricing.lang.ORDER_MULTIUSER_USERS.format(users);
+      statusText.textContent =
+        Site.pricing.lang.ORDER_MULTIUSER_SUBTITLE.format(users);
       infoSize.textContent = users;
       infoPrice.textContent = "$" + price.total;
       infoPeriod.textContent = " / " + price.timespan;
@@ -903,8 +900,9 @@ Site.pricing.initializePlan = function (which) {
         ".plan-side-scroll.scroll-auth .auth-register"
       );
       var email = registerWrapper.querySelector(".plan-auth-email").value;
-      var password1 = registerWrapper.querySelector(".plan-auth-password")
-        .value;
+      var password1 = registerWrapper.querySelector(
+        ".plan-auth-password"
+      ).value;
       var password2 = registerWrapper.querySelector(
         ".plan-auth-confirm-password"
       ).value;
@@ -1241,9 +1239,8 @@ $(function () {
         }
       }
 
-      var versions = browserVersions[platform + platform_version][
-        browser
-      ].slice();
+      var versions =
+        browserVersions[platform + platform_version][browser].slice();
       versions.reverse();
       updateVersionsDropdown(versions);
 
@@ -1307,9 +1304,8 @@ $(function () {
       }
 
       platform_version = platformVersionToShortName(platform_version);
-      var versions = browserVersions[platform + platform_version][
-        browser
-      ].slice();
+      var versions =
+        browserVersions[platform + platform_version][browser].slice();
       versions.reverse();
       updateVersionsDropdown(versions);
     },

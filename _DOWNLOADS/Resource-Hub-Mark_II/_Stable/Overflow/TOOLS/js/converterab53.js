@@ -2064,9 +2064,8 @@ function Tool(config) {
       });
     }
 
-    tool.globalHandlers.convertOnResize = tool.globalHandlers.convertOnResize.bind(
-      tool
-    );
+    tool.globalHandlers.convertOnResize =
+      tool.globalHandlers.convertOnResize.bind(tool);
     window.addEventListener("resize", tool.globalHandlers.convertOnResize);
 
     if (examples_wrapper) {
@@ -2531,9 +2530,10 @@ function hideWidgetToggle(tool, side) {
     var toggle = container.querySelector(".side-widgets-toggle");
 
     wrapper.style.transform = "rotateX(0deg) translateY(0px) translateZ(0px)";
-    toggle.style.transform = "rotateX(90deg) translateY(-50%) translateZ({0}px)".format(
-      container.offsetHeight / 2
-    );
+    toggle.style.transform =
+      "rotateX(90deg) translateY(-50%) translateZ({0}px)".format(
+        container.offsetHeight / 2
+      );
     container.classList.remove("toggled");
   }
 }
@@ -2562,9 +2562,10 @@ function showWidgetToggle(tool, side, name) {
 
         toggle.style.transform =
           "rotateX(0deg) translateY(0px) translateZ(0px)";
-        wrapper.style.transform = "rotateX(-90deg) translateY(50%) translateZ({0}px)".format(
-          container.offsetHeight / 2
-        );
+        wrapper.style.transform =
+          "rotateX(-90deg) translateY(50%) translateZ({0}px)".format(
+            container.offsetHeight / 2
+          );
 
         container.classList.remove("toggled");
         container.classList.add("toggled");

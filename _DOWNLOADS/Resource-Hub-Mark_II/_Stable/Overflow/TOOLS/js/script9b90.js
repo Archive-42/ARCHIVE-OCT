@@ -1718,9 +1718,8 @@ function attach_mode_chooser(publisherBlock) {
           : 0;
 
         // Shallow clone the current link container without including its children
-        var oldPublisherLinks = publisherBlock.querySelector(
-          ".publisher-links"
-        );
+        var oldPublisherLinks =
+          publisherBlock.querySelector(".publisher-links");
         var newPublisherLinks = oldPublisherLinks.cloneNode(false);
         var linksFragment = document.createDocumentFragment();
 

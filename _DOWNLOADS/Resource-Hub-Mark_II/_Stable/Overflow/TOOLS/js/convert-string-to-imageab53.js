@@ -224,7 +224,8 @@ window.bridges["convert-string-to-image"] = function () {
 
   function parseShadow(shadowStr) {
     if (shadowStr == "") return true;
-    var shadowRx = /(-?\d+|-?\.\d+|-?\d+\.\d+)(em|ex|px|cm|mm|in|pt|pc)\s+(-?\d+|-?\.\d+|-?\d+\.\d+)(em|ex|px|cm|mm|in|pt|pc)\s+(-?\d+|-?\.\d+|-?\d+\.\d+)(em|ex|px|cm|mm|in|pt|pc)\s+(.+)/;
+    var shadowRx =
+      /(-?\d+|-?\.\d+|-?\d+\.\d+)(em|ex|px|cm|mm|in|pt|pc)\s+(-?\d+|-?\.\d+|-?\d+\.\d+)(em|ex|px|cm|mm|in|pt|pc)\s+(-?\d+|-?\.\d+|-?\d+\.\d+)(em|ex|px|cm|mm|in|pt|pc)\s+(.+)/;
     var toPx = {
       px: 1,
       em: 16,

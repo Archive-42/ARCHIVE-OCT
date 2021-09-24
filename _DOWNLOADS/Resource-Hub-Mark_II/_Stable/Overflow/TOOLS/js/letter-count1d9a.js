@@ -1,5 +1,5 @@
 $(function () {
-    mkTool('letter-count', function (text) {
-        return text.length;
-    });
+  mkTool("letter-count", function (text) {
+    return text.length;
+  });
 });
