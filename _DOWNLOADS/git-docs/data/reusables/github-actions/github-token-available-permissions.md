@@ -15,7 +15,7 @@ permissions:
   statuses: read|write|none
 ```
 
-If you specify the access for any of these scopes, all of those that are not specified are set to `none`. 
+If you specify the access for any of these scopes, all of those that are not specified are set to `none`.
 
 You can use the following syntax to define read or write access for all of the available scopes:
 

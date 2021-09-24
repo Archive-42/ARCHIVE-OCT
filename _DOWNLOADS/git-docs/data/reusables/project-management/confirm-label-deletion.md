@@ -1,1 +1,1 @@
-  1. Read the warning, then click **OK**.
+1. Read the warning, then click **OK**.

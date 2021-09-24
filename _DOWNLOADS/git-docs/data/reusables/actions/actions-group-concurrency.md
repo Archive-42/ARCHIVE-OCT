@@ -3,23 +3,29 @@ When a concurrent job or workflow is queued, if another job or workflow using th
 ### Examples: Using concurrency and the default behavior
 
 {% raw %}
+
 ```yaml
 concurrency: staging_environment
 ```
+
 {% endraw %}
 
 {% raw %}
+
 ```yaml
 concurrency: ci-${{ github.ref }}
 ```
+
 {% endraw %}
 
 ### Example: Using concurrency to cancel any in-progress job or run
 
 {% raw %}
+
 ```yaml
-concurrency: 
+concurrency:
   group: ${{ github.head_ref }}
   cancel-in-progress: true
 ```
+
 {% endraw %}

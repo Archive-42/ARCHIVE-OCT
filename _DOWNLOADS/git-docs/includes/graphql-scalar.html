@@ -4,10 +4,8 @@
       <a href="#{{ item.id }}">{{item.name}}</a>
     </h2>
 
-  {{ item.description }}
-
-  {% include graphql-preview %}
-  {% include graphql-deprecation %}
+    {{ item.description }} {% include graphql-preview %} {% include
+    graphql-deprecation %}
   </div>
-  <hr>
+  <hr />
 </div>

@@ -7,6 +7,7 @@ To get started, please [open an issue using this link](https://github.com/github
 ## Templates
 
 ### Tutorial template
+
 Tutorials guide the reader through an entire workflow to complete a task.
 
 You should consider creating a tutorial when:

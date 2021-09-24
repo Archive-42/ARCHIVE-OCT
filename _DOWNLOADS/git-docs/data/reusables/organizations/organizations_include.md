@@ -1,4 +1,5 @@
 Organizations include:
+
 - Unlimited membership with a variety of roles that grant [different levels of access to the organization and its data](/articles/permission-levels-for-an-organization)
 - The ability to give members [a range of access permissions to your organization's repositories](/articles/repository-permission-levels-for-an-organization)
 - [Nested teams that reflect your company or group's structure](/articles/about-teams) with cascading access permissions and mentions{% ifversion not ghae %}

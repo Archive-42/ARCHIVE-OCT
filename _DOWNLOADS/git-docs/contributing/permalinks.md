@@ -4,16 +4,16 @@ Because the site is dynamic, it does not build HTML files for each different ver
 
 For example, an article that is available in currently supported versions will have permalink URLs like the following:
 
-* `/en/github/getting-started-with-github/set-up-git`
-* `/en/enterprise-server@2.22/github/getting-started-with-github/set-up-git`
-* `/en/enterprise-server@2.21/github/getting-started-with-github/set-up-git`
-* `/en/enterprise-server@2.20/github/getting-started-with-github/set-up-git`
-* `/en/enterprise-server@2.19/github/getting-started-with-github/set-up-git`
+- `/en/github/getting-started-with-github/set-up-git`
+- `/en/enterprise-server@2.22/github/getting-started-with-github/set-up-git`
+- `/en/enterprise-server@2.21/github/getting-started-with-github/set-up-git`
+- `/en/enterprise-server@2.20/github/getting-started-with-github/set-up-git`
+- `/en/enterprise-server@2.19/github/getting-started-with-github/set-up-git`
 
 An article that is not available in Enterprise will have just one permalink:
 
-* `/en/github/getting-started-with-github/set-up-git`
+- `/en/github/getting-started-with-github/set-up-git`
 
 **If you are a content contributor:** You don't need to worry about supported versions when adding a link to a document. Following the examples above, if you want to reference an article you can just use its relative location:
 
-* `/github/getting-started-with-github/set-up-git`
+- `/github/getting-started-with-github/set-up-git`

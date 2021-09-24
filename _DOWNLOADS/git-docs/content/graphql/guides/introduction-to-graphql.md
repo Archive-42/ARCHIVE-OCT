@@ -5,9 +5,9 @@ redirect_from:
   - /v4/guides/intro-to-graphql
   - /graphql/guides/intro-to-graphql
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - API
 ---
@@ -58,9 +58,9 @@ This means object `Y` requires the same fields/arguments/return types that inter
 
 In the reference docs, you'll find that:
 
-* Each [object](/graphql/reference/objects) lists the interface(s) _from which it inherits_ under **Implements**.
+- Each [object](/graphql/reference/objects) lists the interface(s) _from which it inherits_ under **Implements**.
 
-* Each [interface](/graphql/reference/interfaces) lists the objects _that inherit from it_ under **Implementations**.
+- Each [interface](/graphql/reference/interfaces) lists the objects _that inherit from it_ under **Implementations**.
 
 ## Connection
 
@@ -80,7 +80,7 @@ _Node_ is a generic term for an object. You can look up a node directly, or you 
 
 GraphQL is [introspective](https://graphql.github.io/learn/introspection/). This means you can query a GraphQL schema for details about itself.
 
-* Query `__schema` to list all types defined in the schema and get details about each:
+- Query `__schema` to list all types defined in the schema and get details about each:
 
   ```graphql
   query {
@@ -97,7 +97,7 @@ GraphQL is [introspective](https://graphql.github.io/learn/introspection/). This
   }
   ```
 
-* Query `__type` to get details about any type:
+- Query `__type` to get details about any type:
 
   ```graphql
   query {
@@ -112,20 +112,20 @@ GraphQL is [introspective](https://graphql.github.io/learn/introspection/). This
   }
   ```
 
-* You can also run an _introspection query_ of the schema via a `GET` request:
+- You can also run an _introspection query_ of the schema via a `GET` request:
 
   ```shell
   $ curl -H "Authorization: bearer <em>token</em>" {% data variables.product.graphql_url_pre %}
   ```
-  
+
   {% note %}
 
-  **Note**: If you get the response `"message": "Bad credentials"` or `401 Unauthorized`, check that you are using a valid token. For more information, see "[Creating a personal access token](/github/authenticating-to-github/creating-a-personal-access-token)." 
+  **Note**: If you get the response `"message": "Bad credentials"` or `401 Unauthorized`, check that you are using a valid token. For more information, see "[Creating a personal access token](/github/authenticating-to-github/creating-a-personal-access-token)."
 
   {% endnote %}
-  
+
   The results are in JSON, so we recommend pretty-printing them for easier reading and searching. You can use a command-line tool like [jq](https://stedolan.github.io/jq/) or pipe the results into `python -m json.tool` for this purpose.
-  
+
   Alternatively, you can pass the `idl` media type to return the results in IDL format, which is a condensed version of the schema:
 
   ```shell

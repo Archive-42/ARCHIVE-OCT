@@ -1,14 +1,13 @@
 1. Choose the repository you want to clone from the list.
 
+{% mac %}
 
-  {% mac %}
+![Clone a repository list](/assets/images/help/desktop/clone-a-repository-list-mac.png)
 
-  ![Clone a repository list](/assets/images/help/desktop/clone-a-repository-list-mac.png)
-  
-  {% endmac %}
+{% endmac %}
 
-  {% windows %}
+{% windows %}
 
-  ![Clone a repository list](/assets/images/help/desktop/clone-a-repository-list-win.png)
+![Clone a repository list](/assets/images/help/desktop/clone-a-repository-list-win.png)
 
-  {% endwindows %}
+{% endwindows %}

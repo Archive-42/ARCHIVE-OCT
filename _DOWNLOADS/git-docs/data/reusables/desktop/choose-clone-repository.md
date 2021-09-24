@@ -1,13 +1,13 @@
 1. In the **File** menu, click **Clone Repository**.
 
-  {% mac %}
+{% mac %}
 
-  ![Clone menu option in the Mac app](/assets/images/help/desktop/clone-file-menu-mac.png)
+![Clone menu option in the Mac app](/assets/images/help/desktop/clone-file-menu-mac.png)
 
-  {% endmac %}
+{% endmac %}
 
-  {% windows %}
+{% windows %}
 
-  ![Clone menu option in the Windows app](/assets/images/help/desktop/clone-file-menu-windows.png)
+![Clone menu option in the Windows app](/assets/images/help/desktop/clone-file-menu-windows.png)
 
-  {% endwindows %}
+{% endwindows %}

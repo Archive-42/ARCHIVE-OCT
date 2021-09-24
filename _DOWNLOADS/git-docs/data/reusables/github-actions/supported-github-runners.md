@@ -95,6 +95,6 @@ macOS Catalina 10.15
 
 {% warning %}
 
-<b>Note:</b> Beta Images are provided "as-is", "with all faults" and "as available" and are excluded from the service level agreement and warranty. Beta Images may not be covered by customer support. 
+<b>Note:</b> Beta Images are provided "as-is", "with all faults" and "as available" and are excluded from the service level agreement and warranty. Beta Images may not be covered by customer support.
 
 {% endwarning %}

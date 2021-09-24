@@ -4,6 +4,7 @@ If the {% data variables.product.prodname_codeql_cli %} is unsuitable for use in
 
 {% ifversion ghes = 3.1 %}
 You will need to use the {% data variables.product.prodname_codeql_runner %} if you need to:
+
 - Set up the CI system to orchestrate compiler invocations as well as running {% data variables.product.prodname_codeql %} analysis.
 - Analyze more than one language in a repository.
-{% endif %}
+  {% endif %}

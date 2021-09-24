@@ -15,9 +15,9 @@ To see all existing search-related issues and pull requests, visit [github.com/g
 ## How to search
 
 The site search is part of every version of docs.github.com. This endpoint responds in JSON format, and fronts our search querying functionality. We recommend using this endpoint, as the endpoint will be more stable. On any page, you can use the search box to search the documents we've indexed.
-You can also query our search endpoint directly at: 
+You can also query our search endpoint directly at:
 `https://docs.github.com/search?version=<VERSION>&language=<LANGUAGE CODE>&filters=topics:<TOPIC>&query=<QUERY>`
- 
+
 - The VERSION can be any numbered GitHub Enterprise Server version (e.g., `2.22`, `3.0`), GitHub AE (`ghae`), or the Free pro team plan (`dotcom`).
 - The LANGUAGE CODE can be: `cn`, `de`, `en`, `es`, `ja`, or `pt`.
 - TOPIC can be any topics in [the allowed list of topics](/data/allowed-topics.js). The values in the `topics` attribute are **not** case sensitive, so filtering on `GitHub actions` or `github actions` will return the same result. **Note:** Currently, the topics filter only works for the dotcom version in the English language. We plan to expand this search query to other languages and versions in the future.
@@ -54,13 +54,17 @@ To locally generate the English version of the Dotcom search index locally, run 
 ### Build and sync
 
 To build all the indices (this takes about an hour):
+
 ```
 npm run sync-search
 ```
+
 To build indices for a specific language and/or version and sync them:
+
 ```
 VERSION=<PLAN@RELEASE LANGUAGE=<TWO-LETTER CODE> npm run sync-search
 ```
+
 You can set `VERSION` and `LANGUAGE` individually, too.
 
 Substitute a currently supported version for `<PLAN@RELEASE>` and a currently supported two-letter language code for `<TWO-LETTER-CODE>`. Languages and versions are lowercase. The options for version are currently `free-pro-team`, `github-ae`, and `enterprise-server`.
@@ -68,14 +72,16 @@ Substitute a currently supported version for `<PLAN@RELEASE>` and a currently su
 ## Label-triggered Actions workflow
 
 Docs team members can use an Actions workflow on GHES release PRs by applying a label in this format:
+
 ```
 sync-english-index-for-<PLAN@RELEASE>
 ```
+
 This label will run a workflow on every push that **builds and uploads ONLY** the English index for the specified version. This means:
 
-* The GHES content will be searchable at the same time the release PR is shipped, with no delay.
-* The GHES content will be searchable on staging throughout content creation.
-* No manual steps (unless you want to do a [dry run test](#build-without-sync-dry-run)).
+- The GHES content will be searchable at the same time the release PR is shipped, with no delay.
+- The GHES content will be searchable on staging throughout content creation.
+- No manual steps (unless you want to do a [dry run test](#build-without-sync-dry-run)).
 
 Why do we need this? For our daily shipping needs, it's tolerable that search updates aren't available for up to an hour after the content goes live. But GHES releases are more time-sensitive, and writers have a greater need to preview search data on staging.
 
@@ -98,20 +104,20 @@ Why do we need this? For our daily shipping needs, it's tolerable that search up
 
 There's a separate search index for each combination of product and language. Some examples:
 
-Index Name | Description
----------- | -----------
-`github-docs-dotcom-cn` | GitHub.com Chinese
-`github-docs-dotcom-en` | GitHub.com English
-`github-docs-dotcom-es` | GitHub.com Spanish
-`github-docs-dotcom-ja` | GitHub.com Japanese
-`github-docs-2.18-cn` | GitHub Enterprise 2.18 Chinese
-`github-docs-2.18-en` | GitHub Enterprise 2.18 English
-`github-docs-2.18-es` | GitHub Enterprise 2.18 Spanish
-`github-docs-2.18-ja` | GitHub Enterprise 2.18 Japanese
-`github-docs-2.17-cn` | GitHub Enterprise 2.17 Chinese
-`github-docs-2.17-en` | GitHub Enterprise 2.17 English
-`github-docs-2.17-es` | GitHub Enterprise 2.17 Spanish
-`github-docs-2.17-ja` | GitHub Enterprise 2.17 Japanese
+| Index Name              | Description                     |
+| ----------------------- | ------------------------------- |
+| `github-docs-dotcom-cn` | GitHub.com Chinese              |
+| `github-docs-dotcom-en` | GitHub.com English              |
+| `github-docs-dotcom-es` | GitHub.com Spanish              |
+| `github-docs-dotcom-ja` | GitHub.com Japanese             |
+| `github-docs-2.18-cn`   | GitHub Enterprise 2.18 Chinese  |
+| `github-docs-2.18-en`   | GitHub Enterprise 2.18 English  |
+| `github-docs-2.18-es`   | GitHub Enterprise 2.18 Spanish  |
+| `github-docs-2.18-ja`   | GitHub Enterprise 2.18 Japanese |
+| `github-docs-2.17-cn`   | GitHub Enterprise 2.17 Chinese  |
+| `github-docs-2.17-en`   | GitHub Enterprise 2.17 English  |
+| `github-docs-2.17-es`   | GitHub Enterprise 2.17 Spanish  |
+| `github-docs-2.17-ja`   | GitHub Enterprise 2.17 Japanese |
 
 ## Records
 

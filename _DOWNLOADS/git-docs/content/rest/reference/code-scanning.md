@@ -1,13 +1,13 @@
 ---
 title: Code scanning
-intro: 'The Code Scanning API enables you to retrieve and update the code scanning alerts and analyses from a repository.'
+intro: "The Code Scanning API enables you to retrieve and update the code scanning alerts and analyses from a repository."
 redirect_from:
   - /v3/code-scanning
-product: '{% data reusables.gated-features.code-scanning %}'
+product: "{% data reusables.gated-features.code-scanning %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: reference
 topics:
   - API
@@ -21,9 +21,10 @@ miniTocMaxHeadingLevel: 3
 The {% data variables.product.prodname_code_scanning %} API lets you retrieve and update {% data variables.product.prodname_code_scanning %} alerts from a repository. You can use the endpoints to create automated reports for the {% data variables.product.prodname_code_scanning %} alerts in an organization or upload analysis results generated using offline {% data variables.product.prodname_code_scanning %} tools. For more information, see "[Finding security vulnerabilities and errors in your code](/github/finding-security-vulnerabilities-and-errors-in-your-code)."
 
 {% ifversion fpt or ghes > 3.0 or ghae %}
+
 ### Custom media type for {% data variables.product.prodname_code_scanning %}
 
-There is one supported custom media type for the {% data variables.product.prodname_code_scanning %} REST API. 
+There is one supported custom media type for the {% data variables.product.prodname_code_scanning %} REST API.
 
     application/sarif+json
 

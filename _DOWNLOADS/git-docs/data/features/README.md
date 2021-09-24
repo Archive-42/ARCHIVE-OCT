@@ -12,9 +12,9 @@ Add a `versions` block to the YML file with the short names of the versions the 
 
 ```yaml
 versions:
-  fpt: '*'
-  ghes: '>3.1'
-  ghae: '*'
+  fpt: "*"
+  ghes: ">3.1"
+  ghae: "*"
 ```
 
 The format and allowed values are the same as the [frontmatter versions property](/content#versions).
@@ -29,18 +29,18 @@ You can also use the feature in frontmatter in content files:
 
 ```yaml
 versions:
-  fpt: '*'
-  ghes: '>3.1'
-  feature: 'meow'
+  fpt: "*"
+  ghes: ">3.1"
+  feature: "meow"
 ```
 
 If you want a content file to apply to more than one feature, you can do this:
 
 ```yaml
 versions:
-  fpt: '*'
-  ghes: '>3.1'
-  feature: ['meow', 'blorp']
+  fpt: "*"
+  ghes: ">3.1"
+  feature: ["meow", "blorp"]
 ```
 
 ## Schema enforcement

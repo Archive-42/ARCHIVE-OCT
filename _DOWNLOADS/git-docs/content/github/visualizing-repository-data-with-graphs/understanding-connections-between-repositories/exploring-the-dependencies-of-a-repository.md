@@ -1,6 +1,6 @@
 ---
 title: Exploring the dependencies of a repository
-intro: 'Using the dependency graph, you can see the packages your project depends on{% ifversion fpt %} and the repositories that depend on it{% endif %}. In addition, you can see any vulnerabilities detected in its dependencies.'
+intro: "Using the dependency graph, you can see the packages your project depends on{% ifversion fpt %} and the repositories that depend on it{% endif %}. In addition, you can see any vulnerabilities detected in its dependencies."
 versions:
   ghes: <=2.22
 topics:
@@ -9,6 +9,7 @@ redirect_from:
   - /github/visualizing-repository-data-with-graphs/exploring-the-dependencies-of-a-repository
 shortTitle: Explore dependencies
 ---
+
 <!--See /content/code-security/supply-chain-security/exploring-the-dependencies-of-a-repository for the latest version of this article -->
 
 ## Viewing the dependency graph
@@ -35,7 +36,6 @@ Any direct and indirect dependencies that are specified in the repository's mani
 {% endnote %}
 
 {% endif %}
-
 
 ## Troubleshooting the dependency graph
 

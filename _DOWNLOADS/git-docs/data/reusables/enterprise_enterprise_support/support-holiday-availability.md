@@ -1,5 +1,5 @@
-| U.S. holiday                | Date observed |
-| ---                         | ---                         |
+| U.S. holiday                | Date observed               |
+| --------------------------- | --------------------------- |
 | New Year's Day              | January 1                   |
 | Martin Luther King, Jr. Day | Third Monday in January     |
 | Presidents' Day             | Third Monday in February    |

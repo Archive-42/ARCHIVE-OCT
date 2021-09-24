@@ -1,9 +1,9 @@
 ---
 title: Customizing your project (beta) views
-intro: 'Display the information you need by changing the layout, grouping, sorting, and filters in your project.'
+intro: "Display the information you need by changing the layout, grouping, sorting, and filters in your project."
 allowTitleToDifferFromFilename: true
 versions:
-  fpt: '*'
+  fpt: "*"
 type: reference
 topics:
   - Projects
@@ -25,7 +25,7 @@ You can view your project as a table or as a board.
 1. {% data reusables.projects.open-command-palette %}
 2. Start typing "Switch layout".
 3. Select the desired command (for example: "Switch layout: Table").
-3. Alternatively, select the drop-down menu next to a view name and click **Table** or **Board**.
+4. Alternatively, select the drop-down menu next to a view name and click **Table** or **Board**.
 
 ## Show or hide fields
 
@@ -106,11 +106,13 @@ In table layout, you can filter by field values.
    To filter for the absence of all values, enter `no:` followed by the field name. For example, `no:assignee` will only show items that do not have an assignee.
 
    Separate multiple filters with a space. For example, `status:"In progress" -label:"bug" no:assignee` will show only items that have a status of `In progress`, do not have the label `bug`, and do not have an assignee.
+
 6. Alternatively, select the drop-down menu next to the view name and click the menu item that indicates the desired filter.
 
 ## Save views
 
 Saved views allow you to quickly view specific aspects of your project. For example, you could have the following:
+
 - a view that shows all un-started items (filter on "Status").
 - a view that shows the workload for each team member (group by "Asssignee" and filter on "Status").
 - a view that shows the items with the earliest target ship date (sort by a date field).

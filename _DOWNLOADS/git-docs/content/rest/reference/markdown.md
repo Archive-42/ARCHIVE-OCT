@@ -4,9 +4,9 @@ intro: The Markdown API enables you to render a markdown document as an HTML pag
 redirect_from:
   - /v3/markdown
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - API
 miniTocMaxHeadingLevel: 3

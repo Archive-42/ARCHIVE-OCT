@@ -428,9 +428,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `claimant` was added to object type `Mannequin`"
-        ]
+        "changes": ["Field `claimant` was added to object type `Mannequin`"]
       }
     ],
     "previewChanges": [],
@@ -498,9 +496,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `isOneTime` was added to object type `SponsorsTier`"
-        ]
+        "changes": ["Field `isOneTime` was added to object type `SponsorsTier`"]
       }
     ],
     "previewChanges": [],
@@ -983,9 +979,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `databaseId` was added to object type `Team`"
-        ]
+        "changes": ["Field `databaseId` was added to object type `Team`"]
       }
     ],
     "previewChanges": [],
@@ -1317,17 +1311,13 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Type `PackageType` was added"
-        ]
+        "changes": ["Type `PackageType` was added"]
       }
     ],
     "previewChanges": [
       {
         "title": "The GitHub Packages preview includes these changes:",
-        "changes": [
-          "Field `packageType` was added to object type `Package`"
-        ]
+        "changes": ["Field `packageType` was added to object type `Package`"]
       }
     ],
     "upcomingChanges": []
@@ -1915,9 +1905,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `topRepositories` was added to object type `User`"
-        ]
+        "changes": ["Field `topRepositories` was added to object type `User`"]
       }
     ],
     "previewChanges": [],
@@ -3269,9 +3257,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Type `DefaultRepositoryPermissionField` was added"
-        ]
+        "changes": ["Type `DefaultRepositoryPermissionField` was added"]
       }
     ],
     "previewChanges": [
@@ -3565,9 +3551,7 @@
     "previewChanges": [
       {
         "title": "The Issues Preview preview includes these changes:",
-        "changes": [
-          "Field `deleteIssue` was added to object type `Mutation`"
-        ]
+        "changes": ["Field `deleteIssue` was added to object type `Mutation`"]
       }
     ],
     "upcomingChanges": []
@@ -3736,9 +3720,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `tagName` was added to object type `Release`"
-        ]
+        "changes": ["Field `tagName` was added to object type `Release`"]
       }
     ],
     "previewChanges": [],
@@ -3827,9 +3809,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `commitOid` was added to object type `Deployment`"
-        ]
+        "changes": ["Field `commitOid` was added to object type `Deployment`"]
       }
     ],
     "previewChanges": [],
@@ -4040,9 +4020,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `ref` was added to object type `Deployment`"
-        ]
+        "changes": ["Field `ref` was added to object type `Deployment`"]
       }
     ],
     "previewChanges": [],
@@ -4085,9 +4063,7 @@
     "previewChanges": [
       {
         "title": "The [Checks preview](/graphql/overview/schema-previews#checks-preview) includes these changes:",
-        "changes": [
-          "Field `app` was added to object type `CheckSuite`"
-        ]
+        "changes": ["Field `app` was added to object type `CheckSuite`"]
       }
     ],
     "upcomingChanges": []
@@ -4429,9 +4405,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `task` was added to object type `Deployment`"
-        ]
+        "changes": ["Field `task` was added to object type `Deployment`"]
       }
     ],
     "previewChanges": [],
@@ -4544,9 +4518,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `permalink` was added to object type `PullRequest`"
-        ]
+        "changes": ["Field `permalink` was added to object type `PullRequest`"]
       }
     ],
     "previewChanges": [],
@@ -4765,9 +4737,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "`License` object implements `Node` interface"
-        ]
+        "changes": ["`License` object implements `Node` interface"]
       }
     ],
     "previewChanges": [],
@@ -4880,9 +4850,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `lockReason` was added to object type `LockedEvent`"
-        ]
+        "changes": ["Field `lockReason` was added to object type `LockedEvent`"]
       }
     ],
     "previewChanges": [
@@ -4941,9 +4909,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Type `RepositoryInvitationEdge` was added"
-        ]
+        "changes": ["Type `RepositoryInvitationEdge` was added"]
       }
     ],
     "previewChanges": [],
@@ -5027,9 +4993,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Type `StaffHovercardContext` was removed"
-        ]
+        "changes": ["Type `StaffHovercardContext` was removed"]
       }
     ],
     "previewChanges": [],
@@ -5193,9 +5157,7 @@
     "schemaChanges": [
       {
         "title": "The GraphQL schema includes these changes:",
-        "changes": [
-          "Field `databaseId` was added to object type `GistComment`"
-        ]
+        "changes": ["Field `databaseId` was added to object type `GistComment`"]
       }
     ],
     "previewChanges": [],
@@ -5380,9 +5342,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Field `release` was added to object type `Repository`"
-        ]
+        "changes": ["Field `release` was added to object type `Repository`"]
       }
     ],
     "previewChanges": [],
@@ -5469,9 +5429,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Field `issues` was added to object type `Milestone`"
-        ]
+        "changes": ["Field `issues` was added to object type `Milestone`"]
       }
     ],
     "previewChanges": [],
@@ -5683,9 +5641,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Type `Date` was added"
-        ]
+        "changes": ["Type `Date` was added"]
       }
     ],
     "previewChanges": [],
@@ -6131,9 +6087,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Field `commitComments` was added to object type `User`"
-        ]
+        "changes": ["Field `commitComments` was added to object type `User`"]
       }
     ],
     "previewChanges": [],
@@ -6174,9 +6128,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Field `databaseId` was added to object type `Deployment`"
-        ]
+        "changes": ["Field `databaseId` was added to object type `Deployment`"]
       }
     ],
     "previewChanges": [],
@@ -6738,9 +6690,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Field `issues` was added to object type `User`"
-        ]
+        "changes": ["Field `issues` was added to object type `User`"]
       }
     ],
     "previewChanges": [],
@@ -7500,9 +7450,7 @@
     "schemaChanges": [
       {
         "title": "The following changes were made to the GraphQL schema:",
-        "changes": [
-          "Nothing! The schema was made public!"
-        ]
+        "changes": ["Nothing! The schema was made public!"]
       }
     ],
     "previewChanges": [],

@@ -4,13 +4,12 @@ intro: You can use API previews to try out new features and provide feedback bef
 redirect_from:
   - /v3/previews
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - API
 ---
-
 
 API previews let you try out new APIs and changes to existing API methods before they become part of the official GitHub API.
 
@@ -19,6 +18,7 @@ During the preview period, we may change some features based on developer feedba
 To access an API preview, you'll need to provide a custom [media type](/rest/overview/media-types) in the `Accept` header for your requests. Feature documentation for each preview specifies which custom media type to provide.
 
 {% ifversion fpt %}
+
 ## Migrations
 
 Allows you to download repositories from your GitHub user or organization account to review, backup, and [migrate](/rest/reference/migrations) data to {% data variables.product.prodname_ghe_server %}.
@@ -50,6 +50,7 @@ Get a [list of events](/rest/reference/issues#timeline) for an issue or pull req
 **Announced:** [2016-05-23](https://developer.github.com/changes/2016-05-23-timeline-preview-api/)
 
 {% ifversion ghes %}
+
 ## Pre-receive environments
 
 Create, list, update, and delete environments for pre-receive hooks.
@@ -90,13 +91,12 @@ View all [codes of conduct](/rest/reference/codes-of-conduct) or get which code 
 
 ## Global webhooks
 
-Enables [global webhooks](/rest/reference/enterprise-admin#global-webhooks/) for  [organization](/webhooks/event-payloads/#organization) and [user](/webhooks/event-payloads/#user) event types. This API preview is only available for {% data variables.product.prodname_ghe_server %}.
+Enables [global webhooks](/rest/reference/enterprise-admin#global-webhooks/) for [organization](/webhooks/event-payloads/#organization) and [user](/webhooks/event-payloads/#user) event types. This API preview is only available for {% data variables.product.prodname_ghe_server %}.
 
 **Custom media type:** `superpro-preview`
 **Announced:** [2017-12-12](/rest/reference/enterprise-admin#global-webhooks)
 
 {% endif %}
-
 
 ## Require signed commits
 
@@ -113,6 +113,7 @@ You can now [require multiple approving reviews](/rest/reference/repos#branches)
 **Announced:** [2018-03-16](https://developer.github.com/changes/2018-03-16-protected-branches-required-approving-reviews)
 
 {% ifversion ghes < 3.0 %}
+
 ## Check runs and check suites API
 
 Allows a GitHub App to run external checks on a repository's code. See the [Check runs](/rest/reference/checks#runs) and [Check suites](/rest/reference/checks#suites) APIs for more details.
@@ -199,6 +200,7 @@ You can use a new endpoint to [update a pull request branch](/rest/reference/pul
 **Announced:** [2019-05-29](https://developer.github.com/changes/2019-05-29-update-branch-api/)
 
 {% ifversion fpt %}
+
 ## Enable or disable automated security fixes
 
 You can use a new set of endpoints to [enable and disable automated security fixes](/rest/reference/repos#enable-automated-security-fixes).
@@ -215,6 +217,7 @@ You can use a new endpoint to [Create a repository using a template](/rest/refer
 **Announced:** [2019-07-05](https://developer.github.com/changes/2019-07-16-repository-templates-api/)
 
 {% ifversion fpt or ghes or ghae %}
+
 ## New visibility parameter for the Repositories API
 
 You can set and retrieve the visibility of a repository in the [Repositories API](/rest/reference/repos).

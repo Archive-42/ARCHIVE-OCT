@@ -1,8 +1,8 @@
 1. Select or add the email address you use for school.
-  ![Select the email address](/assets/images/help/education/select-email-address.png)
+   ![Select the email address](/assets/images/help/education/select-email-address.png)
 
-    {% tip %}
+   {% tip %}
 
-    **Tip**: Selecting a school-issued email address, if you have one, gives you the best chance of a speedy review.
+   **Tip**: Selecting a school-issued email address, if you have one, gives you the best chance of a speedy review.
 
-    {% endtip %}
+   {% endtip %}

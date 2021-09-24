@@ -22,6 +22,7 @@ You can customize the way you are notified about {% data variables.product.prodn
 
 {% ifversion ghes = 2.22 or ghes = 3.0 or ghes = 3.1 %}
 By default, if your site administrator has configured email for notifications on your instance, you will receive {% data variables.product.prodname_dependabot_alerts %}:
+
 - by email, an email is sent every time a vulnerability {% ifversion ghes > 3.0 %}with a critical or high severity {% endif %}is found (**Email each time a vulnerability is found** option)
 - in the user interface, a warning is shown in your repository's file and code views if there are any vulnerable dependencies (**UI alerts** option)
 - on the command line, warnings are displayed as callbacks when you push to repositories with any vulnerable dependencies (**Command Line** option)

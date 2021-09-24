@@ -4,7 +4,7 @@ We use the [Liquid template language](https://shopify.github.io/liquid/basics/in
 
 Note: If you are an open source contributor, you should not worry about versioning content. This document is only here as reference.
 
-:arrow_upper_left:  TOC
+:arrow_upper_left: TOC
 
 ## Versioned documentation
 
@@ -34,29 +34,29 @@ If you define multiple products in the `versions` key within a page's YAML front
 
 Important notes:
 
-* Make sure to use `ifversion` and not `if`. A test will fail if an `if` statement is used for versioning.
-* Make sure to use `elsif` and not `else if`. Liquid does not recognize `else if` and will not render content inside an `else if` block.
+- Make sure to use `ifversion` and not `if`. A test will fail if an `if` statement is used for versioning.
+- Make sure to use `elsif` and not `else if`. Liquid does not recognize `else if` and will not render content inside an `else if` block.
 
 ### Comparison operators
 
 For versions that don't have numbered releases (like `fpt` and `ghae`), you have two options:
 
-* `{% ifversion ghae %}`
-* `{% ifversion not ghae %}`
+- `{% ifversion ghae %}`
+- `{% ifversion not ghae %}`
 
 For versions that have numbered releases (currently only `ghes`), you can do the same for content that is either available in all of the releases or not available in any of the releases:
 
-* `{% ifversion ghes %}`
-* `{% ifversion not ghes %}`
+- `{% ifversion ghes %}`
+- `{% ifversion not ghes %}`
 
 If you need to denote content that is only available (or not available) in **certain** releases, you can use the following operators:
 
-|Operator | Meaning| Example
-|--|--|--|
-|`=`| Equal to| `{% ifversion ghes = 3.0 %}`
-|`>`| Newer than| `{% ifversion ghes > 3.0 %}`
-|`<`| Older than| `{% ifversion ghes < 3.0 %}`
-|`!=`| Not equal to| `{% ifversion ghes != 3.0 %}` (don't use `not` in ranges)
+| Operator | Meaning      | Example                                                   |
+| -------- | ------------ | --------------------------------------------------------- |
+| `=`      | Equal to     | `{% ifversion ghes = 3.0 %}`                              |
+| `>`      | Newer than   | `{% ifversion ghes > 3.0 %}`                              |
+| `<`      | Older than   | `{% ifversion ghes < 3.0 %}`                              |
+| `!=`     | Not equal to | `{% ifversion ghes != 3.0 %}` (don't use `not` in ranges) |
 
 ### Logical operators
 
@@ -79,10 +79,13 @@ Do **not** use the operators `&&` or `||`. Liquid does not recognize them, and t
 If your content describes a feature that will be included in the next release of GitHub AE, you can use a placeholder version string, `ghae-next`. Before the next GitHub AE release, we will run a script to replace the placeholder with `ghae`.
 
 For example, you can use this logic for a feature that's shipping on GitHub.com and will also be available in a future update to GitHub AE:
+
 ```
 {% ifversion fpt or ghae-next %}This is a brand new feature, the likes of which have never been seen at this company before!{% endif %}
 ```
+
 After the feature becomes available in GitHub AE and we run the replacement script, this statement will become:
+
 ```
 {% ifversion fpt or ghae %}This is a brand new feature, the likes of which have never been seen at this company before!{% endif %}
 ```
