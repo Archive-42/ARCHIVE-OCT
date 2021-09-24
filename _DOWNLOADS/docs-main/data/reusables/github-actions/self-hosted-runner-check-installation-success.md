@@ -1,4 +1,3 @@
-
 ### Checking that your self-hosted runner was successfully added
 
 After completing the steps to add a self-hosted runner, the runner and its status are now listed under "Self-hosted runners".

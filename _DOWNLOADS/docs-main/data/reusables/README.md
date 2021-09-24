@@ -6,7 +6,7 @@ Reusables are longer strings like paragraphs or procedural lists that can be ref
 
 Each reusable lives in its own Markdown file.
 
-The *path* and *filename* of each Markdown file determines what its path will be in the data object.
+The _path_ and _filename_ of each Markdown file determines what its path will be in the data object.
 
 For example, a file named `/data/reusables/foo/bar.md` will be accessible as `{% data reusables.foo.bar %}` in pages.
 

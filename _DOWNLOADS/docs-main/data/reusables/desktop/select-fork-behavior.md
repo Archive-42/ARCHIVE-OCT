@@ -1,28 +1,27 @@
 1. Click **Fork behavior**, then select how you want to use the fork.
 
-  {% mac %}
+{% mac %}
 
-  ![The contribute to the parent repository option in the Fork Behavior menu](/assets/images/help/desktop/mac-fork-behavior-menu-contribute.png)
+![The contribute to the parent repository option in the Fork Behavior menu](/assets/images/help/desktop/mac-fork-behavior-menu-contribute.png)
 
-  {% endmac %}
+{% endmac %}
 
-  {% windows %}
+{% windows %}
 
-  ![The contribute to the parent repository option in the Fork Behavior menu](/assets/images/help/desktop/windows-fork-behavior-menu-contribute.png)
+![The contribute to the parent repository option in the Fork Behavior menu](/assets/images/help/desktop/windows-fork-behavior-menu-contribute.png)
 
-  {% endwindows %}
+{% endwindows %}
 
 2. Click **Save**.
 
-  {% mac %}
+{% mac %}
 
-  ![The save button in the Fork Behavior menu](/assets/images/help/desktop/mac-fork-behavior-save.png)
+![The save button in the Fork Behavior menu](/assets/images/help/desktop/mac-fork-behavior-save.png)
 
-  {% endmac %}
+{% endmac %}
 
-  {% windows %}
+{% windows %}
 
-  ![The save button in the Fork Behavior menu](/assets/images/help/desktop/windows-fork-behavior-save.png)
+![The save button in the Fork Behavior menu](/assets/images/help/desktop/windows-fork-behavior-save.png)
 
-  {% endwindows %}
-  
+{% endwindows %}

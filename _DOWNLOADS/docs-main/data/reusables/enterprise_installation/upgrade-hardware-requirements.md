@@ -6,13 +6,13 @@ Before upgrading to {% data variables.product.prodname_ghe_server %} 3.0 or late
 
 Increased requirements for {% data variables.product.prodname_ghe_server %} 3.0 and later are **bold** in the following table.
 
-| User licenses | vCPUs | Memory | Attached storage | Root storage |
-| :- | -: | -: | -: | -: |
-| Trial, demo, or 10 light users | **4**<br/>_Up from 2_ | **32 GB**<br/>_Up from 16 GB_ | **150 GB**<br/>_Up from 100 GB_ | 200 GB |
-| 10 to 3,000  | **8**<br/>_Up from 4_ | **48 GB**<br/>_Up from 32 GB_ | **300 GB**<br/>_Up from 250 GB_ | 200 GB |
-| 3,000 to 5000 | **12**<br/>_Up from 8_ | 64 GB | 500 GB | 200 GB |
-| 5,000 to 8000 | **16**<br/>_Up from 12_ | 96 GB | 750 GB | 200 GB |
-| 8,000 to 10,000+ | **20**<br/>_Up from 16_ | **160 GB**<br/>_Up from 128 GB_ | 1000 GB | 200 GB |
+| User licenses                  |                   vCPUs |                          Memory |                Attached storage | Root storage |
+| :----------------------------- | ----------------------: | ------------------------------: | ------------------------------: | -----------: |
+| Trial, demo, or 10 light users |   **4**<br/>_Up from 2_ |   **32 GB**<br/>_Up from 16 GB_ | **150 GB**<br/>_Up from 100 GB_ |       200 GB |
+| 10 to 3,000                    |   **8**<br/>_Up from 4_ |   **48 GB**<br/>_Up from 32 GB_ | **300 GB**<br/>_Up from 250 GB_ |       200 GB |
+| 3,000 to 5000                  |  **12**<br/>_Up from 8_ |                           64 GB |                          500 GB |       200 GB |
+| 5,000 to 8000                  | **16**<br/>_Up from 12_ |                           96 GB |                          750 GB |       200 GB |
+| 8,000 to 10,000+               | **20**<br/>_Up from 16_ | **160 GB**<br/>_Up from 128 GB_ |                         1000 GB |       200 GB |
 
 {% ifversion ghes %}
 

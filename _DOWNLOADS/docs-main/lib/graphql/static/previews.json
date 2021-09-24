@@ -4,12 +4,8 @@
       "title": "Access to package version deletion preview",
       "description": "This preview adds support for the DeletePackageVersion mutation which enables deletion of private package versions.",
       "toggled_by": "package-deletes-preview",
-      "toggled_on": [
-        "Mutation.deletePackageVersion"
-      ],
-      "owning_teams": [
-        "@github/pe-package-registry"
-      ],
+      "toggled_on": ["Mutation.deletePackageVersion"],
+      "owning_teams": ["@github/pe-package-registry"],
       "accept_header": "application/vnd.github.package-deletes-preview+json",
       "href": "/graphql/overview/schema-previews#access-to-package-version-deletion-preview"
     },
@@ -22,9 +18,7 @@
         "Mutation.createDeploymentStatus",
         "Mutation.createDeployment"
       ],
-      "owning_teams": [
-        "@github/c2c-actions-service"
-      ],
+      "owning_teams": ["@github/c2c-actions-service"],
       "accept_header": "application/vnd.github.flash-preview+json",
       "href": "/graphql/overview/schema-previews#deployments-preview"
     },
@@ -36,9 +30,7 @@
         "PullRequest.canBeRebased",
         "PullRequest.mergeStateStatus"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.merge-info-preview+json",
       "href": "/graphql/overview/schema-previews#merge-info-preview"
     },
@@ -46,14 +38,8 @@
       "title": "Update refs preview",
       "description": "This preview adds support for updating multiple refs in a single operation.",
       "toggled_by": "update-refs-preview",
-      "toggled_on": [
-        "Mutation.updateRefs",
-        "GitRefname",
-        "RefUpdate"
-      ],
-      "owning_teams": [
-        "@github/reponauts"
-      ],
+      "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+      "owning_teams": ["@github/reponauts"],
       "accept_header": "application/vnd.github.update-refs-preview+json",
       "href": "/graphql/overview/schema-previews#update-refs-preview"
     },
@@ -71,9 +57,7 @@
         "DependencyGraphDependencyConnection",
         "DependencyGraphPackageRelease.dependencies"
       ],
-      "owning_teams": [
-        "@github/dsp-dependency-graph"
-      ],
+      "owning_teams": ["@github/dsp-dependency-graph"],
       "accept_header": "application/vnd.github.hawkgirl-preview+json",
       "href": "/graphql/overview/schema-previews#access-to-a-repositories-dependency-graph-preview"
     },
@@ -95,9 +79,7 @@
         "RemovedFromProjectEvent.project",
         "RemovedFromProjectEvent.projectColumnName"
       ],
-      "owning_teams": [
-        "@github/github-projects"
-      ],
+      "owning_teams": ["@github/github-projects"],
       "accept_header": "application/vnd.github.starfox-preview+json",
       "href": "/graphql/overview/schema-previews#project-event-details-preview"
     },
@@ -105,12 +87,8 @@
       "title": "Create content attachments preview",
       "description": "This preview adds support for creating content attachments.",
       "toggled_by": "corsair-preview",
-      "toggled_on": [
-        "Mutation.createContentAttachment"
-      ],
-      "owning_teams": [
-        "@github/feature-lifecycle"
-      ],
+      "toggled_on": ["Mutation.createContentAttachment"],
+      "owning_teams": ["@github/feature-lifecycle"],
       "accept_header": "application/vnd.github.corsair-preview+json",
       "href": "/graphql/overview/schema-previews#create-content-attachments-preview"
     },
@@ -123,9 +101,7 @@
         "Mutation.deleteLabel",
         "Mutation.updateLabel"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.bane-preview+json",
       "href": "/graphql/overview/schema-previews#labels-preview"
     },
@@ -133,12 +109,8 @@
       "title": "Import project preview",
       "description": "This preview adds support for importing projects.",
       "toggled_by": "slothette-preview",
-      "toggled_on": [
-        "Mutation.importProject"
-      ],
-      "owning_teams": [
-        "@github/pe-issues-projects"
-      ],
+      "toggled_on": ["Mutation.importProject"],
+      "owning_teams": ["@github/pe-issues-projects"],
       "accept_header": "application/vnd.github.slothette-preview+json",
       "href": "/graphql/overview/schema-previews#import-project-preview"
     },
@@ -154,9 +126,7 @@
         "Team.reviewRequestDelegationMemberCount",
         "Team.reviewRequestDelegationNotifyTeam"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.stone-crop-preview+json",
       "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
     }
@@ -166,12 +136,8 @@
       "title": "Access to package version deletion preview",
       "description": "This preview adds support for the DeletePackageVersion mutation which enables deletion of private package versions.",
       "toggled_by": "package-deletes-preview",
-      "toggled_on": [
-        "Mutation.deletePackageVersion"
-      ],
-      "owning_teams": [
-        "@github/pe-package-registry"
-      ],
+      "toggled_on": ["Mutation.deletePackageVersion"],
+      "owning_teams": ["@github/pe-package-registry"],
       "accept_header": "application/vnd.github.package-deletes-preview+json",
       "href": "/graphql/overview/schema-previews#access-to-package-version-deletion-preview"
     },
@@ -184,9 +150,7 @@
         "Mutation.createDeploymentStatus",
         "Mutation.createDeployment"
       ],
-      "owning_teams": [
-        "@github/ecosystem-api"
-      ],
+      "owning_teams": ["@github/ecosystem-api"],
       "accept_header": "application/vnd.github.flash-preview+json",
       "href": "/graphql/overview/schema-previews#deployments-preview"
     },
@@ -198,9 +162,7 @@
         "PullRequest.canBeRebased",
         "PullRequest.mergeStateStatus"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.merge-info-preview+json",
       "href": "/graphql/overview/schema-previews#merge-info-preview"
     },
@@ -208,14 +170,8 @@
       "title": "Update refs preview",
       "description": "This preview adds support for updating multiple refs in a single operation.",
       "toggled_by": "update-refs-preview",
-      "toggled_on": [
-        "Mutation.updateRefs",
-        "GitRefname",
-        "RefUpdate"
-      ],
-      "owning_teams": [
-        "@github/reponauts"
-      ],
+      "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+      "owning_teams": ["@github/reponauts"],
       "accept_header": "application/vnd.github.update-refs-preview+json",
       "href": "/graphql/overview/schema-previews#update-refs-preview"
     },
@@ -237,9 +193,7 @@
         "RemovedFromProjectEvent.project",
         "RemovedFromProjectEvent.projectColumnName"
       ],
-      "owning_teams": [
-        "@github/github-projects"
-      ],
+      "owning_teams": ["@github/github-projects"],
       "accept_header": "application/vnd.github.starfox-preview+json",
       "href": "/graphql/overview/schema-previews#project-event-details-preview"
     },
@@ -247,12 +201,8 @@
       "title": "Create content attachments preview",
       "description": "This preview adds support for creating content attachments.",
       "toggled_by": "corsair-preview",
-      "toggled_on": [
-        "Mutation.createContentAttachment"
-      ],
-      "owning_teams": [
-        "@github/feature-lifecycle"
-      ],
+      "toggled_on": ["Mutation.createContentAttachment"],
+      "owning_teams": ["@github/feature-lifecycle"],
       "accept_header": "application/vnd.github.corsair-preview+json",
       "href": "/graphql/overview/schema-previews#create-content-attachments-preview"
     },
@@ -265,9 +215,7 @@
         "Mutation.deleteLabel",
         "Mutation.updateLabel"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.bane-preview+json",
       "href": "/graphql/overview/schema-previews#labels-preview"
     },
@@ -275,12 +223,8 @@
       "title": "Import project preview",
       "description": "This preview adds support for importing projects.",
       "toggled_by": "slothette-preview",
-      "toggled_on": [
-        "Mutation.importProject"
-      ],
-      "owning_teams": [
-        "@github/pe-issues-projects"
-      ],
+      "toggled_on": ["Mutation.importProject"],
+      "owning_teams": ["@github/pe-issues-projects"],
       "accept_header": "application/vnd.github.slothette-preview+json",
       "href": "/graphql/overview/schema-previews#import-project-preview"
     },
@@ -296,9 +240,7 @@
         "Team.reviewRequestDelegationMemberCount",
         "Team.reviewRequestDelegationNotifyTeam"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.stone-crop-preview+json",
       "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
     }
@@ -308,12 +250,8 @@
       "title": "Access to package version deletion preview",
       "description": "This preview adds support for the DeletePackageVersion mutation which enables deletion of private package versions.",
       "toggled_by": "package-deletes-preview",
-      "toggled_on": [
-        "Mutation.deletePackageVersion"
-      ],
-      "owning_teams": [
-        "@github/pe-package-registry"
-      ],
+      "toggled_on": ["Mutation.deletePackageVersion"],
+      "owning_teams": ["@github/pe-package-registry"],
       "accept_header": "application/vnd.github.package-deletes-preview+json",
       "href": "/graphql/overview/schema-previews#access-to-package-version-deletion-preview"
     },
@@ -326,9 +264,7 @@
         "Mutation.createDeploymentStatus",
         "Mutation.createDeployment"
       ],
-      "owning_teams": [
-        "@github/ecosystem-api"
-      ],
+      "owning_teams": ["@github/ecosystem-api"],
       "accept_header": "application/vnd.github.flash-preview+json",
       "href": "/graphql/overview/schema-previews#deployments-preview"
     },
@@ -340,9 +276,7 @@
         "PullRequest.canBeRebased",
         "PullRequest.mergeStateStatus"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.merge-info-preview+json",
       "href": "/graphql/overview/schema-previews#merge-info-preview"
     },
@@ -350,14 +284,8 @@
       "title": "Update refs preview",
       "description": "This preview adds support for updating multiple refs in a single operation.",
       "toggled_by": "update-refs-preview",
-      "toggled_on": [
-        "Mutation.updateRefs",
-        "GitRefname",
-        "RefUpdate"
-      ],
-      "owning_teams": [
-        "@github/reponauts"
-      ],
+      "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+      "owning_teams": ["@github/reponauts"],
       "accept_header": "application/vnd.github.update-refs-preview+json",
       "href": "/graphql/overview/schema-previews#update-refs-preview"
     },
@@ -379,9 +307,7 @@
         "RemovedFromProjectEvent.project",
         "RemovedFromProjectEvent.projectColumnName"
       ],
-      "owning_teams": [
-        "@github/github-projects"
-      ],
+      "owning_teams": ["@github/github-projects"],
       "accept_header": "application/vnd.github.starfox-preview+json",
       "href": "/graphql/overview/schema-previews#project-event-details-preview"
     },
@@ -389,12 +315,8 @@
       "title": "Create content attachments preview",
       "description": "This preview adds support for creating content attachments.",
       "toggled_by": "corsair-preview",
-      "toggled_on": [
-        "Mutation.createContentAttachment"
-      ],
-      "owning_teams": [
-        "@github/feature-lifecycle"
-      ],
+      "toggled_on": ["Mutation.createContentAttachment"],
+      "owning_teams": ["@github/feature-lifecycle"],
       "accept_header": "application/vnd.github.corsair-preview+json",
       "href": "/graphql/overview/schema-previews#create-content-attachments-preview"
     },
@@ -410,9 +332,7 @@
         "Mutation.pinIssue",
         "Mutation.unpinIssue"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.elektra-preview+json",
       "href": "/graphql/overview/schema-previews#pinned-issues-preview"
     },
@@ -425,9 +345,7 @@
         "Mutation.deleteLabel",
         "Mutation.updateLabel"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.bane-preview+json",
       "href": "/graphql/overview/schema-previews#labels-preview"
     },
@@ -435,12 +353,8 @@
       "title": "Import project preview",
       "description": "This preview adds support for importing projects.",
       "toggled_by": "slothette-preview",
-      "toggled_on": [
-        "Mutation.importProject"
-      ],
-      "owning_teams": [
-        "@github/pe-issues-projects"
-      ],
+      "toggled_on": ["Mutation.importProject"],
+      "owning_teams": ["@github/pe-issues-projects"],
       "accept_header": "application/vnd.github.slothette-preview+json",
       "href": "/graphql/overview/schema-previews#import-project-preview"
     },
@@ -456,9 +370,7 @@
         "Team.reviewRequestDelegationMemberCount",
         "Team.reviewRequestDelegationNotifyTeam"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.stone-crop-preview+json",
       "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
     }
@@ -468,12 +380,8 @@
       "title": "Access to package version deletion preview",
       "description": "This preview adds support for the DeletePackageVersion mutation which enables deletion of private package versions.",
       "toggled_by": "package-deletes-preview",
-      "toggled_on": [
-        "Mutation.deletePackageVersion"
-      ],
-      "owning_teams": [
-        "@github/pe-package-registry"
-      ],
+      "toggled_on": ["Mutation.deletePackageVersion"],
+      "owning_teams": ["@github/pe-package-registry"],
       "accept_header": "application/vnd.github.package-deletes-preview+json",
       "href": "/graphql/overview/schema-previews#access-to-package-version-deletion-preview"
     },
@@ -486,9 +394,7 @@
         "Mutation.createDeploymentStatus",
         "Mutation.createDeployment"
       ],
-      "owning_teams": [
-        "@github/ecosystem-api"
-      ],
+      "owning_teams": ["@github/ecosystem-api"],
       "accept_header": "application/vnd.github.flash-preview+json",
       "href": "/graphql/overview/schema-previews#deployments-preview"
     },
@@ -530,9 +436,7 @@
         "RequestableCheckStatusState",
         "UpdateCheckSuitePayload.checkSuite"
       ],
-      "owning_teams": [
-        "@github/ce-extensibility"
-      ],
+      "owning_teams": ["@github/ce-extensibility"],
       "accept_header": "application/vnd.github.antiope-preview+json",
       "href": "/graphql/overview/schema-previews#checks-preview"
     },
@@ -544,9 +448,7 @@
         "PullRequest.canBeRebased",
         "PullRequest.mergeStateStatus"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.merge-info-preview+json",
       "href": "/graphql/overview/schema-previews#merge-info-preview"
     },
@@ -554,14 +456,8 @@
       "title": "Update refs preview",
       "description": "This preview adds support for updating multiple refs in a single operation.",
       "toggled_by": "update-refs-preview",
-      "toggled_on": [
-        "Mutation.updateRefs",
-        "GitRefname",
-        "RefUpdate"
-      ],
-      "owning_teams": [
-        "@github/pe-repos"
-      ],
+      "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+      "owning_teams": ["@github/pe-repos"],
       "accept_header": "application/vnd.github.update-refs-preview+json",
       "href": "/graphql/overview/schema-previews#update-refs-preview"
     },
@@ -583,9 +479,7 @@
         "RemovedFromProjectEvent.project",
         "RemovedFromProjectEvent.projectColumnName"
       ],
-      "owning_teams": [
-        "@github/github-projects"
-      ],
+      "owning_teams": ["@github/github-projects"],
       "accept_header": "application/vnd.github.starfox-preview+json",
       "href": "/graphql/overview/schema-previews#project-event-details-preview"
     },
@@ -593,12 +487,8 @@
       "title": "Create content attachments preview",
       "description": "This preview adds support for creating content attachments.",
       "toggled_by": "corsair-preview",
-      "toggled_on": [
-        "Mutation.createContentAttachment"
-      ],
-      "owning_teams": [
-        "@github/ce-extensibility"
-      ],
+      "toggled_on": ["Mutation.createContentAttachment"],
+      "owning_teams": ["@github/ce-extensibility"],
       "accept_header": "application/vnd.github.corsair-preview+json",
       "href": "/graphql/overview/schema-previews#create-content-attachments-preview"
     },
@@ -614,9 +504,7 @@
         "Mutation.pinIssue",
         "Mutation.unpinIssue"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.elektra-preview+json",
       "href": "/graphql/overview/schema-previews#pinned-issues-preview"
     },
@@ -629,9 +517,7 @@
         "Mutation.deleteLabel",
         "Mutation.updateLabel"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.bane-preview+json",
       "href": "/graphql/overview/schema-previews#labels-preview"
     },
@@ -639,12 +525,8 @@
       "title": "Import project preview",
       "description": "This preview adds support for importing projects.",
       "toggled_by": "slothette-preview",
-      "toggled_on": [
-        "Mutation.importProject"
-      ],
-      "owning_teams": [
-        "@github/pe-issues-projects"
-      ],
+      "toggled_on": ["Mutation.importProject"],
+      "owning_teams": ["@github/pe-issues-projects"],
       "accept_header": "application/vnd.github.slothette-preview+json",
       "href": "/graphql/overview/schema-previews#import-project-preview"
     },
@@ -660,9 +542,7 @@
         "Team.reviewRequestDelegationMemberCount",
         "Team.reviewRequestDelegationNotifyTeam"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.stone-crop-preview+json",
       "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
     }
@@ -672,12 +552,8 @@
       "title": "Access to package version deletion preview",
       "description": "This preview adds support for the DeletePackageVersion mutation which enables deletion of private package versions.",
       "toggled_by": "package-deletes-preview",
-      "toggled_on": [
-        "Mutation.deletePackageVersion"
-      ],
-      "owning_teams": [
-        "@github/pe-package-registry"
-      ],
+      "toggled_on": ["Mutation.deletePackageVersion"],
+      "owning_teams": ["@github/pe-package-registry"],
       "accept_header": "application/vnd.github.package-deletes-preview+json",
       "href": "/graphql/overview/schema-previews#access-to-package-version-deletion-preview"
     },
@@ -690,9 +566,7 @@
         "Mutation.createDeploymentStatus",
         "Mutation.createDeployment"
       ],
-      "owning_teams": [
-        "@github/c2c-actions-service"
-      ],
+      "owning_teams": ["@github/c2c-actions-service"],
       "accept_header": "application/vnd.github.flash-preview+json",
       "href": "/graphql/overview/schema-previews#deployments-preview"
     },
@@ -704,9 +578,7 @@
         "PullRequest.canBeRebased",
         "PullRequest.mergeStateStatus"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.merge-info-preview+json",
       "href": "/graphql/overview/schema-previews#merge-info-preview"
     },
@@ -714,14 +586,8 @@
       "title": "Update refs preview",
       "description": "This preview adds support for updating multiple refs in a single operation.",
       "toggled_by": "update-refs-preview",
-      "toggled_on": [
-        "Mutation.updateRefs",
-        "GitRefname",
-        "RefUpdate"
-      ],
-      "owning_teams": [
-        "@github/reponauts"
-      ],
+      "toggled_on": ["Mutation.updateRefs", "GitRefname", "RefUpdate"],
+      "owning_teams": ["@github/reponauts"],
       "accept_header": "application/vnd.github.update-refs-preview+json",
       "href": "/graphql/overview/schema-previews#update-refs-preview"
     },
@@ -743,9 +609,7 @@
         "RemovedFromProjectEvent.project",
         "RemovedFromProjectEvent.projectColumnName"
       ],
-      "owning_teams": [
-        "@github/github-projects"
-      ],
+      "owning_teams": ["@github/github-projects"],
       "accept_header": "application/vnd.github.starfox-preview+json",
       "href": "/graphql/overview/schema-previews#project-event-details-preview"
     },
@@ -753,12 +617,8 @@
       "title": "Create content attachments preview",
       "description": "This preview adds support for creating content attachments.",
       "toggled_by": "corsair-preview",
-      "toggled_on": [
-        "Mutation.createContentAttachment"
-      ],
-      "owning_teams": [
-        "@github/feature-lifecycle"
-      ],
+      "toggled_on": ["Mutation.createContentAttachment"],
+      "owning_teams": ["@github/feature-lifecycle"],
       "accept_header": "application/vnd.github.corsair-preview+json",
       "href": "/graphql/overview/schema-previews#create-content-attachments-preview"
     },
@@ -771,9 +631,7 @@
         "Mutation.deleteLabel",
         "Mutation.updateLabel"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.bane-preview+json",
       "href": "/graphql/overview/schema-previews#labels-preview"
     },
@@ -781,12 +639,8 @@
       "title": "Import project preview",
       "description": "This preview adds support for importing projects.",
       "toggled_by": "slothette-preview",
-      "toggled_on": [
-        "Mutation.importProject"
-      ],
-      "owning_teams": [
-        "@github/pe-issues-projects"
-      ],
+      "toggled_on": ["Mutation.importProject"],
+      "owning_teams": ["@github/pe-issues-projects"],
       "accept_header": "application/vnd.github.slothette-preview+json",
       "href": "/graphql/overview/schema-previews#import-project-preview"
     },
@@ -802,9 +656,7 @@
         "Team.reviewRequestDelegationMemberCount",
         "Team.reviewRequestDelegationNotifyTeam"
       ],
-      "owning_teams": [
-        "@github/pe-pull-requests"
-      ],
+      "owning_teams": ["@github/pe-pull-requests"],
       "accept_header": "application/vnd.github.stone-crop-preview+json",
       "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
     }

@@ -8,9 +8,10 @@ You can't mark a threaded comment in response to a comment as the answer to a di
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.discussions.discussions-tab %}
+
 1. In the list of discussions, click the unanswered discussion you want to mark as answered.
-  ![Unanswered discussion](/assets/images/help/discussions/unanswered-discussion.png)
+   ![Unanswered discussion](/assets/images/help/discussions/unanswered-discussion.png)
 1. In the discussion, find the comment you want to mark as the answer.
 1. In the upper-right corner of the comment, click {% octicon "check-circle" aria-label="The circular check icon" %}.
-  !["Mark as answer" circular check icon for marking comment as answer in a discussion](/assets/images/help/discussions/comment-mark-as-answer-button.png)
+   !["Mark as answer" circular check icon for marking comment as answer in a discussion](/assets/images/help/discussions/comment-mark-as-answer-button.png)
 1. Optionally, to unmark a comment as the answer, click {% octicon "check-circle-fill" aria-label="The filled circular check icon" %}.

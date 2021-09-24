@@ -4,4 +4,5 @@ Before you can restrict email notifications for your enterprise account, you mus
 {% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.verified-domains-tab %}
 {% data reusables.enterprise-accounts.restrict-email-notifications-enterprise %}
+
 1. Click **Save**.

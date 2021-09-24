@@ -1,4 +1,5 @@
 During the beta, functionality is limited.
+
 - {% data reusables.codespaces.use-chrome %}
 - Only a single size of codespace is available.
 - Only Linux containers are supported.

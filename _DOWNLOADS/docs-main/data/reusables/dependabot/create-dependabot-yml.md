@@ -1,1 +1,1 @@
-1. Create a *dependabot.yml* configuration file.
+1. Create a _dependabot.yml_ configuration file.

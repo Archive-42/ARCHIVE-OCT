@@ -5,9 +5,10 @@ As an admin, you can also grant access permissions for a container image that ar
 
 For container images published and owned by a user account, you can give any person an access role. For container images published and owned by an organization, you can give any person or team in the organization an access role.
 
-| Permission | Access description |
-|------------|--------------------|
-| read       | Can download package. <br> Can read package metadata. |
-| write      | Can upload and download this package. <br> Can read and write package metadata. |
-| admin      | Can upload, download, delete, and manage this package. <br> Can read and write package metadata. <br> Can grant package permissions.
+| Permission | Access description                                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| read       | Can download package. <br> Can read package metadata.                                                                                |
+| write      | Can upload and download this package. <br> Can read and write package metadata.                                                      |
+| admin      | Can upload, download, delete, and manage this package. <br> Can read and write package metadata. <br> Can grant package permissions. |
+
 {% endif %}

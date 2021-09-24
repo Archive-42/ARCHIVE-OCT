@@ -1,14 +1,13 @@
 1. Click **Clone**.
 
-  {% mac %}
+{% mac %}
 
-  ![The clone button](/assets/images/help/desktop/clone-button-mac.png)
+![The clone button](/assets/images/help/desktop/clone-button-mac.png)
 
-  {% endmac %}
+{% endmac %}
 
-  {% windows %}
+{% windows %}
 
-  ![The clone button](/assets/images/help/desktop/clone-button-win.png)
+![The clone button](/assets/images/help/desktop/clone-button-win.png)
 
-  {% endwindows %}
-  
+{% endwindows %}

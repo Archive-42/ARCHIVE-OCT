@@ -1,6 +1,6 @@
 This configuration file adds the `security-and-quality` query suite to the list of queries run by {% data variables.product.prodname_codeql %} when scanning your code. For more information about the query suites available for use, see "[Running additional queries](#running-additional-queries)."
 
-``` yaml
+```yaml
 name: "My {% data variables.product.prodname_codeql %} config"
 
 queries:
@@ -9,7 +9,7 @@ queries:
 
 The following configuration file disables the default queries and specifies a set of custom queries to run instead. It also configures {% data variables.product.prodname_codeql %} to scan files in the _src_ directory (relative to the root), except for the _src/node_modules_ directory, and except for files whose name ends in _.test.js_. Files in _src/node_modules_ and files with names ending _.test.js_ are therefore excluded from analysis.
 
-``` yaml
+```yaml
 name: "My {% data variables.product.prodname_codeql %} config"
 
 disable-default-queries: true
@@ -25,8 +25,8 @@ queries:
     uses: ./codeql-qlpacks/complex-python-qlpack/rootAndBar.qls
 
 paths:
-  - src 
-paths-ignore: 
+  - src
+paths-ignore:
   - src/node_modules
-  - '**/*.test.js'
+  - "**/*.test.js"
 ```
