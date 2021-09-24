@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import ImgGreyBox from "../../images/GreyBox.svg"
+import ImgGreyBox from "../../images/GreyBox.svg";
 import PropTypes from "prop-types";
 
 const GridItem = ({ item }) => {
@@ -10,10 +10,10 @@ const GridItem = ({ item }) => {
       <p>{item.shortDescription}</p>
     </div>
   );
-}
+};
 
 GridItem.propTypes = {
-  item: PropTypes.any
-}
+  item: PropTypes.any,
+};
 
 export default GridItem;

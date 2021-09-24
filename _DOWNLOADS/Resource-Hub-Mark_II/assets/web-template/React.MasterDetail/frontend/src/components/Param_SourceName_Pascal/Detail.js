@@ -4,14 +4,8 @@ import styles from "./styles.module.css";
 import PropTypes from "prop-types";
 
 const Detail = ({ textSampleData }) => {
-  const {
-    longDescription,
-    title,
-    status,
-    shipTo,
-    orderTotal,
-    orderDate
-  } = textSampleData;
+  const { longDescription, title, status, shipTo, orderTotal, orderDate } =
+    textSampleData;
 
   return (
     <div className="col">
@@ -36,10 +30,10 @@ const Detail = ({ textSampleData }) => {
       </div>
     </div>
   );
-}
+};
 
 Detail.propTypes = {
-  textSampleData: PropTypes.any
-}
+  textSampleData: PropTypes.any,
+};
 
 export default Detail;

@@ -13,19 +13,23 @@ const MasterList = ({ sampleOrder, selectSampleOrder, isActive }) => {
         "list-group-item",
         "list-group-item-action",
         styles.sidebarText,
-        { "active": isActive }
+        { active: isActive }
       )}
     >
-      <img src={ sampleOrder.imageSrc ? sampleOrder.imageSrc : imgGreyAvatar} alt={sampleOrder.title} className="mr-3" />
+      <img
+        src={sampleOrder.imageSrc ? sampleOrder.imageSrc : imgGreyAvatar}
+        alt={sampleOrder.title}
+        className="mr-3"
+      />
       {sampleOrder.title}
     </button>
   );
-}
+};
 
 MasterList.propTypes = {
   sampleOrder: PropTypes.any,
   selectSampleOrder: PropTypes.func,
-  isActive: PropTypes.bool
-}
+  isActive: PropTypes.bool,
+};
 
 export default MasterList;

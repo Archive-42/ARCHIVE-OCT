@@ -1,17 +1,17 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState } from "react";
 
-const Form = (params) =>{
+const Form = (params) => {
   const [textField, setTextField] = useState("");
 
   const handleChange = (e) => {
     setTextField(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     params.addItem(textField);
     setTextField("");
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="input-group my-3">
@@ -29,6 +29,6 @@ const Form = (params) =>{
       </button>
     </form>
   );
-}
+};
 
 export default Form;

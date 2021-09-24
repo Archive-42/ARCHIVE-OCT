@@ -10,24 +10,25 @@
  *   https://github.com/gruntjs/grunt-contrib-coffee
  *
  */
-module.exports = function(grunt) {
-
-  grunt.config.set('coffee', {
+module.exports = function (grunt) {
+  grunt.config.set("coffee", {
     dev: {
       options: {
         bare: true,
         sourceMap: true,
-        sourceRoot: './'
+        sourceRoot: "./",
       },
-      files: [{
-        expand: true,
-        cwd: 'assets/js/',
-        src: ['**/*.coffee'],
-        dest: '.tmp/public/js/',
-        ext: '.js'
-      }]
-    }
+      files: [
+        {
+          expand: true,
+          cwd: "assets/js/",
+          src: ["**/*.coffee"],
+          dest: ".tmp/public/js/",
+          ext: ".js",
+        },
+      ],
+    },
   });
 
-  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks("grunt-contrib-coffee");
 };

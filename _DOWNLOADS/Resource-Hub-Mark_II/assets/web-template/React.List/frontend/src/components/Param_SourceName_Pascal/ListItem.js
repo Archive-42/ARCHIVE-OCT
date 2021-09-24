@@ -23,11 +23,11 @@ const ListItem = ({ item, deleteItem }) => {
       </div>
     </div>
   );
-}
+};
 
 ListItem.propTypes = {
   item: PropTypes.any,
-  deleteItem: PropTypes.func
-}
+  deleteItem: PropTypes.func,
+};
 
 export default ListItem;
