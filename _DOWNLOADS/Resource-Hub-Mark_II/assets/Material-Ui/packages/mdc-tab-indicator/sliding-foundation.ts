@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCTabIndicatorFoundation} from './foundation';
+import { MDCTabIndicatorFoundation } from "./foundation";
 
 /* istanbul ignore next: subclass is not a branch statement */
 export class MDCSlidingTabIndicatorFoundation extends MDCTabIndicatorFoundation {
@@ -38,19 +38,23 @@ export class MDCSlidingTabIndicatorFoundation extends MDCTabIndicatorFoundation 
 
     // Calculate the dimensions based on the dimensions of the previous indicator
     const currentClientRect = this.computeContentClientRect();
-    const widthDelta = previousIndicatorClientRect.width / currentClientRect.width;
+    const widthDelta =
+      previousIndicatorClientRect.width / currentClientRect.width;
     const xPosition = previousIndicatorClientRect.left - currentClientRect.left;
     this.adapter.addClass(MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION);
     this.adapter.setContentStyleProperty(
-        'transform', `translateX(${xPosition}px) scaleX(${widthDelta})`);
+      "transform",
+      `translateX(${xPosition}px) scaleX(${widthDelta})`
+    );
 
     // Force repaint before updating classes and transform to ensure the transform properly takes effect
     this.computeContentClientRect();
 
     this.adapter.removeClass(
-        MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION);
+      MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION
+    );
     this.adapter.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
-    this.adapter.setContentStyleProperty('transform', '');
+    this.adapter.setContentStyleProperty("transform", "");
   }
 
   deactivate() {

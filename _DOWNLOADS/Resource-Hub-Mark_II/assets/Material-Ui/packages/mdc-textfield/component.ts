@@ -21,28 +21,53 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {applyPassive} from '@material/dom/events';
-import * as ponyfill from '@material/dom/ponyfill';
-import {MDCFloatingLabel, MDCFloatingLabelFactory} from '@material/floating-label/component';
-import {MDCLineRipple, MDCLineRippleFactory} from '@material/line-ripple/component';
-import {MDCNotchedOutline, MDCNotchedOutlineFactory} from '@material/notched-outline/component';
-import {MDCRippleAdapter} from '@material/ripple/adapter';
-import {MDCRipple, MDCRippleFactory} from '@material/ripple/component';
-import {MDCRippleFoundation} from '@material/ripple/foundation';
-import {MDCRippleCapableSurface} from '@material/ripple/types';
+import { MDCComponent } from "@material/base/component";
+import { applyPassive } from "@material/dom/events";
+import * as ponyfill from "@material/dom/ponyfill";
+import {
+  MDCFloatingLabel,
+  MDCFloatingLabelFactory,
+} from "@material/floating-label/component";
+import {
+  MDCLineRipple,
+  MDCLineRippleFactory,
+} from "@material/line-ripple/component";
+import {
+  MDCNotchedOutline,
+  MDCNotchedOutlineFactory,
+} from "@material/notched-outline/component";
+import { MDCRippleAdapter } from "@material/ripple/adapter";
+import { MDCRipple, MDCRippleFactory } from "@material/ripple/component";
+import { MDCRippleFoundation } from "@material/ripple/foundation";
+import { MDCRippleCapableSurface } from "@material/ripple/types";
 
-import {MDCTextFieldAdapter, MDCTextFieldInputAdapter, MDCTextFieldLabelAdapter, MDCTextFieldLineRippleAdapter, MDCTextFieldOutlineAdapter, MDCTextFieldRootAdapter,} from './adapter';
-import {MDCTextFieldCharacterCounter, MDCTextFieldCharacterCounterFactory,} from './character-counter/component';
-import {MDCTextFieldCharacterCounterFoundation} from './character-counter/foundation';
-import {cssClasses, strings} from './constants';
-import {MDCTextFieldFoundation} from './foundation';
-import {MDCTextFieldHelperText, MDCTextFieldHelperTextFactory,} from './helper-text/component';
-import {MDCTextFieldHelperTextFoundation} from './helper-text/foundation';
-import {MDCTextFieldIcon, MDCTextFieldIconFactory} from './icon/component';
-import {MDCTextFieldFoundationMap} from './types';
+import {
+  MDCTextFieldAdapter,
+  MDCTextFieldInputAdapter,
+  MDCTextFieldLabelAdapter,
+  MDCTextFieldLineRippleAdapter,
+  MDCTextFieldOutlineAdapter,
+  MDCTextFieldRootAdapter,
+} from "./adapter";
+import {
+  MDCTextFieldCharacterCounter,
+  MDCTextFieldCharacterCounterFactory,
+} from "./character-counter/component";
+import { MDCTextFieldCharacterCounterFoundation } from "./character-counter/foundation";
+import { cssClasses, strings } from "./constants";
+import { MDCTextFieldFoundation } from "./foundation";
+import {
+  MDCTextFieldHelperText,
+  MDCTextFieldHelperTextFactory,
+} from "./helper-text/component";
+import { MDCTextFieldHelperTextFoundation } from "./helper-text/foundation";
+import { MDCTextFieldIcon, MDCTextFieldIconFactory } from "./icon/component";
+import { MDCTextFieldFoundationMap } from "./types";
 
-export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implements MDCRippleCapableSurface {
+export class MDCTextField
+  extends MDCComponent<MDCTextFieldFoundation>
+  implements MDCRippleCapableSurface
+{
   static attachTo(root: Element): MDCTextField {
     return new MDCTextField(root);
   }
@@ -60,25 +85,34 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
   private lineRipple_!: MDCLineRipple | null; // assigned in initialize()
   private outline_!: MDCNotchedOutline | null; // assigned in initialize()
   private trailingIcon_!: MDCTextFieldIcon | null; // assigned in initialize()
-  private prefix_!: Element|null;                  // assigned in initialize()
-  private suffix_!: Element|null;                  // assigned in initialize()
+  private prefix_!: Element | null; // assigned in initialize()
+  private suffix_!: Element | null; // assigned in initialize()
 
   initialize(
-      rippleFactory: MDCRippleFactory = (el, foundation) => new MDCRipple(el, foundation),
-      lineRippleFactory: MDCLineRippleFactory = (el) => new MDCLineRipple(el),
-      helperTextFactory: MDCTextFieldHelperTextFactory = (el) => new MDCTextFieldHelperText(el),
-      characterCounterFactory: MDCTextFieldCharacterCounterFactory = (el) => new MDCTextFieldCharacterCounter(el),
-      iconFactory: MDCTextFieldIconFactory = (el) => new MDCTextFieldIcon(el),
-      labelFactory: MDCFloatingLabelFactory = (el) => new MDCFloatingLabel(el),
-      outlineFactory: MDCNotchedOutlineFactory = (el) => new MDCNotchedOutline(el),
+    rippleFactory: MDCRippleFactory = (el, foundation) =>
+      new MDCRipple(el, foundation),
+    lineRippleFactory: MDCLineRippleFactory = (el) => new MDCLineRipple(el),
+    helperTextFactory: MDCTextFieldHelperTextFactory = (el) =>
+      new MDCTextFieldHelperText(el),
+    characterCounterFactory: MDCTextFieldCharacterCounterFactory = (el) =>
+      new MDCTextFieldCharacterCounter(el),
+    iconFactory: MDCTextFieldIconFactory = (el) => new MDCTextFieldIcon(el),
+    labelFactory: MDCFloatingLabelFactory = (el) => new MDCFloatingLabel(el),
+    outlineFactory: MDCNotchedOutlineFactory = (el) => new MDCNotchedOutline(el)
   ) {
-    this.input_ = this.root.querySelector<HTMLInputElement>(strings.INPUT_SELECTOR)!;
+    this.input_ = this.root.querySelector<HTMLInputElement>(
+      strings.INPUT_SELECTOR
+    )!;
 
     const labelElement = this.root.querySelector(strings.LABEL_SELECTOR);
     this.label_ = labelElement ? labelFactory(labelElement) : null;
 
-    const lineRippleElement = this.root.querySelector(strings.LINE_RIPPLE_SELECTOR);
-    this.lineRipple_ = lineRippleElement ? lineRippleFactory(lineRippleElement) : null;
+    const lineRippleElement = this.root.querySelector(
+      strings.LINE_RIPPLE_SELECTOR
+    );
+    this.lineRipple_ = lineRippleElement
+      ? lineRippleFactory(lineRippleElement)
+      : null;
 
     const outlineElement = this.root.querySelector(strings.OUTLINE_SELECTOR);
     this.outline_ = outlineElement ? outlineFactory(outlineElement) : null;
@@ -86,28 +120,41 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
     // Helper text
     const helperTextStrings = MDCTextFieldHelperTextFoundation.strings;
     const nextElementSibling = this.root.nextElementSibling;
-    const hasHelperLine = (nextElementSibling && nextElementSibling.classList.contains(cssClasses.HELPER_LINE));
+    const hasHelperLine =
+      nextElementSibling &&
+      nextElementSibling.classList.contains(cssClasses.HELPER_LINE);
     const helperTextEl =
-        hasHelperLine && nextElementSibling && nextElementSibling.querySelector(helperTextStrings.ROOT_SELECTOR);
+      hasHelperLine &&
+      nextElementSibling &&
+      nextElementSibling.querySelector(helperTextStrings.ROOT_SELECTOR);
     this.helperText_ = helperTextEl ? helperTextFactory(helperTextEl) : null;
 
     // Character counter
-    const characterCounterStrings = MDCTextFieldCharacterCounterFoundation.strings;
-    let characterCounterEl = this.root.querySelector(characterCounterStrings.ROOT_SELECTOR);
+    const characterCounterStrings =
+      MDCTextFieldCharacterCounterFoundation.strings;
+    let characterCounterEl = this.root.querySelector(
+      characterCounterStrings.ROOT_SELECTOR
+    );
     // If character counter is not found in root element search in sibling element.
     if (!characterCounterEl && hasHelperLine && nextElementSibling) {
-      characterCounterEl = nextElementSibling.querySelector(characterCounterStrings.ROOT_SELECTOR);
+      characterCounterEl = nextElementSibling.querySelector(
+        characterCounterStrings.ROOT_SELECTOR
+      );
     }
-    this.characterCounter_ = characterCounterEl ? characterCounterFactory(characterCounterEl) : null;
+    this.characterCounter_ = characterCounterEl
+      ? characterCounterFactory(characterCounterEl)
+      : null;
 
     // Leading icon
-    const leadingIconEl =
-        this.root.querySelector(strings.LEADING_ICON_SELECTOR);
+    const leadingIconEl = this.root.querySelector(
+      strings.LEADING_ICON_SELECTOR
+    );
     this.leadingIcon_ = leadingIconEl ? iconFactory(leadingIconEl) : null;
 
     // Trailing icon
-    const trailingIconEl =
-        this.root.querySelector(strings.TRAILING_ICON_SELECTOR);
+    const trailingIconEl = this.root.querySelector(
+      strings.TRAILING_ICON_SELECTOR
+    );
     this.trailingIcon_ = trailingIconEl ? iconFactory(trailingIconEl) : null;
 
     // Prefix and Suffix
@@ -229,7 +276,7 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
   set maxLength(maxLength: number) {
     // Chrome throws exception if maxLength is set to a value less than zero
     if (maxLength < 0) {
-      this.input_.removeAttribute('maxLength');
+      this.input_.removeAttribute("maxLength");
     } else {
       this.input_.maxLength = maxLength;
     }
@@ -314,14 +361,14 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
   /**
    * Gets the text content of the prefix, or null if it does not exist.
    */
-  get prefixText(): string|null {
+  get prefixText(): string | null {
     return this.prefix_ ? this.prefix_.textContent : null;
   }
 
   /**
    * Sets the text content of the prefix, if it exists.
    */
-  set prefixText(prefixText: string|null) {
+  set prefixText(prefixText: string | null) {
     if (this.prefix_) {
       this.prefix_.textContent = prefixText;
     }
@@ -330,14 +377,14 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
   /**
    * Gets the text content of the suffix, or null if it does not exist.
    */
-  get suffixText(): string|null {
+  get suffixText(): string | null {
     return this.suffix_ ? this.suffix_.textContent : null;
   }
 
   /**
    * Sets the text content of the suffix, if it exists.
    */
-  set suffixText(suffixText: string|null) {
+  set suffixText(suffixText: string | null) {
     if (this.suffix_) {
       this.suffix_.textContent = suffixText;
     }
@@ -386,13 +433,17 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
         this.unlisten(evtType, handler);
       },
       registerValidationAttributeChangeHandler: (handler) => {
-        const getAttributesList = (mutationsList: MutationRecord[]): string[] => {
+        const getAttributesList = (
+          mutationsList: MutationRecord[]
+        ): string[] => {
           return mutationsList
-              .map((mutation) => mutation.attributeName)
-              .filter((attributeName) => attributeName) as string[];
+            .map((mutation) => mutation.attributeName)
+            .filter((attributeName) => attributeName) as string[];
         };
-        const observer = new MutationObserver((mutationsList) => handler(getAttributesList(mutationsList)));
-        const config = {attributes: true};
+        const observer = new MutationObserver((mutationsList) =>
+          handler(getAttributesList(mutationsList))
+        );
+        const config = { attributes: true };
         observer.observe(this.input_, config);
         return observer;
       },
@@ -426,11 +477,14 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
 
   private getLabelAdapterMethods_(): MDCTextFieldLabelAdapter {
     return {
-      floatLabel: (shouldFloat) => this.label_ && this.label_.float(shouldFloat),
-      getLabelWidth: () => this.label_ ? this.label_.getWidth() : 0,
+      floatLabel: (shouldFloat) =>
+        this.label_ && this.label_.float(shouldFloat),
+      getLabelWidth: () => (this.label_ ? this.label_.getWidth() : 0),
       hasLabel: () => Boolean(this.label_),
-      shakeLabel: (shouldShake) => this.label_ && this.label_.shake(shouldShake),
-      setLabelRequired: (isRequired) => this.label_ && this.label_.setRequired(isRequired),
+      shakeLabel: (shouldShake) =>
+        this.label_ && this.label_.shake(shouldShake),
+      setLabelRequired: (isRequired) =>
+        this.label_ && this.label_.setRequired(isRequired),
     };
   }
 
@@ -458,7 +512,8 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
     return {
       closeOutline: () => this.outline_ && this.outline_.closeNotch(),
       hasOutline: () => Boolean(this.outline_),
-      notchOutline: (labelWidth) => this.outline_ && this.outline_.notch(labelWidth),
+      notchOutline: (labelWidth) =>
+        this.outline_ && this.outline_.notch(labelWidth),
     };
   }
 
@@ -467,17 +522,18 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
    */
   private getFoundationMap_(): Partial<MDCTextFieldFoundationMap> {
     return {
-      characterCounter: this.characterCounter_ ?
-          this.characterCounter_.foundationForTextField :
-          undefined,
-      helperText: this.helperText_ ? this.helperText_.foundationForTextField :
-                                     undefined,
-      leadingIcon: this.leadingIcon_ ?
-          this.leadingIcon_.foundationForTextField :
-          undefined,
-      trailingIcon: this.trailingIcon_ ?
-          this.trailingIcon_.foundationForTextField :
-          undefined,
+      characterCounter: this.characterCounter_
+        ? this.characterCounter_.foundationForTextField
+        : undefined,
+      helperText: this.helperText_
+        ? this.helperText_.foundationForTextField
+        : undefined,
+      leadingIcon: this.leadingIcon_
+        ? this.leadingIcon_.foundationForTextField
+        : undefined,
+      trailingIcon: this.trailingIcon_
+        ? this.trailingIcon_.foundationForTextField
+        : undefined,
     };
   }
 
@@ -494,8 +550,9 @@ export class MDCTextField extends MDCComponent<MDCTextFieldFoundation> implement
     // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
     const adapter: MDCRippleAdapter = {
       ...MDCRipple.createAdapter(this),
-      isSurfaceActive: () => ponyfill.matches(this.input_, ':active'),
-      registerInteractionHandler: (evtType, handler) => this.input_.addEventListener(evtType, handler, applyPassive()),
+      isSurfaceActive: () => ponyfill.matches(this.input_, ":active"),
+      registerInteractionHandler: (evtType, handler) =>
+        this.input_.addEventListener(evtType, handler, applyPassive()),
       deregisterInteractionHandler: (evtType, handler) =>
         this.input_.removeEventListener(evtType, handler, applyPassive()),
     };

@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface DrawerAppContentProps {
   tag?: string;
@@ -29,16 +29,16 @@ export interface DrawerAppContentProps {
 }
 
 const DrawerAppContent: React.FunctionComponent<DrawerAppContentProps> = ({
-  tag: Tag = 'div',
+  tag: Tag = "div",
   children,
-  className = '',
+  className = "",
   ...otherProps
 }) => {
   return (
     // https://github.com/Microsoft/TypeScript/issues/28892
     // @ts-ignore
     <Tag
-      className={classnames('mdc-drawer-app-content', className)}
+      className={classnames("mdc-drawer-app-content", className)}
       {...otherProps}
     >
       {children}

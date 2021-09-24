@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCIconButtonToggleAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCIconButtonToggleAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCIconButtonToggleFoundation extends MDCFoundation<MDCIconButtonToggleAdapter> {
   /**
@@ -52,7 +52,7 @@ export class MDCIconButtonToggleFoundation extends MDCFoundation<MDCIconButtonTo
   }
 
   constructor(adapter?: Partial<MDCIconButtonToggleAdapter>) {
-    super({...MDCIconButtonToggleFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCIconButtonToggleFoundation.defaultAdapter, ...adapter });
   }
 
   init() {
@@ -61,8 +61,9 @@ export class MDCIconButtonToggleFoundation extends MDCFoundation<MDCIconButtonTo
     if (ariaLabelOn && ariaLabelOff) {
       if (this.adapter.getAttr(strings.ARIA_PRESSED) !== null) {
         throw new Error(
-            'MDCIconButtonToggleFoundation: Button should not set ' +
-            '`aria-pressed` if it has a toggled aria label.');
+          "MDCIconButtonToggleFoundation: Button should not set " +
+            "`aria-pressed` if it has a toggled aria label."
+        );
       }
 
       this.hasToggledAriaLabel = true;
@@ -73,7 +74,7 @@ export class MDCIconButtonToggleFoundation extends MDCFoundation<MDCIconButtonTo
 
   handleClick() {
     this.toggle();
-    this.adapter.notifyChange({isOn: this.isOn()});
+    this.adapter.notifyChange({ isOn: this.isOn() });
   }
 
   isOn(): boolean {
@@ -90,10 +91,10 @@ export class MDCIconButtonToggleFoundation extends MDCFoundation<MDCIconButtonTo
 
     // Toggle aria attributes based on state.
     if (this.hasToggledAriaLabel) {
-      const ariaLabel = isOn ?
-          this.adapter.getAttr(strings.DATA_ARIA_LABEL_ON) :
-          this.adapter.getAttr(strings.DATA_ARIA_LABEL_OFF);
-      this.adapter.setAttr(strings.ARIA_LABEL, ariaLabel || '');
+      const ariaLabel = isOn
+        ? this.adapter.getAttr(strings.DATA_ARIA_LABEL_ON)
+        : this.adapter.getAttr(strings.DATA_ARIA_LABEL_OFF);
+      this.adapter.setAttr(strings.ARIA_LABEL, ariaLabel || "");
     } else {
       this.adapter.setAttr(strings.ARIA_PRESSED, `${isOn}`);
     }

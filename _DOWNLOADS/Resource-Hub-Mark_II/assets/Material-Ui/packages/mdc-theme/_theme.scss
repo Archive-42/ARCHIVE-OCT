@@ -23,15 +23,15 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
-@use '@material/feature-targeting/feature-targeting';
-@use './css';
-@use './custom-properties';
-@use './gss';
-@use './replace';
-@use './theme-color';
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "@material/feature-targeting/feature-targeting";
+@use "./css";
+@use "./custom-properties";
+@use "./gss";
+@use "./replace";
+@use "./theme-color";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-color: feature-targeting.create-target($query, color);
@@ -45,7 +45,7 @@
   }
 
   @each $style in map.keys(theme-color.$property-values) {
-    @if $style != 'background' and $style != 'surface' {
+    @if $style != "background" and $style != "surface" {
       .mdc-theme--#{$style} {
         @include feature-targeting.targets($feat-color) {
           @include prop(color, $style, true);
@@ -61,7 +61,7 @@
   }
 
   // CSS rules for using primary and secondary (plus light/dark variants) as background colors.
-  @each $style in ('primary', 'secondary') {
+  @each $style in ("primary", "secondary") {
     .mdc-theme--#{$style}-bg {
       @include feature-targeting.targets($feat-color) {
         @include prop(background-color, $style, true);
@@ -132,7 +132,7 @@
     // $value is a standard CSS value
     $fallback: null;
     @if $replace {
-      @if meta.type-of($value) != 'string' {
+      @if meta.type-of($value) != "string" {
         // theme.property() should support non-string replacements in the
         // future, such as List types
         // e.g. theme.property(border-radius, 8px foo, $replace: (foo: $foo));
@@ -207,7 +207,7 @@
   }
 
   @if list.length($unsupported-keys) > 0 {
-    $error-message: 'Unsupported keys found: #{$unsupported-keys}. Expected one of: #{$origin-keys}.';
+    $error-message: "Unsupported keys found: #{$unsupported-keys}. Expected one of: #{$origin-keys}.";
 
     @if $test-only {
       content: $error-message;

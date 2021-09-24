@@ -23,16 +23,16 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:color';
-@use 'sass:map';
-@use '@material/animation/functions' as functions2;
-@use '@material/animation/variables' as variables2;
-@use '@material/base/mixins' as base-mixins;
-@use '@material/theme/custom-properties';
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
-@use './ripple-theme';
+@use "sass:color";
+@use "sass:map";
+@use "@material/animation/functions" as functions2;
+@use "@material/animation/variables" as variables2;
+@use "@material/base/mixins" as base-mixins;
+@use "@material/theme/custom-properties";
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
+@use "./ripple-theme";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-structure: feature-targeting.create-target($query, structure);
@@ -89,7 +89,7 @@
   // (Every component using MDC Ripple imports these mixins, but doesn't necessarily import
   // mdc-ripple.scss.)
   @include feature-targeting.targets($feat-animation) {
-    @include base-mixins.emit-once('mdc-ripple/common/animation') {
+    @include base-mixins.emit-once("mdc-ripple/common/animation") {
       @include keyframes_;
     }
   }
@@ -97,7 +97,7 @@
 
 @mixin surface(
   $query: feature-targeting.all(),
-  $ripple-target: '&',
+  $ripple-target: "&",
   $include-will-change: true // TODO(b/151931961): Remove once resolved
 ) {
   $feat-animation: feature-targeting.create-target($query, animation);
@@ -125,7 +125,7 @@
       border-radius: 50%;
       opacity: 0;
       pointer-events: none;
-      content: '';
+      content: "";
     }
   }
 
@@ -212,7 +212,7 @@
 @mixin radius-bounded(
   $radius: 100%,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-struture: feature-targeting.create-target($query, structure);
 
@@ -240,7 +240,7 @@
 @mixin radius-unbounded(
   $radius: 100%,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-struture: feature-targeting.create-target($query, structure);
 

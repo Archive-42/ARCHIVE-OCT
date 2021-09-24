@@ -10,10 +10,13 @@
 @forward "@material/floating-label/variables" as mdc-floating-label-*;
 @forward "variables" as mdc-notched-outline-*;
 @forward "@material/theme/mixins" as mdc-theme-*;
-@forward "@material/rtl/mixins" as mdc-* hide mdc-property-, mdc-reflexive, mdc-reflexive-box, mdc-reflexive-position, mdc-reflexive-property;
+@forward "@material/rtl/mixins" as mdc-* hide mdc-property-, mdc-reflexive,
+  mdc-reflexive-box, mdc-reflexive-position, mdc-reflexive-property;
 @forward "@material/rtl/mixins" as mdc-rtl-* hide mdc-rtl-rtl;
 @forward "@material/shape/mixins" as mdc-shape-*;
-@forward "@material/typography/mixins" as mdc-* hide mdc-base, mdc-baseline-bottom, mdc-baseline-strut-, mdc-baseline-top, mdc-core-styles, mdc-overflow-ellipsis;
+@forward "@material/typography/mixins" as mdc-* hide mdc-base,
+  mdc-baseline-bottom, mdc-baseline-strut-, mdc-baseline-top, mdc-core-styles,
+  mdc-overflow-ellipsis;
 @forward "@material/typography/mixins" as mdc-typography-* hide mdc-typography-typography;
 @forward "@material/floating-label/mixins" as mdc-floating-label-*;
 @forward "mixins" as mdc-notched-outline-*;

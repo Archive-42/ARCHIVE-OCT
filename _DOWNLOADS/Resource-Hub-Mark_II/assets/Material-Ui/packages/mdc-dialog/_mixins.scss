@@ -23,18 +23,18 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:math';
-@use '@material/animation/functions' as animation-functions;
-@use '@material/button/variables' as button-variables;
-@use '@material/elevation/mixins' as elevation-mixins;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/shape/mixins' as shape-mixins;
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
-@use '@material/touch-target/variables' as touch-target-variables;
-@use '@material/typography/typography';
-@use './variables';
+@use "sass:math";
+@use "@material/animation/functions" as animation-functions;
+@use "@material/button/variables" as button-variables;
+@use "@material/elevation/mixins" as elevation-mixins;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/shape/mixins" as shape-mixins;
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
+@use "@material/touch-target/variables" as touch-target-variables;
+@use "@material/typography/typography";
+@use "./variables";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-animation: feature-targeting.create-target($query, animation);
@@ -124,7 +124,7 @@
       // IE 11: Otherwise, scrolling content in `mdc-dialog__content` overflows.
       overflow-y: auto;
 
-      @include rtl-mixins.rtl('.mdc-dialog') {
+      @include rtl-mixins.rtl(".mdc-dialog") {
         /* @noflip */
         text-align: right;
       }
@@ -147,7 +147,7 @@
       padding: 0 24px variables.$title-bottom-padding;
       border-bottom: 1px solid transparent;
 
-      @include rtl-mixins.rtl('.mdc-dialog') {
+      @include rtl-mixins.rtl(".mdc-dialog") {
         /* @noflip */
         text-align: right;
       }
@@ -265,7 +265,7 @@
       /* @noflip */
       text-align: right;
 
-      @include rtl-mixins.rtl('.mdc-dialog') {
+      @include rtl-mixins.rtl(".mdc-dialog") {
         /* @noflip */
         text-align: left;
       }

@@ -24,23 +24,32 @@
 // TODO(b/152410470): Remove trailing underscores from private properties
 // tslint:disable:strip-private-property-underscore
 
-import {MDCComponent} from '@material/base/component';
-import {CustomEventListener, SpecificEventListener} from '@material/base/types';
-import {closest} from '@material/dom/ponyfill';
-import {MDCList, MDCListFactory} from '@material/list/component';
-import {numbers as listConstants} from '@material/list/constants';
-import {MDCListFoundation} from '@material/list/foundation';
-import {MDCListActionEvent, MDCListIndex} from '@material/list/types';
-import {MDCMenuSurface, MDCMenuSurfaceFactory} from '@material/menu-surface/component';
-import {Corner} from '@material/menu-surface/constants';
-import {MDCMenuSurfaceFoundation} from '@material/menu-surface/foundation';
-import {MDCMenuDistance} from '@material/menu-surface/types';
-import {MDCMenuAdapter} from './adapter';
-import {cssClasses, DefaultFocusState, strings} from './constants';
-import {MDCMenuFoundation} from './foundation';
-import {MDCMenuItemComponentEventDetail} from './types';
+import { MDCComponent } from "@material/base/component";
+import {
+  CustomEventListener,
+  SpecificEventListener,
+} from "@material/base/types";
+import { closest } from "@material/dom/ponyfill";
+import { MDCList, MDCListFactory } from "@material/list/component";
+import { numbers as listConstants } from "@material/list/constants";
+import { MDCListFoundation } from "@material/list/foundation";
+import { MDCListActionEvent, MDCListIndex } from "@material/list/types";
+import {
+  MDCMenuSurface,
+  MDCMenuSurfaceFactory,
+} from "@material/menu-surface/component";
+import { Corner } from "@material/menu-surface/constants";
+import { MDCMenuSurfaceFoundation } from "@material/menu-surface/foundation";
+import { MDCMenuDistance } from "@material/menu-surface/types";
+import { MDCMenuAdapter } from "./adapter";
+import { cssClasses, DefaultFocusState, strings } from "./constants";
+import { MDCMenuFoundation } from "./foundation";
+import { MDCMenuItemComponentEventDetail } from "./types";
 
-export type MDCMenuFactory = (el: Element, foundation?: MDCMenuFoundation) => MDCMenu;
+export type MDCMenuFactory = (
+  el: Element,
+  foundation?: MDCMenuFoundation
+) => MDCMenu;
 
 export class MDCMenu extends MDCComponent<MDCMenuFoundation> {
   static attachTo(root: Element) {
@@ -53,13 +62,14 @@ export class MDCMenu extends MDCComponent<MDCMenuFoundation> {
   private menuSurface_!: MDCMenuSurface; // assigned in initialSyncWithDOM()
   private list_!: MDCList | null; // assigned in initialSyncWithDOM()
 
-  private handleKeydown_!: SpecificEventListener<'keydown'>; // assigned in initialSyncWithDOM()
+  private handleKeydown_!: SpecificEventListener<"keydown">; // assigned in initialSyncWithDOM()
   private handleItemAction_!: CustomEventListener<MDCListActionEvent>; // assigned in initialSyncWithDOM()
   private handleMenuSurfaceOpened_!: EventListener; // assigned in initialSyncWithDOM()
 
   initialize(
-      menuSurfaceFactory: MDCMenuSurfaceFactory = (el) => new MDCMenuSurface(el),
-      listFactory: MDCListFactory = (el) => new MDCList(el)) {
+    menuSurfaceFactory: MDCMenuSurfaceFactory = (el) => new MDCMenuSurface(el),
+    listFactory: MDCListFactory = (el) => new MDCList(el)
+  ) {
     this.menuSurfaceFactory_ = menuSurfaceFactory;
     this.listFactory_ = listFactory;
   }
@@ -77,12 +87,15 @@ export class MDCMenu extends MDCComponent<MDCMenuFoundation> {
 
     this.handleKeydown_ = (evt) => this.foundation.handleKeydown(evt);
     this.handleItemAction_ = (evt) =>
-        this.foundation.handleItemAction(this.items[evt.detail.index]);
+      this.foundation.handleItemAction(this.items[evt.detail.index]);
     this.handleMenuSurfaceOpened_ = () =>
-        this.foundation.handleMenuSurfaceOpened();
+      this.foundation.handleMenuSurfaceOpened();
 
-    this.menuSurface_.listen(MDCMenuSurfaceFoundation.strings.OPENED_EVENT, this.handleMenuSurfaceOpened_);
-    this.listen('keydown', this.handleKeydown_);
+    this.menuSurface_.listen(
+      MDCMenuSurfaceFoundation.strings.OPENED_EVENT,
+      this.handleMenuSurfaceOpened_
+    );
+    this.listen("keydown", this.handleKeydown_);
     this.listen(MDCListFoundation.strings.ACTION_EVENT, this.handleItemAction_);
   }
 
@@ -92,9 +105,15 @@ export class MDCMenu extends MDCComponent<MDCMenuFoundation> {
     }
 
     this.menuSurface_.destroy();
-    this.menuSurface_.unlisten(MDCMenuSurfaceFoundation.strings.OPENED_EVENT, this.handleMenuSurfaceOpened_);
-    this.unlisten('keydown', this.handleKeydown_);
-    this.unlisten(MDCListFoundation.strings.ACTION_EVENT, this.handleItemAction_);
+    this.menuSurface_.unlisten(
+      MDCMenuSurfaceFoundation.strings.OPENED_EVENT,
+      this.handleMenuSurfaceOpened_
+    );
+    this.unlisten("keydown", this.handleKeydown_);
+    this.unlisten(
+      MDCListFoundation.strings.ACTION_EVENT,
+      this.handleItemAction_
+    );
     super.destroy();
   }
 
@@ -270,9 +289,9 @@ export class MDCMenu extends MDCComponent<MDCMenuFoundation> {
   getPrimaryTextAtIndex(index: number): string {
     const item = this.getOptionByIndex(index);
     if (item && this.list_) {
-      return this.list_.getPrimaryText(item) || '';
+      return this.list_.getPrimaryText(item) || "";
     }
-    return '';
+    return "";
   }
 
   setFixedPosition(isFixed: boolean) {
@@ -316,25 +335,29 @@ export class MDCMenu extends MDCComponent<MDCMenuFoundation> {
         list[index].removeAttribute(attr);
       },
       elementContainsClass: (element, className) =>
-          element.classList.contains(className),
+        element.classList.contains(className),
       closeSurface: (skipRestoreFocus: boolean) =>
-          this.menuSurface_.close(skipRestoreFocus),
+        this.menuSurface_.close(skipRestoreFocus),
       getElementIndex: (element) => this.items.indexOf(element),
       notifySelected: (evtData) =>
-          this.emit<MDCMenuItemComponentEventDetail>(strings.SELECTED_EVENT, {
-            index: evtData.index,
-            item: this.items[evtData.index],
-          }),
+        this.emit<MDCMenuItemComponentEventDetail>(strings.SELECTED_EVENT, {
+          index: evtData.index,
+          item: this.items[evtData.index],
+        }),
       getMenuItemCount: () => this.items.length,
       focusItemAtIndex: (index) => (this.items[index] as HTMLElement).focus(),
       focusListRoot: () =>
-          (this.root.querySelector(strings.LIST_SELECTOR) as HTMLElement)
-              .focus(),
+        (this.root.querySelector(strings.LIST_SELECTOR) as HTMLElement).focus(),
       isSelectableItemAtIndex: (index) =>
-          !!closest(this.items[index], `.${cssClasses.MENU_SELECTION_GROUP}`),
+        !!closest(this.items[index], `.${cssClasses.MENU_SELECTION_GROUP}`),
       getSelectedSiblingOfItemAtIndex: (index) => {
-        const selectionGroupEl = closest(this.items[index], `.${cssClasses.MENU_SELECTION_GROUP}`) as HTMLElement;
-        const selectedItemEl = selectionGroupEl.querySelector(`.${cssClasses.MENU_SELECTED_LIST_ITEM}`);
+        const selectionGroupEl = closest(
+          this.items[index],
+          `.${cssClasses.MENU_SELECTION_GROUP}`
+        ) as HTMLElement;
+        const selectedItemEl = selectionGroupEl.querySelector(
+          `.${cssClasses.MENU_SELECTED_LIST_ITEM}`
+        );
         return selectedItemEl ? this.items.indexOf(selectedItemEl) : -1;
       },
     };

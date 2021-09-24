@@ -13,24 +13,30 @@ npm install @material/react-menu
 ### Styles
 
 with Sass:
+
 ```js
-import '@material/react-list/index.scss';
-import '@material/react-menu-surface/index.scss';
-import '@material/react-menu/index.scss';
+import "@material/react-list/index.scss";
+import "@material/react-menu-surface/index.scss";
+import "@material/react-menu/index.scss";
 ```
 
 with CSS:
+
 ```js
-import '@material/react-list/dist/menu.css';
-import '@material/react-menu-surface/dist/menu.css';
-import '@material/react-menu/dist/menu.css';
+import "@material/react-list/dist/menu.css";
+import "@material/react-menu-surface/dist/menu.css";
+import "@material/react-menu/dist/menu.css";
 ```
 
 ### Javascript Instantiation
 
 ```js
-import React from 'react';
-import Menu, {MenuList, MenuListItem, MenuListItemText} from '@material/react-menu';
+import React from "react";
+import Menu, {
+  MenuList,
+  MenuListItem,
+  MenuListItemText,
+} from "@material/react-menu";
 
 class MyApp extends React.Component {
   state = {
@@ -39,22 +45,22 @@ class MyApp extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener('contextmenu', this.rightClickCallback);
+    window.addEventListener("contextmenu", this.rightClickCallback);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('contextmenu', this.rightClickCallback);
+    window.removeEventListener("contextmenu", this.rightClickCallback);
   }
 
   rightClickCallback = (event) => {
     this.setState({
       open: !this.state.open,
-      coordinates: {x: event.clientX, y: event.clientY},
+      coordinates: { x: event.clientX, y: event.clientY },
     });
     // Must preventDefault so the system context menu doesn't appear.
     // This won't be needed in other cases besides right click.
     event.preventDefault();
-  }
+  };
 
   // Must set open to false to keep menu in the correct state.
   // This does not follow the controlled component pattern
@@ -62,17 +68,11 @@ class MyApp extends React.Component {
   // Follow https://github.com/material-components/material-components-web-react/issues/785
   // to get any updates.
   onClose = () => {
-    this.setState({open: false});
-  }
+    this.setState({ open: false });
+  };
 
   render() {
-    const menuOptions = [
-      'Save',
-      'Edit',
-      'Cut',
-      'Copy',
-      'Paste',
-    ];
+    const menuOptions = ["Save", "Edit", "Cut", "Copy", "Paste"];
 
     return (
       <Menu
@@ -99,45 +99,41 @@ class MyApp extends React.Component {
 
 You may want to use Menu or other auxilary components with an HOC, such as [styled-components](https://www.styled-components.com). You can wrap Menu using the following:
 
-
 ```js
-import React from 'react';
-import Menu, {MenuList, MenuListItem, MenuListItemText} from '@material/react-menu';
-import styled from 'styled-components';
+import React from "react";
+import Menu, {
+  MenuList,
+  MenuListItem,
+  MenuListItemText,
+} from "@material/react-menu";
+import styled from "styled-components";
 
 interface MenuState {
-  coordinates?: {x: number, y: number};
+  coordinates?: { x: number, y: number };
   open: boolean;
-};
+}
 
 const StyledMenuListItem = styled(MenuListItem)`
   color: blue;
 `;
 
 class MenuScreenshotTest extends React.Component<{}, MenuState> {
-
   state = {
     open: true,
   };
 
   onClose = () => {
-    this.setState({open: false});
-  }
+    this.setState({ open: false });
+  };
 
   render() {
-    const menuOptions = [
-      'Save',
-      'Edit',
-      'Cut',
-      'Copy',
-      'Paste',
-    ];
+    const menuOptions = ["Save", "Edit", "Cut", "Copy", "Paste"];
 
     return (
       <Menu
         open={this.state.open}
         onClose={this.onClose}
-        onSelected={() => console.log('select')}
+        onSelected={() => console.log("select")}
       >
         <MenuList>
           {menuOptions.map((option, index) => (
@@ -152,27 +148,24 @@ class MenuScreenshotTest extends React.Component<{}, MenuState> {
 }
 ```
 
-
-
 ## Props
-
 
 ### Menu
 
-Prop Name | Type | Description
---- | --- | ---
-onSelected | (index: number, item: Element) => void | Callback that is triggered when a menu list item is selected.
-onClose | () => void | Callback that is triggered when the menu closes.
-open | boolean | If true, will open the menu. If false, will hide menu.
+| Prop Name  | Type                                   | Description                                                   |
+| ---------- | -------------------------------------- | ------------------------------------------------------------- |
+| onSelected | (index: number, item: Element) => void | Callback that is triggered when a menu list item is selected. |
+| onClose    | () => void                             | Callback that is triggered when the menu closes.              |
+| open       | boolean                                | If true, will open the menu. If false, will hide menu.        |
 
 > NOTE: onClose and open are a subset of props from Menu Surface. See [Menu Surface Props](../menu-surface/README.md#props) for other props you can pass to Menu
 
 ### MenuList
 
-Prop Name | Type | Description
---- | --- | ---
-innerRef | RefObject | Root Menu List element ref.
-handleSelect | (activatedItemIndex: Number, selected: Number | Array<Number>) => void | Callback for handling a list item selection event. `selected` will be an Array,Number> for checkbox lists.
+| Prop Name    | Type                                          | Description                 |
+| ------------ | --------------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| innerRef     | RefObject                                     | Root Menu List element ref. |
+| handleSelect | (activatedItemIndex: Number, selected: Number | Array<Number>) => void      | Callback for handling a list item selection event. `selected` will be an Array,Number> for checkbox lists. |
 
 > NOTE: handleSelect is a subset of props from List. See [List Props](../list/README.md#list) for other props you can pass to MenuList.
 
@@ -203,7 +196,6 @@ See [List Group Props](../list/README.md#listgroup) for other props you can pass
 ### MenuListGroupSubheader
 
 See [List Group Subheader Props](../list/README.md#listgroupsubheader) for other props you can pass to MenuListGroupSubheader.
-
 
 ## Sass Mixins
 

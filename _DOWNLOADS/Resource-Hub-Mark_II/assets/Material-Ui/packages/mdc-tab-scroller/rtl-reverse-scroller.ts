@@ -21,8 +21,11 @@
  * THE SOFTWARE.
  */
 
-import {MDCTabScrollerRTL} from './rtl-scroller';
-import {MDCTabScrollerAnimation, MDCTabScrollerHorizontalEdges} from './types';
+import { MDCTabScrollerRTL } from "./rtl-scroller";
+import {
+  MDCTabScrollerAnimation,
+  MDCTabScrollerHorizontalEdges,
+} from "./types";
 
 export class MDCTabScrollerRTLReverse extends MDCTabScrollerRTL {
   getScrollPositionRTL(translateX: number): number {
@@ -42,7 +45,9 @@ export class MDCTabScrollerRTLReverse extends MDCTabScrollerRTL {
 
   incrementScrollRTL(scrollX: number): MDCTabScrollerAnimation {
     const currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
-    const clampedScrollLeft = this.clampScrollValue_(currentScrollLeft + scrollX);
+    const clampedScrollLeft = this.clampScrollValue_(
+      currentScrollLeft + scrollX
+    );
     return {
       finalScrollPosition: clampedScrollLeft,
       scrollDelta: currentScrollLeft - clampedScrollLeft,

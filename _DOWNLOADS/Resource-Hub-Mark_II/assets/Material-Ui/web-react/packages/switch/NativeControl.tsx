@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React from "react";
 export interface NativeControlProps extends React.HTMLProps<HTMLInputElement> {
   rippleActivatorRef?: React.RefObject<HTMLInputElement>;
 }
@@ -31,9 +31,9 @@ const NativeControl: React.FunctionComponent<NativeControlProps> = ({
 }) => {
   return (
     <input
-      type='checkbox'
-      role='switch'
-      className='mdc-switch__native-control'
+      type="checkbox"
+      role="switch"
+      className="mdc-switch__native-control"
       ref={rippleActivatorRef}
       {...otherProps}
     />

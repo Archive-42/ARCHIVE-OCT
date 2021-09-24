@@ -21,6 +21,6 @@
  * THE SOFTWARE.
  */
 
-export * from './adapter';
-export * from './foundation';
-export * from './component';
+export * from "./adapter";
+export * from "./foundation";
+export * from "./component";

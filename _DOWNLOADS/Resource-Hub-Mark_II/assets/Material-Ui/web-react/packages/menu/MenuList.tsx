@@ -20,23 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import * as React from 'react';
-import List, {ListProps} from '@material/react-list';
+import * as React from "react";
+import List, { ListProps } from "@material/react-list";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {MDCMenuFoundation} from '@material/menu/foundation';
+import { MDCMenuFoundation } from "@material/menu/foundation";
 
 type RefCallback<T> = (node: T | null) => void;
 
-export interface MenuListProps extends Exclude<ListProps, 'ref'> {
+export interface MenuListProps extends Exclude<ListProps, "ref"> {
   innerRef?: RefCallback<List> | React.RefObject<List>;
-  handleItemAction?: MDCMenuFoundation['handleItemAction'];
+  handleItemAction?: MDCMenuFoundation["handleItemAction"];
 }
 
 class MenuList extends React.Component<MenuListProps, {}> {
   private listInstance = React.createRef<List>();
 
   static defaultProps: Partial<MenuListProps> = {
-    className: '',
+    className: "",
     handleSelect: () => {},
     handleItemAction: () => {},
   };
@@ -48,13 +48,13 @@ class MenuList extends React.Component<MenuListProps, {}> {
     return this.listInstance.current.listElements;
   }
 
-  handleSelect: ListProps['handleSelect'] = (activatedItemIndex, selected) => {
+  handleSelect: ListProps["handleSelect"] = (activatedItemIndex, selected) => {
     this.props.handleSelect!(activatedItemIndex, selected);
     this.props.handleItemAction!(this.listElements[activatedItemIndex]);
   };
 
   attachRef = (node: List | null) => {
-    const {innerRef} = this.props;
+    const { innerRef } = this.props;
 
     // https://github.com/facebook/react/issues/13029#issuecomment-410002316
     // @ts-ignore this is acceptable according to the comment above
@@ -64,7 +64,7 @@ class MenuList extends React.Component<MenuListProps, {}> {
       return;
     }
 
-    if (typeof innerRef !== 'function') {
+    if (typeof innerRef !== "function") {
       // @ts-ignore same as above
       innerRef.current = node;
     } else {
@@ -74,7 +74,7 @@ class MenuList extends React.Component<MenuListProps, {}> {
 
   render() {
     const {
-      'aria-hidden': ariaHidden,
+      "aria-hidden": ariaHidden,
       /* eslint-disable @typescript-eslint/no-unused-vars */
       handleSelect,
       handleItemAction,
@@ -88,8 +88,8 @@ class MenuList extends React.Component<MenuListProps, {}> {
 
     return (
       <List
-        aria-hidden={ariaHidden !== undefined ? ariaHidden : 'true'}
-        role={role || 'menu'}
+        aria-hidden={ariaHidden !== undefined ? ariaHidden : "true"}
+        role={role || "menu"}
         handleSelect={this.handleSelect}
         ref={this.attachRef}
         {...otherProps}

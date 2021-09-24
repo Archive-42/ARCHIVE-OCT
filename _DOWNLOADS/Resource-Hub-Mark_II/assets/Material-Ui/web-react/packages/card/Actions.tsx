@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -31,7 +31,7 @@ export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const Actions: React.FunctionComponent<ActionsProps> = ({
-  className = '',
+  className = "",
   children,
   fullBleed = false,
   ...otherProps

@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import {MenuListItem, MenuListItemProps} from '@material/react-menu'; // eslint-disable-line no-unused-vars
+import React from "react";
+import { MenuListItem, MenuListItemProps } from "@material/react-menu"; // eslint-disable-line no-unused-vars
 
 export type OptionProps<T extends HTMLElement = HTMLElement> = BaseOptionProps &
   (T extends HTMLOptionElement
@@ -41,7 +41,7 @@ class Option<T extends HTMLElement = HTMLElement> extends React.Component<
   };
 
   render() {
-    const {value, enhanced, children, ...otherProps} = this.props;
+    const { value, enhanced, children, ...otherProps } = this.props;
 
     if (enhanced) {
       return (

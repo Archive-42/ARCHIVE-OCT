@@ -21,25 +21,26 @@
  * THE SOFTWARE.
  */
 
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
-import {cssClasses} from '../constants';
-import {MDCFadingTabIndicatorFoundation} from '../fading-foundation';
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
+import { cssClasses } from "../constants";
+import { MDCFadingTabIndicatorFoundation } from "../fading-foundation";
 
-describe('MDCFadingTabIndicatorFoundation', () => {
+describe("MDCFadingTabIndicatorFoundation", () => {
   const setupTest = () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCFadingTabIndicatorFoundation);
-    return {foundation, mockAdapter};
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCFadingTabIndicatorFoundation
+    );
+    return { foundation, mockAdapter };
   };
 
   it(`#activate adds the ${cssClasses.ACTIVE} class`, () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
     foundation.activate();
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.ACTIVE);
   });
 
   it(`#deactivate removes the ${cssClasses.ACTIVE} class`, () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
     foundation.deactivate();
     expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.ACTIVE);
   });

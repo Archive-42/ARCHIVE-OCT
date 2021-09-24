@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '../../mdc-base/foundation';
+import { MDCFoundation } from "../../mdc-base/foundation";
 
 class FakeFoundation extends MDCFoundation {
   get _adapter() {
@@ -29,41 +29,40 @@ class FakeFoundation extends MDCFoundation {
   }
 }
 
-describe('MDCFoundation', () => {
-  it('cssClasses getter returns an empty object', () => {
+describe("MDCFoundation", () => {
+  it("cssClasses getter returns an empty object", () => {
     expect(MDCFoundation.cssClasses).toEqual({});
   });
 
-  it('strings getter returns an empty object', () => {
+  it("strings getter returns an empty object", () => {
     expect(MDCFoundation.strings).toEqual({});
   });
 
-  it('numbers getter returns an empty object', () => {
+  it("numbers getter returns an empty object", () => {
     expect(MDCFoundation.numbers).toEqual({});
   });
 
-  it('defaultAdapter getter returns an empty object', () => {
+  it("defaultAdapter getter returns an empty object", () => {
     expect(MDCFoundation.defaultAdapter).toEqual({});
   });
 
-  it('takes an adapter object in its constructor, assigns it to "adapter"',
-     () => {
-       const adapter = {adapter: true};
-       const f = new FakeFoundation(adapter);
-       expect(f._adapter).toEqual(adapter);
-     });
+  it('takes an adapter object in its constructor, assigns it to "adapter"', () => {
+    const adapter = { adapter: true };
+    const f = new FakeFoundation(adapter);
+    expect(f._adapter).toEqual(adapter);
+  });
 
-  it('assigns adapter to an empty object when none given', () => {
+  it("assigns adapter to an empty object when none given", () => {
     const f = new FakeFoundation();
     expect(f._adapter).toEqual({});
   });
 
-  it('provides an init() lifecycle method, which defaults to a no-op', () => {
+  it("provides an init() lifecycle method, which defaults to a no-op", () => {
     const f = new FakeFoundation();
     expect(() => f.init).not.toThrow();
   });
 
-  it('provides a destroy() lifecycle method, which defaults to a no-op', () => {
+  it("provides a destroy() lifecycle method, which defaults to a no-op", () => {
     const f = new FakeFoundation();
     expect(() => f.destroy).not.toThrow();
   });

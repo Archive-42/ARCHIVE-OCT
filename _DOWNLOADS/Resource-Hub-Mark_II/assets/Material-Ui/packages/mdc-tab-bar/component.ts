@@ -21,17 +21,23 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {CustomEventListener, SpecificEventListener} from '@material/base/types';
-import {MDCTabScroller, MDCTabScrollerFactory} from '@material/tab-scroller/component';
-import {MDCTab, MDCTabFactory} from '@material/tab/component';
-import {MDCTabFoundation} from '@material/tab/foundation';
-import {MDCTabInteractionEvent} from '@material/tab/types';
-import {MDCTabBarAdapter} from './adapter';
-import {MDCTabBarFoundation} from './foundation';
-import {MDCTabBarActivatedEventDetail} from './types';
+import { MDCComponent } from "@material/base/component";
+import {
+  CustomEventListener,
+  SpecificEventListener,
+} from "@material/base/types";
+import {
+  MDCTabScroller,
+  MDCTabScrollerFactory,
+} from "@material/tab-scroller/component";
+import { MDCTab, MDCTabFactory } from "@material/tab/component";
+import { MDCTabFoundation } from "@material/tab/foundation";
+import { MDCTabInteractionEvent } from "@material/tab/types";
+import { MDCTabBarAdapter } from "./adapter";
+import { MDCTabBarFoundation } from "./foundation";
+import { MDCTabBarActivatedEventDetail } from "./types";
 
-const {strings} = MDCTabBarFoundation;
+const { strings } = MDCTabBarFoundation;
 
 let tabIdCounter = 0;
 
@@ -43,10 +49,10 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
   private tabList_!: MDCTab[]; // assigned in initialize()
   private tabScroller_!: MDCTabScroller | null; // assigned in initialize()
   private handleTabInteraction_!: CustomEventListener<MDCTabInteractionEvent>; // assigned in initialSyncWithDOM()
-  private handleKeyDown_!: SpecificEventListener<'keydown'>; // assigned in initialSyncWithDOM()
+  private handleKeyDown_!: SpecificEventListener<"keydown">; // assigned in initialSyncWithDOM()
 
   set focusOnActivate(focusOnActivate: boolean) {
-    this.tabList_.forEach((tab) => tab.focusOnActivate = focusOnActivate);
+    this.tabList_.forEach((tab) => (tab.focusOnActivate = focusOnActivate));
   }
 
   set useAutomaticActivation(useAutomaticActivation: boolean) {
@@ -54,8 +60,8 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
   }
 
   initialize(
-      tabFactory: MDCTabFactory = (el) => new MDCTab(el),
-      tabScrollerFactory: MDCTabScrollerFactory = (el) => new MDCTabScroller(el),
+    tabFactory: MDCTabFactory = (el) => new MDCTab(el),
+    tabScrollerFactory: MDCTabScrollerFactory = (el) => new MDCTabScroller(el)
   ) {
     this.tabList_ = this.instantiateTabs_(tabFactory);
     this.tabScroller_ = this.instantiateTabScroller_(tabScrollerFactory);
@@ -63,11 +69,14 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
 
   initialSyncWithDOM() {
     this.handleTabInteraction_ = (evt) =>
-        this.foundation.handleTabInteraction(evt);
+      this.foundation.handleTabInteraction(evt);
     this.handleKeyDown_ = (evt) => this.foundation.handleKeyDown(evt);
 
-    this.listen(MDCTabFoundation.strings.INTERACTED_EVENT, this.handleTabInteraction_);
-    this.listen('keydown', this.handleKeyDown_);
+    this.listen(
+      MDCTabFoundation.strings.INTERACTED_EVENT,
+      this.handleTabInteraction_
+    );
+    this.listen("keydown", this.handleKeyDown_);
 
     for (let i = 0; i < this.tabList_.length; i++) {
       if (this.tabList_[i].active) {
@@ -79,8 +88,11 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
 
   destroy() {
     super.destroy();
-    this.unlisten(MDCTabFoundation.strings.INTERACTED_EVENT, this.handleTabInteraction_);
-    this.unlisten('keydown', this.handleKeyDown_);
+    this.unlisten(
+      MDCTabFoundation.strings.INTERACTED_EVENT,
+      this.handleTabInteraction_
+    );
+    this.unlisten("keydown", this.handleKeyDown_);
     this.tabList_.forEach((tab) => tab.destroy());
 
     if (this.tabScroller_) {
@@ -95,21 +107,22 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
     const adapter: MDCTabBarAdapter = {
       scrollTo: (scrollX) => this.tabScroller_!.scrollTo(scrollX),
       incrementScroll: (scrollXIncrement) =>
-          this.tabScroller_!.incrementScroll(scrollXIncrement),
+        this.tabScroller_!.incrementScroll(scrollXIncrement),
       getScrollPosition: () => this.tabScroller_!.getScrollPosition(),
       getScrollContentWidth: () => this.tabScroller_!.getScrollContentWidth(),
       getOffsetWidth: () => (this.root as HTMLElement).offsetWidth,
-      isRTL: () => window.getComputedStyle(this.root).getPropertyValue(
-                       'direction') === 'rtl',
+      isRTL: () =>
+        window.getComputedStyle(this.root).getPropertyValue("direction") ===
+        "rtl",
       setActiveTab: (index) => this.foundation.activateTab(index),
       activateTabAtIndex: (index, clientRect) =>
-          this.tabList_[index].activate(clientRect),
+        this.tabList_[index].activate(clientRect),
       deactivateTabAtIndex: (index) => this.tabList_[index].deactivate(),
       focusTabAtIndex: (index) => this.tabList_[index].focus(),
       getTabIndicatorClientRectAtIndex: (index) =>
-          this.tabList_[index].computeIndicatorClientRect(),
+        this.tabList_[index].computeIndicatorClientRect(),
       getTabDimensionsAtIndex: (index) =>
-          this.tabList_[index].computeDimensions(),
+        this.tabList_[index].computeDimensions(),
       getPreviousActiveTabIndex: () => {
         for (let i = 0; i < this.tabList_.length; i++) {
           if (this.tabList_[i].active) {
@@ -132,8 +145,12 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
         return -1;
       },
       getTabListLength: () => this.tabList_.length,
-      notifyTabActivated: (index) => this.emit<MDCTabBarActivatedEventDetail>(
-          strings.TAB_ACTIVATED_EVENT, {index}, true),
+      notifyTabActivated: (index) =>
+        this.emit<MDCTabBarActivatedEventDetail>(
+          strings.TAB_ACTIVATED_EVENT,
+          { index },
+          true
+        ),
     };
     // tslint:enable:object-literal-sort-keys
     return new MDCTabBarFoundation(adapter);
@@ -175,9 +192,12 @@ export class MDCTabBar extends MDCComponent<MDCTabBarFoundation> {
   /**
    * Instantiates tab scroller component on the child tab scroller element
    */
-  private instantiateTabScroller_(tabScrollerFactory: MDCTabScrollerFactory): MDCTabScroller | null {
-    const tabScrollerElement =
-        this.root.querySelector(strings.TAB_SCROLLER_SELECTOR);
+  private instantiateTabScroller_(
+    tabScrollerFactory: MDCTabScrollerFactory
+  ): MDCTabScroller | null {
+    const tabScrollerElement = this.root.querySelector(
+      strings.TAB_SCROLLER_SELECTOR
+    );
     if (tabScrollerElement) {
       return tabScrollerFactory(tabScrollerElement);
     }

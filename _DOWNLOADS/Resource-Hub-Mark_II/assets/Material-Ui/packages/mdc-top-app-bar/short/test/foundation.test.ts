@@ -1,116 +1,111 @@
+import { createMockAdapter } from "../../../../testing/helpers/foundation";
+import { MDCTopAppBarFoundation } from "../../standard/foundation";
+import { MDCShortTopAppBarFoundation } from "../foundation";
 
-
-import {createMockAdapter} from '../../../../testing/helpers/foundation';
-import {MDCTopAppBarFoundation} from '../../standard/foundation';
-import {MDCShortTopAppBarFoundation} from '../foundation';
-
-describe('MDCShortTopAppBarFoundation', () => {
+describe("MDCShortTopAppBarFoundation", () => {
   const setupTest = () => {
     const mockAdapter = createMockAdapter(MDCTopAppBarFoundation);
-    mockAdapter.hasClass.withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
-        .and.returnValue(true);
+    mockAdapter.hasClass
+      .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
+      .and.returnValue(true);
     const foundation = new MDCShortTopAppBarFoundation(mockAdapter);
-    return {foundation, mockAdapter};
+    return { foundation, mockAdapter };
   };
 
-  it('short top app bar: scrollHandler calls #adapter.getViewportScrollY',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.init();
-       foundation.handleTargetScroll();
-       // called twice because its called once in the standard foundation
-       expect(mockAdapter.getViewportScrollY).toHaveBeenCalledTimes(2);
-     });
+  it("short top app bar: scrollHandler calls #adapter.getViewportScrollY", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.init();
+    foundation.handleTargetScroll();
+    // called twice because its called once in the standard foundation
+    expect(mockAdapter.getViewportScrollY).toHaveBeenCalledTimes(2);
+  });
 
-  it('short top app bar: scrollHandler does not call getViewportScrollY method ' +
-         'if short collapsed class is on the component',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass
-           .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS)
-           .and.returnValue(true);
-       foundation.init();
-       expect(mockAdapter.getViewportScrollY).not.toHaveBeenCalled();
-     });
+  it(
+    "short top app bar: scrollHandler does not call getViewportScrollY method " +
+      "if short collapsed class is on the component",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      mockAdapter.hasClass
+        .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS)
+        .and.returnValue(true);
+      foundation.init();
+      expect(mockAdapter.getViewportScrollY).not.toHaveBeenCalled();
+    }
+  );
 
-  it('short top app bar: #adapter.addClass called when page is scrolled from the top',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("short top app bar: #adapter.addClass called when page is scrolled from the top", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       mockAdapter.hasClass
-           .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS)
-           .and.returnValue(false);
-       mockAdapter.getViewportScrollY.and.returnValue(1);
-       foundation.init();
-       foundation.handleTargetScroll();
+    mockAdapter.hasClass
+      .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS)
+      .and.returnValue(false);
+    mockAdapter.getViewportScrollY.and.returnValue(1);
+    foundation.init();
+    foundation.handleTargetScroll();
 
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(
-               MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS);
-       expect(mockAdapter.addClass).toHaveBeenCalledTimes(1);
-     });
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS
+    );
+    expect(mockAdapter.addClass).toHaveBeenCalledTimes(1);
+  });
 
-  it('short top app bar: #adapter.removeClass called when page is scrolled to the top',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("short top app bar: #adapter.removeClass called when page is scrolled to the top", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       mockAdapter.hasClass
-           .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS)
-           .and.returnValue(false);
-       mockAdapter.getTotalActionItems.and.returnValue(0);
-       foundation.init();
+    mockAdapter.hasClass
+      .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS)
+      .and.returnValue(false);
+    mockAdapter.getTotalActionItems.and.returnValue(0);
+    foundation.init();
 
-       // Apply the collapsed class
-       mockAdapter.getViewportScrollY.and.returnValue(1);
-       foundation.handleTargetScroll();
+    // Apply the collapsed class
+    mockAdapter.getViewportScrollY.and.returnValue(1);
+    foundation.handleTargetScroll();
 
-       // Test removing it
-       mockAdapter.getViewportScrollY.and.returnValue(0);
-       foundation.handleTargetScroll();
+    // Test removing it
+    mockAdapter.getViewportScrollY.and.returnValue(0);
+    foundation.handleTargetScroll();
 
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(
-               MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS);
-       expect(mockAdapter.removeClass).toHaveBeenCalledTimes(1);
-     });
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      MDCTopAppBarFoundation.cssClasses.SHORT_COLLAPSED_CLASS
+    );
+    expect(mockAdapter.removeClass).toHaveBeenCalledTimes(1);
+  });
 
-  it('short top app bar: #adapter.addClass is called if it has an action item',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getTotalActionItems.and.returnValue(1);
-       foundation.init();
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(
-               MDCTopAppBarFoundation.cssClasses.SHORT_HAS_ACTION_ITEM_CLASS);
-       expect(mockAdapter.addClass).toHaveBeenCalledTimes(1);
-     });
+  it("short top app bar: #adapter.addClass is called if it has an action item", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getTotalActionItems.and.returnValue(1);
+    foundation.init();
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCTopAppBarFoundation.cssClasses.SHORT_HAS_ACTION_ITEM_CLASS
+    );
+    expect(mockAdapter.addClass).toHaveBeenCalledTimes(1);
+  });
 
-  it('short top app bar: #adapter.addClass is not called if it does not have an action item',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getTotalActionItems.and.returnValue(0);
-       foundation.init();
-       expect(mockAdapter.addClass)
-           .not.toHaveBeenCalledWith(
-               MDCTopAppBarFoundation.cssClasses.SHORT_HAS_ACTION_ITEM_CLASS);
-     });
+  it("short top app bar: #adapter.addClass is not called if it does not have an action item", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getTotalActionItems.and.returnValue(0);
+    foundation.init();
+    expect(mockAdapter.addClass).not.toHaveBeenCalledWith(
+      MDCTopAppBarFoundation.cssClasses.SHORT_HAS_ACTION_ITEM_CLASS
+    );
+  });
 
-  it('isCollapsed returns false initially if top-app-bar has not scrolled',
-     () => {
-       const {foundation} = setupTest();
-       expect(foundation.isCollapsed).toBe(false);
-     });
+  it("isCollapsed returns false initially if top-app-bar has not scrolled", () => {
+    const { foundation } = setupTest();
+    expect(foundation.isCollapsed).toBe(false);
+  });
 
-  it('isCollapsed returns true if top-app-bar is collapsed', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("isCollapsed returns true if top-app-bar is collapsed", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.getViewportScrollY.and.returnValue(1);
 
     foundation.handleTargetScroll();
     expect(foundation.isCollapsed).toBe(true);
   });
 
-  it('isCollapsed returns false when page is scrolled to the top', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("isCollapsed returns false when page is scrolled to the top", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.getViewportScrollY.and.returnValue(0);
     foundation.init();
     mockAdapter.getViewportScrollY.and.returnValue(1);
@@ -120,19 +115,21 @@ describe('MDCShortTopAppBarFoundation', () => {
     expect(foundation.isCollapsed).toBe(false);
   });
 
-  it('setAlwaysCollapsed(true) sets bar to be collapsed', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.hasClass.withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
-        .and.returnValue(false);
+  it("setAlwaysCollapsed(true) sets bar to be collapsed", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass
+      .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
+      .and.returnValue(false);
     foundation.init();
     foundation.setAlwaysCollapsed(true);
     expect(foundation.isCollapsed).toBe(true);
   });
 
-  it('setAlwaysCollapsed(true) will keep bar collapsed', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.hasClass.withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
-        .and.returnValue(false);
+  it("setAlwaysCollapsed(true) will keep bar collapsed", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass
+      .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
+      .and.returnValue(false);
     mockAdapter.getViewportScrollY.and.returnValue(0);
     foundation.init();
     foundation.setAlwaysCollapsed(true);
@@ -140,15 +137,16 @@ describe('MDCShortTopAppBarFoundation', () => {
     foundation.handleTargetScroll();
     mockAdapter.getViewportScrollY.and.returnValue(0);
     foundation.handleTargetScroll();
-    expect(mockAdapter.removeClass)
-        .not.toHaveBeenCalledWith(
-            MDCTopAppBarFoundation.cssClasses.SHORT_CLASS);
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      MDCTopAppBarFoundation.cssClasses.SHORT_CLASS
+    );
   });
 
-  it('setAlwaysCollapsed(false) will keep bar collapsed when scrolled', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.hasClass.withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
-        .and.returnValue(false);
+  it("setAlwaysCollapsed(false) will keep bar collapsed when scrolled", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass
+      .withArgs(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS)
+      .and.returnValue(false);
     mockAdapter.getViewportScrollY.and.returnValue(0);
     foundation.init();
     foundation.setAlwaysCollapsed(true);
@@ -161,19 +159,19 @@ describe('MDCShortTopAppBarFoundation', () => {
     expect(foundation.isCollapsed).toBe(true);
   });
 
-  it('setAlwaysCollapsed is called on init', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("setAlwaysCollapsed is called on init", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
     expect(mockAdapter.getViewportScrollY).toHaveBeenCalledTimes(1);
   });
 
-  it('getAlwaysCollapsed returns false by default', () => {
-    const {foundation} = setupTest();
+  it("getAlwaysCollapsed returns false by default", () => {
+    const { foundation } = setupTest();
     expect(foundation.getAlwaysCollapsed()).toBe(false);
   });
 
-  it('getAlwaysCollapsed matches value of setAlwaysCollapsed', () => {
-    const {foundation} = setupTest();
+  it("getAlwaysCollapsed matches value of setAlwaysCollapsed", () => {
+    const { foundation } = setupTest();
     foundation.setAlwaysCollapsed(false);
     expect(foundation.getAlwaysCollapsed()).toBe(false);
     foundation.setAlwaysCollapsed(true);

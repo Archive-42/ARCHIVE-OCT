@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import * as React from 'react';
-import {ListItem, ListItemProps} from '@material/react-list';
+import * as React from "react";
+import { ListItem, ListItemProps } from "@material/react-list";
 
 export interface MenuListItemProps<T extends HTMLElement = HTMLElement>
   extends ListItemProps<T> {
@@ -34,7 +34,7 @@ class MenuListItem<T extends HTMLElement = HTMLElement> extends React.Component<
 > {
   render() {
     const {
-      role = 'menuitem',
+      role = "menuitem",
       children,
       /* eslint-disable @typescript-eslint/no-unused-vars */
       computeBoundingRect,

@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 type ChildType = React.ReactElement<
   React.HTMLProps<HTMLButtonElement | HTMLAnchorElement>
@@ -41,13 +41,13 @@ const addButtonClassToChildren = (children: ChildType | ChildType[]) => {
       CSS_CLASSES.ACTION,
       CSS_CLASSES.ACTION_BUTTON
     );
-    const props = Object.assign({}, (item as ChildType).props, {className});
+    const props = Object.assign({}, (item as ChildType).props, { className });
     return React.cloneElement(item as ChildType, props);
   });
 };
 
 const ActionButtons: React.FunctionComponent<ActionButtonsProps> = ({
-  className = '',
+  className = "",
   children,
   ...otherProps
 }) => {

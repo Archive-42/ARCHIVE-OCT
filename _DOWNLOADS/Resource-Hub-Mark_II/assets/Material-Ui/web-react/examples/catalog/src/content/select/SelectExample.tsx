@@ -1,31 +1,31 @@
-import React from 'react';
+import React from "react";
 
 import Select, {
   Option,
   SelectHelperText,
   SelectIcon,
-} from '@material/react-select';
-import {Cell, Grid, Row} from '@material/react-layout-grid';
-import MaterialIcon from '@material/react-material-icon';
+} from "@material/react-select";
+import { Cell, Grid, Row } from "@material/react-layout-grid";
+import MaterialIcon from "@material/react-material-icon";
 
 class EnhancedSelect extends React.Component<any> {
-  state = {value: 'Korea'};
+  state = { value: "Korea" };
 
   onEnhancedChange = (_: number, item: Element) =>
-    this.setState({value: item.getAttribute('data-value')});
+    this.setState({ value: item.getAttribute("data-value") });
 
   render() {
     return (
       <Select
         {...this.props}
         enhanced
-        label='Destination'
+        label="Destination"
         value={this.state.value}
         onEnhancedChange={this.onEnhancedChange}
       >
-        <Option value='USA'>USA</Option>
-        <Option value='Korea'>Korea</Option>
-        <Option value='Japan'>Japan</Option>
+        <Option value="USA">USA</Option>
+        <Option value="Korea">Korea</Option>
+        <Option value="Japan">Japan</Option>
       </Select>
     );
   }
@@ -52,7 +52,7 @@ export const SelectExample = () => (
         <EnhancedSelect
           leadingIcon={
             <SelectIcon>
-              <MaterialIcon icon='flight' />
+              <MaterialIcon icon="flight" />
             </SelectIcon>
           }
         />

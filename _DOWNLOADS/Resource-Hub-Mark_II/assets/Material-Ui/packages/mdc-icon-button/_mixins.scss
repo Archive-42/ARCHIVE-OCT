@@ -23,14 +23,14 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:math';
-@use '@material/density/functions' as density-functions;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/rtl/mixins' as rtl;
-@use '@material/theme/theme';
-@use './variables';
+@use "sass:math";
+@use "@material/density/functions" as density-functions;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/rtl/mixins" as rtl;
+@use "@material/theme/theme";
+@use "./variables";
 
 @mixin core-styles($query: feature-targeting.all()) {
   @include without-ripple($query);

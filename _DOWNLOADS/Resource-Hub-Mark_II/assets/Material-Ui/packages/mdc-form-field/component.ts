@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCRipple} from '@material/ripple/component';
-import {MDCFormFieldAdapter} from './adapter';
-import {MDCFormFieldFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCRipple } from "@material/ripple/component";
+import { MDCFormFieldAdapter } from "./adapter";
+import { MDCFormFieldFoundation } from "./foundation";
 
 export interface MDCFormFieldInput {
   readonly ripple: MDCRipple | undefined;
@@ -37,8 +37,8 @@ export class MDCFormField extends MDCComponent<MDCFormFieldFoundation> {
 
   input?: MDCFormFieldInput;
 
-  private labelEl(): Element|null {
-    const {LABEL_SELECTOR} = MDCFormFieldFoundation.strings;
+  private labelEl(): Element | null {
+    const { LABEL_SELECTOR } = MDCFormFieldFoundation.strings;
     return this.root.querySelector(LABEL_SELECTOR);
   }
 

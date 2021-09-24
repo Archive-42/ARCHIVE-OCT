@@ -18,11 +18,11 @@ and range sliders (two thumbs). It is backed by the browser
 
 **Contents**
 
-*   [Using sliders](#using-sliders)
-*   [Sliders](#sliders)
-*   [Other variants](#other-variants)
-*   [Additional information](#additional-information)
-*   [API](#api)
+- [Using sliders](#using-sliders)
+- [Sliders](#sliders)
+- [Other variants](#other-variants)
+- [Additional information](#additional-information)
+- [API](#api)
 
 ## Using sliders
 
@@ -43,9 +43,9 @@ npm install @material/slider
 ### JavaScript instantiation
 
 ```js
-import {MDCSlider} from '@material/slider';
+import { MDCSlider } from "@material/slider";
 
-const slider = new MDCSlider(document.querySelector('.mdc-slider'));
+const slider = new MDCSlider(document.querySelector(".mdc-slider"));
 ```
 
 **Note**: See [Importing the JS component](../../docs/importing-js.md) for more
@@ -61,18 +61,18 @@ TalkBack on Android.
 Per the spec, ensure that the following attributes are added to the
 `input` element(s):
 
-* `value`: Value representing the current value.
-* `min`: Value representing the minimum allowed value.
-* `max`: Value representing the maximum allowed value.
-* `aria-label` or `aria-labelledby`: Accessible label for the slider.
+- `value`: Value representing the current value.
+- `min`: Value representing the minimum allowed value.
+- `max`: Value representing the maximum allowed value.
+- `aria-label` or `aria-labelledby`: Accessible label for the slider.
 
 If the value is not user-friendly (e.g. a number to
 represent the day of the week), also set the following:
 
-* `aria-valuetext`: Set this input attribute to a string that makes the slider
-value understandable, e.g. 'Monday'.
-* Add a function to map the slider value to `aria-valuetext` via the
-`MDCSlider#setValueToAriaValueTextFn` method.
+- `aria-valuetext`: Set this input attribute to a string that makes the slider
+  value understandable, e.g. 'Monday'.
+- Add a function to map the slider value to `aria-valuetext` via the
+  `MDCSlider#setValueToAriaValueTextFn` method.
 
 ## Sliders
 
@@ -94,7 +94,15 @@ element.
 
 ```html
 <div class="mdc-slider">
-  <input class="mdc-slider__input" type="range" min="0" max="100" value="50" name="volume" aria-label="Continuous slider demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    name="volume"
+    aria-label="Continuous slider demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
@@ -113,8 +121,24 @@ element.
 
 ```html
 <div class="mdc-slider mdc-slider--range">
-  <input class="mdc-slider__input" type="range" min="0" max="70" value="30" name="rangeStart" aria-label="Continuous range slider demo">
-  <input class="mdc-slider__input" type="range" min="30" max="100" value="70" name="rangeEnd" aria-label="Continuous range slider demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="70"
+    value="30"
+    name="rangeStart"
+    aria-label="Continuous range slider demo"
+  />
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="30"
+    max="100"
+    value="70"
+    name="rangeEnd"
+    aria-label="Continuous range slider demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
@@ -139,13 +163,22 @@ allows a user to select an exact value.
 
 To create a discrete slider, add the following:
 
-*   `mdc-slider--discrete` class on the root element.
-*   Value indicator element (`mdc-slider__value-indicator-container`), as shown
-    below.
+- `mdc-slider--discrete` class on the root element.
+- Value indicator element (`mdc-slider__value-indicator-container`), as shown
+  below.
 
 ```html
 <div class="mdc-slider mdc-slider--discrete">
-  <input class="mdc-slider__input" type="range" min="0" max="100" value="50" name="volume" step="10" aria-label="Discrete slider demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    name="volume"
+    step="10"
+    aria-label="Discrete slider demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
@@ -155,9 +188,7 @@ To create a discrete slider, add the following:
   <div class="mdc-slider__thumb">
     <div class="mdc-slider__value-indicator-container">
       <div class="mdc-slider__value-indicator">
-        <span class="mdc-slider__value-indicator-text">
-          50
-        </span>
+        <span class="mdc-slider__value-indicator-text"> 50 </span>
       </div>
     </div>
     <div class="mdc-slider__thumb-knob"></div>
@@ -174,15 +205,24 @@ predetermined values to which the user can move the slider.
 
 To add tick marks to a discrete slider, add the following:
 
-*   `mdc-slider--tick-marks` class on the root element
-*   `mdc-slider__tick-marks` element as a child of the `mdc-slider__track`
-    element
-*   `mdc-slider__tick-mark--active` and `mdc-slider__tick-mark--inactive`
-    elements as children of the `mdc-slider__tick-marks` element
+- `mdc-slider--tick-marks` class on the root element
+- `mdc-slider__tick-marks` element as a child of the `mdc-slider__track`
+  element
+- `mdc-slider__tick-mark--active` and `mdc-slider__tick-mark--inactive`
+  elements as children of the `mdc-slider__tick-marks` element
 
 ```html
 <div class="mdc-slider mdc-slider--discrete mdc-slider--tick-marks">
-  <input class="mdc-slider__input" type="range" min="0" max="100" value="50" name="volume" step="10" aria-label="Discrete slider with tick marks demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    name="volume"
+    step="10"
+    aria-label="Discrete slider with tick marks demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
@@ -205,9 +245,7 @@ To add tick marks to a discrete slider, add the following:
   <div class="mdc-slider__thumb">
     <div class="mdc-slider__value-indicator-container">
       <div class="mdc-slider__value-indicator">
-        <span class="mdc-slider__value-indicator-text">
-          50
-        </span>
+        <span class="mdc-slider__value-indicator-text"> 50 </span>
       </div>
     </div>
     <div class="mdc-slider__thumb-knob"></div>
@@ -219,8 +257,26 @@ To add tick marks to a discrete slider, add the following:
 
 ```html
 <div class="mdc-slider mdc-slider--range mdc-slider--discrete">
-  <input class="mdc-slider__input" type="range" min="0" max="50" value="20" step="10" name="rangeStart" aria-label="Discrete range slider demo">
-  <input class="mdc-slider__input" type="range" min="20" max="100" value="50" step="10" name="rangeEnd" aria-label="Discrete range slider demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="50"
+    value="20"
+    step="10"
+    name="rangeStart"
+    aria-label="Discrete range slider demo"
+  />
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="20"
+    max="100"
+    value="50"
+    step="10"
+    name="rangeEnd"
+    aria-label="Discrete range slider demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
@@ -230,9 +286,7 @@ To add tick marks to a discrete slider, add the following:
   <div class="mdc-slider__thumb">
     <div class="mdc-slider__value-indicator-container">
       <div class="mdc-slider__value-indicator">
-        <span class="mdc-slider__value-indicator-text">
-          20
-        </span>
+        <span class="mdc-slider__value-indicator-text"> 20 </span>
       </div>
     </div>
     <div class="mdc-slider__thumb-knob"></div>
@@ -240,9 +294,7 @@ To add tick marks to a discrete slider, add the following:
   <div class="mdc-slider__thumb">
     <div class="mdc-slider__value-indicator-container">
       <div class="mdc-slider__value-indicator">
-        <span class="mdc-slider__value-indicator-text">
-          50
-        </span>
+        <span class="mdc-slider__value-indicator-text"> 50 </span>
       </div>
     </div>
     <div class="mdc-slider__thumb-knob"></div>
@@ -256,12 +308,22 @@ To add tick marks to a discrete slider, add the following:
 
 To disable a slider, add the following:
 
-*   `mdc-slider--disabled` class on the root element
-*   `disabled` attribute on the input element
+- `mdc-slider--disabled` class on the root element
+- `disabled` attribute on the input element
 
 ```html
 <div class="mdc-slider mdc-slider--disabled">
-  <input class="mdc-slider__input" type="range" min="0" max="100" value="50" step="10" disabled name="volume" aria-label="Disabled slider demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    step="10"
+    disabled
+    name="volume"
+    aria-label="Disabled slider demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
@@ -287,7 +349,13 @@ as shown below:
 
 ```html
 <div class="mdc-slider">
-  <input class="mdc-slider__input" aria-label="Slider demo" min="0" max="100" value="75">
+  <input
+    class="mdc-slider__input"
+    aria-label="Slider demo"
+    min="0"
+    max="100"
+    value="75"
+  />
   <!-- ... -->
 </div>
 ```
@@ -306,11 +374,11 @@ positions before component initialization, mark up the DOM as follows:
   percentage of the entire track. Set `left:calc(<thumbEndPercent>% - 24px)`
   as an inline style on the end thumb (`mdc-slider__thumb`) element
   (or `right` for RTL layouts).
-- *[Range sliders only]* Calculate `thumbStartPercent`, the initial position
+- _[Range sliders only]_ Calculate `thumbStartPercent`, the initial position
   of the start thumb as a percentage of the entire track. Set
   `left:calc(<thumbStartPercent>% - 24px)` as an inline style on the
   start thumb (`mdc-slider__thumb`) element (or `right` for RTL layouts).
-- *[Range sliders only]* Using the previously calculated `thumbStartPercent`,
+- _[Range sliders only]_ Using the previously calculated `thumbStartPercent`,
   set `left:<thumbStartPercent>%` as an inline style on the
   `mdc-slider__track--active_fill` element (or `right` for RTL layouts).
 
@@ -324,13 +392,31 @@ This is an example of a range slider with internal values of
 
 ```html
 <div class="mdc-slider mdc-slider--range">
-  <input class="mdc-slider__input" type="range" min="0" max="70" value="30" name="rangeStart" aria-label="Range slider demo">
-  <input class="mdc-slider__input" type="range" min="30" max="100" value="70" name="rangeEnd" aria-label="Range slider demo">
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="0"
+    max="70"
+    value="30"
+    name="rangeStart"
+    aria-label="Range slider demo"
+  />
+  <input
+    class="mdc-slider__input"
+    type="range"
+    min="30"
+    max="100"
+    value="70"
+    name="rangeEnd"
+    aria-label="Range slider demo"
+  />
   <div class="mdc-slider__track">
     <div class="mdc-slider__track--inactive"></div>
     <div class="mdc-slider__track--active">
-      <div class="mdc-slider__track--active_fill"
-           style="transform:scaleX(.4); left:30%"></div>
+      <div
+        class="mdc-slider__track--active_fill"
+        style="transform:scaleX(.4); left:30%"
+      ></div>
     </div>
   </div>
   <div class="mdc-slider__thumb" style="left:calc(30%-24px)">
@@ -346,35 +432,35 @@ This is an example of a range slider with internal values of
 
 ### Sass mixins
 
-Mixin | Description
---- | ---
-`track-active-color($color)` | Sets the color of the active track.
-`track-inactive-color($color, $opacity)` | Sets the color and opacity of the inactive track.
-`thumb-color($color)` | Sets the color of the thumb.
-`thumb-ripple-color($color)` | Sets the color of the thumb ripple.
-`tick-mark-active-color($color)` | Sets the color of tick marks on the active track.
-`tick-mark-inactive-color($color)` | Sets the color of tick marks on the inactive track.
-`value-indicator-color($color, $opaicty)` | Sets the color and opacity of the value indicator.
-`value-indicator-text-color($color, $opaicty)` | Sets the color of the value indicator text.
+| Mixin                                          | Description                                         |
+| ---------------------------------------------- | --------------------------------------------------- |
+| `track-active-color($color)`                   | Sets the color of the active track.                 |
+| `track-inactive-color($color, $opacity)`       | Sets the color and opacity of the inactive track.   |
+| `thumb-color($color)`                          | Sets the color of the thumb.                        |
+| `thumb-ripple-color($color)`                   | Sets the color of the thumb ripple.                 |
+| `tick-mark-active-color($color)`               | Sets the color of tick marks on the active track.   |
+| `tick-mark-inactive-color($color)`             | Sets the color of tick marks on the inactive track. |
+| `value-indicator-color($color, $opaicty)`      | Sets the color and opacity of the value indicator.  |
+| `value-indicator-text-color($color, $opaicty)` | Sets the color of the value indicator text.         |
 
 ### `MDCSlider` events
 
-Event name | `event.detail` | Description
---- | --- | ---
-`MDCSlider:change` | `MDCSliderChangeEventDetail` | Emitted when a value has been changed and committed from a user event. Mirrors the native `change` event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
-`MDCSlider:input` | `MDCSliderChangeEventDetail` | Emitted when a value has been changed from a user event. Mirrors the native `input` event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+| Event name         | `event.detail`               | Description                                                                                                                                                                         |
+| ------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `MDCSlider:change` | `MDCSliderChangeEventDetail` | Emitted when a value has been changed and committed from a user event. Mirrors the native `change` event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event |
+| `MDCSlider:input`  | `MDCSliderChangeEventDetail` | Emitted when a value has been changed from a user event. Mirrors the native `input` event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event                 |
 
 ### `MDCSlider` methods
 
-Method Signature | Description
---- | ---
-`getValueStart() => number` | Gets the value of the start thumb (only applicable for range sliders).
-`setValueStart(valueStart: number) => void` | Sets the value of the start thumb (only applicable for range sliders).
-`getValue() => number` | Gets the value of the thumb (for single point sliders), or the end thumb (for range sliders).
-`setValue(value: number) => void` | Sets the value of the thumb (for single point sliders), or the end thumb (for range sliders).
-`getDisabled() => boolean` | Gets the disabled state of the slider.
-`setDisabled(disabled: boolean) => void` | Sets the disabled state of the slider.
-`setValueToAriaValueTextFn((mapFn: ((value: number) => string)|null) => void` | Sets a function that maps the slider value to value of the `aria-valuetext` attribute on the thumb element. If not set, the `aria-valuetext` attribute is unchanged when the value changes.
+| Method Signature                                               | Description                                                                                   |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `getValueStart() => number`                                    | Gets the value of the start thumb (only applicable for range sliders).                        |
+| `setValueStart(valueStart: number) => void`                    | Sets the value of the start thumb (only applicable for range sliders).                        |
+| `getValue() => number`                                         | Gets the value of the thumb (for single point sliders), or the end thumb (for range sliders). |
+| `setValue(value: number) => void`                              | Sets the value of the thumb (for single point sliders), or the end thumb (for range sliders). |
+| `getDisabled() => boolean`                                     | Gets the disabled state of the slider.                                                        |
+| `setDisabled(disabled: boolean) => void`                       | Sets the disabled state of the slider.                                                        |
+| `setValueToAriaValueTextFn((mapFn: ((value: number) => string) | null) => void`                                                                                | Sets a function that maps the slider value to value of the `aria-valuetext` attribute on the thumb element. If not set, the `aria-valuetext` attribute is unchanged when the value changes. |
 
 ### Usage within frameworks
 

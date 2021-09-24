@@ -20,10 +20,10 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:color';
-@use '@material/animation/variables' as animation-variables;
-@use '@material/density/variables' as density-variables;
-@use '@material/theme/theme-color';
+@use "sass:color";
+@use "@material/animation/variables" as animation-variables;
+@use "@material/density/variables" as density-variables;
+@use "@material/theme/theme-color";
 
 $fill-color-default: color.mix(
   theme-color.prop-value(on-surface),

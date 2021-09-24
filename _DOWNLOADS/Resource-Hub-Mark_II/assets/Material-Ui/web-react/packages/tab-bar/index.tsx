@@ -1,9 +1,9 @@
-import React from 'react';
-import classnames from 'classnames';
-import TabScroller from '@material/react-tab-scroller';
-import Tab, {TabProps} from '@material/react-tab'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import {MDCTabBarFoundation} from '@material/tab-bar/foundation';
-import {MDCTabBarAdapter} from '@material/tab-bar/adapter';
+import React from "react";
+import classnames from "classnames";
+import TabScroller from "@material/react-tab-scroller";
+import Tab, { TabProps } from "@material/react-tab"; // eslint-disable-line @typescript-eslint/no-unused-vars
+import { MDCTabBarFoundation } from "@material/tab-bar/foundation";
+import { MDCTabBarAdapter } from "@material/tab-bar/adapter";
 
 export interface TabBarProps extends React.HTMLAttributes<HTMLDivElement> {
   indexInView?: number;
@@ -36,7 +36,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
     indexInView: 0,
     activeIndex: 0,
     handleActiveIndexUpdate: () => {},
-    className: '',
+    className: "",
     children: [],
     isRtl: false,
   };
@@ -44,7 +44,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
   componentDidMount() {
     this.foundation = new MDCTabBarFoundation(this.adapter);
     this.foundation.init();
-    const {activeIndex, indexInView} = this.props;
+    const { activeIndex, indexInView } = this.props;
     if (this.tabList[activeIndex]) {
       // new DOMRect is not IE11 compatible
       const defaultDOMRect = {
@@ -66,7 +66,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
 
   componentDidUpdate(prevProps: TabBarProps) {
     if (this.props.activeIndex !== prevProps.activeIndex) {
-      this.setState({previousActiveIndex: prevProps.activeIndex}, () =>
+      this.setState({ previousActiveIndex: prevProps.activeIndex }, () =>
         this.foundation.activateTab(this.props.activeIndex)
       );
     }
@@ -80,7 +80,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
   }
 
   get classes() {
-    return classnames('mdc-tab-bar', this.props.className);
+    return classnames("mdc-tab-bar", this.props.className);
   }
 
   get adapter(): MDCTabBarAdapter {
@@ -145,7 +145,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
   onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     // Persist the synthetic event to access its `key`.
     e.persist();
-    this.setState({previousActiveIndex: this.props.activeIndex}, () =>
+    this.setState({ previousActiveIndex: this.props.activeIndex }, () =>
       this.foundation.handleKeyDown(e.nativeEvent)
     );
     if (this.props.onKeyDown) {
@@ -158,7 +158,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
     index: number,
     onClick?: React.MouseEventHandler<HTMLButtonElement>
   ) => {
-    this.setState({previousActiveIndex: this.props.activeIndex}, () =>
+    this.setState({ previousActiveIndex: this.props.activeIndex }, () =>
       this.adapter.setActiveTab(index)
     );
     if (onClick) {
@@ -182,9 +182,9 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
 
     return (
       <div
-        dir={isRtl ? 'rtl' : 'ltr'}
+        dir={isRtl ? "rtl" : "ltr"}
         className={this.classes}
-        role='tablist'
+        role="tablist"
         onKeyDown={this.onKeyDown}
         ref={this.tabBarRef}
         {...otherProps}
@@ -200,7 +200,7 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
   }
 
   renderTab = (tab: React.ReactElement<TabProps>, index: number) => {
-    const {children, onClick, ...otherProps} = tab.props;
+    const { children, onClick, ...otherProps } = tab.props;
     const props = {
       onClick: (e: React.MouseEvent<HTMLButtonElement>) =>
         this.onClickTab(e, index, onClick),
@@ -212,5 +212,5 @@ class TabBar extends React.Component<TabBarProps, TabBarState> {
   };
 }
 
-export {Tab};
+export { Tab };
 export default TabBar;

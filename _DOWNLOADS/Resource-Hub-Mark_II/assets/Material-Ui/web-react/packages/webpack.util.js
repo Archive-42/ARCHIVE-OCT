@@ -20,20 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-const path = require('path');
+const path = require("path");
 
 function tryResolve_(url, sourceFilename) {
   // Put require.resolve in a try/catch to avoid node-sass failing with cryptic libsass errors when the importer throws
   try {
-    return require.resolve(url, {paths: [path.dirname(sourceFilename)]});
+    return require.resolve(url, { paths: [path.dirname(sourceFilename)] });
   } catch (e) {
-    return '';
+    return "";
   }
 }
 
 function tryResolveScss(url, sourceFilename) {
   // Support omission of .scss and leading _
-  const normalizedUrl = path.extname(url) == '.scss' ? url : `${url}.scss`;
+  const normalizedUrl = path.extname(url) == ".scss" ? url : `${url}.scss`;
   const relativeUrl = path.join(
     path.dirname(normalizedUrl),
     `_${path.basename(normalizedUrl)}`
@@ -46,11 +46,11 @@ function tryResolveScss(url, sourceFilename) {
 }
 
 function importer(url, prev) {
-  if (url.startsWith('@material')) {
+  if (url.startsWith("@material")) {
     const resolved = tryResolveScss(url, prev);
-    return {file: resolved || url};
+    return { file: resolved || url };
   }
-  return {file: url};
+  return { file: url };
 }
 
-module.exports = {importer};
+module.exports = { importer };

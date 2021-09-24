@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 export interface RowProps<T> extends React.HTMLProps<T> {
   className?: string;
@@ -33,9 +33,9 @@ export interface RowProps<T> extends React.HTMLProps<T> {
 const Row: <T extends {} = HTMLDivElement>(
   props: RowProps<T>
 ) => React.ReactElement<any> = ({
-  children = '',
+  children = "",
   className,
-  tag: Tag = 'div',
+  tag: Tag = "div",
   ...otherProps
 }) => {
   const classes = classnames(CSS_CLASSES.INNER, className);

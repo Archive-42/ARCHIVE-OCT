@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCTopAppBarAdapter} from './adapter';
-import {cssClasses, numbers, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCTopAppBarAdapter } from "./adapter";
+import { cssClasses, numbers, strings } from "./constants";
 
 export class MDCTopAppBarBaseFoundation extends MDCFoundation<MDCTopAppBarAdapter> {
   static get strings() {
@@ -58,7 +58,7 @@ export class MDCTopAppBarBaseFoundation extends MDCFoundation<MDCTopAppBarAdapte
 
   /* istanbul ignore next: optional argument is not a branch statement */
   constructor(adapter?: Partial<MDCTopAppBarAdapter>) {
-    super({...MDCTopAppBarBaseFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCTopAppBarBaseFoundation.defaultAdapter, ...adapter });
   }
 
   /** Other variants of TopAppBar foundation overrides this method */

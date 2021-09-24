@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCLineRippleFoundation} from '@material/line-ripple/foundation';
-import {MDCLineRippleAdapter} from '@material/line-ripple/adapter';
+import React from "react";
+import classnames from "classnames";
+import { MDCLineRippleFoundation } from "@material/line-ripple/foundation";
+import { MDCLineRippleAdapter } from "@material/line-ripple/adapter";
 
 export interface LineRippleProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -41,7 +41,7 @@ export default class LineRipple extends React.Component<
   LineRippleState
 > {
   static defaultProps = {
-    className: '',
+    className: "",
     style: {},
     active: false,
     rippleCenter: 0,
@@ -73,7 +73,7 @@ export default class LineRipple extends React.Component<
     // isNaN checks are a temporary fix until MDC Web has fix
     // https://github.com/material-components/material-components-web-react/issues/275
     // https://github.com/material-components/material-components-web/issues/3643
-    const {rippleCenter} = this.props;
+    const { rippleCenter } = this.props;
     if (
       rippleCenter &&
       rippleCenter !== prevProps.rippleCenter &&
@@ -90,11 +90,11 @@ export default class LineRipple extends React.Component<
   get adapter(): MDCLineRippleAdapter {
     return {
       addClass: (className: string) =>
-        this.setState({classList: this.state.classList.add(className)}),
+        this.setState({ classList: this.state.classList.add(className) }),
       removeClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) => this.state.classList.has(className),
       setStyle: this.setStyle,
@@ -104,22 +104,22 @@ export default class LineRipple extends React.Component<
   }
 
   get classes() {
-    const {className} = this.props;
-    const {classList} = this.state;
-    return classnames('mdc-line-ripple', Array.from(classList), className);
+    const { className } = this.props;
+    const { classList } = this.state;
+    return classnames("mdc-line-ripple", Array.from(classList), className);
   }
 
   setStyle = (varName: string, value: string) => {
     const styleName = varName.replace(/-(\w)/g, (_, v) => v.toUpperCase());
     const updatedStyle: any = Object.assign({}, this.state.style);
     updatedStyle[styleName] = value;
-    this.setState({style: updatedStyle});
+    this.setState({ style: updatedStyle });
   };
 
   // TODO: look into possible performance hit
   getMergedStyles = () => {
-    const {style: wrappedStyle} = this.props;
-    const {style} = this.state;
+    const { style: wrappedStyle } = this.props;
+    const { style } = this.state;
     return Object.assign({}, style, wrappedStyle);
   };
 

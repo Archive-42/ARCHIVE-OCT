@@ -25,9 +25,9 @@
  * @fileoverview Webpack plugin that adds a copyright notice at the top of all output files.
  */
 
-'use strict';
+"use strict";
 
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 class CopyrightBannerPlugin extends webpack.BannerPlugin {
   constructor() {

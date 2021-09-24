@@ -21,90 +21,98 @@
  * THE SOFTWARE.
  */
 
-
-import {getCorrectEventName, getCorrectPropertyName,} from '../../mdc-animation/index';
+import {
+  getCorrectEventName,
+  getCorrectPropertyName,
+} from "../../mdc-animation/index";
 
 // Has no properties without a prefix
 const legacyWindowObj = {
   document: {
     createElement: () => ({
       style: {
-        'webkitTransform': 'nah',
+        webkitTransform: "nah",
       },
-    })
+    }),
   },
 } as any;
 
-describe('MDCAnimation', () => {
-  it('#getCorrectEventName does not prefix events when not necessary', () => {
+describe("MDCAnimation", () => {
+  it("#getCorrectEventName does not prefix events when not necessary", () => {
     const windowObj = {
       document: {
         createElement: () => ({
           style: {
-            animation: 'none',
+            animation: "none",
           },
-        })
+        }),
       },
     } as any;
 
-    expect(getCorrectEventName(windowObj, 'animationstart'))
-        .toEqual('animationstart');
+    expect(getCorrectEventName(windowObj, "animationstart")).toEqual(
+      "animationstart"
+    );
   });
 
-  it('#getCorrectPropertyName does not prefix events when not necessary',
-     () => {
-       const windowObj = {
-         document: {
-           createElement: () => ({
-             style: {
-               animation: 'none',
-             },
-           })
-         },
-       } as any;
+  it("#getCorrectPropertyName does not prefix events when not necessary", () => {
+    const windowObj = {
+      document: {
+        createElement: () => ({
+          style: {
+            animation: "none",
+          },
+        }),
+      },
+    } as any;
 
-       expect(getCorrectPropertyName(windowObj, 'animation'))
-           .toEqual('animation');
-     });
-
-  it('#getCorrectEventName does not prefix events if window does not contain a DOM node',
-     () => {
-       const windowObj = {} as any;
-
-       expect(getCorrectEventName(windowObj, 'animationstart'))
-           .toEqual('animationstart');
-     });
-
-  it('#getCorrectPropertyName does not prefix events if window does not contain a DOM node',
-     () => {
-       const windowObj = {} as any;
-
-       expect(getCorrectPropertyName(windowObj, 'transition'))
-           .toEqual('transition');
-     });
-
-  it('#getCorrectPropertyName prefixes css properties when required', () => {
-    expect(getCorrectPropertyName(legacyWindowObj, 'animation'))
-        .toEqual('-webkit-animation');
-
-    expect(getCorrectPropertyName(legacyWindowObj, 'transform'))
-        .toEqual('-webkit-transform');
-
-    expect(getCorrectPropertyName(legacyWindowObj, 'transition'))
-        .toEqual('-webkit-transition');
+    expect(getCorrectPropertyName(windowObj, "animation")).toEqual("animation");
   });
 
-  it('#getCorrectEventName prefixes javascript events when required', () => {
-    expect(getCorrectEventName(legacyWindowObj, 'animationstart'))
-        .toEqual('webkitAnimationStart');
+  it("#getCorrectEventName does not prefix events if window does not contain a DOM node", () => {
+    const windowObj = {} as any;
 
-    expect(getCorrectEventName(legacyWindowObj, 'animationend'))
-        .toEqual('webkitAnimationEnd');
+    expect(getCorrectEventName(windowObj, "animationstart")).toEqual(
+      "animationstart"
+    );
+  });
 
-    expect(getCorrectEventName(legacyWindowObj, 'animationiteration'))
-        .toEqual('webkitAnimationIteration');
+  it("#getCorrectPropertyName does not prefix events if window does not contain a DOM node", () => {
+    const windowObj = {} as any;
 
-    expect(getCorrectEventName(legacyWindowObj, 'transitionend'))
-        .toEqual('webkitTransitionEnd');
+    expect(getCorrectPropertyName(windowObj, "transition")).toEqual(
+      "transition"
+    );
+  });
+
+  it("#getCorrectPropertyName prefixes css properties when required", () => {
+    expect(getCorrectPropertyName(legacyWindowObj, "animation")).toEqual(
+      "-webkit-animation"
+    );
+
+    expect(getCorrectPropertyName(legacyWindowObj, "transform")).toEqual(
+      "-webkit-transform"
+    );
+
+    expect(getCorrectPropertyName(legacyWindowObj, "transition")).toEqual(
+      "-webkit-transition"
+    );
+  });
+
+  it("#getCorrectEventName prefixes javascript events when required", () => {
+    expect(getCorrectEventName(legacyWindowObj, "animationstart")).toEqual(
+      "webkitAnimationStart"
+    );
+
+    expect(getCorrectEventName(legacyWindowObj, "animationend")).toEqual(
+      "webkitAnimationEnd"
+    );
+
+    expect(getCorrectEventName(legacyWindowObj, "animationiteration")).toEqual(
+      "webkitAnimationIteration"
+    );
+
+    expect(getCorrectEventName(legacyWindowObj, "transitionend")).toEqual(
+      "webkitTransitionEnd"
+    );
   });
 });

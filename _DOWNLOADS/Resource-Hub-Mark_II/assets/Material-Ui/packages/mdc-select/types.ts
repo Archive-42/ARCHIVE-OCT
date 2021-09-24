@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import {MDCSelectHelperTextFoundation} from './helper-text/foundation';
-import {MDCSelectIconFoundation} from './icon/foundation';
+import { MDCSelectHelperTextFoundation } from "./helper-text/foundation";
+import { MDCSelectIconFoundation } from "./icon/foundation";
 
 export interface MDCSelectFoundationMap {
   leadingIcon: MDCSelectIconFoundation;

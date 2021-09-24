@@ -22,23 +22,27 @@
  */
 
 const cssClasses = {
-  ANCHOR: 'mdc-menu-surface--anchor',
-  ANIMATING_CLOSED: 'mdc-menu-surface--animating-closed',
-  ANIMATING_OPEN: 'mdc-menu-surface--animating-open',
-  FIXED: 'mdc-menu-surface--fixed',
-  IS_OPEN_BELOW: 'mdc-menu-surface--is-open-below',
-  OPEN: 'mdc-menu-surface--open',
-  ROOT: 'mdc-menu-surface',
+  ANCHOR: "mdc-menu-surface--anchor",
+  ANIMATING_CLOSED: "mdc-menu-surface--animating-closed",
+  ANIMATING_OPEN: "mdc-menu-surface--animating-open",
+  FIXED: "mdc-menu-surface--fixed",
+  IS_OPEN_BELOW: "mdc-menu-surface--is-open-below",
+  OPEN: "mdc-menu-surface--open",
+  ROOT: "mdc-menu-surface",
 };
 
 // tslint:disable:object-literal-sort-keys
 const strings = {
-  CLOSED_EVENT: 'MDCMenuSurface:closed',
-  OPENED_EVENT: 'MDCMenuSurface:opened',
+  CLOSED_EVENT: "MDCMenuSurface:closed",
+  OPENED_EVENT: "MDCMenuSurface:opened",
   FOCUSABLE_ELEMENTS: [
-    'button:not(:disabled)', '[href]:not([aria-disabled="true"])', 'input:not(:disabled)',
-    'select:not(:disabled)', 'textarea:not(:disabled)', '[tabindex]:not([tabindex="-1"]):not([aria-disabled="true"])',
-  ].join(', '),
+    "button:not(:disabled)",
+    '[href]:not([aria-disabled="true"])',
+    "input:not(:disabled)",
+    "select:not(:disabled)",
+    "textarea:not(:disabled)",
+    '[tabindex]:not([tabindex="-1"]):not([aria-disabled="true"])',
+  ].join(", "),
 };
 // tslint:enable:object-literal-sort-keys
 
@@ -84,4 +88,4 @@ enum Corner {
   BOTTOM_END = CornerBit.BOTTOM | CornerBit.RIGHT | CornerBit.FLIP_RTL, // tslint:disable-line:no-bitwise
 }
 
-export {cssClasses, strings, numbers, CornerBit, Corner};
+export { cssClasses, strings, numbers, CornerBit, Corner };

@@ -24,16 +24,16 @@
 // NOTE: We disable `selector-class-pattern` above to allow using `mdc-` class
 // selectors.
 
-@use 'sass:list';
-@use '@material/animation/functions';
-@use '@material/density/functions' as density-functions;
-@use '@material/dom/mixins' as dom;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/icon-button/mixins' as icon-button-mixins;
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/typography/typography';
-@use './data-table-theme';
-@use './data-table-cell';
+@use "sass:list";
+@use "@material/animation/functions";
+@use "@material/density/functions" as density-functions;
+@use "@material/dom/mixins" as dom;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/icon-button/mixins" as icon-button-mixins;
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/typography/typography";
+@use "./data-table-theme";
+@use "./data-table-cell";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-structure: feature-targeting.create-target($query, structure);
@@ -157,7 +157,7 @@
   .mdc-data-table__header-cell:after {
     @include feature-targeting.targets($feat-structure) {
       bottom: 0;
-      content: '';
+      content: "";
       left: 0;
       position: absolute;
       width: 100%;

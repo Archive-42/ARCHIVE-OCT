@@ -22,17 +22,17 @@
  */
 
 const cssClasses = {
-  MENU_SELECTED_LIST_ITEM: 'mdc-menu-item--selected',
-  MENU_SELECTION_GROUP: 'mdc-menu__selection-group',
-  ROOT: 'mdc-menu',
+  MENU_SELECTED_LIST_ITEM: "mdc-menu-item--selected",
+  MENU_SELECTION_GROUP: "mdc-menu__selection-group",
+  ROOT: "mdc-menu",
 };
 
 const strings = {
-  ARIA_CHECKED_ATTR: 'aria-checked',
-  ARIA_DISABLED_ATTR: 'aria-disabled',
+  ARIA_CHECKED_ATTR: "aria-checked",
+  ARIA_DISABLED_ATTR: "aria-disabled",
   CHECKBOX_SELECTOR: 'input[type="checkbox"]',
-  LIST_SELECTOR: '.mdc-list',
-  SELECTED_EVENT: 'MDCMenu:selected',
+  LIST_SELECTOR: ".mdc-list",
+  SELECTED_EVENT: "MDCMenu:selected",
 };
 
 const numbers = {
@@ -46,4 +46,4 @@ enum DefaultFocusState {
   LAST_ITEM = 3,
 }
 
-export {cssClasses, strings, numbers, DefaultFocusState};
+export { cssClasses, strings, numbers, DefaultFocusState };

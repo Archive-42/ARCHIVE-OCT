@@ -42,7 +42,7 @@ export interface MDCLinearProgressAdapter {
    *    root element with the given callback. `null` if `ResizeObserver` is not
    *    implemented or polyfilled.
    */
-  attachResizeObserver(callback: ResizeObserverCallback): ResizeObserver|null;
+  attachResizeObserver(callback: ResizeObserverCallback): ResizeObserver | null;
   forceLayout(): void;
   setBufferBarStyle(styleProperty: string, value: string): void;
   setPrimaryBarStyle(styleProperty: string, value: string): void;

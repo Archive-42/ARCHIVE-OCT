@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {CloseReason} from './constants';
+import { CloseReason } from "./constants";
 
 /**
  * Defines the shape of the adapter expected by the foundation.

@@ -32,7 +32,7 @@ export interface MDCSegmentedButtonSegmentAdapter {
    * @return Returns segment's attribute value if it is set, otherwise returns
    * null
    */
-  getAttr(attrName: string): string|null;
+  getAttr(attrName: string): string | null;
 
   /**
    * Sets segment's attribute value to new value

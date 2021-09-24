@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {CommonSelectProps} from './BaseSelect';
+import React from "react";
+import classnames from "classnames";
+import { CommonSelectProps } from "./BaseSelect";
 
 type RefCallback<T> = (node: T | null) => void;
 
@@ -43,18 +43,18 @@ export default class NativeSelect extends React.Component<
   NativeSelect: React.RefObject<HTMLSelectElement> = React.createRef();
 
   static defaultProps: Partial<NativeSelectProps> = {
-    className: '',
+    className: "",
     children: null,
     disabled: false,
-    value: '',
+    value: "",
   };
 
   get classes() {
-    return classnames('mdc-select__native-control', this.props.className);
+    return classnames("mdc-select__native-control", this.props.className);
   }
 
   attachRef = (node: HTMLSelectElement | null) => {
-    const {innerRef} = this.props;
+    const { innerRef } = this.props;
 
     // https://github.com/facebook/react/issues/13029#issuecomment-410002316
     // @ts-ignore incorrectly typed as readonly - see github comment
@@ -64,7 +64,7 @@ export default class NativeSelect extends React.Component<
       return;
     }
 
-    if (typeof innerRef !== 'function') {
+    if (typeof innerRef !== "function") {
       // @ts-ignore same as above
       innerRef.current = node;
     } else {

@@ -21,9 +21,16 @@
  * THE SOFTWARE.
  */
 
-import {html} from '../../../testing/dom';
-import {MDCDataTable} from '../component';
-import {cssClasses, dataAttributes, events, selectors, SortValue, strings} from '../constants';
+import { html } from "../../../testing/dom";
+import { MDCDataTable } from "../component";
+import {
+  cssClasses,
+  dataAttributes,
+  events,
+  selectors,
+  SortValue,
+  strings,
+} from "../constants";
 
 interface ClassMap {
   [className: string]: boolean;
@@ -31,10 +38,10 @@ interface ClassMap {
 
 const classMap = (classesMap: ClassMap) => {
   return Object.keys(classesMap)
-      .filter((className: string) => {
-        return classesMap[className];
-      })
-      .join(' ');
+    .filter((className: string) => {
+      return classesMap[className];
+    })
+    .join(" ");
 };
 
 interface CheckboxTemplateProps {
@@ -44,9 +51,10 @@ interface CheckboxTemplateProps {
 
 function mdcCheckboxTemplate(props: Partial<CheckboxTemplateProps>): string {
   return html`
-    <div class="mdc-checkbox ${props.classNames || ''}">
+    <div class="mdc-checkbox ${props.classNames || ""}">
       <input type="checkbox" class="mdc-checkbox__native-control" ${
-      props.isChecked ? 'checked' : ''}></input>
+        props.isChecked ? "checked" : ""
+      }></input>
       <div class="mdc-checkbox__background">
         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
           <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
@@ -63,8 +71,8 @@ interface IconButtonProps {
 
 function mdcIconButtonTemplate(props: IconButtonProps): string {
   const classes = {
-    'mdc-icon-button': true,
-    'material-icons': true,
+    "mdc-icon-button": true,
+    "material-icons": true,
     [props.classNames]: !!props.classNames,
   };
 
@@ -77,46 +85,49 @@ interface DataTableHeaderCellTemplateProps {
   columnId?: string;
 }
 
-
 function mdcDataTableHeaderCellTemplate(
-    props: DataTableHeaderCellTemplateProps): string {
+  props: DataTableHeaderCellTemplateProps
+): string {
   const classes = {
     [cssClasses.HEADER_CELL]: true,
     [cssClasses.HEADER_CELL_WITH_SORT]: !!props.isSortable,
   };
-  const columnId = props.columnId || '';
-  const sortButton = props.isSortable ?
-      mdcIconButtonTemplate(
-          {iconName: 'arrow_upward', classNames: cssClasses.SORT_ICON_BUTTON}) :
-      '';
+  const columnId = props.columnId || "";
+  const sortButton = props.isSortable
+    ? mdcIconButtonTemplate({
+        iconName: "arrow_upward",
+        classNames: cssClasses.SORT_ICON_BUTTON,
+      })
+    : "";
 
   return html`
-      <th class="${classMap(classes)}" role="columnheader" scope="col" ${
-      dataAttributes.COLUMN_ID}="${columnId}">
-        <div class="${cssClasses.HEADER_CELL_WRAPPER}">
-          <div class="${cssClasses.HEADER_CELL_LABEL}">
-            ${props.content}
-          </div>
-          ${sortButton}
-          <div class="${cssClasses.SORT_STATUS_LABEL}"></div>
-        </div>
-      </th>
-      `;
+    <th
+      class="${classMap(classes)}"
+      role="columnheader"
+      scope="col"
+      ${dataAttributes.COLUMN_ID}="${columnId}"
+    >
+      <div class="${cssClasses.HEADER_CELL_WRAPPER}">
+        <div class="${cssClasses.HEADER_CELL_LABEL}">${props.content}</div>
+        ${sortButton}
+        <div class="${cssClasses.SORT_STATUS_LABEL}"></div>
+      </div>
+    </th>
+  `;
 }
 
 interface DataTableCellTemplateProps {
   isNumeric: boolean;
-  content: string|number;
+  content: string | number;
 }
 
-function mdcDataTableCellTemplate(props: Partial<DataTableCellTemplateProps>):
-    string {
+function mdcDataTableCellTemplate(
+  props: Partial<DataTableCellTemplateProps>
+): string {
   const classes = {
     [cssClasses.CELL_NUMERIC]: !!props.isNumeric,
   };
-  return html`
-      <td class="${classMap(classes)}">${props.content}</td>
-    `;
+  return html` <td class="${classMap(classes)}">${props.content}</td> `;
 }
 
 interface DataTableRowTemplateProps {
@@ -131,7 +142,7 @@ function mdcDataTableRowTemplate(props: DataTableRowTemplateProps): string {
     [cssClasses.ROW]: true,
     [cssClasses.ROW_SELECTED]: props.isSelected,
   };
-  const ariaSelectedValue = props.isSelected ? 'true' : 'false';
+  const ariaSelectedValue = props.isSelected ? "true" : "false";
   const rowCheckbox = mdcDataTableCellTemplate({
     content: mdcCheckboxTemplate({
       classNames: cssClasses.ROW_CHECKBOX,
@@ -140,34 +151,40 @@ function mdcDataTableRowTemplate(props: DataTableRowTemplateProps): string {
   });
 
   return html`
-  <tr
-    data-row-id="${props.rowId}"
-    class="${classMap(classes)}"
-    aria-selected="${ariaSelectedValue}"
-  >
-    ${props.withoutRowSelection ? '' : rowCheckbox} ${props.content}
-  </tr>
+    <tr
+      data-row-id="${props.rowId}"
+      class="${classMap(classes)}"
+      aria-selected="${ariaSelectedValue}"
+    >
+      ${props.withoutRowSelection ? "" : rowCheckbox} ${props.content}
+    </tr>
   `;
 }
 
 const progressIndicatorTemplate = (): string => {
   return html`
-      <div class="mdc-data-table__progress-indicator">
-        <div class="mdc-data-table__scrim"></div>
-        <div class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-data-table__linear-progress" role="progressbar" aria-label="Data is being loaded...">
-          <div class="mdc-linear-progress__buffer">
-            <div class="mdc-linear-progress__buffer-bar"></div>
-            <div class="mdc-linear-progress__buffer-dots"></div>
-          </div>
-          <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-            <span class="mdc-linear-progress__bar-inner"></span>
-          </div>
-          <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-            <span class="mdc-linear-progress__bar-inner"></span>
-          </div>
+    <div class="mdc-data-table__progress-indicator">
+      <div class="mdc-data-table__scrim"></div>
+      <div
+        class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-data-table__linear-progress"
+        role="progressbar"
+        aria-label="Data is being loaded..."
+      >
+        <div class="mdc-linear-progress__buffer">
+          <div class="mdc-linear-progress__buffer-bar"></div>
+          <div class="mdc-linear-progress__buffer-dots"></div>
+        </div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+          <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+        <div
+          class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar"
+        >
+          <span class="mdc-linear-progress__bar-inner"></span>
         </div>
       </div>
-      `;
+    </div>
+  `;
 };
 
 interface DataTableHeader {
@@ -178,39 +195,39 @@ interface DataTableHeader {
 
 interface DataTableData {
   headers: DataTableHeader[];
-  rows: Array<Array<string|number>>;
+  rows: Array<Array<string | number>>;
   selectedRowIndexes: number[];
 }
 
 const mdcDataTableData = {
   headers: [
     {
-      name: 'Dessert',
+      name: "Dessert",
       isSortable: true,
-      columnId: 'dessert',
+      columnId: "dessert",
     },
     {
-      name: 'Calories',
+      name: "Calories",
       isSortable: true,
-      columnId: 'calories',
+      columnId: "calories",
     },
     {
-      name: 'Fat',
-      columnId: 'fat',
+      name: "Fat",
+      columnId: "fat",
     },
     {
-      name: 'Carbs',
-      columnId: 'carbs',
+      name: "Carbs",
+      columnId: "carbs",
     },
     {
-      name: 'Protein (g)',
-      columnId: 'protein',
+      name: "Protein (g)",
+      columnId: "protein",
     },
   ],
   rows: [
-    ['Frozen yogurt', 159, 6.0, 24, 4.0],
-    ['Ice cream sandwich', 237, 9.0, 37, 4.3],
-    ['Eclair', 262, 16.0, 24, 6.0],
+    ["Frozen yogurt", 159, 6.0, 24, 4.0],
+    ["Ice cream sandwich", 237, 9.0, 37, 4.3],
+    ["Eclair", 262, 16.0, 24, 6.0],
   ],
   selectedRowIndexes: [1],
 };
@@ -222,35 +239,39 @@ interface RenderComponentProps {
 }
 
 function renderComponent(props: RenderComponentProps): HTMLElement {
-  const headerRowContent = (props.withoutRowSelection ? ''
+  const headerRowContent =
+    (props.withoutRowSelection
+      ? ""
       : mdcDataTableHeaderCellTemplate({
           content: mdcCheckboxTemplate({
             classNames: cssClasses.HEADER_ROW_CHECKBOX,
           }),
+        })) +
+    props.data.headers
+      .map((header: DataTableHeader) =>
+        mdcDataTableHeaderCellTemplate({
+          content: header.name,
+          isSortable: header.isSortable,
+          columnId: header.columnId,
         })
-      ) +
-      props.data.headers
-          .map((header: DataTableHeader) => mdcDataTableHeaderCellTemplate({
-                 content: header.name,
-                 isSortable: header.isSortable,
-                 columnId: header.columnId,
-               }))
-          .join('');
-  const bodyContent =
-      props.data.rows.map((row: Array<string|number>, index: number) => {
-        const isSelected = props.data.selectedRowIndexes.indexOf(index) >= 0;
-        return mdcDataTableRowTemplate({
-          rowId: `u${index}`,
-          isSelected,
-          content: row.map((cell: string|number) => {
-                        const isNumeric = typeof cell === 'number';
-                        return mdcDataTableCellTemplate(
-                            {content: cell, isNumeric});
-                      })
-                       .join(''),
-          withoutRowSelection: props.withoutRowSelection,
-        });
+      )
+      .join("");
+  const bodyContent = props.data.rows.map(
+    (row: Array<string | number>, index: number) => {
+      const isSelected = props.data.selectedRowIndexes.indexOf(index) >= 0;
+      return mdcDataTableRowTemplate({
+        rowId: `u${index}`,
+        isSelected,
+        content: row
+          .map((cell: string | number) => {
+            const isNumeric = typeof cell === "number";
+            return mdcDataTableCellTemplate({ content: cell, isNumeric });
+          })
+          .join(""),
+        withoutRowSelection: props.withoutRowSelection,
       });
+    }
+  );
 
   const blobHtml = html`
     <div class="${cssClasses.ROOT}">
@@ -266,7 +287,7 @@ function renderComponent(props: RenderComponentProps): HTMLElement {
           </tbody>
         </table>
       </div>
-      ${props.excludeProgressIndicator ? '' : progressIndicatorTemplate()}
+      ${props.excludeProgressIndicator ? "" : progressIndicatorTemplate()}
     </div>
   `;
 
@@ -275,7 +296,7 @@ function renderComponent(props: RenderComponentProps): HTMLElement {
     document.body.removeChild(prevTable.parentElement as HTMLElement);
   }
 
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   container.innerHTML = blobHtml;
   document.body.appendChild(container);
   return document.querySelector(`.${cssClasses.ROOT}`) as HTMLElement;
@@ -296,160 +317,164 @@ function setupTest(props: SetupProps = {}) {
   // This is an intentionally reference to adapter instance for testing.
   // tslint:disable-next-line:no-any
   const adapter = (component.getDefaultFoundation() as any).adapter;
-  return {root, component, adapter};
+  return { root, component, adapter };
 }
 
-describe('MDCDataTable', () => {
-  it('#attachTo returns a component instance', () => {
-    const root = renderComponent({data: mdcDataTableData});
+describe("MDCDataTable", () => {
+  it("#attachTo returns a component instance", () => {
+    const root = renderComponent({ data: mdcDataTableData });
     const component = MDCDataTable.attachTo(root);
     expect(component).toEqual(jasmine.any(MDCDataTable));
     component.destroy();
   });
 
-  it('Checking at least 1 row checkbox sets header row checkbox to indeterminate',
-     () => {
-       const {root} = setupTest();
+  it("Checking at least 1 row checkbox sets header row checkbox to indeterminate", () => {
+    const { root } = setupTest();
 
-       const rowCheckbox =
-           root.querySelector(strings.ROW_CHECKBOX_SELECTOR)!.querySelector(
-               'input') as HTMLInputElement;
-       rowCheckbox.click();
+    const rowCheckbox = root
+      .querySelector(strings.ROW_CHECKBOX_SELECTOR)!
+      .querySelector("input") as HTMLInputElement;
+    rowCheckbox.click();
 
-       const headerRowCheckbox =
-           root.querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!
-               .querySelector('input') as HTMLInputElement;
-       expect(headerRowCheckbox.indeterminate).toBe(true);
-     });
+    const headerRowCheckbox = root
+      .querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!
+      .querySelector("input") as HTMLInputElement;
+    expect(headerRowCheckbox.indeterminate).toBe(true);
+  });
 
-  it('#setSelectedRowIds sets selected row ids', () => {
-    const {component} = setupTest();
+  it("#setSelectedRowIds sets selected row ids", () => {
+    const { component } = setupTest();
 
-    component.setSelectedRowIds(['u1', 'u2']);
-    expect(component.getSelectedRowIds()).toEqual(['u1', 'u2']);
+    component.setSelectedRowIds(["u1", "u2"]);
+    expect(component.getSelectedRowIds()).toEqual(["u1", "u2"]);
     component.destroy();
   });
 
-  it('#getSelectedRowIds returns empty array when no rows selected', () => {
-    const {component} = setupTest();
+  it("#getSelectedRowIds returns empty array when no rows selected", () => {
+    const { component } = setupTest();
 
     component.setSelectedRowIds([]);
     expect(component.getSelectedRowIds()).toEqual([]);
     component.destroy();
   });
 
-  it('adapter#isHeaderRowCheckboxChecked returns true if header row checkbox is checked',
-     () => {
-       const {component, root, adapter} = setupTest();
+  it("adapter#isHeaderRowCheckboxChecked returns true if header row checkbox is checked", () => {
+    const { component, root, adapter } = setupTest();
 
-       const nativeCheckbox =
-           root.querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!
-               .querySelector('input') as HTMLInputElement;
+    const nativeCheckbox = root
+      .querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!
+      .querySelector("input") as HTMLInputElement;
 
-       nativeCheckbox.checked = false;
-       expect(adapter.isHeaderRowCheckboxChecked()).toBe(false);
+    nativeCheckbox.checked = false;
+    expect(adapter.isHeaderRowCheckboxChecked()).toBe(false);
 
-       nativeCheckbox.checked = true;
-       expect(adapter.isHeaderRowCheckboxChecked()).toBe(true);
-
-       component.destroy();
-     });
-
-  it('adapter#addClassAtRowIndex adds class name at given row index ', () => {
-    const {component, adapter} = setupTest();
-
-    adapter.addClassAtRowIndex(1, 'test-class-name');
-    expect(component.getRows()[1].classList.contains('test-class-name'))
-        .toBe(true);
+    nativeCheckbox.checked = true;
+    expect(adapter.isHeaderRowCheckboxChecked()).toBe(true);
 
     component.destroy();
   });
 
-  it('adapter#removeClassAtRowIndex removes class name from given row index ',
-     () => {
-       const {component, adapter} = setupTest();
+  it("adapter#addClassAtRowIndex adds class name at given row index ", () => {
+    const { component, adapter } = setupTest();
 
-       adapter.addClassAtRowIndex(1, 'test-remove-class-name');
-       adapter.removeClassAtRowIndex(1, 'test-remove-class-name');
-       expect(
-           component.getRows()[1].classList.contains('test-remove-class-name'))
-           .toBe(false);
-
-       component.destroy();
-     });
-
-  it('adapter#setAttributeAtRowIndex', () => {
-    const {component, adapter} = setupTest();
-
-    adapter.setAttributeAtRowIndex(1, 'data-test-set-attr', 'test-val-1');
-    expect(adapter.getRowElements()[1].getAttribute('data-test-set-attr'))
-        .toBe('test-val-1');
+    adapter.addClassAtRowIndex(1, "test-class-name");
+    expect(component.getRows()[1].classList.contains("test-class-name")).toBe(
+      true
+    );
 
     component.destroy();
   });
 
-  it('adapter#getRowElements', () => {
-    const {component, adapter} = setupTest();
+  it("adapter#removeClassAtRowIndex removes class name from given row index ", () => {
+    const { component, adapter } = setupTest();
+
+    adapter.addClassAtRowIndex(1, "test-remove-class-name");
+    adapter.removeClassAtRowIndex(1, "test-remove-class-name");
+    expect(
+      component.getRows()[1].classList.contains("test-remove-class-name")
+    ).toBe(false);
+
+    component.destroy();
+  });
+
+  it("adapter#setAttributeAtRowIndex", () => {
+    const { component, adapter } = setupTest();
+
+    adapter.setAttributeAtRowIndex(1, "data-test-set-attr", "test-val-1");
+    expect(adapter.getRowElements()[1].getAttribute("data-test-set-attr")).toBe(
+      "test-val-1"
+    );
+
+    component.destroy();
+  });
+
+  it("adapter#getRowElements", () => {
+    const { component, adapter } = setupTest();
 
     expect(adapter.getRowElements().length).toEqual(3);
     component.destroy();
   });
 
-  it('adapter#isRowsSelectable', () => {
-    const {component, adapter} = setupTest();
+  it("adapter#isRowsSelectable", () => {
+    const { component, adapter } = setupTest();
 
     expect(adapter.isRowsSelectable()).toBe(true);
 
     component.destroy();
   });
 
-  it('adapter#getRowIndexByChildElement', () => {
-    const {component, root, adapter} = setupTest();
+  it("adapter#getRowIndexByChildElement", () => {
+    const { component, root, adapter } = setupTest();
 
-    const rows = [].slice.call(root.querySelectorAll(strings.ROW_SELECTOR)) as
-        HTMLElement[];
-    const inputEl = rows[2].querySelector('input') as HTMLInputElement;
+    const rows = [].slice.call(
+      root.querySelectorAll(strings.ROW_SELECTOR)
+    ) as HTMLElement[];
+    const inputEl = rows[2].querySelector("input") as HTMLInputElement;
     expect(adapter.getRowIndexByChildElement(inputEl)).toEqual(2);
 
     component.destroy();
   });
 
-  it('adapter#getRowCount calls foundation.getRows() method', () => {
-    const {component, adapter} = setupTest();
+  it("adapter#getRowCount calls foundation.getRows() method", () => {
+    const { component, adapter } = setupTest();
 
     expect(adapter.getRowCount()).toEqual(3);
 
     component.destroy();
   });
 
-  it('adapter#getSelectedRowCount', () => {
-    const {component, adapter} = setupTest();
+  it("adapter#getSelectedRowCount", () => {
+    const { component, adapter } = setupTest();
 
-    expect(adapter.getSelectedRowCount())
-        .toBe(mdcDataTableData.selectedRowIndexes.length);
+    expect(adapter.getSelectedRowCount()).toBe(
+      mdcDataTableData.selectedRowIndexes.length
+    );
 
     component.destroy();
   });
 
-  it('adapter#notifyRowSelectionChanged', () => {
-    const {component, adapter} = setupTest();
-    const handler = jasmine.createSpy('notifyRowSelectionChangedHandler');
+  it("adapter#notifyRowSelectionChanged", () => {
+    const { component, adapter } = setupTest();
+    const handler = jasmine.createSpy("notifyRowSelectionChangedHandler");
 
     component.listen(events.ROW_SELECTION_CHANGED, handler);
-    adapter.notifyRowSelectionChanged(
-        {rowIndex: 1, rowId: 'u1', selected: true});
+    adapter.notifyRowSelectionChanged({
+      rowIndex: 1,
+      rowId: "u1",
+      selected: true,
+    });
     expect(handler).toHaveBeenCalledWith(jasmine.anything());
 
     component.unlisten(events.ROW_SELECTION_CHANGED, handler);
     component.destroy();
   });
 
-  it('adapter#setHeaderRowCheckboxIndeterminate', () => {
-    const {component, root, adapter} = setupTest();
+  it("adapter#setHeaderRowCheckboxIndeterminate", () => {
+    const { component, root, adapter } = setupTest();
 
-    const nativeCheckbox =
-        root.querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!.querySelector(
-            'input') as HTMLInputElement;
+    const nativeCheckbox = root
+      .querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!
+      .querySelector("input") as HTMLInputElement;
 
     nativeCheckbox.indeterminate = false;
     adapter.setHeaderRowCheckboxIndeterminate(true);
@@ -458,12 +483,12 @@ describe('MDCDataTable', () => {
     component.destroy();
   });
 
-  it('adapter#setHeaderRowCheckboxChecked', () => {
-    const {component, root, adapter} = setupTest();
+  it("adapter#setHeaderRowCheckboxChecked", () => {
+    const { component, root, adapter } = setupTest();
 
-    const nativeCheckbox =
-        root.querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!.querySelector(
-            'input') as HTMLInputElement;
+    const nativeCheckbox = root
+      .querySelector(strings.HEADER_ROW_CHECKBOX_SELECTOR)!
+      .querySelector("input") as HTMLInputElement;
     expect(nativeCheckbox.checked).toBe(false);
     adapter.setHeaderRowCheckboxChecked(true);
     expect(nativeCheckbox.checked).toBe(true);
@@ -471,19 +496,20 @@ describe('MDCDataTable', () => {
     component.destroy();
   });
 
-  it('adapter#getRowIdAtIndex', () => {
-    const {component, adapter} = setupTest();
+  it("adapter#getRowIdAtIndex", () => {
+    const { component, adapter } = setupTest();
 
-    expect(adapter.getRowIdAtIndex(1)).toEqual('u1');
+    expect(adapter.getRowIdAtIndex(1)).toEqual("u1");
     component.destroy();
   });
 
-  it('adapter#setRowCheckboxCheckedAtIndex', () => {
-    const {component, root, adapter} = setupTest();
-    const nativeCheckbox =
-        ([].slice.call(root.querySelectorAll(
-             strings.ROW_CHECKBOX_SELECTOR))[0] as HTMLInputElement)
-            .querySelector('input');
+  it("adapter#setRowCheckboxCheckedAtIndex", () => {
+    const { component, root, adapter } = setupTest();
+    const nativeCheckbox = (
+      [].slice.call(
+        root.querySelectorAll(strings.ROW_CHECKBOX_SELECTOR)
+      )[0] as HTMLInputElement
+    ).querySelector("input");
 
     expect(nativeCheckbox!.checked).toBe(false);
     adapter.setRowCheckboxCheckedAtIndex(0, true);
@@ -492,9 +518,9 @@ describe('MDCDataTable', () => {
     component.destroy();
   });
 
-  it('adapter#notifySelectedAll', () => {
-    const {component, adapter} = setupTest();
-    const handler = jasmine.createSpy('notifySelectedAll');
+  it("adapter#notifySelectedAll", () => {
+    const { component, adapter } = setupTest();
+    const handler = jasmine.createSpy("notifySelectedAll");
 
     component.listen(events.SELECTED_ALL, handler);
     adapter.notifySelectedAll();
@@ -504,9 +530,9 @@ describe('MDCDataTable', () => {
     component.destroy();
   });
 
-  it('adapter#notifyUnselectedAll', () => {
-    const {component, adapter} = setupTest();
-    const handler = jasmine.createSpy('notifyUnselectedAll');
+  it("adapter#notifyUnselectedAll", () => {
+    const { component, adapter } = setupTest();
+    const handler = jasmine.createSpy("notifyUnselectedAll");
 
     component.listen(events.UNSELECTED_ALL, handler);
     adapter.notifyUnselectedAll();
@@ -516,55 +542,33 @@ describe('MDCDataTable', () => {
     component.destroy();
   });
 
-  describe('Removing Rows', () => {
-    it('removes all rows while the header checkbox is checked.', () => {
-      const {component, root, adapter} = setupTest();
+  describe("Removing Rows", () => {
+    it("removes all rows while the header checkbox is checked.", () => {
+      const { component, root, adapter } = setupTest();
       adapter.setHeaderRowCheckboxChecked(true);
       expect(adapter.isHeaderRowCheckboxChecked()).toBe(true);
-      const tableContent =
-          root.querySelector<HTMLElement>(`.${cssClasses.CONTENT}`);
+      const tableContent = root.querySelector<HTMLElement>(
+        `.${cssClasses.CONTENT}`
+      );
       tableContent!.textContent = ``;
       component.layout();
       expect(adapter.isHeaderRowCheckboxChecked()).toBe(false);
     });
   });
 
-  describe('Column sorting', () => {
-    it('emits sort event when clicked on sort button of sortable column header',
-       () => {
-         const {component, root} = setupTest();
-         const handler = jasmine.createSpy('handleSorted');
-
-         component.listen(events.SORTED, handler);
-         const columnId = 'dessert';
-         const headerCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="${columnId}"]`);
-         headerCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
-         const matchEventDetail = {
-           columnId,
-           columnIndex: 1,
-           headerCell,
-           sortValue: SortValue.ASCENDING,
-         };
-         expect(handler).toHaveBeenCalledWith(
-             jasmine.objectContaining({detail: matchEventDetail}));
-         component.unlisten(events.SORTED, handler);
-         component.destroy();
-       });
-
-    it('emits sort event when clicked on sortable column header text', () => {
-      const {component, root} = setupTest();
-      const handler = jasmine.createSpy('handleSorted');
+  describe("Column sorting", () => {
+    it("emits sort event when clicked on sort button of sortable column header", () => {
+      const { component, root } = setupTest();
+      const handler = jasmine.createSpy("handleSorted");
 
       component.listen(events.SORTED, handler);
-      const columnId = 'dessert';
+      const columnId = "dessert";
       const headerCell = root.querySelector<HTMLElement>(
-          `[${dataAttributes.COLUMN_ID}="${columnId}"]`);
+        `[${dataAttributes.COLUMN_ID}="${columnId}"]`
+      );
       headerCell!
-          .querySelector<HTMLElement>(
-              `.${cssClasses.HEADER_CELL_LABEL}`)!.click();
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
       const matchEventDetail = {
         columnId,
         columnIndex: 1,
@@ -572,167 +576,201 @@ describe('MDCDataTable', () => {
         sortValue: SortValue.ASCENDING,
       };
       expect(handler).toHaveBeenCalledWith(
-          jasmine.objectContaining({detail: matchEventDetail}));
+        jasmine.objectContaining({ detail: matchEventDetail })
+      );
       component.unlisten(events.SORTED, handler);
       component.destroy();
     });
 
-    it('does not emit sort event when clicked on non sortable column header',
-       () => {
-         const {component, root} = setupTest();
-         const handler = jasmine.createSpy('handleSorted');
-
-         component.listen(events.SORTED, handler);
-
-         const headerCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="protein"]`);
-         const testButton = document.createElement('button');
-         headerCell!.appendChild(testButton);
-         testButton.click();
-         expect(handler).not.toHaveBeenCalled();
-         headerCell!.removeChild(testButton);
-         component.unlisten(events.SORTED, handler);
-         component.destroy();
-       });
-
-    it('does not emit sort event after component is destroyed', () => {
-      const {component, root} = setupTest();
-      component.destroy();
-      const handler = jasmine.createSpy('handleSorted');
+    it("emits sort event when clicked on sortable column header text", () => {
+      const { component, root } = setupTest();
+      const handler = jasmine.createSpy("handleSorted");
 
       component.listen(events.SORTED, handler);
-      const columnId = 'dessert';
+      const columnId = "dessert";
       const headerCell = root.querySelector<HTMLElement>(
-          `[${dataAttributes.COLUMN_ID}="${columnId}"]`);
-      headerCell!.querySelector<HTMLElement>(
-                     `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
+        `[${dataAttributes.COLUMN_ID}="${columnId}"]`
+      );
+      headerCell!
+        .querySelector<HTMLElement>(`.${cssClasses.HEADER_CELL_LABEL}`)!
+        .click();
+      const matchEventDetail = {
+        columnId,
+        columnIndex: 1,
+        headerCell,
+        sortValue: SortValue.ASCENDING,
+      };
+      expect(handler).toHaveBeenCalledWith(
+        jasmine.objectContaining({ detail: matchEventDetail })
+      );
+      component.unlisten(events.SORTED, handler);
+      component.destroy();
+    });
+
+    it("does not emit sort event when clicked on non sortable column header", () => {
+      const { component, root } = setupTest();
+      const handler = jasmine.createSpy("handleSorted");
+
+      component.listen(events.SORTED, handler);
+
+      const headerCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="protein"]`
+      );
+      const testButton = document.createElement("button");
+      headerCell!.appendChild(testButton);
+      testButton.click();
+      expect(handler).not.toHaveBeenCalled();
+      headerCell!.removeChild(testButton);
+      component.unlisten(events.SORTED, handler);
+      component.destroy();
+    });
+
+    it("does not emit sort event after component is destroyed", () => {
+      const { component, root } = setupTest();
+      component.destroy();
+      const handler = jasmine.createSpy("handleSorted");
+
+      component.listen(events.SORTED, handler);
+      const columnId = "dessert";
+      const headerCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="${columnId}"]`
+      );
+      headerCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
       expect(handler).not.toHaveBeenCalled();
       component.unlisten(events.SORTED, handler);
     });
 
-    it('clicking on header cell when in idle state sorts that column in ascending order by default',
-       () => {
-         const {component, root} = setupTest();
+    it("clicking on header cell when in idle state sorts that column in ascending order by default", () => {
+      const { component, root } = setupTest();
 
-         const columnId = 'dessert';
-         const headerCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="${columnId}"]`);
-         expect(headerCell!.getAttribute('aria-sort')).toBe(null);
-         headerCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
-         expect(headerCell!.getAttribute('aria-sort')).toBe('ascending');
-         component.destroy();
-       });
-
-    it('clicking on header cell toggles sort status if already sorted', () => {
-      const {component, root} = setupTest();
-
-      const columnId = 'dessert';
+      const columnId = "dessert";
       const headerCell = root.querySelector<HTMLElement>(
-          `[${dataAttributes.COLUMN_ID}="${columnId}"]`);
-      const sortButton = headerCell!.querySelector<HTMLElement>(
-          `.${cssClasses.SORT_ICON_BUTTON}`);
-      sortButton!.click();
-      expect(headerCell!.getAttribute('aria-sort')).toBe('ascending');
-
-      sortButton!.click();
-      expect(headerCell!.getAttribute('aria-sort')).toBe('descending');
+        `[${dataAttributes.COLUMN_ID}="${columnId}"]`
+      );
+      expect(headerCell!.getAttribute("aria-sort")).toBe(null);
+      headerCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
+      expect(headerCell!.getAttribute("aria-sort")).toBe("ascending");
       component.destroy();
     });
 
-    it('clicking on header cells deactivates sorting state on other header cells',
-       () => {
-         const {component, root} = setupTest();
+    it("clicking on header cell toggles sort status if already sorted", () => {
+      const { component, root } = setupTest();
 
-         const dessertHeaderCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="dessert"]`);
-         dessertHeaderCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
-         expect(dessertHeaderCell!.getAttribute('aria-sort')).toBe('ascending');
+      const columnId = "dessert";
+      const headerCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="${columnId}"]`
+      );
+      const sortButton = headerCell!.querySelector<HTMLElement>(
+        `.${cssClasses.SORT_ICON_BUTTON}`
+      );
+      sortButton!.click();
+      expect(headerCell!.getAttribute("aria-sort")).toBe("ascending");
 
-         const caloriesHeaderCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="calories"]`);
-         caloriesHeaderCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
+      sortButton!.click();
+      expect(headerCell!.getAttribute("aria-sort")).toBe("descending");
+      component.destroy();
+    });
 
-         expect(caloriesHeaderCell!.getAttribute('aria-sort'))
-             .toBe('ascending');
+    it("clicking on header cells deactivates sorting state on other header cells", () => {
+      const { component, root } = setupTest();
 
-         // Resets previous column sort state.
-         expect(dessertHeaderCell!.getAttribute('aria-sort')).toBe('none');
-         component.destroy();
-       });
+      const dessertHeaderCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="dessert"]`
+      );
+      dessertHeaderCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
+      expect(dessertHeaderCell!.getAttribute("aria-sort")).toBe("ascending");
 
-    it('clicking on sortable header cell sets appropriate sort status label that is visually hidden',
-       () => {
-         const {component, root} = setupTest();
+      const caloriesHeaderCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="calories"]`
+      );
+      caloriesHeaderCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
 
-         const caloriesHeaderCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="calories"]`);
-         expect(caloriesHeaderCell!
-                    .querySelector<HTMLElement>(
-                        selectors.SORT_STATUS_LABEL)!.textContent)
-             .toBe('');
-         caloriesHeaderCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
-         expect(caloriesHeaderCell!
-                    .querySelector<HTMLElement>(
-                        selectors.SORT_STATUS_LABEL)!.textContent)
-             .toMatch(/ascending/);
-         caloriesHeaderCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
-         expect(caloriesHeaderCell!
-                    .querySelector<HTMLElement>(
-                        selectors.SORT_STATUS_LABEL)!.textContent)
-             .toMatch(/descending/);
+      expect(caloriesHeaderCell!.getAttribute("aria-sort")).toBe("ascending");
 
-         // Should reset previous column sort status label.
-         const dessertHeaderCell = root.querySelector<HTMLElement>(
-             `[${dataAttributes.COLUMN_ID}="dessert"]`);
-         dessertHeaderCell!
-             .querySelector<HTMLElement>(
-                 `.${cssClasses.SORT_ICON_BUTTON}`)!.click();
-         expect(caloriesHeaderCell!
-                    .querySelector<HTMLElement>(
-                        selectors.SORT_STATUS_LABEL)!.textContent)
-             .toBe('');
+      // Resets previous column sort state.
+      expect(dessertHeaderCell!.getAttribute("aria-sort")).toBe("none");
+      component.destroy();
+    });
 
-         component.destroy();
-       });
+    it("clicking on sortable header cell sets appropriate sort status label that is visually hidden", () => {
+      const { component, root } = setupTest();
 
-    it('should not throw error when destroy() is called without row selection',
-       () => {
-         const {component} = setupTest({withoutRowSelection: true});
-         expect(() => {
-           component.destroy();
-         }).not.toThrowError();
-       });
+      const caloriesHeaderCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="calories"]`
+      );
+      expect(
+        caloriesHeaderCell!.querySelector<HTMLElement>(
+          selectors.SORT_STATUS_LABEL
+        )!.textContent
+      ).toBe("");
+      caloriesHeaderCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
+      expect(
+        caloriesHeaderCell!.querySelector<HTMLElement>(
+          selectors.SORT_STATUS_LABEL
+        )!.textContent
+      ).toMatch(/ascending/);
+      caloriesHeaderCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
+      expect(
+        caloriesHeaderCell!.querySelector<HTMLElement>(
+          selectors.SORT_STATUS_LABEL
+        )!.textContent
+      ).toMatch(/descending/);
+
+      // Should reset previous column sort status label.
+      const dessertHeaderCell = root.querySelector<HTMLElement>(
+        `[${dataAttributes.COLUMN_ID}="dessert"]`
+      );
+      dessertHeaderCell!
+        .querySelector<HTMLElement>(`.${cssClasses.SORT_ICON_BUTTON}`)!
+        .click();
+      expect(
+        caloriesHeaderCell!.querySelector<HTMLElement>(
+          selectors.SORT_STATUS_LABEL
+        )!.textContent
+      ).toBe("");
+
+      component.destroy();
+    });
+
+    it("should not throw error when destroy() is called without row selection", () => {
+      const { component } = setupTest({ withoutRowSelection: true });
+      expect(() => {
+        component.destroy();
+      }).not.toThrowError();
+    });
   });
 
-  describe('Progress indicator', () => {
-    it('Should show progress indicator blocking the content when calling showProgress()',
-       () => {
-         const {component, root} = setupTest();
+  describe("Progress indicator", () => {
+    it("Should show progress indicator blocking the content when calling showProgress()", () => {
+      const { component, root } = setupTest();
 
-         const progressIndicator = root.querySelector<HTMLElement>(
-             `.${cssClasses.PROGRESS_INDICATOR}`);
-         expect(progressIndicator!.style.cssText).toBe('');
+      const progressIndicator = root.querySelector<HTMLElement>(
+        `.${cssClasses.PROGRESS_INDICATOR}`
+      );
+      expect(progressIndicator!.style.cssText).toBe("");
 
-         component.showProgress();
-         expect(progressIndicator!.style.cssText).toMatch(/(height|top)/);
-         expect(root.classList.contains(cssClasses.IN_PROGRESS)).toBe(true);
+      component.showProgress();
+      expect(progressIndicator!.style.cssText).toMatch(/(height|top)/);
+      expect(root.classList.contains(cssClasses.IN_PROGRESS)).toBe(true);
 
-         destroyProgress(component, root);
-         component.destroy();
-       });
+      destroyProgress(component, root);
+      component.destroy();
+    });
 
-    it('Should hide progress indicator when hideProgress() called', () => {
-      const {component, root} = setupTest();
+    it("Should hide progress indicator when hideProgress() called", () => {
+      const { component, root } = setupTest();
 
       component.showProgress();
       component.hideProgress();
@@ -742,31 +780,30 @@ describe('MDCDataTable', () => {
       component.destroy();
     });
 
-    it('Should throw error when showProgress() is called without progress indicator element',
-       () => {
-         const {component} = setupTest({excludeProgressIndicator: true});
+    it("Should throw error when showProgress() is called without progress indicator element", () => {
+      const { component } = setupTest({ excludeProgressIndicator: true });
 
-         expect(() => {
-           component.showProgress();
-         }).toThrowError();
-         component.destroy();
-       });
+      expect(() => {
+        component.showProgress();
+      }).toThrowError();
+      component.destroy();
+    });
 
-    it('Should throw error when hideProgress() is called without progress indicator element',
-       () => {
-         const {component} = setupTest({excludeProgressIndicator: true});
+    it("Should throw error when hideProgress() is called without progress indicator element", () => {
+      const { component } = setupTest({ excludeProgressIndicator: true });
 
-         expect(() => {
-           component.hideProgress();
-         }).toThrowError();
-         component.destroy();
-       });
+      expect(() => {
+        component.hideProgress();
+      }).toThrowError();
+      component.destroy();
+    });
   });
 });
 
 function destroyProgress(component: MDCDataTable, root: HTMLElement) {
-  const progressIndicator =
-      root.querySelector<HTMLElement>(`.${cssClasses.PROGRESS_INDICATOR}`);
+  const progressIndicator = root.querySelector<HTMLElement>(
+    `.${cssClasses.PROGRESS_INDICATOR}`
+  );
   component.hideProgress();
-  progressIndicator!.setAttribute('style', '');
+  progressIndicator!.setAttribute("style", "");
 }

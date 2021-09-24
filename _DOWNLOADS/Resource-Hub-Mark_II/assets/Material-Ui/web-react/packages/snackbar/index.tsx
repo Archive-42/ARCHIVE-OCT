@@ -20,11 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import {MDCSnackbarFoundation} from '@material/snackbar/foundation';
-import {MDCSnackbarAdapter} from '@material/snackbar/adapter';
+import { MDCSnackbarFoundation } from "@material/snackbar/foundation";
+import { MDCSnackbarAdapter } from "@material/snackbar/adapter";
 
 export interface Props {
   message: string;
@@ -58,14 +58,14 @@ export class Snackbar extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    const {timeoutMs, closeOnEscape, leading, stacked} = this.props;
+    const { timeoutMs, closeOnEscape, leading, stacked } = this.props;
     const classes = new Set<string>();
     if (leading) {
-      classes.add('mdc-snackbar--leading');
+      classes.add("mdc-snackbar--leading");
     }
 
     if (stacked) {
-      classes.add('mdc-snackbar--stacked');
+      classes.add("mdc-snackbar--stacked");
     }
 
     this.state = {
@@ -84,14 +84,14 @@ export class Snackbar extends React.Component<Props, State> {
   get adapter(): MDCSnackbarAdapter {
     return {
       addClass: (className: string) => {
-        const {classes} = this.state;
+        const { classes } = this.state;
         classes.add(className);
         this.setState({
           classes,
         });
       },
       removeClass: (className: string) => {
-        const {classes} = this.state;
+        const { classes } = this.state;
         classes.delete(className);
         this.setState({
           classes,
@@ -102,25 +102,25 @@ export class Snackbar extends React.Component<Props, State> {
         this.props.onAnnounce && this.props.onAnnounce();
       },
       notifyOpening: () => {
-        const {onOpening} = this.props;
+        const { onOpening } = this.props;
         if (onOpening) {
           onOpening();
         }
       },
       notifyOpened: () => {
-        const {onOpen} = this.props;
+        const { onOpen } = this.props;
         if (onOpen) {
           onOpen();
         }
       },
       notifyClosing: (reason: string) => {
-        const {onClosing} = this.props;
+        const { onClosing } = this.props;
         if (onClosing) {
           onClosing(reason);
         }
       },
       notifyClosed: (reason: string) => {
-        const {onClose} = this.props;
+        const { onClose } = this.props;
         if (onClose) {
           onClose(reason);
         }
@@ -152,12 +152,12 @@ export class Snackbar extends React.Component<Props, State> {
     }
   }
   componentDidUpdate(prevProps: Props) {
-    const {open, reason} = this.props;
+    const { open, reason } = this.props;
     if (prevProps.open !== open) {
       if (open) {
         this.foundation.open();
       } else {
-        this.foundation.close(reason ? reason : '');
+        this.foundation.close(reason ? reason : "");
       }
     }
   }
@@ -167,23 +167,23 @@ export class Snackbar extends React.Component<Props, State> {
   get classes() {
     return classnames(
       this.props.className,
-      'mdc-snackbar',
+      "mdc-snackbar",
       ...Array.from(this.state.classes)
     );
   }
   render() {
     return (
       <div className={this.classes} onKeyDown={this.handleKeyDown}>
-        <div className='mdc-snackbar__surface'>
-          <div className='mdc-snackbar__label' role='status' aria-live='polite'>
+        <div className="mdc-snackbar__surface">
+          <div className="mdc-snackbar__label" role="status" aria-live="polite">
             {this.props.message}
           </div>
           {this.props.actionText ? (
-            <div className='mdc-snackbar__actions'>
+            <div className="mdc-snackbar__actions">
               <button
-                type='button'
+                type="button"
                 onClick={this.handleActionClick}
-                className='mdc-button mdc-snackbar__action'
+                className="mdc-button mdc-snackbar__action"
               >
                 {this.props.actionText}
               </button>

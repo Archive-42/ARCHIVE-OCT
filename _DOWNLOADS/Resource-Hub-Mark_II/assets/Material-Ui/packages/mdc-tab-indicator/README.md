@@ -47,9 +47,11 @@ npm install @material/tab-indicator
 ### JavaScript Instantiation
 
 ```js
-import {MDCTabIndicator} from '@material/tab-indicator';
+import { MDCTabIndicator } from "@material/tab-indicator";
 
-const tabIndicator = new MDCTabIndicator(document.querySelector('.mdc-tab-indicator'));
+const tabIndicator = new MDCTabIndicator(
+  document.querySelector(".mdc-tab-indicator")
+);
 ```
 
 > See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.
@@ -64,21 +66,23 @@ Add the `mdc-tab-indicator--active` class to the `mdc-tab-indicator` element to 
 
 The Tab Indicator may be represented in one of two ways:
 
-* Underline, indicated by the `mdc-tab-indicator__content--underline` class
-* Icon, indicated by the `mdc-tab-indicator__content--icon` class
+- Underline, indicated by the `mdc-tab-indicator__content--underline` class
+- Icon, indicated by the `mdc-tab-indicator__content--icon` class
 
-> *NOTE*: One of these classes _must_ be applied to the Tab Indicator's content element.
+> _NOTE_: One of these classes _must_ be applied to the Tab Indicator's content element.
 
 The Tab Indicator may transition in one of two ways:
 
-* Slide, the default behavior
-* Fade, indicated by the `mdc-tab-indicator--fade` class
+- Slide, the default behavior
+- Fade, indicated by the `mdc-tab-indicator--fade` class
 
 #### Sliding Underline Indicator
 
 ```html
 <span class="mdc-tab-indicator">
-  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+  <span
+    class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
+  ></span>
 </span>
 ```
 
@@ -88,7 +92,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -101,7 +108,11 @@ Remember to include `aria-hidden="true"`, since the active indicator is already 
 
 ```html
 <span class="mdc-tab-indicator mdc-tab-indicator--fade">
-  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--icon material-icons" aria-hidden="true">star</span>
+  <span
+    class="mdc-tab-indicator__content mdc-tab-indicator__content--icon material-icons"
+    aria-hidden="true"
+    >star</span
+  >
 </span>
 ```
 
@@ -109,7 +120,11 @@ Remember to include `aria-hidden="true"`, since the active indicator is already 
 
 ```html
 <span class="mdc-tab-indicator">
-  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--icon material-icons" aria-hidden="true">star</span>
+  <span
+    class="mdc-tab-indicator__content mdc-tab-indicator__content--icon material-icons"
+    aria-hidden="true"
+    >star</span
+  >
 </span>
 ```
 
@@ -117,37 +132,37 @@ Remember to include `aria-hidden="true"`, since the active indicator is already 
 
 ### CSS Classes
 
-CSS Class | Description
---- | ---
-`mdc-tab-indicator` | Mandatory. Contains the tab indicator content.
-`mdc-tab-indicator__content` | Mandatory. Denotes the tab indicator content.
-`mdc-tab-indicator--active` | Optional. Visually activates the indicator.
-`mdc-tab-indicator--fade` | Optional. Sets up the tab indicator to fade in on activation and fade out on deactivation.
-`mdc-tab-indicator__content--underline` | Optional. Denotes an underline tab indicator.
-`mdc-tab-indicator__content--icon` | Optional. Denotes an icon tab indicator.
+| CSS Class                               | Description                                                                                |
+| --------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `mdc-tab-indicator`                     | Mandatory. Contains the tab indicator content.                                             |
+| `mdc-tab-indicator__content`            | Mandatory. Denotes the tab indicator content.                                              |
+| `mdc-tab-indicator--active`             | Optional. Visually activates the indicator.                                                |
+| `mdc-tab-indicator--fade`               | Optional. Sets up the tab indicator to fade in on activation and fade out on deactivation. |
+| `mdc-tab-indicator__content--underline` | Optional. Denotes an underline tab indicator.                                              |
+| `mdc-tab-indicator__content--icon`      | Optional. Denotes an icon tab indicator.                                                   |
 
-> *NOTE*: Exactly one of the `--underline` or `--icon` content modifier classes should be present.
+> _NOTE_: Exactly one of the `--underline` or `--icon` content modifier classes should be present.
 
 ### Sass Mixins
 
 To customize the tab indicator, use the following mixins.
 
-Mixin | Description
---- | ---
-`surface` | Mandatory. Must be applied to the parent element of the `mdc-tab-indicator`.
-`underline-color($color)` | Customizes the color of the underline.
-`icon-color($color)` | Customizes the color of the icon subelement.
-`underline-height($height)` | Customizes the height of the underline.
-`icon-height($height)` | Customizes the height of the icon subelement.
-`underline-top-corner-radius($radius)` | Customizes the top left and top right border radius of the underline child element.
+| Mixin                                  | Description                                                                         |
+| -------------------------------------- | ----------------------------------------------------------------------------------- |
+| `surface`                              | Mandatory. Must be applied to the parent element of the `mdc-tab-indicator`.        |
+| `underline-color($color)`              | Customizes the color of the underline.                                              |
+| `icon-color($color)`                   | Customizes the color of the icon subelement.                                        |
+| `underline-height($height)`            | Customizes the height of the underline.                                             |
+| `icon-height($height)`                 | Customizes the height of the icon subelement.                                       |
+| `underline-top-corner-radius($radius)` | Customizes the top left and top right border radius of the underline child element. |
 
 ## `MDCTabIndicator` Methods
 
-Method Signature | Description
---- | ---
-`activate(previousIndicatorClientRect?: ClientRect) => void` | Activates the tab indicator.
-`deactivate() => void` | Deactivates the tab indicator.
-`computeContentClientRect() => ClientRect` | Returns the content element bounding client rect.
+| Method Signature                                             | Description                                       |
+| ------------------------------------------------------------ | ------------------------------------------------- |
+| `activate(previousIndicatorClientRect?: ClientRect) => void` | Activates the tab indicator.                      |
+| `deactivate() => void`                                       | Deactivates the tab indicator.                    |
+| `computeContentClientRect() => ClientRect`                   | Returns the content element bounding client rect. |
 
 ## Usage within Web Frameworks
 
@@ -155,18 +170,18 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCTabIndicatorAdapter`
 
-Method Signature | Description
---- | ---
-`addClass(className: string) => void` | Adds a class to the root element.
-`removeClass(className: string) => void` | Removes a class from the root element.
-`setContentStyleProperty(property: string, value: string) => void` | Sets the style property of the content element.
-`computeContentClientRect() => ClientRect` | Returns the content element's bounding client rect.
+| Method Signature                                                   | Description                                         |
+| ------------------------------------------------------------------ | --------------------------------------------------- |
+| `addClass(className: string) => void`                              | Adds a class to the root element.                   |
+| `removeClass(className: string) => void`                           | Removes a class from the root element.              |
+| `setContentStyleProperty(property: string, value: string) => void` | Sets the style property of the content element.     |
+| `computeContentClientRect() => ClientRect`                         | Returns the content element's bounding client rect. |
 
 ### `MDCTabIndicatorFoundation`
 
-Method Signature | Description
---- | ---
-`handleTransitionEnd(evt: Event) => void` | Handles the logic for the `"transitionend"` event on the root element.
-`activate(previousIndicatorClientRect?: ClientRect) => void` | Activates the tab indicator.
-`deactivate() => void` | Deactivates the tab indicator.
-`computeContentClientRect() => ClientRect` | Returns the content element's bounding client rect.
+| Method Signature                                             | Description                                                            |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| `handleTransitionEnd(evt: Event) => void`                    | Handles the logic for the `"transitionend"` event on the root element. |
+| `activate(previousIndicatorClientRect?: ClientRect) => void` | Activates the tab indicator.                                           |
+| `deactivate() => void`                                       | Deactivates the tab indicator.                                         |
+| `computeContentClientRect() => ClientRect`                   | Returns the content element's bounding client rect.                    |

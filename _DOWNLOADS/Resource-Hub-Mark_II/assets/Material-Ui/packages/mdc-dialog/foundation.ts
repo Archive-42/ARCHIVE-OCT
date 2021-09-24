@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCDialogAdapter} from './adapter';
-import {cssClasses, numbers, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCDialogAdapter } from "./adapter";
+import { cssClasses, numbers, strings } from "./constants";
 
 export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
   static get cssClasses() {
@@ -45,7 +45,7 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
       areButtonsStacked: () => false,
       clickDefaultButton: () => undefined,
       eventTargetMatches: () => false,
-      getActionFromEvent: () => '',
+      getActionFromEvent: () => "",
       getInitialFocusEl: () => null,
       hasClass: () => false,
       isContentScrollable: () => false,
@@ -69,10 +69,11 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
   private scrimClickAction_ = strings.CLOSE_ACTION;
   private autoStackButtons_ = true;
   private areButtonsStacked_ = false;
-  private suppressDefaultPressSelector = strings.SUPPRESS_DEFAULT_PRESS_SELECTOR;
+  private suppressDefaultPressSelector =
+    strings.SUPPRESS_DEFAULT_PRESS_SELECTOR;
 
   constructor(adapter?: Partial<MDCDialogAdapter>) {
-    super({...MDCDialogFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCDialogFoundation.defaultAdapter, ...adapter });
   }
 
   init() {
@@ -117,7 +118,7 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
     });
   }
 
-  close(action = '') {
+  close(action = "") {
     if (!this.isOpen_) {
       // Avoid redundant close calls (and events), e.g. from keydown on elements that inherently emit click
       return;
@@ -188,10 +189,12 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
 
   /** Handles click on the dialog root element. */
   handleClick(evt: MouseEvent) {
-    const isScrim =
-        this.adapter.eventTargetMatches(evt.target, strings.SCRIM_SELECTOR);
+    const isScrim = this.adapter.eventTargetMatches(
+      evt.target,
+      strings.SCRIM_SELECTOR
+    );
     // Check for scrim click first since it doesn't require querying ancestors.
-    if (isScrim && this.scrimClickAction_ !== '') {
+    if (isScrim && this.scrimClickAction_ !== "") {
       this.close(this.scrimClickAction_);
     } else {
       const action = this.adapter.getActionFromEvent(evt);
@@ -203,7 +206,7 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
 
   /** Handles keydown on the dialog root element. */
   handleKeydown(evt: KeyboardEvent) {
-    const isEnter = evt.key === 'Enter' || evt.keyCode === 13;
+    const isEnter = evt.key === "Enter" || evt.keyCode === 13;
     if (!isEnter) {
       return;
     }
@@ -229,7 +232,9 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
     // </mwc-dialog>
     const target = evt.composedPath ? evt.composedPath()[0] : evt.target;
     const isDefault = !this.adapter.eventTargetMatches(
-        target, this.suppressDefaultPressSelector);
+      target,
+      this.suppressDefaultPressSelector
+    );
     if (isEnter && isDefault) {
       this.adapter.clickDefaultButton();
     }
@@ -237,8 +242,8 @@ export class MDCDialogFoundation extends MDCFoundation<MDCDialogAdapter> {
 
   /** Handles keydown on the document. */
   handleDocumentKeydown(evt: KeyboardEvent) {
-    const isEscape = evt.key === 'Escape' || evt.keyCode === 27;
-    if (isEscape && this.escapeKeyAction_ !== '') {
+    const isEscape = evt.key === "Escape" || evt.keyCode === 27;
+    if (isEscape && this.escapeKeyAction_ !== "") {
       this.close(this.escapeKeyAction_);
     }
   }

@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import {cssClasses} from '../constants';
-import {MDCTopAppBarFoundation} from '../standard/foundation';
+import { cssClasses } from "../constants";
+import { MDCTopAppBarFoundation } from "../standard/foundation";
 
 export class MDCFixedTopAppBarFoundation extends MDCTopAppBarFoundation {
   /**

@@ -21,61 +21,59 @@
  * THE SOFTWARE.
  */
 
+import { MDCNotchedOutlineFoundation } from "../../mdc-notched-outline/foundation";
+import { verifyDefaultAdapter } from "../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
 
-import {MDCNotchedOutlineFoundation} from '../../mdc-notched-outline/foundation';
-import {verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
+const { cssClasses, numbers, strings } = MDCNotchedOutlineFoundation;
 
-const {cssClasses, numbers, strings} = MDCNotchedOutlineFoundation;
-
-describe('MDCNotchedOutlineFoundation', () => {
-  it('exports cssClasses', () => {
+describe("MDCNotchedOutlineFoundation", () => {
+  it("exports cssClasses", () => {
     expect(MDCNotchedOutlineFoundation.cssClasses).toEqual(cssClasses);
   });
 
-  it('exports numbers', () => {
+  it("exports numbers", () => {
     expect(MDCNotchedOutlineFoundation.numbers).toEqual(numbers);
   });
 
-  it('exports strings', () => {
+  it("exports strings", () => {
     expect(MDCNotchedOutlineFoundation.strings).toEqual(strings);
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCNotchedOutlineFoundation, [
-      'addClass',
-      'removeClass',
-      'setNotchWidthProperty',
-      'removeNotchWidthProperty',
+      "addClass",
+      "removeClass",
+      "setNotchWidthProperty",
+      "removeNotchWidthProperty",
     ]);
   });
 
   const setupTest = () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCNotchedOutlineFoundation);
-    return {foundation, mockAdapter};
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCNotchedOutlineFoundation
+    );
+    return { foundation, mockAdapter };
   };
 
-  it('#notch adds the notched class and sets the width of the element', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#notch adds the notched class and sets the width of the element", () => {
+    const { foundation, mockAdapter } = setupTest();
     const notchWidth = 30;
     foundation.notch(notchWidth);
-    expect(mockAdapter.setNotchWidthProperty)
-        .toHaveBeenCalledWith(
-            notchWidth +
-            MDCNotchedOutlineFoundation.numbers.NOTCH_ELEMENT_PADDING);
-    expect(mockAdapter.addClass)
-        .toHaveBeenCalledWith(
-            MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED);
+    expect(mockAdapter.setNotchWidthProperty).toHaveBeenCalledWith(
+      notchWidth + MDCNotchedOutlineFoundation.numbers.NOTCH_ELEMENT_PADDING
+    );
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED
+    );
   });
 
-  it('#closeNotch removes the notch selector and removes the width property',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.closeNotch();
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(
-               MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED);
-       expect(mockAdapter.removeNotchWidthProperty).toHaveBeenCalled();
-     });
+  it("#closeNotch removes the notch selector and removes the width property", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.closeNotch();
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED
+    );
+    expect(mockAdapter.removeNotchWidthProperty).toHaveBeenCalled();
+  });
 });

@@ -21,14 +21,13 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {isNavigationEvent, KEY, normalizeKey} from '@material/dom/keyboard';
+import { MDCFoundation } from "@material/base/foundation";
+import { isNavigationEvent, KEY, normalizeKey } from "@material/dom/keyboard";
 
-import {MDCChipTrailingActionAdapter} from './adapter';
-import {InteractionTrigger, strings} from './constants';
+import { MDCChipTrailingActionAdapter } from "./adapter";
+import { InteractionTrigger, strings } from "./constants";
 
-export class MDCChipTrailingActionFoundation extends
-    MDCFoundation<MDCChipTrailingActionAdapter> {
+export class MDCChipTrailingActionFoundation extends MDCFoundation<MDCChipTrailingActionAdapter> {
   static get strings() {
     return strings;
   }
@@ -44,7 +43,7 @@ export class MDCChipTrailingActionFoundation extends
   }
 
   constructor(adapter?: Partial<MDCChipTrailingActionAdapter>) {
-    super({...MDCChipTrailingActionFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCChipTrailingActionFoundation.defaultAdapter, ...adapter });
   }
 
   handleClick(evt: MouseEvent) {
@@ -68,16 +67,16 @@ export class MDCChipTrailingActionFoundation extends
   }
 
   removeFocus() {
-    this.adapter.setAttribute(strings.TAB_INDEX, '-1');
+    this.adapter.setAttribute(strings.TAB_INDEX, "-1");
   }
 
   focus() {
-    this.adapter.setAttribute(strings.TAB_INDEX, '0');
+    this.adapter.setAttribute(strings.TAB_INDEX, "0");
     this.adapter.focus();
   }
 
   isNavigable() {
-    return this.adapter.getAttribute(strings.ARIA_HIDDEN) !== 'true';
+    return this.adapter.getAttribute(strings.ARIA_HIDDEN) !== "true";
   }
 
   private shouldNotifyInteractionFromKey_(key: string): boolean {

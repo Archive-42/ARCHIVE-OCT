@@ -20,19 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import TopAppBarFixedAdjust, {TopAppbarFixedAdjustProps} from './FixedAdjust';
-import TopAppBarSection from './Section';
-import TopAppBarRow from './Row';
-import TopAppBarTitle from './Title';
-import TopAppBarIcon from './Icon';
-import {cssClasses} from './constants';
-import {MDCFixedTopAppBarFoundation} from '@material/top-app-bar/fixed/foundation';
-import {MDCTopAppBarAdapter} from '@material/top-app-bar/adapter';
-import {MDCTopAppBarFoundation} from '@material/top-app-bar/standard/foundation';
-import {MDCShortTopAppBarFoundation} from '@material/top-app-bar/short/foundation';
-import {SpecificEventListener} from '@material/base/types';
+import React from "react";
+import classnames from "classnames";
+import TopAppBarFixedAdjust, { TopAppbarFixedAdjustProps } from "./FixedAdjust";
+import TopAppBarSection from "./Section";
+import TopAppBarRow from "./Row";
+import TopAppBarTitle from "./Title";
+import TopAppBarIcon from "./Icon";
+import { cssClasses } from "./constants";
+import { MDCFixedTopAppBarFoundation } from "@material/top-app-bar/fixed/foundation";
+import { MDCTopAppBarAdapter } from "@material/top-app-bar/adapter";
+import { MDCTopAppBarFoundation } from "@material/top-app-bar/standard/foundation";
+import { MDCShortTopAppBarFoundation } from "@material/top-app-bar/short/foundation";
+import { SpecificEventListener } from "@material/base/types";
 
 export type MDCTopAppBarFoundationTypes =
   | MDCFixedTopAppBarFoundation
@@ -59,11 +59,11 @@ interface TopAppBarState {
 }
 
 export type VariantType =
-  | 'dense'
-  | 'fixed'
-  | 'prominent'
-  | 'short'
-  | 'shortCollapsed';
+  | "dense"
+  | "fixed"
+  | "prominent"
+  | "short"
+  | "shortCollapsed";
 
 class TopAppBar<
   T extends HTMLElement = HTMLHeadingElement
@@ -77,26 +77,20 @@ class TopAppBar<
   };
 
   static defaultProps: Partial<TopAppBarProps<HTMLHeadingElement>> = {
-    className: '',
+    className: "",
     dense: false,
     fixed: false,
     prominent: false,
     short: false,
     shortCollapsed: false,
     style: {},
-    tag: 'header',
+    tag: "header",
   };
 
   get classes() {
-    const {classList} = this.state;
-    const {
-      className,
-      dense,
-      fixed,
-      prominent,
-      short,
-      shortCollapsed,
-    } = this.props;
+    const { classList } = this.state;
+    const { className, dense, fixed, prominent, short, shortCollapsed } =
+      this.props;
     return classnames(cssClasses.BASE, Array.from(classList), className, {
       [cssClasses.FIXED]: fixed,
       [cssClasses.SHORT]: shortCollapsed || short,
@@ -109,7 +103,7 @@ class TopAppBar<
   componentDidMount() {
     this.initializeFoundation();
     if (this.props.scrollTarget) {
-      this.setState({scrollTarget: this.props.scrollTarget});
+      this.setState({ scrollTarget: this.props.scrollTarget });
     }
   }
 
@@ -118,18 +112,21 @@ class TopAppBar<
   }
 
   componentDidUpdate(prevProps: TopAppBarProps<T>, prevState: TopAppBarState) {
-    const foundationChanged = ['short', 'shortCollapsed', 'fixed'].some(
+    const foundationChanged = ["short", "shortCollapsed", "fixed"].some(
       (variant: string) =>
         this.props[variant as VariantType] !== prevProps[variant as VariantType]
     );
     if (foundationChanged) {
       // foundation.destroy() does not remove old variant className(s)
-      this.setState({classList: new Set<string>()}, this.initializeFoundation);
+      this.setState(
+        { classList: new Set<string>() },
+        this.initializeFoundation
+      );
     }
 
     if (prevProps.scrollTarget !== this.props.scrollTarget) {
       this.foundation.destroyScrollHandler();
-      this.setState({scrollTarget: this.props.scrollTarget});
+      this.setState({ scrollTarget: this.props.scrollTarget });
     }
 
     if (prevState.scrollTarget !== this.state.scrollTarget) {
@@ -138,7 +135,7 @@ class TopAppBar<
   }
 
   private initializeFoundation = () => {
-    const {short, shortCollapsed, fixed} = this.props;
+    const { short, shortCollapsed, fixed } = this.props;
     if (this.foundation) {
       this.foundation.destroy();
     }
@@ -154,21 +151,21 @@ class TopAppBar<
   };
 
   getMergedStyles = () => {
-    const {style} = this.state;
+    const { style } = this.state;
     return Object.assign({}, style, this.props.style);
   };
 
   get adapter(): MDCTopAppBarAdapter {
     return {
       addClass: (className: string) =>
-        this.setState({classList: this.state.classList.add(className)}),
+        this.setState({ classList: this.state.classList.add(className) }),
       removeClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) =>
-        this.classes.split(' ').includes(className),
+        this.classes.split(" ").includes(className),
       setStyle: (varName: keyof React.CSSProperties, value: string) => {
         const updatedStyle = Object.assign(
           {},
@@ -176,7 +173,7 @@ class TopAppBar<
         ) as React.CSSProperties;
         // @ts-ignore CSS values now strongly typed
         updatedStyle[varName] = value;
-        this.setState({style: updatedStyle});
+        this.setState({ style: updatedStyle });
       },
       getTopAppBarHeight: () => {
         if (this.topAppBarElement && this.topAppBarElement.current) {
@@ -184,21 +181,21 @@ class TopAppBar<
         }
         return 0;
       },
-      registerScrollHandler: (handler: SpecificEventListener<'scroll'>) => {
+      registerScrollHandler: (handler: SpecificEventListener<"scroll">) => {
         if (this.state.scrollTarget && this.state.scrollTarget.current) {
-          this.state.scrollTarget.current.addEventListener('scroll', handler);
+          this.state.scrollTarget.current.addEventListener("scroll", handler);
         } else {
-          window.addEventListener('scroll', handler);
+          window.addEventListener("scroll", handler);
         }
       },
-      deregisterScrollHandler: (handler: SpecificEventListener<'scroll'>) => {
+      deregisterScrollHandler: (handler: SpecificEventListener<"scroll">) => {
         if (this.state.scrollTarget && this.state.scrollTarget.current) {
           this.state.scrollTarget.current.removeEventListener(
-            'scroll',
+            "scroll",
             handler
           );
         } else {
-          window.removeEventListener('scroll', handler);
+          window.removeEventListener("scroll", handler);
         }
       },
       getViewportScrollY: () => {
@@ -215,11 +212,11 @@ class TopAppBar<
         }
         return 0;
       },
-      registerResizeHandler: (handler: SpecificEventListener<'resize'>) => {
-        window.addEventListener('resize', handler);
+      registerResizeHandler: (handler: SpecificEventListener<"resize">) => {
+        window.addEventListener("resize", handler);
       },
-      deregisterResizeHandler: (handler: SpecificEventListener<'resize'>) => {
-        window.removeEventListener('resize', handler);
+      deregisterResizeHandler: (handler: SpecificEventListener<"resize">) => {
+        window.removeEventListener("resize", handler);
       },
       // onClick handler of navigation bar is used instead
       // see https://github.com/material-components/material-components-web/issues/2813

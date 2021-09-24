@@ -21,14 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {SpecificEventListener} from '@material/base/types';
-import {MDCTextFieldIconAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { SpecificEventListener } from "@material/base/types";
+import { MDCTextFieldIconAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
-type InteractionEventType = 'click' | 'keydown';
+type InteractionEventType = "click" | "keydown";
 
-const INTERACTION_EVENTS: InteractionEventType[] = ['click', 'keydown'];
+const INTERACTION_EVENTS: InteractionEventType[] = ["click", "keydown"];
 
 export class MDCTextFieldIconFoundation extends MDCFoundation<MDCTextFieldIconAdapter> {
   static get strings() {
@@ -60,22 +60,28 @@ export class MDCTextFieldIconFoundation extends MDCFoundation<MDCTextFieldIconAd
   private readonly interactionHandler_: SpecificEventListener<InteractionEventType>;
 
   constructor(adapter?: Partial<MDCTextFieldIconAdapter>) {
-    super({...MDCTextFieldIconFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCTextFieldIconFoundation.defaultAdapter, ...adapter });
 
     this.interactionHandler_ = (evt) => this.handleInteraction(evt);
   }
 
   init() {
-    this.savedTabIndex_ = this.adapter.getAttr('tabindex');
+    this.savedTabIndex_ = this.adapter.getAttr("tabindex");
 
     INTERACTION_EVENTS.forEach((evtType) => {
-      this.adapter.registerInteractionHandler(evtType, this.interactionHandler_);
+      this.adapter.registerInteractionHandler(
+        evtType,
+        this.interactionHandler_
+      );
     });
   }
 
   destroy() {
     INTERACTION_EVENTS.forEach((evtType) => {
-      this.adapter.deregisterInteractionHandler(evtType, this.interactionHandler_);
+      this.adapter.deregisterInteractionHandler(
+        evtType,
+        this.interactionHandler_
+      );
     });
   }
 
@@ -85,16 +91,16 @@ export class MDCTextFieldIconFoundation extends MDCFoundation<MDCTextFieldIconAd
     }
 
     if (disabled) {
-      this.adapter.setAttr('tabindex', '-1');
-      this.adapter.removeAttr('role');
+      this.adapter.setAttr("tabindex", "-1");
+      this.adapter.removeAttr("role");
     } else {
-      this.adapter.setAttr('tabindex', this.savedTabIndex_);
-      this.adapter.setAttr('role', strings.ICON_ROLE);
+      this.adapter.setAttr("tabindex", this.savedTabIndex_);
+      this.adapter.setAttr("role", strings.ICON_ROLE);
     }
   }
 
   setAriaLabel(label: string) {
-    this.adapter.setAttr('aria-label', label);
+    this.adapter.setAttr("aria-label", label);
   }
 
   setContent(content: string) {
@@ -102,10 +108,12 @@ export class MDCTextFieldIconFoundation extends MDCFoundation<MDCTextFieldIconAd
   }
 
   handleInteraction(evt: MouseEvent | KeyboardEvent) {
-    const isEnterKey = (evt as KeyboardEvent).key === 'Enter' || (evt as KeyboardEvent).keyCode === 13;
-    if (evt.type === 'click' || isEnterKey) {
-      evt.preventDefault();  // stop click from causing host label to focus
-                             // input
+    const isEnterKey =
+      (evt as KeyboardEvent).key === "Enter" ||
+      (evt as KeyboardEvent).keyCode === 13;
+    if (evt.type === "click" || isEnterKey) {
+      evt.preventDefault(); // stop click from causing host label to focus
+      // input
       this.adapter.notifyIconAction();
     }
   }

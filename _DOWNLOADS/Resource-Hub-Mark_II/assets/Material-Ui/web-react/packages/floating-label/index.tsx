@@ -20,11 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCFloatingLabelFoundation} from '@material/floating-label/foundation';
-import {MDCFloatingLabelAdapter} from '@material/floating-label/adapter';
-import {cssClasses} from '@material/floating-label/constants';
+import React from "react";
+import classnames from "classnames";
+import { MDCFloatingLabelFoundation } from "@material/floating-label/foundation";
+import { MDCFloatingLabelAdapter } from "@material/floating-label/adapter";
+import { cssClasses } from "@material/floating-label/constants";
 
 export interface FloatingLabelProps
   extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -45,7 +45,7 @@ export default class FloatingLabel extends React.Component<
   labelElement: React.RefObject<HTMLLabelElement> = React.createRef();
 
   static defaultProps: Partial<FloatingLabelProps> = {
-    className: '',
+    className: "",
     float: false,
   };
 
@@ -80,15 +80,15 @@ export default class FloatingLabel extends React.Component<
   };
 
   get classes() {
-    const {classList} = this.state;
-    const {className} = this.props;
+    const { classList } = this.state;
+    const { className } = this.props;
     return classnames(cssClasses.ROOT, Array.from(classList), className);
   }
 
   get adapter(): MDCFloatingLabelAdapter {
     return {
       addClass: (className: string) =>
-        this.setState({classList: this.state.classList.add(className)}),
+        this.setState({ classList: this.state.classList.add(className) }),
       removeClass: this.removeClassFromClassList,
       // the adapter methods below are effectively useless since React
       // handles events and width differently
@@ -108,9 +108,9 @@ export default class FloatingLabel extends React.Component<
   };
 
   removeClassFromClassList = (className: string) => {
-    const {classList} = this.state;
+    const { classList } = this.state;
     classList.delete(className);
-    this.setState({classList});
+    this.setState({ classList });
   };
 
   handleWidthChange = () => {

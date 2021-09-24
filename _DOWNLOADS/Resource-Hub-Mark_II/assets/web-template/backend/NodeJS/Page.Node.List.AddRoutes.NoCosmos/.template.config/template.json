@@ -16,8 +16,7 @@
   "sourceName": "wts.ItemName",
   "preferNameDirectory": true,
   "PrimaryOutputs": [],
-  "symbols": {
-  },
+  "symbols": {},
   "postActions": [
     {
       "description": "Add uuid package",

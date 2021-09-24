@@ -19,5 +19,6 @@
 //  THE SOFTWARE.
 //
 
-@forward "../select-icon-theme" show size, icon-color, disabled-icon-color, icon-horizontal-margins;
+@forward "../select-icon-theme" show size, icon-color, disabled-icon-color,
+  icon-horizontal-margins;
 @forward "../select-icon" show icon-core-styles;

@@ -42,9 +42,10 @@ export function closest(element: Element, selector: string): Element | null {
 }
 
 export function matches(element: Element, selector: string): boolean {
-  const nativeMatches = element.matches
-      || element.webkitMatchesSelector
-      || (element as any).msMatchesSelector;
+  const nativeMatches =
+    element.matches ||
+    element.webkitMatchesSelector ||
+    (element as any).msMatchesSelector;
   return nativeMatches.call(element, selector);
 }
 
@@ -67,8 +68,8 @@ export function estimateScrollWidth(element: Element): number {
   }
 
   const clone = htmlEl.cloneNode(true) as HTMLElement;
-  clone.style.setProperty('position', 'absolute');
-  clone.style.setProperty('transform', 'translate(-9999px, -9999px)');
+  clone.style.setProperty("position", "absolute");
+  clone.style.setProperty("transform", "translate(-9999px, -9999px)");
   document.documentElement.appendChild(clone);
   const scrollWidth = clone.scrollWidth;
   document.documentElement.removeChild(clone);

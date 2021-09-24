@@ -15,7 +15,7 @@ module.exports = class SQLController {
   async get(req, res, next) {
     const querySpec = {
       query: "SELECT r.id as id, r.text FROM root r ORDER BY r._ts DESC",
-      parameters: []
+      parameters: [],
     };
 
     try {
@@ -34,10 +34,12 @@ module.exports = class SQLController {
     // TODO Web Template Studio: The Cosmos Core SQL Database is set up to hold a container called ListItems which contains documents
     // with the following schema. Define your own schema to add documents to the container here.
     var listItem = {
-      text: req.body.text
+      text: req.body.text,
     };
     try {
-      const { resource } =  await this.sqlClient.container.items.create(listItem);
+      const { resource } = await this.sqlClient.container.items.create(
+        listItem
+      );
       res.json({ id: resource.id, text: listItem.text });
     } catch (error) {
       next(error);

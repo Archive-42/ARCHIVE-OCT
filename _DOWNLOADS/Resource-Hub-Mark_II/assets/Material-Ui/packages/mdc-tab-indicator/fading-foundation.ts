@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCTabIndicatorFoundation} from './foundation';
+import { MDCTabIndicatorFoundation } from "./foundation";
 
 /* istanbul ignore next: subclass is not a branch statement */
 export class MDCFadingTabIndicatorFoundation extends MDCTabIndicatorFoundation {

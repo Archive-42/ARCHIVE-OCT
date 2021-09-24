@@ -19,30 +19,30 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
-import {MDCTextFieldFoundation} from '@material/textfield/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCTextFieldFoundation } from "@material/textfield/foundation";
 
 export interface InputProps<T extends HTMLElement = HTMLInputElement> {
   className?: string;
-  inputType?: 'input' | 'textarea';
+  inputType?: "input" | "textarea";
   isValid?: boolean;
   foundation?: MDCTextFieldFoundation;
   syncInput?: (inputInstance: Input<T>) => void;
-  onBlur?: Pick<React.HTMLProps<T>, 'onBlur'>;
-  onChange?: Pick<React.HTMLProps<T>, 'onChange'>;
-  onFocus?: Pick<React.HTMLProps<T>, 'onFocus'>;
-  onMouseDown?: Pick<React.HTMLProps<T>, 'onMouseDown'>;
-  onTouchStart?: Pick<React.HTMLProps<T>, 'onTouchStart'>;
+  onBlur?: Pick<React.HTMLProps<T>, "onBlur">;
+  onChange?: Pick<React.HTMLProps<T>, "onChange">;
+  onFocus?: Pick<React.HTMLProps<T>, "onFocus">;
+  onMouseDown?: Pick<React.HTMLProps<T>, "onMouseDown">;
+  onTouchStart?: Pick<React.HTMLProps<T>, "onTouchStart">;
   setDisabled?: (disabled: boolean) => void;
   setInputId?: (id: string | number) => void;
   handleFocusChange?: (isFocused: boolean) => void;
 }
 
-type InputElementProps = Exclude<React.HTMLProps<HTMLInputElement>, 'ref'>;
+type InputElementProps = Exclude<React.HTMLProps<HTMLInputElement>, "ref">;
 type TextareaElementProps = Exclude<
   React.HTMLProps<HTMLTextAreaElement>,
-  'ref'
+  "ref"
 >;
 type Props<T extends HTMLElement = HTMLInputElement> = InputProps<T> &
   (T extends HTMLInputElement ? InputElementProps : TextareaElementProps);
@@ -53,26 +53,26 @@ interface InputState {
 }
 
 declare type ValidationAttrWhiteList =
-  | 'pattern'
-  | 'min'
-  | 'max'
-  | 'required'
-  | 'step'
-  | 'minlength'
-  | 'maxlength';
+  | "pattern"
+  | "min"
+  | "max"
+  | "required"
+  | "step"
+  | "minlength"
+  | "maxlength";
 declare type ValidationAttrWhiteListReact =
-  | Exclude<ValidationAttrWhiteList, 'minlength' | 'maxlength'>
-  | 'minLength'
-  | 'maxLength';
+  | Exclude<ValidationAttrWhiteList, "minlength" | "maxlength">
+  | "minLength"
+  | "maxLength";
 
 const VALIDATION_ATTR_WHITELIST: ValidationAttrWhiteList[] = [
-  'pattern',
-  'min',
-  'max',
-  'required',
-  'step',
-  'minlength',
-  'maxlength',
+  "pattern",
+  "min",
+  "max",
+  "required",
+  "step",
+  "minlength",
+  "maxlength",
 ];
 
 export default class Input<
@@ -83,14 +83,14 @@ export default class Input<
   > = React.createRef();
 
   static defaultProps = {
-    className: '',
-    inputType: 'input',
+    className: "",
+    inputType: "input",
     disabled: false,
-    id: '',
+    id: "",
     setDisabled: () => {},
     setInputId: () => {},
     handleFocusChange: () => {},
-    value: '',
+    value: "",
   };
 
   state = {
@@ -120,7 +120,7 @@ export default class Input<
     if (value && foundation) {
       foundation.setValue(this.valueToString(value));
     }
-    this.setState({isMounted: true});
+    this.setState({ isMounted: true });
   }
 
   componentDidUpdate(prevProps: Props<T>, prevState: InputState) {
@@ -160,7 +160,7 @@ export default class Input<
       if (notTriggeredChange) {
         foundation && foundation.setValue(inputValue);
       }
-      this.setState({wasUserTriggeredChange: false});
+      this.setState({ wasUserTriggeredChange: false });
     }
 
     if (isValid !== prevProps.isValid && foundation) {
@@ -178,7 +178,7 @@ export default class Input<
    * Any other initialization logic should belong in the componentDidMount.
    */
   private initializeComponentWithFoundation = () => {
-    const {handleFocusChange, foundation, autoFocus, isValid} = this.props;
+    const { handleFocusChange, foundation, autoFocus, isValid } = this.props;
     if (autoFocus) {
       handleFocusChange && handleFocusChange(true);
     }
@@ -192,19 +192,19 @@ export default class Input<
 
   valueToString(value?: string | string[] | number) {
     let str;
-    if (typeof value === 'object') {
-      str = value.join('');
-    } else if (typeof value === 'number') {
+    if (typeof value === "object") {
+      str = value.join("");
+    } else if (typeof value === "number") {
       str = value.toString();
     } else {
-      str = value ? value : '';
+      str = value ? value : "";
     }
     return str;
   }
 
   get classes() {
     // TODO change literal to constant
-    return classnames('mdc-text-field__input', this.props.className);
+    return classnames("mdc-text-field__input", this.props.className);
   }
 
   get inputElement() {
@@ -216,7 +216,7 @@ export default class Input<
       T extends HTMLInputElement ? HTMLInputElement : HTMLTextAreaElement
     >
   ) => {
-    const {handleFocusChange, onFocus = () => {}} = this.props;
+    const { handleFocusChange, onFocus = () => {} } = this.props;
     handleFocusChange && handleFocusChange(true);
     onFocus(evt);
   };
@@ -226,7 +226,7 @@ export default class Input<
       T extends HTMLInputElement ? HTMLInputElement : HTMLTextAreaElement
     >
   ) => {
-    const {handleFocusChange, onBlur = () => {}} = this.props;
+    const { handleFocusChange, onBlur = () => {} } = this.props;
     handleFocusChange && handleFocusChange(false);
     onBlur(evt);
   };
@@ -236,7 +236,7 @@ export default class Input<
       T extends HTMLInputElement ? HTMLInputElement : HTMLTextAreaElement
     >
   ) => {
-    const {foundation, onMouseDown = () => {}} = this.props;
+    const { foundation, onMouseDown = () => {} } = this.props;
     foundation && foundation.setTransformOrigin(evt.nativeEvent);
     onMouseDown(evt);
   };
@@ -246,7 +246,7 @@ export default class Input<
       T extends HTMLInputElement ? HTMLInputElement : HTMLTextAreaElement
     >
   ) => {
-    const {foundation, onTouchStart = () => {}} = this.props;
+    const { foundation, onTouchStart = () => {} } = this.props;
     foundation && foundation.setTransformOrigin(evt.nativeEvent);
     onTouchStart(evt);
   };
@@ -258,23 +258,23 @@ export default class Input<
       T extends HTMLInputElement ? HTMLInputElement : HTMLTextAreaElement
     >
   ) => {
-    const {foundation, onChange = () => {}} = this.props;
+    const { foundation, onChange = () => {} } = this.props;
     // autoCompleteFocus runs on `input` event in MDC Web. In React, onChange and
     // onInput are the same event
     // https://stackoverflow.com/questions/38256332/in-react-whats-the-difference-between-onchange-and-oninput
     foundation && foundation.autoCompleteFocus();
-    this.setState({wasUserTriggeredChange: true});
+    this.setState({ wasUserTriggeredChange: true });
     onChange(evt);
   };
 
   handleValidationAttributeUpdate = (nextProps: Props<T>) => {
-    const {foundation} = nextProps;
+    const { foundation } = nextProps;
     VALIDATION_ATTR_WHITELIST.some((attributeName: ValidationAttrWhiteList) => {
       let attr: ValidationAttrWhiteListReact;
-      if (attributeName === 'minlength') {
-        attr = 'minLength';
-      } else if (attributeName === 'maxlength') {
-        attr = 'maxLength';
+      if (attributeName === "minlength") {
+        attr = "minLength";
+      } else if (attributeName === "maxlength") {
+        attr = "maxLength";
       } else {
         attr = attributeName;
       }
@@ -301,7 +301,7 @@ export default class Input<
   isDisabled = () => !!this.props.disabled;
 
   getMaxLength = () =>
-    typeof this.props.maxLength === 'number' ? this.props.maxLength : -1;
+    typeof this.props.maxLength === "number" ? this.props.maxLength : -1;
 
   getInputType = () => String(this.props.inputType);
 
@@ -345,7 +345,7 @@ export default class Input<
       otherProps
     );
 
-    if (inputType === 'input') {
+    if (inputType === "input") {
       // https://github.com/Microsoft/TypeScript/issues/28892
       // @ts-ignore
       return <input {...props} />;

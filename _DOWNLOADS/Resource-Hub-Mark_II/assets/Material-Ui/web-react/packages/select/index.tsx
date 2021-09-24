@@ -20,23 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCSelectAdapter} from '@material/select/adapter';
-import {MDCSelectFoundation} from '@material/select/foundation';
-import FloatingLabel from '@material/react-floating-label';
-import LineRipple from '@material/react-line-ripple';
-import NotchedOutline from '@material/react-notched-outline';
-import MDCSelectHelperTextFoundation from '@material/select/helper-text/foundation';
-import MDCSelectIconFoundation from '@material/select/icon/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCSelectAdapter } from "@material/select/adapter";
+import { MDCSelectFoundation } from "@material/select/foundation";
+import FloatingLabel from "@material/react-floating-label";
+import LineRipple from "@material/react-line-ripple";
+import NotchedOutline from "@material/react-notched-outline";
+import MDCSelectHelperTextFoundation from "@material/select/helper-text/foundation";
+import MDCSelectIconFoundation from "@material/select/icon/foundation";
 
-import {BaseSelect, BaseSelectProps} from './BaseSelect';
-import {EnhancedChild} from './EnhancedSelect'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import Option, {OptionProps} from './Option'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import {SelectHelperTextProps} from './helper-text/index';
-import {SelectIconProps} from './icon/index';
+import { BaseSelect, BaseSelectProps } from "./BaseSelect";
+import { EnhancedChild } from "./EnhancedSelect"; // eslint-disable-line @typescript-eslint/no-unused-vars
+import Option, { OptionProps } from "./Option"; // eslint-disable-line @typescript-eslint/no-unused-vars
+import { SelectHelperTextProps } from "./helper-text/index";
+import { SelectIconProps } from "./icon/index";
 
-const {cssClasses} = MDCSelectFoundation;
+const { cssClasses } = MDCSelectFoundation;
 
 type SelectOptionsType = (string | React.HTMLProps<HTMLOptionElement>)[];
 type NativeChild = React.ReactElement<OptionProps<HTMLElement>>;
@@ -120,17 +120,17 @@ export default class Select<
 
   static defaultProps: Partial<SelectProps<HTMLElement>> = {
     enhanced: false,
-    className: '',
+    className: "",
     disabled: false,
-    floatingLabelClassName: '',
-    lineRippleClassName: '',
-    selectClassName: '',
-    notchedOutlineClassName: '',
+    floatingLabelClassName: "",
+    lineRippleClassName: "",
+    selectClassName: "",
+    notchedOutlineClassName: "",
     outlined: false,
     options: [],
     onChange: () => {},
     onEnhancedChange: () => {},
-    value: '',
+    value: "",
     afterChange: () => {},
   };
 
@@ -143,7 +143,7 @@ export default class Select<
   componentDidUpdate(prevProps: SelectProps<T>, prevState: SelectState) {
     // this is to fix onChange being called twice
     if (this.props.value !== prevProps.value) {
-      this.setState({value: this.props.value!});
+      this.setState({ value: this.props.value! });
     }
     if (this.state.foundation && this.state.value !== prevState.value) {
       this.state.foundation.handleChange(true);
@@ -168,39 +168,39 @@ export default class Select<
    * getters
    */
   get classes() {
-    const {classList, disabled} = this.state;
-    const {className, leadingIcon, required, outlined} = this.props;
-    return classnames('mdc-select', Array.from(classList), className, {
-      'mdc-select--outlined': outlined,
-      'mdc-select--disabled': disabled,
-      'mdc-select--required': required,
-      'mdc-select--with-leading-icon': leadingIcon,
+    const { classList, disabled } = this.state;
+    const { className, leadingIcon, required, outlined } = this.props;
+    return classnames("mdc-select", Array.from(classList), className, {
+      "mdc-select--outlined": outlined,
+      "mdc-select--disabled": disabled,
+      "mdc-select--required": required,
+      "mdc-select--with-leading-icon": leadingIcon,
     });
   }
 
   get adapter(): MDCSelectAdapter {
-    const {enhanced} = this.props;
+    const { enhanced } = this.props;
 
     const commonAdapter = {
       addClass: this.addClass,
       removeClass: this.removeClass,
       hasClass: (className: string) => {
         // See comment above about classesBeingAdded/classesBeingRemoved
-        const hasClass = this.classes.split(' ').includes(className);
+        const hasClass = this.classes.split(" ").includes(className);
         const isBeingAdded = this.classesBeingAdded.has(className);
         const isBeingRemoved = this.classesBeingRemoved.has(className);
         return (hasClass || isBeingAdded) && !isBeingRemoved;
       },
       setRippleCenter: (lineRippleCenter: number) =>
-        this.setState({lineRippleCenter}),
+        this.setState({ lineRippleCenter }),
       getValue: () => this.state.value,
-      setValue: (value: string) => this.setState({value}),
-      setDisabled: (disabled: boolean) => this.setState({disabled}),
+      setValue: (value: string) => this.setState({ value }),
+      setDisabled: (disabled: boolean) => this.setState({ disabled }),
       // not implemented because react select element
       // does not support this API
       setSelectedIndex: () => {},
       closeMenu: this.closeMenu,
-      openMenu: () => this.setState({open: true}),
+      openMenu: () => this.setState({ open: true }),
     };
     const nativeAdapter = {
       // native select does not utilize this.props.open
@@ -223,23 +223,24 @@ export default class Select<
         return true;
       },
       setValid: (isValid: boolean) => {
-        this.setState({isInvalid: !isValid});
+        this.setState({ isInvalid: !isValid });
         this.setValidClasses(isValid);
       },
     };
 
     const labelAdapter = {
-      floatLabel: (labelIsFloated: boolean) => this.setState({labelIsFloated}),
+      floatLabel: (labelIsFloated: boolean) =>
+        this.setState({ labelIsFloated }),
       getLabelWidth: () => this.state.labelWidth,
     };
     const lineRippleAdapter = {
-      activateBottomLine: () => this.setState({activeLineRipple: true}),
-      deactivateBottomLine: () => this.setState({activeLineRipple: false}),
+      activateBottomLine: () => this.setState({ activeLineRipple: true }),
+      deactivateBottomLine: () => this.setState({ activeLineRipple: false }),
       notifyChange: (value: string) => this.props.afterChange!(value),
     };
     const notchedOutlineAdapter = {
-      notchOutline: () => this.setState({outlineIsNotched: true}),
-      closeOutline: () => this.setState({outlineIsNotched: false}),
+      notchOutline: () => this.setState({ outlineIsNotched: true }),
+      closeOutline: () => this.setState({ outlineIsNotched: false }),
       hasOutline: () => !!this.props.outlined,
     };
     return {
@@ -252,7 +253,7 @@ export default class Select<
   }
 
   get foundationMap() {
-    const {helperTextFoundation, iconFoundation} = this.state;
+    const { helperTextFoundation, iconFoundation } = this.state;
     return {
       helperText: helperTextFoundation,
       leadingIcon: iconFoundation,
@@ -265,7 +266,7 @@ export default class Select<
       this.foundationMap
     );
     foundation.init();
-    this.setState({foundation}, callback);
+    this.setState({ foundation }, callback);
   };
 
   destroyFoundation = () => {
@@ -281,7 +282,7 @@ export default class Select<
       (prevState) => {
         const classList = new Set(prevState.classList);
         classList.add(className);
-        return {classList};
+        return { classList };
       },
       () => {
         this.classesBeingAdded.delete(className);
@@ -295,14 +296,14 @@ export default class Select<
       (prevState) => {
         const classList = new Set(prevState.classList);
         classList.delete(className);
-        return {classList};
+        return { classList };
       },
       () => {
         this.classesBeingRemoved.delete(className);
       }
     );
   };
-  closeMenu = () => this.setState({open: false});
+  closeMenu = () => this.setState({ open: false });
 
   setValidClasses = (isValid: boolean) => {
     if (isValid) {
@@ -315,11 +316,11 @@ export default class Select<
   setHelperTextFoundation = (
     helperTextFoundation: MDCSelectHelperTextFoundation
   ) => {
-    this.setState({helperTextFoundation});
+    this.setState({ helperTextFoundation });
   };
 
   setIconFoundation = (iconFoundation: MDCSelectIconFoundation) => {
-    this.setState({iconFoundation});
+    this.setState({ iconFoundation });
   };
 
   /**
@@ -330,7 +331,7 @@ export default class Select<
       <React.Fragment>
         <div className={this.classes} ref={this.state.selectElement}>
           {this.renderIcon()}
-          <i className='mdc-select__dropdown-icon' />
+          <i className="mdc-select__dropdown-icon" />
           {this.renderSelect()}
           {this.props.outlined ? null : this.renderLabel()}
           {this.props.outlined
@@ -361,7 +362,7 @@ export default class Select<
       enhanced,
       ...otherProps
     } = this.props;
-    const {open, selectElement, isInvalid, value} = this.state;
+    const { open, selectElement, isInvalid, value } = this.state;
 
     const enhancedProps = {
       onEnhancedChange,
@@ -387,14 +388,14 @@ export default class Select<
   }
 
   renderOptions() {
-    const {children, options} = this.props;
+    const { children, options } = this.props;
 
     if (options === undefined || !options.length) {
       return children;
     }
 
     return options.map((optionData, index) => {
-      if (typeof optionData === 'string') {
+      if (typeof optionData === "string") {
         return (
           <Option key={index} value={optionData}>
             {optionData}
@@ -402,7 +403,7 @@ export default class Select<
         );
       }
 
-      const {label, ...nonLabelOptionData} = optionData;
+      const { label, ...nonLabelOptionData } = optionData;
       return (
         // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31485
         // @ts-ignore
@@ -414,14 +415,14 @@ export default class Select<
   }
 
   renderLabel() {
-    const {id, label, floatingLabelClassName} = this.props;
+    const { id, label, floatingLabelClassName } = this.props;
     if (!label) return;
 
     return (
       <FloatingLabel
         className={floatingLabelClassName}
         float={this.state.labelIsFloated}
-        handleWidthChange={(labelWidth) => this.setState({labelWidth})}
+        handleWidthChange={(labelWidth) => this.setState({ labelWidth })}
         htmlFor={id}
       >
         {label}
@@ -430,8 +431,8 @@ export default class Select<
   }
 
   renderLineRipple() {
-    const {lineRippleClassName} = this.props;
-    const {activeLineRipple, lineRippleCenter} = this.state;
+    const { lineRippleClassName } = this.props;
+    const { activeLineRipple, lineRippleCenter } = this.state;
     return (
       <LineRipple
         rippleCenter={lineRippleCenter}
@@ -442,8 +443,8 @@ export default class Select<
   }
 
   renderNotchedOutline() {
-    const {notchedOutlineClassName} = this.props;
-    const {outlineIsNotched, labelWidth} = this.state;
+    const { notchedOutlineClassName } = this.props;
+    const { outlineIsNotched, labelWidth } = this.state;
     return (
       <NotchedOutline
         className={notchedOutlineClassName}
@@ -456,7 +457,7 @@ export default class Select<
   }
 
   renderHelperText() {
-    const {helperText} = this.props;
+    const { helperText } = this.props;
     if (!helperText) return;
     const props = {
       ...helperText.props,
@@ -466,7 +467,7 @@ export default class Select<
   }
 
   renderIcon() {
-    const {leadingIcon} = this.props;
+    const { leadingIcon } = this.props;
     if (!leadingIcon) return;
     const props = {
       ...leadingIcon.props,
@@ -476,10 +477,10 @@ export default class Select<
   }
 }
 
-export {SelectHelperText, SelectHelperTextProps} from './helper-text';
-export {SelectIcon, SelectIconProps} from './icon';
+export { SelectHelperText, SelectHelperTextProps } from "./helper-text";
+export { SelectIcon, SelectIconProps } from "./icon";
 
-export {Option};
+export { Option };
 export {
   MenuListDivider as OptionDivider,
   MenuListGroup as OptionGroup,
@@ -487,4 +488,4 @@ export {
   MenuListItemGraphic as OptionGraphic,
   MenuListItemMeta as OptionMeta,
   MenuListItemText as OptionText,
-} from '@material/react-menu';
+} from "@material/react-menu";

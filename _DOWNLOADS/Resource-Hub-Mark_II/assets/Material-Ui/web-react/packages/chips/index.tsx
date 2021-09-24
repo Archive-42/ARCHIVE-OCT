@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Chip, {ChipProps} from './Chip';
-import ChipCheckmark from './ChipCheckmark';
-import ChipSet, {ChipSetProps} from './ChipSet';
+import Chip, { ChipProps } from "./Chip";
+import ChipCheckmark from "./ChipCheckmark";
+import ChipSet, { ChipSetProps } from "./ChipSet";
 
-export {Chip, ChipCheckmark, ChipSet, ChipSetProps, ChipProps};
+export { Chip, ChipCheckmark, ChipSet, ChipSetProps, ChipProps };

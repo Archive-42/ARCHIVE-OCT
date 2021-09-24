@@ -21,4 +21,6 @@
 //
 
 /// @deprecated Import '_ripple-theme.scss' instead.
-@forward './ripple-theme' show $fade-in-duration, $fade-out-duration, $translate-duration, $states-wash-duration, $dark-ink-opacities, $light-ink-opacities, $pressed-dark-ink-opacity, $pressed-light-ink-opacity;
+@forward "./ripple-theme" show $fade-in-duration, $fade-out-duration,
+  $translate-duration, $states-wash-duration, $dark-ink-opacities,
+  $light-ink-opacities, $pressed-dark-ink-opacity, $pressed-light-ink-opacity;

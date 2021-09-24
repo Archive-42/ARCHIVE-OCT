@@ -21,4 +21,5 @@
 //
 
 /// @deprecated Import '_shape.scss' module instead.
-@forward './shape' show $small-component-radius, $medium-component-radius, $large-component-radius, $category-keywords;
+@forward "./shape" show $small-component-radius, $medium-component-radius,
+  $large-component-radius, $category-keywords;

@@ -21,106 +21,142 @@
  * THE SOFTWARE.
  */
 
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
-import {MDCTabScrollerFoundation} from '../foundation';
-import {MDCTabScrollerRTLNegative} from '../rtl-negative-scroller';
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
+import { MDCTabScrollerFoundation } from "../foundation";
+import { MDCTabScrollerRTLNegative } from "../rtl-negative-scroller";
 
-const setupTest =
-    ({rootWidth, contentWidth, scrollLeft}:
-         {rootWidth: number, contentWidth: number, scrollLeft: number}) => {
-      const {mockAdapter} = setUpFoundationTest(MDCTabScrollerFoundation);
-      const scroller = new MDCTabScrollerRTLNegative(mockAdapter);
-      mockAdapter.getScrollAreaOffsetWidth.and.returnValue(rootWidth);
-      mockAdapter.getScrollContentOffsetWidth.and.returnValue(contentWidth);
-      mockAdapter.getScrollAreaScrollLeft.and.returnValue(scrollLeft);
-      return {scroller, mockAdapter};
-    };
+const setupTest = ({
+  rootWidth,
+  contentWidth,
+  scrollLeft,
+}: {
+  rootWidth: number;
+  contentWidth: number;
+  scrollLeft: number;
+}) => {
+  const { mockAdapter } = setUpFoundationTest(MDCTabScrollerFoundation);
+  const scroller = new MDCTabScrollerRTLNegative(mockAdapter);
+  mockAdapter.getScrollAreaOffsetWidth.and.returnValue(rootWidth);
+  mockAdapter.getScrollContentOffsetWidth.and.returnValue(contentWidth);
+  mockAdapter.getScrollAreaScrollLeft.and.returnValue(scrollLeft);
+  return { scroller, mockAdapter };
+};
 
-describe('MDCTabScrollerRTLNegative', () => {
-  it('#getScrollPositionRTL() returns the current scroll distance when translateX is 0',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -123});
-       expect(scroller.getScrollPositionRTL(0)).toBe(123);
-     });
+describe("MDCTabScrollerRTLNegative", () => {
+  it("#getScrollPositionRTL() returns the current scroll distance when translateX is 0", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -123,
+    });
+    expect(scroller.getScrollPositionRTL(0)).toBe(123);
+  });
 
-  it('#getScrollPositionRTL() returns the current scroll distance minus translateX',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -123});
-       expect(scroller.getScrollPositionRTL(11)).toBe(134);
-     });
+  it("#getScrollPositionRTL() returns the current scroll distance minus translateX", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -123,
+    });
+    expect(scroller.getScrollPositionRTL(11)).toBe(134);
+  });
 
-  it('#scrollToRTL() returns a normalized scrollX property', () => {
-    const {scroller} =
-        setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -111});
+  it("#scrollToRTL() returns a normalized scrollX property", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -111,
+    });
     expect(scroller.scrollToRTL(123).finalScrollPosition).toBe(-123);
   });
 
-  it('#scrollToRTL() returns a normalized translateX property', () => {
-    const {scroller} =
-        setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -111});
+  it("#scrollToRTL() returns a normalized translateX property", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -111,
+    });
     expect(scroller.scrollToRTL(123).scrollDelta).toBe(-12);
   });
 
-  it('#scrollToRTL() returns 0 for scrollX property when scrollLeft would be too far right',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -500});
-       expect(scroller.scrollToRTL(-1).finalScrollPosition).toBe(0);
-     });
+  it("#scrollToRTL() returns 0 for scrollX property when scrollLeft would be too far right", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -500,
+    });
+    expect(scroller.scrollToRTL(-1).finalScrollPosition).toBe(0);
+  });
 
-  it('#scrollToRTL() returns 0 for translateX property when scrollLeft would be the same',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -123});
-       expect(scroller.scrollToRTL(123).scrollDelta).toBe(0);
-     });
+  it("#scrollToRTL() returns 0 for translateX property when scrollLeft would be the same", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -123,
+    });
+    expect(scroller.scrollToRTL(123).scrollDelta).toBe(0);
+  });
 
-  it('#scrollToRTL() returns min scroll value for scrollX property when scrollLeft would be too far left',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -677});
-       expect(scroller.scrollToRTL(801).finalScrollPosition).toBe(-800);
-     });
+  it("#scrollToRTL() returns min scroll value for scrollX property when scrollLeft would be too far left", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -677,
+    });
+    expect(scroller.scrollToRTL(801).finalScrollPosition).toBe(-800);
+  });
 
-  it('#incrementScrollRTL() returns a normalized scrollX property', () => {
-    const {scroller} =
-        setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -111});
+  it("#incrementScrollRTL() returns a normalized scrollX property", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -111,
+    });
     expect(scroller.incrementScrollRTL(17).finalScrollPosition).toBe(-128);
   });
 
-  it('#incrementScrollRTL() returns a normalized translateX property', () => {
-    const {scroller} =
-        setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -111});
+  it("#incrementScrollRTL() returns a normalized translateX property", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -111,
+    });
     expect(scroller.incrementScrollRTL(50).scrollDelta).toBe(-50);
   });
 
-  it('#incrementScrollRTL() returns 0 for scrollX property when scrollLeft would be too far right',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -45});
-       expect(scroller.incrementScrollRTL(-46).finalScrollPosition).toBe(0);
-     });
+  it("#incrementScrollRTL() returns 0 for scrollX property when scrollLeft would be too far right", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -45,
+    });
+    expect(scroller.incrementScrollRTL(-46).finalScrollPosition).toBe(0);
+  });
 
-  it('#incrementScrollRTL() returns 0 for translateX property when scrollLeft would be the same',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -123});
-       expect(scroller.incrementScrollRTL(0).scrollDelta).toBe(0);
-     });
+  it("#incrementScrollRTL() returns 0 for translateX property when scrollLeft would be the same", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -123,
+    });
+    expect(scroller.incrementScrollRTL(0).scrollDelta).toBe(0);
+  });
 
-  it('#incrementScrollRTL() returns min scroll value for scrollX property when scrollLeft would be too far left',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: -677});
-       expect(scroller.incrementScrollRTL(124).finalScrollPosition).toBe(-800);
-     });
+  it("#incrementScrollRTL() returns min scroll value for scrollX property when scrollLeft would be too far left", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: -677,
+    });
+    expect(scroller.incrementScrollRTL(124).finalScrollPosition).toBe(-800);
+  });
 
-  it('#getAnimatingScrollPosition() returns the difference between the scrollX value and the translateX value',
-     () => {
-       const {scroller} =
-           setupTest({rootWidth: 200, contentWidth: 1000, scrollLeft: 677});
-       expect(scroller.getAnimatingScrollPosition(123, 11)).toBe(112);
-     });
+  it("#getAnimatingScrollPosition() returns the difference between the scrollX value and the translateX value", () => {
+    const { scroller } = setupTest({
+      rootWidth: 200,
+      contentWidth: 1000,
+      scrollLeft: 677,
+    });
+    expect(scroller.getAnimatingScrollPosition(123, 11)).toBe(112);
+  });
 });

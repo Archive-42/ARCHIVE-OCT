@@ -23,11 +23,11 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:color';
-@use '@material/density/variables' as density-variables;
-@use '@material/floating-label/variables' as floating-label-variables;
-@use '@material/notched-outline/variables' as notched-outline-variables;
-@use '@material/theme/theme-color';
+@use "sass:color";
+@use "@material/density/variables" as density-variables;
+@use "@material/floating-label/variables" as floating-label-variables;
+@use "@material/notched-outline/variables" as notched-outline-variables;
+@use "@material/theme/theme-color";
 
 ///
 /// Returns outlined text field floating label position for given height.
@@ -95,7 +95,7 @@ $textarea-disabled-border-color: rgba(
 // will make text unreadable
 $textarea-disabled-background: rgba(249, 249, 249, 1) !default;
 
-$ripple-target: '.mdc-text-field__ripple';
+$ripple-target: ".mdc-text-field__ripple";
 $outlined-stroke-width: 2px !default;
 $height: 56px !default;
 $minimum-height: 40px !default;

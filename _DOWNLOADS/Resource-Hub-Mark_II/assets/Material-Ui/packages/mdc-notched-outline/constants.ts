@@ -22,7 +22,7 @@
  */
 
 const strings = {
-  NOTCH_ELEMENT_SELECTOR: '.mdc-notched-outline__notch',
+  NOTCH_ELEMENT_SELECTOR: ".mdc-notched-outline__notch",
 };
 
 const numbers = {
@@ -31,9 +31,9 @@ const numbers = {
 };
 
 const cssClasses = {
-  NO_LABEL: 'mdc-notched-outline--no-label',
-  OUTLINE_NOTCHED: 'mdc-notched-outline--notched',
-  OUTLINE_UPGRADED: 'mdc-notched-outline--upgraded',
+  NO_LABEL: "mdc-notched-outline--no-label",
+  OUTLINE_NOTCHED: "mdc-notched-outline--notched",
+  OUTLINE_UPGRADED: "mdc-notched-outline--upgraded",
 };
 
-export {cssClasses, numbers, strings};
+export { cssClasses, numbers, strings };

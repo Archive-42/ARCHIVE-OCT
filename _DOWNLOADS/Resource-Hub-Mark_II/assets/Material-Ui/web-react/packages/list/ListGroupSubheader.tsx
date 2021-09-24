@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 export interface ListGroupSubheaderProps extends React.HTMLProps<HTMLElement> {
   className?: string;
   tag?: string;
 }
 
 const ListGroupSubheader: React.FunctionComponent<ListGroupSubheaderProps> = ({
-  tag: Tag = 'h3',
-  className = '',
+  tag: Tag = "h3",
+  className = "",
   children,
   ...otherProps
 }) => {
@@ -37,7 +37,7 @@ const ListGroupSubheader: React.FunctionComponent<ListGroupSubheaderProps> = ({
     // https://github.com/Microsoft/TypeScript/issues/28892
     // @ts-ignore
     <Tag
-      className={classnames('mdc-list-group__subheader', className)}
+      className={classnames("mdc-list-group__subheader", className)}
       {...otherProps}
     >
       {children}

@@ -1,9 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Microsoft Community",
-  "classifications": [
-    "Universal"
-  ],
+  "classifications": ["Universal"],
   "name": "Page.Flask.Grid.AddMerging",
   "shortName": "Page.Flask.Grid.AddMerging",
   "identity": "Page.Flask.Grid.AddMerging",
@@ -19,6 +17,5 @@
   "sourceName": "wts.ItemName",
   "preferNameDirectory": true,
   "PrimaryOutputs": [],
-  "symbols": {
-  }
+  "symbols": {}
 }

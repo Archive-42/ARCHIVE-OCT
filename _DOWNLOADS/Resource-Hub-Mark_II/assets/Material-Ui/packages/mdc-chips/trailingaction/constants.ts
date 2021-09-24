@@ -22,7 +22,7 @@
  */
 
 export enum InteractionTrigger {
-  UNSPECIFIED,  // Default type
+  UNSPECIFIED, // Default type
   CLICK,
   BACKSPACE_KEY,
   DELETE_KEY,
@@ -31,8 +31,8 @@ export enum InteractionTrigger {
 }
 
 export const strings = {
-  ARIA_HIDDEN: 'aria-hidden',
-  INTERACTION_EVENT: 'MDCChipTrailingAction:interaction',
-  NAVIGATION_EVENT: 'MDCChipTrailingAction:navigation',
-  TAB_INDEX: 'tabindex',
+  ARIA_HIDDEN: "aria-hidden",
+  INTERACTION_EVENT: "MDCChipTrailingAction:interaction",
+  NAVIGATION_EVENT: "MDCChipTrailingAction:navigation",
+  TAB_INDEX: "tabindex",
 };

@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import {MDCMenuSurfaceFoundation} from '@material/menu-surface/foundation';
-import Menu, {MenuList} from '@material/react-menu';
-import {OptionProps} from './Option'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import {CommonSelectProps} from './BaseSelect';
-import MDCSelectFoundation from '@material/select/foundation';
+import React from "react";
+import { MDCMenuSurfaceFoundation } from "@material/menu-surface/foundation";
+import Menu, { MenuList } from "@material/react-menu";
+import { OptionProps } from "./Option"; // eslint-disable-line @typescript-eslint/no-unused-vars
+import { CommonSelectProps } from "./BaseSelect";
+import MDCSelectFoundation from "@material/select/foundation";
 
-const {Corner} = MDCMenuSurfaceFoundation;
-const TRUE = 'true';
-const FALSE = 'false';
+const { Corner } = MDCMenuSurfaceFoundation;
+const TRUE = "true";
+const FALSE = "false";
 
 export type EnhancedChild<T extends HTMLElement> = React.ReactElement<
   OptionProps<T>
@@ -47,7 +47,7 @@ export interface EnhancedSelectProps
 }
 
 interface EnhancedSelectState {
-  'aria-expanded'?: boolean | 'false' | 'true';
+  "aria-expanded"?: boolean | "false" | "true";
   selectedItem: Element | null;
   selectedValue?: string;
 }
@@ -64,15 +64,15 @@ export default class EnhancedSelect extends React.Component<
     disabled: false,
     closeMenu: () => {},
     onEnhancedChange: () => {},
-    value: '',
+    value: "",
     anchorElement: null,
     isInvalid: false,
   };
 
   state: EnhancedSelectState = {
-    'aria-expanded': undefined,
+    "aria-expanded": undefined,
     selectedItem: null,
-    selectedValue: '',
+    selectedValue: "",
   };
 
   componentDidUpdate(prevProps: EnhancedSelectProps) {
@@ -97,12 +97,12 @@ export default class EnhancedSelect extends React.Component<
         selectedItem.getAttribute(
           MDCSelectFoundation.strings.ENHANCED_VALUE_ATTR
         )) ||
-      '';
-    this.setState({selectedItem, selectedValue});
+      "";
+    this.setState({ selectedItem, selectedValue });
   };
 
   private getIndexByValue = (listElements: Element[]) => {
-    const {value} = this.props;
+    const { value } = this.props;
     let index = -1;
     if (index < 0 && value) {
       listElements.some((element: Element, elementIndex: number) => {
@@ -121,16 +121,16 @@ export default class EnhancedSelect extends React.Component<
   };
 
   private handleMenuClose = () => {
-    const {closeMenu, foundation} = this.props;
+    const { closeMenu, foundation } = this.props;
     closeMenu!();
-    this.setState({'aria-expanded': undefined});
+    this.setState({ "aria-expanded": undefined });
     if (foundation && document.activeElement !== this.selectedTextEl.current) {
       foundation.handleBlur();
     }
   };
 
   private handleMenuOpen = () => {
-    this.setState({'aria-expanded': true});
+    this.setState({ "aria-expanded": true });
     if (this.listElements && this.listElements.length > 0) {
       let index = this.getIndexByValue(this.listElements);
       index = index > -1 ? index : 0;
@@ -157,37 +157,37 @@ export default class EnhancedSelect extends React.Component<
     } = this.props;
 
     const {
-      'aria-expanded': ariaExpanded,
+      "aria-expanded": ariaExpanded,
       selectedValue,
       selectedItem,
     } = this.state;
 
-    const selectedTextAttrs: {[key: string]: string} = {};
+    const selectedTextAttrs: { [key: string]: string } = {};
     if (required) {
-      selectedTextAttrs['aria-required'] = required.toString();
+      selectedTextAttrs["aria-required"] = required.toString();
     }
     if (ariaExpanded && ariaExpanded !== FALSE) {
-      selectedTextAttrs['aria-expanded'] = TRUE;
+      selectedTextAttrs["aria-expanded"] = TRUE;
     }
     if (isInvalid) {
-      selectedTextAttrs['aria-invalid'] = TRUE;
+      selectedTextAttrs["aria-invalid"] = TRUE;
     }
     if (disabled) {
-      selectedTextAttrs['aria-disabled'] = TRUE;
+      selectedTextAttrs["aria-disabled"] = TRUE;
     } else {
-      selectedTextAttrs['aria-disabled'] = FALSE;
+      selectedTextAttrs["aria-disabled"] = FALSE;
     }
 
     return (
       <React.Fragment>
         <input
-          type='hidden'
-          name='enhanced-select'
+          type="hidden"
+          name="enhanced-select"
           disabled={disabled}
           value={selectedValue}
         />
         <div
-          className='mdc-select__selected-text'
+          className="mdc-select__selected-text"
           {...selectedTextAttrs}
           ref={this.selectedTextEl}
           tabIndex={disabled ? -1 : 0}
@@ -198,10 +198,10 @@ export default class EnhancedSelect extends React.Component<
           onClick={onClick}
           onBlur={onBlur}
         >
-          {selectedItem ? (selectedItem as Element).textContent!.trim() : ''}
+          {selectedItem ? (selectedItem as Element).textContent!.trim() : ""}
         </div>
         <Menu
-          className='mdc-select__menu'
+          className="mdc-select__menu"
           onClose={this.handleMenuClose}
           onOpen={this.handleMenuOpen}
           open={open}
@@ -215,7 +215,7 @@ export default class EnhancedSelect extends React.Component<
             {/* TODO: this should use React.createContext instead */}
             {React.Children.map(children, (child) => {
               const c = child as React.ReactElement<OptionProps>;
-              return React.cloneElement(c, {...c.props, enhanced: true});
+              return React.cloneElement(c, { ...c.props, enhanced: true });
             })}
           </MenuList>
         </Menu>

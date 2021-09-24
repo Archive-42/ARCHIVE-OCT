@@ -20,11 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCSlidingTabIndicatorFoundation} from '@material/tab-indicator/sliding-foundation';
-import {MDCFadingTabIndicatorFoundation} from '@material/tab-indicator/fading-foundation';
-import {MDCTabIndicatorAdapter} from '@material/tab-indicator/adapter';
+import React from "react";
+import classnames from "classnames";
+import { MDCSlidingTabIndicatorFoundation } from "@material/tab-indicator/sliding-foundation";
+import { MDCFadingTabIndicatorFoundation } from "@material/tab-indicator/fading-foundation";
+import { MDCTabIndicatorAdapter } from "@material/tab-indicator/adapter";
 
 export interface TabIndicatorProps
   extends React.HTMLAttributes<HTMLSpanElement> {
@@ -39,16 +39,15 @@ export default class TabIndicator extends React.Component<
   TabIndicatorProps,
   {}
 > {
-  private tabIndicatorElement: React.RefObject<
-    HTMLSpanElement
-  > = React.createRef();
+  private tabIndicatorElement: React.RefObject<HTMLSpanElement> =
+    React.createRef();
   foundation!:
     | MDCFadingTabIndicatorFoundation
     | MDCSlidingTabIndicatorFoundation;
 
   static defaultProps: Partial<TabIndicatorProps> = {
     active: false,
-    className: '',
+    className: "",
     fade: false,
     icon: false,
   };
@@ -80,17 +79,17 @@ export default class TabIndicator extends React.Component<
   }
 
   get classes() {
-    const {className, fade} = this.props;
-    return classnames('mdc-tab-indicator', className, {
-      'mdc-tab-indicator--fade': fade,
+    const { className, fade } = this.props;
+    return classnames("mdc-tab-indicator", className, {
+      "mdc-tab-indicator--fade": fade,
     });
   }
 
   get contentClasses() {
-    const {icon} = this.props;
-    return classnames('mdc-tab-indicator__content', {
-      'mdc-tab-indicator__content--icon': icon,
-      'mdc-tab-indicator__content--underline': !icon,
+    const { icon } = this.props;
+    return classnames("mdc-tab-indicator__content", {
+      "mdc-tab-indicator__content--icon": icon,
+      "mdc-tab-indicator__content--underline": !icon,
     });
   }
 
@@ -123,8 +122,8 @@ export default class TabIndicator extends React.Component<
         // cannot be set
         if (
           !contentElement ||
-          typedProp === 'length' ||
-          typedProp === 'parentRule'
+          typedProp === "length" ||
+          typedProp === "parentRule"
         ) {
           return;
         }
@@ -140,7 +139,7 @@ export default class TabIndicator extends React.Component<
     // a non-semantic element (span, i, etc.). This is a problem since refs to a non semantic elements
     // return the instance of the component.
     return this.tabIndicatorElement.current.getElementsByClassName(
-      'mdc-tab-indicator__content'
+      "mdc-tab-indicator__content"
     )[0];
   };
 
@@ -191,7 +190,7 @@ export default class TabIndicator extends React.Component<
       this.props.children
     ) as React.ReactElement<any>;
     const className = classnames(child.props.className, this.contentClasses);
-    const props = Object.assign({}, child.props, {className});
+    const props = Object.assign({}, child.props, { className });
     return React.cloneElement(child, props);
   };
 

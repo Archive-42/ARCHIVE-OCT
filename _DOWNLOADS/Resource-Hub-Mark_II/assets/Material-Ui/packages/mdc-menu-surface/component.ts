@@ -21,17 +21,20 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {MDCMenuSurfaceAdapter} from './adapter';
-import {Corner, cssClasses, strings} from './constants';
-import {MDCMenuSurfaceFoundation} from './foundation';
-import {MDCMenuDistance} from './types';
-import * as util from './util';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { MDCMenuSurfaceAdapter } from "./adapter";
+import { Corner, cssClasses, strings } from "./constants";
+import { MDCMenuSurfaceFoundation } from "./foundation";
+import { MDCMenuDistance } from "./types";
+import * as util from "./util";
 
 type RegisterFunction = () => void;
 
-export type MDCMenuSurfaceFactory = (el: Element, foundation?: MDCMenuSurfaceFoundation) => MDCMenuSurface;
+export type MDCMenuSurfaceFactory = (
+  el: Element,
+  foundation?: MDCMenuSurfaceFoundation
+) => MDCMenuSurface;
 
 export class MDCMenuSurface extends MDCComponent<MDCMenuSurfaceFoundation> {
   static attachTo(root: Element): MDCMenuSurface {
@@ -40,21 +43,20 @@ export class MDCMenuSurface extends MDCComponent<MDCMenuSurfaceFoundation> {
 
   anchorElement!: Element | null; // assigned in initialSyncWithDOM()
 
-  private previousFocus?: HTMLElement|SVGElement|null;
+  private previousFocus?: HTMLElement | SVGElement | null;
 
-  private handleKeydown!:
-      SpecificEventListener<'keydown'>;  // assigned in initialSyncWithDOM()
-  private handleBodyClick!:
-      SpecificEventListener<'click'>;  // assigned in initialSyncWithDOM()
+  private handleKeydown!: SpecificEventListener<"keydown">; // assigned in initialSyncWithDOM()
+  private handleBodyClick!: SpecificEventListener<"click">; // assigned in initialSyncWithDOM()
 
-  private registerBodyClickListener!:
-      RegisterFunction;  // assigned in initialSyncWithDOM()
-  private deregisterBodyClickListener!:
-      RegisterFunction;  // assigned in initialSyncWithDOM()
+  private registerBodyClickListener!: RegisterFunction; // assigned in initialSyncWithDOM()
+  private deregisterBodyClickListener!: RegisterFunction; // assigned in initialSyncWithDOM()
 
   initialSyncWithDOM() {
     const parentEl = this.root.parentElement;
-    this.anchorElement = parentEl && parentEl.classList.contains(cssClasses.ANCHOR) ? parentEl : null;
+    this.anchorElement =
+      parentEl && parentEl.classList.contains(cssClasses.ANCHOR)
+        ? parentEl
+        : null;
 
     if (this.root.classList.contains(cssClasses.FIXED)) {
       this.setFixedPosition(true);
@@ -70,21 +72,23 @@ export class MDCMenuSurface extends MDCComponent<MDCMenuSurfaceFoundation> {
     // capture so that no race between handleBodyClick and quickOpen when
     // menusurface opened on button click which registers this listener
     this.registerBodyClickListener = () => {
-      document.body.addEventListener(
-          'click', this.handleBodyClick, {capture: true});
+      document.body.addEventListener("click", this.handleBodyClick, {
+        capture: true,
+      });
     };
     this.deregisterBodyClickListener = () => {
-      document.body.removeEventListener(
-          'click', this.handleBodyClick, {capture: true});
+      document.body.removeEventListener("click", this.handleBodyClick, {
+        capture: true,
+      });
     };
 
-    this.listen('keydown', this.handleKeydown);
+    this.listen("keydown", this.handleKeydown);
     this.listen(strings.OPENED_EVENT, this.registerBodyClickListener);
     this.listen(strings.CLOSED_EVENT, this.deregisterBodyClickListener);
   }
 
   destroy() {
-    this.unlisten('keydown', this.handleKeydown);
+    this.unlisten("keydown", this.handleKeydown);
     this.unlisten(strings.OPENED_EVENT, this.registerBodyClickListener);
     this.unlisten(strings.CLOSED_EVENT, this.deregisterBodyClickListener);
     super.destroy();
@@ -154,12 +158,12 @@ export class MDCMenuSurface extends MDCComponent<MDCMenuSurfaceFoundation> {
       hasClass: (className) => this.root.classList.contains(className),
       hasAnchor: () => !!this.anchorElement,
       notifyClose: () =>
-          this.emit(MDCMenuSurfaceFoundation.strings.CLOSED_EVENT, {}),
+        this.emit(MDCMenuSurfaceFoundation.strings.CLOSED_EVENT, {}),
       notifyOpen: () =>
-          this.emit(MDCMenuSurfaceFoundation.strings.OPENED_EVENT, {}),
+        this.emit(MDCMenuSurfaceFoundation.strings.OPENED_EVENT, {}),
       isElementInContainer: (el) => this.root.contains(el),
       isRtl: () =>
-          getComputedStyle(this.root).getPropertyValue('direction') === 'rtl',
+        getComputedStyle(this.root).getPropertyValue("direction") === "rtl",
       setTransformOrigin: (origin) => {
         const propertyName = `${util.getTransformPropertyName(window)}-origin`;
         (this.root as HTMLElement).style.setProperty(propertyName, origin);
@@ -167,8 +171,10 @@ export class MDCMenuSurface extends MDCComponent<MDCMenuSurfaceFoundation> {
 
       isFocused: () => document.activeElement === this.root,
       saveFocus: () => {
-        this.previousFocus =
-            document.activeElement as HTMLElement | SVGElement | null;
+        this.previousFocus = document.activeElement as
+          | HTMLElement
+          | SVGElement
+          | null;
       },
       restoreFocus: () => {
         if (this.root.contains(document.activeElement)) {
@@ -181,28 +187,30 @@ export class MDCMenuSurface extends MDCComponent<MDCMenuSurfaceFoundation> {
       getInnerDimensions: () => {
         return {
           width: (this.root as HTMLElement).offsetWidth,
-          height: (this.root as HTMLElement).offsetHeight
+          height: (this.root as HTMLElement).offsetHeight,
         };
       },
-      getAnchorDimensions: () => this.anchorElement ?
-          this.anchorElement.getBoundingClientRect() :
-          null,
+      getAnchorDimensions: () =>
+        this.anchorElement ? this.anchorElement.getBoundingClientRect() : null,
       getWindowDimensions: () => {
-        return {width: window.innerWidth, height: window.innerHeight};
+        return { width: window.innerWidth, height: window.innerHeight };
       },
       getBodyDimensions: () => {
-        return {width: document.body.clientWidth, height: document.body.clientHeight};
+        return {
+          width: document.body.clientWidth,
+          height: document.body.clientHeight,
+        };
       },
       getWindowScroll: () => {
-        return {x: window.pageXOffset, y: window.pageYOffset};
+        return { x: window.pageXOffset, y: window.pageYOffset };
       },
       setPosition: (position) => {
         const rootHTML = this.root as HTMLElement;
-        rootHTML.style.left = 'left' in position ? `${position.left}px` : '';
-        rootHTML.style.right = 'right' in position ? `${position.right}px` : '';
-        rootHTML.style.top = 'top' in position ? `${position.top}px` : '';
+        rootHTML.style.left = "left" in position ? `${position.left}px` : "";
+        rootHTML.style.right = "right" in position ? `${position.right}px` : "";
+        rootHTML.style.top = "top" in position ? `${position.top}px` : "";
         rootHTML.style.bottom =
-            'bottom' in position ? `${position.bottom}px` : '';
+          "bottom" in position ? `${position.bottom}px` : "";
       },
       setMaxHeight: (height) => {
         (this.root as HTMLElement).style.maxHeight = height;

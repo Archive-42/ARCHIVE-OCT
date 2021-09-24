@@ -21,28 +21,34 @@
  * THE SOFTWARE.
  */
 
-
-import {MDCRippleFoundation} from '../../mdc-ripple/foundation';
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
+import { MDCRippleFoundation } from "../../mdc-ripple/foundation";
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
 
 export function setupTest(isCssVarsSupported = true) {
-  const {foundation, mockAdapter} = setUpFoundationTest(MDCRippleFoundation);
+  const { foundation, mockAdapter } = setUpFoundationTest(MDCRippleFoundation);
   mockAdapter.isUnbounded.and.returnValue(undefined);
   mockAdapter.isSurfaceDisabled.and.returnValue(false);
   mockAdapter.isSurfaceActive.and.returnValue(false);
   mockAdapter.containsEventTarget.and.returnValue(false);
   mockAdapter.browserSupportsCssVars.and.returnValue(isCssVarsSupported);
-  mockAdapter.computeBoundingRect.and.returnValue(
-      {width: 0, height: 0, left: 0, top: 0});
-  mockAdapter.getWindowPageOffset.and.returnValue({x: 0, y: 0});
-  return {foundation, adapter: mockAdapter};
+  mockAdapter.computeBoundingRect.and.returnValue({
+    width: 0,
+    height: 0,
+    left: 0,
+    top: 0,
+  });
+  mockAdapter.getWindowPageOffset.and.returnValue({ x: 0, y: 0 });
+  return { foundation, adapter: mockAdapter };
 }
 
 export function testFoundation(
-    desc: string, runTests: Function, isCssVarsSupported = true) {
+  desc: string,
+  runTests: Function,
+  isCssVarsSupported = true
+) {
   it(desc, () => {
-    const {adapter, foundation} = setupTest(isCssVarsSupported);
-    runTests({adapter, foundation});
+    const { adapter, foundation } = setupTest(isCssVarsSupported);
+    runTests({ adapter, foundation });
   });
 }
 
@@ -50,7 +56,7 @@ export function testFoundation(
 // util.supportsCssVariables in cases where window.CSS.supports indicates the
 // feature is supported.
 export function createMockWindowForCssVariables() {
-  const getComputedStyle = jasmine.createSpy('window.getComputedStyle');
+  const getComputedStyle = jasmine.createSpy("window.getComputedStyle");
   const remove = () => mockWindow.appendedNodes--;
   const mockDoc = {
     head: {
@@ -59,14 +65,14 @@ export function createMockWindowForCssVariables() {
     body: {
       appendChild: () => mockWindow.appendedNodes++,
     },
-    createElement: jasmine.createSpy('document.createElement'),
+    createElement: jasmine.createSpy("document.createElement"),
   };
 
   getComputedStyle.withArgs(jasmine.anything()).and.returnValue({
-    borderTopStyle: 'none',
+    borderTopStyle: "none",
   });
 
-  mockDoc.createElement.withArgs('div').and.returnValue({
+  mockDoc.createElement.withArgs("div").and.returnValue({
     remove: remove,
     parentNode: {
       removeChild: () => mockWindow.appendedNodes--,
@@ -78,7 +84,7 @@ export function createMockWindowForCssVariables() {
     // verified in tests
     appendedNodes: 0,
     CSS: {
-      supports: jasmine.createSpy('.supports'),
+      supports: jasmine.createSpy(".supports"),
     },
     document: mockDoc,
     getComputedStyle: getComputedStyle,

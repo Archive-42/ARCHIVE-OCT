@@ -23,12 +23,12 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use './segment-theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "./segment-theme";
 
-$ripple-target: '.mdc-segmented-button__ripple';
+$ripple-target: ".mdc-segmented-button__ripple";
 
 @mixin ripple($query: feature-targeting.all()) {
   $feat-structure: feature-targeting.create-target($query, structure);

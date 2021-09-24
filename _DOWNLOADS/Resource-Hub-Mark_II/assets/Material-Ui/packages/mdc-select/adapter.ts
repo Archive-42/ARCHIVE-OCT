@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {Corner} from '@material/menu-surface/constants';
+import { Corner } from "@material/menu-surface/constants";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -114,7 +114,7 @@ export interface MDCSelectAdapter {
   /**
    * Gets the given attribute on the select anchor element.
    */
-  getSelectAnchorAttr(attr: string): string|null;
+  getSelectAnchorAttr(attr: string): string | null;
 
   /**
    * Sets the given attribute on the select anchor element.

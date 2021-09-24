@@ -1,15 +1,15 @@
-@use 'sass:list';
-@use 'sass:map';
-@use '@material/theme/theme';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/density/functions' as density-functions;
-@use '@material/dom/mixins' as dom-mixins;
-@use '@material/typography/typography';
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/theme-color';
-@use './evolution-variables' as variables;
+@use "sass:list";
+@use "sass:map";
+@use "@material/theme/theme";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/density/functions" as density-functions;
+@use "@material/dom/mixins" as dom-mixins;
+@use "@material/typography/typography";
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/theme-color";
+@use "./evolution-variables" as variables;
 
 @mixin without-ripple($query: feature-targeting.all()) {
   $feat-color: feature-targeting.create-target($query, color);
@@ -512,7 +512,7 @@
   //
 
   $divider-color: if(
-    theme-color.tone(theme-color.$background) == 'dark',
+    theme-color.tone(theme-color.$background) == "dark",
     variables.$divider-color-on-dark-bg,
     variables.$divider-color-on-light-bg
   );
@@ -1328,7 +1328,7 @@
   @include dom-mixins.ie-high-contrast-mode {
     .mdc-evolution-list-divider::after {
       @include feature-targeting.targets($feat-structure) {
-        content: '';
+        content: "";
         display: block;
         border-bottom-width: 1px;
         border-bottom-style: solid;

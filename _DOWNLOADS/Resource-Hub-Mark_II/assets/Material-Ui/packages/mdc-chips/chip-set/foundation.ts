@@ -21,13 +21,24 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCFoundation } from "@material/base/foundation";
 
-import {Direction, EventSource, jumpChipKeys, navigationKeys, strings as chipStrings} from '../chip/constants';
-import {MDCChipInteractionEventDetail, MDCChipNavigationEventDetail, MDCChipRemovalEventDetail, MDCChipSelectionEventDetail} from '../chip/types';
+import {
+  Direction,
+  EventSource,
+  jumpChipKeys,
+  navigationKeys,
+  strings as chipStrings,
+} from "../chip/constants";
+import {
+  MDCChipInteractionEventDetail,
+  MDCChipNavigationEventDetail,
+  MDCChipRemovalEventDetail,
+  MDCChipSelectionEventDetail,
+} from "../chip/types";
 
-import {MDCChipSetAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCChipSetAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
   static get strings() {
@@ -59,7 +70,7 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
   private selectedChipIds_: string[] = [];
 
   constructor(adapter?: Partial<MDCChipSetAdapter>) {
-    super({...MDCChipSetFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCChipSetFoundation.defaultAdapter, ...adapter });
   }
 
   /**
@@ -80,11 +91,13 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
   /**
    * Handles a chip interaction event
    */
-  handleChipInteraction({chipId}: MDCChipInteractionEventDetail) {
+  handleChipInteraction({ chipId }: MDCChipInteractionEventDetail) {
     const index = this.adapter.getIndexOfChipById(chipId);
     this.removeFocusFromChipsExcept_(index);
-    if (this.adapter.hasClass(cssClasses.CHOICE) ||
-        this.adapter.hasClass(cssClasses.FILTER)) {
+    if (
+      this.adapter.hasClass(cssClasses.CHOICE) ||
+      this.adapter.hasClass(cssClasses.FILTER)
+    ) {
       this.toggleSelect_(chipId);
     }
   }
@@ -92,8 +105,11 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
   /**
    * Handles a chip selection event, used to handle discrepancy when selection state is set directly on the Chip.
    */
-  handleChipSelection({chipId, selected, shouldIgnore}:
-                          MDCChipSelectionEventDetail) {
+  handleChipSelection({
+    chipId,
+    selected,
+    shouldIgnore,
+  }: MDCChipSelectionEventDetail) {
     // Early exit if we should ignore the event
     if (shouldIgnore) {
       return;
@@ -110,7 +126,10 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
   /**
    * Handles the event when a chip is removed.
    */
-  handleChipRemoval({chipId, removedAnnouncement}: MDCChipRemovalEventDetail) {
+  handleChipRemoval({
+    chipId,
+    removedAnnouncement,
+  }: MDCChipRemovalEventDetail) {
     if (removedAnnouncement) {
       this.adapter.announceMessage(removedAnnouncement);
     }
@@ -131,7 +150,7 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
   /**
    * Handles a chip navigation event.
    */
-  handleChipNavigation({chipId, key, source}: MDCChipNavigationEventDetail) {
+  handleChipNavigation({ chipId, key, source }: MDCChipNavigationEventDetail) {
     const maxIndex = this.adapter.getChipListCount() - 1;
     let index = this.adapter.getIndexOfChipById(chipId);
     // Early exit if the index is out of range or the key is unusable
@@ -140,14 +159,17 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
     }
 
     const isRTL = this.adapter.isRTL();
-    const isLeftKey = key === chipStrings.ARROW_LEFT_KEY ||
-        key === chipStrings.IE_ARROW_LEFT_KEY;
-    const isRightKey = key === chipStrings.ARROW_RIGHT_KEY ||
-        key === chipStrings.IE_ARROW_RIGHT_KEY;
-    const isDownKey = key === chipStrings.ARROW_DOWN_KEY ||
-        key === chipStrings.IE_ARROW_DOWN_KEY;
+    const isLeftKey =
+      key === chipStrings.ARROW_LEFT_KEY ||
+      key === chipStrings.IE_ARROW_LEFT_KEY;
+    const isRightKey =
+      key === chipStrings.ARROW_RIGHT_KEY ||
+      key === chipStrings.IE_ARROW_RIGHT_KEY;
+    const isDownKey =
+      key === chipStrings.ARROW_DOWN_KEY ||
+      key === chipStrings.IE_ARROW_DOWN_KEY;
     const shouldIncrement =
-        !isRTL && isRightKey || isRTL && isLeftKey || isDownKey;
+      (!isRTL && isRightKey) || (isRTL && isLeftKey) || isDownKey;
     const isHome = key === chipStrings.HOME_KEY;
     const isEnd = key === chipStrings.END_KEY;
     if (shouldIncrement) {
@@ -191,11 +213,13 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
 
   private getDirection_(key: string): Direction {
     const isRTL = this.adapter.isRTL();
-    const isLeftKey = key === chipStrings.ARROW_LEFT_KEY ||
-        key === chipStrings.IE_ARROW_LEFT_KEY;
-    const isRightKey = key === chipStrings.ARROW_RIGHT_KEY ||
-        key === chipStrings.IE_ARROW_RIGHT_KEY;
-    if (!isRTL && isLeftKey || isRTL && isRightKey) {
+    const isLeftKey =
+      key === chipStrings.ARROW_LEFT_KEY ||
+      key === chipStrings.IE_ARROW_LEFT_KEY;
+    const isRightKey =
+      key === chipStrings.ARROW_RIGHT_KEY ||
+      key === chipStrings.IE_ARROW_RIGHT_KEY;
+    if ((!isRTL && isLeftKey) || (isRTL && isRightKey)) {
       return Direction.LEFT;
     }
 
@@ -211,7 +235,10 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
       this.selectedChipIds_.splice(index, 1);
       const chipIndex = this.adapter.getIndexOfChipById(chipId);
       this.adapter.selectChipAtIndex(
-          chipIndex, /** isSelected */ false, shouldNotifyClients);
+        chipIndex,
+        /** isSelected */ false,
+        shouldNotifyClients
+      );
     }
   }
 
@@ -251,20 +278,28 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
       return;
     }
 
-    if (this.adapter.hasClass(cssClasses.CHOICE) &&
-        this.selectedChipIds_.length > 0) {
+    if (
+      this.adapter.hasClass(cssClasses.CHOICE) &&
+      this.selectedChipIds_.length > 0
+    ) {
       const previouslySelectedChip = this.selectedChipIds_[0];
-      const previouslySelectedIndex =
-          this.adapter.getIndexOfChipById(previouslySelectedChip);
+      const previouslySelectedIndex = this.adapter.getIndexOfChipById(
+        previouslySelectedChip
+      );
       this.selectedChipIds_ = [];
       this.adapter.selectChipAtIndex(
-          previouslySelectedIndex, /** isSelected */ false,
-          shouldNotifyClients);
+        previouslySelectedIndex,
+        /** isSelected */ false,
+        shouldNotifyClients
+      );
     }
     this.selectedChipIds_.push(chipId);
     const index = this.adapter.getIndexOfChipById(chipId);
     this.adapter.selectChipAtIndex(
-        index, /** isSelected */ true, shouldNotifyClients);
+      index,
+      /** isSelected */ true,
+      shouldNotifyClients
+    );
   }
 }
 

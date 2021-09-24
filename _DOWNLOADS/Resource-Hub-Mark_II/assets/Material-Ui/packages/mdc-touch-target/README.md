@@ -13,11 +13,12 @@ For example, a button may appear to be 48 x 36 px, but the padding surrounding i
 
 Material Design spec states that touch targets should be at least 48 x 48 px.
 The MDC Web library provides mixins and guidance on adding an increased touch target for the following components:
-* Button
-* Chips
-* Checkbox
-* Radio
-* Mini FAB
+
+- Button
+- Chips
+- Checkbox
+- Radio
+- Mini FAB
 
 ## Design & API Documentation
 
@@ -70,8 +71,8 @@ Note that the outer `mdc-touch-target-wrapper` element is only necessary if you 
 
 ### Sass Mixins
 
-Mixin | Description
---- | ---
-`wrapper` | Applied to the wrapper touch target element.
-`touch-target` | Applied to the inner touch target element.
-`margin` | Applied to the component root element. Adds margin to compensate for the increased touch target.
+| Mixin          | Description                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------------ |
+| `wrapper`      | Applied to the wrapper touch target element.                                                     |
+| `touch-target` | Applied to the inner touch target element.                                                       |
+| `margin`       | Applied to the component root element. Adds margin to compensate for the increased touch target. |

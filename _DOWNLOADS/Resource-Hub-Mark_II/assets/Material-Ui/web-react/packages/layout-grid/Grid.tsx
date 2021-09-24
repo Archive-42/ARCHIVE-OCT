@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
-export type Alignment = 'left' | 'right';
+export type Alignment = "left" | "right";
 export interface GridProps<T> extends React.HTMLProps<T> {
   align?: Alignment;
   className?: string;
@@ -38,9 +38,9 @@ const Grid: <T extends {} = HTMLDivElement>(
 ) => React.ReactElement<any> = ({
   align,
   children,
-  className = '',
+  className = "",
   fixedColumnWidth = false,
-  tag: Tag = 'div',
+  tag: Tag = "div",
   ...otherProps
 }) => {
   const classes = classnames(CSS_CLASSES.ROOT, className, {

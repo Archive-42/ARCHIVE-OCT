@@ -24,19 +24,19 @@
 /** CSS classes used by the switch. */
 const cssClasses = {
   /** Class used for a switch that is in the "checked" (on) position. */
-  CHECKED: 'mdc-switch--checked',
+  CHECKED: "mdc-switch--checked",
   /** Class used for a switch that is disabled. */
-  DISABLED: 'mdc-switch--disabled',
+  DISABLED: "mdc-switch--disabled",
 };
 
 /** String constants used by the switch. */
 const strings = {
   /** Aria attribute for checked or unchecked state of switch */
-  ARIA_CHECKED_ATTR: 'aria-checked',
+  ARIA_CHECKED_ATTR: "aria-checked",
   /** A CSS selector used to locate the native HTML control for the switch.  */
-  NATIVE_CONTROL_SELECTOR: '.mdc-switch__native-control',
+  NATIVE_CONTROL_SELECTOR: ".mdc-switch__native-control",
   /** A CSS selector used to locate the ripple surface element for the switch. */
-  RIPPLE_SURFACE_SELECTOR: '.mdc-switch__thumb-underlay',
+  RIPPLE_SURFACE_SELECTOR: ".mdc-switch__thumb-underlay",
 };
 
-export {cssClasses, strings};
+export { cssClasses, strings };

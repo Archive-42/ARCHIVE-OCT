@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-export * from './adapter';
-export * from './component';
-export * from './constants';
-export * from './foundation';
-export * from './fixed/foundation';
-export * from './short/foundation';
-export * from './standard/foundation';
+export * from "./adapter";
+export * from "./component";
+export * from "./constants";
+export * from "./foundation";
+export * from "./fixed/foundation";
+export * from "./short/foundation";
+export * from "./standard/foundation";

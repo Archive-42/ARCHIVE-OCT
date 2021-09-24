@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {SpecificEventListener} from '@material/base/types';
-import {MDCLineRippleAdapter} from './adapter';
-import {cssClasses} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { SpecificEventListener } from "@material/base/types";
+import { MDCLineRippleAdapter } from "./adapter";
+import { cssClasses } from "./constants";
 
 export class MDCLineRippleFoundation extends MDCFoundation<MDCLineRippleAdapter> {
   static get cssClasses() {
@@ -47,22 +47,26 @@ export class MDCLineRippleFoundation extends MDCFoundation<MDCLineRippleAdapter>
     // tslint:enable:object-literal-sort-keys
   }
 
-  private readonly transitionEndHandler_: SpecificEventListener<'transitionend'>;
+  private readonly transitionEndHandler_: SpecificEventListener<"transitionend">;
 
   constructor(adapter?: Partial<MDCLineRippleAdapter>) {
-    super({...MDCLineRippleFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCLineRippleFoundation.defaultAdapter, ...adapter });
 
     this.transitionEndHandler_ = (evt) => this.handleTransitionEnd(evt);
   }
 
   init() {
     this.adapter.registerEventHandler(
-        'transitionend', this.transitionEndHandler_);
+      "transitionend",
+      this.transitionEndHandler_
+    );
   }
 
   destroy() {
     this.adapter.deregisterEventHandler(
-        'transitionend', this.transitionEndHandler_);
+      "transitionend",
+      this.transitionEndHandler_
+    );
   }
 
   activate() {
@@ -71,7 +75,7 @@ export class MDCLineRippleFoundation extends MDCFoundation<MDCLineRippleAdapter>
   }
 
   setRippleCenter(xCoordinate: number) {
-    this.adapter.setStyle('transform-origin', `${xCoordinate}px center`);
+    this.adapter.setStyle("transform-origin", `${xCoordinate}px center`);
   }
 
   deactivate() {
@@ -81,10 +85,11 @@ export class MDCLineRippleFoundation extends MDCFoundation<MDCLineRippleAdapter>
   handleTransitionEnd(evt: TransitionEvent) {
     // Wait for the line ripple to be either transparent or opaque
     // before emitting the animation end event
-    const isDeactivating =
-        this.adapter.hasClass(cssClasses.LINE_RIPPLE_DEACTIVATING);
+    const isDeactivating = this.adapter.hasClass(
+      cssClasses.LINE_RIPPLE_DEACTIVATING
+    );
 
-    if (evt.propertyName === 'opacity') {
+    if (evt.propertyName === "opacity") {
       if (isDeactivating) {
         this.adapter.removeClass(cssClasses.LINE_RIPPLE_ACTIVE);
         this.adapter.removeClass(cssClasses.LINE_RIPPLE_DEACTIVATING);

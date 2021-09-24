@@ -20,11 +20,11 @@
 // THE SOFTWARE.
 //
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/menu-surface/mixins' as menu-surface-mixins;
-@use '@material/rtl/mixins' as rtl-mixins;
-@use './select-icon-theme';
-@use './select-theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/menu-surface/mixins" as menu-surface-mixins;
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "./select-icon-theme";
+@use "./select-theme";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-structure: feature-targeting.create-target($query, structure);

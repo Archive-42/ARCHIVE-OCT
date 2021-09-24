@@ -21,12 +21,15 @@
  * THE SOFTWARE.
  */
 
-import 'jasmine';
+import "jasmine";
 
-import {verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpFoundationTest, setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
-import {cssClasses, numbers, strings} from '../constants';
-import MDCCheckboxFoundation from '../foundation';
+import { verifyDefaultAdapter } from "../../../testing/helpers/foundation";
+import {
+  setUpFoundationTest,
+  setUpMdcTestEnvironment,
+} from "../../../testing/helpers/setup";
+import { cssClasses, numbers, strings } from "../constants";
+import MDCCheckboxFoundation from "../foundation";
 
 const DESC_UNDEFINED = {
   configurable: true,
@@ -36,10 +39,12 @@ const DESC_UNDEFINED = {
 };
 
 function setupTest() {
-  const {foundation, mockAdapter} = setUpFoundationTest(MDCCheckboxFoundation);
-  const nativeControl = document.createElement('input');
-  nativeControl.setAttribute('type', 'checkbox');
-  return {foundation, mockAdapter, nativeControl};
+  const { foundation, mockAdapter } = setUpFoundationTest(
+    MDCCheckboxFoundation
+  );
+  const nativeControl = document.createElement("input");
+  nativeControl.setAttribute("type", "checkbox");
+  return { foundation, mockAdapter, nativeControl };
 }
 
 interface CheckboxState {
@@ -62,7 +67,7 @@ interface CheckboxState {
  *   simulates a change event as the result of a checkbox being checked.
  */
 function setupChangeHandlerTest() {
-  const {foundation, mockAdapter} = setupTest();
+  const { foundation, mockAdapter } = setupTest();
   mockAdapter.isAttachedToDOM.and.returnValue(true);
   mockAdapter.isIndeterminate.and.returnValue(false);
   mockAdapter.isChecked.and.returnValue(false);
@@ -76,228 +81,241 @@ function setupChangeHandlerTest() {
     foundation.handleChange();
   };
 
-  return {foundation, mockAdapter, change};
+  return { foundation, mockAdapter, change };
 }
 
 function testChangeHandler(
-    desc: string, changes: CheckboxState|CheckboxState[],
-    expectedClass: string) {
-  changes = Array.isArray(changes) ? changes : [changes]
+  desc: string,
+  changes: CheckboxState | CheckboxState[],
+  expectedClass: string
+) {
+  changes = Array.isArray(changes) ? changes : [changes];
   it(`changeHandler: ${desc}`, () => {
-    const {mockAdapter, change} = setupChangeHandlerTest();
+    const { mockAdapter, change } = setupChangeHandlerTest();
 
     (changes as any).forEach(change);
     expect(mockAdapter.addClass).toHaveBeenCalledWith(expectedClass);
   });
 }
 
-describe('MDCCheckboxFoundation', () => {
+describe("MDCCheckboxFoundation", () => {
   setUpMdcTestEnvironment();
 
-  it('exports constants', () => {
+  it("exports constants", () => {
     expect(cssClasses).toEqual(MDCCheckboxFoundation.cssClasses);
     expect(numbers).toEqual(MDCCheckboxFoundation.numbers);
     expect(strings).toEqual(MDCCheckboxFoundation.strings);
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCCheckboxFoundation, [
-      'addClass',
-      'removeClass',
-      'setNativeControlAttr',
-      'removeNativeControlAttr',
-      'forceLayout',
-      'isAttachedToDOM',
-      'isIndeterminate',
-      'isChecked',
-      'hasNativeControl',
-      'setNativeControlDisabled',
+      "addClass",
+      "removeClass",
+      "setNativeControlAttr",
+      "removeNativeControlAttr",
+      "forceLayout",
+      "isAttachedToDOM",
+      "isIndeterminate",
+      "isChecked",
+      "hasNativeControl",
+      "setNativeControlDisabled",
     ]);
   });
 
-  it('#init adds the upgraded class to the root element', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init adds the upgraded class to the root element", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.UPGRADED);
   });
 
-  it('#init adds aria-checked="mixed" if checkbox is initially indeterminate',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.isIndeterminate.and.returnValue(true);
+  it('#init adds aria-checked="mixed" if checkbox is initially indeterminate', () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.isIndeterminate.and.returnValue(true);
 
-       foundation.init();
-       expect(mockAdapter.setNativeControlAttr)
-           .toHaveBeenCalledWith(
-               'aria-checked', strings.ARIA_CHECKED_INDETERMINATE_VALUE);
-     });
+    foundation.init();
+    expect(mockAdapter.setNativeControlAttr).toHaveBeenCalledWith(
+      "aria-checked",
+      strings.ARIA_CHECKED_INDETERMINATE_VALUE
+    );
+  });
 
   /*
    * Shims Object.getOwnPropertyDescriptor for the checkbox's WebIDL attributes.
    * Used to test the behavior of overridding WebIDL properties in different
    * browser environments. For example, in Safari WebIDL attributes don't
    * return get/set in descriptors.
-  */
+   */
   function withMockCheckboxDescriptorReturning(
-      descriptor: undefined|typeof DESC_UNDEFINED, runTests: () => void) {
-    const mockGetOwnPropertyDescriptor =
-        jasmine.createSpy('mockGetOwnPropertyDescriptor');
+    descriptor: undefined | typeof DESC_UNDEFINED,
+    runTests: () => void
+  ) {
+    const mockGetOwnPropertyDescriptor = jasmine.createSpy(
+      "mockGetOwnPropertyDescriptor"
+    );
     mockGetOwnPropertyDescriptor
-        .withArgs(
-            HTMLInputElement.prototype,
-            jasmine.stringMatching('/checked|indeterminate/'))
-        .and.returnValue(descriptor);
+      .withArgs(
+        HTMLInputElement.prototype,
+        jasmine.stringMatching("/checked|indeterminate/")
+      )
+      .and.returnValue(descriptor);
 
-    const originalDesc =
-        Object.getOwnPropertyDescriptor(Object, 'getOwnPropertyDescriptor');
-    Object.defineProperty(
-        Object, 'getOwnPropertyDescriptor', {
-          ...originalDesc,
-          value: mockGetOwnPropertyDescriptor,
-        });
+    const originalDesc = Object.getOwnPropertyDescriptor(
+      Object,
+      "getOwnPropertyDescriptor"
+    );
+    Object.defineProperty(Object, "getOwnPropertyDescriptor", {
+      ...originalDesc,
+      value: mockGetOwnPropertyDescriptor,
+    });
     runTests();
 
     // After running tests, restore original property.
     Object.defineProperty(
-        Object, 'getOwnPropertyDescriptor', originalDesc as PropertyDescriptor);
+      Object,
+      "getOwnPropertyDescriptor",
+      originalDesc as PropertyDescriptor
+    );
   }
 
-  it('#init handles case when WebIDL attrs cannot be overridden (Safari)',
-     () => {
-       const {foundation, nativeControl} = setupTest();
-       withMockCheckboxDescriptorReturning(DESC_UNDEFINED, () => {
-         expect(() => {
-           foundation.init();
-           nativeControl.checked = !nativeControl.checked;
-         }).not.toThrow();
-       });
-     });
+  it("#init handles case when WebIDL attrs cannot be overridden (Safari)", () => {
+    const { foundation, nativeControl } = setupTest();
+    withMockCheckboxDescriptorReturning(DESC_UNDEFINED, () => {
+      expect(() => {
+        foundation.init();
+        nativeControl.checked = !nativeControl.checked;
+      }).not.toThrow();
+    });
+  });
 
-  it('#init handles case when property descriptors are not returned at all (Android Browser)',
-     () => {
-       const {foundation} = setupTest();
-       withMockCheckboxDescriptorReturning(undefined, () => {
-         expect(() => foundation.init).not.toThrow();
-       });
-     });
+  it("#init handles case when property descriptors are not returned at all (Android Browser)", () => {
+    const { foundation } = setupTest();
+    withMockCheckboxDescriptorReturning(undefined, () => {
+      expect(() => foundation.init).not.toThrow();
+    });
+  });
 
-  it('#destroy handles case when WebIDL attrs cannot be overridden (Safari)',
-     () => {
-       const {foundation} = setupTest();
-       withMockCheckboxDescriptorReturning(DESC_UNDEFINED, () => {
-         expect(() => foundation.init).not.toThrow('init sanity check');
-         expect(() => foundation.destroy).not.toThrow();
-       });
-     });
+  it("#destroy handles case when WebIDL attrs cannot be overridden (Safari)", () => {
+    const { foundation } = setupTest();
+    withMockCheckboxDescriptorReturning(DESC_UNDEFINED, () => {
+      expect(() => foundation.init).not.toThrow("init sanity check");
+      expect(() => foundation.destroy).not.toThrow();
+    });
+  });
 
-  it('#setDisabled updates the value of nativeControl.disabled', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setDisabled updates the value of nativeControl.disabled", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setDisabled(true);
     expect(mockAdapter.setNativeControlDisabled).toHaveBeenCalledWith(true);
     expect(mockAdapter.setNativeControlDisabled).toHaveBeenCalledTimes(1);
   });
 
-  it('#setDisabled adds mdc-checkbox--disabled class to the root element when set to true',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setDisabled(true);
-       expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.DISABLED);
-     });
+  it("#setDisabled adds mdc-checkbox--disabled class to the root element when set to true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setDisabled(true);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.DISABLED);
+  });
 
-  it('#setDisabled removes mdc-checkbox--disabled class from the root element when set to false',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setDisabled(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(cssClasses.DISABLED);
-     });
+  it("#setDisabled removes mdc-checkbox--disabled class from the root element when set to false", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setDisabled(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.DISABLED);
+  });
 
   testChangeHandler(
-      'unchecked -> checked animation class', {
+    "unchecked -> checked animation class",
+    {
+      checked: true,
+      indeterminate: false,
+    },
+    cssClasses.ANIM_UNCHECKED_CHECKED
+  );
+
+  testChangeHandler(
+    "unchecked -> indeterminate animation class",
+    {
+      checked: false,
+      indeterminate: true,
+    },
+    cssClasses.ANIM_UNCHECKED_INDETERMINATE
+  );
+
+  testChangeHandler(
+    "checked -> unchecked animation class",
+    [
+      {
         checked: true,
         indeterminate: false,
       },
-      cssClasses.ANIM_UNCHECKED_CHECKED);
+      {
+        checked: false,
+        indeterminate: false,
+      },
+    ],
+    cssClasses.ANIM_CHECKED_UNCHECKED
+  );
 
   testChangeHandler(
-      'unchecked -> indeterminate animation class', {
+    "checked -> indeterminate animation class",
+    [
+      {
+        checked: true,
+        indeterminate: false,
+      },
+      {
+        checked: true,
+        indeterminate: true,
+      },
+    ],
+    cssClasses.ANIM_CHECKED_INDETERMINATE
+  );
+
+  testChangeHandler(
+    "indeterminate -> checked animation class",
+    [
+      {
         checked: false,
         indeterminate: true,
       },
-      cssClasses.ANIM_UNCHECKED_INDETERMINATE);
+      {
+        checked: true,
+        indeterminate: false,
+      },
+    ],
+    cssClasses.ANIM_INDETERMINATE_CHECKED
+  );
 
   testChangeHandler(
-      'checked -> unchecked animation class',
-      [
-        {
-          checked: true,
-          indeterminate: false,
-        },
-        {
-          checked: false,
-          indeterminate: false,
-        },
-      ],
-      cssClasses.ANIM_CHECKED_UNCHECKED);
+    "indeterminate -> unchecked animation class",
+    [
+      {
+        checked: true,
+        indeterminate: true,
+      },
+      {
+        checked: false,
+        indeterminate: false,
+      },
+    ],
+    cssClasses.ANIM_INDETERMINATE_UNCHECKED
+  );
 
   testChangeHandler(
-      'checked -> indeterminate animation class',
-      [
-        {
-          checked: true,
-          indeterminate: false,
-        },
-        {
-          checked: true,
-          indeterminate: true,
-        },
-      ],
-      cssClasses.ANIM_CHECKED_INDETERMINATE);
+    "no transition classes applied when no state change",
+    [
+      {
+        checked: true,
+        indeterminate: false,
+      },
+      {
+        checked: true,
+        indeterminate: false,
+      },
+    ],
+    cssClasses.ANIM_UNCHECKED_CHECKED
+  );
 
-  testChangeHandler(
-      'indeterminate -> checked animation class',
-      [
-        {
-          checked: false,
-          indeterminate: true,
-        },
-        {
-          checked: true,
-          indeterminate: false,
-        },
-      ],
-      cssClasses.ANIM_INDETERMINATE_CHECKED);
-
-  testChangeHandler(
-      'indeterminate -> unchecked animation class',
-      [
-        {
-          checked: true,
-          indeterminate: true,
-        },
-        {
-          checked: false,
-          indeterminate: false,
-        },
-      ],
-      cssClasses.ANIM_INDETERMINATE_UNCHECKED);
-
-  testChangeHandler(
-      'no transition classes applied when no state change',
-      [
-        {
-          checked: true,
-          indeterminate: false,
-        },
-        {
-          checked: true,
-          indeterminate: false,
-        },
-      ],
-      cssClasses.ANIM_UNCHECKED_CHECKED);
-
-  it('changing from unchecked to checked adds selected class', () => {
-    const {mockAdapter, change} = setupChangeHandlerTest();
+  it("changing from unchecked to checked adds selected class", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
     change({
       checked: false,
       indeterminate: false,
@@ -309,8 +327,8 @@ describe('MDCCheckboxFoundation', () => {
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.SELECTED);
   });
 
-  it('changing from unchecked to indeterminate adds selected class', () => {
-    const {mockAdapter, change} = setupChangeHandlerTest();
+  it("changing from unchecked to indeterminate adds selected class", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
     change({
       checked: false,
       indeterminate: false,
@@ -322,8 +340,8 @@ describe('MDCCheckboxFoundation', () => {
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.SELECTED);
   });
 
-  it('changing from checked to unchecked removes selected class', () => {
-    const {mockAdapter, change} = setupChangeHandlerTest();
+  it("changing from checked to unchecked removes selected class", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
     change({
       checked: true,
       indeterminate: false,
@@ -335,8 +353,8 @@ describe('MDCCheckboxFoundation', () => {
     expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.SELECTED);
   });
 
-  it('changing from indeterminate to unchecked removes selected class', () => {
-    const {mockAdapter, change} = setupChangeHandlerTest();
+  it("changing from indeterminate to unchecked removes selected class", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
     change({
       checked: false,
       indeterminate: true,
@@ -348,9 +366,9 @@ describe('MDCCheckboxFoundation', () => {
     expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.SELECTED);
   });
 
-  it('animation end handler removes animation class after short delay', () => {
-    const {ANIM_UNCHECKED_CHECKED} = cssClasses;
-    const {mockAdapter, foundation} = setupTest();
+  it("animation end handler removes animation class after short delay", () => {
+    const { ANIM_UNCHECKED_CHECKED } = cssClasses;
+    const { mockAdapter, foundation } = setupTest();
 
     foundation.enableAnimationEndHandler_ = true;
     foundation.currentAnimationClass_ = ANIM_UNCHECKED_CHECKED;
@@ -363,9 +381,9 @@ describe('MDCCheckboxFoundation', () => {
     expect(foundation.enableAnimationEndHandler_).toBe(false);
   });
 
-  it('animation end is debounced if event is called twice', () => {
-    const {ANIM_UNCHECKED_CHECKED} = cssClasses;
-    const {mockAdapter, foundation} = setupChangeHandlerTest();
+  it("animation end is debounced if event is called twice", () => {
+    const { ANIM_UNCHECKED_CHECKED } = cssClasses;
+    const { mockAdapter, foundation } = setupChangeHandlerTest();
     foundation.enableAnimationEndHandler_ = true;
     foundation.currentAnimationClass_ = ANIM_UNCHECKED_CHECKED;
 
@@ -376,60 +394,60 @@ describe('MDCCheckboxFoundation', () => {
     foundation.handleAnimationEnd();
 
     jasmine.clock().tick(numbers.ANIM_END_LATCH_MS);
-    expect(mockAdapter.removeClass)
-        .toHaveBeenCalledWith(ANIM_UNCHECKED_CHECKED);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      ANIM_UNCHECKED_CHECKED
+    );
   });
 
-  it('change handler triggers layout for changes within the same frame to correctly restart anims',
-     () => {
-       const {mockAdapter, change} = setupChangeHandlerTest();
+  it("change handler triggers layout for changes within the same frame to correctly restart anims", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
 
-       change({checked: true, indeterminate: false});
-       expect(mockAdapter.forceLayout).not.toHaveBeenCalled();
+    change({ checked: true, indeterminate: false });
+    expect(mockAdapter.forceLayout).not.toHaveBeenCalled();
 
-       change({checked: true, indeterminate: true});
-       expect(mockAdapter.forceLayout).toHaveBeenCalled();
-     });
-
-  it('change handler updates aria-checked attribute correctly.', () => {
-    const {mockAdapter, change} = setupChangeHandlerTest();
-
-    change({checked: true, indeterminate: true});
-    expect(mockAdapter.setNativeControlAttr)
-        .toHaveBeenCalledWith('aria-checked', 'mixed');
-
-    change({checked: true, indeterminate: false});
-    expect(mockAdapter.removeNativeControlAttr)
-        .toHaveBeenCalledWith('aria-checked');
+    change({ checked: true, indeterminate: true });
+    expect(mockAdapter.forceLayout).toHaveBeenCalled();
   });
 
-  it('change handler does not add animation classes when isAttachedToDOM() is falsy',
-     () => {
-       const {mockAdapter, change} = setupChangeHandlerTest();
-       mockAdapter.isAttachedToDOM.and.returnValue(false);
+  it("change handler updates aria-checked attribute correctly.", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
 
-       change({checked: true, indeterminate: false});
-       expect(mockAdapter.addClass)
-           .not.toHaveBeenCalledWith(
-               jasmine.stringMatching('mdc-checkbox--anim'));
-     });
+    change({ checked: true, indeterminate: true });
+    expect(mockAdapter.setNativeControlAttr).toHaveBeenCalledWith(
+      "aria-checked",
+      "mixed"
+    );
 
-  it('change handler does not add animation classes for bogus changes (init -> unchecked)',
-     () => {
-       const {mockAdapter, change} = setupChangeHandlerTest();
+    change({ checked: true, indeterminate: false });
+    expect(mockAdapter.removeNativeControlAttr).toHaveBeenCalledWith(
+      "aria-checked"
+    );
+  });
 
-       change({checked: false, indeterminate: false});
-       expect(mockAdapter.addClass)
-           .not.toHaveBeenCalledWith(
-               jasmine.stringMatching('mdc-checkbox--anim'));
-     });
+  it("change handler does not add animation classes when isAttachedToDOM() is falsy", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
+    mockAdapter.isAttachedToDOM.and.returnValue(false);
 
-  it('change handler does not do anything if checkbox element is not found',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasNativeControl.and.returnValue(false);
-       expect(() => foundation.handleChange).not.toThrow();
-       expect(mockAdapter.setNativeControlAttr).not.toHaveBeenCalled();
-       expect(mockAdapter.removeNativeControlAttr).not.toHaveBeenCalled();
-     });
+    change({ checked: true, indeterminate: false });
+    expect(mockAdapter.addClass).not.toHaveBeenCalledWith(
+      jasmine.stringMatching("mdc-checkbox--anim")
+    );
+  });
+
+  it("change handler does not add animation classes for bogus changes (init -> unchecked)", () => {
+    const { mockAdapter, change } = setupChangeHandlerTest();
+
+    change({ checked: false, indeterminate: false });
+    expect(mockAdapter.addClass).not.toHaveBeenCalledWith(
+      jasmine.stringMatching("mdc-checkbox--anim")
+    );
+  });
+
+  it("change handler does not do anything if checkbox element is not found", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasNativeControl.and.returnValue(false);
+    expect(() => foundation.handleChange).not.toThrow();
+    expect(mockAdapter.setNativeControlAttr).not.toHaveBeenCalled();
+    expect(mockAdapter.removeNativeControlAttr).not.toHaveBeenCalled();
+  });
 });

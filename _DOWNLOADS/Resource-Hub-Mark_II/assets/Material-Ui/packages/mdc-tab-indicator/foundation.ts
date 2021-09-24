@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCTabIndicatorAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCTabIndicatorAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export abstract class MDCTabIndicatorFoundation extends MDCFoundation<MDCTabIndicatorAdapter> {
   static get cssClasses() {
@@ -39,14 +39,21 @@ export abstract class MDCTabIndicatorFoundation extends MDCFoundation<MDCTabIndi
     return {
       addClass: () => undefined,
       removeClass: () => undefined,
-      computeContentClientRect: () => ({top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0}),
+      computeContentClientRect: () => ({
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+      }),
       setContentStyleProperty: () => undefined,
     };
     // tslint:enable:object-literal-sort-keys
   }
 
   constructor(adapter?: Partial<MDCTabIndicatorAdapter>) {
-    super({...MDCTabIndicatorFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCTabIndicatorFoundation.defaultAdapter, ...adapter });
   }
 
   computeContentClientRect(): ClientRect {

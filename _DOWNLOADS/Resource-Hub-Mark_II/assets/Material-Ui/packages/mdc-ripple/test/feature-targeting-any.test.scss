@@ -1,6 +1,6 @@
-@use '../ripple';
-@use '../ripple-theme';
-@use '@material/feature-targeting/feature-targeting';
+@use "../ripple";
+@use "../ripple-theme";
+@use "@material/feature-targeting/feature-targeting";
 
 @mixin test($query) {
   .test {

@@ -17,6 +17,5 @@
   "sourceName": "wts.ItemName",
   "preferNameDirectory": true,
   "PrimaryOutputs": [],
-  "symbols": {
-  }
+  "symbols": {}
 }

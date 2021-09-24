@@ -1,16 +1,16 @@
-import './Reset.scss';
+import "./Reset.scss";
 
-import React from 'react';
-import {render} from 'react-dom';
-import Fab from '@material/react-fab';
-import MaterialIcon from '@material/react-material-icon';
-import {Snackbar} from '@material/react-snackbar';
+import React from "react";
+import { render } from "react-dom";
+import Fab from "@material/react-fab";
+import MaterialIcon from "@material/react-material-icon";
+import { Snackbar } from "@material/react-snackbar";
 
-import {MenuContext, UserContext} from './Context';
-import {Repository} from './Router';
-import {Menu} from './menu/Menu';
-import {TopBar} from './top-bar/TopBar';
-import {Content} from './content/Content';
+import { MenuContext, UserContext } from "./Context";
+import { Repository } from "./Router";
+import { Menu } from "./menu/Menu";
+import { TopBar } from "./top-bar/TopBar";
+import { Content } from "./content/Content";
 
 class App extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class App extends React.Component {
     this.setState({
       menu: {
         ...menu,
-        isOpen: menu.isOpen = isOpen,
+        isOpen: (menu.isOpen = isOpen),
       },
     });
   };
@@ -35,13 +35,13 @@ class App extends React.Component {
     this.setState({
       menu: {
         ...menu,
-        selectedIndex: menu.selectedIndex = selectedIndex,
+        selectedIndex: (menu.selectedIndex = selectedIndex),
       },
     });
   };
 
   render() {
-    const {isOpen, selectedIndex} = this.state.menu;
+    const { isOpen, selectedIndex } = this.state.menu;
 
     return (
       <MenuContext.Provider
@@ -54,8 +54,8 @@ class App extends React.Component {
       >
         <UserContext.Provider
           value={{
-            name: 'Anonymous',
-            account: 'unknown@example.com',
+            name: "Anonymous",
+            account: "unknown@example.com",
           }}
         >
           <Menu />
@@ -63,20 +63,20 @@ class App extends React.Component {
           <Content />
           <Snackbar
             timeoutMs={10000}
-            message='You became a programmer!'
-            actionText='dismiss'
+            message="You became a programmer!"
+            actionText="dismiss"
           />
           <a
-            rel='noopener noreferrer'
-            target='_blank'
-            href={Repository.concat('/issues')}
+            rel="noopener noreferrer"
+            target="_blank"
+            href={Repository.concat("/issues")}
             style={{
-              position: 'fixed',
-              right: '20px',
-              bottom: '30px',
+              position: "fixed",
+              right: "20px",
+              bottom: "30px",
             }}
           >
-            <Fab icon={<MaterialIcon icon='bug_report' />} />
+            <Fab icon={<MaterialIcon icon="bug_report" />} />
           </a>
         </UserContext.Provider>
       </MenuContext.Provider>
@@ -84,4 +84,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById("app"));

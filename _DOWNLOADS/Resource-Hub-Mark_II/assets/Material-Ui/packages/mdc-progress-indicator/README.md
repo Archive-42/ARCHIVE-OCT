@@ -24,20 +24,20 @@ npm install @material/progress-indicator
 
 MDC Progress Indicator Foundation exposes the following methods:
 
-| Method Signature | Description |
-| --- | --- |
+| Method Signature                         | Description                                                            |
+| ---------------------------------------- | ---------------------------------------------------------------------- |
 | `setDeterminate(value: boolean) => void` | Toggles the component between the determinate and indeterminate state. |
-| `setProgress(value: number) => void` | Sets the progress to this value. Value should be between [0, 1]. |
-| `open() => void` | Puts the component in the open state. |
-| `close() => void` | Puts the component in the closed state. |
+| `setProgress(value: number) => void`     | Sets the progress to this value. Value should be between [0, 1].       |
+| `open() => void`                         | Puts the component in the open state.                                  |
+| `close() => void`                        | Puts the component in the closed state.                                |
 
 ### MDCProgressIndicator Component API
 
 MDC Progress Indicator exposes the following API:
 
-| Method Signature | Description |
-| --- | --- |
+| Method Signature       | Description                                                         |
+| ---------------------- | ------------------------------------------------------------------- |
 | `determinate: boolean` | Whether the indicator is in the determinate or indeterminate state. |
-| `progress: number` | The current progress. Value should be between [0, 1]. |
-| `open() => void` | Puts the component in the open state. |
-| `close() => void` | Puts the component in the closed state. |
+| `progress: number`     | The current progress. Value should be between [0, 1].               |
+| `open() => void`       | Puts the component in the open state.                               |
+| `close() => void`      | Puts the component in the closed state.                             |

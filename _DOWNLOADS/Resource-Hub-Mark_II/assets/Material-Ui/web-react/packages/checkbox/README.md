@@ -13,11 +13,13 @@ npm install @material/react-checkbox
 ### Styles
 
 with Sass:
+
 ```js
-import '@material/react-checkbox/index.scss';
+import "@material/react-checkbox/index.scss";
 ```
 
 with CSS:
+
 ```js
 import "@material/react-checkbox/dist/checkbox.css";
 ```
@@ -25,25 +27,27 @@ import "@material/react-checkbox/dist/checkbox.css";
 ### Javascript Instantiation
 
 ```js
-import React from 'react';
-import Checkbox from '@material/react-checkbox';
+import React from "react";
+import Checkbox from "@material/react-checkbox";
 
 class MyApp extends React.Component {
-  state = {checked: false, indeterminate: false};
+  state = { checked: false, indeterminate: false };
 
   render() {
     return (
       <React.Fragment>
         <Checkbox
-          nativeControlId='my-checkbox'
+          nativeControlId="my-checkbox"
           checked={this.state.checked}
           indeterminate={this.state.indeterminate}
-          onChange={(e) => this.setState({
-            checked: e.target.checked,
-            indeterminate: e.target.indeterminate})
+          onChange={(e) =>
+            this.setState({
+              checked: e.target.checked,
+              indeterminate: e.target.indeterminate,
+            })
           }
         />
-        <label htmlFor='my-checkbox'>My Checkbox</label>
+        <label htmlFor="my-checkbox">My Checkbox</label>
       </React.Fragment>
     );
   }
@@ -54,13 +58,13 @@ class MyApp extends React.Component {
 
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-className | String | Classes to be applied to the checkbox element
-checked | Boolean | Indicates whether the checkbox is checked ("on")
-indeterminate | Boolean | Indicates whether the checkbox is indeterminate
-disabled | Boolean | Indicates whether the checkbox is disabled
-nativeControlId | String | Id attached to the native control for relationship with the label
+| Prop Name       | Type    | Description                                                       |
+| --------------- | ------- | ----------------------------------------------------------------- |
+| className       | String  | Classes to be applied to the checkbox element                     |
+| checked         | Boolean | Indicates whether the checkbox is checked ("on")                  |
+| indeterminate   | Boolean | Indicates whether the checkbox is indeterminate                   |
+| disabled        | Boolean | Indicates whether the checkbox is disabled                        |
+| nativeControlId | String  | Id attached to the native control for relationship with the label |
 
 ## Sass Mixins
 

@@ -22,33 +22,33 @@
  */
 
 export const cssClasses = {
-  CLOSING: 'mdc-dialog--closing',
-  OPEN: 'mdc-dialog--open',
-  OPENING: 'mdc-dialog--opening',
-  SCROLLABLE: 'mdc-dialog--scrollable',
-  SCROLL_LOCK: 'mdc-dialog-scroll-lock',
-  STACKED: 'mdc-dialog--stacked',
+  CLOSING: "mdc-dialog--closing",
+  OPEN: "mdc-dialog--open",
+  OPENING: "mdc-dialog--opening",
+  SCROLLABLE: "mdc-dialog--scrollable",
+  SCROLL_LOCK: "mdc-dialog-scroll-lock",
+  STACKED: "mdc-dialog--stacked",
 };
 
 export const strings = {
-  ACTION_ATTRIBUTE: 'data-mdc-dialog-action',
-  BUTTON_DEFAULT_ATTRIBUTE: 'data-mdc-dialog-button-default',
-  BUTTON_SELECTOR: '.mdc-dialog__button',
-  CLOSED_EVENT: 'MDCDialog:closed',
-  CLOSE_ACTION: 'close',
-  CLOSING_EVENT: 'MDCDialog:closing',
-  CONTAINER_SELECTOR: '.mdc-dialog__container',
-  CONTENT_SELECTOR: '.mdc-dialog__content',
-  DESTROY_ACTION: 'destroy',
-  INITIAL_FOCUS_ATTRIBUTE: 'data-mdc-dialog-initial-focus',
-  OPENED_EVENT: 'MDCDialog:opened',
-  OPENING_EVENT: 'MDCDialog:opening',
-  SCRIM_SELECTOR: '.mdc-dialog__scrim',
+  ACTION_ATTRIBUTE: "data-mdc-dialog-action",
+  BUTTON_DEFAULT_ATTRIBUTE: "data-mdc-dialog-button-default",
+  BUTTON_SELECTOR: ".mdc-dialog__button",
+  CLOSED_EVENT: "MDCDialog:closed",
+  CLOSE_ACTION: "close",
+  CLOSING_EVENT: "MDCDialog:closing",
+  CONTAINER_SELECTOR: ".mdc-dialog__container",
+  CONTENT_SELECTOR: ".mdc-dialog__content",
+  DESTROY_ACTION: "destroy",
+  INITIAL_FOCUS_ATTRIBUTE: "data-mdc-dialog-initial-focus",
+  OPENED_EVENT: "MDCDialog:opened",
+  OPENING_EVENT: "MDCDialog:opening",
+  SCRIM_SELECTOR: ".mdc-dialog__scrim",
   SUPPRESS_DEFAULT_PRESS_SELECTOR: [
-    'textarea',
-    '.mdc-menu .mdc-list-item',
-  ].join(', '),
-  SURFACE_SELECTOR: '.mdc-dialog__surface',
+    "textarea",
+    ".mdc-menu .mdc-list-item",
+  ].join(", "),
+  SURFACE_SELECTOR: ".mdc-dialog__surface",
 };
 
 export const numbers = {

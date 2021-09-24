@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {InteractionTrigger} from './constants';
+import { InteractionTrigger } from "./constants";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -33,7 +33,7 @@ import {InteractionTrigger} from './constants';
 export interface MDCChipTrailingActionAdapter {
   focus(): void;
 
-  getAttribute(attr: string): string|null;
+  getAttribute(attr: string): string | null;
 
   notifyInteraction(trigger: InteractionTrigger): void;
 

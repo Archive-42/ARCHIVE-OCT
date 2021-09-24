@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCTextFieldHelperTextAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCTextFieldHelperTextAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCTextFieldHelperTextFoundation extends MDCFoundation<MDCTextFieldHelperTextAdapter> {
   static get cssClasses() {
@@ -52,16 +52,15 @@ export class MDCTextFieldHelperTextFoundation extends MDCFoundation<MDCTextField
   }
 
   constructor(adapter?: Partial<MDCTextFieldHelperTextAdapter>) {
-    super({...MDCTextFieldHelperTextFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCTextFieldHelperTextFoundation.defaultAdapter, ...adapter });
   }
 
-
-  getId(): string|null {
-    return this.adapter.getAttr('id');
+  getId(): string | null {
+    return this.adapter.getAttr("id");
   }
 
   isVisible(): boolean {
-    return this.adapter.getAttr(strings.ARIA_HIDDEN) !== 'true';
+    return this.adapter.getAttr(strings.ARIA_HIDDEN) !== "true";
   }
 
   /**
@@ -115,13 +114,18 @@ export class MDCTextFieldHelperTextFoundation extends MDCFoundation<MDCTextField
    * Sets the validity of the helper text based on the input validity.
    */
   setValidity(inputIsValid: boolean) {
-    const helperTextIsPersistent = this.adapter.hasClass(cssClasses.HELPER_TEXT_PERSISTENT);
-    const helperTextIsValidationMsg = this.adapter.hasClass(cssClasses.HELPER_TEXT_VALIDATION_MSG);
-    const validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
+    const helperTextIsPersistent = this.adapter.hasClass(
+      cssClasses.HELPER_TEXT_PERSISTENT
+    );
+    const helperTextIsValidationMsg = this.adapter.hasClass(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG
+    );
+    const validationMsgNeedsDisplay =
+      helperTextIsValidationMsg && !inputIsValid;
 
     if (validationMsgNeedsDisplay) {
       this.showToScreenReader();
-      this.adapter.setAttr(strings.ROLE, 'alert');
+      this.adapter.setAttr(strings.ROLE, "alert");
     } else {
       this.adapter.removeAttr(strings.ROLE);
     }
@@ -135,7 +139,7 @@ export class MDCTextFieldHelperTextFoundation extends MDCFoundation<MDCTextField
    * Hides the help text from screen readers.
    */
   private hide_() {
-    this.adapter.setAttr(strings.ARIA_HIDDEN, 'true');
+    this.adapter.setAttr(strings.ARIA_HIDDEN, "true");
   }
 }
 

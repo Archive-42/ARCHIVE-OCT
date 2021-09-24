@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
-import * as util from './util';
+import * as util from "./util";
 
-export {util};
-export * from './adapter';
-export * from './component';
-export * from './constants';
-export * from './foundation';
-export * from './types';
+export { util };
+export * from "./adapter";
+export * from "./component";
+export * from "./constants";
+export * from "./foundation";
+export * from "./types";

@@ -47,7 +47,7 @@ export interface MDCTextFieldHelperTextAdapter {
   /**
    * @return the specified attribute's value on the helper text element.
    */
-  getAttr(attr: string): string|null;
+  getAttr(attr: string): string | null;
 
   /**
    * Sets an attribute with a given value on the helper text element.

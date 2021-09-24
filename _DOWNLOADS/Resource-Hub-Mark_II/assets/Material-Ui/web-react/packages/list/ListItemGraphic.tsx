@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface ListItemGraphicProps {
   className?: string;
@@ -33,11 +33,11 @@ export interface ListItemGraphicProps {
 const ListItemGraphic: React.FunctionComponent<ListItemGraphicProps> = ({
   tabIndex = -1, // eslint-disable-line @typescript-eslint/no-unused-vars
   graphic,
-  className = '',
+  className = "",
   ...otherProps
 }) => {
   const graphicProps = {
-    className: classnames('mdc-list-item__graphic', className),
+    className: classnames("mdc-list-item__graphic", className),
     tabIndex: tabIndex !== undefined ? tabIndex : -1,
     ...otherProps,
   };

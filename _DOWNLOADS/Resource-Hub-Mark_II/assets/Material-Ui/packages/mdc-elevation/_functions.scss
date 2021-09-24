@@ -21,4 +21,5 @@
 //
 
 /// @deprecated Import '_elevation-theme.scss' instead.
-@forward './elevation-theme' show transition-value, overlay-transition-value, elevation-box-shadow;
+@forward "./elevation-theme" show transition-value, overlay-transition-value,
+  elevation-box-shadow;

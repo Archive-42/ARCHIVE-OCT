@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-describe('theme.test.scss', () => {
-  it('emits custom properties using theme.property()', () => {
-    const filePath = path.join(__dirname, 'theme.test.css');
-    const css = fs.readFileSync(filePath, 'utf8').trim();
+describe("theme.test.scss", () => {
+  it("emits custom properties using theme.property()", () => {
+    const filePath = path.join(__dirname, "theme.test.css");
+    const css = fs.readFileSync(filePath, "utf8").trim();
     expect(css).toEqual(`.test {
   /* @noflip */
   margin-left: 0;

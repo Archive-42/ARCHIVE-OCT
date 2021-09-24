@@ -21,45 +21,45 @@
  * THE SOFTWARE.
  */
 
+import { verifyDefaultAdapter } from "../../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../../testing/helpers/setup";
+import { MDCTextFieldCharacterCounterFoundation } from "../../../mdc-textfield/character-counter/foundation";
 
-import {verifyDefaultAdapter} from '../../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../../testing/helpers/setup';
-import {MDCTextFieldCharacterCounterFoundation} from '../../../mdc-textfield/character-counter/foundation';
-
-describe('MDCTextFieldCharacterCounterFoundation', () => {
-  it('exports cssClasses', () => {
+describe("MDCTextFieldCharacterCounterFoundation", () => {
+  it("exports cssClasses", () => {
     expect(MDCTextFieldCharacterCounterFoundation.cssClasses).toBeTruthy();
   });
 
-  it('exports strings', () => {
+  it("exports strings", () => {
     expect(MDCTextFieldCharacterCounterFoundation.strings).toBeTruthy();
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCTextFieldCharacterCounterFoundation, [
-      'setContent',
+      "setContent",
     ]);
   });
 
   const setupTest = () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCTextFieldCharacterCounterFoundation);
-    return {foundation, mockAdapter};
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCTextFieldCharacterCounterFoundation
+    );
+    return { foundation, mockAdapter };
   };
 
-  it('istanbul code coverage', () => {
-    expect(() => new MDCTextFieldCharacterCounterFoundation).not.toThrow();
+  it("istanbul code coverage", () => {
+    expect(() => new MDCTextFieldCharacterCounterFoundation()).not.toThrow();
   });
 
-  it('#setContent sets the content of the character counter element', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setContent sets the content of the character counter element", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setCounterValue(12, 20);
-    expect(mockAdapter.setContent).toHaveBeenCalledWith('12 / 20');
+    expect(mockAdapter.setContent).toHaveBeenCalledWith("12 / 20");
   });
 
-  it('#setContent current length does not exceed character count limit', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setContent current length does not exceed character count limit", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setCounterValue(24, 20);
-    expect(mockAdapter.setContent).toHaveBeenCalledWith('20 / 20');
+    expect(mockAdapter.setContent).toHaveBeenCalledWith("20 / 20");
   });
 });

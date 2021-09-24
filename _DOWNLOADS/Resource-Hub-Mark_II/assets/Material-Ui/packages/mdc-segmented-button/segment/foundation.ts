@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCFoundation } from "@material/base/foundation";
 
-import {MDCSegmentedButtonSegmentAdapter} from './adapter';
-import {attributes, booleans, cssClasses} from './constants';
+import { MDCSegmentedButtonSegmentAdapter } from "./adapter";
+import { attributes, booleans, cssClasses } from "./constants";
 
 const emptyClientRect = {
   bottom: 0,
@@ -35,20 +35,25 @@ const emptyClientRect = {
   width: 0,
 };
 
-export class MDCSegmentedButtonSegmentFoundation extends
-    MDCFoundation<MDCSegmentedButtonSegmentAdapter> {
+export class MDCSegmentedButtonSegmentFoundation extends MDCFoundation<MDCSegmentedButtonSegmentAdapter> {
   static get defaultAdapter(): MDCSegmentedButtonSegmentAdapter {
     return {
-      isSingleSelect: () => false, getAttr: () => '', setAttr: () => undefined,
-                      addClass: () => undefined, removeClass: () => undefined,
-                      hasClass: () => false,
-                      notifySelectedChange: () => undefined,
-                      getRootBoundingClientRect: () => emptyClientRect,
-    }
+      isSingleSelect: () => false,
+      getAttr: () => "",
+      setAttr: () => undefined,
+      addClass: () => undefined,
+      removeClass: () => undefined,
+      hasClass: () => false,
+      notifySelectedChange: () => undefined,
+      getRootBoundingClientRect: () => emptyClientRect,
+    };
   }
 
   constructor(adapter?: Partial<MDCSegmentedButtonSegmentAdapter>) {
-    super({...MDCSegmentedButtonSegmentFoundation.defaultAdapter, ...adapter});
+    super({
+      ...MDCSegmentedButtonSegmentFoundation.defaultAdapter,
+      ...adapter,
+    });
   }
 
   /**
@@ -78,7 +83,7 @@ export class MDCSegmentedButtonSegmentFoundation extends
   /**
    * @return Returns segment's segmentId if it was set by client
    */
-  getSegmentId(): string|undefined {
+  getSegmentId(): string | undefined {
     return this.adapter.getAttr(attributes.DATA_SEGMENT_ID) ?? undefined;
   }
 

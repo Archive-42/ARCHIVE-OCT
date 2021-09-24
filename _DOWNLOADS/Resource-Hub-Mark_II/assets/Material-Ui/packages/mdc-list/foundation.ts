@@ -24,14 +24,14 @@
 // TODO(b/152410470): Remove trailing underscores from private properties
 // tslint:disable:strip-private-property-underscore
 
-import {MDCFoundation} from '@material/base/foundation';
-import {normalizeKey} from '@material/dom/keyboard';
+import { MDCFoundation } from "@material/base/foundation";
+import { normalizeKey } from "@material/dom/keyboard";
 
-import {MDCListAdapter} from './adapter';
-import {cssClasses, numbers, strings} from './constants';
-import {preventDefaultEvent} from './events';
-import * as typeahead from './typeahead';
-import {MDCListIndex, MDCListTextAndIndex} from './types';
+import { MDCListAdapter } from "./adapter";
+import { cssClasses, numbers, strings } from "./constants";
+import { preventDefaultEvent } from "./events";
+import * as typeahead from "./typeahead";
+import { MDCListIndex, MDCListTextAndIndex } from "./types";
 
 function isNumberArray(selectedIndex: MDCListIndex): selectedIndex is number[] {
   return selectedIndex instanceof Array;
@@ -68,7 +68,7 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       setAttributeForElementIndex: () => undefined,
       setCheckedCheckboxOrRadioAtIndex: () => undefined,
       setTabIndexForListItemChildren: () => undefined,
-      getPrimaryTextAtIndex: () => '',
+      getPrimaryTextAtIndex: () => "",
     };
   }
 
@@ -79,7 +79,7 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
   private focusedItemIndex = numbers.UNSET_INDEX;
   private useActivatedClass_ = false;
   private useSelectedAttr_ = false;
-  private ariaCurrentAttrValue_: string|null = null;
+  private ariaCurrentAttrValue_: string | null = null;
   private isCheckboxList_ = false;
   private isRadioList_ = false;
 
@@ -89,7 +89,7 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
   private sortedIndexByFirstChar = new Map<string, MDCListTextAndIndex[]>();
 
   constructor(adapter?: Partial<MDCListAdapter>) {
-    super({...MDCListFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCListFoundation.defaultAdapter, ...adapter });
   }
 
   layout() {
@@ -142,9 +142,13 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
   private maybeInitializeSingleSelection() {
     for (let i = 0; i < this.adapter.getListItemCount(); i++) {
       const hasSelectedClass = this.adapter.listItemAtIndexHasClass(
-          i, cssClasses.LIST_ITEM_SELECTED_CLASS);
+        i,
+        cssClasses.LIST_ITEM_SELECTED_CLASS
+      );
       const hasActivatedClass = this.adapter.listItemAtIndexHasClass(
-          i, cssClasses.LIST_ITEM_ACTIVATED_CLASS);
+        i,
+        cssClasses.LIST_ITEM_ACTIVATED_CLASS
+      );
       if (!(hasSelectedClass || hasActivatedClass)) {
         continue;
       }
@@ -174,8 +178,9 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
    * @return Whether typeahead is currently matching a user-specified prefix.
    */
   isTypeaheadInProgress(): boolean {
-    return this.hasTypeahead &&
-        typeahead.isTypingInProgress(this.typeaheadState);
+    return (
+      this.hasTypeahead && typeahead.isTypingInProgress(this.typeaheadState)
+    );
   }
 
   /**
@@ -216,8 +221,8 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
   handleFocusIn(_: FocusEvent, listItemIndex: number) {
     if (listItemIndex >= 0) {
       this.focusedItemIndex = listItemIndex;
-      this.adapter.setAttributeForElementIndex(listItemIndex, 'tabindex', '0');
-      this.adapter.setTabIndexForListItemChildren(listItemIndex, '0');
+      this.adapter.setAttributeForElementIndex(listItemIndex, "tabindex", "0");
+      this.adapter.setTabIndexForListItemChildren(listItemIndex, "0");
     }
   }
 
@@ -226,8 +231,8 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
    */
   handleFocusOut(_: FocusEvent, listItemIndex: number) {
     if (listItemIndex >= 0) {
-      this.adapter.setAttributeForElementIndex(listItemIndex, 'tabindex', '-1');
-      this.adapter.setTabIndexForListItemChildren(listItemIndex, '-1');
+      this.adapter.setAttributeForElementIndex(listItemIndex, "tabindex", "-1");
+      this.adapter.setTabIndexForListItemChildren(listItemIndex, "-1");
     }
 
     /**
@@ -245,18 +250,21 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
    * Key handler for the list.
    */
   handleKeydown(
-      event: KeyboardEvent, isRootListItem: boolean, listItemIndex: number) {
-    const isArrowLeft = normalizeKey(event) === 'ArrowLeft';
-    const isArrowUp = normalizeKey(event) === 'ArrowUp';
-    const isArrowRight = normalizeKey(event) === 'ArrowRight';
-    const isArrowDown = normalizeKey(event) === 'ArrowDown';
-    const isHome = normalizeKey(event) === 'Home';
-    const isEnd = normalizeKey(event) === 'End';
-    const isEnter = normalizeKey(event) === 'Enter';
-    const isSpace = normalizeKey(event) === 'Spacebar';
+    event: KeyboardEvent,
+    isRootListItem: boolean,
+    listItemIndex: number
+  ) {
+    const isArrowLeft = normalizeKey(event) === "ArrowLeft";
+    const isArrowUp = normalizeKey(event) === "ArrowUp";
+    const isArrowRight = normalizeKey(event) === "ArrowRight";
+    const isArrowDown = normalizeKey(event) === "ArrowDown";
+    const isHome = normalizeKey(event) === "Home";
+    const isEnd = normalizeKey(event) === "End";
+    const isEnter = normalizeKey(event) === "Enter";
+    const isSpace = normalizeKey(event) === "Spacebar";
 
     // Have to check both upper and lower case, because having caps lock on affects the value.
-    const isLetterA = event.key === 'A' || event.key === 'a';
+    const isLetterA = event.key === "A" || event.key === "a";
 
     if (this.adapter.isRootFocused()) {
       if (isArrowUp || isEnd) {
@@ -277,8 +285,10 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
           isTargetListItem: isRootListItem,
           sortedIndexByFirstChar: this.sortedIndexByFirstChar,
           isItemAtIndexDisabled: (index) =>
-              this.adapter.listItemAtIndexHasClass(
-                  index, cssClasses.LIST_ITEM_DISABLED_CLASS),
+            this.adapter.listItemAtIndexHasClass(
+              index,
+              cssClasses.LIST_ITEM_DISABLED_CLASS
+            ),
         };
 
         typeahead.handleKeydown(handleKeydownOpts, this.typeaheadState);
@@ -297,12 +307,16 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       }
     }
 
-    if ((this.isVertical_ && isArrowDown) ||
-        (!this.isVertical_ && isArrowRight)) {
+    if (
+      (this.isVertical_ && isArrowDown) ||
+      (!this.isVertical_ && isArrowRight)
+    ) {
       preventDefaultEvent(event);
       this.focusNextElement(currentIndex);
     } else if (
-        (this.isVertical_ && isArrowUp) || (!this.isVertical_ && isArrowLeft)) {
+      (this.isVertical_ && isArrowUp) ||
+      (!this.isVertical_ && isArrowLeft)
+    ) {
       preventDefaultEvent(event);
       this.focusPrevElement(currentIndex);
     } else if (isHome) {
@@ -313,19 +327,27 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       this.focusLastElement();
     } else if (isLetterA && event.ctrlKey && this.isCheckboxList_) {
       event.preventDefault();
-      this.toggleAll(this.selectedIndex_ === numbers.UNSET_INDEX ? [] : this.selectedIndex_ as number[]);
+      this.toggleAll(
+        this.selectedIndex_ === numbers.UNSET_INDEX
+          ? []
+          : (this.selectedIndex_ as number[])
+      );
     } else if (isEnter || isSpace) {
       if (isRootListItem) {
         // Return early if enter key is pressed on anchor element which triggers
         // synthetic MouseEvent event.
         const target = event.target as Element | null;
-        if (target && target.tagName === 'A' && isEnter) {
+        if (target && target.tagName === "A" && isEnter) {
           return;
         }
         preventDefaultEvent(event);
 
-        if (this.adapter.listItemAtIndexHasClass(
-                currentIndex, cssClasses.LIST_ITEM_DISABLED_CLASS)) {
+        if (
+          this.adapter.listItemAtIndexHasClass(
+            currentIndex,
+            cssClasses.LIST_ITEM_DISABLED_CLASS
+          )
+        ) {
           return;
         }
 
@@ -342,13 +364,16 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       const handleKeydownOpts: typeahead.HandleKeydownOpts = {
         event,
         focusItemAtIndex: (index) => {
-          this.focusItemAtIndex(index)
+          this.focusItemAtIndex(index);
         },
         focusedItemIndex: this.focusedItemIndex,
         isTargetListItem: isRootListItem,
         sortedIndexByFirstChar: this.sortedIndexByFirstChar,
-        isItemAtIndexDisabled: (index) => this.adapter.listItemAtIndexHasClass(
-            index, cssClasses.LIST_ITEM_DISABLED_CLASS),
+        isItemAtIndexDisabled: (index) =>
+          this.adapter.listItemAtIndexHasClass(
+            index,
+            cssClasses.LIST_ITEM_DISABLED_CLASS
+          ),
       };
 
       typeahead.handleKeydown(handleKeydownOpts, this.typeaheadState);
@@ -363,8 +388,12 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       return;
     }
 
-    if (this.adapter.listItemAtIndexHasClass(
-            index, cssClasses.LIST_ITEM_DISABLED_CLASS)) {
+    if (
+      this.adapter.listItemAtIndexHasClass(
+        index,
+        cssClasses.LIST_ITEM_DISABLED_CLASS
+      )
+    ) {
       return;
     }
     if (this.isSelectableList_()) {
@@ -438,17 +467,26 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
 
     if (isEnabled) {
       this.adapter.removeClassForElementIndex(
-          itemIndex, cssClasses.LIST_ITEM_DISABLED_CLASS);
+        itemIndex,
+        cssClasses.LIST_ITEM_DISABLED_CLASS
+      );
       this.adapter.setAttributeForElementIndex(
-          itemIndex, strings.ARIA_DISABLED, 'false');
+        itemIndex,
+        strings.ARIA_DISABLED,
+        "false"
+      );
     } else {
       this.adapter.addClassForElementIndex(
-          itemIndex, cssClasses.LIST_ITEM_DISABLED_CLASS);
+        itemIndex,
+        cssClasses.LIST_ITEM_DISABLED_CLASS
+      );
       this.adapter.setAttributeForElementIndex(
-          itemIndex, strings.ARIA_DISABLED, 'true');
+        itemIndex,
+        strings.ARIA_DISABLED,
+        "true"
+      );
     }
   }
-
 
   private setSingleSelectionAtIndex_(index: number) {
     if (this.selectedIndex_ === index) {
@@ -462,7 +500,9 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
 
     if (this.selectedIndex_ !== numbers.UNSET_INDEX) {
       this.adapter.removeClassForElementIndex(
-          this.selectedIndex_ as number, selectedClassName);
+        this.selectedIndex_ as number,
+        selectedClassName
+      );
     }
 
     this.setAriaForSingleSelectionAtIndex_(index);
@@ -481,24 +521,34 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
     // Detect the presence of aria-current and get the value only during list
     // initialization when it is in unset state.
     if (this.selectedIndex_ === numbers.UNSET_INDEX) {
-      this.ariaCurrentAttrValue_ =
-          this.adapter.getAttributeForElementIndex(index, strings.ARIA_CURRENT);
+      this.ariaCurrentAttrValue_ = this.adapter.getAttributeForElementIndex(
+        index,
+        strings.ARIA_CURRENT
+      );
     }
 
     const isAriaCurrent = this.ariaCurrentAttrValue_ !== null;
-    const ariaAttribute =
-        isAriaCurrent ? strings.ARIA_CURRENT : strings.ARIA_SELECTED;
+    const ariaAttribute = isAriaCurrent
+      ? strings.ARIA_CURRENT
+      : strings.ARIA_SELECTED;
 
     if (this.selectedIndex_ !== numbers.UNSET_INDEX) {
       this.adapter.setAttributeForElementIndex(
-          this.selectedIndex_ as number, ariaAttribute, 'false');
+        this.selectedIndex_ as number,
+        ariaAttribute,
+        "false"
+      );
     }
 
     if (index !== numbers.UNSET_INDEX) {
-      const ariaAttributeValue =
-          isAriaCurrent ? this.ariaCurrentAttrValue_ : 'true';
+      const ariaAttributeValue = isAriaCurrent
+        ? this.ariaCurrentAttrValue_
+        : "true";
       this.adapter.setAttributeForElementIndex(
-          index, ariaAttribute, ariaAttributeValue as string);
+        index,
+        ariaAttribute,
+        ariaAttributeValue as string
+      );
     }
   }
 
@@ -519,10 +569,13 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
 
     if (this.selectedIndex_ !== numbers.UNSET_INDEX) {
       this.adapter.setAttributeForElementIndex(
-          this.selectedIndex_ as number, selectionAttribute, 'false');
+        this.selectedIndex_ as number,
+        selectionAttribute,
+        "false"
+      );
     }
 
-    this.adapter.setAttributeForElementIndex(index, selectionAttribute, 'true');
+    this.adapter.setAttributeForElementIndex(index, selectionAttribute, "true");
 
     this.selectedIndex_ = index;
   }
@@ -537,7 +590,10 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
 
       this.adapter.setCheckedCheckboxOrRadioAtIndex(i, isChecked);
       this.adapter.setAttributeForElementIndex(
-          i, selectionAttribute, isChecked ? 'true' : 'false');
+        i,
+        selectionAttribute,
+        isChecked ? "true" : "false"
+      );
     }
 
     this.selectedIndex_ = index;
@@ -548,23 +604,31 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       // If some list item was selected set first list item's tabindex to -1.
       // Generally, tabindex is set to 0 on first list item of list that has no
       // preselected items.
-      this.adapter.setAttributeForElementIndex(0, 'tabindex', '-1');
+      this.adapter.setAttributeForElementIndex(0, "tabindex", "-1");
     } else if (this.focusedItemIndex >= 0 && this.focusedItemIndex !== index) {
       this.adapter.setAttributeForElementIndex(
-          this.focusedItemIndex, 'tabindex', '-1');
+        this.focusedItemIndex,
+        "tabindex",
+        "-1"
+      );
     }
 
     // Set the previous selection's tabindex to -1. We need this because
     // in selection menus that are not visible, programmatically setting an
     // option will not change focus but will change where tabindex should be 0.
-    if (!(this.selectedIndex_ instanceof Array) &&
-        this.selectedIndex_ !== index) {
+    if (
+      !(this.selectedIndex_ instanceof Array) &&
+      this.selectedIndex_ !== index
+    ) {
       this.adapter.setAttributeForElementIndex(
-          this.selectedIndex_, 'tabindex', '-1');
+        this.selectedIndex_,
+        "tabindex",
+        "-1"
+      );
     }
 
     if (index !== numbers.UNSET_INDEX) {
-      this.adapter.setAttributeForElementIndex(index, 'tabindex', '0');
+      this.adapter.setAttributeForElementIndex(index, "tabindex", "0");
     }
   }
 
@@ -573,8 +637,9 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
    *     list.
    */
   private isSelectableList_() {
-    return this.isSingleSelectionList_ || this.isCheckboxList_ ||
-        this.isRadioList_;
+    return (
+      this.isSingleSelectionList_ || this.isCheckboxList_ || this.isRadioList_
+    );
   }
 
   private setTabindexToFirstSelectedOrFocusedItem() {
@@ -585,14 +650,18 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
   private getFirstSelectedOrFocusedItemIndex(): number {
     let targetIndex = this.focusedItemIndex >= 0 ? this.focusedItemIndex : 0;
     if (this.isSelectableList_()) {
-      if (typeof this.selectedIndex_ === 'number' &&
-          this.selectedIndex_ !== numbers.UNSET_INDEX) {
+      if (
+        typeof this.selectedIndex_ === "number" &&
+        this.selectedIndex_ !== numbers.UNSET_INDEX
+      ) {
         targetIndex = this.selectedIndex_;
       } else if (
-          isNumberArray(this.selectedIndex_) &&
-          this.selectedIndex_.length > 0) {
-        targetIndex = this.selectedIndex_.reduce(
-            (currentIndex, minIndex) => Math.min(currentIndex, minIndex));
+        isNumberArray(this.selectedIndex_) &&
+        this.selectedIndex_.length > 0
+      ) {
+        targetIndex = this.selectedIndex_.reduce((currentIndex, minIndex) =>
+          Math.min(currentIndex, minIndex)
+        );
       }
     }
     return targetIndex;
@@ -602,7 +671,8 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
     if (index instanceof Array) {
       if (!this.isCheckboxList_) {
         throw new Error(
-            'MDCListFoundation: Array of index is only supported for checkbox based list');
+          "MDCListFoundation: Array of index is only supported for checkbox based list"
+        );
       }
 
       if (index.length === 0) {
@@ -610,14 +680,16 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       } else {
         return index.some((i) => this.isIndexInRange_(i));
       }
-    } else if (typeof index === 'number') {
+    } else if (typeof index === "number") {
       if (this.isCheckboxList_) {
         throw new Error(
-            `MDCListFoundation: Expected array of index for checkbox based list but got number: ${
-                index}`);
+          `MDCListFoundation: Expected array of index for checkbox based list but got number: ${index}`
+        );
       }
-      return this.isIndexInRange_(index) ||
-          this.isSingleSelectionList_ && index === numbers.UNSET_INDEX;
+      return (
+        this.isIndexInRange_(index) ||
+        (this.isSingleSelectionList_ && index === numbers.UNSET_INDEX)
+      );
     } else {
       return false;
     }
@@ -651,13 +723,17 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
     }
 
     this.adapter.setAttributeForElementIndex(
-        index, selectionAttribute, isChecked ? 'true' : 'false');
+      index,
+      selectionAttribute,
+      isChecked ? "true" : "false"
+    );
 
     // If none of the checkbox items are selected and selectedIndex is not
     // initialized then provide a default value.
-    let selectedIndexes = this.selectedIndex_ === numbers.UNSET_INDEX ?
-        [] :
-        (this.selectedIndex_ as number[]).slice();
+    let selectedIndexes =
+      this.selectedIndex_ === numbers.UNSET_INDEX
+        ? []
+        : (this.selectedIndex_ as number[]).slice();
 
     if (isChecked) {
       selectedIndexes.push(index);
@@ -683,8 +759,13 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       // Otherwise select all enabled options.
       const allIndexes: number[] = [];
       for (let i = 0; i < count; i++) {
-        if (!this.adapter.listItemAtIndexHasClass(i, cssClasses.LIST_ITEM_DISABLED_CLASS) ||
-            currentlySelectedIndexes.indexOf(i) > -1) {
+        if (
+          !this.adapter.listItemAtIndexHasClass(
+            i,
+            cssClasses.LIST_ITEM_DISABLED_CLASS
+          ) ||
+          currentlySelectedIndexes.indexOf(i) > -1
+        ) {
           allIndexes.push(i);
         }
       }
@@ -706,7 +787,10 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
    * @return The index of the matched item, or -1 if no match.
    */
   typeaheadMatchItem(
-      nextChar: string, startingIndex?: number, skipFocus = false) {
+    nextChar: string,
+    startingIndex?: number,
+    skipFocus = false
+  ) {
     const opts: typeahead.TypeaheadMatchItemOpts = {
       focusItemAtIndex: (index) => {
         this.focusItemAtIndex(index);
@@ -715,8 +799,11 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
       nextChar,
       sortedIndexByFirstChar: this.sortedIndexByFirstChar,
       skipFocus,
-      isItemAtIndexDisabled: (index) => this.adapter.listItemAtIndexHasClass(
-          index, cssClasses.LIST_ITEM_DISABLED_CLASS)
+      isItemAtIndexDisabled: (index) =>
+        this.adapter.listItemAtIndexHasClass(
+          index,
+          cssClasses.LIST_ITEM_DISABLED_CLASS
+        ),
     };
     return typeahead.matchItem(opts, this.typeaheadState);
   }
@@ -729,7 +816,9 @@ export class MDCListFoundation extends MDCFoundation<MDCListAdapter> {
    */
   private typeaheadInitSortedIndex() {
     return typeahead.initSortedIndex(
-        this.adapter.getListItemCount(), this.adapter.getPrimaryTextAtIndex);
+      this.adapter.getListItemCount(),
+      this.adapter.getPrimaryTextAtIndex
+    );
   }
 
   /**

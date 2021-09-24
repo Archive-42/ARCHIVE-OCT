@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {cssClasses} from './constants';
+import React from "react";
+import classnames from "classnames";
+import { cssClasses } from "./constants";
 
 export interface IconProps<T> extends React.HTMLProps<T> {
   actionItem?: boolean;

@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {withRipple, InjectedProps} from '@material/react-ripple';
+import React from "react";
+import classnames from "classnames";
+import { withRipple, InjectedProps } from "@material/react-ripple";
 
 export interface ThumbUnderlayProps
   extends InjectedProps<HTMLDivElement, HTMLInputElement>,
@@ -33,7 +33,7 @@ export interface ThumbUnderlayProps
 
 export class ThumbUnderlay extends React.Component<ThumbUnderlayProps, {}> {
   static defaultProps: Partial<ThumbUnderlayProps> = {
-    className: '',
+    className: "",
     initRipple: () => {},
     unbounded: true,
   };
@@ -45,7 +45,7 @@ export class ThumbUnderlay extends React.Component<ThumbUnderlayProps, {}> {
   };
 
   get classes() {
-    return classnames('mdc-switch__thumb-underlay', this.props.className);
+    return classnames("mdc-switch__thumb-underlay", this.props.className);
   }
 
   render() {
@@ -61,7 +61,7 @@ export class ThumbUnderlay extends React.Component<ThumbUnderlayProps, {}> {
     } = this.props;
     return (
       <div className={this.classes} ref={this.init} {...otherProps}>
-        <div className='mdc-switch__thumb'>{children}</div>
+        <div className="mdc-switch__thumb">{children}</div>
       </div>
     );
   }

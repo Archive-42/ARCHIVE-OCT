@@ -21,14 +21,15 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCProgressIndicatorFoundation} from '@material/progress-indicator/foundation';
-import {MDCCircularProgressAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCProgressIndicatorFoundation } from "@material/progress-indicator/foundation";
+import { MDCCircularProgressAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
-export class MDCCircularProgressFoundation extends
-    MDCFoundation<MDCCircularProgressAdapter> implements
-        MDCProgressIndicatorFoundation {
+export class MDCCircularProgressFoundation
+  extends MDCFoundation<MDCCircularProgressAdapter>
+  implements MDCProgressIndicatorFoundation
+{
   static get cssClasses() {
     return cssClasses;
   }
@@ -55,22 +56,26 @@ export class MDCCircularProgressFoundation extends
   private radius_!: number;
 
   constructor(adapter?: Partial<MDCCircularProgressAdapter>) {
-    super({...MDCCircularProgressFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCCircularProgressFoundation.defaultAdapter, ...adapter });
   }
 
   init() {
     this.isClosed_ = this.adapter.hasClass(cssClasses.CLOSED_CLASS);
-    this.isDeterminate_ =
-        !this.adapter.hasClass(cssClasses.INDETERMINATE_CLASS);
+    this.isDeterminate_ = !this.adapter.hasClass(
+      cssClasses.INDETERMINATE_CLASS
+    );
     this.progress_ = 0;
 
     if (this.isDeterminate_) {
       this.adapter.setAttribute(
-          strings.ARIA_VALUENOW, this.progress_.toString());
+        strings.ARIA_VALUENOW,
+        this.progress_.toString()
+      );
     }
 
-    this.radius_ =
-        Number(this.adapter.getDeterminateCircleAttribute(strings.RADIUS));
+    this.radius_ = Number(
+      this.adapter.getDeterminateCircleAttribute(strings.RADIUS)
+    );
   }
 
   isDeterminate() {
@@ -114,12 +119,16 @@ export class MDCCircularProgressFoundation extends
     this.progress_ = value;
     if (this.isDeterminate_) {
       const unfilledArcLength =
-          (1 - this.progress_) * (2 * Math.PI * this.radius_);
+        (1 - this.progress_) * (2 * Math.PI * this.radius_);
 
       this.adapter.setDeterminateCircleAttribute(
-          strings.STROKE_DASHOFFSET, `${unfilledArcLength}`);
+        strings.STROKE_DASHOFFSET,
+        `${unfilledArcLength}`
+      );
       this.adapter.setAttribute(
-          strings.ARIA_VALUENOW, this.progress_.toString());
+        strings.ARIA_VALUENOW,
+        this.progress_.toString()
+      );
     }
   }
 

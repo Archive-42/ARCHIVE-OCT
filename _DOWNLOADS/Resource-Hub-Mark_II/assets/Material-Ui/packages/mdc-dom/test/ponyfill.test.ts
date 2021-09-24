@@ -21,104 +21,101 @@
  * THE SOFTWARE.
  */
 
-import {closest, estimateScrollWidth, matches} from '../ponyfill';
+import { closest, estimateScrollWidth, matches } from "../ponyfill";
 
 function getFixture(content: string) {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = content;
   const el = wrapper.firstElementChild as HTMLElement;
   wrapper.removeChild(el);
   return el;
 }
 
-describe('MDCDom - ponyfill', () => {
-  it('#closest returns result from native method if available', () => {
-    const mockElement = jasmine.createSpyObj('mockElement', ['closest']);
-    const selector = '.foo';
+describe("MDCDom - ponyfill", () => {
+  it("#closest returns result from native method if available", () => {
+    const mockElement = jasmine.createSpyObj("mockElement", ["closest"]);
+    const selector = ".foo";
     mockElement.closest.withArgs(selector).and.returnValue(mockElement);
 
     expect(closest(mockElement, selector)).toBe(mockElement);
   });
 
-  it('#closest returns the element when the selector matches the element',
-     () => {
-       const mockElement = jasmine.createSpyObj('mockElement', ['matches']);
-       const selector = '.foo';
-       mockElement.matches.withArgs(selector).and.returnValue(true);
+  it("#closest returns the element when the selector matches the element", () => {
+    const mockElement = jasmine.createSpyObj("mockElement", ["matches"]);
+    const selector = ".foo";
+    mockElement.matches.withArgs(selector).and.returnValue(true);
 
-       expect(closest(mockElement, selector)).toBe(mockElement);
-     });
+    expect(closest(mockElement, selector)).toBe(mockElement);
+  });
 
-  it('#closest returns the parent element when the selector matches the parent element',
-     () => {
-       const mockParentMatches = jasmine.createSpy('mockParentElement.matches');
-       const mockMatches = jasmine.createSpy('mockChildElement.matches');
-       const mockParentElement = {
-         matches: mockParentMatches,
-       } as unknown as HTMLElement;
-       const mockChildElement = {
-         matches: mockMatches,
-         parentElement: mockParentElement,
-       } as unknown as HTMLElement;
-       const selector = '.foo';
-       mockMatches.withArgs(selector).and.returnValue(false);
-       mockParentMatches.withArgs(selector).and.returnValue(true);
+  it("#closest returns the parent element when the selector matches the parent element", () => {
+    const mockParentMatches = jasmine.createSpy("mockParentElement.matches");
+    const mockMatches = jasmine.createSpy("mockChildElement.matches");
+    const mockParentElement = {
+      matches: mockParentMatches,
+    } as unknown as HTMLElement;
+    const mockChildElement = {
+      matches: mockMatches,
+      parentElement: mockParentElement,
+    } as unknown as HTMLElement;
+    const selector = ".foo";
+    mockMatches.withArgs(selector).and.returnValue(false);
+    mockParentMatches.withArgs(selector).and.returnValue(true);
 
-       expect(closest(mockChildElement, selector)).toBe(mockParentElement);
-     });
+    expect(closest(mockChildElement, selector)).toBe(mockParentElement);
+  });
 
-  it('#closest returns null when there is no ancestor matching the selector',
-     () => {
-       const mockParentMatches = jasmine.createSpy('mockParentElement.matches');
-       const mockMatches = jasmine.createSpy('mockChildElement.matches');
-       const mockChildElement = {
-         matches: mockMatches,
-         parentElement: {
-           matches: mockParentMatches,
-         },
-       } as unknown as HTMLElement;
-       const selector = '.foo';
-       mockMatches.withArgs(selector).and.returnValue(false);
-       mockParentMatches.withArgs(selector).and.returnValue(false);
+  it("#closest returns null when there is no ancestor matching the selector", () => {
+    const mockParentMatches = jasmine.createSpy("mockParentElement.matches");
+    const mockMatches = jasmine.createSpy("mockChildElement.matches");
+    const mockChildElement = {
+      matches: mockMatches,
+      parentElement: {
+        matches: mockParentMatches,
+      },
+    } as unknown as HTMLElement;
+    const selector = ".foo";
+    mockMatches.withArgs(selector).and.returnValue(false);
+    mockParentMatches.withArgs(selector).and.returnValue(false);
 
-       expect(closest(mockChildElement, selector)).toBeNull();
-     });
+    expect(closest(mockChildElement, selector)).toBeNull();
+  });
 
-  it('#matches returns true when the selector matches the element', () => {
+  it("#matches returns true when the selector matches the element", () => {
     const element = getFixture(`<div class="foo"></div>`);
-    expect(matches(element, '.foo')).toBe(true);
+    expect(matches(element, ".foo")).toBe(true);
   });
 
-  it('#matches returns false when the selector does not match the element',
-     () => {
-       const element = getFixture(`<div class="foo"></div>`);
-       expect(matches(element, '.bar')).toBe(false);
-     });
+  it("#matches returns false when the selector does not match the element", () => {
+    const element = getFixture(`<div class="foo"></div>`);
+    expect(matches(element, ".bar")).toBe(false);
+  });
 
-  it('#matches supports vendor prefixes', () => {
-    expect(matches({matches: () => true} as unknown as Element, '')).toBe(true);
+  it("#matches supports vendor prefixes", () => {
+    expect(matches({ matches: () => true } as unknown as Element, "")).toBe(
+      true
+    );
     expect(
-        matches({webkitMatchesSelector: () => true} as unknown as Element, ''))
-        .toBe(true);
-    expect(matches({msMatchesSelector: () => true} as unknown as Element, ''))
-        .toBe(true);
+      matches({ webkitMatchesSelector: () => true } as unknown as Element, "")
+    ).toBe(true);
+    expect(
+      matches({ msMatchesSelector: () => true } as unknown as Element, "")
+    ).toBe(true);
   });
 
-  it('#estimateScrollWidth returns the default width when the element is not hidden',
-     () => {
-       const root = getFixture(`<span>
+  it("#estimateScrollWidth returns the default width when the element is not hidden", () => {
+    const root = getFixture(`<span>
     <span id="i0" style="width:10px;"></span>
   </span>`);
-       const el = root.querySelector('#i0') as HTMLElement;
-       expect(estimateScrollWidth(el)).toBe(10);
-     });
+    const el = root.querySelector("#i0") as HTMLElement;
+    expect(estimateScrollWidth(el)).toBe(10);
+  });
 
-  it('#estimateScrollWidth returns the estimated width when the element is hidden',
-     () => {
-       const root = getFixture(`<span style="display:none;">
+  it("#estimateScrollWidth returns the estimated width when the element is hidden", () => {
+    const root = getFixture(`<span style="display:none;">
     <span id="i0" style="width:10px;"></span>
   </span>`);
-       const el = root.querySelector('#i0') as HTMLElement;
-       expect(estimateScrollWidth(el)).toBe(10);
-     });
+    const el = root.querySelector("#i0") as HTMLElement;
+    expect(estimateScrollWidth(el)).toBe(10);
+  });
 });

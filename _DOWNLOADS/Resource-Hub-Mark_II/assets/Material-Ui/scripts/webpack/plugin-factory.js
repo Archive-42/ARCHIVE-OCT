@@ -25,14 +25,14 @@
  * @fileoverview Factory for Webpack plugins. Allows us to more easily mock and test our config generator code.
  */
 
-'use strict';
+"use strict";
 
-const CopyrightBannerPlugin = require('./copyright-banner-plugin');
-const CssCleanupPlugin = require('./css-cleanup-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyrightBannerPlugin = require("./copyright-banner-plugin");
+const CssCleanupPlugin = require("./css-cleanup-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 class PluginFactory {
-  constructor({globber} = {}) {
+  constructor({ globber } = {}) {
     this.globber_ = globber;
   }
 
@@ -40,7 +40,7 @@ class PluginFactory {
     return new CopyrightBannerPlugin();
   }
 
-  createCssCleanupPlugin({cleanupDirRelativePath} = {}) {
+  createCssCleanupPlugin({ cleanupDirRelativePath } = {}) {
     return new CssCleanupPlugin({
       cleanupDirRelativePath,
       globber: this.globber_,
@@ -48,7 +48,7 @@ class PluginFactory {
   }
 
   createCssExtractorPlugin(filename) {
-    return new MiniCssExtractPlugin({filename});
+    return new MiniCssExtractPlugin({ filename });
   }
 }
 

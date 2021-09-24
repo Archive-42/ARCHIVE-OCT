@@ -19,7 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
+import React from "react";
 
 export interface NativeControlProps extends React.HTMLProps<HTMLInputElement> {
   checked: boolean;
@@ -37,11 +37,11 @@ export class NativeControl extends React.Component<NativeControlProps, {}> {
   };
 
   render() {
-    const {rippleActivatorRef, ...otherProps} = this.props;
+    const { rippleActivatorRef, ...otherProps } = this.props;
     return (
       <input
-        type='checkbox'
-        className='mdc-checkbox__native-control'
+        type="checkbox"
+        className="mdc-checkbox__native-control"
         ref={rippleActivatorRef}
         {...otherProps}
       />

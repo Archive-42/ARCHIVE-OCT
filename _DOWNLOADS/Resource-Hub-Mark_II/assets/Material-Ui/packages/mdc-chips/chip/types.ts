@@ -21,22 +21,25 @@
  * THE SOFTWARE.
  */
 
-import {EventSource} from './constants';
+import { EventSource } from "./constants";
 
 export interface MDCChipInteractionEventDetail {
   chipId: string;
 }
 
-export interface MDCChipSelectionEventDetail extends MDCChipInteractionEventDetail {
+export interface MDCChipSelectionEventDetail
+  extends MDCChipInteractionEventDetail {
   selected: boolean;
   shouldIgnore: boolean;
 }
 
-export interface MDCChipRemovalEventDetail extends MDCChipInteractionEventDetail {
-  removedAnnouncement: string|null;
+export interface MDCChipRemovalEventDetail
+  extends MDCChipInteractionEventDetail {
+  removedAnnouncement: string | null;
 }
 
-export interface MDCChipNavigationEventDetail extends MDCChipInteractionEventDetail {
+export interface MDCChipNavigationEventDetail
+  extends MDCChipInteractionEventDetail {
   key: string;
   source: EventSource;
 }

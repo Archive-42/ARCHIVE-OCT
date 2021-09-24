@@ -25,14 +25,14 @@
  * Priorities for the announce function
  */
 export enum AnnouncerPriority {
-  POLITE = 'polite',
-  ASSERTIVE = 'assertive',
+  POLITE = "polite",
+  ASSERTIVE = "assertive",
 }
 
 /**
  * Data attribute added to live region element.
  */
-export const DATA_MDC_DOM_ANNOUNCE = 'data-mdc-dom-announce';
+export const DATA_MDC_DOM_ANNOUNCE = "data-mdc-dom-announce";
 
 /**
  * Announces the given message with optional priority, defaulting to "polite"
@@ -62,23 +62,25 @@ class Announcer {
     const liveRegion = this.getLiveRegion(priority);
     // Reset the region to pick up the message, even if the message is the
     // exact same as before.
-    liveRegion.textContent = '';
+    liveRegion.textContent = "";
     // Timeout is necessary for screen readers like NVDA and VoiceOver.
     setTimeout(() => {
       liveRegion.textContent = message;
-      document.addEventListener('click', clearLiveRegion);
+      document.addEventListener("click", clearLiveRegion);
     }, 1);
 
     function clearLiveRegion() {
-      liveRegion.textContent = '';
-      document.removeEventListener('click', clearLiveRegion);
+      liveRegion.textContent = "";
+      document.removeEventListener("click", clearLiveRegion);
     }
   }
 
   private getLiveRegion(priority: AnnouncerPriority): Element {
     const existingLiveRegion = this.liveRegions.get(priority);
-    if (existingLiveRegion &&
-        document.body.contains(existingLiveRegion as Node)) {
+    if (
+      existingLiveRegion &&
+      document.body.contains(existingLiveRegion as Node)
+    ) {
       return existingLiveRegion;
     }
 
@@ -88,15 +90,15 @@ class Announcer {
   }
 
   private createLiveRegion(priority: AnnouncerPriority): Element {
-    const el = document.createElement('div');
-    el.style.position = 'absolute';
-    el.style.top = '-9999px';
-    el.style.left = '-9999px';
-    el.style.height = '1px';
-    el.style.overflow = 'hidden';
-    el.setAttribute('aria-atomic', 'true');
-    el.setAttribute('aria-live', priority);
-    el.setAttribute(DATA_MDC_DOM_ANNOUNCE, 'true');
+    const el = document.createElement("div");
+    el.style.position = "absolute";
+    el.style.top = "-9999px";
+    el.style.left = "-9999px";
+    el.style.height = "1px";
+    el.style.overflow = "hidden";
+    el.setAttribute("aria-atomic", "true");
+    el.setAttribute("aria-live", priority);
+    el.setAttribute(DATA_MDC_DOM_ANNOUNCE, "true");
     document.body.appendChild(el);
     return el;
   }

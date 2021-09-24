@@ -25,20 +25,20 @@
  * KEY provides normalized string values for keys.
  */
 export const KEY = {
-  UNKNOWN: 'Unknown',
-  BACKSPACE: 'Backspace',
-  ENTER: 'Enter',
-  SPACEBAR: 'Spacebar',
-  PAGE_UP: 'PageUp',
-  PAGE_DOWN: 'PageDown',
-  END: 'End',
-  HOME: 'Home',
-  ARROW_LEFT: 'ArrowLeft',
-  ARROW_UP: 'ArrowUp',
-  ARROW_RIGHT: 'ArrowRight',
-  ARROW_DOWN: 'ArrowDown',
-  DELETE: 'Delete',
-  ESCAPE: 'Escape',
+  UNKNOWN: "Unknown",
+  BACKSPACE: "Backspace",
+  ENTER: "Enter",
+  SPACEBAR: "Spacebar",
+  PAGE_UP: "PageUp",
+  PAGE_DOWN: "PageDown",
+  END: "End",
+  HOME: "Home",
+  ARROW_LEFT: "ArrowLeft",
+  ARROW_UP: "ArrowUp",
+  ARROW_RIGHT: "ArrowRight",
+  ARROW_DOWN: "ArrowDown",
+  DELETE: "Delete",
+  ESCAPE: "Escape",
 };
 
 const normalizedKeys = new Set<string>();
@@ -107,7 +107,7 @@ navigationKeys.add(KEY.ARROW_DOWN);
  * normalizeKey returns the normalized string for a navigational action.
  */
 export function normalizeKey(evt: KeyboardEvent): string {
-  const {key} = evt;
+  const { key } = evt;
   // If the event already has a normalized key, return it
   if (normalizedKeys.has(key)) {
     return key;

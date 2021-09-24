@@ -23,10 +23,10 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/theme/theme';
-@use '@material/feature-targeting/feature-targeting';
-@use './variables';
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/theme/theme";
+@use "@material/feature-targeting/feature-targeting";
+@use "./variables";
 
 // Public mixins
 
@@ -104,7 +104,7 @@
   }
 
   &:not([tabindex]),
-  &[tabindex='-1'] {
+  &[tabindex="-1"] {
     @include feature-targeting.targets($feat-color) {
       cursor: default;
       pointer-events: none;

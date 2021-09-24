@@ -26,31 +26,29 @@
  * dist/ folder.
  */
 
-const cpFile = require('cp-file');
-const dts = require('dts-bundle');
-const fs = require('fs');
-const path = require('path');
-const toSlugCase = require('to-slug-case');
-const {spawnSync} = require('child_process');
-const {sync: globSync} = require('glob');
+const cpFile = require("cp-file");
+const dts = require("dts-bundle");
+const fs = require("fs");
+const path = require("path");
+const toSlugCase = require("to-slug-case");
+const { spawnSync } = require("child_process");
+const { sync: globSync } = require("glob");
 
-const ALL_IN_ONE_PACKAGE = 'material-components-web';
-const PACKAGES_DIRECTORY = path.resolve(__dirname, '../packages');
+const ALL_IN_ONE_PACKAGE = "material-components-web";
+const PACKAGES_DIRECTORY = path.resolve(__dirname, "../packages");
 const PKG_RE = /(?:material\-components\-web)|(?:mdc\.[a-zA-Z\-]+)/;
 
-const isValidCwd = (
+const isValidCwd =
   path.basename(process.cwd()) === ALL_IN_ONE_PACKAGE &&
-  fs.existsSync('packages') &&
-  fs.existsSync('build')
-);
+  fs.existsSync("packages") &&
+  fs.existsSync("build");
 
 if (!isValidCwd) {
   console.error(
-    'Invalid CWD. Please ensure you are running this from the root of the repo, and that you have run `npm run dist`',
+    "Invalid CWD. Please ensure you are running this from the root of the repo, and that you have run `npm run dist`"
   );
   process.exit(1);
 }
-
 
 /**
  * @param {string} dashedName A dash-separated package name. E.g., "mdc-linear-progress".
@@ -64,11 +62,12 @@ function toCamelCase(dashedName) {
  * Cleans the /dist directory of each package.
  */
 function cleanPkgDistDirs() {
-  const statuses = globSync('packages/*/dist').map(
-    (distPath) => spawnSync('rm', ['-r', distPath], {stdio: 'inherit'}).status);
+  const statuses = globSync("packages/*/dist").map(
+    (distPath) => spawnSync("rm", ["-r", distPath], { stdio: "inherit" }).status
+  );
 
   if (statuses.find((status) => status > 0)) {
-    console.error('Failed to clean package dist folders prior to copying');
+    console.error("Failed to clean package dist folders prior to copying");
     process.exit(1);
   }
 }
@@ -79,12 +78,12 @@ function cleanPkgDistDirs() {
  */
 function getAssetEntry(asset) {
   const [entryName] = path.parse(asset).name.match(PKG_RE);
-  const [MDC, componentName] = entryName.split('.');
+  const [MDC, componentName] = entryName.split(".");
   const dealingWithSubpackage = Boolean(MDC && componentName);
   if (!dealingWithSubpackage) {
     return entryName;
   }
-  return [MDC, toSlugCase(componentName)].join('-');
+  return [MDC, toSlugCase(componentName)].join("-");
 }
 
 /**
@@ -92,16 +91,18 @@ function getAssetEntry(asset) {
  * @return {Promise<void>}
  */
 async function cpAsset(asset) {
-  const assetPkg = path.join('packages', getAssetEntry(asset));
+  const assetPkg = path.join("packages", getAssetEntry(asset));
   if (!fs.existsSync(assetPkg)) {
-    return Promise.reject(new Error(`Non-existent asset package path ${assetPkg} for ${asset}`));
+    return Promise.reject(
+      new Error(`Non-existent asset package path ${assetPkg} for ${asset}`)
+    );
   }
-  const destDir = path.join(assetPkg, 'dist', path.basename(asset));
+  const destDir = path.join(assetPkg, "dist", path.basename(asset));
   return cpFile(asset, destDir).then(
     () => console.log(`cp ${asset} -> ${destDir}`),
     (err) => {
       throw err;
-    },
+    }
   );
 }
 
@@ -111,19 +112,35 @@ async function cpAsset(asset) {
 function dtsBundler() {
   const packageDirectories = fs.readdirSync(PACKAGES_DIRECTORY);
   packageDirectories.forEach((packageDirectory) => {
-    const main = path.join(PACKAGES_DIRECTORY, packageDirectory, './index.d.ts');
+    const main = path.join(
+      PACKAGES_DIRECTORY,
+      packageDirectory,
+      "./index.d.ts"
+    );
     fs.access(main, fs.constants.F_OK, (error) => {
       if (error) {
         return;
       }
       // d.ts file exists
       const packagePath = path.join(PACKAGES_DIRECTORY, packageDirectory);
-      const name = JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf8')).name;
+      const name = JSON.parse(
+        fs.readFileSync(path.join(packagePath, "package.json"), "utf8")
+      ).name;
       const isAllInOne = packageDirectory === ALL_IN_ONE_PACKAGE;
-      const destBasename
-        = isAllInOne ? packageDirectory : `mdc.${toCamelCase(packageDirectory.replace(/^mdc-/, ''))}`;
-      const destFilename = path.join(packagePath, 'dist', `${destBasename}.d.ts`);
-      console.log(`Writing UMD declarations in ${destFilename.replace(process.cwd() + '/', '')}`);
+      const destBasename = isAllInOne
+        ? packageDirectory
+        : `mdc.${toCamelCase(packageDirectory.replace(/^mdc-/, ""))}`;
+      const destFilename = path.join(
+        packagePath,
+        "dist",
+        `${destBasename}.d.ts`
+      );
+      console.log(
+        `Writing UMD declarations in ${destFilename.replace(
+          process.cwd() + "/",
+          ""
+        )}`
+      );
       dts.bundle({
         name,
         main,
@@ -141,8 +158,8 @@ function dtsBundler() {
  */
 cleanPkgDistDirs();
 
-Promise.all(globSync('build/*.{css,js,map}').map(cpAsset)).catch((err) => {
-  console.error('Error encountered copying assets:', err);
+Promise.all(globSync("build/*.{css,js,map}").map(cpAsset)).catch((err) => {
+  console.error("Error encountered copying assets:", err);
   process.exit(1);
 });
 

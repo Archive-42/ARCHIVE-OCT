@@ -20,10 +20,10 @@
 // THE SOFTWARE.
 //
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/mixins' as theme-mixins;
-@use '@material/theme/state';
-@use '@material/theme/variables' as theme-variables;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/mixins" as theme-mixins;
+@use "@material/theme/state";
+@use "@material/theme/variables" as theme-variables;
 
 $helper-text-color: rgba(theme-variables.prop-value(on-surface), 0.6) !default;
 $disabled-helper-text-color: rgba(

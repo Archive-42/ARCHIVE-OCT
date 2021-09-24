@@ -1,13 +1,11 @@
-
-
 enum CssClasses {
-  RICH = 'mdc-tooltip--rich',
-  SHOWN = 'mdc-tooltip--shown',
-  SHOWING = 'mdc-tooltip--showing',
-  SHOWING_TRANSITION = 'mdc-tooltip--showing-transition',
-  HIDE = 'mdc-tooltip--hide',
-  HIDE_TRANSITION = 'mdc-tooltip--hide-transition',
-  MULTILINE_TOOLTIP = 'mdc-tooltip--multiline',
+  RICH = "mdc-tooltip--rich",
+  SHOWN = "mdc-tooltip--shown",
+  SHOWING = "mdc-tooltip--showing",
+  SHOWING_TRANSITION = "mdc-tooltip--showing-transition",
+  HIDE = "mdc-tooltip--hide",
+  HIDE_TRANSITION = "mdc-tooltip--hide-transition",
+  MULTILINE_TOOLTIP = "mdc-tooltip--multiline",
 }
 
 const numbers = {
@@ -23,13 +21,13 @@ const numbers = {
 };
 
 const attributes = {
-  ARIA_EXPANDED: 'aria-expanded',
-  ARIA_HASPOPUP: 'aria-haspopup',
-  PERSISTENT: 'data-mdc-tooltip-persistent',
+  ARIA_EXPANDED: "aria-expanded",
+  ARIA_HASPOPUP: "aria-haspopup",
+  PERSISTENT: "data-mdc-tooltip-persistent",
 };
 
 const events = {
-  HIDDEN: 'MDCTooltip:hidden',
+  HIDDEN: "MDCTooltip:hidden",
 };
 
 /** Enum for possible tooltip positioning relative to its anchor element. */
@@ -64,5 +62,5 @@ export {
   events,
   XPosition,
   AnchorBoundaryType,
-  YPosition
+  YPosition,
 };

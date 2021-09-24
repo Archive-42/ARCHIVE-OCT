@@ -23,10 +23,10 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple-theme';
-@use '@material/theme/state';
-@use '@material/theme/theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple-theme";
+@use "@material/theme/state";
+@use "@material/theme/theme";
 
 /// Default color for slider (track, thumb, ripple).
 $color: primary;

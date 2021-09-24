@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
+} from "@material/react-ripple";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 export interface PrimaryContentBaseProps
   extends React.HTMLProps<HTMLDivElement>,
@@ -38,23 +38,22 @@ export interface PrimaryContentBaseProps
   unbounded?: boolean;
 }
 
-export const PrimaryContentBase: React.FunctionComponent<
-  PrimaryContentBaseProps
-> = ({
-  className = '',
-  initRipple,
-  children,
-  unbounded, // eslint-disable-line @typescript-eslint/no-unused-vars
-  ...otherProps
-}) => {
-  const classes = classnames(CSS_CLASSES.PRIMARY_ACTION, className);
+export const PrimaryContentBase: React.FunctionComponent<PrimaryContentBaseProps> =
+  ({
+    className = "",
+    initRipple,
+    children,
+    unbounded, // eslint-disable-line @typescript-eslint/no-unused-vars
+    ...otherProps
+  }) => {
+    const classes = classnames(CSS_CLASSES.PRIMARY_ACTION, className);
 
-  return (
-    <div className={classes} ref={initRipple} {...otherProps}>
-      {children}
-    </div>
-  );
-};
+    return (
+      <div className={classes} ref={initRipple} {...otherProps}>
+        {children}
+      </div>
+    );
+  };
 
 export default withRipple<PrimaryContentBaseProps, HTMLDivElement>(
   PrimaryContentBase

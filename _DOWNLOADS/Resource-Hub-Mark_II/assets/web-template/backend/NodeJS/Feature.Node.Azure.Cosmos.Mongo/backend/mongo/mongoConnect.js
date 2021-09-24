@@ -9,12 +9,12 @@ function connect() {
     .connect(`${process.env.COSMOSDB_CONNSTR}?ssl=true&replicaSet=globaldb`, {
       auth: {
         user: process.env.COSMOSDB_USER,
-        password: process.env.COSMOSDB_PASSWORD
+        password: process.env.COSMOSDB_PASSWORD,
       },
-      useNewUrlParser: true
+      useNewUrlParser: true,
     })
     .then(() => console.log("Connection to CosmosDB successful"))
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 }
 
 module.exports = { connect, mongoose };

@@ -21,28 +21,27 @@
  * THE SOFTWARE.
  */
 
-import {getFixture} from '../../../testing/dom';
-import {setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
-import * as util from '../util';
+import { getFixture } from "../../../testing/dom";
+import { setUpMdcTestEnvironment } from "../../../testing/helpers/setup";
+import * as util from "../util";
 
-describe('MDCDrawer - util', () => {
+describe("MDCDrawer - util", () => {
   setUpMdcTestEnvironment();
 
-  it('createFocusTrapInstance creates a properly configured focus trap instance with all args specified',
-     () => {
-       const rootEl = getFixture(`<div></div>`);
-       const focusTrapFactory = jasmine.createSpy('focusTrapFactory');
-       const properlyConfiguredFocusTrapInstance = {
-         trapFocus() {},
-         releaseFocus() {}
-       };
-       focusTrapFactory
-           .withArgs(rootEl, {
-             skipInitialFocus: true,
-           })
-           .and.returnValue(properlyConfiguredFocusTrapInstance);
+  it("createFocusTrapInstance creates a properly configured focus trap instance with all args specified", () => {
+    const rootEl = getFixture(`<div></div>`);
+    const focusTrapFactory = jasmine.createSpy("focusTrapFactory");
+    const properlyConfiguredFocusTrapInstance = {
+      trapFocus() {},
+      releaseFocus() {},
+    };
+    focusTrapFactory
+      .withArgs(rootEl, {
+        skipInitialFocus: true,
+      })
+      .and.returnValue(properlyConfiguredFocusTrapInstance);
 
-       const instance = util.createFocusTrapInstance(rootEl, focusTrapFactory);
-       expect(instance).toEqual(properlyConfiguredFocusTrapInstance);
-     });
+    const instance = util.createFocusTrapInstance(rootEl, focusTrapFactory);
+    expect(instance).toEqual(properlyConfiguredFocusTrapInstance);
+  });
 });

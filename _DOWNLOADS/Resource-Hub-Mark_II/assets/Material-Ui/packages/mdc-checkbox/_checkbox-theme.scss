@@ -23,20 +23,20 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:map';
-@use 'sass:math';
-@use '@material/animation/functions' as functions2;
-@use '@material/density/functions' as density-functions;
-@use '@material/density/variables' as density-variables;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/theme/color-custom-properties';
-@use '@material/theme/custom-properties';
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
-@use '@material/touch-target/variables' as touch-target-variables;
-@use './checkbox-custom-properties';
+@use "sass:map";
+@use "sass:math";
+@use "@material/animation/functions" as functions2;
+@use "@material/density/functions" as density-functions;
+@use "@material/density/variables" as density-variables;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/theme/color-custom-properties";
+@use "@material/theme/custom-properties";
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
+@use "@material/touch-target/variables" as touch-target-variables;
+@use "./checkbox-custom-properties";
 
 $baseline-theme-color: secondary !default;
 $mark-color: theme-color.prop-value(on-secondary) !default;
@@ -65,7 +65,7 @@ $density-config: (
   ),
 ) !default;
 
-$ripple-target: '.mdc-checkbox__ripple';
+$ripple-target: ".mdc-checkbox__ripple";
 
 /// Material baseline light theme configuration of checkbox.
 /// See https://material.io/components/selection-controls for spec.
@@ -329,7 +329,7 @@ $light-theme: (
       theme-color.color-hash($unmarked-fill-color) +
       theme-color.color-hash($marked-fill-color);
 
-    $anim-selector: if(&, '&.mdc-checkbox--anim', '.mdc-checkbox--anim');
+    $anim-selector: if(&, "&.mdc-checkbox--anim", ".mdc-checkbox--anim");
 
     @include feature-targeting.targets($feat-animation, $feat-color) {
       @include container-keyframes_(
@@ -471,7 +471,7 @@ $light-theme: (
   .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background::before,
   .mdc-checkbox__native-control:indeterminate
     ~ .mdc-checkbox__background::before,
-  .mdc-checkbox__native-control[data-indeterminate='true']
+  .mdc-checkbox__native-control[data-indeterminate="true"]
     ~ .mdc-checkbox__background::before {
     @include feature-targeting.targets($feat-color) {
       @include theme.prop(background-color, $color);
@@ -562,7 +562,7 @@ $light-theme: (
 /// @access private
 ///
 @mixin if-unmarked-enabled_ {
-  .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])
+  .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"])
     ~ {
     @content;
   }
@@ -577,7 +577,7 @@ $light-theme: (
   // Note: we must use `[disabled]` instead of `:disabled` below because Edge does not always recalculate the style
   // property when the `:disabled` pseudo-class is followed by a sibling combinator. See:
   // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231/
-  .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate):not([data-indeterminate='true'])
+  .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate):not([data-indeterminate="true"])
     ~ {
     @content;
   }
@@ -591,7 +591,7 @@ $light-theme: (
 @mixin if-marked-enabled_ {
   .mdc-checkbox__native-control:enabled:checked,
   .mdc-checkbox__native-control:enabled:indeterminate,
-  .mdc-checkbox__native-control[data-indeterminate='true']:enabled {
+  .mdc-checkbox__native-control[data-indeterminate="true"]:enabled {
     ~ {
       @content;
     }
@@ -609,7 +609,7 @@ $light-theme: (
   // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231/
   .mdc-checkbox__native-control[disabled]:checked,
   .mdc-checkbox__native-control[disabled]:indeterminate,
-  .mdc-checkbox__native-control[data-indeterminate='true'][disabled] {
+  .mdc-checkbox__native-control[data-indeterminate="true"][disabled] {
     ~ {
       @content;
     }

@@ -5,25 +5,26 @@ MDC React Text Field Icon is a React Component which uses MDC [MDC Text Field Ic
 ## Usage
 
 ```js
-import Icon from '@material/react-text-field/icon/index.js';
+import Icon from "@material/react-text-field/icon/index.js";
 
 const MyComponent = () => {
   return (
     <Icon>
-      <i className='material-icons' />
+      <i className="material-icons" />
     </Icon>
   );
-}
+};
 ```
 
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-disabled | Boolean | Toggles the disabled state of the icon.
-children | Element | Required. Expects a single child icon element.
-onSelect | Function() => void | Optional callback for user interaction with icon
-> Notes: `onSelect`  fired on click event and "Enter key" keydown event.
+| Prop Name | Type               | Description                                      |
+| --------- | ------------------ | ------------------------------------------------ |
+| disabled  | Boolean            | Toggles the disabled state of the icon.          |
+| children  | Element            | Required. Expects a single child icon element.   |
+| onSelect  | Function() => void | Optional callback for user interaction with icon |
+
+> Notes: `onSelect` fired on click event and "Enter key" keydown event.
 > `onSelect` will add tabindex of 0 if tabindex is not previously added to icon
 
 ## Icon

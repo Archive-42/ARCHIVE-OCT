@@ -21,11 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCSelectIconAdapter} from './adapter';
-import {MDCSelectIconFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCSelectIconAdapter } from "./adapter";
+import { MDCSelectIconFoundation } from "./foundation";
 
-export type MDCSelectIconFactory = (el: Element, foundation?: MDCSelectIconFoundation) => MDCSelectIcon;
+export type MDCSelectIconFactory = (
+  el: Element,
+  foundation?: MDCSelectIconFoundation
+) => MDCSelectIcon;
 
 export class MDCSelectIcon extends MDCComponent<MDCSelectIconFoundation> {
   static attachTo(root: Element): MDCSelectIcon {
@@ -49,12 +52,15 @@ export class MDCSelectIcon extends MDCComponent<MDCSelectIconFoundation> {
         this.root.textContent = content;
       },
       registerInteractionHandler: (evtType, handler) =>
-          this.listen(evtType, handler),
+        this.listen(evtType, handler),
       deregisterInteractionHandler: (evtType, handler) =>
-          this.unlisten(evtType, handler),
-      notifyIconAction: () => this.emit(
-          MDCSelectIconFoundation.strings.ICON_EVENT, {} /* evtData */,
-          true /* shouldBubble */),
+        this.unlisten(evtType, handler),
+      notifyIconAction: () =>
+        this.emit(
+          MDCSelectIconFoundation.strings.ICON_EVENT,
+          {} /* evtData */,
+          true /* shouldBubble */
+        ),
     };
     // tslint:enable:object-literal-sort-keys
     return new MDCSelectIconFoundation(adapter);

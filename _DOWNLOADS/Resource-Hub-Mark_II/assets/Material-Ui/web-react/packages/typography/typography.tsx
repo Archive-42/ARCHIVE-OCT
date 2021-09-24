@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import classnames from 'classnames';
-import React from 'react';
+import classnames from "classnames";
+import React from "react";
 
 export interface TypographyProps<T> extends React.HTMLProps<T> {
   children?: React.ReactNode;
@@ -35,16 +35,16 @@ interface EnhancedProps {
 }
 
 const typographyHOC = <T extends {}>(options: EnhancedProps) => {
-  const {tag, classModifier} = options;
+  const { tag, classModifier } = options;
 
   const Typography: React.FunctionComponent<TypographyProps<T>> = ({
     children,
-    className = '',
+    className = "",
     tag: Tag = tag,
     ...otherProps
   }) => {
     const classes = classnames(
-      'mdc-typography',
+      "mdc-typography",
       `mdc-typography--${classModifier}`,
       className
     );

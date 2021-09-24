@@ -1,28 +1,28 @@
-import React from 'react';
+import React from "react";
 
-import MaterialIcon from '@material/react-material-icon';
+import MaterialIcon from "@material/react-material-icon";
 import TopAppBar, {
   TopAppBarIcon,
   TopAppBarRow,
   TopAppBarSection,
   TopAppBarTitle,
-} from '@material/react-top-app-bar';
+} from "@material/react-top-app-bar";
 
-import {MenuContext} from '../Context';
-import {Repository} from '../Router';
+import { MenuContext } from "../Context";
+import { Repository } from "../Router";
 
-const styles = require('./TopBar.scss');
+const styles = require("./TopBar.scss");
 
 export const TopBar = () => (
   <MenuContext.Consumer>
-    {({setOpen}) => (
+    {({ setOpen }) => (
       <TopAppBar>
         <TopAppBarRow>
-          <TopAppBarSection align='start'>
+          <TopAppBarSection align="start">
             <TopAppBarIcon navIcon tabIndex={0}>
               <MaterialIcon
                 hasRipple
-                icon='menu'
+                icon="menu"
                 onClick={() => setOpen(true)}
               />
             </TopAppBarIcon>
@@ -30,10 +30,10 @@ export const TopBar = () => (
               Material Components React
             </TopAppBarTitle>
           </TopAppBarSection>
-          <TopAppBarSection align='end'>
-            <a rel='noopener noreferrer' target='_blank' href={Repository}>
+          <TopAppBarSection align="end">
+            <a rel="noopener noreferrer" target="_blank" href={Repository}>
               <TopAppBarIcon actionItem tabIndex={0}>
-                <MaterialIcon aria-label='code' hasRipple icon='code' />
+                <MaterialIcon aria-label="code" hasRipple icon="code" />
               </TopAppBarIcon>
             </a>
           </TopAppBarSection>

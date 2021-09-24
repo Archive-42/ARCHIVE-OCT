@@ -23,10 +23,10 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/animation/variables' as animation-variables;
-@use '@material/tab/mixins' as tab-mixins;
-@use '@material/feature-targeting/feature-targeting';
-@use './variables';
+@use "@material/animation/variables" as animation-variables;
+@use "@material/tab/mixins" as tab-mixins;
+@use "@material/feature-targeting/feature-targeting";
+@use "./variables";
 
 ///
 /// Sets the CSS transition for the tab scrolling animation.

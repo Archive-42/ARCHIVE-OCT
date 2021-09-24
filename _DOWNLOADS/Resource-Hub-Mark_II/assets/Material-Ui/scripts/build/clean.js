@@ -3,19 +3,19 @@
  * dist subfolders under packages, and .js[.map] files in package directories.
  */
 
-const del = require('del');
-const fs = require('fs');
+const del = require("del");
+const fs = require("fs");
 
-const {sync: globSync} = require('glob');
-const SITE_GENERATOR = 'site-generator-tmp';
+const { sync: globSync } = require("glob");
+const SITE_GENERATOR = "site-generator-tmp";
 
 function main() {
-  removeDirectory('build');
-  removeDirectory('.rewrite-tmp');
-  removeFilesOfType('css');
-  removeFilesOfType('js');
-  removeFilesOfType('d.ts');
-  removeFilesOfType('map');
+  removeDirectory("build");
+  removeDirectory(".rewrite-tmp");
+  removeFilesOfType("css");
+  removeFilesOfType("js");
+  removeFilesOfType("d.ts");
+  removeFilesOfType("map");
 }
 
 function removeDirectory(directory) {
@@ -25,7 +25,7 @@ function removeDirectory(directory) {
 function removeFilesOfType(type) {
   const fileGlob = `packages/**/*.${type}`;
   const filePaths = globSync(fileGlob, {
-    ignore: ['**/node_modules/**'],
+    ignore: ["**/node_modules/**"],
   });
   filePaths.forEach((filePath) => {
     fs.unlink(filePath, (err) => {
@@ -39,4 +39,3 @@ if (process.argv.includes(`--${SITE_GENERATOR}`)) {
 } else {
   main();
 }
-

@@ -1,12 +1,14 @@
-import {Documentalist, TypescriptPlugin} from '@documentalist/compiler';
-import * as fs from 'fs';
-import * as Handlebars from 'handlebars';
-import * as path from 'path';
-import * as util from 'util';
+import { Documentalist, TypescriptPlugin } from "@documentalist/compiler";
+import * as fs from "fs";
+import * as Handlebars from "handlebars";
+import * as path from "path";
+import * as util from "util";
 const readFile = util.promisify(fs.readFile);
 
-interface MarkdownBuffer {[s: string]: {
-  [c: string]: ModuleMarkdown[]};
+interface MarkdownBuffer {
+  [s: string]: {
+    [c: string]: ModuleMarkdown[];
+  };
 }
 
 interface ModuleMarkdown {
@@ -41,15 +43,15 @@ interface DocumentationContent {
   value?: string;
 }
 
-const FOUNDATION = 'foundation';
-const ADAPTER = 'adapter';
-const README_FILE = 'README.md';
+const FOUNDATION = "foundation";
+const ADAPTER = "adapter";
+const README_FILE = "README.md";
 
 class TypeScriptDocumentationGenerator {
   docData?: {}; // Documentalist representation of methods/properties/events
   templateFunction: Handlebars.TemplateDelegate<{
-    componentModules: ModuleMarkdown[],
-    nonComponentModules: ModuleMarkdown[],
+    componentModules: ModuleMarkdown[];
+    nonComponentModules: ModuleMarkdown[];
   }>;
 
   constructor() {
@@ -64,11 +66,14 @@ class TypeScriptDocumentationGenerator {
    */
   async generateJSONFromFiles() {
     return new Documentalist()
-      .use(/\.ts$/, new TypescriptPlugin({
-        excludePaths: ['node_modules'],
-        includeDeclarations: true,
-      }))
-      .documentGlobs('packages/**/*')
+      .use(
+        /\.ts$/,
+        new TypescriptPlugin({
+          excludePaths: ["node_modules"],
+          includeDeclarations: true,
+        })
+      )
+      .documentGlobs("packages/**/*")
       .catch((error) => console.error(error)); // tslint:disable-line
   }
 
@@ -79,7 +84,9 @@ class TypeScriptDocumentationGenerator {
    */
   generateDocs(docData) {
     if (!docData) {
-      console.error('FAILURE: Documentation generation did not compile correctly.'); // tslint:disable-line
+      console.error(
+        "FAILURE: Documentation generation did not compile correctly."
+      ); // tslint:disable-line
     }
     const markdownBuffer: MarkdownBuffer = {};
 
@@ -88,10 +95,11 @@ class TypeScriptDocumentationGenerator {
       console.log(`-- generating docs for ${module}`); // tslint:disable-line
       const docs = this.generateDocsForModule(module);
       if (docs) {
-        const {readmeDirectoryPath, moduleName} = docs;
+        const { readmeDirectoryPath, moduleName } = docs;
         const markdownComponentBuffer = markdownBuffer[readmeDirectoryPath];
         const isComponent =
-          !moduleName.toLowerCase().includes(FOUNDATION) && !moduleName.toLowerCase().includes(ADAPTER);
+          !moduleName.toLowerCase().includes(FOUNDATION) &&
+          !moduleName.toLowerCase().includes(ADAPTER);
 
         if (markdownComponentBuffer) {
           if (isComponent) {
@@ -101,9 +109,15 @@ class TypeScriptDocumentationGenerator {
           }
         } else {
           if (isComponent) {
-            markdownBuffer[readmeDirectoryPath] = {component: [docs], nonComponent: []};
+            markdownBuffer[readmeDirectoryPath] = {
+              component: [docs],
+              nonComponent: [],
+            };
           } else {
-            markdownBuffer[readmeDirectoryPath] = {component: [], nonComponent: [docs]};
+            markdownBuffer[readmeDirectoryPath] = {
+              component: [],
+              nonComponent: [docs],
+            };
           }
         }
       }
@@ -117,10 +131,10 @@ class TypeScriptDocumentationGenerator {
    * @param esmodule module name (ie. MDCSelectIconFoundation)
    */
   generateDocsForModule(esmodule: string): ModuleMarkdown | undefined {
-    const {kind, fileName} = this.docData[esmodule];
+    const { kind, fileName } = this.docData[esmodule];
     const readmeDirectoryPath = this.getFilePathName(fileName);
 
-    if (kind === 'type alias') {
+    if (kind === "type alias") {
       // ignore types and interfaces
       return;
     }
@@ -139,16 +153,20 @@ class TypeScriptDocumentationGenerator {
    * @param esmodule module name (ie. MDCSelectIconFoundation)
    */
   getDocumentationForEvents(esmodule: string): ModuleDocumentation {
-    if (!this.docData
-      || !this.docData[esmodule].documentation
-      || !this.docData[esmodule].documentation.contents) {
-      return {events: []};
+    if (
+      !this.docData ||
+      !this.docData[esmodule].documentation ||
+      !this.docData[esmodule].documentation.contents
+    ) {
+      return { events: [] };
     }
 
-    const events = (this.docData[esmodule].documentation.contents as DocumentationContent[])
-    .filter((content) => content.tag && content.tag === 'events')
-    .map((content) => ({documentation: content.value}));
-    return {events};
+    const events = (
+      this.docData[esmodule].documentation.contents as DocumentationContent[]
+    )
+      .filter((content) => content.tag && content.tag === "events")
+      .map((content) => ({ documentation: content.value }));
+    return { events };
   }
 
   /**
@@ -161,11 +179,13 @@ class TypeScriptDocumentationGenerator {
       return [];
     }
     return this.docData[esmodule].methods
-      .filter((method) => this.shouldIgnoreDocumentationItem(method, {
-        hasDocumentation: method.signatures[0].documentation,
-      }))
+      .filter((method) =>
+        this.shouldIgnoreDocumentationItem(method, {
+          hasDocumentation: method.signatures[0].documentation,
+        })
+      )
       .map((method) => {
-        const {name, signatures} = method;
+        const { name, signatures } = method;
         const methodSignature = signatures[0].type;
         const documentation = signatures[0].documentation.contentsRaw;
         return {
@@ -185,12 +205,16 @@ class TypeScriptDocumentationGenerator {
       return [];
     }
     return this.docData[esmodule].properties
-      .filter((property) => this.shouldIgnoreDocumentationItem(property, {
-        hasDocumentation: property.documentation,
-      }))
+      .filter((property) =>
+        this.shouldIgnoreDocumentationItem(property, {
+          hasDocumentation: property.documentation,
+        })
+      )
       .map((property) => {
-        const {name, type} = property;
-        const documentation = this.cleanComment(property.documentation.contentsRaw);
+        const { name, type } = property;
+        const documentation = this.cleanComment(
+          property.documentation.contentsRaw
+        );
         return {
           documentation,
           name,
@@ -205,11 +229,15 @@ class TypeScriptDocumentationGenerator {
    * @param filePath original file path
    */
   private getFilePathName(filePath: string): string {
-    const startingIndex = filePath.indexOf('/mdc-') + 1; // +1 is to ignore leading '/'
-    const endIndex = filePath.lastIndexOf('/');
+    const startingIndex = filePath.indexOf("/mdc-") + 1; // +1 is to ignore leading '/'
+    const endIndex = filePath.lastIndexOf("/");
     const directoryPath = filePath.substring(startingIndex, endIndex);
     try {
-      const relativePathToReadme = path.resolve('packages', directoryPath, README_FILE);
+      const relativePathToReadme = path.resolve(
+        "packages",
+        directoryPath,
+        README_FILE
+      );
       if (fs.existsSync(relativePathToReadme)) {
         return directoryPath;
       }
@@ -218,7 +246,7 @@ class TypeScriptDocumentationGenerator {
     } catch (err) {
       console.error(err); //tslint:disable-line
     }
-    return '';
+    return "";
   }
 
   /**
@@ -234,17 +262,18 @@ class TypeScriptDocumentationGenerator {
        * This currently only has been tested on mdc-drawer.
        * TODO: remove this if condition once all READMEs are generated
        */
-      const allowList = [
-        'mdc-drawer',
-      ];
+      const allowList = ["mdc-drawer"];
 
       if (allowList.some((allowed) => readmeDirectoryPath.includes(allowed))) {
         const readmeDestinationPath = `./packages/${readmeDirectoryPath}/${README_FILE}`;
-        const finalReadmeMarkdown = await this.insertMethodDescriptionTable(markdownBuffer, readmeDirectoryPath);
+        const finalReadmeMarkdown = await this.insertMethodDescriptionTable(
+          markdownBuffer,
+          readmeDirectoryPath
+        );
         fs.writeFile(readmeDestinationPath, finalReadmeMarkdown, (error) => {
           console.log(`~~ generated ${readmeDestinationPath}`); // tslint:disable-line
           if (error) {
-            console.error('error ', error); //tslint:disable-line
+            console.error("error ", error); //tslint:disable-line
           }
         });
       }
@@ -252,10 +281,18 @@ class TypeScriptDocumentationGenerator {
   }
 
   private setupTemplates() {
-    const tablesTemplate = fs.readFileSync('./scripts/documentation/ts-api-tables.hbs', 'utf8');
-    const tableTemplate = fs.readFileSync('./scripts/documentation/ts-api-table.hbs', 'utf8');
-    Handlebars.registerPartial('tsApiTable', tableTemplate);
-    this.templateFunction = Handlebars.compile(tablesTemplate, {noEscape: true});
+    const tablesTemplate = fs.readFileSync(
+      "./scripts/documentation/ts-api-tables.hbs",
+      "utf8"
+    );
+    const tableTemplate = fs.readFileSync(
+      "./scripts/documentation/ts-api-table.hbs",
+      "utf8"
+    );
+    Handlebars.registerPartial("tsApiTable", tableTemplate);
+    this.templateFunction = Handlebars.compile(tablesTemplate, {
+      noEscape: true,
+    });
   }
 
   /**
@@ -270,30 +307,39 @@ class TypeScriptDocumentationGenerator {
    */
   private async insertMethodDescriptionTable(
     markdownBuffer: MarkdownBuffer,
-    readmeDirectoryPath: string,
+    readmeDirectoryPath: string
   ) {
     const readmeMarkdownPath = `./packages/${readmeDirectoryPath}/${README_FILE}`;
-    const readmeMd = await readFile(readmeMarkdownPath, 'utf8');
+    const readmeMd = await readFile(readmeMarkdownPath, "utf8");
     const componentModules = markdownBuffer[readmeDirectoryPath].component
-      .filter((module) => module.methods.length || module.properties.length || module.events.length)
+      .filter(
+        (module) =>
+          module.methods.length ||
+          module.properties.length ||
+          module.events.length
+      )
       .sort(this.sortByModuleType);
     const nonComponentModules = markdownBuffer[readmeDirectoryPath].nonComponent
-      .filter((module) => module.methods.length || module.properties.length || module.events.length)
+      .filter(
+        (module) =>
+          module.methods.length ||
+          module.properties.length ||
+          module.events.length
+      )
       .sort(this.sortByModuleType);
-    const apiMarkdownTable =
-      this.templateFunction({
-        componentModules,
-        nonComponentModules,
-      });
+    const apiMarkdownTable = this.templateFunction({
+      componentModules,
+      nonComponentModules,
+    });
 
-    const startReplacerToken
-      = '<!-- docgen-tsdoc-replacer:start __DO NOT EDIT, This section is automatically generated__ -->';
-    const endReplacerToken = '<!-- docgen-tsdoc-replacer:end -->';
+    const startReplacerToken =
+      "<!-- docgen-tsdoc-replacer:start __DO NOT EDIT, This section is automatically generated__ -->";
+    const endReplacerToken = "<!-- docgen-tsdoc-replacer:end -->";
     const regexString = `^${startReplacerToken}\\n(.|\\n)*${endReplacerToken}$`;
-    const regex = new RegExp(regexString, 'gm');
+    const regex = new RegExp(regexString, "gm");
     const insertedData = readmeMd.replace(
       regex,
-      `${startReplacerToken}\n${apiMarkdownTable}\n${endReplacerToken}`,
+      `${startReplacerToken}\n${apiMarkdownTable}\n${endReplacerToken}`
     );
 
     return insertedData;
@@ -314,8 +360,10 @@ class TypeScriptDocumentationGenerator {
       return -1;
     } else if (moduleA.includes(FOUNDATION) && !moduleB.includes(FOUNDATION)) {
       return 1;
-    } else if (moduleA.includes(FOUNDATION) && moduleB.includes(FOUNDATION)
-      || moduleA.includes(ADAPTER) && moduleB.includes(ADAPTER)) {
+    } else if (
+      (moduleA.includes(FOUNDATION) && moduleB.includes(FOUNDATION)) ||
+      (moduleA.includes(ADAPTER) && moduleB.includes(ADAPTER))
+    ) {
       // alphabetize
       return moduleA > moduleB ? 1 : -1;
     }
@@ -328,9 +376,12 @@ class TypeScriptDocumentationGenerator {
    * @param item Documentalist object representation of a method/event/property
    * @param opts object of different booleans - currently only has `hasDocumentation`
    */
-  private shouldIgnoreDocumentationItem(item, opts = {hasDocumentation: true}) {
+  private shouldIgnoreDocumentationItem(
+    item,
+    opts = { hasDocumentation: true }
+  ) {
     // isState ignores cssClasses, defaultAdapter, strings
-    const {isPrivate, isStatic} = item.flags;
+    const { isPrivate, isStatic } = item.flags;
     return !isPrivate && !isStatic && opts.hasDocumentation;
   }
 
@@ -340,10 +391,11 @@ class TypeScriptDocumentationGenerator {
    */
   private cleanComment(comment) {
     const r = new RegExp(/\n/gm);
-    return comment.replace(r, ' ');
+    return comment.replace(r, " ");
   }
 }
 
 const docGenerator = new TypeScriptDocumentationGenerator();
-docGenerator.generateJSONFromFiles()
+docGenerator
+  .generateJSONFromFiles()
   .then((json) => docGenerator.generateDocs(json));

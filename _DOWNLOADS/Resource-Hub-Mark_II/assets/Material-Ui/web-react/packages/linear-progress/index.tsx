@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import classnames from 'classnames';
-import React from 'react';
-import {MDCLinearProgressFoundation} from '@material/linear-progress/foundation';
-import {MDCLinearProgressAdapter} from '@material/linear-progress/adapter';
+import classnames from "classnames";
+import React from "react";
+import { MDCLinearProgressFoundation } from "@material/linear-progress/foundation";
+import { MDCLinearProgressAdapter } from "@material/linear-progress/adapter";
 
 export interface LinearProgressProps<T> extends React.HTMLProps<T> {
   buffer?: number;
@@ -60,16 +60,16 @@ class LinearProgress<T extends {} = HTMLDivElement> extends React.Component<
   static defaultProps: LinearProgressProps<HTMLDivElement> = {
     buffer: 0,
     bufferingDots: true,
-    className: '',
+    className: "",
     closed: false,
     indeterminate: false,
     progress: 0,
     reversed: false,
-    tag: 'div',
+    tag: "div",
   };
 
   componentDidMount() {
-    const {buffer, closed, indeterminate, progress, reversed} = this.props;
+    const { buffer, closed, indeterminate, progress, reversed } = this.props;
     this.isComponentMounted = true;
     this.foundation.init();
     this.foundation.setBuffer(buffer!);
@@ -89,7 +89,7 @@ class LinearProgress<T extends {} = HTMLDivElement> extends React.Component<
       progress: prevProgress,
       reversed: prevReversed,
     } = prevProps;
-    const {buffer, closed, indeterminate, progress, reversed} = this.props;
+    const { buffer, closed, indeterminate, progress, reversed } = this.props;
     if (buffer !== prevBuffer) {
       this.foundation.setBuffer(buffer!);
     }
@@ -119,9 +119,9 @@ class LinearProgress<T extends {} = HTMLDivElement> extends React.Component<
     return {
       addClass: (className: string) => {
         if (this.isComponentMounted) {
-          const {classList} = this.state;
+          const { classList } = this.state;
           classList.add(className);
-          this.setState({classList});
+          this.setState({ classList });
         }
       },
       getBuffer: () => {
@@ -135,9 +135,9 @@ class LinearProgress<T extends {} = HTMLDivElement> extends React.Component<
       },
       removeClass: (className: string) => {
         if (this.isComponentMounted) {
-          const {classList} = this.state;
+          const { classList } = this.state;
           classList.delete(className);
-          this.setState({classList});
+          this.setState({ classList });
         }
       },
       setStyle: (element: HTMLElement, propertyName: string, value: string) => {
@@ -149,11 +149,11 @@ class LinearProgress<T extends {} = HTMLDivElement> extends React.Component<
   }
 
   get classes() {
-    const {className, indeterminate, reversed} = this.props;
-    const {classList} = this.state;
-    return classnames('mdc-linear-progress', Array.from(classList), className, {
-      'mdc-linear-progress--indeterminate': indeterminate,
-      'mdc-linear-progress--reversed': reversed,
+    const { className, indeterminate, reversed } = this.props;
+    const { classList } = this.state;
+    return classnames("mdc-linear-progress", Array.from(classList), className, {
+      "mdc-linear-progress--indeterminate": indeterminate,
+      "mdc-linear-progress--reversed": reversed,
     });
   }
 
@@ -174,19 +174,19 @@ class LinearProgress<T extends {} = HTMLDivElement> extends React.Component<
     return (
       // https://github.com/Microsoft/TypeScript/issues/28892
       // @ts-ignore
-      <Tag className={this.classes} role='progressbar' {...otherProps}>
+      <Tag className={this.classes} role="progressbar" {...otherProps}>
         {bufferingDots && (
-          <div className='mdc-linear-progress__buffering-dots' />
+          <div className="mdc-linear-progress__buffering-dots" />
         )}
-        <div className='mdc-linear-progress__buffer' ref={this.bufferElement} />
+        <div className="mdc-linear-progress__buffer" ref={this.bufferElement} />
         <div
-          className='mdc-linear-progress__bar mdc-linear-progress__primary-bar'
+          className="mdc-linear-progress__bar mdc-linear-progress__primary-bar"
           ref={this.primaryBarElement}
         >
-          <span className='mdc-linear-progress__bar-inner' />
+          <span className="mdc-linear-progress__bar-inner" />
         </div>
-        <div className='mdc-linear-progress__bar mdc-linear-progress__secondary-bar'>
-          <span className='mdc-linear-progress__bar-inner' />
+        <div className="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+          <span className="mdc-linear-progress__bar-inner" />
         </div>
       </Tag>
     );

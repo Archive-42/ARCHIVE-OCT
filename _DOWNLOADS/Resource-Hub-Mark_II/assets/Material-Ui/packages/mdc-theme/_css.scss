@@ -20,10 +20,10 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
-@use './gss';
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "./gss";
 
 /// When true, add an additional property/value declaration before declarations
 /// that use advanced features such as custom properties or CSS functions. This
@@ -60,7 +60,7 @@ $enable-fallback-declarations: true !default;
   // wouldn't need to check this. However, Sass will throw an error if the
   // interpolated property is a custom property.
   @if $value != null {
-    $important-rule: if($important, '!important', '');
+    $important-rule: if($important, "!important", "");
 
     @if $fallback-value and $enable-fallback-declarations {
       @include gss.annotate($gss);
@@ -93,7 +93,7 @@ $enable-fallback-declarations: true !default;
 /// @param {Number | Map | List} $value - List of 1 to 4 value numbers.
 /// @return {List} a List of 4 value numbers.
 @function unpack-value($value) {
-  @if meta.type-of($value) == 'map' or list.length($value) == 1 {
+  @if meta.type-of($value) == "map" or list.length($value) == 1 {
     @return $value $value $value $value;
   } @else if list.length($value) == 4 {
     @return $value;

@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCTabAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
-import {MDCTabDimensions} from './types';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCTabAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
+import { MDCTabDimensions } from "./types";
 
 export class MDCTabFoundation extends MDCFoundation<MDCTabAdapter> {
   static get cssClasses() {
@@ -57,7 +57,7 @@ export class MDCTabFoundation extends MDCFoundation<MDCTabAdapter> {
   private focusOnActivate_ = true;
 
   constructor(adapter?: Partial<MDCTabAdapter>) {
-    super({...MDCTabFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCTabFoundation.defaultAdapter, ...adapter });
   }
 
   handleClick() {
@@ -82,8 +82,8 @@ export class MDCTabFoundation extends MDCFoundation<MDCTabAdapter> {
    */
   activate(previousIndicatorClientRect?: ClientRect) {
     this.adapter.addClass(cssClasses.ACTIVE);
-    this.adapter.setAttr(strings.ARIA_SELECTED, 'true');
-    this.adapter.setAttr(strings.TABINDEX, '0');
+    this.adapter.setAttr(strings.ARIA_SELECTED, "true");
+    this.adapter.setAttr(strings.TABINDEX, "0");
     this.adapter.activateIndicator(previousIndicatorClientRect);
     if (this.focusOnActivate_) {
       this.adapter.focus();
@@ -100,8 +100,8 @@ export class MDCTabFoundation extends MDCFoundation<MDCTabAdapter> {
     }
 
     this.adapter.removeClass(cssClasses.ACTIVE);
-    this.adapter.setAttr(strings.ARIA_SELECTED, 'false');
-    this.adapter.setAttr(strings.TABINDEX, '-1');
+    this.adapter.setAttr(strings.ARIA_SELECTED, "false");
+    this.adapter.setAttr(strings.TABINDEX, "-1");
     this.adapter.deactivateIndicator();
   }
 

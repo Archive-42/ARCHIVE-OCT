@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from './foundation';
-import {CustomEventListener, EventType, SpecificEventListener} from './types';
+import { MDCFoundation } from "./foundation";
+import { CustomEventListener, EventType, SpecificEventListener } from "./types";
 
 export class MDCComponent<FoundationType extends MDCFoundation> {
   static attachTo(root: Element): MDCComponent<MDCFoundation<{}>> {
@@ -36,12 +36,15 @@ export class MDCComponent<FoundationType extends MDCFoundation> {
   protected foundation: FoundationType;
 
   constructor(
-      public root: Element, foundation?: FoundationType, ...args: unknown[]) {
+    public root: Element,
+    foundation?: FoundationType,
+    ...args: unknown[]
+  ) {
     this.initialize(...args);
     // Note that we initialize foundation here and not within the constructor's default param so that
     // this.root_ is defined and can be used within the foundation class.
     this.foundation =
-        foundation === undefined ? this.getDefaultFoundation() : foundation;
+      foundation === undefined ? this.getDefaultFoundation() : foundation;
     this.foundation.init();
     this.initialSyncWithDOM();
   }
@@ -56,8 +59,10 @@ export class MDCComponent<FoundationType extends MDCFoundation> {
   getDefaultFoundation(): FoundationType {
     // Subclasses must override this method to return a properly configured foundation class for the
     // component.
-    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' +
-        'foundation class');
+    throw new Error(
+      "Subclasses must override getDefaultFoundation to return a properly configured " +
+        "foundation class"
+    );
   }
 
   initialSyncWithDOM() {
@@ -78,10 +83,20 @@ export class MDCComponent<FoundationType extends MDCFoundation> {
    * listening for custom events.
    */
   listen<K extends EventType>(
-    evtType: K, handler: SpecificEventListener<K>, options?: AddEventListenerOptions | boolean): void;
+    evtType: K,
+    handler: SpecificEventListener<K>,
+    options?: AddEventListenerOptions | boolean
+  ): void;
   listen<E extends Event>(
-    evtType: string, handler: CustomEventListener<E>, options?: AddEventListenerOptions | boolean): void;
-  listen(evtType: string, handler: EventListener, options?: AddEventListenerOptions | boolean) {
+    evtType: string,
+    handler: CustomEventListener<E>,
+    options?: AddEventListenerOptions | boolean
+  ): void;
+  listen(
+    evtType: string,
+    handler: EventListener,
+    options?: AddEventListenerOptions | boolean
+  ) {
     this.root.addEventListener(evtType, handler, options);
   }
 
@@ -90,10 +105,20 @@ export class MDCComponent<FoundationType extends MDCFoundation> {
    * unlistening for custom events.
    */
   unlisten<K extends EventType>(
-    evtType: K, handler: SpecificEventListener<K>, options?: AddEventListenerOptions | boolean): void;
+    evtType: K,
+    handler: SpecificEventListener<K>,
+    options?: AddEventListenerOptions | boolean
+  ): void;
   unlisten<E extends Event>(
-    evtType: string, handler: CustomEventListener<E>, options?: AddEventListenerOptions | boolean): void;
-  unlisten(evtType: string, handler: EventListener, options?: AddEventListenerOptions | boolean) {
+    evtType: string,
+    handler: CustomEventListener<E>,
+    options?: AddEventListenerOptions | boolean
+  ): void;
+  unlisten(
+    evtType: string,
+    handler: EventListener,
+    options?: AddEventListenerOptions | boolean
+  ) {
     this.root.removeEventListener(evtType, handler, options);
   }
 
@@ -102,13 +127,13 @@ export class MDCComponent<FoundationType extends MDCFoundation> {
    */
   emit<T extends object>(evtType: string, evtData: T, shouldBubble = false) {
     let evt: CustomEvent<T>;
-    if (typeof CustomEvent === 'function') {
+    if (typeof CustomEvent === "function") {
       evt = new CustomEvent<T>(evtType, {
         bubbles: shouldBubble,
         detail: evtData,
       });
     } else {
-      evt = document.createEvent('CustomEvent');
+      evt = document.createEvent("CustomEvent");
       evt.initCustomEvent(evtType, shouldBubble, false, evtData);
     }
 

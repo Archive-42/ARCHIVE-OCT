@@ -50,11 +50,7 @@ export const Skills = factory(function ({
 				{{ label: 'Full Name' }}
 			</TextInput>
 			<div classes={css.hashInput}>
-				<TextInput
-					key="hashInput"
-					initialValue={hash}
-					disabled
-				>
+				<TextInput key="hashInput" initialValue={hash} disabled>
 					{{
 						label: 'Your Hash',
 						trailing: (

@@ -20,23 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCListFoundation} from '@material/list/foundation';
-import {MDCListIndex} from '@material/list/types';
-import {MDCListAdapter} from '@material/list/adapter';
+import React from "react";
+import classnames from "classnames";
+import { MDCListFoundation } from "@material/list/foundation";
+import { MDCListIndex } from "@material/list/types";
+import { MDCListAdapter } from "@material/list/adapter";
 // @ts-ignore @types cannot be used on dist files
-import memoizeOne from 'memoize-one/dist/memoize-one.cjs.js';
+import memoizeOne from "memoize-one/dist/memoize-one.cjs.js";
 
-import ListItem, {ListItemProps} from './ListItem'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import ListItemGraphic from './ListItemGraphic';
-import ListItemText from './ListItemText';
-import ListItemMeta from './ListItemMeta';
-import ListDivider from './ListDivider';
-import ListGroup from './ListGroup';
-import ListGroupSubheader from './ListGroupSubheader';
+import ListItem, { ListItemProps } from "./ListItem"; // eslint-disable-line @typescript-eslint/no-unused-vars
+import ListItemGraphic from "./ListItemGraphic";
+import ListItemText from "./ListItemText";
+import ListItemMeta from "./ListItemMeta";
+import ListDivider from "./ListDivider";
+import ListGroup from "./ListGroup";
+import ListGroupSubheader from "./ListGroupSubheader";
 
-const HORIZONTAL = 'horizontal';
+const HORIZONTAL = "horizontal";
 
 export interface ListProps extends React.HTMLProps<HTMLElement> {
   className?: string;
@@ -52,11 +52,11 @@ export interface ListProps extends React.HTMLProps<HTMLElement> {
   wrapFocus?: boolean;
   tag?: string;
   ref?: React.Ref<any>;
-  orientation?: 'vertical' | 'horizontal';
+  orientation?: "vertical" | "horizontal";
 }
 
 interface ListState {
-  listItemClassNames: {[listItemIndex: number]: string[]};
+  listItemClassNames: { [listItemIndex: number]: string[] };
 }
 
 export interface ListItemContextShape {
@@ -68,7 +68,7 @@ export interface ListItemContextShape {
   handleFocus?: (e: React.FocusEvent<any>, index: number) => void;
   onDestroy?: (index: number) => void;
   getListItemInitialTabIndex?: (index: number) => number;
-  getClassNamesFromList?: () => ListState['listItemClassNames'];
+  getClassNamesFromList?: () => ListState["listItemClassNames"];
   tabIndex?: number;
 }
 
@@ -76,7 +76,7 @@ function isSelectedIndexType(
   selectedIndex: unknown
 ): selectedIndex is MDCListIndex {
   return (
-    (typeof selectedIndex === 'number' && !isNaN(selectedIndex)) ||
+    (typeof selectedIndex === "number" && !isNaN(selectedIndex)) ||
     Array.isArray(selectedIndex)
   );
 }
@@ -104,7 +104,7 @@ export default class List extends React.Component<ListProps, ListState> {
   };
 
   static defaultProps: Partial<ListProps> = {
-    className: '',
+    className: "",
     checkboxList: false,
     radioList: false,
     nonInteractive: false,
@@ -115,11 +115,11 @@ export default class List extends React.Component<ListProps, ListState> {
     selectedIndex: -1,
     handleSelect: () => {},
     wrapFocus: true,
-    tag: 'ul',
+    tag: "ul",
   };
 
   componentDidMount() {
-    const {singleSelection, wrapFocus, selectedIndex} = this.props;
+    const { singleSelection, wrapFocus, selectedIndex } = this.props;
     this.foundation = new MDCListFoundation(this.adapter);
     this.foundation.init();
     this.foundation.setSingleSelection(singleSelection!);
@@ -136,7 +136,7 @@ export default class List extends React.Component<ListProps, ListState> {
   }
 
   componentDidUpdate(prevProps: ListProps) {
-    const {singleSelection, wrapFocus, selectedIndex} = this.props;
+    const { singleSelection, wrapFocus, selectedIndex } = this.props;
     const hasSelectedIndexUpdated = selectedIndex !== prevProps.selectedIndex;
     if (singleSelection !== prevProps.singleSelection) {
       this.foundation.setSingleSelection(singleSelection!);
@@ -159,8 +159,8 @@ export default class List extends React.Component<ListProps, ListState> {
   }
 
   initializeListType = () => {
-    const {singleSelection} = this.props;
-    const {cssClasses, strings} = MDCListFoundation;
+    const { singleSelection } = this.props;
+    const { cssClasses, strings } = MDCListFoundation;
 
     if (!this.listElement.current) return;
     const checkboxListItems = this.listElement.current.querySelectorAll(
@@ -204,12 +204,13 @@ export default class List extends React.Component<ListProps, ListState> {
   }
 
   get classes() {
-    const {className, nonInteractive, dense, avatarList, twoLine} = this.props;
-    return classnames('mdc-list', className, {
-      'mdc-list--non-interactive': nonInteractive,
-      'mdc-list--dense': dense,
-      'mdc-list--avatar-list': avatarList,
-      'mdc-list--two-line': twoLine,
+    const { className, nonInteractive, dense, avatarList, twoLine } =
+      this.props;
+    return classnames("mdc-list", className, {
+      "mdc-list--non-interactive": nonInteractive,
+      "mdc-list--dense": dense,
+      "mdc-list--avatar-list": avatarList,
+      "mdc-list--two-line": twoLine,
     });
   }
 
@@ -232,7 +233,7 @@ export default class List extends React.Component<ListProps, ListState> {
        * Pushes class name to state.listItemClassNames[listItemIndex] if it doesn't yet exist.
        */
       addClassForElementIndex: (index, className) => {
-        const {listItemClassNames} = this.state;
+        const { listItemClassNames } = this.state;
         if (
           listItemClassNames[index] &&
           listItemClassNames[index].indexOf(className) === -1
@@ -241,19 +242,19 @@ export default class List extends React.Component<ListProps, ListState> {
         } else {
           listItemClassNames[index] = [className];
         }
-        this.setState({listItemClassNames});
+        this.setState({ listItemClassNames });
       },
       /**
        * Finds the className within state.listItemClassNames[listItemIndex], and removes it
        * from the array.
        */
       removeClassForElementIndex: (index, className) => {
-        const {listItemClassNames} = this.state;
+        const { listItemClassNames } = this.state;
         if (listItemClassNames[index]) {
           const removalIndex = listItemClassNames[index].indexOf(className);
           if (removalIndex !== -1) {
             listItemClassNames[index].splice(removalIndex, 1);
-            this.setState({listItemClassNames});
+            this.setState({ listItemClassNames });
           }
         }
       },
@@ -265,7 +266,7 @@ export default class List extends React.Component<ListProps, ListState> {
           listItem.querySelectorAll(selector)
         );
         listItemChildren.forEach((el) =>
-          el.setAttribute('tabindex', tabIndexValue)
+          el.setAttribute("tabindex", tabIndexValue)
         );
       },
       focusItemAtIndex: (index) => {
@@ -309,12 +310,12 @@ export default class List extends React.Component<ListProps, ListState> {
   }
 
   get role() {
-    const {checkboxList, radioList, role} = this.props;
+    const { checkboxList, radioList, role } = this.props;
     if (role) return role;
     if (checkboxList) {
-      return 'group';
+      return "group";
     } else if (radioList) {
-      return 'radiogroup';
+      return "radiogroup";
     }
     return null;
   }
@@ -327,7 +328,7 @@ export default class List extends React.Component<ListProps, ListState> {
    * 3. if there is no selectedIndex
    */
   getListItemInitialTabIndex = (index: number) => {
-    const {selectedIndex} = this.props;
+    const { selectedIndex } = this.props;
     let tabIndex = -1;
     if (!this.hasInitializedListItemTabIndex) {
       const isSelectedIndexArray =
@@ -350,7 +351,7 @@ export default class List extends React.Component<ListProps, ListState> {
    * The return value is used as the listItem's className.
    */
   private getListItemClassNames = () => {
-    const {listItemClassNames} = this.state;
+    const { listItemClassNames } = this.state;
     return listItemClassNames;
   };
 
@@ -384,9 +385,9 @@ export default class List extends React.Component<ListProps, ListState> {
   };
 
   onDestroy = (index: number) => {
-    const {listItemClassNames} = this.state;
+    const { listItemClassNames } = this.state;
     delete listItemClassNames[index];
-    this.setState({listItemClassNames});
+    this.setState({ listItemClassNames });
   };
 
   private getListProps = (checkboxList?: boolean, radioList?: boolean) => ({

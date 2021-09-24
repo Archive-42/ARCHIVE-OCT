@@ -20,22 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   MDCDismissibleDrawerFoundation,
   MDCModalDrawerFoundation,
   util,
-} from '@material/drawer';
-import {MDCListFoundation} from '@material/list/foundation';
-import DrawerHeader from './Header';
-import DrawerContent from './Content';
-import DrawerSubtitle from './Subtitle';
-import DrawerTitle from './Title';
-import DrawerAppContent from './AppContent';
-import {FocusTrap} from 'focus-trap';
+} from "@material/drawer";
+import { MDCListFoundation } from "@material/list/foundation";
+import DrawerHeader from "./Header";
+import DrawerContent from "./Content";
+import DrawerSubtitle from "./Subtitle";
+import DrawerTitle from "./Title";
+import DrawerAppContent from "./AppContent";
+import { FocusTrap } from "focus-trap";
 
-const {cssClasses: listCssClasses} = MDCListFoundation;
+const { cssClasses: listCssClasses } = MDCListFoundation;
 
 type RefCallback<T> = (node: T) => void;
 
@@ -54,10 +54,10 @@ interface DrawerState {
   classList: Set<string>;
 }
 
-const isRefObject = function(
-  ref: DrawerProps['innerRef']
+const isRefObject = function (
+  ref: DrawerProps["innerRef"]
 ): ref is React.RefObject<HTMLElement> {
-  return typeof ref !== 'function';
+  return typeof ref !== "function";
 };
 
 class Drawer extends React.Component<DrawerProps, DrawerState> {
@@ -66,23 +66,23 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   focusTrap?: FocusTrap;
   drawerElement: React.RefObject<HTMLDivElement> = React.createRef();
 
-  state: DrawerState = {classList: new Set()};
+  state: DrawerState = { classList: new Set() };
 
   static defaultProps: Partial<DrawerProps> = {
-    className: '',
+    className: "",
     children: null,
     open: false,
     onOpen: () => {},
     onClose: () => {},
     onTransitionEnd: () => {},
     onKeyDown: () => {},
-    tag: 'aside',
+    tag: "aside",
     dismissible: false,
     modal: false,
   };
 
   componentDidMount() {
-    const {open} = this.props;
+    const { open } = this.props;
     this.initFoundation();
     if (open && this.foundation) {
       this.foundation.open();
@@ -90,7 +90,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   }
 
   private initFoundation = () => {
-    const {dismissible, modal} = this.props;
+    const { dismissible, modal } = this.props;
     if (this.foundation) {
       this.foundation.destroy();
     }
@@ -105,7 +105,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   };
 
   componentDidUpdate(prevProps: DrawerProps & React.HTMLProps<HTMLElement>) {
-    const {dismissible, modal, open} = this.props;
+    const { dismissible, modal, open } = this.props;
     const changedToModal = prevProps.modal !== this.props.modal;
     const changedToDismissible =
       prevProps.dismissible !== this.props.dismissible;
@@ -128,28 +128,28 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   };
 
   get classes() {
-    const {classList} = this.state;
-    const {className, dismissible, modal} = this.props;
-    return classnames('mdc-drawer', Array.from(classList), className, {
-      'mdc-drawer--dismissible': dismissible,
-      'mdc-drawer--modal': modal,
+    const { classList } = this.state;
+    const { className, dismissible, modal } = this.props;
+    return classnames("mdc-drawer", Array.from(classList), className, {
+      "mdc-drawer--dismissible": dismissible,
+      "mdc-drawer--modal": modal,
     });
   }
 
   get adapter() {
     return {
       addClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.add(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       removeClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) =>
-        this.classes.split(' ').includes(className),
+        this.classes.split(" ").includes(className),
       elementHasClass: (element: HTMLElement, className: string) =>
         element.classList.contains(className),
       saveFocus: () => {
@@ -204,7 +204,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   };
 
   attachRef = (node: HTMLElement) => {
-    const {innerRef} = this.props;
+    const { innerRef } = this.props;
 
     // https://github.com/facebook/react/issues/13029#issuecomment-410002316
     // @ts-ignore this is acceptable according to the comment above
@@ -260,7 +260,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   renderScrim() {
     return (
       <div
-        className='mdc-drawer-scrim'
+        className="mdc-drawer-scrim"
         onClick={() =>
           (this.foundation as MDCModalDrawerFoundation).handleScrimClick()
         }

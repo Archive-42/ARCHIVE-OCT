@@ -21,12 +21,19 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCFoundation } from "@material/base/foundation";
 
-import {MDCChipTrailingActionNavigationEvent} from '../trailingaction/types';
+import { MDCChipTrailingActionNavigationEvent } from "../trailingaction/types";
 
-import {MDCChipAdapter} from './adapter';
-import {cssClasses, Direction, EventSource, jumpChipKeys, navigationKeys, strings} from './constants';
+import { MDCChipAdapter } from "./adapter";
+import {
+  cssClasses,
+  Direction,
+  EventSource,
+  jumpChipKeys,
+  navigationKeys,
+  strings,
+} from "./constants";
 
 const emptyClientRect = {
   bottom: 0,
@@ -60,7 +67,7 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
       focusTrailingAction: () => undefined,
       getAttribute: () => null,
       getCheckmarkBoundingClientRect: () => emptyClientRect,
-      getComputedStyleValue: () => '',
+      getComputedStyleValue: () => "",
       getRootBoundingClientRect: () => emptyClientRect,
       hasClass: () => false,
       hasLeadingIcon: () => false,
@@ -92,7 +99,7 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
   private shouldFocusPrimaryActionOnClick_ = true;
 
   constructor(adapter?: Partial<MDCChipAdapter>) {
-    super({...MDCChipFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCChipFoundation.defaultAdapter, ...adapter });
   }
 
   isSelected() {
@@ -134,7 +141,7 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
   getDimensions(): ClientRect {
     const getRootRect = () => this.adapter.getRootBoundingClientRect();
     const getCheckmarkRect = () =>
-        this.adapter.getCheckmarkBoundingClientRect();
+      this.adapter.getCheckmarkBoundingClientRect();
 
     // When a chip has a checkmark and not a leading icon, the bounding rect changes in size depending on the current
     // size of the checkmark.
@@ -183,27 +190,29 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
    */
   handleTransitionEnd(evt: TransitionEvent) {
     // Handle transition end event on the chip when it is about to be removed.
-    const shouldHandle =
-        this.adapter.eventTargetHasClass(evt.target, cssClasses.CHIP_EXIT);
-    const widthIsAnimating = evt.propertyName === 'width';
-    const opacityIsAnimating = evt.propertyName === 'opacity';
+    const shouldHandle = this.adapter.eventTargetHasClass(
+      evt.target,
+      cssClasses.CHIP_EXIT
+    );
+    const widthIsAnimating = evt.propertyName === "width";
+    const opacityIsAnimating = evt.propertyName === "opacity";
 
     if (shouldHandle && opacityIsAnimating) {
       // See: https://css-tricks.com/using-css-transitions-auto-dimensions/#article-header-id-5
-      const chipWidth = this.adapter.getComputedStyleValue('width');
+      const chipWidth = this.adapter.getComputedStyleValue("width");
 
       // On the next frame (once we get the computed width), explicitly set the chip's width
       // to its current pixel width, so we aren't transitioning out of 'auto'.
       requestAnimationFrame(() => {
-        this.adapter.setStyleProperty('width', chipWidth);
+        this.adapter.setStyleProperty("width", chipWidth);
 
         // To mitigate jitter, start transitioning padding and margin before width.
-        this.adapter.setStyleProperty('padding', '0');
-        this.adapter.setStyleProperty('margin', '0');
+        this.adapter.setStyleProperty("padding", "0");
+        this.adapter.setStyleProperty("margin", "0");
 
         // On the next frame (once width is explicitly set), transition width to 0.
         requestAnimationFrame(() => {
-          this.adapter.setStyleProperty('width', '0');
+          this.adapter.setStyleProperty("width", "0");
         });
       });
       return;
@@ -211,8 +220,9 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
 
     if (shouldHandle && widthIsAnimating) {
       this.removeFocus();
-      const removedAnnouncement =
-          this.adapter.getAttribute(strings.REMOVED_ANNOUNCEMENT_ATTRIBUTE);
+      const removedAnnouncement = this.adapter.getAttribute(
+        strings.REMOVED_ANNOUNCEMENT_ATTRIBUTE
+      );
 
       this.adapter.notifyRemoval(removedAnnouncement);
     }
@@ -223,11 +233,11 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
     }
 
     const shouldHideLeadingIcon =
-        this.adapter.eventTargetHasClass(evt.target, cssClasses.LEADING_ICON) &&
-        this.adapter.hasClass(cssClasses.SELECTED);
+      this.adapter.eventTargetHasClass(evt.target, cssClasses.LEADING_ICON) &&
+      this.adapter.hasClass(cssClasses.SELECTED);
     const shouldShowLeadingIcon =
-        this.adapter.eventTargetHasClass(evt.target, cssClasses.CHECKMARK) &&
-        !this.adapter.hasClass(cssClasses.SELECTED);
+      this.adapter.eventTargetHasClass(evt.target, cssClasses.CHECKMARK) &&
+      !this.adapter.hasClass(cssClasses.SELECTED);
 
     if (shouldHideLeadingIcon) {
       this.adapter.addClassToLeadingIcon(cssClasses.HIDDEN_LEADING_ICON);
@@ -322,7 +332,7 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
    * Called by the chip set to remove focus from the chip actions.
    */
   removeFocus() {
-    this.adapter.setPrimaryActionAttr(strings.TAB_INDEX, '-1');
+    this.adapter.setPrimaryActionAttr(strings.TAB_INDEX, "-1");
     this.adapter.removeTrailingActionFocus();
   }
 
@@ -341,7 +351,7 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
   focusTrailingAction() {
     const trailingActionIsNavigable = this.adapter.isTrailingActionNavigable();
     if (trailingActionIsNavigable) {
-      this.adapter.setPrimaryActionAttr(strings.TAB_INDEX, '-1');
+      this.adapter.setPrimaryActionAttr(strings.TAB_INDEX, "-1");
       this.adapter.focusTrailingAction();
       return;
     }
@@ -350,7 +360,7 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
   }
 
   private setPrimaryActionFocusable_(focusBehavior: FocusBehavior) {
-    this.adapter.setPrimaryActionAttr(strings.TAB_INDEX, '0');
+    this.adapter.setPrimaryActionAttr(strings.TAB_INDEX, "0");
     if (focusBehavior === FocusBehavior.SHOULD_FOCUS) {
       this.adapter.focusPrimaryAction();
     }
@@ -387,10 +397,10 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
   private getDirection_(key: string): Direction {
     const isRTL = this.adapter.isRTL();
     const isLeftKey =
-        key === strings.ARROW_LEFT_KEY || key === strings.IE_ARROW_LEFT_KEY;
+      key === strings.ARROW_LEFT_KEY || key === strings.IE_ARROW_LEFT_KEY;
     const isRightKey =
-        key === strings.ARROW_RIGHT_KEY || key === strings.IE_ARROW_RIGHT_KEY;
-    if (!isRTL && isLeftKey || isRTL && isRightKey) {
+      key === strings.ARROW_RIGHT_KEY || key === strings.IE_ARROW_RIGHT_KEY;
+    if ((!isRTL && isLeftKey) || (isRTL && isRightKey)) {
       return Direction.LEFT;
     }
 
@@ -417,18 +427,21 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
 
   private isDeleteAction_(evt: KeyboardEvent): boolean {
     const isDeletable = this.adapter.hasClass(cssClasses.DELETABLE);
-    return isDeletable &&
-        (evt.key === strings.BACKSPACE_KEY || evt.key === strings.DELETE_KEY ||
-         evt.key === strings.IE_DELETE_KEY);
+    return (
+      isDeletable &&
+      (evt.key === strings.BACKSPACE_KEY ||
+        evt.key === strings.DELETE_KEY ||
+        evt.key === strings.IE_DELETE_KEY)
+    );
   }
 
   private setSelected_(selected: boolean) {
     if (selected) {
       this.adapter.addClass(cssClasses.SELECTED);
-      this.adapter.setPrimaryActionAttr(strings.ARIA_CHECKED, 'true');
+      this.adapter.setPrimaryActionAttr(strings.ARIA_CHECKED, "true");
     } else {
       this.adapter.removeClass(cssClasses.SELECTED);
-      this.adapter.setPrimaryActionAttr(strings.ARIA_CHECKED, 'false');
+      this.adapter.setPrimaryActionAttr(strings.ARIA_CHECKED, "false");
     }
   }
 
@@ -442,7 +455,9 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
 
   private eventFromPrimaryAction_(evt: Event) {
     return this.adapter.eventTargetHasClass(
-        evt.target, cssClasses.PRIMARY_ACTION);
+      evt.target,
+      cssClasses.PRIMARY_ACTION
+    );
   }
 
   private startEditing() {

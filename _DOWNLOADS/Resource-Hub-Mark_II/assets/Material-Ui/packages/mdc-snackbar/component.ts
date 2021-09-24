@@ -21,18 +21,28 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {closest} from '@material/dom/ponyfill';
-import {MDCSnackbarAdapter} from './adapter';
-import {strings} from './constants';
-import {MDCSnackbarFoundation} from './foundation';
-import {MDCSnackbarAnnouncer, MDCSnackbarAnnouncerFactory, MDCSnackbarCloseEventDetail} from './types';
-import * as util from './util';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { closest } from "@material/dom/ponyfill";
+import { MDCSnackbarAdapter } from "./adapter";
+import { strings } from "./constants";
+import { MDCSnackbarFoundation } from "./foundation";
+import {
+  MDCSnackbarAnnouncer,
+  MDCSnackbarAnnouncerFactory,
+  MDCSnackbarCloseEventDetail,
+} from "./types";
+import * as util from "./util";
 
 const {
-  SURFACE_SELECTOR, LABEL_SELECTOR, ACTION_SELECTOR, DISMISS_SELECTOR,
-  OPENING_EVENT, OPENED_EVENT, CLOSING_EVENT, CLOSED_EVENT,
+  SURFACE_SELECTOR,
+  LABEL_SELECTOR,
+  ACTION_SELECTOR,
+  DISMISS_SELECTOR,
+  OPENING_EVENT,
+  OPENED_EVENT,
+  CLOSING_EVENT,
+  CLOSED_EVENT,
 } = strings;
 
 export class MDCSnackbar extends MDCComponent<MDCSnackbarFoundation> {
@@ -46,10 +56,12 @@ export class MDCSnackbar extends MDCComponent<MDCSnackbarFoundation> {
   private labelEl_!: Element; // assigned in initialSyncWithDOM()
   private surfaceEl_!: Element; // assigned in initialSyncWithDOM()
 
-  private handleKeyDown_!: SpecificEventListener<'keydown'>; // assigned in initialSyncWithDOM()
-  private handleSurfaceClick_!: SpecificEventListener<'click'>; // assigned in initialSyncWithDOM()
+  private handleKeyDown_!: SpecificEventListener<"keydown">; // assigned in initialSyncWithDOM()
+  private handleSurfaceClick_!: SpecificEventListener<"click">; // assigned in initialSyncWithDOM()
 
-  initialize(announcerFactory: MDCSnackbarAnnouncerFactory = () => util.announce) {
+  initialize(
+    announcerFactory: MDCSnackbarAnnouncerFactory = () => util.announce
+  ) {
     this.announce_ = announcerFactory();
   }
 
@@ -87,7 +99,7 @@ export class MDCSnackbar extends MDCComponent<MDCSnackbarFoundation> {
    *     `event.detail.reason` property. Standard values are REASON_ACTION and REASON_DISMISS, but custom
    *     client-specific values may also be used if desired.
    */
-  close(reason = '') {
+  close(reason = "") {
     this.foundation.close(reason);
   }
 
@@ -97,10 +109,16 @@ export class MDCSnackbar extends MDCComponent<MDCSnackbarFoundation> {
     const adapter: MDCSnackbarAdapter = {
       addClass: (className) => this.root.classList.add(className),
       announce: () => this.announce_(this.labelEl_),
-      notifyClosed: (reason) => this.emit<MDCSnackbarCloseEventDetail>(
-          CLOSED_EVENT, reason ? {reason} : {}),
-      notifyClosing: (reason) => this.emit<MDCSnackbarCloseEventDetail>(
-          CLOSING_EVENT, reason ? {reason} : {}),
+      notifyClosed: (reason) =>
+        this.emit<MDCSnackbarCloseEventDetail>(
+          CLOSED_EVENT,
+          reason ? { reason } : {}
+        ),
+      notifyClosing: (reason) =>
+        this.emit<MDCSnackbarCloseEventDetail>(
+          CLOSING_EVENT,
+          reason ? { reason } : {}
+        ),
       notifyOpened: () => this.emit(OPENED_EVENT, {}),
       notifyOpening: () => this.emit(OPENING_EVENT, {}),
       removeClass: (className) => this.root.classList.remove(className),
@@ -146,20 +164,24 @@ export class MDCSnackbar extends MDCComponent<MDCSnackbarFoundation> {
     this.actionEl_.textContent = actionButtonText;
   }
 
-  private registerKeyDownHandler_(handler: SpecificEventListener<'keydown'>) {
-    this.listen('keydown', handler);
+  private registerKeyDownHandler_(handler: SpecificEventListener<"keydown">) {
+    this.listen("keydown", handler);
   }
 
-  private deregisterKeyDownHandler_(handler: SpecificEventListener<'keydown'>) {
-    this.unlisten('keydown', handler);
+  private deregisterKeyDownHandler_(handler: SpecificEventListener<"keydown">) {
+    this.unlisten("keydown", handler);
   }
 
-  private registerSurfaceClickHandler_(handler: SpecificEventListener<'click'>) {
-    this.surfaceEl_.addEventListener('click', handler as EventListener);
+  private registerSurfaceClickHandler_(
+    handler: SpecificEventListener<"click">
+  ) {
+    this.surfaceEl_.addEventListener("click", handler as EventListener);
   }
 
-  private deregisterSurfaceClickHandler_(handler: SpecificEventListener<'click'>) {
-    this.surfaceEl_.removeEventListener('click', handler as EventListener);
+  private deregisterSurfaceClickHandler_(
+    handler: SpecificEventListener<"click">
+  ) {
+    this.surfaceEl_.removeEventListener("click", handler as EventListener);
   }
 
   private isActionButton_(target: Element): boolean {

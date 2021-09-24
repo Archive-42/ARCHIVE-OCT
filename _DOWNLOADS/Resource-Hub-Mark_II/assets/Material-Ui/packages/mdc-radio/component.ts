@@ -21,16 +21,19 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {applyPassive} from '@material/dom/events';
-import {MDCRippleAdapter} from '@material/ripple/adapter';
-import {MDCRipple} from '@material/ripple/component';
-import {MDCRippleFoundation} from '@material/ripple/foundation';
-import {MDCRippleCapableSurface} from '@material/ripple/types';
-import {MDCRadioAdapter} from './adapter';
-import {MDCRadioFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { applyPassive } from "@material/dom/events";
+import { MDCRippleAdapter } from "@material/ripple/adapter";
+import { MDCRipple } from "@material/ripple/component";
+import { MDCRippleFoundation } from "@material/ripple/foundation";
+import { MDCRippleCapableSurface } from "@material/ripple/types";
+import { MDCRadioAdapter } from "./adapter";
+import { MDCRadioFoundation } from "./foundation";
 
-export class MDCRadio extends MDCComponent<MDCRadioFoundation> implements MDCRippleCapableSurface {
+export class MDCRadio
+  extends MDCComponent<MDCRadioFoundation>
+  implements MDCRippleCapableSurface
+{
   static attachTo(root: Element) {
     return new MDCRadio(root);
   }
@@ -76,8 +79,8 @@ export class MDCRadio extends MDCComponent<MDCRadioFoundation> implements MDCRip
     const adapter: MDCRadioAdapter = {
       addClass: (className) => this.root.classList.add(className),
       removeClass: (className) => this.root.classList.remove(className),
-      setNativeControlDisabled: (disabled) => this.nativeControl_.disabled =
-          disabled,
+      setNativeControlDisabled: (disabled) =>
+        (this.nativeControl_.disabled = disabled),
     };
     return new MDCRadioFoundation(adapter);
   }
@@ -88,10 +91,14 @@ export class MDCRadio extends MDCComponent<MDCRadioFoundation> implements MDCRip
     // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
     const adapter: MDCRippleAdapter = {
       ...MDCRipple.createAdapter(this),
-      registerInteractionHandler: (evtType, handler) => this.nativeControl_.addEventListener(
-        evtType, handler, applyPassive()),
-      deregisterInteractionHandler: (evtType, handler) => this.nativeControl_.removeEventListener(
-        evtType, handler, applyPassive()),
+      registerInteractionHandler: (evtType, handler) =>
+        this.nativeControl_.addEventListener(evtType, handler, applyPassive()),
+      deregisterInteractionHandler: (evtType, handler) =>
+        this.nativeControl_.removeEventListener(
+          evtType,
+          handler,
+          applyPassive()
+        ),
       // Radio buttons technically go "active" whenever there is *any* keyboard interaction.
       // This is not the UI we desire.
       isSurfaceActive: () => false,
@@ -102,11 +109,14 @@ export class MDCRadio extends MDCComponent<MDCRadioFoundation> implements MDCRip
   }
 
   private get nativeControl_(): HTMLInputElement {
-    const {NATIVE_CONTROL_SELECTOR} = MDCRadioFoundation.strings;
-    const el =
-        this.root.querySelector<HTMLInputElement>(NATIVE_CONTROL_SELECTOR);
+    const { NATIVE_CONTROL_SELECTOR } = MDCRadioFoundation.strings;
+    const el = this.root.querySelector<HTMLInputElement>(
+      NATIVE_CONTROL_SELECTOR
+    );
     if (!el) {
-      throw new Error(`Radio component requires a ${NATIVE_CONTROL_SELECTOR} element`);
+      throw new Error(
+        `Radio component requires a ${NATIVE_CONTROL_SELECTOR} element`
+      );
     }
     return el;
   }

@@ -23,9 +23,9 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/theme';
-@use './functions';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/theme";
+@use "./functions";
 
 // Public
 
@@ -43,7 +43,7 @@
         left: 0;
         width: 100%;
         border-bottom-style: solid;
-        content: '';
+        content: "";
       }
 
       &::before {

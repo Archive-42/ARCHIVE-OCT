@@ -21,4 +21,5 @@
 //
 
 /// @deprecated Import `_feature-targeting.scss` Sass module instead.
-@forward 'feature-targeting' show create-target, parse-targets, all, any, without;
+@forward "feature-targeting" show create-target, parse-targets, all, any,
+  without;

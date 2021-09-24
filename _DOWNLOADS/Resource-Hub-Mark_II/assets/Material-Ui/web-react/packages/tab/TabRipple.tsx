@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 import {
   withRipple,
@@ -30,7 +30,7 @@ import {
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
   RippledComponentState,
-} from '@material/react-ripple';
+} from "@material/react-ripple";
 
 export interface TabRippleProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -41,7 +41,7 @@ export interface TabRippleProps
 
 class TabRippleBase extends React.Component<TabRippleProps, {}> {
   get classes() {
-    return classnames('mdc-tab__ripple', this.props.className);
+    return classnames("mdc-tab__ripple", this.props.className);
   }
 
   render() {

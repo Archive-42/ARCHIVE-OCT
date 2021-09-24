@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCTopAppBarAdapter} from '../adapter';
-import {cssClasses} from '../constants';
-import {MDCTopAppBarBaseFoundation} from '../foundation';
+import { MDCTopAppBarAdapter } from "../adapter";
+import { cssClasses } from "../constants";
+import { MDCTopAppBarBaseFoundation } from "../foundation";
 
 export class MDCShortTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
   // Public visibility for backward compatibility.
@@ -49,7 +49,8 @@ export class MDCShortTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
 
     // If initialized with SHORT_COLLAPSED_CLASS, the bar should always be collapsed
     this.setAlwaysCollapsed(
-      this.adapter.hasClass(cssClasses.SHORT_COLLAPSED_CLASS));
+      this.adapter.hasClass(cssClasses.SHORT_COLLAPSED_CLASS)
+    );
   }
 
   /**

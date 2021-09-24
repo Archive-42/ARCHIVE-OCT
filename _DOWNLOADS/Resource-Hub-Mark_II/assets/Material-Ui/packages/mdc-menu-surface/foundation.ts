@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCMenuSurfaceAdapter} from './adapter';
-import {Corner, CornerBit, cssClasses, numbers, strings} from './constants';
-import {MDCMenuDimensions, MDCMenuDistance, MDCMenuPoint} from './types';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCMenuSurfaceAdapter } from "./adapter";
+import { Corner, CornerBit, cssClasses, numbers, strings } from "./constants";
+import { MDCMenuDimensions, MDCMenuDistance, MDCMenuPoint } from "./types";
 
 interface AutoLayoutMeasurements {
   anchorSize: MDCMenuDimensions;
@@ -67,11 +67,11 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
       isFocused: () => false,
       isRtl: () => false,
 
-      getInnerDimensions: () => ({height: 0, width: 0}),
+      getInnerDimensions: () => ({ height: 0, width: 0 }),
       getAnchorDimensions: () => null,
-      getWindowDimensions: () => ({height: 0, width: 0}),
-      getBodyDimensions: () => ({height: 0, width: 0}),
-      getWindowScroll: () => ({x: 0, y: 0}),
+      getWindowDimensions: () => ({ height: 0, width: 0 }),
+      getBodyDimensions: () => ({ height: 0, width: 0 }),
+      getWindowScroll: () => ({ x: 0, y: 0 }),
       setPosition: () => undefined,
       setMaxHeight: () => undefined,
       setTransformOrigin: () => undefined,
@@ -111,19 +111,23 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
    *                    +--------------+
    */
   private originCorner: Corner = Corner.TOP_START;
-  private readonly anchorMargin:
-      MDCMenuDistance = {top: 0, right: 0, bottom: 0, left: 0};
-  private readonly position: MDCMenuPoint = {x: 0, y: 0};
+  private readonly anchorMargin: MDCMenuDistance = {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  };
+  private readonly position: MDCMenuPoint = { x: 0, y: 0 };
 
-  private dimensions!: MDCMenuDimensions;         // assigned in open()
-  private measurements!: AutoLayoutMeasurements;  // assigned in open()
+  private dimensions!: MDCMenuDimensions; // assigned in open()
+  private measurements!: AutoLayoutMeasurements; // assigned in open()
 
   constructor(adapter?: Partial<MDCMenuSurfaceAdapter>) {
-    super({...MDCMenuSurfaceFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCMenuSurfaceFoundation.defaultAdapter, ...adapter });
   }
 
   init() {
-    const {ROOT, OPEN} = MDCMenuSurfaceFoundation.cssClasses;
+    const { ROOT, OPEN } = MDCMenuSurfaceFoundation.cssClasses;
 
     if (!this.adapter.hasClass(ROOT)) {
       throw new Error(`${ROOT} class required in root element.`);
@@ -214,7 +218,8 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
         this.openAnimationEndTimerId = setTimeout(() => {
           this.openAnimationEndTimerId = 0;
           this.adapter.removeClass(
-              MDCMenuSurfaceFoundation.cssClasses.ANIMATING_OPEN);
+            MDCMenuSurfaceFoundation.cssClasses.ANIMATING_OPEN
+          );
           this.adapter.notifyOpen();
         }, numbers.TRANSITION_OPEN_DURATION);
       });
@@ -239,20 +244,23 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
 
       this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
       this.adapter.removeClass(
-          MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW);
+        MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW
+      );
       this.adapter.notifyClose();
-
     } else {
       this.adapter.addClass(
-          MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
+        MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED
+      );
       requestAnimationFrame(() => {
         this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
         this.adapter.removeClass(
-            MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW);
+          MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW
+        );
         this.closeAnimationEndTimerId = setTimeout(() => {
           this.closeAnimationEndTimerId = 0;
           this.adapter.removeClass(
-              MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
+            MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED
+          );
           this.adapter.notifyClose();
         }, numbers.TRANSITION_CLOSE_DURATION);
       });
@@ -275,9 +283,9 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
 
   /** Handle keys that close the surface. */
   handleKeydown(evt: KeyboardEvent) {
-    const {keyCode, key} = evt;
+    const { keyCode, key } = evt;
 
-    const isEscape = key === 'Escape' || keyCode === 27;
+    const isEscape = key === "Escape" || keyCode === 27;
     if (isEscape) {
       this.close();
     }
@@ -289,13 +297,15 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
 
     const corner = this.getoriginCorner();
     const maxMenuSurfaceHeight = this.getMenuSurfaceMaxHeight(corner);
-    const verticalAlignment =
-        this.hasBit(corner, CornerBit.BOTTOM) ? 'bottom' : 'top';
-    let horizontalAlignment =
-        this.hasBit(corner, CornerBit.RIGHT) ? 'right' : 'left';
+    const verticalAlignment = this.hasBit(corner, CornerBit.BOTTOM)
+      ? "bottom"
+      : "top";
+    let horizontalAlignment = this.hasBit(corner, CornerBit.RIGHT)
+      ? "right"
+      : "left";
     const horizontalOffset = this.getHorizontalOriginOffset(corner);
     const verticalOffset = this.getVerticalOriginOffset(corner);
-    const {anchorSize, surfaceSize} = this.measurements;
+    const { anchorSize, surfaceSize } = this.measurements;
 
     const position: Partial<MDCMenuDistance> = {
       [horizontalAlignment]: horizontalOffset,
@@ -303,8 +313,11 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
     };
 
     // Center align when anchor width is comparable or greater than menu surface, otherwise keep corner.
-    if (anchorSize.width / surfaceSize.width > numbers.ANCHOR_TO_MENU_SURFACE_WIDTH_RATIO) {
-      horizontalAlignment = 'center';
+    if (
+      anchorSize.width / surfaceSize.width >
+      numbers.ANCHOR_TO_MENU_SURFACE_WIDTH_RATIO
+    ) {
+      horizontalAlignment = "center";
     }
 
     // If the menu-surface has been hoisted to the body, it's no longer relative to the anchor element
@@ -313,10 +326,12 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
     }
 
     this.adapter.setTransformOrigin(
-        `${horizontalAlignment} ${verticalAlignment}`);
+      `${horizontalAlignment} ${verticalAlignment}`
+    );
     this.adapter.setPosition(position);
     this.adapter.setMaxHeight(
-        maxMenuSurfaceHeight ? maxMenuSurfaceHeight + 'px' : '');
+      maxMenuSurfaceHeight ? maxMenuSurfaceHeight + "px" : ""
+    );
 
     // If it is opened from the top then add is-open-below class
     if (!this.hasBit(corner, CornerBit.BOTTOM)) {
@@ -373,23 +388,29 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
   private getoriginCorner(): Corner {
     let corner = this.originCorner;
 
-    const {viewportDistance, anchorSize, surfaceSize} = this.measurements;
-    const {MARGIN_TO_EDGE} = MDCMenuSurfaceFoundation.numbers;
+    const { viewportDistance, anchorSize, surfaceSize } = this.measurements;
+    const { MARGIN_TO_EDGE } = MDCMenuSurfaceFoundation.numbers;
 
     const isAnchoredToBottom = this.hasBit(this.anchorCorner, CornerBit.BOTTOM);
 
     let availableTop;
     let availableBottom;
     if (isAnchoredToBottom) {
-      availableTop = viewportDistance.top - MARGIN_TO_EDGE + anchorSize.height +
-          this.anchorMargin.bottom;
+      availableTop =
+        viewportDistance.top -
+        MARGIN_TO_EDGE +
+        anchorSize.height +
+        this.anchorMargin.bottom;
       availableBottom =
-          viewportDistance.bottom - MARGIN_TO_EDGE - this.anchorMargin.bottom;
+        viewportDistance.bottom - MARGIN_TO_EDGE - this.anchorMargin.bottom;
     } else {
       availableTop =
-          viewportDistance.top - MARGIN_TO_EDGE + this.anchorMargin.top;
-      availableBottom = viewportDistance.bottom - MARGIN_TO_EDGE +
-          anchorSize.height - this.anchorMargin.top;
+        viewportDistance.top - MARGIN_TO_EDGE + this.anchorMargin.top;
+      availableBottom =
+        viewportDistance.bottom -
+        MARGIN_TO_EDGE +
+        anchorSize.height -
+        this.anchorMargin.top;
     }
 
     const isAvailableBottom = availableBottom - surfaceSize.height > 0;
@@ -400,8 +421,9 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
 
     const isRtl = this.adapter.isRtl();
     const isFlipRtl = this.hasBit(this.anchorCorner, CornerBit.FLIP_RTL);
-    const hasRightBit = this.hasBit(this.anchorCorner, CornerBit.RIGHT) ||
-        this.hasBit(corner, CornerBit.RIGHT);
+    const hasRightBit =
+      this.hasBit(this.anchorCorner, CornerBit.RIGHT) ||
+      this.hasBit(corner, CornerBit.RIGHT);
 
     // Whether surface attached to right side of anchor element.
     let isAnchoredToRight = false;
@@ -418,28 +440,31 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
     let availableRight;
     if (isAnchoredToRight) {
       availableLeft =
-          viewportDistance.left + anchorSize.width + this.anchorMargin.right;
+        viewportDistance.left + anchorSize.width + this.anchorMargin.right;
       availableRight = viewportDistance.right - this.anchorMargin.right;
     } else {
       availableLeft = viewportDistance.left + this.anchorMargin.left;
       availableRight =
-          viewportDistance.right + anchorSize.width - this.anchorMargin.left;
+        viewportDistance.right + anchorSize.width - this.anchorMargin.left;
     }
 
     const isAvailableLeft = availableLeft - surfaceSize.width > 0;
     const isAvailableRight = availableRight - surfaceSize.width > 0;
     const isOriginCornerAlignedToEnd =
-        this.hasBit(corner, CornerBit.FLIP_RTL) &&
-        this.hasBit(corner, CornerBit.RIGHT);
+      this.hasBit(corner, CornerBit.FLIP_RTL) &&
+      this.hasBit(corner, CornerBit.RIGHT);
 
-    if (isAvailableRight && isOriginCornerAlignedToEnd && isRtl ||
-        !isAvailableLeft && isOriginCornerAlignedToEnd) {
+    if (
+      (isAvailableRight && isOriginCornerAlignedToEnd && isRtl) ||
+      (!isAvailableLeft && isOriginCornerAlignedToEnd)
+    ) {
       // Attach left side of surface to the anchor.
       corner = this.unsetBit(corner, CornerBit.RIGHT);
     } else if (
-        isAvailableLeft && isAnchoredToRight && isRtl ||
-        (isAvailableLeft && !isAnchoredToRight && hasRightBit) ||
-        (!isAvailableRight && availableLeft >= availableRight)) {
+      (isAvailableLeft && isAnchoredToRight && isRtl) ||
+      (isAvailableLeft && !isAnchoredToRight && hasRightBit) ||
+      (!isAvailableRight && availableLeft >= availableRight)
+    ) {
       // Attach right side of surface to the anchor.
       corner = this.setBit(corner, CornerBit.RIGHT);
     }
@@ -452,12 +477,12 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
    * @return Maximum height of the menu surface, based on available space. 0 indicates should not be set.
    */
   private getMenuSurfaceMaxHeight(corner: Corner): number {
-    const {viewportDistance} = this.measurements;
+    const { viewportDistance } = this.measurements;
 
     let maxHeight = 0;
     const isBottomAligned = this.hasBit(corner, CornerBit.BOTTOM);
     const isBottomAnchored = this.hasBit(this.anchorCorner, CornerBit.BOTTOM);
-    const {MARGIN_TO_EDGE} = MDCMenuSurfaceFoundation.numbers;
+    const { MARGIN_TO_EDGE } = MDCMenuSurfaceFoundation.numbers;
 
     // When maximum height is not specified, it is handled from CSS.
     if (isBottomAligned) {
@@ -466,8 +491,11 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
         maxHeight += this.measurements.anchorSize.height;
       }
     } else {
-      maxHeight = viewportDistance.bottom - this.anchorMargin.bottom +
-          this.measurements.anchorSize.height - MARGIN_TO_EDGE;
+      maxHeight =
+        viewportDistance.bottom -
+        this.anchorMargin.bottom +
+        this.measurements.anchorSize.height -
+        MARGIN_TO_EDGE;
       if (isBottomAnchored) {
         maxHeight -= this.measurements.anchorSize.height;
       }
@@ -481,33 +509,38 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
    * @return Horizontal offset of menu surface origin corner from corresponding anchor corner.
    */
   private getHorizontalOriginOffset(corner: Corner): number {
-    const {anchorSize} = this.measurements;
+    const { anchorSize } = this.measurements;
 
     // isRightAligned corresponds to using the 'right' property on the surface.
     const isRightAligned = this.hasBit(corner, CornerBit.RIGHT);
-    const avoidHorizontalOverlap =
-        this.hasBit(this.anchorCorner, CornerBit.RIGHT);
+    const avoidHorizontalOverlap = this.hasBit(
+      this.anchorCorner,
+      CornerBit.RIGHT
+    );
 
     if (isRightAligned) {
-      const rightOffset = avoidHorizontalOverlap ?
-          anchorSize.width - this.anchorMargin.left :
-          this.anchorMargin.right;
+      const rightOffset = avoidHorizontalOverlap
+        ? anchorSize.width - this.anchorMargin.left
+        : this.anchorMargin.right;
 
       // For hoisted or fixed elements, adjust the offset by the difference
       // between viewport width and body width so when we calculate the right
       // value (`adjustPositionForHoistedElement`) based on the element
       // position, the right property is correct.
       if (this.isHoistedElement || this.isFixedPosition) {
-        return rightOffset -
-            (this.measurements.viewportSize.width -
-             this.measurements.bodySize.width);
+        return (
+          rightOffset -
+          (this.measurements.viewportSize.width -
+            this.measurements.bodySize.width)
+        );
       }
 
       return rightOffset;
     }
 
-    return avoidHorizontalOverlap ? anchorSize.width - this.anchorMargin.right :
-                                    this.anchorMargin.left;
+    return avoidHorizontalOverlap
+      ? anchorSize.width - this.anchorMargin.right
+      : this.anchorMargin.left;
   }
 
   /**
@@ -515,28 +548,33 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
    * @return Vertical offset of menu surface origin corner from corresponding anchor corner.
    */
   private getVerticalOriginOffset(corner: Corner): number {
-    const {anchorSize} = this.measurements;
+    const { anchorSize } = this.measurements;
     const isBottomAligned = this.hasBit(corner, CornerBit.BOTTOM);
-    const avoidVerticalOverlap =
-        this.hasBit(this.anchorCorner, CornerBit.BOTTOM);
+    const avoidVerticalOverlap = this.hasBit(
+      this.anchorCorner,
+      CornerBit.BOTTOM
+    );
 
     let y = 0;
     if (isBottomAligned) {
-      y = avoidVerticalOverlap ? anchorSize.height - this.anchorMargin.top :
-                                 -this.anchorMargin.bottom;
+      y = avoidVerticalOverlap
+        ? anchorSize.height - this.anchorMargin.top
+        : -this.anchorMargin.bottom;
     } else {
-      y = avoidVerticalOverlap ?
-          (anchorSize.height + this.anchorMargin.bottom) :
-          this.anchorMargin.top;
+      y = avoidVerticalOverlap
+        ? anchorSize.height + this.anchorMargin.bottom
+        : this.anchorMargin.top;
     }
     return y;
   }
 
   /** Calculates the offsets for positioning the menu-surface when the menu-surface has been hoisted to the body. */
   private adjustPositionForHoistedElement(position: Partial<MDCMenuDistance>) {
-    const {windowScroll, viewportDistance} = this.measurements;
+    const { windowScroll, viewportDistance } = this.measurements;
 
-    const props = Object.keys(position) as Array<keyof Partial<MDCMenuDistance>>;
+    const props = Object.keys(position) as Array<
+      keyof Partial<MDCMenuDistance>
+    >;
 
     for (const prop of props) {
       let value = position[prop] || 0;
@@ -548,13 +586,14 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
       // Surfaces that are absolutely positioned need to have additional calculations for scroll
       // and bottom positioning.
       if (!this.isFixedPosition) {
-        if (prop === 'top') {
+        if (prop === "top") {
           value += windowScroll.y;
-        } else if (prop === 'bottom') {
+        } else if (prop === "bottom") {
           value -= windowScroll.y;
-        } else if (prop === 'left') {
+        } else if (prop === "left") {
           value += windowScroll.x;
-        } else { // prop === 'right'
+        } else {
+          // prop === 'right'
           value -= windowScroll.x;
         }
       }
@@ -569,8 +608,9 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
    */
   private maybeRestoreFocus() {
     const isRootFocused = this.adapter.isFocused();
-    const childHasFocus = document.activeElement &&
-        this.adapter.isElementInContainer(document.activeElement);
+    const childHasFocus =
+      document.activeElement &&
+      this.adapter.isElementInContainer(document.activeElement);
     if (isRootFocused || childHasFocus) {
       this.adapter.restoreFocus();
     }
@@ -593,7 +633,7 @@ export class MDCMenuSurfaceFoundation extends MDCFoundation<MDCMenuSurfaceAdapte
    * Equivalent to Number.isFinite in ES2015, which is not supported in IE.
    */
   private isFinite(num: number): boolean {
-    return typeof num === 'number' && isFinite(num);
+    return typeof num === "number" && isFinite(num);
   }
 }
 

@@ -23,6 +23,6 @@
       "command": "python",
       "args": ["backend/server.py"]
       //}]}
-    },
+    }
   ]
 }

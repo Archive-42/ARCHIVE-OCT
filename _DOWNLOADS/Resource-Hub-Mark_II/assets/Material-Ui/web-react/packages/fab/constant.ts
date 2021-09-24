@@ -21,12 +21,12 @@
 // THE SOFTWARE.
 
 const CSS_CLASSES = {
-  ROOT: 'mdc-fab',
-  ICON: 'mdc-fab__icon',
-  LABEL: 'mdc-fab__label',
-  MINI: 'mdc-fab--mini',
-  EXTENDED: 'mdc-fab--extended',
-  EXITED: 'mdc-fab--exited',
+  ROOT: "mdc-fab",
+  ICON: "mdc-fab__icon",
+  LABEL: "mdc-fab__label",
+  MINI: "mdc-fab--mini",
+  EXTENDED: "mdc-fab--extended",
+  EXITED: "mdc-fab--exited",
 };
 
-export {CSS_CLASSES};
+export { CSS_CLASSES };

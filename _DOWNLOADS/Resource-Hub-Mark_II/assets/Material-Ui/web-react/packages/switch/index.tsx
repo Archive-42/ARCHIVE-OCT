@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCSwitchAdapter} from '@material/switch/adapter';
-import {MDCSwitchFoundation} from '@material/switch/foundation';
-import ThumbUnderlay from './ThumbUnderlay';
-import NativeControl from './NativeControl';
+import React from "react";
+import classnames from "classnames";
+import { MDCSwitchAdapter } from "@material/switch/adapter";
+import { MDCSwitchFoundation } from "@material/switch/foundation";
+import ThumbUnderlay from "./ThumbUnderlay";
+import NativeControl from "./NativeControl";
 
 export interface SwitchProps extends React.HTMLProps<HTMLInputElement> {
   checked?: boolean;
@@ -59,7 +59,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
 
   static defaultProps: Partial<SwitchProps> = {
     checked: false,
-    className: '',
+    className: "",
     disabled: false,
   };
 
@@ -84,34 +84,34 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
   }
 
   get classes() {
-    const {classList} = this.state;
-    const {className} = this.props;
-    return classnames('mdc-switch', Array.from(classList), className);
+    const { classList } = this.state;
+    const { className } = this.props;
+    return classnames("mdc-switch", Array.from(classList), className);
   }
 
   get adapter(): MDCSwitchAdapter {
     return {
       addClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.add(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       removeClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       setNativeControlChecked: (nativeControlChecked: boolean) => {
-        this.setState({nativeControlChecked});
+        this.setState({ nativeControlChecked });
       },
       setNativeControlDisabled: (nativeControlDisabled: boolean) => {
-        this.setState({nativeControlDisabled});
+        this.setState({ nativeControlDisabled });
       },
     };
   }
 
   onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({nativeControlChecked: evt.target.checked});
+    this.setState({ nativeControlChecked: evt.target.checked });
     this.foundation && this.foundation.handleChange(evt.nativeEvent);
   };
 
@@ -128,7 +128,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     } = this.props;
     return (
       <div className={this.classes} {...otherProps}>
-        <div className='mdc-switch__track' />
+        <div className="mdc-switch__track" />
         <ThumbUnderlay rippleActivator={this.rippleActivator}>
           <NativeControl
             id={nativeControlId}

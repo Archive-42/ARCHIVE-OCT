@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCSwitchAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCSwitchAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCSwitchFoundation extends MDCFoundation<MDCSwitchAdapter> {
   /** The string constants used by the switch. */
@@ -48,7 +48,7 @@ export class MDCSwitchFoundation extends MDCFoundation<MDCSwitchAdapter> {
   }
 
   constructor(adapter?: Partial<MDCSwitchAdapter>) {
-    super({...MDCSwitchFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCSwitchFoundation.defaultAdapter, ...adapter });
   }
 
   /** Sets the checked state of the switch. */
@@ -86,7 +86,9 @@ export class MDCSwitchFoundation extends MDCFoundation<MDCSwitchAdapter> {
 
   private updateAriaChecked_(checked: boolean) {
     this.adapter.setNativeControlAttr(
-        strings.ARIA_CHECKED_ATTR, `${!!checked}`);
+      strings.ARIA_CHECKED_ATTR,
+      `${!!checked}`
+    );
   }
 }
 

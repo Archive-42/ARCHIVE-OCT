@@ -18,7 +18,6 @@ path: /catalog/layout-grid/
 
 Material design’s responsive UI is based on a column-variate grid layout. It has 12 columns on desktop, 8 columns on tablet and 4 columns on phone.
 
-
 ## Design & API Documentation
 
 <ul class="icon-list">
@@ -81,27 +80,25 @@ However, the Material Design guidelines do not recommend having a deeply nested 
 
 ### CSS Classes
 
-CSS Class | Description
---- | ---
-`mdc-layout-grid` | Mandatory, for the layout grid element
-`mdc-layout-grid__inner` | Mandatory, for wrapping grid cell
-`mdc-layout-grid__cell` | Mandatory, for the layout grid cell
-`mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>` | Optional, specifies the number of columns the cell spans
-`mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>-<TYPE_OF_DEVICE>` | Optional, specifies the number of columns the cell spans on a type of device (desktop, tablet, phone)
-`mdc-layout-grid__cell--order-<INDEX>` | Optional, specifies the order of the cell
-`mdc-layout-grid__cell--align-<POSITION>` | Optional, specifies the alignment of cell
-`mdc-layout-grid--fixed-column-width` | Optional, specifies the grid should have fixed column width
-`mdc-layout-grid--align-<GRID_POSITION>` | Optional, specifies the alignment of the whole grid
+| CSS Class                                                          | Description                                                                                           |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `mdc-layout-grid`                                                  | Mandatory, for the layout grid element                                                                |
+| `mdc-layout-grid__inner`                                           | Mandatory, for wrapping grid cell                                                                     |
+| `mdc-layout-grid__cell`                                            | Mandatory, for the layout grid cell                                                                   |
+| `mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>`                  | Optional, specifies the number of columns the cell spans                                              |
+| `mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>-<TYPE_OF_DEVICE>` | Optional, specifies the number of columns the cell spans on a type of device (desktop, tablet, phone) |
+| `mdc-layout-grid__cell--order-<INDEX>`                             | Optional, specifies the order of the cell                                                             |
+| `mdc-layout-grid__cell--align-<POSITION>`                          | Optional, specifies the alignment of cell                                                             |
+| `mdc-layout-grid--fixed-column-width`                              | Optional, specifies the grid should have fixed column width                                           |
+| `mdc-layout-grid--align-<GRID_POSITION>`                           | Optional, specifies the alignment of the whole grid                                                   |
 
 #### `mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>`
 
 You can set the cells span by applying one of the span classes, of the form `mdc-layout-grid__cell--span-{columns}`, where `{columns}` is an integer between 1 and 12. If the chosen span size is larger than the available number of columns at the current screen size, the cell behaves as if its chosen span size were equal to the available number of columns at that screen size. If the span classes are not set, `mdc-layout-grid__cell` will fallback to a default span size of 4 columns.
 
-
 #### `mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>-<TYPE_OF_DEVICE>`
 
 The same as `mdc-layout-grid__cell--span-<NUMBER_OF_COLUMNS>` but for a specific type of device(`desktop`, `tablet` or `phone`).
-
 
 #### `mdc-layout-grid__cell--order-<INDEX>`
 
@@ -116,11 +113,9 @@ Items are defined to stretch, by default, taking up the height of their correspo
 behavior by using one of the `mdc-layout-grid__cell--align-<POSITION>` alignment classes, where `<POSITION>` is one of
 `top`, `middle` or `bottom`.
 
-
 #### `mdc-layout-grid--fixed-column-width`
 
 You can designate each column to have a certain width by using `mdc-layout-grid--fixed-column-width` modifier. The column width can be specified through sass map `$mdc-layout-grid-column-width` or css custom properties `--mdc-layout-grid-column-width-{screen_size}`. The column width is set to 72px on all devices by default.
-
 
 #### `mdc-layout-grid--align-<GRID_POSITION>`
 
@@ -128,18 +123,16 @@ The grid is by default center aligned. You can add `mdc-layout-grid--align-left`
 or `mdc-layout-grid--align-right` modifier class to change this behavior. Note, these
 modifiers will have no effect when the grid already fills its container.
 
-
 ### Sass Mixins
 
-Mixin | Description
---- | ---
-`mdc-layout-grid($size, $margin, $max-width)` | Generates CSS for a grid container on certain device type
-`mdc-layout-grid-inner($size, $margin, $gutter)` | Generates CSS for a grid cell wrapper on certain device type
-`mdc-layout-grid-cell($size, $default-span, $gutter)` | Generates CSS for a grid cell on certain device type
-`mdc-layout-grid-fixed-column-width($size, $margin, $gutter, $column-width)` | Generates CSS for a fixed column width container on certain device type
-`mdc-layout-grid-cell-order($order)` | Reorders a cell inside a grid
-`mdc-layout-grid-cell-align($position)` | Aligns a cell vertically inside a grid
-
+| Mixin                                                                        | Description                                                             |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `mdc-layout-grid($size, $margin, $max-width)`                                | Generates CSS for a grid container on certain device type               |
+| `mdc-layout-grid-inner($size, $margin, $gutter)`                             | Generates CSS for a grid cell wrapper on certain device type            |
+| `mdc-layout-grid-cell($size, $default-span, $gutter)`                        | Generates CSS for a grid cell on certain device type                    |
+| `mdc-layout-grid-fixed-column-width($size, $margin, $gutter, $column-width)` | Generates CSS for a fixed column width container on certain device type |
+| `mdc-layout-grid-cell-order($order)`                                         | Reorders a cell inside a grid                                           |
+| `mdc-layout-grid-cell-align($position)`                                      | Aligns a cell vertically inside a grid                                  |
 
 #### `mdc-layout-grid($size, $margin, $max-width)`
 
@@ -152,6 +145,7 @@ Generates CSS for a grid container on certain device type. The mixin takes three
 #### `mdc-layout-grid-inner($size, $margin, $gutter)`
 
 Generates CSS for a grid cell wrapper on certain device type. The mixin takes three parameters:
+
 - `$size`: the target platform: `desktop`, `tablet` or `phone`.
 - `$margin`: the size of the grid margin.
 - `$gutter`: the size of the gutter between cells.
@@ -159,6 +153,7 @@ Generates CSS for a grid cell wrapper on certain device type. The mixin takes th
 #### `mdc-layout-grid-cell($size, $default-span, $gutter)`
 
 Generates CSS for a grid cell on certain device type. The mixin takes three parameters:
+
 - `$size`: the target platform: `desktop`, `tablet` or `phone`.
 - `$default-span` (optional, default 4): how many columns this cell should span (1 to 12).
 - `$gutter`: the size of the gutter between cells. Be sure to use the same value as for the parent grid.
@@ -168,6 +163,7 @@ Generates CSS for a grid cell on certain device type. The mixin takes three para
 #### `mdc-layout-grid-fixed-column-width($size, $margin, $gutter, $column-width)`
 
 Generates CSS for a fixed column width container on certain device type. The mixin takes four parameters:
+
 - `$size`: the target platform: `desktop`, `tablet` or `phone`.
 - `$margin`: the size of the grid margin.
 - `$gutter`: the size of the gutter between cells.
@@ -175,20 +171,19 @@ Generates CSS for a fixed column width container on certain device type. The mix
 
 ### Sass Variables
 
-Variables | Description
---- | ---
-`mdc-layout-grid-breakpoints` | A SASS Map specifies the breakpoints width
-`mdc-layout-grid-columns` | A SASS Map specifies the number of columns
-`mdc-layout-grid-default-margin` | A SASS Map specifies the space between the edge of the grid and the edge of the first cell
-`mdc-layout-grid-default-gutter` | A SASS Map specifies the space between edges of adjacent cells
-`mdc-layout-grid-column-width` | A SASS Map specifies the column width of grid columns
-`mdc-layout-grid-default-column-span` | Specifies a cell's default span
-`mdc-layout-grid-max-width` | Restricts max width of the layout grid
-
+| Variables                             | Description                                                                                |
+| ------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `mdc-layout-grid-breakpoints`         | A SASS Map specifies the breakpoints width                                                 |
+| `mdc-layout-grid-columns`             | A SASS Map specifies the number of columns                                                 |
+| `mdc-layout-grid-default-margin`      | A SASS Map specifies the space between the edge of the grid and the edge of the first cell |
+| `mdc-layout-grid-default-gutter`      | A SASS Map specifies the space between edges of adjacent cells                             |
+| `mdc-layout-grid-column-width`        | A SASS Map specifies the column width of grid columns                                      |
+| `mdc-layout-grid-default-column-span` | Specifies a cell's default span                                                            |
+| `mdc-layout-grid-max-width`           | Restricts max width of the layout grid                                                     |
 
 ### CSS Custom Properties
 
-CSS Custom Properties | Description
---- | ---
-`mdc-layout-grid-margin-<TYPE_OF_DEVICE>` | Specifies the space between the edge of the grid and the edge of the first cell
-`mdc-layout-grid-gutter-<TYPE_OF_DEVICE>` | Specifies the space between edges of adjacent cells
+| CSS Custom Properties                     | Description                                                                     |
+| ----------------------------------------- | ------------------------------------------------------------------------------- |
+| `mdc-layout-grid-margin-<TYPE_OF_DEVICE>` | Specifies the space between the edge of the grid and the edge of the first cell |
+| `mdc-layout-grid-gutter-<TYPE_OF_DEVICE>` | Specifies the space between edges of adjacent cells                             |

@@ -21,11 +21,13 @@
  * THE SOFTWARE.
  */
 
-
-import {MDCCircularProgress, MDCCircularProgressFoundation} from '../../mdc-circular-progress/index';
+import {
+  MDCCircularProgress,
+  MDCCircularProgressFoundation,
+} from "../../mdc-circular-progress/index";
 const RADIUS = 18;
 function getFixture() {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
   <div class="mdc-circular-progress" style="width:48px;height:48px;" role="progressbar" aria-label="Example Progress Bar" aria-valuemin="0" aria-valuemax="1">
     <div class="mdc-circular-progress__determinate-container">
@@ -117,57 +119,62 @@ function getFixture() {
 function setupTest() {
   const root = getFixture();
   const component = new MDCCircularProgress(root);
-  return {root, component};
+  return { root, component };
 }
 
-describe('MDCCircularProgress', () => {
-  it('attachTo initializes and returns a MDCCircularProgress instance', () => {
+describe("MDCCircularProgress", () => {
+  it("attachTo initializes and returns a MDCCircularProgress instance", () => {
     expect(
-        MDCCircularProgress.attachTo(getFixture()) instanceof
-        MDCCircularProgress)
-        .toBeTruthy();
+      MDCCircularProgress.attachTo(getFixture()) instanceof MDCCircularProgress
+    ).toBeTruthy();
   });
 
-  it('set indeterminate', () => {
-    const {root, component} = setupTest();
+  it("set indeterminate", () => {
+    const { root, component } = setupTest();
 
     component.determinate = false;
-    expect(root.classList.contains('mdc-circular-progress--indeterminate'))
-        .toBeTruthy();
     expect(
-        root.getAttribute(MDCCircularProgressFoundation.strings.ARIA_VALUENOW))
-        .toEqual(null);
+      root.classList.contains("mdc-circular-progress--indeterminate")
+    ).toBeTruthy();
+    expect(
+      root.getAttribute(MDCCircularProgressFoundation.strings.ARIA_VALUENOW)
+    ).toEqual(null);
   });
 
-  it('set progress', () => {
-    const {root, component} = setupTest();
+  it("set progress", () => {
+    const { root, component } = setupTest();
     const progressTestValue = 0.5;
     component.progress = progressTestValue;
-    const determinateCircle =
-        root.querySelector(MDCCircularProgressFoundation.strings
-                               .DETERMINATE_CIRCLE_SELECTOR) as HTMLElement;
+    const determinateCircle = root.querySelector(
+      MDCCircularProgressFoundation.strings.DETERMINATE_CIRCLE_SELECTOR
+    ) as HTMLElement;
 
     expect(
-        root.getAttribute(MDCCircularProgressFoundation.strings.ARIA_VALUENOW))
-        .toEqual(progressTestValue.toString());
-    const strokeDashoffset = Number(determinateCircle.getAttribute(
-        MDCCircularProgressFoundation.strings.STROKE_DASHOFFSET));
+      root.getAttribute(MDCCircularProgressFoundation.strings.ARIA_VALUENOW)
+    ).toEqual(progressTestValue.toString());
+    const strokeDashoffset = Number(
+      determinateCircle.getAttribute(
+        MDCCircularProgressFoundation.strings.STROKE_DASHOFFSET
+      )
+    );
     const expectedVal = progressTestValue * 2 * Math.PI * RADIUS;
-    expect(strokeDashoffset).toBeLessThan(expectedVal + .001);
-    expect(strokeDashoffset).toBeGreaterThan(expectedVal - .001);
+    expect(strokeDashoffset).toBeLessThan(expectedVal + 0.001);
+    expect(strokeDashoffset).toBeGreaterThan(expectedVal - 0.001);
   });
 
-  it('open and close', () => {
-    const {root, component} = setupTest();
+  it("open and close", () => {
+    const { root, component } = setupTest();
 
     component.close();
-    expect(root.classList.contains('mdc-circular-progress--closed'))
-        .toBeTruthy();
+    expect(
+      root.classList.contains("mdc-circular-progress--closed")
+    ).toBeTruthy();
     expect(component.isClosed).toBe(true);
 
     component.open();
-    expect(root.classList.contains('mdc-circular-progress--closed'))
-        .toBeFalsy();
+    expect(
+      root.classList.contains("mdc-circular-progress--closed")
+    ).toBeFalsy();
     expect(component.isClosed).toBe(false);
   });
 });

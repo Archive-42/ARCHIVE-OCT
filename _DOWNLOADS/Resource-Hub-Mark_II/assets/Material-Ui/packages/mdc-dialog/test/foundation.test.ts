@@ -21,72 +21,75 @@
  * THE SOFTWARE.
  */
 
-import {verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpFoundationTest, setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
-import {cssClasses, numbers, strings} from '../constants';
-import {MDCDialogFoundation} from '../foundation';
+import { verifyDefaultAdapter } from "../../../testing/helpers/foundation";
+import {
+  setUpFoundationTest,
+  setUpMdcTestEnvironment,
+} from "../../../testing/helpers/setup";
+import { cssClasses, numbers, strings } from "../constants";
+import { MDCDialogFoundation } from "../foundation";
 
 const ENTER_EVENTS = [
-  {type: 'keydown', key: 'Enter', target: {}},
-  {type: 'keydown', keyCode: 13, target: {}},
+  { type: "keydown", key: "Enter", target: {} },
+  { type: "keydown", keyCode: 13, target: {} },
 ];
 
-describe('MDCDialogFoundation', () => {
+describe("MDCDialogFoundation", () => {
   setUpMdcTestEnvironment();
 
-  it('exports cssClasses', () => {
+  it("exports cssClasses", () => {
     expect(MDCDialogFoundation.cssClasses).toEqual(cssClasses);
   });
 
-  it('exports strings', () => {
+  it("exports strings", () => {
     expect(MDCDialogFoundation.strings).toEqual(strings);
   });
 
-  it('exports numbers', () => {
+  it("exports numbers", () => {
     expect(MDCDialogFoundation.numbers).toEqual(numbers);
   });
 
-  it('default adapter returns a complete adapter implementation', () => {
+  it("default adapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCDialogFoundation, [
-      'addClass',
-      'removeClass',
-      'hasClass',
-      'addBodyClass',
-      'removeBodyClass',
-      'eventTargetMatches',
-      'trapFocus',
-      'releaseFocus',
-      'getInitialFocusEl',
-      'isContentScrollable',
-      'areButtonsStacked',
-      'getActionFromEvent',
-      'clickDefaultButton',
-      'reverseButtons',
-      'notifyOpening',
-      'notifyOpened',
-      'notifyClosing',
-      'notifyClosed',
+      "addClass",
+      "removeClass",
+      "hasClass",
+      "addBodyClass",
+      "removeBodyClass",
+      "eventTargetMatches",
+      "trapFocus",
+      "releaseFocus",
+      "getInitialFocusEl",
+      "isContentScrollable",
+      "areButtonsStacked",
+      "getActionFromEvent",
+      "clickDefaultButton",
+      "reverseButtons",
+      "notifyOpening",
+      "notifyOpened",
+      "notifyClosing",
+      "notifyClosed",
     ]);
   });
 
   function setupTest() {
-    const {foundation, mockAdapter} = setUpFoundationTest(MDCDialogFoundation);
+    const { foundation, mockAdapter } =
+      setUpFoundationTest(MDCDialogFoundation);
     foundation.init();
-    return {foundation, mockAdapter};
+    return { foundation, mockAdapter };
   }
 
-  it(`#init turns off auto-stack if ${cssClasses.STACKED} is already present`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.STACKED).and.returnValue(true);
+  it(`#init turns off auto-stack if ${cssClasses.STACKED} is already present`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass.withArgs(cssClasses.STACKED).and.returnValue(true);
 
-       foundation.init();
-       expect(foundation.getAutoStackButtons()).toBe(false);
-     });
+    foundation.init();
+    expect(foundation.getAutoStackButtons()).toBe(false);
+  });
 
-  it('#destroy closes the dialog if it is still open', () => {
-    const {foundation} = setupTest();
-    foundation.close = jasmine.createSpy('close');
+  it("#destroy closes the dialog if it is still open", () => {
+    const { foundation } = setupTest();
+    foundation.close = jasmine.createSpy("close");
 
     foundation.open();
     foundation.destroy();
@@ -94,59 +97,60 @@ describe('MDCDialogFoundation', () => {
     expect(foundation.close).toHaveBeenCalledWith(strings.DESTROY_ACTION);
   });
 
-  it('#destroy removes animating classes if called when the dialog is animating',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#destroy removes animating classes if called when the dialog is animating", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       foundation.open();
-       foundation.destroy();
+    foundation.open();
+    foundation.destroy();
 
-       expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.OPENING);
-       expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.CLOSING);
-     });
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.OPENING);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.CLOSING);
+  });
 
-  it('#destroy cancels layout handling if called on same frame as layout',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#destroy cancels layout handling if called on same frame as layout", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       foundation.layout();
-       foundation.destroy();
-       jasmine.clock().tick(1);
+    foundation.layout();
+    foundation.destroy();
+    jasmine.clock().tick(1);
 
-       expect(mockAdapter.areButtonsStacked).not.toHaveBeenCalled();
-       expect(mockAdapter.isContentScrollable).not.toHaveBeenCalled();
-     });
+    expect(mockAdapter.areButtonsStacked).not.toHaveBeenCalled();
+    expect(mockAdapter.isContentScrollable).not.toHaveBeenCalled();
+  });
 
-  it('#open adds CSS classes after rAF', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#open adds CSS classes after rAF", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.open();
     expect(mockAdapter.addClass).not.toHaveBeenCalledWith(cssClasses.OPEN);
-    expect(mockAdapter.addBodyClass)
-        .not.toHaveBeenCalledWith(cssClasses.SCROLL_LOCK);
+    expect(mockAdapter.addBodyClass).not.toHaveBeenCalledWith(
+      cssClasses.SCROLL_LOCK
+    );
 
     // Note: #open uses a combination of rAF and setTimeout due to Firefox
     // behavior, so we need to wait 2 ticks
     jasmine.clock().tick(1);
     jasmine.clock().tick(1);
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.OPEN);
-    expect(mockAdapter.addBodyClass)
-        .toHaveBeenCalledWith(cssClasses.SCROLL_LOCK);
+    expect(mockAdapter.addBodyClass).toHaveBeenCalledWith(
+      cssClasses.SCROLL_LOCK
+    );
   });
 
-  it('#close removes CSS classes', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#close removes CSS classes", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.open();
     foundation.close();
 
     expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.OPEN);
-    expect(mockAdapter.removeBodyClass)
-        .toHaveBeenCalledWith(cssClasses.SCROLL_LOCK);
+    expect(mockAdapter.removeBodyClass).toHaveBeenCalledWith(
+      cssClasses.SCROLL_LOCK
+    );
   });
 
-  it('#close cancels rAF scheduled by open if still pending', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#close cancels rAF scheduled by open if still pending", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.open();
     foundation.close();
@@ -158,40 +162,40 @@ describe('MDCDialogFoundation', () => {
     expect(mockAdapter.addClass).not.toHaveBeenCalledWith(cssClasses.OPEN);
   });
 
-  it('#open adds the opening class to start an animation, and removes it after the animation is done',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#open adds the opening class to start an animation, and removes it after the animation is done", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       foundation.open();
-       jasmine.clock().tick(1);
-       jasmine.clock().tick(100);
+    foundation.open();
+    jasmine.clock().tick(1);
+    jasmine.clock().tick(100);
 
-       expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.OPENING);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.OPENING);
-       jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
-       expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.OPENING);
-     });
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.OPENING);
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.OPENING
+    );
+    jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.OPENING);
+  });
 
-  it('#close adds the closing class to start an animation, and removes it after the animation is done',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#close adds the closing class to start an animation, and removes it after the animation is done", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       foundation.open();
-       jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
-       foundation.close();
+    foundation.open();
+    jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
+    foundation.close();
 
-       expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.CLOSING);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.CLOSING);
-       jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
-       expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.CLOSING);
-     });
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.CLOSING);
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.CLOSING
+    );
+    jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.CLOSING);
+  });
 
-  it('#open activates focus trapping on the dialog surface', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#open activates focus trapping on the dialog surface", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-    const button = document.createElement('button');
+    const button = document.createElement("button");
     mockAdapter.getInitialFocusEl.and.returnValue(button);
     foundation.open();
 
@@ -204,8 +208,8 @@ describe('MDCDialogFoundation', () => {
     expect(mockAdapter.trapFocus).toHaveBeenCalledWith(button);
   });
 
-  it('#close deactivates focus trapping on the dialog surface', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#close deactivates focus trapping on the dialog surface", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.open();
 
@@ -220,7 +224,7 @@ describe('MDCDialogFoundation', () => {
   });
 
   it('#open emits "opening" and "opened" events', () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.open();
     jasmine.clock().tick(1);
@@ -232,53 +236,54 @@ describe('MDCDialogFoundation', () => {
   });
 
   it('#close emits "closing" and "closed" events', () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.open();
     jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
     foundation.close();
 
-    expect(mockAdapter.notifyClosing).toHaveBeenCalledWith('');
+    expect(mockAdapter.notifyClosing).toHaveBeenCalledWith("");
     jasmine.clock().tick(numbers.DIALOG_ANIMATION_CLOSE_TIME_MS);
-    expect(mockAdapter.notifyClosed).toHaveBeenCalledWith('');
+    expect(mockAdapter.notifyClosed).toHaveBeenCalledWith("");
 
     foundation.open();
     jasmine.clock().tick(numbers.DIALOG_ANIMATION_OPEN_TIME_MS);
 
-    const action = 'action';
+    const action = "action";
     foundation.close(action);
     expect(mockAdapter.notifyClosing).toHaveBeenCalledWith(action);
     jasmine.clock().tick(numbers.DIALOG_ANIMATION_CLOSE_TIME_MS);
     expect(mockAdapter.notifyClosed).toHaveBeenCalledWith(action);
   });
 
-  it('#close does nothing if the dialog is already closed', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#close does nothing if the dialog is already closed", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.close();
     expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(cssClasses.OPEN);
-    expect(mockAdapter.removeBodyClass)
-        .not.toHaveBeenCalledWith(cssClasses.SCROLL_LOCK);
+    expect(mockAdapter.removeBodyClass).not.toHaveBeenCalledWith(
+      cssClasses.SCROLL_LOCK
+    );
     expect(mockAdapter.addClass).not.toHaveBeenCalledWith(cssClasses.CLOSING);
     expect(mockAdapter.releaseFocus).not.toHaveBeenCalled();
-    expect(mockAdapter.notifyClosing).not.toHaveBeenCalledWith('');
+    expect(mockAdapter.notifyClosing).not.toHaveBeenCalledWith("");
   });
 
-  it('#isOpen returns false when the dialog has never been opened', () => {
-    const {foundation} = setupTest();
+  it("#isOpen returns false when the dialog has never been opened", () => {
+    const { foundation } = setupTest();
     expect(foundation.isOpen()).toBe(false);
   });
 
-  it('#isOpen returns true when the dialog is open', () => {
-    const {foundation} = setupTest();
+  it("#isOpen returns true when the dialog is open", () => {
+    const { foundation } = setupTest();
 
     foundation.open();
 
     expect(foundation.isOpen()).toBe(true);
   });
 
-  it('#isOpen returns false when the dialog is closed after being open', () => {
-    const {foundation} = setupTest();
+  it("#isOpen returns false when the dialog is closed after being open", () => {
+    const { foundation } = setupTest();
 
     foundation.open();
     foundation.close();
@@ -286,10 +291,10 @@ describe('MDCDialogFoundation', () => {
     expect(foundation.isOpen()).toBe(false);
   });
 
-  it('#open recalculates layout', () => {
-    const {foundation} = setupTest();
+  it("#open recalculates layout", () => {
+    const { foundation } = setupTest();
 
-    foundation.layout = jasmine.createSpy('layout');
+    foundation.layout = jasmine.createSpy("layout");
 
     foundation.open();
     jasmine.clock().tick(1);
@@ -298,38 +303,33 @@ describe('MDCDialogFoundation', () => {
     expect(foundation.layout).toHaveBeenCalled();
   });
 
-  it(`#layout removes ${
-         cssClasses.STACKED} class, detects stacked buttons, and adds class`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.areButtonsStacked.and.returnValue(true);
+  it(`#layout removes ${cssClasses.STACKED} class, detects stacked buttons, and adds class`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.areButtonsStacked.and.returnValue(true);
 
-       foundation.layout();
-       jasmine.clock().tick(1);
+    foundation.layout();
+    jasmine.clock().tick(1);
 
-       expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.STACKED);
-       expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.STACKED);
-     });
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.STACKED);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.STACKED);
+  });
 
-  it(`#layout removes ${
-         cssClasses
-             .STACKED} class, detects unstacked buttons, and does not add class`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.areButtonsStacked.and.returnValue(true);
+  it(`#layout removes ${cssClasses.STACKED} class, detects unstacked buttons, and does not add class`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.areButtonsStacked.and.returnValue(true);
 
-       foundation.setAutoStackButtons(false);
-       foundation.layout();
-       jasmine.clock().tick(1);
+    foundation.setAutoStackButtons(false);
+    foundation.layout();
+    jasmine.clock().tick(1);
 
-       expect(mockAdapter.addClass)
-           .not.toHaveBeenCalledWith(cssClasses.STACKED);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.STACKED);
-     });
+    expect(mockAdapter.addClass).not.toHaveBeenCalledWith(cssClasses.STACKED);
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.STACKED
+    );
+  });
 
-  it('#layout adds scrollable class when content is scrollable', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#layout adds scrollable class when content is scrollable", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.isContentScrollable.and.returnValue(true);
 
     foundation.layout();
@@ -338,8 +338,8 @@ describe('MDCDialogFoundation', () => {
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.SCROLLABLE);
   });
 
-  it('#layout removes scrollable class when content is not scrollable', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#layout removes scrollable class when content is not scrollable", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.isContentScrollable.and.returnValue(false);
 
     foundation.layout();
@@ -348,66 +348,59 @@ describe('MDCDialogFoundation', () => {
     expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.SCROLLABLE);
   });
 
-  it(`#handleClick: Click closes dialog when ${
-         strings.ACTION_ATTRIBUTE} attribute is present`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const action = 'action';
-       foundation.close = jasmine.createSpy('close');
+  it(`#handleClick: Click closes dialog when ${strings.ACTION_ATTRIBUTE} attribute is present`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    const action = "action";
+    foundation.close = jasmine.createSpy("close");
 
-       const event = {target: {}};
-       mockAdapter.getActionFromEvent.withArgs(event).and.returnValue(action);
-       foundation.open();
-       foundation.handleClick(event);
+    const event = { target: {} };
+    mockAdapter.getActionFromEvent.withArgs(event).and.returnValue(action);
+    foundation.open();
+    foundation.handleClick(event);
 
-       expect(foundation.close).toHaveBeenCalledWith(action);
-     });
+    expect(foundation.close).toHaveBeenCalledWith(action);
+  });
 
-  it('#handleKeydown: Keydown does not close dialog with action for non-activation keys',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const action = 'action';
-       const event = {type: 'keydown', key: 'Shift', target: {}};
-       foundation.close = jasmine.createSpy('close');
-       mockAdapter.getActionFromEvent.withArgs(event).and.returnValue(action);
+  it("#handleKeydown: Keydown does not close dialog with action for non-activation keys", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const action = "action";
+    const event = { type: "keydown", key: "Shift", target: {} };
+    foundation.close = jasmine.createSpy("close");
+    mockAdapter.getActionFromEvent.withArgs(event).and.returnValue(action);
 
-       foundation.open();
-       foundation.handleKeydown(event);
+    foundation.open();
+    foundation.handleKeydown(event);
 
-       expect(foundation.close).not.toHaveBeenCalledWith(action);
-     });
+    expect(foundation.close).not.toHaveBeenCalledWith(action);
+  });
 
-  it(`#handleClick: Click does nothing when ${
-         strings.ACTION_ATTRIBUTE} attribute is not present`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.close = jasmine.createSpy('close');
+  it(`#handleClick: Click does nothing when ${strings.ACTION_ATTRIBUTE} attribute is not present`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.close = jasmine.createSpy("close");
 
-       const event = {target: {}};
-       mockAdapter.getActionFromEvent.withArgs(event).and.returnValue('');
-       foundation.open();
-       foundation.handleClick(event);
+    const event = { target: {} };
+    mockAdapter.getActionFromEvent.withArgs(event).and.returnValue("");
+    foundation.open();
+    foundation.handleClick(event);
 
-       expect(foundation.close).not.toHaveBeenCalledWith(jasmine.any(String));
-     });
+    expect(foundation.close).not.toHaveBeenCalledWith(jasmine.any(String));
+  });
 
-  it(`#handleKeydown: Keydown does nothing when ${
-         strings.ACTION_ATTRIBUTE} attribute is not present`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.close = jasmine.createSpy('close');
+  it(`#handleKeydown: Keydown does nothing when ${strings.ACTION_ATTRIBUTE} attribute is not present`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.close = jasmine.createSpy("close");
 
-       ENTER_EVENTS.forEach((event) => {
-         mockAdapter.getActionFromEvent.withArgs(event).and.returnValue('');
-         foundation.open();
-         foundation.handleKeydown(event);
+    ENTER_EVENTS.forEach((event) => {
+      mockAdapter.getActionFromEvent.withArgs(event).and.returnValue("");
+      foundation.open();
+      foundation.handleKeydown(event);
 
-         expect(foundation.close).not.toHaveBeenCalledWith(jasmine.any(String));
-       });
-     });
+      expect(foundation.close).not.toHaveBeenCalledWith(jasmine.any(String));
+    });
+  });
 
-  it('#handleKeydown: Enter keydown calls adapter.clickDefaultButton', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleKeydown: Enter keydown calls adapter.clickDefaultButton", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     ENTER_EVENTS.forEach((event) => {
       foundation.handleKeydown(event);
@@ -415,118 +408,117 @@ describe('MDCDialogFoundation', () => {
     });
   });
 
-  it('#handleKeydown: Enter keydown does not call adapter.clickDefaultButton when it should be suppressed',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#handleKeydown: Enter keydown does not call adapter.clickDefaultButton when it should be suppressed", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       ENTER_EVENTS.forEach((event) => {
-         mockAdapter.eventTargetMatches
-             .withArgs(event.target, strings.SUPPRESS_DEFAULT_PRESS_SELECTOR)
-             .and.returnValue(true);
-         foundation.handleKeydown(event);
-         expect(mockAdapter.clickDefaultButton).not.toHaveBeenCalled();
-       });
-     });
-
-  it(`#handleClick: Click closes dialog when ${
-         strings.SCRIM_SELECTOR} selector matches`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const evt = {type: 'click', target: {}};
-       foundation.close = jasmine.createSpy('close');
-       mockAdapter.eventTargetMatches
-           .withArgs(evt.target, strings.SCRIM_SELECTOR)
-           .and.returnValue(true);
-
-       foundation.open();
-       foundation.handleClick(evt);
-
-       expect(foundation.close)
-           .toHaveBeenCalledWith(foundation.getScrimClickAction());
-     });
-
-  it(`#handleClick: Click does nothing when ${
-         strings.SCRIM_SELECTOR} class is present but scrimClickAction is 
-    empty string`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const evt = {type: 'click', target: {}};
-       foundation.close = jasmine.createSpy('close');
-       mockAdapter.eventTargetMatches
-           .withArgs(evt.target, strings.SCRIM_SELECTOR)
-           .and.returnValue(true);
-
-       foundation.setScrimClickAction('');
-       foundation.open();
-       foundation.handleClick(evt);
-
-       expect(foundation.close).not.toHaveBeenCalledWith(jasmine.any(String));
-     });
-
-  it('escape keydown closes the dialog (via key property)', () => {
-    const {foundation} = setupTest();
-    foundation.close = jasmine.createSpy('close');
-
-    foundation.open();
-    foundation.handleDocumentKeydown({key: 'Escape'});
-
-    expect(foundation.close)
-        .toHaveBeenCalledWith(foundation.getEscapeKeyAction());
+    ENTER_EVENTS.forEach((event) => {
+      mockAdapter.eventTargetMatches
+        .withArgs(event.target, strings.SUPPRESS_DEFAULT_PRESS_SELECTOR)
+        .and.returnValue(true);
+      foundation.handleKeydown(event);
+      expect(mockAdapter.clickDefaultButton).not.toHaveBeenCalled();
+    });
   });
 
-  it('escape keydown closes the dialog (via keyCode property)', () => {
-    const {foundation} = setupTest();
-    foundation.close = jasmine.createSpy('close');
+  it(`#handleClick: Click closes dialog when ${strings.SCRIM_SELECTOR} selector matches`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    const evt = { type: "click", target: {} };
+    foundation.close = jasmine.createSpy("close");
+    mockAdapter.eventTargetMatches
+      .withArgs(evt.target, strings.SCRIM_SELECTOR)
+      .and.returnValue(true);
 
     foundation.open();
-    foundation.handleDocumentKeydown({keyCode: 27});
+    foundation.handleClick(evt);
 
-    expect(foundation.close)
-        .toHaveBeenCalledWith(foundation.getEscapeKeyAction());
+    expect(foundation.close).toHaveBeenCalledWith(
+      foundation.getScrimClickAction()
+    );
   });
 
-  it('escape keydown does nothing if escapeKeyAction is set to empty string',
-     () => {
-       const {foundation} = setupTest();
-       foundation.close = jasmine.createSpy('close');
+  it(`#handleClick: Click does nothing when ${strings.SCRIM_SELECTOR} class is present but scrimClickAction is 
+    empty string`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    const evt = { type: "click", target: {} };
+    foundation.close = jasmine.createSpy("close");
+    mockAdapter.eventTargetMatches
+      .withArgs(evt.target, strings.SCRIM_SELECTOR)
+      .and.returnValue(true);
 
-       foundation.setEscapeKeyAction('');
-       foundation.open();
-       foundation.handleDocumentKeydown({key: 'Escape'});
+    foundation.setScrimClickAction("");
+    foundation.open();
+    foundation.handleClick(evt);
 
-       expect(foundation.close)
-           .not.toHaveBeenCalledWith(foundation.getEscapeKeyAction());
-     });
+    expect(foundation.close).not.toHaveBeenCalledWith(jasmine.any(String));
+  });
 
-  it('keydown does nothing when key other than escape is pressed', () => {
-    const {foundation} = setupTest();
-    foundation.close = jasmine.createSpy('close');
+  it("escape keydown closes the dialog (via key property)", () => {
+    const { foundation } = setupTest();
+    foundation.close = jasmine.createSpy("close");
 
     foundation.open();
-    foundation.handleDocumentKeydown({key: 'Enter'});
+    foundation.handleDocumentKeydown({ key: "Escape" });
 
-    expect(foundation.close)
-        .not.toHaveBeenCalledWith(foundation.getEscapeKeyAction());
+    expect(foundation.close).toHaveBeenCalledWith(
+      foundation.getEscapeKeyAction()
+    );
   });
 
-  it('#getAutoStackButtons reflects setting of #setAutoStackButtons', () => {
-    const {foundation} = setupTest();
+  it("escape keydown closes the dialog (via keyCode property)", () => {
+    const { foundation } = setupTest();
+    foundation.close = jasmine.createSpy("close");
+
+    foundation.open();
+    foundation.handleDocumentKeydown({ keyCode: 27 });
+
+    expect(foundation.close).toHaveBeenCalledWith(
+      foundation.getEscapeKeyAction()
+    );
+  });
+
+  it("escape keydown does nothing if escapeKeyAction is set to empty string", () => {
+    const { foundation } = setupTest();
+    foundation.close = jasmine.createSpy("close");
+
+    foundation.setEscapeKeyAction("");
+    foundation.open();
+    foundation.handleDocumentKeydown({ key: "Escape" });
+
+    expect(foundation.close).not.toHaveBeenCalledWith(
+      foundation.getEscapeKeyAction()
+    );
+  });
+
+  it("keydown does nothing when key other than escape is pressed", () => {
+    const { foundation } = setupTest();
+    foundation.close = jasmine.createSpy("close");
+
+    foundation.open();
+    foundation.handleDocumentKeydown({ key: "Enter" });
+
+    expect(foundation.close).not.toHaveBeenCalledWith(
+      foundation.getEscapeKeyAction()
+    );
+  });
+
+  it("#getAutoStackButtons reflects setting of #setAutoStackButtons", () => {
+    const { foundation } = setupTest();
     foundation.setAutoStackButtons(false);
     expect(foundation.getAutoStackButtons()).toBe(false);
     foundation.setAutoStackButtons(true);
     expect(foundation.getAutoStackButtons()).toBe(true);
   });
 
-  it('#getEscapeKeyAction reflects setting of #setEscapeKeyAction', () => {
-    const {foundation} = setupTest();
-    const action = 'foo';
+  it("#getEscapeKeyAction reflects setting of #setEscapeKeyAction", () => {
+    const { foundation } = setupTest();
+    const action = "foo";
     foundation.setEscapeKeyAction(action);
     expect(foundation.getEscapeKeyAction()).toBe(action);
   });
 
-  it('#getScrimClickAction reflects setting of #setScrimClickAction', () => {
-    const {foundation} = setupTest();
-    const action = 'foo';
+  it("#getScrimClickAction reflects setting of #setScrimClickAction", () => {
+    const { foundation } = setupTest();
+    const action = "foo";
     foundation.setScrimClickAction(action);
     expect(foundation.getScrimClickAction()).toBe(action);
   });

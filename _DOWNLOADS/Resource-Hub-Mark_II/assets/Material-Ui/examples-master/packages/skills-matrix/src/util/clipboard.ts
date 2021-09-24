@@ -33,7 +33,9 @@ export function buildCopyUrl(hashList: string[]) {
 	if (hashList.length === 1) {
 		return `${window.location.origin + window.location.pathname}${separator}#${RouteName.Skills}/${hashList[0]}`;
 	}
-	return `${window.location.origin + window.location.pathname}${separator}#${RouteName.Compare}/${hashList.join(',')}`;
+	return `${window.location.origin + window.location.pathname}${separator}#${RouteName.Compare}/${hashList.join(
+		','
+	)}`;
 }
 
 export function cleanCopyUrl(url: string) {

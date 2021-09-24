@@ -13,35 +13,35 @@ npm install @material/react-line-ripple
 ### Styles
 
 with Sass:
+
 ```js
-import '@material/react-line-ripple/index.scss';
+import "@material/react-line-ripple/index.scss";
 ```
 
 with CSS:
+
 ```js
-import '@material/react-line-ripple/dist/line-ripple.css';
+import "@material/react-line-ripple/dist/line-ripple.css";
 ```
 
 ### Javascript Instantiation
 
 ```js
-import LineRipple from '@material/react-line-ripple';
+import LineRipple from "@material/react-line-ripple";
 
 const MyComponent = () => {
-  return (
-    <LineRipple />
-  );
-}
+  return <LineRipple />;
+};
 ```
 
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-active | boolean | Activates or deactivates the line ripple state.
-className | string | Classes to be applied to the root element.
-rippleCenter | number | Sets the center of the ripple animation.
-style | object | Inline styles of root element.
+| Prop Name    | Type    | Description                                     |
+| ------------ | ------- | ----------------------------------------------- |
+| active       | boolean | Activates or deactivates the line ripple state. |
+| className    | string  | Classes to be applied to the root element.      |
+| rippleCenter | number  | Sets the center of the ripple animation.        |
+| style        | object  | Inline styles of root element.                  |
 
 ## Sass Mixins
 

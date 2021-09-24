@@ -32,10 +32,12 @@ Use the `mdc-form-field` element to wrap any combination of adjacent _input_ and
 ```html
 <div class="mdc-form-field">
   <div class="mdc-checkbox">
-    <input type="checkbox" id="my-checkbox" class="mdc-checkbox__native-control"/>
-    <div class="mdc-checkbox__background">
-      ...
-    </div>
+    <input
+      type="checkbox"
+      id="my-checkbox"
+      class="mdc-checkbox__native-control"
+    />
+    <div class="mdc-checkbox__background">...</div>
   </div>
   <label for="my-checkbox">This is my checkbox</label>
 </div>
@@ -48,11 +50,11 @@ Use the `mdc-form-field` element to wrap any combination of adjacent _input_ and
 If you are using MDC Form Field with an MDC Web component that has a [ripple](../mdc-ripple) effect, you can instantiate `MDCFormField` and set its [`input` property](#mdcformfield-properties-and-methods) to activate the ripple effect upon interacting with the label. Here is an example with [MDC Checkbox](../mdc-checkbox):
 
 ```js
-import {MDCFormField} from '@material/form-field';
-import {MDCCheckbox} from '@material/checkbox';
+import { MDCFormField } from "@material/form-field";
+import { MDCCheckbox } from "@material/checkbox";
 
-const formField = new MDCFormField(document.querySelector('.mdc-form-field'));
-const checkbox = new MDCCheckbox(document.querySelector('.mdc-checkbox'));
+const formField = new MDCFormField(document.querySelector(".mdc-form-field"));
+const checkbox = new MDCCheckbox(document.querySelector(".mdc-checkbox"));
 formField.input = checkbox;
 ```
 
@@ -67,10 +69,12 @@ By default, the input will be positioned before the label. You can position the 
 ```html
 <div class="mdc-form-field mdc-form-field--align-end">
   <div class="mdc-checkbox">
-    <input type="checkbox" id="my-checkbox" class="mdc-checkbox__native-control"/>
-    <div class="mdc-checkbox__background">
-      ...
-    </div>
+    <input
+      type="checkbox"
+      id="my-checkbox"
+      class="mdc-checkbox__native-control"
+    />
+    <div class="mdc-checkbox__background">...</div>
   </div>
   <label for="my-checkbox">This is my checkbox</label>
 </div>
@@ -83,10 +87,12 @@ If the label text is too long for a single line, it will wrap the text by defaul
 ```html
 <div class="mdc-form-field mdc-form-field--nowrap">
   <div class="mdc-checkbox">
-    <input type="checkbox" id="my-checkbox" class="mdc-checkbox__native-control"/>
-    <div class="mdc-checkbox__background">
-      ...
-    </div>
+    <input
+      type="checkbox"
+      id="my-checkbox"
+      class="mdc-checkbox__native-control"
+    />
+    <div class="mdc-checkbox__background">...</div>
   </div>
   <label for="my-checkbox">This some really really really long text</label>
 </div>
@@ -94,9 +100,9 @@ If the label text is too long for a single line, it will wrap the text by defaul
 
 ## `MDCFormField` Properties and Methods
 
-Property | Value Type | Description
---- | --- | ---
-`input` | String | Gets and sets the form field input. 
+| Property | Value Type | Description                         |
+| -------- | ---------- | ----------------------------------- |
+| `input`  | String     | Gets and sets the form field input. |
 
 In order for the label ripple integration to work correctly, the `input` property needs to be set to a valid instance of an MDC Web input element which exposes a `ripple` getter. No action is taken if the `input` property is not set or the input instance doesn't expose a `ripple` getter.
 
@@ -106,9 +112,9 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCFormFieldAdapter`
 
-| Method Signature | Description |
-| --- | --- |
-| `registerInteractionHandler(type: string, handler: EventListener) => void` | Adds an event listener `handler` for event type `type` to the label. |
-| `deregisterInteractionHandler(type: string, handler: EventListener) => void` | Removes an event listener `handler` for event type `type` to the label. |
-| `activateInputRipple() => void` | Activates the ripple on the input element. Should call `activate` on the input element's `ripple` property. |
-| `deactivateInputRipple() => void` | Deactivates the ripple on the input element. Should call `deactivate` on the input element's `ripple` property. |
+| Method Signature                                                             | Description                                                                                                     |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `registerInteractionHandler(type: string, handler: EventListener) => void`   | Adds an event listener `handler` for event type `type` to the label.                                            |
+| `deregisterInteractionHandler(type: string, handler: EventListener) => void` | Removes an event listener `handler` for event type `type` to the label.                                         |
+| `activateInputRipple() => void`                                              | Activates the ripple on the input element. Should call `activate` on the input element's `ripple` property.     |
+| `deactivateInputRipple() => void`                                            | Deactivates the ripple on the input element. Should call `deactivate` on the input element's `ripple` property. |

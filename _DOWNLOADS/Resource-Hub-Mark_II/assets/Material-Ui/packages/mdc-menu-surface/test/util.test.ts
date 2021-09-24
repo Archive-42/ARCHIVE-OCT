@@ -21,53 +21,57 @@
  * THE SOFTWARE.
  */
 
-import * as utils from '../util';
+import * as utils from "../util";
 
-describe('MDCMenuSurface - util', () => {
-  it('getTransformPropertyName returns "transform" for browsers that support it',
-     () => {
-       const mockWindow = {
-         document: {
-           createElement: function() {
-             return {style: {transform: null}};
-           },
-         },
-       } as unknown as Window;
-       expect(utils.getTransformPropertyName(mockWindow, true))
-           .toEqual('transform');
-     });
+describe("MDCMenuSurface - util", () => {
+  it('getTransformPropertyName returns "transform" for browsers that support it', () => {
+    const mockWindow = {
+      document: {
+        createElement: function () {
+          return { style: { transform: null } };
+        },
+      },
+    } as unknown as Window;
+    expect(utils.getTransformPropertyName(mockWindow, true)).toEqual(
+      "transform"
+    );
+  });
 
-  it('getTransformPropertyName returns "webkitTransform" for browsers that do not support "transform"',
-     () => {
-       const mockWindow = {
-         document: {
-           createElement: function() {
-             return {style: {webkitTransform: null}};
-           },
-         },
-       } as unknown as Window;
-       expect(utils.getTransformPropertyName(mockWindow, true))
-           .toEqual('webkitTransform');
-     });
+  it('getTransformPropertyName returns "webkitTransform" for browsers that do not support "transform"', () => {
+    const mockWindow = {
+      document: {
+        createElement: function () {
+          return { style: { webkitTransform: null } };
+        },
+      },
+    } as unknown as Window;
+    expect(utils.getTransformPropertyName(mockWindow, true)).toEqual(
+      "webkitTransform"
+    );
+  });
 
-  it('getTransformPropertyName caches the property name if forceRefresh 2nd arg is not given',
-     () => {
-       const mockElement = {style: {transform: null}};
-       const mockWindow = {
-         document: {
-           createElement: () => mockElement,
-         },
-       } as unknown as Window;
-       expect(utils.getTransformPropertyName(mockWindow, true))
-           .toEqual('transform', 'sanity check');
-       expect(utils.getTransformPropertyName(mockWindow))
-           .toEqual('transform', 'sanity check no force refresh');
+  it("getTransformPropertyName caches the property name if forceRefresh 2nd arg is not given", () => {
+    const mockElement = { style: { transform: null } };
+    const mockWindow = {
+      document: {
+        createElement: () => mockElement,
+      },
+    } as unknown as Window;
+    expect(utils.getTransformPropertyName(mockWindow, true)).toEqual(
+      "transform",
+      "sanity check"
+    );
+    expect(utils.getTransformPropertyName(mockWindow)).toEqual(
+      "transform",
+      "sanity check no force refresh"
+    );
 
-       // TODO(b/168652857): The operand of a 'delete' operator must be
-       // optional.
-       delete (mockElement as any).style.transform;
-       expect(utils.getTransformPropertyName(mockWindow)).toEqual('transform');
-       expect(utils.getTransformPropertyName(mockWindow, true))
-           .toEqual('webkitTransform');
-     });
+    // TODO(b/168652857): The operand of a 'delete' operator must be
+    // optional.
+    delete (mockElement as any).style.transform;
+    expect(utils.getTransformPropertyName(mockWindow)).toEqual("transform");
+    expect(utils.getTransformPropertyName(mockWindow, true)).toEqual(
+      "webkitTransform"
+    );
+  });
 });

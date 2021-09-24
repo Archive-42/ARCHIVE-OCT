@@ -20,11 +20,11 @@
 // THE SOFTWARE.
 //
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/shape/mixins' as shape-mixins;
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/shape/mixins" as shape-mixins;
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
 
 $fill-color: surface;
 $text-color: on-surface;

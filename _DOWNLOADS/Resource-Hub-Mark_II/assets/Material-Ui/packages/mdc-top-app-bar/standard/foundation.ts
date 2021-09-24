@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCTopAppBarAdapter} from '../adapter';
-import {numbers} from '../constants';
-import {MDCTopAppBarBaseFoundation} from '../foundation';
+import { MDCTopAppBarAdapter } from "../adapter";
+import { numbers } from "../constants";
+import { MDCTopAppBarBaseFoundation } from "../foundation";
 
 const INITIAL_VALUE = 0;
 
@@ -78,7 +78,7 @@ export class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
 
   destroy() {
     super.destroy();
-    this.adapter.setStyle('top', '');
+    this.adapter.setStyle("top", "");
   }
 
   /**
@@ -86,7 +86,10 @@ export class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
    * @override
    */
   handleTargetScroll() {
-    const currentScrollPosition = Math.max(this.adapter.getViewportScrollY(), 0);
+    const currentScrollPosition = Math.max(
+      this.adapter.getViewportScrollY(),
+      0
+    );
     const diff = currentScrollPosition - this.lastScrollPosition_;
     this.lastScrollPosition_ = currentScrollPosition;
 
@@ -97,7 +100,9 @@ export class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
 
       if (this.currentAppBarOffsetTop_ > 0) {
         this.currentAppBarOffsetTop_ = 0;
-      } else if (Math.abs(this.currentAppBarOffsetTop_) > this.topAppBarHeight_) {
+      } else if (
+        Math.abs(this.currentAppBarOffsetTop_) > this.topAppBarHeight_
+      ) {
         this.currentAppBarOffsetTop_ = -this.topAppBarHeight_;
       }
 
@@ -137,7 +142,8 @@ export class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
   private checkForUpdate_(): boolean {
     const offscreenBoundaryTop = -this.topAppBarHeight_;
     const hasAnyPixelsOffscreen = this.currentAppBarOffsetTop_ < 0;
-    const hasAnyPixelsOnscreen = this.currentAppBarOffsetTop_ > offscreenBoundaryTop;
+    const hasAnyPixelsOnscreen =
+      this.currentAppBarOffsetTop_ > offscreenBoundaryTop;
     const partiallyShowing = hasAnyPixelsOffscreen && hasAnyPixelsOnscreen;
 
     // If it's partially showing, it can't be docked.
@@ -169,7 +175,7 @@ export class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation {
         offset = -numbers.MAX_TOP_APP_BAR_HEIGHT;
       }
 
-      this.adapter.setStyle('top', offset + 'px');
+      this.adapter.setStyle("top", offset + "px");
     }
   }
 

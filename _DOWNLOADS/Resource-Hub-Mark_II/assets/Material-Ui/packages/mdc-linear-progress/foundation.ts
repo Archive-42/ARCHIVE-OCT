@@ -21,16 +21,21 @@
  * THE SOFTWARE.
  */
 
-import {getCorrectPropertyName} from '@material/animation/util';
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCProgressIndicatorFoundation} from '@material/progress-indicator/foundation';
+import { getCorrectPropertyName } from "@material/animation/util";
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCProgressIndicatorFoundation } from "@material/progress-indicator/foundation";
 
-import {MDCLinearProgressAdapter} from './adapter';
-import {animationDimensionPercentages as percents, cssClasses, strings} from './constants';
+import { MDCLinearProgressAdapter } from "./adapter";
+import {
+  animationDimensionPercentages as percents,
+  cssClasses,
+  strings,
+} from "./constants";
 
-export class MDCLinearProgressFoundation extends
-    MDCFoundation<MDCLinearProgressAdapter> implements
-        MDCProgressIndicatorFoundation {
+export class MDCLinearProgressFoundation
+  extends MDCFoundation<MDCLinearProgressAdapter>
+  implements MDCProgressIndicatorFoundation
+{
   static get cssClasses() {
     return cssClasses;
   }
@@ -59,10 +64,10 @@ export class MDCLinearProgressFoundation extends
   private isReversed!: boolean;
   private progress!: number;
   private buffer!: number;
-  private observer: ResizeObserver|null = null;
+  private observer: ResizeObserver | null = null;
 
   constructor(adapter?: Partial<MDCLinearProgressAdapter>) {
-    super({...MDCLinearProgressFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCLinearProgressFoundation.defaultAdapter, ...adapter });
   }
 
   init() {
@@ -95,9 +100,11 @@ export class MDCLinearProgressFoundation extends
     if (this.isDeterminate) {
       this.adapter.removeClass(cssClasses.INDETERMINATE_CLASS);
       this.adapter.setAttribute(
-          strings.ARIA_VALUENOW, this.progress.toString());
-      this.adapter.setAttribute(strings.ARIA_VALUEMAX, '1');
-      this.adapter.setAttribute(strings.ARIA_VALUEMIN, '0');
+        strings.ARIA_VALUENOW,
+        this.progress.toString()
+      );
+      this.adapter.setAttribute(strings.ARIA_VALUEMAX, "1");
+      this.adapter.setAttribute(strings.ARIA_VALUEMIN, "0");
       this.setPrimaryBarProgress(this.progress);
       this.setBufferBarProgress(this.buffer);
 
@@ -203,9 +210,10 @@ export class MDCLinearProgressFoundation extends
 
     // Accessing `window` without a `typeof` check will throw on Node
     // environments.
-    const transformProp = typeof window !== 'undefined' ?
-        getCorrectPropertyName(window, 'transform') :
-        'transform';
+    const transformProp =
+      typeof window !== "undefined"
+        ? getCorrectPropertyName(window, "transform")
+        : "transform";
     this.adapter.setPrimaryBarStyle(transformProp, value);
   }
 
@@ -228,26 +236,45 @@ export class MDCLinearProgressFoundation extends
     const secondaryFull = width * percents.SECONDARY_FULL;
 
     this.adapter.setStyle(
-        '--mdc-linear-progress-primary-half', `${primaryHalf}px`);
+      "--mdc-linear-progress-primary-half",
+      `${primaryHalf}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-primary-half-neg', `${- primaryHalf}px`);
+      "--mdc-linear-progress-primary-half-neg",
+      `${-primaryHalf}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-primary-full', `${primaryFull}px`);
+      "--mdc-linear-progress-primary-full",
+      `${primaryFull}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-primary-full-neg', `${- primaryFull}px`);
+      "--mdc-linear-progress-primary-full-neg",
+      `${-primaryFull}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-secondary-quarter', `${secondaryQuarter}px`);
+      "--mdc-linear-progress-secondary-quarter",
+      `${secondaryQuarter}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-secondary-quarter-neg',
-        `${- secondaryQuarter}px`);
+      "--mdc-linear-progress-secondary-quarter-neg",
+      `${-secondaryQuarter}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-secondary-half', `${secondaryHalf}px`);
+      "--mdc-linear-progress-secondary-half",
+      `${secondaryHalf}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-secondary-half-neg', `${- secondaryHalf}px`);
+      "--mdc-linear-progress-secondary-half-neg",
+      `${-secondaryHalf}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-secondary-full', `${secondaryFull}px`);
+      "--mdc-linear-progress-secondary-full",
+      `${secondaryFull}px`
+    );
     this.adapter.setStyle(
-        '--mdc-linear-progress-secondary-full-neg', `${- secondaryFull}px`);
+      "--mdc-linear-progress-secondary-full-neg",
+      `${-secondaryFull}px`
+    );
 
     // need to restart animation for custom props to apply to keyframes
     this.restartAnimation();

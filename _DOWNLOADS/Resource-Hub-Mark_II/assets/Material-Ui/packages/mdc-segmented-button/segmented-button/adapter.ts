@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {SegmentDetail} from '../types';
+import { SegmentDetail } from "../types";
 
 export interface MDCSegmentedButtonAdapter {
   /**
@@ -43,7 +43,7 @@ export interface MDCSegmentedButtonAdapter {
    * @param indexOrSegmentId Number index or string segmentId that identifies
    * child segment
    */
-  selectSegment(indexOrSegmentId: number|string): void;
+  selectSegment(indexOrSegmentId: number | string): void;
 
   /**
    * Sets identified child segment to be not selected
@@ -51,7 +51,7 @@ export interface MDCSegmentedButtonAdapter {
    * @param indexOrSegmentId Number index or string segmentId that identifies
    * child segment
    */
-  unselectSegment(indexOrSegmentId: number|string): void;
+  unselectSegment(indexOrSegmentId: number | string): void;
 
   /**
    * Emits event about changed child segment to client

@@ -21,11 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCLineRippleAdapter} from './adapter';
-import {MDCLineRippleFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCLineRippleAdapter } from "./adapter";
+import { MDCLineRippleFoundation } from "./foundation";
 
-export type MDCLineRippleFactory = (el: Element, foundation?: MDCLineRippleFoundation) => MDCLineRipple;
+export type MDCLineRippleFactory = (
+  el: Element,
+  foundation?: MDCLineRippleFoundation
+) => MDCLineRipple;
 
 export class MDCLineRipple extends MDCComponent<MDCLineRippleFoundation> {
   static attachTo(root: Element): MDCLineRipple {
@@ -62,9 +65,11 @@ export class MDCLineRipple extends MDCComponent<MDCLineRippleFoundation> {
       addClass: (className) => this.root.classList.add(className),
       removeClass: (className) => this.root.classList.remove(className),
       hasClass: (className) => this.root.classList.contains(className),
-      setStyle: (propertyName, value) => (this.root as HTMLElement).style.setProperty(propertyName, value),
+      setStyle: (propertyName, value) =>
+        (this.root as HTMLElement).style.setProperty(propertyName, value),
       registerEventHandler: (evtType, handler) => this.listen(evtType, handler),
-      deregisterEventHandler: (evtType, handler) => this.unlisten(evtType, handler),
+      deregisterEventHandler: (evtType, handler) =>
+        this.unlisten(evtType, handler),
     };
     // tslint:enable:object-literal-sort-keys
     return new MDCLineRippleFoundation(adapter);

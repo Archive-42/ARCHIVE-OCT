@@ -32,15 +32,15 @@ npm install @material/segmented-button
 ### Styles
 
 ```scss
-@use '@material/ripple/common';
-@use '@material/segmented-button/styles';
+@use "@material/ripple/common";
+@use "@material/segmented-button/styles";
 ```
 
 ### JavaScript Instantiation
 
 ```js
-import {MDCSegmentedButton} from '@material/segmented-button';
-const segmentedButtonEl = document.querySelector('.mdc-segmented-button');
+import { MDCSegmentedButton } from "@material/segmented-button";
+const segmentedButtonEl = document.querySelector(".mdc-segmented-button");
 const segmentedButton = new MDCSegmentedButton(segmentedButtonEl);
 ```
 
@@ -54,7 +54,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -90,14 +93,29 @@ The segmented button can be limited to select only one segment at a time. In thi
 For accessibility, the segments are treated as radio buttons. The segmented button is assigned `role="radiogroup"` and each segment is assigned `role="radio"` and has the attribute `aria-checked` with a boolean value corresponding to its selected state.
 
 ```html
-<div class="mdc-segmented-button mdc-segmented-button--single-select" role="radiogroup">
-  <button class="mdc-segmented-button__segment" role="radio" aria-checked="false">
+<div
+  class="mdc-segmented-button mdc-segmented-button--single-select"
+  role="radiogroup"
+>
+  <button
+    class="mdc-segmented-button__segment"
+    role="radio"
+    aria-checked="false"
+  >
     <i class="material-icons mdc-segmented-button__icon">favorite</i>
   </button>
-  <button class="mdc-segmented-button__segment" role="radio" aria-checked="false">
+  <button
+    class="mdc-segmented-button__segment"
+    role="radio"
+    aria-checked="false"
+  >
     <div class="mdc-segmented-button__label">Sample Text</div>
   </button>
-  <button class="mdc-segmented-button__segment" role="radio" aria-checked="false">
+  <button
+    class="mdc-segmented-button__segment"
+    role="radio"
+    aria-checked="false"
+  >
     <i class="material-icons mdc-segmented-button__icon">favorite</i>
     <div class="mdc-segmented-button__label">Sample Text</div>
   </button>
@@ -135,7 +153,10 @@ To insert an icon inside of a segment, add the class `mdc-segmented-button__icon
 The segment will remain in a visually toggled state while selected. To select the segment by default, add the class `mdc-segmented-button__segment--selected` and set the attribute `aria-pressed` or `aria-checked` (if the segmented button is multi or single select, respectively) to `true`.
 
 ```html
-<button class="mdc-segmented-button__segment mdc-segmented-button__segment--selected" aria-pressed="true">
+<button
+  class="mdc-segmented-button__segment mdc-segmented-button__segment--selected"
+  aria-pressed="true"
+>
   <div class="mdc-segmented-button__label">Sample Text</div>
 </button>
 ```
@@ -174,18 +195,18 @@ Each segment within the segmented button is a tabbable element. Arrow key naviga
 
 ### CSS Classes
 
-CSS Class | Description
---- | ---
-`mdc-segmented-button` | Mandatory. Indicates the wrapper for child segments.
-`mdc-segmented-button__single-select` | Optional. Indicates the segmented button only allows one segment to be selected at a time.
-`mdc-segmented-button__segment` | Mandatory. Indicates a button element that can be selected.
-`mdc-segmented-button__icon` | Optional. Indicates an icon in the segment. We recommend using [Material Icons](https://material.io/tools/icons/) from Google Fonts.
-`mdc-segmented-button__label` | Optional. Indicates text in the segment.
-`mdc-segmented-button__segment--selected` | Optional. Indicates that the segment is selected.
-`mdc-touch-target-wrapper` | Optional. Indicates contained segment has touch target support.
-`mdc-segmented-button--touch` | Optional. Indicates the segment has touch target support.
-`mdc-segmented-button__touch` | Optional. Indicates the segment has touch target support.
-`mdc-segmented-button__ripple` | Optional. Indicates the segment has a ripple effect when clicked.
+| CSS Class                                 | Description                                                                                                                          |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `mdc-segmented-button`                    | Mandatory. Indicates the wrapper for child segments.                                                                                 |
+| `mdc-segmented-button__single-select`     | Optional. Indicates the segmented button only allows one segment to be selected at a time.                                           |
+| `mdc-segmented-button__segment`           | Mandatory. Indicates a button element that can be selected.                                                                          |
+| `mdc-segmented-button__icon`              | Optional. Indicates an icon in the segment. We recommend using [Material Icons](https://material.io/tools/icons/) from Google Fonts. |
+| `mdc-segmented-button__label`             | Optional. Indicates text in the segment.                                                                                             |
+| `mdc-segmented-button__segment--selected` | Optional. Indicates that the segment is selected.                                                                                    |
+| `mdc-touch-target-wrapper`                | Optional. Indicates contained segment has touch target support.                                                                      |
+| `mdc-segmented-button--touch`             | Optional. Indicates the segment has touch target support.                                                                            |
+| `mdc-segmented-button__touch`             | Optional. Indicates the segment has touch target support.                                                                            |
+| `mdc-segmented-button__ripple`            | Optional. Indicates the segment has a ripple effect when clicked.                                                                    |
 
 > _NOTE_: Every segment element must contain an icon with class `mdc-segmented-button__icon`, text with class `mdc-segmented-button__label`, or both.
 
@@ -193,20 +214,20 @@ CSS Class | Description
 
 ### Sass Mixins
 
-Mixin | Description
---- | ---
-`outline-color` | Customizes the border color around each segment.
-`unselected-ink-color` | Customizes the text and icon ink color for an unselected segment.
-`unselected-container-fill-color` | Customizes the background color for an unselected segment.
-`selected-ink-color` | Customizes the text and icon ink color for a selected segment.
-`selected-container-fill-color` | Customizes the background color for an selected segment.
+| Mixin                             | Description                                                       |
+| --------------------------------- | ----------------------------------------------------------------- |
+| `outline-color`                   | Customizes the border color around each segment.                  |
+| `unselected-ink-color`            | Customizes the text and icon ink color for an unselected segment. |
+| `unselected-container-fill-color` | Customizes the background color for an unselected segment.        |
+| `selected-ink-color`              | Customizes the text and icon ink color for a selected segment.    |
+| `selected-container-fill-color`   | Customizes the background color for an selected segment.          |
 
 ## `MDCSegmentedButton`, `MDCSegmentedButtonSegment`, and `SegmentDetail` Properties and Methods
 
 The MDC Segmented Button package is composed of two JavaScript classes:
 
-* `MDCSegmentedButton` defines the behavior of a set of segments.
-* `MDCSegmentedButtonSegment` defines the behavior of a single segment.
+- `MDCSegmentedButton` defines the behavior of a set of segments.
+- `MDCSegmentedButtonSegment` defines the behavior of a single segment.
 
 To use the `MDCSegmentedButton` and `MDCSegmentedButtonSegment` classes, [import](../../docs/importing-js.md) both from `@material/segmented-button`.
 
@@ -214,48 +235,48 @@ To use the `MDCSegmentedButton` and `MDCSegmentedButtonSegment` classes, [import
 
 The `SegmentDetail` type contains only the actionable information about a specific `MDCSegmentedButtonSegment`.
 
-Property | Value Type | Description
---- | --- | ---
-`index` | `number` | The index of the segment.
-`selected` | `boolean` | The segment's selected state.
-`segmentId?` | `string \| undefined` | The segment's segmentId, if provided.
+| Property     | Value Type            | Description                           |
+| ------------ | --------------------- | ------------------------------------- |
+| `index`      | `number`              | The index of the segment.             |
+| `selected`   | `boolean`             | The segment's selected state.         |
+| `segmentId?` | `string \| undefined` | The segment's segmentId, if provided. |
 
 ### `MDCSegmentedButton`
 
-Method Signature | Description
---- | ---
-`getSelectedSegments() => readonly SegmentDetail[]` | Proxies to foundation's `getSelectedSegments` method.
-`selectSegment(indexOrSegmentId: number \| string) => void` | Proxies to foundation's `selectSegment` method.
-`unselectSegment(indexOrSegmentId: number \| string) => void` | Proxies to foundation's `unselectSegment` method.
-`isSegmentSelected(indexOrSegmentId: number \| string) => boolean` | Proxies to foundation's `isSegmentSelected` method.
+| Method Signature                                                   | Description                                           |
+| ------------------------------------------------------------------ | ----------------------------------------------------- |
+| `getSelectedSegments() => readonly SegmentDetail[]`                | Proxies to foundation's `getSelectedSegments` method. |
+| `selectSegment(indexOrSegmentId: number \| string) => void`        | Proxies to foundation's `selectSegment` method.       |
+| `unselectSegment(indexOrSegmentId: number \| string) => void`      | Proxies to foundation's `unselectSegment` method.     |
+| `isSegmentSelected(indexOrSegmentId: number \| string) => boolean` | Proxies to foundation's `isSegmentSelected` method.   |
 
-Property | Value Type | Description
---- | --- | ---
-`segments` | `ReadOnlyArray<MDCSegmentedButtonSegment>` | Array of child `MDCSegmentedButtonSegment`s.
-`ripple` | `MDCRipple` (read-only) | The `MDCRipple` instance for the root element that `MDCSegmentedButton` initializes.
+| Property   | Value Type                                 | Description                                                                          |
+| ---------- | ------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `segments` | `ReadOnlyArray<MDCSegmentedButtonSegment>` | Array of child `MDCSegmentedButtonSegment`s.                                         |
+| `ripple`   | `MDCRipple` (read-only)                    | The `MDCRipple` instance for the root element that `MDCSegmentedButton` initializes. |
 
 #### Events
 
-Event Name | `event.detail` | Description
---- | --- | ---
-MDCSegmentedButton:change | `SegmentDetail` | Indicates that a segment's selected value may have changed due to a click.
+| Event Name                | `event.detail`  | Description                                                                |
+| ------------------------- | --------------- | -------------------------------------------------------------------------- |
+| MDCSegmentedButton:change | `SegmentDetail` | Indicates that a segment's selected value may have changed due to a click. |
 
 ### `MDCSegmentedButtonSegment`
 
-Method Signature | Description
---- | ---
-`setIndex(index: number) => void` | Sets segment's index.
-`setIsSingleSelect(isSingleSelect: boolean) => void` | Sets segment's isSingleSelect.
-`isSelected() => boolean` | Proxies to foundation's `isSelected` method.
-`setSelected() => void` | Proxies to foundation's `setSelected` method.
-`setUnselected() => void` | Proxies to foundation's `setUnselected` method.
-`getSegmentId() => string \| undefined` | Proxies to foundation's `getSegmentId` method.
+| Method Signature                                     | Description                                     |
+| ---------------------------------------------------- | ----------------------------------------------- |
+| `setIndex(index: number) => void`                    | Sets segment's index.                           |
+| `setIsSingleSelect(isSingleSelect: boolean) => void` | Sets segment's isSingleSelect.                  |
+| `isSelected() => boolean`                            | Proxies to foundation's `isSelected` method.    |
+| `setSelected() => void`                              | Proxies to foundation's `setSelected` method.   |
+| `setUnselected() => void`                            | Proxies to foundation's `setUnselected` method. |
+| `getSegmentId() => string \| undefined`              | Proxies to foundation's `getSegmentId` method.  |
 
 #### Events
 
-Event Name | `event.detail` | Description
---- | --- | ---
-`MDCSegmentedButtonSegment:selected` | `SegmentDetail` | Indicates the segment's selected status just changed due to a click.
+| Event Name                           | `event.detail`  | Description                                                          |
+| ------------------------------------ | --------------- | -------------------------------------------------------------------- |
+| `MDCSegmentedButtonSegment:selected` | `SegmentDetail` | Indicates the segment's selected status just changed due to a click. |
 
 ## Usage within Web Frameworks
 
@@ -267,66 +288,65 @@ See [`segmented-button/component.ts`](segmented-button/component.ts) and [`segme
 
 #### `MDCSegmentedButtonAdapter`
 
-Method Signature | Description
---- | ---
-`hasClass(className: string) => boolean` | Returns true if segmented button has className, otherwise returns false.
-`getSegments() => readonly SegmentDetail[]` | Returns child segments represented as a readonly list of SegmentDetails.
-`selectSegment(indexOrSegmentId: number \| string) => void` | Sets identified segment to be selected.
-`unselectSegment(indexOrSegmentId: number \| string) => void` | Set identified segment to be not selected.
-`notifySelectedChange(detail: SegmentDetail) => void` | Notifies the client about the changed segment with a `change` event.
+| Method Signature                                              | Description                                                              |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `hasClass(className: string) => boolean`                      | Returns true if segmented button has className, otherwise returns false. |
+| `getSegments() => readonly SegmentDetail[]`                   | Returns child segments represented as a readonly list of SegmentDetails. |
+| `selectSegment(indexOrSegmentId: number \| string) => void`   | Sets identified segment to be selected.                                  |
+| `unselectSegment(indexOrSegmentId: number \| string) => void` | Set identified segment to be not selected.                               |
+| `notifySelectedChange(detail: SegmentDetail) => void`         | Notifies the client about the changed segment with a `change` event.     |
 
->_NOTE_: `notifySelectedChange` must pass along a `SegmentDetail` representing the potentially changed Segment, and must be observable by the client (e.g. via DOM event bubbling).
+> _NOTE_: `notifySelectedChange` must pass along a `SegmentDetail` representing the potentially changed Segment, and must be observable by the client (e.g. via DOM event bubbling).
 
 #### `MDCSegmentedButtonSegmentAdapter`
 
-Method Signature | Description
---- | ---
-`isSingleSelect() => boolean` | Returns true if wrapping segmented button is single select, otherwise returns false.
-`getAttr(attrName: string) => string \| null` | Returns root element's attribute if it is set, otherwise returns null.
-`setAttr(attrName: string, value: string) => void` | Sets root element's attribute value to `value`.
-`addClass(className: string) => void` | Adds class to the root element.
-`removeClass(className: string) => void` | Removes class from the root element.
-`hasClass(className: string) => boolean` | Returns true if root element has class, otherwise returns false.
-`notifySelectedChange(selected: boolean) => void` | Notifies the Segmented Button that the segment's selected state has changed.
+| Method Signature                                   | Description                                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `isSingleSelect() => boolean`                      | Returns true if wrapping segmented button is single select, otherwise returns false. |
+| `getAttr(attrName: string) => string \| null`      | Returns root element's attribute if it is set, otherwise returns null.               |
+| `setAttr(attrName: string, value: string) => void` | Sets root element's attribute value to `value`.                                      |
+| `addClass(className: string) => void`              | Adds class to the root element.                                                      |
+| `removeClass(className: string) => void`           | Removes class from the root element.                                                 |
+| `hasClass(className: string) => boolean`           | Returns true if root element has class, otherwise returns false.                     |
+| `notifySelectedChange(selected: boolean) => void`  | Notifies the Segmented Button that the segment's selected state has changed.         |
 
->_NOTE_: `notifySelectedChange` must pass along a `SegmentDetail` representing the Segment, and must be observable by the `mdc-segmented-button` element (e.g. via DOM event bubbling).
+> _NOTE_: `notifySelectedChange` must pass along a `SegmentDetail` representing the Segment, and must be observable by the `mdc-segmented-button` element (e.g. via DOM event bubbling).
 
 ### Foundations: `MDCSegmentedButtonFoundation` and `MDCSegmentedButtonSegmentFoundation`
 
 #### `MDCSegmentedButtonFoundation`
 
-Method Signature | Description
---- | ---
-`selectSegment(indexOrSegmentId: number \| string) => void` | Sets identified segment to be selected.
-`unselectSegment(indexOrSegmentId: number \| string) => void` | Set identified segment to be not selected.
-`getSelectedSegments() => readonly SegmentDetail[]` | Returns selected segments as readonly list of SegmentDetails.
-`isSegmentSelected(indexOrSegmentId: number \| string) => boolean` | Returns true if identified segment is selected, otherwise returns false.
-`isSingleSelect() => boolean` | Returns true if segmented button is single select, otherwise returns false.
-`handleSelected(detail: SegmentDetail) => void` | Handles a `selected` event. Maintains single select restrictions, if applicable, and notifies client.
+| Method Signature                                                   | Description                                                                                           |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `selectSegment(indexOrSegmentId: number \| string) => void`        | Sets identified segment to be selected.                                                               |
+| `unselectSegment(indexOrSegmentId: number \| string) => void`      | Set identified segment to be not selected.                                                            |
+| `getSelectedSegments() => readonly SegmentDetail[]`                | Returns selected segments as readonly list of SegmentDetails.                                         |
+| `isSegmentSelected(indexOrSegmentId: number \| string) => boolean` | Returns true if identified segment is selected, otherwise returns false.                              |
+| `isSingleSelect() => boolean`                                      | Returns true if segmented button is single select, otherwise returns false.                           |
+| `handleSelected(detail: SegmentDetail) => void`                    | Handles a `selected` event. Maintains single select restrictions, if applicable, and notifies client. |
 
 #### `MDCSegmentedButtonFoundation` Event Handlers
 
 When wrapping the Segmented Button foundation, the following events must be bound to the indicated foundation methods:
 
-Events | Element Selector | Foundation Handler
---- | --- | ---
-`MDCSegmentedButtonSegment:selected` | `.mdc-segmented-button` (root) | `handleSelected`
-
+| Events                               | Element Selector               | Foundation Handler |
+| ------------------------------------ | ------------------------------ | ------------------ |
+| `MDCSegmentedButtonSegment:selected` | `.mdc-segmented-button` (root) | `handleSelected`   |
 
 ### `MDCSegmentedButtonSegmentFoundation`
 
-Method Signature | Description
---- | ---
-`isSelected() => void` | Returns true if segment is currently selected.
-`setSelected() => void` | Sets segment to be selected.
-`setUnselected() => void` | Sets segment to be not selected.
-`getSegmentId() => string \| undefined` | Returns segment's segmentId if it was provided, otherwise return undefined.
-`handleClick() => void` | Handles a `click` event. Changes selected state if able (due to single select) and notifies Segmented Button.
+| Method Signature                        | Description                                                                                                   |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `isSelected() => void`                  | Returns true if segment is currently selected.                                                                |
+| `setSelected() => void`                 | Sets segment to be selected.                                                                                  |
+| `setUnselected() => void`               | Sets segment to be not selected.                                                                              |
+| `getSegmentId() => string \| undefined` | Returns segment's segmentId if it was provided, otherwise return undefined.                                   |
+| `handleClick() => void`                 | Handles a `click` event. Changes selected state if able (due to single select) and notifies Segmented Button. |
 
 #### `MDCSegmentedButtonSegmentFoundation` Event Handlers
 
 When wrapping the Segment foundation, the following events must be bound to the indicated foundation methods:
 
-Events | Element Selector | Foundation Handler
---- | --- | ---
-`click` | `.mdc-segmented-button__segment` (root) | `handleClick`
+| Events  | Element Selector                        | Foundation Handler |
+| ------- | --------------------------------------- | ------------------ |
+| `click` | `.mdc-segmented-button__segment` (root) | `handleClick`      |

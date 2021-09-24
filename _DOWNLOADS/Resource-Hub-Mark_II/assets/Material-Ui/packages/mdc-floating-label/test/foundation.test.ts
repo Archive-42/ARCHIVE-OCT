@@ -21,121 +21,133 @@
  * THE SOFTWARE.
  */
 
+import { MDCFloatingLabelFoundation } from "../../mdc-floating-label/foundation";
+import {
+  captureHandlers,
+  verifyDefaultAdapter,
+} from "../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
 
-import {MDCFloatingLabelFoundation} from '../../mdc-floating-label/foundation';
-import {captureHandlers, verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
-
-const {cssClasses} = MDCFloatingLabelFoundation;
+const { cssClasses } = MDCFloatingLabelFoundation;
 
 const setupTest = () => {
-  const {foundation, mockAdapter} =
-      setUpFoundationTest(MDCFloatingLabelFoundation);
-  return {foundation, mockAdapter};
+  const { foundation, mockAdapter } = setUpFoundationTest(
+    MDCFloatingLabelFoundation
+  );
+  return { foundation, mockAdapter };
 };
 
-describe('MDCFloatingLabelFoundation', () => {
-  it('exports cssClasses', () => {
+describe("MDCFloatingLabelFoundation", () => {
+  it("exports cssClasses", () => {
     expect(MDCFloatingLabelFoundation.cssClasses).toEqual(cssClasses);
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCFloatingLabelFoundation, [
-      'addClass',
-      'removeClass',
-      'getWidth',
-      'registerInteractionHandler',
-      'deregisterInteractionHandler',
+      "addClass",
+      "removeClass",
+      "getWidth",
+      "registerInteractionHandler",
+      "deregisterInteractionHandler",
     ]);
   });
 
-  it('#init should register animationend event listener', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init should register animationend event listener", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
-    expect(mockAdapter.registerInteractionHandler)
-        .toHaveBeenCalledWith('animationend', jasmine.any(Function));
+    expect(mockAdapter.registerInteractionHandler).toHaveBeenCalledWith(
+      "animationend",
+      jasmine.any(Function)
+    );
   });
 
-  it('#destroy should deregister animationend event listener', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#destroy should deregister animationend event listener", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.destroy();
-    expect(mockAdapter.deregisterInteractionHandler)
-        .toHaveBeenCalledWith('animationend', jasmine.any(Function));
+    expect(mockAdapter.deregisterInteractionHandler).toHaveBeenCalledWith(
+      "animationend",
+      jasmine.any(Function)
+    );
   });
 
-  it('#getWidth returns the width of the label element scaled by 75%', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#getWidth returns the width of the label element scaled by 75%", () => {
+    const { foundation, mockAdapter } = setupTest();
     const width = 100;
     mockAdapter.getWidth.and.returnValue(width);
     expect(foundation.getWidth()).toEqual(width);
   });
 
-  it('#float called with shouldFloat is true, floats the label', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#float called with shouldFloat is true, floats the label", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.float(true);
-    expect(mockAdapter.addClass)
-        .toHaveBeenCalledWith(cssClasses.LABEL_FLOAT_ABOVE);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_FLOAT_ABOVE
+    );
   });
 
-  it('#float called with shouldFloat is false, de-floats the label', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#float called with shouldFloat is false, de-floats the label", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.float(false);
-    expect(mockAdapter.removeClass)
-        .toHaveBeenCalledWith(cssClasses.LABEL_FLOAT_ABOVE);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_FLOAT_ABOVE
+    );
   });
 
-  it('#shake called with shouldShake is true, should add shake class', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#shake called with shouldShake is true, should add shake class", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.shake(true);
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.LABEL_SHAKE);
   });
 
-  it('#shake called with shouldShake is false, should remove shake class',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.shake(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(cssClasses.LABEL_SHAKE);
-     });
+  it("#shake called with shouldShake is false, should remove shake class", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.shake(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_SHAKE
+    );
+  });
 
-  it('#float called with shouldFloat is false, should remove shake class',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.float(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(cssClasses.LABEL_SHAKE);
-     });
+  it("#float called with shouldFloat is false, should remove shake class", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.float(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_SHAKE
+    );
+  });
 
-  it('#handleShakeAnimationEnd_ should remove LABEL_SHAKE class', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleShakeAnimationEnd_ should remove LABEL_SHAKE class", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.handleShakeAnimationEnd_();
-    expect(mockAdapter.removeClass)
-        .toHaveBeenCalledWith(cssClasses.LABEL_SHAKE);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_SHAKE
+    );
   });
 
   it(`on animationend removes ${cssClasses.LABEL_SHAKE} class`, () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCFloatingLabelFoundation);
-    const handlers = captureHandlers(mockAdapter, 'registerInteractionHandler');
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCFloatingLabelFoundation
+    );
+    const handlers = captureHandlers(mockAdapter, "registerInteractionHandler");
     foundation.init();
-    handlers['animationend']();
-    expect(mockAdapter.removeClass)
-        .toHaveBeenCalledWith(cssClasses.LABEL_SHAKE);
+    handlers["animationend"]();
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_SHAKE
+    );
   });
 
-  it('#setRequired called with isRequired is true, should add required class',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setRequired(true);
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(cssClasses.LABEL_REQUIRED);
-     });
+  it("#setRequired called with isRequired is true, should add required class", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setRequired(true);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_REQUIRED
+    );
+  });
 
-  it('#setRequired called with isRequired is false, should remove required class',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setRequired(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(cssClasses.LABEL_REQUIRED);
-     });
+  it("#setRequired called with isRequired is false, should remove required class", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setRequired(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LABEL_REQUIRED
+    );
+  });
 });

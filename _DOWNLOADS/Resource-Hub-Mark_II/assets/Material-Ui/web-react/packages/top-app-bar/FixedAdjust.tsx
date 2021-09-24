@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface TopAppbarFixedAdjustProps {
   tag?: string;
@@ -32,22 +32,22 @@ export interface TopAppbarFixedAdjustProps {
 }
 
 const FixedAdjust: React.FunctionComponent<TopAppbarFixedAdjustProps> = ({
-  tag: Tag = 'main',
+  tag: Tag = "main",
   children,
-  className = '',
+  className = "",
   dense = false,
   prominent = false,
   short = false,
   ...otherProps
 }) => {
-  const base = 'mdc-top-app-bar';
-  const suffix = '-fixed-adjust';
+  const base = "mdc-top-app-bar";
+  const suffix = "-fixed-adjust";
   const classes = classnames(className, {
-    [base + '--short' + suffix]: short,
-    [base + '--dense' + suffix]: dense && !prominent,
-    [base + '--dense-prominent' + suffix]: dense && prominent,
-    [base + '--prominent' + suffix]: !dense && prominent,
-    [base + '-' + suffix]: !short && !dense && !prominent,
+    [base + "--short" + suffix]: short,
+    [base + "--dense" + suffix]: dense && !prominent,
+    [base + "--dense-prominent" + suffix]: dense && prominent,
+    [base + "--prominent" + suffix]: !dense && prominent,
+    [base + "-" + suffix]: !short && !dense && !prominent,
   });
 
   return (

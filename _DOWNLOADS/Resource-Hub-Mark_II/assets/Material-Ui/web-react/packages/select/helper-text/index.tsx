@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCSelectHelperTextAdapter} from '@material/select/helper-text/adapter';
-import {MDCSelectHelperTextFoundation} from '@material/select/helper-text/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCSelectHelperTextAdapter } from "@material/select/helper-text/adapter";
+import { MDCSelectHelperTextFoundation } from "@material/select/helper-text/foundation";
 
 export interface SelectHelperTextProps
   extends React.HTMLProps<HTMLParagraphElement> {
@@ -34,7 +34,7 @@ export interface SelectHelperTextProps
 }
 
 interface ElementAttributes {
-  'aria-hidden'?: boolean | 'false' | 'true';
+  "aria-hidden"?: boolean | "false" | "true";
   role?: string;
 }
 
@@ -49,20 +49,20 @@ export class SelectHelperText extends React.Component<
   foundation?: MDCSelectHelperTextFoundation;
 
   state: SelectHelperTextState = {
-    'aria-hidden': undefined,
+    "aria-hidden": undefined,
     role: undefined,
     classList: new Set(),
   };
 
   componentDidMount() {
-    const {setHelperTextFoundation} = this.props;
+    const { setHelperTextFoundation } = this.props;
     this.foundation = new MDCSelectHelperTextFoundation(this.adapter);
     this.foundation.init();
     setHelperTextFoundation && setHelperTextFoundation(this.foundation);
   }
 
   componentWillUnmount() {
-    const {setHelperTextFoundation} = this.props;
+    const { setHelperTextFoundation } = this.props;
     if (this.foundation) {
       this.foundation.destroy();
       setHelperTextFoundation && setHelperTextFoundation(undefined);
@@ -70,14 +70,14 @@ export class SelectHelperText extends React.Component<
   }
 
   get classes() {
-    const {className, persistent} = this.props;
-    const {classList} = this.state;
+    const { className, persistent } = this.props;
+    const { classList } = this.state;
     return classnames(
-      'mdc-select-helper-text',
+      "mdc-select-helper-text",
       Array.from(classList),
       className,
       {
-        'mdc-select-helper-text--persistent': persistent,
+        "mdc-select-helper-text--persistent": persistent,
       }
     );
   }
@@ -87,15 +87,15 @@ export class SelectHelperText extends React.Component<
       addClass: (className: string) => {
         const classList = new Set(this.state.classList);
         classList.add(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       removeClass: (className: string) => {
         const classList = new Set(this.state.classList);
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) => {
-        return this.classes.split(' ').includes(className);
+        return this.classes.split(" ").includes(className);
       },
       setAttr: (
         attr: keyof ElementAttributes,
@@ -107,7 +107,7 @@ export class SelectHelperText extends React.Component<
         }));
       },
       removeAttr: (attr: keyof ElementAttributes) => {
-        this.setState((prevState) => ({...prevState, [attr]: null}));
+        this.setState((prevState) => ({ ...prevState, [attr]: null }));
       },
       setContent: () => {
         // not implmenting because developer should would never call `setContent()`
@@ -125,7 +125,7 @@ export class SelectHelperText extends React.Component<
       /* eslint-enable @typescript-eslint/no-unused-vars */
       ...otherProps
     } = this.props;
-    const {'aria-hidden': ariaHidden, role} = this.state;
+    const { "aria-hidden": ariaHidden, role } = this.state;
 
     return (
       <p

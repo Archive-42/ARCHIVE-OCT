@@ -21,12 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCSelectHelperTextAdapter} from './adapter';
-import {MDCSelectHelperTextFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCSelectHelperTextAdapter } from "./adapter";
+import { MDCSelectHelperTextFoundation } from "./foundation";
 
-export type MDCSelectHelperTextFactory =
-    (el: Element, foundation?: MDCSelectHelperTextFoundation) => MDCSelectHelperText;
+export type MDCSelectHelperTextFactory = (
+  el: Element,
+  foundation?: MDCSelectHelperTextFoundation
+) => MDCSelectHelperText;
 
 export class MDCSelectHelperText extends MDCComponent<MDCSelectHelperTextFoundation> {
   static attachTo(root: Element): MDCSelectHelperText {

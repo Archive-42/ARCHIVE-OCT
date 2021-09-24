@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface ListDividerProps extends React.HTMLProps<HTMLElement> {
   className?: string;
@@ -30,16 +30,16 @@ export interface ListDividerProps extends React.HTMLProps<HTMLElement> {
 }
 
 const ListDivider: React.FunctionComponent<ListDividerProps> = ({
-  tag: Tag = 'li',
-  className = '',
-  role = 'separator',
+  tag: Tag = "li",
+  className = "",
+  role = "separator",
   ...otherProps
 }) => {
   return (
     // https://github.com/Microsoft/TypeScript/issues/28892
     // @ts-ignore
     <Tag
-      className={classnames('mdc-list-divider', className)}
+      className={classnames("mdc-list-divider", className)}
       role={role}
       {...otherProps}
     />

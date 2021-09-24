@@ -25,20 +25,20 @@
  * Selectors used by segmented-button
  */
 export const selectors = {
-  SEGMENT: '.mdc-segmented-button__segment'
+  SEGMENT: ".mdc-segmented-button__segment",
 };
 
 /**
  * Events received or emitted by segmented-button
  */
 export const events = {
-  SELECTED: 'selected',
-  CHANGE: 'change'
+  SELECTED: "selected",
+  CHANGE: "change",
 };
 
 /**
  * Style classes for segmented-button
  */
 export const cssClasses = {
-  SINGLE_SELECT: 'mdc-segmented-button--single-select'
+  SINGLE_SELECT: "mdc-segmented-button--single-select",
 };

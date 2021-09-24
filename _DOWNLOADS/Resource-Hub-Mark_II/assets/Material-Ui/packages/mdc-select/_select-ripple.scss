@@ -20,11 +20,11 @@
 // THE SOFTWARE.
 //
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/list/mixins' as list-mixins;
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use './select-theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/list/mixins" as list-mixins;
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "./select-theme";
 
 @mixin core-styles($query: feature-targeting.all()) {
   .mdc-select__anchor {

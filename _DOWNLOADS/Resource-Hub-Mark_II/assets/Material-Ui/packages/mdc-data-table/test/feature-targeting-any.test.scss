@@ -1,6 +1,6 @@
-@use '../data-table' as data-table;
-@use '../data-table-theme' as data-table-theme;
-@use '@material/feature-targeting/feature-targeting';
+@use "../data-table" as data-table;
+@use "../data-table-theme" as data-table-theme;
+@use "@material/feature-targeting/feature-targeting";
 
 @mixin test($query) {
   .test {

@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:color';
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
+@use "sass:color";
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
 
 $action-icon-color: rgba(
   theme-color.prop-value(on-surface),

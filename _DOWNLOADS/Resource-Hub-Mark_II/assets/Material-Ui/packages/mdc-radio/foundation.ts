@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCRadioAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCRadioAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCRadioFoundation extends MDCFoundation<MDCRadioAdapter> {
   static get cssClasses() {
@@ -43,11 +43,11 @@ export class MDCRadioFoundation extends MDCFoundation<MDCRadioAdapter> {
   }
 
   constructor(adapter?: Partial<MDCRadioAdapter>) {
-    super({...MDCRadioFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCRadioFoundation.defaultAdapter, ...adapter });
   }
 
   setDisabled(disabled: boolean) {
-    const {DISABLED} = MDCRadioFoundation.cssClasses;
+    const { DISABLED } = MDCRadioFoundation.cssClasses;
     this.adapter.setNativeControlDisabled(disabled);
     if (disabled) {
       this.adapter.addClass(DISABLED);

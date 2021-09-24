@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Button from '@material/react-button';
-import MaterialIcon from '@material/react-material-icon';
-import {Cell, Grid, Row} from '@material/react-layout-grid';
+import Button from "@material/react-button";
+import MaterialIcon from "@material/react-material-icon";
+import { Cell, Grid, Row } from "@material/react-layout-grid";
 
 export const ButtonExample = () => (
   <Grid>
@@ -23,10 +23,10 @@ export const ButtonExample = () => (
         <Button dense>dense</Button>
       </Cell>
       <Cell>
-        <Button icon={<MaterialIcon icon='stars' />}>icon</Button>
+        <Button icon={<MaterialIcon icon="stars" />}>icon</Button>
       </Cell>
       <Cell>
-        <Button trailingIcon={<MaterialIcon icon='cached' />}>
+        <Button trailingIcon={<MaterialIcon icon="cached" />}>
           trailing-icon
         </Button>
       </Cell>

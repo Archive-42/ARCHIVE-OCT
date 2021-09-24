@@ -20,12 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Feedback from './Feedback';
+import React from "react";
+import ReactDOM from "react-dom";
+import Feedback from "./Feedback";
 
-import './index.scss';
+import "./index.scss";
 
-ReactDOM.render((
-  <Feedback />
-), document.getElementById('roses-feedback'));
+ReactDOM.render(<Feedback />, document.getElementById("roses-feedback"));

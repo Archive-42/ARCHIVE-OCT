@@ -25,7 +25,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -34,9 +37,9 @@ However, you can also use SVG, [Font Awesome](https://fontawesome.com/), or any 
 ### JavaScript instantiation
 
 ```js
-import {MDCSelectIcon} from '@material/select/icon';
+import { MDCSelectIcon } from "@material/select/icon";
 
-const icon = new MDCSelectIcon(document.querySelector('.mdc-select__icon'));
+const icon = new MDCSelectIcon(document.querySelector(".mdc-select__icon"));
 ```
 
 ## Variants
@@ -56,12 +59,21 @@ In filled select:
   <div class="mdc-select__anchor">
     <span class="mdc-select__ripple"></span>
     <span class="mdc-floating-label">Pick a Food Group</span>
-    <i class="material-icons mdc-select__icon" tabindex="0" role="button">event</i>
+    <i class="material-icons mdc-select__icon" tabindex="0" role="button"
+      >event</i
+    >
     ...
   </div>
-  <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+  <div
+    class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth"
+  >
     <ul class="mdc-list" role="listbox">
-      <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" role="option" data-value="grains">
+      <li
+        class="mdc-list-item mdc-list-item--selected"
+        aria-selected="true"
+        role="option"
+        data-value="grains"
+      >
         <span class="mdc-list-item__ripple"></span>
         <span class="mdc-list-item__graphic"></span>
         <span class="mdc-list-item__text">Bread, Cereal, Rice, and Pasta</span>
@@ -77,6 +89,7 @@ In filled select:
         <span class="mdc-list-item__text">Fruit</span>
       </li>
     </ul>
+  </div>
 </div>
 ```
 
@@ -85,10 +98,10 @@ In outlined select:
 ```html
 <div class="mdc-select mdc-select--outlined mdc-select--with-leading-icon">
   <div class="mdc-select__anchor">
-    <span class="mdc-notched-outline">
-      ...
-    </span>
-    <i class="material-icons mdc-select__icon" tabindex="0" role="button">event</i>
+    <span class="mdc-notched-outline"> ... </span>
+    <i class="material-icons mdc-select__icon" tabindex="0" role="button"
+      >event</i
+    >
     ...
   </div>
   <!-- The rest of the select markup, see above. -->
@@ -99,23 +112,23 @@ In outlined select:
 
 ### CSS classes
 
-CSS Class | Description
---- | ---
-`mdc-select__icon` | Mandatory.
+| CSS Class          | Description |
+| ------------------ | ----------- |
+| `mdc-select__icon` | Mandatory.  |
 
 ### Sass mixins
 
-Mixin | Description
---- | ---
-`size($size)` | Customizes the size (both width and height) of the icon.
-`icon-color($color)` | Customizes the color for the leading icon.
-`disabled-icon-color($color)` | Customizes the color for the leading icon when disabled.
+| Mixin                         | Description                                              |
+| ----------------------------- | -------------------------------------------------------- |
+| `size($size)`                 | Customizes the size (both width and height) of the icon. |
+| `icon-color($color)`          | Customizes the color for the leading icon.               |
+| `disabled-icon-color($color)` | Customizes the color for the leading icon when disabled. |
 
 ## `MDCSelectIcon` properties and methods
 
-Property | Value Type | Description
---- | --- | ---
-`foundation` | `MDCSelectIconFoundation` | Returns the icon's foundation. This allows the parent `MDCSelect` component to access the public methods on the `MDCSelectIconFoundation` class.
+| Property     | Value Type                | Description                                                                                                                                      |
+| ------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `foundation` | `MDCSelectIconFoundation` | Returns the icon's foundation. This allows the parent `MDCSelect` component to access the public methods on the `MDCSelectIconFoundation` class. |
 
 ## Usage within frameworks
 
@@ -123,21 +136,21 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCSelectIconAdapter`
 
-Method Signature | Description
---- | ---
-`getAttr(attr: string) => string` | Gets the value of an attribute on the icon element.
-`setAttr(attr: string, value: string) => void` | Sets an attribute with a given value on the icon element.
-`removeAttr(attr: string) => void` | Removes an attribute from the icon element.
-`setContent(content: string) => void` | Sets the text content of the icon element.
-`registerInteractionHandler(evtType: string, handler: EventListener) => void` | Registers an event listener for a given event.
-`deregisterInteractionHandler(evtType: string, handler: EventListener) => void` | Deregisters an event listener for a given event.
-`notifyIconAction() => void` | Emits a custom event "MDCSelect:icon" denoting a user has clicked the icon, which bubbles to the top-level select element.
+| Method Signature                                                                | Description                                                                                                                |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `getAttr(attr: string) => string`                                               | Gets the value of an attribute on the icon element.                                                                        |
+| `setAttr(attr: string, value: string) => void`                                  | Sets an attribute with a given value on the icon element.                                                                  |
+| `removeAttr(attr: string) => void`                                              | Removes an attribute from the icon element.                                                                                |
+| `setContent(content: string) => void`                                           | Sets the text content of the icon element.                                                                                 |
+| `registerInteractionHandler(evtType: string, handler: EventListener) => void`   | Registers an event listener for a given event.                                                                             |
+| `deregisterInteractionHandler(evtType: string, handler: EventListener) => void` | Deregisters an event listener for a given event.                                                                           |
+| `notifyIconAction() => void`                                                    | Emits a custom event "MDCSelect:icon" denoting a user has clicked the icon, which bubbles to the top-level select element. |
 
 ### `MDCSelectIconFoundation`
 
-Method Signature | Description
---- | ---
-`setDisabled(disabled: boolean) => void` | Updates the icon's disabled state.
-`setAriaLabel(label: string) => void` | Updates the icon's aria-label.
-`setContent(content: string) => void` | Updates the icon's text content.
-`handleInteraction(evt: Event) => void` | Handles a select interaction event.
+| Method Signature                         | Description                         |
+| ---------------------------------------- | ----------------------------------- |
+| `setDisabled(disabled: boolean) => void` | Updates the icon's disabled state.  |
+| `setAriaLabel(label: string) => void`    | Updates the icon's aria-label.      |
+| `setContent(content: string) => void`    | Updates the icon's text content.    |
+| `handleInteraction(evt: Event) => void`  | Handles a select interaction event. |

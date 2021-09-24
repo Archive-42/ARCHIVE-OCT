@@ -22,8 +22,8 @@
  */
 
 const strings = {
-  ICON_EVENT: 'MDCSelect:icon',
-  ICON_ROLE: 'button',
+  ICON_EVENT: "MDCSelect:icon",
+  ICON_ROLE: "button",
 };
 
-export {strings};
+export { strings };

@@ -31,36 +31,34 @@
  * However, we still end up with bunch of unneeded .css.js files in the output directory, so this plugin deletes them.
  */
 
-'use strict';
+"use strict";
 
-const fsx = require('fs-extra');
+const fsx = require("fs-extra");
 
 class CssCleanupPlugin {
-  constructor({
-    cleanupDirRelativePath,
-    globber,
-    fsExtraLib = fsx,
-  } = {}) {
+  constructor({ cleanupDirRelativePath, globber, fsExtraLib = fsx } = {}) {
     /** @type {string} */
     this.cleanupDirRelativePath = cleanupDirRelativePath;
 
     // Prevent private properties from being serialized into *.golden.json test files.
     Object.defineProperties(this, {
-      globber_: {value: globber},
-      fsExtraLib_: {value: fsExtraLib},
+      globber_: { value: globber },
+      fsExtraLib_: { value: fsExtraLib },
     });
   }
 
   apply(compiler) {
-    compiler.plugin('done', () => this.nukeEm_());
+    compiler.plugin("done", () => this.nukeEm_());
   }
 
   // https://youtu.be/SNAK21fcVzU
   nukeEm_() {
     // The trailing `*` at the end of the glob pattern is needed to clean up sourcemap files (e.g., `foo.css.js.map`).
-    this.globber_.getAbsolutePaths(this.cleanupDirRelativePath, '**/*.css.js*').forEach((absolutePath) => {
-      this.fsExtraLib_.removeSync(absolutePath);
-    });
+    this.globber_
+      .getAbsolutePaths(this.cleanupDirRelativePath, "**/*.css.js*")
+      .forEach((absolutePath) => {
+        this.fsExtraLib_.removeSync(absolutePath);
+      });
   }
 }
 

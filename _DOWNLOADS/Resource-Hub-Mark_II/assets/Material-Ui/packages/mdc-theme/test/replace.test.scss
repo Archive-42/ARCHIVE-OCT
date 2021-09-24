@@ -1,5 +1,5 @@
-@use '../custom-properties';
-@use '../theme';
+@use "../custom-properties";
+@use "../theme";
 
 .simple {
   @include theme.property(width, calc(x - y), $replace: (x: 100%, y: 20px));

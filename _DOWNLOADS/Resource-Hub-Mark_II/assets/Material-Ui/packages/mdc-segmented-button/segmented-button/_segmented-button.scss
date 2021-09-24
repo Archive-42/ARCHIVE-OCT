@@ -25,8 +25,8 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/feature-targeting/feature-targeting';
-@use './segmented-button-theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "./segmented-button-theme";
 
 @mixin core-styles($query: feature-targeting.all()) {
   .mdc-segmented-button {

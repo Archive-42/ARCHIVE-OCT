@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCFoundation } from "@material/base/foundation";
 
-import {MDCDataTableAdapter} from './adapter';
-import {cssClasses, SortValue, strings} from './constants';
-import {SortActionEventData} from './types';
+import { MDCDataTableAdapter } from "./adapter";
+import { cssClasses, SortValue, strings } from "./constants";
+import { SortActionEventData } from "./types";
 
 /**
  * The Foundation of data table component containing pure business logic, any
@@ -36,12 +36,12 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
     return {
       addClass: () => undefined,
       addClassAtRowIndex: () => undefined,
-      getAttributeByHeaderCellIndex: () => '',
+      getAttributeByHeaderCellIndex: () => "",
       getHeaderCellCount: () => 0,
       getHeaderCellElements: () => [],
       getRowCount: () => 0,
       getRowElements: () => [],
-      getRowIdAtIndex: () => '',
+      getRowIdAtIndex: () => "",
       getRowIndexByChildElement: () => 0,
       getSelectedRowCount: () => 0,
       getTableContainerHeight: () => 0,
@@ -70,7 +70,7 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
   }
 
   constructor(adapter?: Partial<MDCDataTableAdapter>) {
-    super({...MDCDataTableFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCDataTableFoundation.defaultAdapter, ...adapter });
   }
 
   /**
@@ -136,7 +136,7 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
   /**
    * @return Returns array of all row ids.
    */
-  getRowIds(): Array<string|null> {
+  getRowIds(): Array<string | null> {
     const rowIds = [];
     for (let rowIndex = 0; rowIndex < this.adapter.getRowCount(); rowIndex++) {
       rowIds.push(this.adapter.getRowIdAtIndex(rowIndex));
@@ -148,8 +148,8 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
   /**
    * @return Returns array of selected row ids.
    */
-  getSelectedRowIds(): Array<string|null> {
-    const selectedRowIds: Array<string|null> = [];
+  getSelectedRowIds(): Array<string | null> {
+    const selectedRowIds: Array<string | null> = [];
     for (let rowIndex = 0; rowIndex < this.adapter.getRowCount(); rowIndex++) {
       if (this.adapter.isCheckboxAtRowIndexChecked(rowIndex)) {
         selectedRowIds.push(this.adapter.getRowIdAtIndex(rowIndex));
@@ -182,7 +182,8 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
    */
   handleRowCheckboxChange(event: Event) {
     const rowIndex = this.adapter.getRowIndexByChildElement(
-        event.target as HTMLInputElement);
+      event.target as HTMLInputElement
+    );
 
     if (rowIndex === -1) {
       return;
@@ -194,14 +195,14 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
     this.setHeaderRowCheckboxState();
 
     const rowId = this.adapter.getRowIdAtIndex(rowIndex);
-    this.adapter.notifyRowSelectionChanged({rowId, rowIndex, selected});
+    this.adapter.notifyRowSelectionChanged({ rowId, rowIndex, selected });
   }
 
   /**
    * Handles sort action on sortable header cell.
    */
   handleSortAction(eventData: SortActionEventData) {
-    const {columnId, columnIndex, headerCell} = eventData;
+    const { columnId, columnIndex, headerCell } = eventData;
 
     // Reset sort attributes / classes on other header cells.
     for (let index = 0; index < this.adapter.getHeaderCellCount(); index++) {
@@ -210,40 +211,64 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
       }
 
       this.adapter.removeClassNameByHeaderCellIndex(
-          index, cssClasses.HEADER_CELL_SORTED);
+        index,
+        cssClasses.HEADER_CELL_SORTED
+      );
       this.adapter.removeClassNameByHeaderCellIndex(
-          index, cssClasses.HEADER_CELL_SORTED_DESCENDING);
+        index,
+        cssClasses.HEADER_CELL_SORTED_DESCENDING
+      );
       this.adapter.setAttributeByHeaderCellIndex(
-          index, strings.ARIA_SORT, SortValue.NONE);
+        index,
+        strings.ARIA_SORT,
+        SortValue.NONE
+      );
       this.adapter.setSortStatusLabelByHeaderCellIndex(index, SortValue.NONE);
     }
 
     // Set appropriate sort attributes / classes on target header cell.
     this.adapter.setClassNameByHeaderCellIndex(
-        columnIndex, cssClasses.HEADER_CELL_SORTED);
+      columnIndex,
+      cssClasses.HEADER_CELL_SORTED
+    );
 
     const currentSortValue = this.adapter.getAttributeByHeaderCellIndex(
-        columnIndex, strings.ARIA_SORT);
+      columnIndex,
+      strings.ARIA_SORT
+    );
     let sortValue = SortValue.NONE;
 
     // Set to descending if sorted on ascending order.
     if (currentSortValue === SortValue.ASCENDING) {
       this.adapter.setClassNameByHeaderCellIndex(
-          columnIndex, cssClasses.HEADER_CELL_SORTED_DESCENDING);
+        columnIndex,
+        cssClasses.HEADER_CELL_SORTED_DESCENDING
+      );
       this.adapter.setAttributeByHeaderCellIndex(
-          columnIndex, strings.ARIA_SORT, SortValue.DESCENDING);
+        columnIndex,
+        strings.ARIA_SORT,
+        SortValue.DESCENDING
+      );
       sortValue = SortValue.DESCENDING;
       // Set to ascending if sorted on descending order.
     } else if (currentSortValue === SortValue.DESCENDING) {
       this.adapter.removeClassNameByHeaderCellIndex(
-          columnIndex, cssClasses.HEADER_CELL_SORTED_DESCENDING);
+        columnIndex,
+        cssClasses.HEADER_CELL_SORTED_DESCENDING
+      );
       this.adapter.setAttributeByHeaderCellIndex(
-          columnIndex, strings.ARIA_SORT, SortValue.ASCENDING);
+        columnIndex,
+        strings.ARIA_SORT,
+        SortValue.ASCENDING
+      );
       sortValue = SortValue.ASCENDING;
     } else {
       // Set to ascending by default when not sorted.
       this.adapter.setAttributeByHeaderCellIndex(
-          columnIndex, strings.ARIA_SORT, SortValue.ASCENDING);
+        columnIndex,
+        strings.ARIA_SORT,
+        SortValue.ASCENDING
+      );
       sortValue = SortValue.ASCENDING;
     }
 
@@ -290,7 +315,8 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
       this.adapter.setHeaderRowCheckboxChecked(false);
       this.adapter.setHeaderRowCheckboxIndeterminate(false);
     } else if (
-        this.adapter.getSelectedRowCount() === this.adapter.getRowCount()) {
+      this.adapter.getSelectedRowCount() === this.adapter.getRowCount()
+    ) {
       this.adapter.setHeaderRowCheckboxChecked(true);
       this.adapter.setHeaderRowCheckboxIndeterminate(false);
     } else {
@@ -306,11 +332,17 @@ export class MDCDataTableFoundation extends MDCFoundation<MDCDataTableAdapter> {
     if (selected) {
       this.adapter.addClassAtRowIndex(rowIndex, cssClasses.ROW_SELECTED);
       this.adapter.setAttributeAtRowIndex(
-          rowIndex, strings.ARIA_SELECTED, 'true');
+        rowIndex,
+        strings.ARIA_SELECTED,
+        "true"
+      );
     } else {
       this.adapter.removeClassAtRowIndex(rowIndex, cssClasses.ROW_SELECTED);
       this.adapter.setAttributeAtRowIndex(
-          rowIndex, strings.ARIA_SELECTED, 'false');
+        rowIndex,
+        strings.ARIA_SELECTED,
+        "false"
+      );
     }
   }
 }

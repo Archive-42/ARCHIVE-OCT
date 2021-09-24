@@ -20,8 +20,8 @@
 // THE SOFTWARE.
 //
 
-@use '@material/feature-targeting/feature-targeting';
-@use './select-icon-theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "./select-icon-theme";
 
 @mixin icon-core-styles($query: feature-targeting.all()) {
   $feat-structure: feature-targeting.create-target($query, structure);
@@ -36,7 +36,7 @@
   }
 
   .mdc-select__icon:not([tabindex]),
-  .mdc-select__icon[tabindex='-1'] {
+  .mdc-select__icon[tabindex="-1"] {
     @include feature-targeting.targets($feat-structure) {
       cursor: default;
       pointer-events: none;

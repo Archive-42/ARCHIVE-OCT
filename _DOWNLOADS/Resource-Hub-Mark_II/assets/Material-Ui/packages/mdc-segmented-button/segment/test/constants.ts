@@ -25,7 +25,7 @@
  * Strings constants to be used for tests
  */
 export const testStrings = {
-  SEGMENT_ID: 'test-segment-id',
-  CLASS: 'test-class',
-  ATTRIBUTE: 'test-attribute'
+  SEGMENT_ID: "test-segment-id",
+  CLASS: "test-class",
+  ATTRIBUTE: "test-attribute",
 };

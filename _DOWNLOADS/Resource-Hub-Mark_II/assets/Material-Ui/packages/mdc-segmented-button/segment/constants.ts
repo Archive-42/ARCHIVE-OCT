@@ -25,30 +25,30 @@
  * Boolean strings for segment
  */
 export const booleans = {
-  TRUE: 'true',
-  FALSE: 'false'
+  TRUE: "true",
+  FALSE: "false",
 };
 
 /**
  * Attributes referenced by segment
  */
 export const attributes = {
-  ARIA_CHECKED: 'aria-checked',
-  ARIA_PRESSED: 'aria-pressed',
-  DATA_SEGMENT_ID: 'data-segment-id'
+  ARIA_CHECKED: "aria-checked",
+  ARIA_PRESSED: "aria-pressed",
+  DATA_SEGMENT_ID: "data-segment-id",
 };
 
 /**
  * Events received or emitted by segment
  */
 export const events = {
-  CLICK: 'click',
-  SELECTED: 'selected'
+  CLICK: "click",
+  SELECTED: "selected",
 };
 
 /**
  * Style classes for segment
  */
 export const cssClasses = {
-  SELECTED: 'mdc-segmented-button__segment--selected'
+  SELECTED: "mdc-segmented-button__segment--selected",
 };

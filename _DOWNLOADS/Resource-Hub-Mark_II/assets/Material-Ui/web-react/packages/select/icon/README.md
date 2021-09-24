@@ -5,19 +5,15 @@ MDC React Select Icon is a React Component which uses MDC [MDC Select Icon](http
 ## Usage
 
 ```js
-import {SelectIcon} from '@material/react-select/icon/index';
+import { SelectIcon } from "@material/react-select/icon/index";
 
 const MyComponent = () => {
-  return (
-    <SelectIcon className='material-icons'>
-      favorite
-    </SelectIcon>
-  );
-}
+  return <SelectIcon className="material-icons">favorite</SelectIcon>;
+};
 ```
 
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-tag | string (keyof React.ReactHTML) | Sets the element tag. Defaults to i which becomes`<i />`.
+| Prop Name | Type                           | Description                                               |
+| --------- | ------------------------------ | --------------------------------------------------------- |
+| tag       | string (keyof React.ReactHTML) | Sets the element tag. Defaults to i which becomes`<i />`. |

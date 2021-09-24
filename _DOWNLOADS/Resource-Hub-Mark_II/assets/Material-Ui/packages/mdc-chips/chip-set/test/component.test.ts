@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-import {emitEvent} from '../../../../testing/dom/events';
-import {createMockFoundation} from '../../../../testing/helpers/foundation';
-import {MDCChipFoundation} from '../../chip/index';
-import {MDCChipSet, MDCChipSetFoundation} from '../index';
+import { emitEvent } from "../../../../testing/dom/events";
+import { createMockFoundation } from "../../../../testing/helpers/foundation";
+import { MDCChipFoundation } from "../../chip/index";
+import { MDCChipSet, MDCChipSetFoundation } from "../index";
 
 const getFixture = () => {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
   <div class="mdc-chip-set">
     <div class="mdc-chip" id="chip1">
@@ -46,10 +46,11 @@ const getFixture = () => {
   return el;
 };
 
-describe('MDCChipSet', () => {
-  it('attachTo returns an MDCChipSet instance', () => {
-    expect(MDCChipSet.attachTo(getFixture()) instanceof MDCChipSet)
-        .toBeTruthy();
+describe("MDCChipSet", () => {
+  it("attachTo returns an MDCChipSet instance", () => {
+    expect(
+      MDCChipSet.attachTo(getFixture()) instanceof MDCChipSet
+    ).toBeTruthy();
   });
 
   class FakeChip {
@@ -63,73 +64,80 @@ describe('MDCChipSet', () => {
 
     constructor(el: HTMLElement, readonly selected = false) {
       this.id = el.id;
-      this.destroy = jasmine.createSpy('.destroy');
-      this.focusPrimaryAction = jasmine.createSpy('.focusPrimaryAction');
-      this.focusTrailingAction = jasmine.createSpy('.focusTrailingAction');
-      this.remove = jasmine.createSpy('.remove');
-      this.removeFocus = jasmine.createSpy('.removeFocus');
-      this.setSelectedFromChipSet =
-          jasmine.createSpy('.setSelectedFromChipSet');
+      this.destroy = jasmine.createSpy(".destroy");
+      this.focusPrimaryAction = jasmine.createSpy(".focusPrimaryAction");
+      this.focusTrailingAction = jasmine.createSpy(".focusTrailingAction");
+      this.remove = jasmine.createSpy(".remove");
+      this.removeFocus = jasmine.createSpy(".removeFocus");
+      this.setSelectedFromChipSet = jasmine.createSpy(
+        ".setSelectedFromChipSet"
+      );
     }
   }
 
   function setupTest() {
     const root = getFixture();
-    const component =
-        new MDCChipSet(root, undefined, (el: HTMLElement) => new FakeChip(el));
-    return {root, component};
+    const component = new MDCChipSet(
+      root,
+      undefined,
+      (el: HTMLElement) => new FakeChip(el)
+    );
+    return { root, component };
   }
 
-  function setupMockFoundationTest({hasSelection = false} = {}) {
+  function setupMockFoundationTest({ hasSelection = false } = {}) {
     const root = getFixture();
     const mockFoundation = createMockFoundation(MDCChipSetFoundation);
 
     if (!hasSelection) {
       const component = new MDCChipSet(root, mockFoundation);
-      return {root, component, mockFoundation};
+      return { root, component, mockFoundation };
     } else {
       const component = new MDCChipSet(
-          root, mockFoundation, (el: HTMLElement) => new FakeChip(el, true));
-      return {root, component, mockFoundation};
+        root,
+        mockFoundation,
+        (el: HTMLElement) => new FakeChip(el, true)
+      );
+      return { root, component, mockFoundation };
     }
   }
 
-  it('#constructor instantiates child chip components', () => {
-    const {component} = setupTest();
+  it("#constructor instantiates child chip components", () => {
+    const { component } = setupTest();
     expect(component.chips.length).toEqual(3);
     expect(component.chips[0]).toEqual(jasmine.any(FakeChip));
     expect(component.chips[1]).toEqual(jasmine.any(FakeChip));
     expect(component.chips[2]).toEqual(jasmine.any(FakeChip));
   });
 
-  it('#destroy cleans up child chip components', () => {
-    const {component} = setupTest();
+  it("#destroy cleans up child chip components", () => {
+    const { component } = setupTest();
     component.destroy();
     expect(component.chips[0].destroy).toHaveBeenCalled();
     expect(component.chips[1].destroy).toHaveBeenCalled();
     expect(component.chips[2].destroy).toHaveBeenCalled();
   });
 
-  it('#initialSyncWithDOM sets up event handlers', () => {
-    const {root, mockFoundation} = setupMockFoundationTest();
+  it("#initialSyncWithDOM sets up event handlers", () => {
+    const { root, mockFoundation } = setupMockFoundationTest();
     const {
       INTERACTION_EVENT,
       ARROW_LEFT_KEY,
       NAVIGATION_EVENT,
       REMOVAL_EVENT,
-      SELECTION_EVENT
+      SELECTION_EVENT,
     } = MDCChipFoundation.strings;
 
     emitEvent(root, INTERACTION_EVENT, {
       bubbles: true,
       cancelable: true,
       detail: {
-        chipId: 'chipA',
+        chipId: "chipA",
       },
     });
 
     expect(mockFoundation.handleChipInteraction).toHaveBeenCalledWith({
-      chipId: 'chipA'
+      chipId: "chipA",
     });
     expect(mockFoundation.handleChipInteraction).toHaveBeenCalledTimes(1);
 
@@ -137,14 +145,14 @@ describe('MDCChipSet', () => {
       bubbles: true,
       cancelable: true,
       detail: {
-        chipId: 'chipA',
+        chipId: "chipA",
         selected: true,
         shouldIgnore: false,
       },
     });
 
     expect(mockFoundation.handleChipSelection).toHaveBeenCalledWith({
-      chipId: 'chipA',
+      chipId: "chipA",
       selected: true,
       shouldIgnore: false,
     });
@@ -154,14 +162,14 @@ describe('MDCChipSet', () => {
       bubbles: true,
       cancelable: true,
       detail: {
-        chipId: 'chipA',
-        removedAnnouncement: 'Removed foo',
+        chipId: "chipA",
+        removedAnnouncement: "Removed foo",
       },
     });
 
     expect(mockFoundation.handleChipRemoval).toHaveBeenCalledWith({
-      chipId: 'chipA',
-      removedAnnouncement: 'Removed foo'
+      chipId: "chipA",
+      removedAnnouncement: "Removed foo",
     });
     expect(mockFoundation.handleChipRemoval).toHaveBeenCalledTimes(1);
 
@@ -169,30 +177,29 @@ describe('MDCChipSet', () => {
       bubbles: true,
       cancelable: true,
       detail: {
-        chipId: 'chipA',
+        chipId: "chipA",
         key: ARROW_LEFT_KEY,
         source: 1,
       },
     });
 
     expect(mockFoundation.handleChipNavigation).toHaveBeenCalledWith({
-      chipId: 'chipA',
+      chipId: "chipA",
       key: ARROW_LEFT_KEY,
       source: 1,
     });
     expect(mockFoundation.handleChipNavigation).toHaveBeenCalledTimes(1);
   });
 
-  it('#initialSyncWithDOM calls MDCChipSetFoundation#select on the selected chips',
-     () => {
-       const {mockFoundation} = setupMockFoundationTest({hasSelection: true});
-       expect(mockFoundation.select).toHaveBeenCalledWith('chip1');
-       expect(mockFoundation.select).toHaveBeenCalledWith('chip2');
-       expect(mockFoundation.select).toHaveBeenCalledWith('chip3');
-     });
+  it("#initialSyncWithDOM calls MDCChipSetFoundation#select on the selected chips", () => {
+    const { mockFoundation } = setupMockFoundationTest({ hasSelection: true });
+    expect(mockFoundation.select).toHaveBeenCalledWith("chip1");
+    expect(mockFoundation.select).toHaveBeenCalledWith("chip2");
+    expect(mockFoundation.select).toHaveBeenCalledWith("chip3");
+  });
 
-  it('#destroy removes event handlers', () => {
-    const {root, component, mockFoundation} = setupMockFoundationTest();
+  it("#destroy removes event handlers", () => {
+    const { root, component, mockFoundation } = setupMockFoundationTest();
     component.destroy();
 
     emitEvent(root, MDCChipFoundation.strings.INTERACTION_EVENT);
@@ -208,17 +215,17 @@ describe('MDCChipSet', () => {
     expect(mockFoundation.handleChipNavigation).not.toHaveBeenCalled();
   });
 
-  it('get selectedChipIds proxies to foundation', () => {
-    const {component, mockFoundation} = setupMockFoundationTest();
+  it("get selectedChipIds proxies to foundation", () => {
+    const { component, mockFoundation } = setupMockFoundationTest();
     component.selectedChipIds;
     expect(mockFoundation.getSelectedChipIds).toHaveBeenCalled();
   });
 
-  it('#addChip adds a new chip to the chip set', () => {
-    const {component} = setupTest();
+  it("#addChip adds a new chip to the chip set", () => {
+    const { component } = setupTest();
     // component.initialSyncWithDOM(); // TODO: why is this here?
 
-    const wrapper = document.createElement('div');
+    const wrapper = document.createElement("div");
     wrapper.innerHTML = `
     <div class="mdc-chip">
       <div class="mdc-chip__text">Hello world</div>
@@ -232,94 +239,97 @@ describe('MDCChipSet', () => {
     expect(component.chips[3]).toEqual(jasmine.any(FakeChip));
   });
 
-  it('#adapter.hasClass returns true if class is set on chip set element',
-     () => {
-       const {root, component} = setupTest();
-       root.classList.add('foo');
-       expect(
-           (component.getDefaultFoundation() as any).adapter.hasClass('foo'))
-           .toBe(true);
-     });
-
-  it('#adapter.removeChipAtIndex removes the chip object from the chip set',
-     () => {
-       const {component} = setupTest();
-       const chip = component.chips[0];
-       (component.getDefaultFoundation() as any).adapter.removeChipAtIndex(0);
-       expect(component.chips.length).toEqual(2);
-       expect(chip.destroy).toHaveBeenCalled();
-       expect(chip.remove).toHaveBeenCalled();
-     });
-
-  it('#adapter.removeChipAtIndex does nothing if the given object is not in the chip set',
-     () => {
-       const {component} = setupTest();
-       (component.getDefaultFoundation() as any).adapter.removeChipAtIndex(-1);
-       expect(component.chips.length).toEqual(3);
-     });
-
-  it('#adapter.selectChipAtIndex calls setSelectedFromChipSet on chip object',
-     () => {
-       const {component} = setupTest();
-       const chip = component.chips[0];
-       (component.getDefaultFoundation() as any)
-           .adapter.selectChipAtIndex(0, true, true);
-       expect(chip.setSelectedFromChipSet).toHaveBeenCalledWith(true, true);
-     });
-
-  it('#adapter.getChipListCount returns the number of chips', () => {
-    const {component} = setupTest();
+  it("#adapter.hasClass returns true if class is set on chip set element", () => {
+    const { root, component } = setupTest();
+    root.classList.add("foo");
     expect(
-        (component.getDefaultFoundation() as any).adapter.getChipListCount())
-        .toEqual(3);
+      (component.getDefaultFoundation() as any).adapter.hasClass("foo")
+    ).toBe(true);
   });
 
-  it('#adapter.getIndexOfChipById returns the index of the chip', () => {
-    const {component} = setupTest();
-    expect((component.getDefaultFoundation() as any)
-               .adapter.getIndexOfChipById('chip1'))
-        .toEqual(0);
+  it("#adapter.removeChipAtIndex removes the chip object from the chip set", () => {
+    const { component } = setupTest();
+    const chip = component.chips[0];
+    (component.getDefaultFoundation() as any).adapter.removeChipAtIndex(0);
+    expect(component.chips.length).toEqual(2);
+    expect(chip.destroy).toHaveBeenCalled();
+    expect(chip.remove).toHaveBeenCalled();
   });
 
-  it('#adapter.focusChipPrimaryActionAtIndex focuses the primary action of the chip at the given index',
-     () => {
-       const {component} = setupTest();
-       (component.getDefaultFoundation() as any)
-           .adapter.focusChipPrimaryActionAtIndex(0);
-       expect(component.chips[0].focusPrimaryAction).toHaveBeenCalledTimes(1);
-     });
+  it("#adapter.removeChipAtIndex does nothing if the given object is not in the chip set", () => {
+    const { component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.removeChipAtIndex(-1);
+    expect(component.chips.length).toEqual(3);
+  });
 
-  it('#adapter.focusChipTrailingActionAtIndex focuses the trailing action of the chip at the given index',
-     () => {
-       const {component} = setupTest();
-       (component.getDefaultFoundation() as any)
-           .adapter.focusChipTrailingActionAtIndex(0);
-       expect(component.chips[0].focusTrailingAction).toHaveBeenCalledTimes(1);
-     });
+  it("#adapter.selectChipAtIndex calls setSelectedFromChipSet on chip object", () => {
+    const { component } = setupTest();
+    const chip = component.chips[0];
+    (component.getDefaultFoundation() as any).adapter.selectChipAtIndex(
+      0,
+      true,
+      true
+    );
+    expect(chip.setSelectedFromChipSet).toHaveBeenCalledWith(true, true);
+  });
 
-  it('#adapter.removeFocusFromChipAtIndex removes focus from the chip at the given index',
-     () => {
-       const {component} = setupTest();
-       (component.getDefaultFoundation() as any)
-           .adapter.removeFocusFromChipAtIndex(0);
-       expect(component.chips[0].removeFocus).toHaveBeenCalledTimes(1);
-     });
+  it("#adapter.getChipListCount returns the number of chips", () => {
+    const { component } = setupTest();
+    expect(
+      (component.getDefaultFoundation() as any).adapter.getChipListCount()
+    ).toEqual(3);
+  });
 
-  it('#adapter.isRTL returns true if the text direction is RTL', () => {
-    const {component, root} = setupTest();
+  it("#adapter.getIndexOfChipById returns the index of the chip", () => {
+    const { component } = setupTest();
+    expect(
+      (component.getDefaultFoundation() as any).adapter.getIndexOfChipById(
+        "chip1"
+      )
+    ).toEqual(0);
+  });
+
+  it("#adapter.focusChipPrimaryActionAtIndex focuses the primary action of the chip at the given index", () => {
+    const { component } = setupTest();
+    (
+      component.getDefaultFoundation() as any
+    ).adapter.focusChipPrimaryActionAtIndex(0);
+    expect(component.chips[0].focusPrimaryAction).toHaveBeenCalledTimes(1);
+  });
+
+  it("#adapter.focusChipTrailingActionAtIndex focuses the trailing action of the chip at the given index", () => {
+    const { component } = setupTest();
+    (
+      component.getDefaultFoundation() as any
+    ).adapter.focusChipTrailingActionAtIndex(0);
+    expect(component.chips[0].focusTrailingAction).toHaveBeenCalledTimes(1);
+  });
+
+  it("#adapter.removeFocusFromChipAtIndex removes focus from the chip at the given index", () => {
+    const { component } = setupTest();
+    (
+      component.getDefaultFoundation() as any
+    ).adapter.removeFocusFromChipAtIndex(0);
+    expect(component.chips[0].removeFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it("#adapter.isRTL returns true if the text direction is RTL", () => {
+    const { component, root } = setupTest();
     document.documentElement.appendChild(root);
-    document.documentElement.setAttribute('dir', 'rtl');
-    expect((component.getDefaultFoundation() as any).adapter.isRTL())
-        .toBe(true);
-    document.documentElement.removeAttribute('dir');
+    document.documentElement.setAttribute("dir", "rtl");
+    expect((component.getDefaultFoundation() as any).adapter.isRTL()).toBe(
+      true
+    );
+    document.documentElement.removeAttribute("dir");
     document.documentElement.removeChild(root);
   });
 
-  it('#adapter.isRTL returns false if the text direction is not RTL', () => {
-    const {component, root} = setupTest();
+  it("#adapter.isRTL returns false if the text direction is not RTL", () => {
+    const { component, root } = setupTest();
     document.documentElement.appendChild(root);
-    expect((component.getDefaultFoundation() as any).adapter.isRTL())
-        .toBe(false);
+    expect((component.getDefaultFoundation() as any).adapter.isRTL()).toBe(
+      false
+    );
     document.documentElement.removeChild(root);
   });
 });

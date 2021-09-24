@@ -3,7 +3,6 @@ const PERSISTENCE_COMPARE_KEY = `${PERSISTENCE_KEY}-compare`;
 
 export function persistComparison(value: string): void {
 	window.localStorage.setItem(PERSISTENCE_COMPARE_KEY, value);
-
 }
 export function persistHash(value: string): void {
 	window.localStorage.setItem(PERSISTENCE_KEY, value);

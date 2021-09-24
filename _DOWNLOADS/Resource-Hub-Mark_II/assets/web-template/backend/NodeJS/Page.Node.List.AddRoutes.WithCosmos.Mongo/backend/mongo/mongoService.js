@@ -10,7 +10,7 @@ function get(req, res, next) {
     .read(ReadPreference.NEAREST);
   docquery
     .exec()
-    .then(listItems => {
+    .then((listItems) => {
       res.json(listItems);
     })
     .catch(next);
@@ -32,7 +32,7 @@ function destroy(req, res, next) {
   const { id } = req.params;
 
   ListItem.findByIdAndDelete(id)
-    .then(listItem => {
+    .then((listItem) => {
       res.json(listItem);
     })
     .catch(next);

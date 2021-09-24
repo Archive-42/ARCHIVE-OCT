@@ -20,11 +20,11 @@
 // THE SOFTWARE.
 //
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/theme/mixins' as theme-mixins;
-@use '@material/theme/state';
-@use '@material/theme/variables' as theme-variables;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/theme/mixins" as theme-mixins;
+@use "@material/theme/state";
+@use "@material/theme/variables" as theme-variables;
 
 $icon-size: 24px !default;
 $dense-icon-size: 20px !default;

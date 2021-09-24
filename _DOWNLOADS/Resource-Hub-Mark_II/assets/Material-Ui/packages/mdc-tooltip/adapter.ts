@@ -1,7 +1,5 @@
-
-
-import {EventType, SpecificEventListener} from '@material/base/types';
-import {CssClasses} from './constants';
+import { EventType, SpecificEventListener } from "@material/base/types";
+import { CssClasses } from "./constants";
 
 /**
  * Implement this adapter for your framework of choice to delegate updates to
@@ -14,7 +12,7 @@ export interface MDCTooltipAdapter {
    * @return the attribute string if present on the root element, null
    * otherwise.
    */
-  getAttribute(attr: string): string|null;
+  getAttribute(attr: string): string | null;
 
   /**
    * Sets an attribute on the root element.
@@ -54,18 +52,18 @@ export interface MDCTooltipAdapter {
   /**
    * @return the width and height of the tooltip element.
    */
-  getTooltipSize(): {width: number, height: number};
+  getTooltipSize(): { width: number; height: number };
 
   /**
    * @return the ClientRect for the anchor element.
    */
-  getAnchorBoundingRect(): ClientRect|null;
+  getAnchorBoundingRect(): ClientRect | null;
 
   /**
    * @return the attribute string if present on the anchor element, null
    * otherwise.
    */
-  getAnchorAttribute(attr: string): string|null;
+  getAnchorAttribute(attr: string): string | null;
 
   /**
    * Sets an attribute on the anchor element.
@@ -91,37 +89,49 @@ export interface MDCTooltipAdapter {
    * Registers an event listener to the root element.
    */
   registerEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener to the root element.
    */
   deregisterEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers an event listener to the document body.
    */
   registerDocumentEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener to the document body.
    */
   deregisterDocumentEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers an event listener to the window.
    */
   registerWindowEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener to the window.
    */
   deregisterWindowEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Notification that the tooltip element has been fully hidden. Typically used

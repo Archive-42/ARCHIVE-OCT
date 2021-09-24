@@ -22,11 +22,11 @@
  */
 
 const cssClasses = {
-  ROOT: 'mdc-text-field-character-counter',
+  ROOT: "mdc-text-field-character-counter",
 };
 
 const strings = {
   ROOT_SELECTOR: `.${cssClasses.ROOT}`,
 };
 
-export {strings, cssClasses};
+export { strings, cssClasses };

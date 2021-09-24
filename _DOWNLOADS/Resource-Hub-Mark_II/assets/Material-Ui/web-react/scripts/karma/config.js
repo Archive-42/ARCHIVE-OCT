@@ -3,62 +3,54 @@
 
 module.exports = {
   // base path that will be used to resolve all patterns (eg. files, exclude)
-  basePath: '',
-
+  basePath: "",
 
   // frameworks to use
   // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-  frameworks: ['mocha'],
-
+  frameworks: ["mocha"],
 
   // list of files / patterns to load in the browser
-  files: [
-    'test/unit/index.tsx',
-  ],
-
+  files: ["test/unit/index.tsx"],
 
   // list of files / patterns to exclude
   exclude: [],
 
-
   // preprocess matching files before serving them to the browser
   // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
   preprocessors: {
-    'test/unit/index.tsx': ['webpack', 'sourcemap'],
+    "test/unit/index.tsx": ["webpack", "sourcemap"],
   },
 
   webpack: {
-    devtool: 'source-map',
+    devtool: "source-map",
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+      extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     },
     module: {
       rules: [
         {
           test: /\.js$/,
           use: {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
               compact: true,
-              presets: [
-                'airbnb',
-                'env',
-                'react',
-              ],
-              plugins: ['transform-class-properties'],
+              presets: ["airbnb", "env", "react"],
+              plugins: ["transform-class-properties"],
             },
           },
-        }, {
+        },
+        {
           test: /\.tsx?$/,
-          loader: 'ts-loader',
-        }, {
-          enforce: 'post',
+          loader: "ts-loader",
+        },
+        {
+          enforce: "post",
           test: /\.(js|ts)x?$/,
           use: {
-            loader: 'istanbul-instrumenter-loader',
-            options: {esModules: true, produceSourceMap: true},
+            loader: "istanbul-instrumenter-loader",
+            options: { esModules: true, produceSourceMap: true },
           },
-          include: require('path').resolve('packages/'),
+          include: require("path").resolve("packages/"),
           exclude: [/\.test\.(js|ts)x?$/, /node_modules/],
         },
       ],
@@ -69,29 +61,29 @@ module.exports = {
       // }),
     ],
     node: {
-      fs: 'empty',
+      fs: "empty",
     },
   },
 
   client: {
     mocha: {
-      reporter: 'html',
-      ui: 'qunit',
+      reporter: "html",
+      ui: "qunit",
     },
   },
 
   // test results reporter to use
   // possible values: 'dots', 'progress'
   // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-  reporters: ['progress', 'coverage-istanbul'],
+  reporters: ["progress", "coverage-istanbul"],
 
   coverageIstanbulReporter: {
-    dir: 'coverage',
+    dir: "coverage",
     skipFilesWithNoCoverage: true,
     reporters: [
-      {type: 'lcovonly', subdir: '.'},
-      {type: 'json', subdir: '.', file: 'coverage.json'},
-      {type: 'html'},
+      { type: "lcovonly", subdir: "." },
+      { type: "json", subdir: ".", file: "coverage.json" },
+      { type: "html" },
     ],
   },
 

@@ -21,186 +21,195 @@
  * THE SOFTWARE.
  */
 
-import {verifyDefaultAdapter} from '../../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../../testing/helpers/setup';
-import {MDCSelectHelperTextFoundation} from '../foundation';
+import { verifyDefaultAdapter } from "../../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../../testing/helpers/setup";
+import { MDCSelectHelperTextFoundation } from "../foundation";
 
-const {cssClasses, strings} = MDCSelectHelperTextFoundation;
+const { cssClasses, strings } = MDCSelectHelperTextFoundation;
 
-describe('MDCSelectHelperTextFoundation', () => {
-  it('exports cssClasses', () => {
+describe("MDCSelectHelperTextFoundation", () => {
+  it("exports cssClasses", () => {
     expect(MDCSelectHelperTextFoundation.cssClasses).toEqual(cssClasses);
   });
 
-  it('exports strings', () => {
+  it("exports strings", () => {
     expect(MDCSelectHelperTextFoundation.strings).toEqual(strings);
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCSelectHelperTextFoundation, [
-      'addClass',
-      'removeClass',
-      'hasClass',
-      'getAttr',
-      'setAttr',
-      'removeAttr',
-      'setContent',
+      "addClass",
+      "removeClass",
+      "hasClass",
+      "getAttr",
+      "setAttr",
+      "removeAttr",
+      "setContent",
     ]);
   });
 
-  const setupTest =
-      () => {
-        const {foundation, mockAdapter} =
-            setUpFoundationTest(MDCSelectHelperTextFoundation);
-        return {foundation, mockAdapter};
-      }
+  const setupTest = () => {
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCSelectHelperTextFoundation
+    );
+    return { foundation, mockAdapter };
+  };
 
-  it('#setContent sets the content of the helper text element', () => {
-    const {foundation, mockAdapter} = setupTest();
-    foundation.setContent('foo');
-    expect(mockAdapter.setContent).toHaveBeenCalledWith('foo');
+  it("#setContent sets the content of the helper text element", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setContent("foo");
+    expect(mockAdapter.setContent).toHaveBeenCalledWith("foo");
   });
 
-  it('#setValidationMsgPersistent toggles the persistent validation class',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setValidationMsgPersistent(true);
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(
-               cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
-       foundation.setValidationMsgPersistent(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(
-               cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
-     });
+  it("#setValidationMsgPersistent toggles the persistent validation class", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setValidationMsgPersistent(true);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT
+    );
+    foundation.setValidationMsgPersistent(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT
+    );
+  });
 
-  it('#setValidation toggles the validation class', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setValidation toggles the validation class", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setValidation(true);
-    expect(mockAdapter.addClass)
-        .toHaveBeenCalledWith(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG
+    );
     foundation.setValidation(false);
-    expect(mockAdapter.removeClass)
-        .toHaveBeenCalledWith(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG
+    );
   });
 
-  it('#setValidity adds role="alert" to helper text if input is invalid and' +
-         'helper text is being used as a validation message',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = false;
-       mockAdapter.hasClass
-           .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
-           .and.returnValue(false);
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(true);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.setAttr).toHaveBeenCalledWith('role', 'alert');
-     });
-
-  it('#setValidity removes role="alert" if input is valid', () => {
-    const {foundation, mockAdapter} = setupTest();
-    const inputIsValid = true;
-    mockAdapter.hasClass
+  it(
+    '#setValidity adds role="alert" to helper text if input is invalid and' +
+      "helper text is being used as a validation message",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      const inputIsValid = false;
+      mockAdapter.hasClass
         .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
         .and.returnValue(false);
-    mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+      mockAdapter.hasClass
+        .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
         .and.returnValue(true);
+      foundation.setValidity(inputIsValid);
+      expect(mockAdapter.setAttr).toHaveBeenCalledWith("role", "alert");
+    }
+  );
+
+  it('#setValidity removes role="alert" if input is valid', () => {
+    const { foundation, mockAdapter } = setupTest();
+    const inputIsValid = true;
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
+      .and.returnValue(false);
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+      .and.returnValue(true);
     foundation.setValidity(inputIsValid);
-    expect(mockAdapter.removeAttr).toHaveBeenCalledWith('role');
+    expect(mockAdapter.removeAttr).toHaveBeenCalledWith("role");
   });
 
-  it('#setValidity removes role="alert" if input is valid and validation' +
-         ' msg is persistent',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = true;
-       mockAdapter.hasClass
-           .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
-           .and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(true);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.removeAttr).toHaveBeenCalledWith('role');
-     });
+  it(
+    '#setValidity removes role="alert" if input is valid and validation' +
+      " msg is persistent",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      const inputIsValid = true;
+      mockAdapter.hasClass
+        .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
+        .and.returnValue(true);
+      mockAdapter.hasClass
+        .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+        .and.returnValue(true);
+      foundation.setValidity(inputIsValid);
+      expect(mockAdapter.removeAttr).toHaveBeenCalledWith("role");
+    }
+  );
 
-  it('#setValidity does not change helper text visibility if it is' +
-         ' not validation message',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = true;
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(false);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.setAttr).not.toHaveBeenCalled();
-     });
+  it(
+    "#setValidity does not change helper text visibility if it is" +
+      " not validation message",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      const inputIsValid = true;
+      mockAdapter.hasClass
+        .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+        .and.returnValue(false);
+      foundation.setValidity(inputIsValid);
+      expect(mockAdapter.setAttr).not.toHaveBeenCalled();
+    }
+  );
 
-  it('#setValidity does not set aria-hidden="true" on helper text by default',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = true;
-       mockAdapter.hasClass
-           .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
-           .and.returnValue(false);
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(false);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.setAttr).not.toHaveBeenCalled();
-     });
+  it('#setValidity does not set aria-hidden="true" on helper text by default', () => {
+    const { foundation, mockAdapter } = setupTest();
+    const inputIsValid = true;
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
+      .and.returnValue(false);
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+      .and.returnValue(false);
+    foundation.setValidity(inputIsValid);
+    expect(mockAdapter.setAttr).not.toHaveBeenCalled();
+  });
 
-  it('#setValidity does not set aria-hidden on helper text when it is persistent validation',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = true;
-       mockAdapter.hasClass
-           .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
-           .and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(false);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.setAttr)
-           .not.toHaveBeenCalledWith('aria-hidden', 'true');
-     });
+  it("#setValidity does not set aria-hidden on helper text when it is persistent validation", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const inputIsValid = true;
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
+      .and.returnValue(true);
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+      .and.returnValue(false);
+    foundation.setValidity(inputIsValid);
+    expect(mockAdapter.setAttr).not.toHaveBeenCalledWith("aria-hidden", "true");
+  });
 
-  it('#setValidity does not set aria-hidden if input is invalid and helper text is validation message',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = false;
-       mockAdapter.hasClass
-           .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
-           .and.returnValue(false);
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(true);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.setAttr)
-           .not.toHaveBeenCalledWith('aria-hidden', 'true');
-     });
+  it("#setValidity does not set aria-hidden if input is invalid and helper text is validation message", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const inputIsValid = false;
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
+      .and.returnValue(false);
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+      .and.returnValue(true);
+    foundation.setValidity(inputIsValid);
+    expect(mockAdapter.setAttr).not.toHaveBeenCalledWith("aria-hidden", "true");
+  });
 
-  it('#setValidity sets aria-hidden=true if input is valid and helper text is validation message',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const inputIsValid = true;
-       mockAdapter.hasClass
-           .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
-           .and.returnValue(false);
-       mockAdapter.hasClass.withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
-           .and.returnValue(true);
-       foundation.setValidity(inputIsValid);
-       expect(mockAdapter.setAttr).toHaveBeenCalledWith('aria-hidden', 'true');
-     });
+  it("#setValidity sets aria-hidden=true if input is valid and helper text is validation message", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const inputIsValid = true;
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT)
+      .and.returnValue(false);
+    mockAdapter.hasClass
+      .withArgs(cssClasses.HELPER_TEXT_VALIDATION_MSG)
+      .and.returnValue(true);
+    foundation.setValidity(inputIsValid);
+    expect(mockAdapter.setAttr).toHaveBeenCalledWith("aria-hidden", "true");
+  });
 
-  it('#isVisible returns true if aria-hidden is false or unset', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.getAttr.withArgs(strings.ARIA_HIDDEN).and.returnValue('false');
+  it("#isVisible returns true if aria-hidden is false or unset", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getAttr.withArgs(strings.ARIA_HIDDEN).and.returnValue("false");
     expect(foundation.isVisible()).toBeTrue();
 
     mockAdapter.getAttr.withArgs(strings.ARIA_HIDDEN).and.returnValue(null);
     expect(foundation.isVisible()).toBeTrue();
   });
 
-  it('#isVisible returns false if aria-hidden is true', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.getAttr.withArgs(strings.ARIA_HIDDEN).and.returnValue('true');
+  it("#isVisible returns false if aria-hidden is true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getAttr.withArgs(strings.ARIA_HIDDEN).and.returnValue("true");
     expect(foundation.isVisible()).toBeFalse();
   });
 });

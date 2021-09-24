@@ -18,7 +18,7 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-const BASE = 'mdc-dialog';
+const BASE = "mdc-dialog";
 const cssClasses = {
   BASE,
   CONTAINER: `${BASE}__container`,
@@ -31,6 +31,6 @@ const cssClasses = {
   SCRIM: `${BASE}__scrim`,
 };
 
-const LAYOUT_EVENTS = ['resize', 'orientationchange'];
+const LAYOUT_EVENTS = ["resize", "orientationchange"];
 
-export {cssClasses, LAYOUT_EVENTS};
+export { cssClasses, LAYOUT_EVENTS };

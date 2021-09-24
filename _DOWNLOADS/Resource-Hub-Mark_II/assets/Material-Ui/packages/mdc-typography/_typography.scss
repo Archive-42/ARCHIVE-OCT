@@ -23,11 +23,11 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:string';
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/theme';
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/theme";
 
 @function set-styles_($base-styles, $scale-styles, $override-styles) {
   @each $style, $style-props in $scale-styles {
@@ -52,7 +52,7 @@
   @return $px / 16px * 1rem;
 }
 
-$font-family: string.unquote('Roboto, sans-serif') !default;
+$font-family: string.unquote("Roboto, sans-serif") !default;
 
 // Override styles
 $styles-headline1: () !default;
@@ -228,7 +228,7 @@ $styles: set-styles_(
       font-family,
       (
         varname: --mdc-typography-font-family,
-        fallback: map.get($base, 'font-family'),
+        fallback: map.get($base, "font-family"),
       )
     );
   }
@@ -247,7 +247,7 @@ $styles: set-styles_(
     @each $key, $value in $style-props {
       @if list.index($exclude-props, $key) == null {
         $fallback: $value;
-        @if $key == 'font-family' {
+        @if $key == "font-family" {
           // Each style has its own font-family custom property, but should
           // fallback to a generic font-family property. This allows
           // customizing the font-family for all styles or only specific ones.
@@ -314,7 +314,7 @@ $styles: set-styles_(
     @error "mdc-typography: invalid display specified! #{$display} must be one of #{$validDisplayTypes}";
   }
 
-  $isFlexbox: $display == 'flex' or $display == 'inline-flex';
+  $isFlexbox: $display == "flex" or $display == "inline-flex";
   $feat-structure: feature-targeting.create-target($query, structure);
 
   @include feature-targeting.targets($feat-structure) {
@@ -435,7 +435,7 @@ $styles: set-styles_(
 
   &::before {
     @include feature-targeting.targets($feat-structure) {
-      content: '\200b';
+      content: "\200b";
     }
   }
 }
@@ -444,5 +444,5 @@ $styles: set-styles_(
   display: inline-block;
   width: 0;
   height: $distance;
-  content: '';
+  content: "";
 }

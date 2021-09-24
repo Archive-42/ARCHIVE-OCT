@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCMenuDimensions, MDCMenuDistance, MDCMenuPoint} from './types';
+import { MDCMenuDimensions, MDCMenuDistance, MDCMenuPoint } from "./types";
 
 /**
  * Defines the shape of the adapter expected by the foundation.

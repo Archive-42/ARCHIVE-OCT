@@ -23,28 +23,28 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:math';
-@use '@material/animation/functions';
-@use '@material/animation/variables' as animation-variables;
-@use '@material/checkbox/functions' as checkbox-functions;
-@use '@material/checkbox/variables' as checkbox-variables;
-@use '@material/elevation/mixins' as elevation-mixins;
-@use '@material/density/functions' as density-functions;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/theme/theme';
-@use '@material/touch-target/mixins' as touch-target-mixins;
-@use '@material/typography/typography';
-@use '@material/shape/mixins' as shape-mixins;
-@use '@material/shape/functions' as shape-functions;
-@use './variables';
-@use '@material/elevation/functions' as elevation-functions;
-@use '@material/theme/theme-color';
-@use './trailingaction/mixins' as trailing-action-mixins;
+@use "sass:math";
+@use "@material/animation/functions";
+@use "@material/animation/variables" as animation-variables;
+@use "@material/checkbox/functions" as checkbox-functions;
+@use "@material/checkbox/variables" as checkbox-variables;
+@use "@material/elevation/mixins" as elevation-mixins;
+@use "@material/density/functions" as density-functions;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/theme/theme";
+@use "@material/touch-target/mixins" as touch-target-mixins;
+@use "@material/typography/typography";
+@use "@material/shape/mixins" as shape-mixins;
+@use "@material/shape/functions" as shape-functions;
+@use "./variables";
+@use "@material/elevation/functions" as elevation-functions;
+@use "@material/theme/theme-color";
+@use "./trailingaction/mixins" as trailing-action-mixins;
 
-$ripple-target: '.mdc-chip__ripple';
+$ripple-target: ".mdc-chip__ripple";
 
 @mixin core-styles($query: feature-targeting.all()) {
   @include without-ripple($query: $query);
@@ -383,7 +383,7 @@ $ripple-target: '.mdc-chip__ripple';
 
   @include fill-color($color, $query: $query);
 
-  @if ($fill-tone == 'dark') {
+  @if ($fill-tone == "dark") {
     @include ink-color(text-primary-on-dark, $query: $query);
     @include selected-ink-color(text-primary-on-dark, $query: $query);
     @include leading-icon-color(text-primary-on-dark, $query: $query);

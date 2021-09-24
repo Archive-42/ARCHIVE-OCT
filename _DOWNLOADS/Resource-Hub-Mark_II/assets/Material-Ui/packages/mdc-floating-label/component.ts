@@ -21,12 +21,15 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {estimateScrollWidth} from '@material/dom/ponyfill';
-import {MDCFloatingLabelAdapter} from './adapter';
-import {MDCFloatingLabelFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { estimateScrollWidth } from "@material/dom/ponyfill";
+import { MDCFloatingLabelAdapter } from "./adapter";
+import { MDCFloatingLabelFoundation } from "./foundation";
 
-export type MDCFloatingLabelFactory = (el: Element, foundation?: MDCFloatingLabelFoundation) => MDCFloatingLabel;
+export type MDCFloatingLabelFactory = (
+  el: Element,
+  foundation?: MDCFloatingLabelFoundation
+) => MDCFloatingLabel;
 
 export class MDCFloatingLabel extends MDCComponent<MDCFloatingLabelFoundation> {
   static attachTo(root: Element): MDCFloatingLabel {
@@ -70,9 +73,9 @@ export class MDCFloatingLabel extends MDCComponent<MDCFloatingLabelFoundation> {
       removeClass: (className) => this.root.classList.remove(className),
       getWidth: () => estimateScrollWidth(this.root),
       registerInteractionHandler: (evtType, handler) =>
-          this.listen(evtType, handler),
+        this.listen(evtType, handler),
       deregisterInteractionHandler: (evtType, handler) =>
-          this.unlisten(evtType, handler),
+        this.unlisten(evtType, handler),
     };
     // tslint:enable:object-literal-sort-keys
     return new MDCFloatingLabelFoundation(adapter);

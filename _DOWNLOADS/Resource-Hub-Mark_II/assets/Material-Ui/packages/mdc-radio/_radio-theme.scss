@@ -23,12 +23,12 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:map';
-@use '@material/density/functions' as density-functions;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/theme';
-@use '@material/density/variables' as density-variables;
-@use '@material/theme/theme-color';
+@use "sass:map";
+@use "@material/density/functions" as density-functions;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/theme";
+@use "@material/density/variables" as density-variables;
+@use "@material/theme/theme-color";
 
 $ripple-size: 40px !default;
 $icon-size: 20px !default;
@@ -246,7 +246,7 @@ $density-config: (
 /// @access private
 ///
 @mixin if-disabled_ {
-  [aria-disabled='true'] .mdc-radio__native-control,
+  [aria-disabled="true"] .mdc-radio__native-control,
   .mdc-radio__native-control:disabled {
     + {
       @content;
@@ -260,7 +260,7 @@ $density-config: (
 /// @access private
 ///
 @mixin _if-disabled-unchecked {
-  [aria-disabled='true'] .mdc-radio__native-control,
+  [aria-disabled="true"] .mdc-radio__native-control,
   .mdc-radio__native-control:disabled {
     &:not(:checked) + {
       @content;
@@ -274,7 +274,7 @@ $density-config: (
 /// @access private
 ///
 @mixin if-disabled-checked_ {
-  [aria-disabled='true'] .mdc-radio__native-control,
+  [aria-disabled="true"] .mdc-radio__native-control,
   .mdc-radio__native-control:disabled {
     &:checked + {
       @content;

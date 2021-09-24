@@ -23,17 +23,17 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:map';
-@use '@material/animation/animation';
-@use '@material/dom/dom';
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/touch-target/mixins' as touch-target-mixins;
-@use '@material/touch-target/variables' as touch-target-variables;
-@use './radio-theme';
+@use "sass:map";
+@use "@material/animation/animation";
+@use "@material/dom/dom";
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/touch-target/mixins" as touch-target-mixins;
+@use "@material/touch-target/variables" as touch-target-variables;
+@use "./radio-theme";
 
-$ripple-target: '.mdc-radio__ripple';
+$ripple-target: ".mdc-radio__ripple";
 
 ///
 /// Radio core styles.
@@ -126,7 +126,7 @@ $ripple-target: '.mdc-radio__ripple';
           border-radius: 50%;
           opacity: 0;
           pointer-events: none;
-          content: '';
+          content: "";
         }
 
         @include feature-targeting.targets($feat-animation) {
@@ -239,7 +239,7 @@ $ripple-target: '.mdc-radio__ripple';
   }
 
   .mdc-radio__native-control:disabled,
-  [aria-disabled='true'] .mdc-radio__native-control {
+  [aria-disabled="true"] .mdc-radio__native-control {
     + .mdc-radio__background {
       @include feature-targeting.targets($feat-structure) {
         cursor: default;

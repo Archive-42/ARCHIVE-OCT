@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCTabDimensions, MDCTabInteractionEvent} from '@material/tab/types';
-import {MDCTabBarAdapter} from './adapter';
-import {numbers, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCTabDimensions, MDCTabInteractionEvent } from "@material/tab/types";
+import { MDCTabBarAdapter } from "./adapter";
+import { numbers, strings } from "./constants";
 
 const ACCEPTABLE_KEYS = new Set<string>();
 // IE11 has no support for new Set with iterable so we need to initialize this by hand
@@ -66,8 +66,20 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
       activateTabAtIndex: () => undefined,
       deactivateTabAtIndex: () => undefined,
       focusTabAtIndex: () => undefined,
-      getTabIndicatorClientRectAtIndex: () => ({top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0}),
-      getTabDimensionsAtIndex: () => ({rootLeft: 0, rootRight: 0, contentLeft: 0, contentRight: 0}),
+      getTabIndicatorClientRectAtIndex: () => ({
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+      }),
+      getTabDimensionsAtIndex: () => ({
+        rootLeft: 0,
+        rootRight: 0,
+        contentLeft: 0,
+        contentRight: 0,
+      }),
       getPreviousActiveTabIndex: () => -1,
       getFocusedTabIndex: () => -1,
       getIndexOfTabById: () => -1,
@@ -80,7 +92,7 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
   private useAutomaticActivation_ = false;
 
   constructor(adapter?: Partial<MDCTabBarAdapter>) {
-    super({...MDCTabBarFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCTabBarFoundation.defaultAdapter, ...adapter });
   }
 
   /**
@@ -101,7 +113,7 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
     if (previousActiveIndex !== -1) {
       this.adapter.deactivateTabAtIndex(previousActiveIndex);
       previousClientRect =
-          this.adapter.getTabIndicatorClientRectAtIndex(previousActiveIndex);
+        this.adapter.getTabIndicatorClientRectAtIndex(previousActiveIndex);
     }
 
     this.adapter.activateTabAtIndex(index, previousClientRect);
@@ -130,7 +142,9 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
       }
 
       const index = this.determineTargetFromKey_(
-          this.adapter.getPreviousActiveTabIndex(), key);
+        this.adapter.getPreviousActiveTabIndex(),
+        key
+      );
       this.adapter.setActiveTab(index);
       this.scrollIntoView(index);
     } else {
@@ -189,8 +203,12 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
     const isRTL = this.isRTL_();
     const maxIndex = this.adapter.getTabListLength() - 1;
     const shouldGoToEnd = key === strings.END_KEY;
-    const shouldDecrement = key === strings.ARROW_LEFT_KEY && !isRTL || key === strings.ARROW_RIGHT_KEY && isRTL;
-    const shouldIncrement = key === strings.ARROW_RIGHT_KEY && !isRTL || key === strings.ARROW_LEFT_KEY && isRTL;
+    const shouldDecrement =
+      (key === strings.ARROW_LEFT_KEY && !isRTL) ||
+      (key === strings.ARROW_RIGHT_KEY && isRTL);
+    const shouldIncrement =
+      (key === strings.ARROW_RIGHT_KEY && !isRTL) ||
+      (key === strings.ARROW_LEFT_KEY && isRTL);
     let index = origin;
 
     if (shouldGoToEnd) {
@@ -220,14 +238,16 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
    * @param barWidth The width of the Tab Bar
    */
   private calculateScrollIncrement_(
-      index: number,
-      nextIndex: number,
-      scrollPosition: number,
-      barWidth: number,
+    index: number,
+    nextIndex: number,
+    scrollPosition: number,
+    barWidth: number
   ): number {
     const nextTabDimensions = this.adapter.getTabDimensionsAtIndex(nextIndex);
-    const relativeContentLeft = nextTabDimensions.contentLeft - scrollPosition - barWidth;
-    const relativeContentRight = nextTabDimensions.contentRight - scrollPosition;
+    const relativeContentLeft =
+      nextTabDimensions.contentLeft - scrollPosition - barWidth;
+    const relativeContentRight =
+      nextTabDimensions.contentRight - scrollPosition;
     const leftIncrement = relativeContentRight - numbers.EXTRA_SCROLL_AMOUNT;
     const rightIncrement = relativeContentLeft + numbers.EXTRA_SCROLL_AMOUNT;
 
@@ -247,15 +267,20 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
    * @param scrollContentWidth The width of the scroll content
    */
   private calculateScrollIncrementRTL_(
-      index: number,
-      nextIndex: number,
-      scrollPosition: number,
-      barWidth: number,
-      scrollContentWidth: number,
+    index: number,
+    nextIndex: number,
+    scrollPosition: number,
+    barWidth: number,
+    scrollContentWidth: number
   ): number {
     const nextTabDimensions = this.adapter.getTabDimensionsAtIndex(nextIndex);
-    const relativeContentLeft = scrollContentWidth - nextTabDimensions.contentLeft - scrollPosition;
-    const relativeContentRight = scrollContentWidth - nextTabDimensions.contentRight - scrollPosition - barWidth;
+    const relativeContentLeft =
+      scrollContentWidth - nextTabDimensions.contentLeft - scrollPosition;
+    const relativeContentRight =
+      scrollContentWidth -
+      nextTabDimensions.contentRight -
+      scrollPosition -
+      barWidth;
     const leftIncrement = relativeContentRight + numbers.EXTRA_SCROLL_AMOUNT;
     const rightIncrement = relativeContentLeft - numbers.EXTRA_SCROLL_AMOUNT;
 
@@ -274,10 +299,10 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
    * @param barWidth The width of the tab bar
    */
   private findAdjacentTabIndexClosestToEdge_(
-      index: number,
-      tabDimensions: MDCTabDimensions,
-      scrollPosition: number,
-      barWidth: number,
+    index: number,
+    tabDimensions: MDCTabDimensions,
+    scrollPosition: number,
+    barWidth: number
   ): number {
     /**
      * Tabs are laid out in the Tab Scroller like this:
@@ -304,7 +329,8 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
      * the index.
      */
     const relativeRootLeft = tabDimensions.rootLeft - scrollPosition;
-    const relativeRootRight = tabDimensions.rootRight - scrollPosition - barWidth;
+    const relativeRootRight =
+      tabDimensions.rootRight - scrollPosition - barWidth;
     const relativeRootDelta = relativeRootLeft + relativeRootRight;
     const leftEdgeIsCloser = relativeRootLeft < 0 || relativeRootDelta < 0;
     const rightEdgeIsCloser = relativeRootRight > 0 || relativeRootDelta > 0;
@@ -329,14 +355,16 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
    * @param scrollContentWidth The width of the scroller content
    */
   private findAdjacentTabIndexClosestToEdgeRTL_(
-      index: number,
-      tabDimensions: MDCTabDimensions,
-      scrollPosition: number,
-      barWidth: number,
-      scrollContentWidth: number,
+    index: number,
+    tabDimensions: MDCTabDimensions,
+    scrollPosition: number,
+    barWidth: number,
+    scrollContentWidth: number
   ): number {
-    const rootLeft = scrollContentWidth - tabDimensions.rootLeft - barWidth - scrollPosition;
-    const rootRight = scrollContentWidth - tabDimensions.rootRight - scrollPosition;
+    const rootLeft =
+      scrollContentWidth - tabDimensions.rootLeft - barWidth - scrollPosition;
+    const rootRight =
+      scrollContentWidth - tabDimensions.rootRight - scrollPosition;
     const rootDelta = rootLeft + rootRight;
     const leftEdgeIsCloser = rootLeft > 0 || rootDelta > 0;
     const rightEdgeIsCloser = rootRight < 0 || rootDelta < 0;
@@ -390,13 +418,23 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
     const scrollPosition = this.adapter.getScrollPosition();
     const barWidth = this.adapter.getOffsetWidth();
     const tabDimensions = this.adapter.getTabDimensionsAtIndex(index);
-    const nextIndex = this.findAdjacentTabIndexClosestToEdge_(index, tabDimensions, scrollPosition, barWidth);
+    const nextIndex = this.findAdjacentTabIndexClosestToEdge_(
+      index,
+      tabDimensions,
+      scrollPosition,
+      barWidth
+    );
 
     if (!this.indexIsInRange_(nextIndex)) {
       return;
     }
 
-    const scrollIncrement = this.calculateScrollIncrement_(index, nextIndex, scrollPosition, barWidth);
+    const scrollIncrement = this.calculateScrollIncrement_(
+      index,
+      nextIndex,
+      scrollPosition,
+      barWidth
+    );
     this.adapter.incrementScroll(scrollIncrement);
   }
 
@@ -410,13 +448,24 @@ export class MDCTabBarFoundation extends MDCFoundation<MDCTabBarAdapter> {
     const tabDimensions = this.adapter.getTabDimensionsAtIndex(index);
     const scrollWidth = this.adapter.getScrollContentWidth();
     const nextIndex = this.findAdjacentTabIndexClosestToEdgeRTL_(
-        index, tabDimensions, scrollPosition, barWidth, scrollWidth);
+      index,
+      tabDimensions,
+      scrollPosition,
+      barWidth,
+      scrollWidth
+    );
 
     if (!this.indexIsInRange_(nextIndex)) {
       return;
     }
 
-    const scrollIncrement = this.calculateScrollIncrementRTL_(index, nextIndex, scrollPosition, barWidth, scrollWidth);
+    const scrollIncrement = this.calculateScrollIncrementRTL_(
+      index,
+      nextIndex,
+      scrollPosition,
+      barWidth,
+      scrollWidth
+    );
     this.adapter.incrementScroll(scrollIncrement);
   }
 }

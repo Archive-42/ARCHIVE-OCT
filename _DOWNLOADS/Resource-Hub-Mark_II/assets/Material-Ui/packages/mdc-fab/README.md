@@ -45,7 +45,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -56,9 +59,9 @@ However, you can also use SVG, [Font Awesome](https://fontawesome.com/), or any 
 The FAB will work without JavaScript, but you can enhance it to have a ripple effect by instantiating `MDCRipple` on the root element. See [MDC Ripple](../mdc-ripple) for details.
 
 ```js
-import {MDCRipple} from '@material/ripple';
+import { MDCRipple } from "@material/ripple";
 
-const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
+const fabRipple = new MDCRipple(document.querySelector(".mdc-fab"));
 ```
 
 See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.
@@ -133,17 +136,17 @@ The extended FAB is wider, and it includes a text label.
 
 ### CSS classes
 
-CSS Class | Description
---- | ---
-`mdc-fab` | Mandatory, for the button element
-`mdc-fab__icon` | Mandatory, for the icon element
-`mdc-fab__ripple` | Mandatory, for the element which shows the ripple.
-`mdc-fab__label` | Optional, for the text label. Applicable only for Extended FAB.
-`mdc-fab--mini` | Optional, modifies the FAB to a smaller size
-`mdc-fab--extended` | Optional, modifies the FAB to wider size which includes a text label.
-`mdc-fab--exited` | Optional, animates the FAB out of view.<br>When this class is removed, the FAB will return to view.
+| CSS Class           | Description                                                                                         |
+| ------------------- | --------------------------------------------------------------------------------------------------- |
+| `mdc-fab`           | Mandatory, for the button element                                                                   |
+| `mdc-fab__icon`     | Mandatory, for the icon element                                                                     |
+| `mdc-fab__ripple`   | Mandatory, for the element which shows the ripple.                                                  |
+| `mdc-fab__label`    | Optional, for the text label. Applicable only for Extended FAB.                                     |
+| `mdc-fab--mini`     | Optional, modifies the FAB to a smaller size                                                        |
+| `mdc-fab--extended` | Optional, modifies the FAB to wider size which includes a text label.                               |
+| `mdc-fab--exited`   | Optional, animates the FAB out of view.<br>When this class is removed, the FAB will return to view. |
 
-> **A note about `:disabled`**: No disabled styles are defined for FABs. The FAB promotes action, and should not be displayed in a disabled state. If you want to present a FAB that does *not* perform an action, you should also present an explanation to the user.
+> **A note about `:disabled`**: No disabled styles are defined for FABs. The FAB promotes action, and should not be displayed in a disabled state. If you want to present a FAB that does _not_ perform an action, you should also present an explanation to the user.
 
 ### Sass mixins
 
@@ -151,21 +154,21 @@ CSS Class | Description
 
 MDC FAB uses [MDC Theme](../mdc-theme)'s `secondary` color by default. Use the following mixins to customize it.
 
-Mixin | Description
---- | ---
-`accessible($container-color)` | Changes the FAB's container color to the given color, and updates the FAB's ink and ripple color to meet accessibility standards.
-`extended-fluid` | Makes the Extended FAB fluid to container, such as screen width or the layout grid. Exposed as a mixin to support use within `@media` queries.
+| Mixin                          | Description                                                                                                                                    |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accessible($container-color)` | Changes the FAB's container color to the given color, and updates the FAB's ink and ripple color to meet accessibility standards.              |
+| `extended-fluid`               | Makes the Extended FAB fluid to container, such as screen width or the layout grid. Exposed as a mixin to support use within `@media` queries. |
 
 #### Advanced Sass mixins
 
 > **A note about advanced mixins**: The following mixins are intended for advanced users. These mixins will override the color of the container, ink, or ripple. You can use all of them if you want to completely customize a FAB. Or you can use only one of them, e.g. if you only need to override the ripple color. **It is up to you to pick container, ink, and ripple colors that work together, and meet accessibility standards.**
 
-Mixin | Description
---- | ---
-`container-color($color)` | Sets the container color to the given color
-`icon-size($width, $height)` | Sets the icon `width`, `height`, and `font-size` properties to the specified `width` and `height`. `$height` is optional and will default to `$width` if omitted. The `font-size` will be set to the provided `$width` value.
-`ink-color($color)` | Sets the ink color to the given color
-`extended-padding($icon-padding, $label-padding)` | Sets the padding on both sides of the icon, and between the label and the edge of the FAB. In cases where there is no icon, `$label-padding` will apply to both sides.
-`extended-label-padding($label-padding)` | Sets the label side padding for Extended FAB. Useful when styling an Extended FAB with no icon.
-`shape-radius($radius, $rtl-reflexive)` | Sets rounded shape to only regular & mini FAB variants with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.
-`extended-shape-radius($radius, $rtl-reflexive)` | Sets rounded shape to only Extended FAB variant with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.
+| Mixin                                             | Description                                                                                                                                                                                                                   |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container-color($color)`                         | Sets the container color to the given color                                                                                                                                                                                   |
+| `icon-size($width, $height)`                      | Sets the icon `width`, `height`, and `font-size` properties to the specified `width` and `height`. `$height` is optional and will default to `$width` if omitted. The `font-size` will be set to the provided `$width` value. |
+| `ink-color($color)`                               | Sets the ink color to the given color                                                                                                                                                                                         |
+| `extended-padding($icon-padding, $label-padding)` | Sets the padding on both sides of the icon, and between the label and the edge of the FAB. In cases where there is no icon, `$label-padding` will apply to both sides.                                                        |
+| `extended-label-padding($label-padding)`          | Sets the label side padding for Extended FAB. Useful when styling an Extended FAB with no icon.                                                                                                                               |
+| `shape-radius($radius, $rtl-reflexive)`           | Sets rounded shape to only regular & mini FAB variants with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.                                                          |
+| `extended-shape-radius($radius, $rtl-reflexive)`  | Sets rounded shape to only Extended FAB variant with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.                                                                 |

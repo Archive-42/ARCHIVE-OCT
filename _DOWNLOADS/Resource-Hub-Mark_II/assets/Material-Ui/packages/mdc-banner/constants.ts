@@ -23,9 +23,9 @@
 
 /** Banner element classes. */
 export const cssClasses = {
-  CLOSING: 'mdc-banner--closing',
-  OPEN: 'mdc-banner--open',
-  OPENING: 'mdc-banner--opening',
+  CLOSING: "mdc-banner--closing",
+  OPEN: "mdc-banner--open",
+  OPENING: "mdc-banner--opening",
 };
 
 /** Banner numbers. */
@@ -36,18 +36,18 @@ export const numbers = {
 
 /** Banner events. */
 export const events = {
-  CLOSED: 'MDCBanner:closed',
-  CLOSING: 'MDCBanner:closing',
-  OPENED: 'MDCBanner:opened',
-  OPENING: 'MDCBanner:opening',
+  CLOSED: "MDCBanner:closed",
+  CLOSING: "MDCBanner:closing",
+  OPENED: "MDCBanner:opened",
+  OPENING: "MDCBanner:opening",
 };
 
 /** Banner selectors. */
 export const selectors = {
-  CONTENT: '.mdc-banner__content',
-  PRIMARY_ACTION: '.mdc-banner__primary-action',
-  SECONDARY_ACTION: '.mdc-banner__secondary-action',
-  TEXT: '.mdc-banner__text',
+  CONTENT: ".mdc-banner__content",
+  PRIMARY_ACTION: ".mdc-banner__primary-action",
+  SECONDARY_ACTION: ".mdc-banner__secondary-action",
+  TEXT: ".mdc-banner__text",
 };
 
 /** Reason as to why the banner was closed. */

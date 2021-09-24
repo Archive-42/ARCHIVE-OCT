@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
-import {normalizeKey} from '@material/dom/keyboard';
+import { normalizeKey } from "@material/dom/keyboard";
 
-import {numbers} from './constants';
-import {preventDefaultEvent} from './events';
-import {MDCListTextAndIndex} from './types';
+import { numbers } from "./constants";
+import { preventDefaultEvent } from "./events";
+import { MDCListTextAndIndex } from "./types";
 
 /**
  * State of a typeahead instance.
@@ -48,9 +48,9 @@ export interface TypeaheadState {
 export function initState(): TypeaheadState {
   const state: TypeaheadState = {
     bufferClearTimeout: 0,
-    currentFirstChar: '',
+    currentFirstChar: "",
     sortedIndexCursor: 0,
-    typeaheadBuffer: '',
+    typeaheadBuffer: "",
   };
   return state;
 }
@@ -67,9 +67,9 @@ export function initState(): TypeaheadState {
  *     list text and it's index
  */
 export function initSortedIndex(
-    listItemCount: number,
-    getPrimaryTextByItemIndex: (index: number) =>
-        string): Map<string, MDCListTextAndIndex[]> {
+  listItemCount: number,
+  getPrimaryTextByItemIndex: (index: number) => string
+): Map<string, MDCListTextAndIndex[]> {
   const sortedIndexByFirstChar = new Map<string, MDCListTextAndIndex[]>();
 
   // Aggregate item text to index mapping
@@ -83,8 +83,9 @@ export function initSortedIndex(
     if (!sortedIndexByFirstChar.has(firstChar)) {
       sortedIndexByFirstChar.set(firstChar, []);
     }
-    sortedIndexByFirstChar.get(firstChar)!.push(
-        {text: primaryText.toLowerCase(), index: i});
+    sortedIndexByFirstChar
+      .get(firstChar)!
+      .push({ text: primaryText.toLowerCase(), index: i });
   }
 
   // Sort the mapping
@@ -127,7 +128,9 @@ export interface TypeaheadMatchItemOpts {
  * @return The index of the matched item, or -1 if no match.
  */
 export function matchItem(
-    opts: TypeaheadMatchItemOpts, state: TypeaheadState): number {
+  opts: TypeaheadMatchItemOpts,
+  state: TypeaheadState
+): number {
   const {
     nextChar,
     focusItemAtIndex,
@@ -148,7 +151,11 @@ export function matchItem(
   let index: number;
   if (state.typeaheadBuffer.length === 1) {
     index = matchFirstChar(
-        sortedIndexByFirstChar, focusedItemIndex, isItemAtIndexDisabled, state);
+      sortedIndexByFirstChar,
+      focusedItemIndex,
+      isItemAtIndexDisabled,
+      state
+    );
   } else {
     index = matchAllChars(sortedIndexByFirstChar, isItemAtIndexDisabled, state);
   }
@@ -165,9 +172,11 @@ export function matchItem(
  * end of options. Returns -1 if no match is found.
  */
 function matchFirstChar(
-    sortedIndexByFirstChar: Map<string, MDCListTextAndIndex[]>,
-    focusedItemIndex: number, isItemAtIndexDisabled: (index: number) => boolean,
-    state: TypeaheadState): number {
+  sortedIndexByFirstChar: Map<string, MDCListTextAndIndex[]>,
+  focusedItemIndex: number,
+  isItemAtIndexDisabled: (index: number) => boolean,
+  state: TypeaheadState
+): number {
   const firstChar = state.typeaheadBuffer[0];
   const itemsMatchingFirstChar = sortedIndexByFirstChar.get(firstChar);
   if (!itemsMatchingFirstChar) {
@@ -177,11 +186,12 @@ function matchFirstChar(
   // Has the same firstChar been recently matched?
   // Also, did starting index remain the same between key presses?
   // If both hold true, simply increment index.
-  if (firstChar === state.currentFirstChar &&
-      itemsMatchingFirstChar[state.sortedIndexCursor].index ===
-          focusedItemIndex) {
+  if (
+    firstChar === state.currentFirstChar &&
+    itemsMatchingFirstChar[state.sortedIndexCursor].index === focusedItemIndex
+  ) {
     state.sortedIndexCursor =
-        (state.sortedIndexCursor + 1) % itemsMatchingFirstChar.length;
+      (state.sortedIndexCursor + 1) % itemsMatchingFirstChar.length;
 
     const newIndex = itemsMatchingFirstChar[state.sortedIndexCursor].index;
     if (!isItemAtIndexDisabled(newIndex)) {
@@ -198,8 +208,11 @@ function matchFirstChar(
   let newCursorPosition = -1;
   let cursorPosition;
   // Find the first non-disabled item as a fallback.
-  for (cursorPosition = 0; cursorPosition < itemsMatchingFirstChar.length;
-       cursorPosition++) {
+  for (
+    cursorPosition = 0;
+    cursorPosition < itemsMatchingFirstChar.length;
+    cursorPosition++
+  ) {
     if (!isItemAtIndexDisabled(itemsMatchingFirstChar[cursorPosition].index)) {
       newCursorPosition = cursorPosition;
       break;
@@ -210,8 +223,10 @@ function matchFirstChar(
   // after starting item. Cursor is unchanged from fallback if there's no
   // such item.
   for (; cursorPosition < itemsMatchingFirstChar.length; cursorPosition++) {
-    if (itemsMatchingFirstChar[cursorPosition].index > focusedItemIndex &&
-        !isItemAtIndexDisabled(itemsMatchingFirstChar[cursorPosition].index)) {
+    if (
+      itemsMatchingFirstChar[cursorPosition].index > focusedItemIndex &&
+      !isItemAtIndexDisabled(itemsMatchingFirstChar[cursorPosition].index)
+    ) {
       newCursorPosition = cursorPosition;
       break;
     }
@@ -230,9 +245,10 @@ function matchFirstChar(
  * Wraps around if at end of options. Returns -1 if no match is found.
  */
 function matchAllChars(
-    sortedIndexByFirstChar: Map<string, MDCListTextAndIndex[]>,
-    isItemAtIndexDisabled: (index: number) => boolean,
-    state: TypeaheadState): number {
+  sortedIndexByFirstChar: Map<string, MDCListTextAndIndex[]>,
+  isItemAtIndexDisabled: (index: number) => boolean,
+  state: TypeaheadState
+): number {
   const firstChar = state.typeaheadBuffer[0];
   const itemsMatchingFirstChar = sortedIndexByFirstChar.get(firstChar);
   if (!itemsMatchingFirstChar) {
@@ -241,21 +257,23 @@ function matchAllChars(
 
   // Do nothing if text already matches
   const startingItem = itemsMatchingFirstChar[state.sortedIndexCursor];
-  if (startingItem.text.lastIndexOf(state.typeaheadBuffer, 0) === 0 &&
-      !isItemAtIndexDisabled(startingItem.index)) {
+  if (
+    startingItem.text.lastIndexOf(state.typeaheadBuffer, 0) === 0 &&
+    !isItemAtIndexDisabled(startingItem.index)
+  ) {
     return startingItem.index;
   }
 
   // Find next item that matches completely; if no match, we'll eventually
   // loop around to same position
   let cursorPosition =
-      (state.sortedIndexCursor + 1) % itemsMatchingFirstChar.length;
+    (state.sortedIndexCursor + 1) % itemsMatchingFirstChar.length;
   let nextCursorPosition = -1;
   while (cursorPosition !== state.sortedIndexCursor) {
     const currentItem = itemsMatchingFirstChar[cursorPosition];
 
     const matches =
-        currentItem.text.lastIndexOf(state.typeaheadBuffer, 0) === 0;
+      currentItem.text.lastIndexOf(state.typeaheadBuffer, 0) === 0;
     const isEnabled = !isItemAtIndexDisabled(currentItem.index);
     if (matches && isEnabled) {
       nextCursorPosition = cursorPosition;
@@ -301,7 +319,7 @@ export interface HandleKeydownOpts {
  * @param state The typeahead state instance. See `initState`.
  */
 export function clearBuffer(state: TypeaheadState) {
-  state.typeaheadBuffer = '';
+  state.typeaheadBuffer = "";
 }
 
 /**
@@ -331,17 +349,24 @@ export function handleKeydown(opts: HandleKeydownOpts, state: TypeaheadState) {
     isItemAtIndexDisabled,
   } = opts;
 
-  const isArrowLeft = normalizeKey(event) === 'ArrowLeft';
-  const isArrowUp = normalizeKey(event) === 'ArrowUp';
-  const isArrowRight = normalizeKey(event) === 'ArrowRight';
-  const isArrowDown = normalizeKey(event) === 'ArrowDown';
-  const isHome = normalizeKey(event) === 'Home';
-  const isEnd = normalizeKey(event) === 'End';
-  const isEnter = normalizeKey(event) === 'Enter';
-  const isSpace = normalizeKey(event) === 'Spacebar';
+  const isArrowLeft = normalizeKey(event) === "ArrowLeft";
+  const isArrowUp = normalizeKey(event) === "ArrowUp";
+  const isArrowRight = normalizeKey(event) === "ArrowRight";
+  const isArrowDown = normalizeKey(event) === "ArrowDown";
+  const isHome = normalizeKey(event) === "Home";
+  const isEnd = normalizeKey(event) === "End";
+  const isEnter = normalizeKey(event) === "Enter";
+  const isSpace = normalizeKey(event) === "Spacebar";
 
-  if (isArrowLeft || isArrowUp || isArrowRight || isArrowDown || isHome ||
-      isEnd || isEnter) {
+  if (
+    isArrowLeft ||
+    isArrowUp ||
+    isArrowRight ||
+    isArrowDown ||
+    isHome ||
+    isEnd ||
+    isEnter
+  ) {
     return -1;
   }
 
@@ -374,7 +399,7 @@ export function handleKeydown(opts: HandleKeydownOpts, state: TypeaheadState) {
     const matchItemOpts: TypeaheadMatchItemOpts = {
       focusItemAtIndex,
       focusedItemIndex,
-      nextChar: ' ',
+      nextChar: " ",
       sortedIndexByFirstChar,
       skipFocus: false,
       isItemAtIndexDisabled,

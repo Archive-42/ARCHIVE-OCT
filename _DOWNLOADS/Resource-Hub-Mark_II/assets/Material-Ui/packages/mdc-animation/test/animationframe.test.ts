@@ -21,60 +21,60 @@
  * THE SOFTWARE.
  */
 
-import {setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
-import {AnimationFrame} from '../index';
+import { setUpMdcTestEnvironment } from "../../../testing/helpers/setup";
+import { AnimationFrame } from "../index";
 
-describe('AnimationFrame', () => {
+describe("AnimationFrame", () => {
   setUpMdcTestEnvironment();
 
-  it('#request adds an animation frame callback', () => {
+  it("#request adds an animation frame callback", () => {
     const af = new AnimationFrame();
-    const cb = jasmine.createSpy('callback');
-    af.request('x', cb);
+    const cb = jasmine.createSpy("callback");
+    af.request("x", cb);
     jasmine.clock().tick(1);
     expect(cb).toHaveBeenCalledTimes(1);
   });
 
-  it('#request with duplicate keys only executes the latest callback', () => {
+  it("#request with duplicate keys only executes the latest callback", () => {
     const af = new AnimationFrame();
-    const cb1 = jasmine.createSpy('callback1');
-    const cb2 = jasmine.createSpy('callback2');
-    const cb3 = jasmine.createSpy('callback3');
-    af.request('x', cb1);
-    af.request('x', cb2);
-    af.request('x', cb3);
+    const cb1 = jasmine.createSpy("callback1");
+    const cb2 = jasmine.createSpy("callback2");
+    const cb3 = jasmine.createSpy("callback3");
+    af.request("x", cb1);
+    af.request("x", cb2);
+    af.request("x", cb3);
     jasmine.clock().tick(1);
     expect(cb1).not.toHaveBeenCalled();
     expect(cb2).not.toHaveBeenCalled();
     expect(cb3).toHaveBeenCalledTimes(1);
   });
 
-  it('#cancel will cancel the keyed callback', () => {
+  it("#cancel will cancel the keyed callback", () => {
     const af = new AnimationFrame();
-    const cb = jasmine.createSpy('callback');
-    af.request('x', cb);
-    af.cancel('x');
+    const cb = jasmine.createSpy("callback");
+    af.request("x", cb);
+    af.cancel("x");
     jasmine.clock().tick(1);
     expect(cb).not.toHaveBeenCalled();
   });
 
-  it('#cancel will not cancel a mismatched key', () => {
+  it("#cancel will not cancel a mismatched key", () => {
     const af = new AnimationFrame();
-    const cb = jasmine.createSpy('callback');
-    af.request('x', cb);
-    af.cancel('a');
+    const cb = jasmine.createSpy("callback");
+    af.request("x", cb);
+    af.cancel("a");
     jasmine.clock().tick(1);
     expect(cb).toHaveBeenCalledTimes(1);
   });
 
-  it('#cancelAll cancels all keys', () => {
+  it("#cancelAll cancels all keys", () => {
     const af = new AnimationFrame();
-    const cb1 = jasmine.createSpy('callback1');
-    const cb2 = jasmine.createSpy('callback2');
-    const cb3 = jasmine.createSpy('callback3');
-    af.request('x', cb1);
-    af.request('y', cb2);
-    af.request('z', cb3);
+    const cb1 = jasmine.createSpy("callback1");
+    const cb2 = jasmine.createSpy("callback2");
+    const cb3 = jasmine.createSpy("callback3");
+    af.request("x", cb1);
+    af.request("y", cb2);
+    af.request("z", cb3);
     af.cancelAll();
     jasmine.clock().tick(3);
     expect(cb1).not.toHaveBeenCalled();
@@ -82,21 +82,21 @@ describe('AnimationFrame', () => {
     expect(cb3).not.toHaveBeenCalled();
   });
 
-  it('#getQueue will return the keys in the order they were entered', () => {
+  it("#getQueue will return the keys in the order they were entered", () => {
     const af = new AnimationFrame();
-    const cb1 = jasmine.createSpy('callback1');
-    const cb2 = jasmine.createSpy('callback2');
-    const cb3 = jasmine.createSpy('callback3');
-    af.request('x', cb1);
-    af.request('y', cb2);
-    af.request('z', cb3);
-    expect(af.getQueue()).toEqual(['x', 'y', 'z']);
+    const cb1 = jasmine.createSpy("callback1");
+    const cb2 = jasmine.createSpy("callback2");
+    const cb3 = jasmine.createSpy("callback3");
+    af.request("x", cb1);
+    af.request("y", cb2);
+    af.request("z", cb3);
+    expect(af.getQueue()).toEqual(["x", "y", "z"]);
   });
 
-  it('#getQueue will return not return keys that have finished', () => {
+  it("#getQueue will return not return keys that have finished", () => {
     const af = new AnimationFrame();
-    const cb = jasmine.createSpy('callback');
-    af.request('x', cb);
+    const cb = jasmine.createSpy("callback");
+    af.request("x", cb);
     jasmine.clock().tick(1);
     expect(af.getQueue()).toEqual([]);
   });

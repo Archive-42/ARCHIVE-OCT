@@ -21,27 +21,32 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {MDCRippleAdapter} from '@material/ripple/adapter';
-import {MDCRipple, MDCRippleFactory} from '@material/ripple/component';
-import {MDCRippleFoundation} from '@material/ripple/foundation';
-import {MDCRippleCapableSurface} from '@material/ripple/types';
-import {MDCChipTrailingActionAdapter} from './adapter';
-import {strings} from './constants';
-import {MDCChipTrailingActionFoundation} from './foundation';
-import {MDCChipTrailingActionInteractionEventDetail, MDCChipTrailingActionNavigationEventDetail} from './types';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { MDCRippleAdapter } from "@material/ripple/adapter";
+import { MDCRipple, MDCRippleFactory } from "@material/ripple/component";
+import { MDCRippleFoundation } from "@material/ripple/foundation";
+import { MDCRippleCapableSurface } from "@material/ripple/types";
+import { MDCChipTrailingActionAdapter } from "./adapter";
+import { strings } from "./constants";
+import { MDCChipTrailingActionFoundation } from "./foundation";
+import {
+  MDCChipTrailingActionInteractionEventDetail,
+  MDCChipTrailingActionNavigationEventDetail,
+} from "./types";
 
 /**
  * Creates a trailing action component on the given element.
  */
-export type MDCChipTrailingActionFactory =
-    (el: Element, foundation?: MDCChipTrailingActionFoundation) =>
-        MDCChipTrailingAction;
+export type MDCChipTrailingActionFactory = (
+  el: Element,
+  foundation?: MDCChipTrailingActionFoundation
+) => MDCChipTrailingAction;
 
-export class MDCChipTrailingAction extends
-    MDCComponent<MDCChipTrailingActionFoundation> implements
-        MDCRippleCapableSurface {
+export class MDCChipTrailingAction
+  extends MDCComponent<MDCChipTrailingActionFoundation>
+  implements MDCRippleCapableSurface
+{
   get ripple(): MDCRipple {
     return this.ripple_;
   }
@@ -50,21 +55,22 @@ export class MDCChipTrailingAction extends
     return new MDCChipTrailingAction(root);
   }
 
-  private ripple_!: MDCRipple;  // assigned in initialize()
-  private handleClick_!:
-      SpecificEventListener<'click'>;  // assigned in initialSyncWithDOM()
-  private handleKeydown_!:
-      SpecificEventListener<'keydown'>;  // assigned in initialSyncWithDOM()
+  private ripple_!: MDCRipple; // assigned in initialize()
+  private handleClick_!: SpecificEventListener<"click">; // assigned in initialSyncWithDOM()
+  private handleKeydown_!: SpecificEventListener<"keydown">; // assigned in initialSyncWithDOM()
 
   initialize(
-      rippleFactory: MDCRippleFactory = (el, foundation) =>
-          new MDCRipple(el, foundation)) {
+    rippleFactory: MDCRippleFactory = (el, foundation) =>
+      new MDCRipple(el, foundation)
+  ) {
     // DO NOT INLINE this variable. For backward compatibility, foundations take
     // a Partial<MDCFooAdapter>. To ensure we don't accidentally omit any
     // methods, we need a separate, strongly typed adapter variable.
     const rippleAdapter: MDCRippleAdapter = MDCRipple.createAdapter(this);
-    this.ripple_ =
-        rippleFactory(this.root, new MDCRippleFoundation(rippleAdapter));
+    this.ripple_ = rippleFactory(
+      this.root,
+      new MDCRippleFoundation(rippleAdapter)
+    );
   }
 
   initialSyncWithDOM() {
@@ -75,14 +81,14 @@ export class MDCChipTrailingAction extends
       this.foundation.handleKeydown(evt);
     };
 
-    this.listen('click', this.handleClick_);
-    this.listen('keydown', this.handleKeydown_);
+    this.listen("click", this.handleClick_);
+    this.listen("keydown", this.handleKeydown_);
   }
 
   destroy() {
     this.ripple_.destroy();
-    this.unlisten('click', this.handleClick_);
-    this.unlisten('keydown', this.handleKeydown_);
+    this.unlisten("click", this.handleClick_);
+    this.unlisten("keydown", this.handleKeydown_);
     super.destroy();
   }
 
@@ -97,11 +103,17 @@ export class MDCChipTrailingAction extends
       },
       getAttribute: (attr) => this.root.getAttribute(attr),
       notifyInteraction: (trigger) =>
-          this.emit<MDCChipTrailingActionInteractionEventDetail>(
-              strings.INTERACTION_EVENT, {trigger}, true /* shouldBubble */),
+        this.emit<MDCChipTrailingActionInteractionEventDetail>(
+          strings.INTERACTION_EVENT,
+          { trigger },
+          true /* shouldBubble */
+        ),
       notifyNavigation: (key) => {
         this.emit<MDCChipTrailingActionNavigationEventDetail>(
-            strings.NAVIGATION_EVENT, {key}, true /* shouldBubble */);
+          strings.NAVIGATION_EVENT,
+          { key },
+          true /* shouldBubble */
+        );
       },
       setAttribute: (attr, value) => {
         this.root.setAttribute(attr, value);

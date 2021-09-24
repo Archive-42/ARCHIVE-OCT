@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface ListGroupProps extends React.HTMLProps<HTMLElement> {
   className?: string;
@@ -29,15 +29,15 @@ export interface ListGroupProps extends React.HTMLProps<HTMLElement> {
 }
 
 const ListGroup: React.FunctionComponent<ListGroupProps> = ({
-  tag: Tag = 'div',
-  className = '',
+  tag: Tag = "div",
+  className = "",
   children,
   ...otherProps
 }) => {
   return (
     // https://github.com/Microsoft/TypeScript/issues/28892
     // @ts-ignore
-    <Tag className={classnames('mdc-list-group', className)} {...otherProps}>
+    <Tag className={classnames("mdc-list-group", className)} {...otherProps}>
       {children}
     </Tag>
   );

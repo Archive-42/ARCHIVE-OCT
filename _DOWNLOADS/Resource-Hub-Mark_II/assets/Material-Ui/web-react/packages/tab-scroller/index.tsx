@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCTabScrollerFoundation} from '@material/tab-scroller/foundation';
-import {MDCTabScrollerAdapter} from '@material/tab-scroller/adapter';
-import {computeHorizontalScrollbarHeight} from '@material/tab-scroller/util';
-import {matches} from '@material/dom/ponyfill';
+import React from "react";
+import classnames from "classnames";
+import { MDCTabScrollerFoundation } from "@material/tab-scroller/foundation";
+import { MDCTabScrollerAdapter } from "@material/tab-scroller/adapter";
+import { computeHorizontalScrollbarHeight } from "@material/tab-scroller/util";
+import { matches } from "@material/dom/ponyfill";
 
 const convertDashToCamelCase = (propName: string) =>
   propName.replace(/-(\w)/g, (_, v) => v.toUpperCase());
@@ -45,8 +45,8 @@ interface TabScrollerState {
 }
 
 type ScrollerElementNames =
-  | 'scrollAreaStyleProperty'
-  | 'scrollContentStyleProperty';
+  | "scrollAreaStyleProperty"
+  | "scrollContentStyleProperty";
 
 export default class TabScroller extends React.Component<
   TabScrollerProps,
@@ -67,7 +67,7 @@ export default class TabScroller extends React.Component<
     alignStart: false,
     alignEnd: false,
     alignCenter: false,
-    className: '',
+    className: "",
     children: null,
     onWheel: () => {},
     onTouchStart: () => {},
@@ -87,12 +87,12 @@ export default class TabScroller extends React.Component<
   }
 
   get classes() {
-    const {alignStart, alignEnd, alignCenter, className} = this.props;
-    const {classList} = this.state;
-    return classnames('mdc-tab-scroller', Array.from(classList), className, {
-      'mdc-tab-scroller--align-start': alignStart,
-      'mdc-tab-scroller--align-end': alignEnd,
-      'mdc-tab-scroller--align-center': alignCenter,
+    const { alignStart, alignEnd, alignCenter, className } = this.props;
+    const { classList } = this.state;
+    return classnames("mdc-tab-scroller", Array.from(classList), className, {
+      "mdc-tab-scroller--align-start": alignStart,
+      "mdc-tab-scroller--align-end": alignEnd,
+      "mdc-tab-scroller--align-center": alignCenter,
     });
   }
 
@@ -105,7 +105,7 @@ export default class TabScroller extends React.Component<
     const updateElementStyleProperty = Object.assign(
       {},
       this.state[elementStyleProperty],
-      {[styleName]: value}
+      { [styleName]: value }
     );
     this.setState((prevState) => {
       return Object.assign(prevState, {
@@ -128,28 +128,28 @@ export default class TabScroller extends React.Component<
       addClass: (className: string) => {
         const classList = new Set(this.state.classList);
         classList.add(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       removeClass: (className: string) => {
         const classList = new Set(this.state.classList);
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       addScrollAreaClass: (className: string) => {
         const areaClassList = new Set(this.state.areaClassList);
         areaClassList.add(className);
-        this.setState({areaClassList});
+        this.setState({ areaClassList });
       },
       setScrollAreaStyleProperty: (prop: string, value: string) =>
-        this.setStyleToElement(prop, value, 'scrollAreaStyleProperty'),
+        this.setStyleToElement(prop, value, "scrollAreaStyleProperty"),
       setScrollContentStyleProperty: (prop: string, value: string) =>
-        this.setStyleToElement(prop, value, 'scrollContentStyleProperty'),
+        this.setStyleToElement(prop, value, "scrollContentStyleProperty"),
       getScrollContentStyleValue: (propName: string) =>
         this.contentElement.current
           ? window
               .getComputedStyle(this.contentElement.current)
               .getPropertyValue(propName)
-          : '',
+          : "",
       setScrollAreaScrollLeft: (scrollX: number) => {
         if (!this.areaElement.current) return;
         this.areaElement.current.scrollLeft = scrollX;
@@ -260,7 +260,7 @@ export default class TabScroller extends React.Component<
       ...otherProps
     } = this.props;
     const areaClasses = classnames(
-      'mdc-tab-scroller__scroll-area',
+      "mdc-tab-scroller__scroll-area",
       Array.from(areaClassList)
     );
 
@@ -281,7 +281,7 @@ export default class TabScroller extends React.Component<
           ref={this.areaElement}
         >
           <div
-            className='mdc-tab-scroller__scroll-content'
+            className="mdc-tab-scroller__scroll-content"
             style={scrollContentStyleProperty}
             ref={this.contentElement}
           >

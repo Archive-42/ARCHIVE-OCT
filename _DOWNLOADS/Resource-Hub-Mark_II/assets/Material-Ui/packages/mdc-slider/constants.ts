@@ -23,23 +23,23 @@
 
 /** Slider element classes. */
 export const cssClasses = {
-  DISABLED: 'mdc-slider--disabled',
-  DISCRETE: 'mdc-slider--discrete',
-  INPUT: 'mdc-slider__input',
-  RANGE: 'mdc-slider--range',
-  THUMB: 'mdc-slider__thumb',
-  THUMB_KNOB: 'mdc-slider__thumb-knob',
+  DISABLED: "mdc-slider--disabled",
+  DISCRETE: "mdc-slider--discrete",
+  INPUT: "mdc-slider__input",
+  RANGE: "mdc-slider--range",
+  THUMB: "mdc-slider__thumb",
+  THUMB_KNOB: "mdc-slider__thumb-knob",
   // Class added to the top thumb (for overlapping thumbs in range slider).
-  THUMB_TOP: 'mdc-slider__thumb--top',
-  THUMB_WITH_INDICATOR: 'mdc-slider__thumb--with-indicator',
-  TICK_MARKS: 'mdc-slider--tick-marks',
-  TICK_MARKS_CONTAINER: 'mdc-slider__tick-marks',
-  TICK_MARK_ACTIVE: 'mdc-slider__tick-mark--active',
-  TICK_MARK_INACTIVE: 'mdc-slider__tick-mark--inactive',
-  TRACK: 'mdc-slider__track',
+  THUMB_TOP: "mdc-slider__thumb--top",
+  THUMB_WITH_INDICATOR: "mdc-slider__thumb--with-indicator",
+  TICK_MARKS: "mdc-slider--tick-marks",
+  TICK_MARKS_CONTAINER: "mdc-slider__tick-marks",
+  TICK_MARK_ACTIVE: "mdc-slider__tick-mark--active",
+  TICK_MARK_INACTIVE: "mdc-slider__tick-mark--inactive",
+  TRACK: "mdc-slider__track",
   // The active track fill element that will be scaled as the value changes.
-  TRACK_ACTIVE: 'mdc-slider__track--active_fill',
-  VALUE_INDICATOR_TEXT: 'mdc-slider__value-indicator-text',
+  TRACK_ACTIVE: "mdc-slider__track--active_fill",
+  VALUE_INDICATOR_TEXT: "mdc-slider__value-indicator-text",
 };
 
 /** Slider numbers. */
@@ -55,20 +55,20 @@ export const numbers = {
 
 /** Slider attributes. */
 export const attributes = {
-  ARIA_DISABLED: 'aria-disabled',
-  ARIA_VALUEMAX: 'aria-valuemax',
-  ARIA_VALUEMIN: 'aria-valuemin',
-  ARIA_VALUENOW: 'aria-valuenow',
-  ARIA_VALUETEXT: 'aria-valuetext',
-  INPUT_DISABLED: 'disabled',
-  INPUT_MIN: 'min',
-  INPUT_MAX: 'max',
-  INPUT_VALUE: 'value',
-  INPUT_STEP: 'step',
+  ARIA_DISABLED: "aria-disabled",
+  ARIA_VALUEMAX: "aria-valuemax",
+  ARIA_VALUEMIN: "aria-valuemin",
+  ARIA_VALUENOW: "aria-valuenow",
+  ARIA_VALUETEXT: "aria-valuetext",
+  INPUT_DISABLED: "disabled",
+  INPUT_MIN: "min",
+  INPUT_MAX: "max",
+  INPUT_VALUE: "value",
+  INPUT_STEP: "step",
 };
 
 /** Slider events. */
 export const events = {
-  CHANGE: 'MDCSlider:change',
-  INPUT: 'MDCSlider:input',
+  CHANGE: "MDCSlider:change",
+  INPUT: "MDCSlider:input",
 };

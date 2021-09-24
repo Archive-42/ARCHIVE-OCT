@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface IconToggleProps {
   className?: string;
@@ -30,12 +30,12 @@ export interface IconToggleProps {
 
 const IconToggle: React.FunctionComponent<IconToggleProps> = ({
   isOn = false,
-  className = '',
-  children = '',
+  className = "",
+  children = "",
 }) => {
   const classes = classnames(
-    'mdc-icon-button__icon',
-    {'mdc-icon-button__icon--on': isOn},
+    "mdc-icon-button__icon",
+    { "mdc-icon-button__icon--on": isOn },
     className
   );
   return <div className={classes}>{children}</div>;

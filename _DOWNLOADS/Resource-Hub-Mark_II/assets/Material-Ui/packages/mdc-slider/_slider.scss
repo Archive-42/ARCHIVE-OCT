@@ -23,15 +23,15 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/animation/animation';
-@use '@material/elevation/mixins' as elevation-mixins;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/theme/theme-color';
-@use '@material/typography/typography';
-@use './slider-theme';
+@use "@material/animation/animation";
+@use "@material/elevation/mixins" as elevation-mixins;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/theme/theme-color";
+@use "@material/typography/typography";
+@use "./slider-theme";
 
 // Thumb variables.
 $_thumb-ripple-size: 48px;
@@ -346,7 +346,7 @@ $_track-inactive-height: 4px;
         border-right: $_value-indicator-caret-width solid transparent;
         border-top: $_value-indicator-caret-width solid;
         bottom: -$_value-indicator-caret-width + 1;
-        content: '';
+        content: "";
         height: 0;
         left: 50%;
         position: absolute;

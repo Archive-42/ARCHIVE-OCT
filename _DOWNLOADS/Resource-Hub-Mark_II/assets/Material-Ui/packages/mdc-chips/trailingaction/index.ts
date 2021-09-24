@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-export * from './adapter';
-export * from './component';
-export * from './foundation';
-export * from './types';
-export {strings as trailingActionStrings} from './constants';
+export * from "./adapter";
+export * from "./component";
+export * from "./foundation";
+export * from "./types";
+export { strings as trailingActionStrings } from "./constants";

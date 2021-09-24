@@ -22,23 +22,23 @@
  */
 
 const cssClasses = {
-  CLOSING: 'mdc-snackbar--closing',
-  OPEN: 'mdc-snackbar--open',
-  OPENING: 'mdc-snackbar--opening',
+  CLOSING: "mdc-snackbar--closing",
+  OPEN: "mdc-snackbar--open",
+  OPENING: "mdc-snackbar--opening",
 };
 
 const strings = {
-  ACTION_SELECTOR: '.mdc-snackbar__action',
-  ARIA_LIVE_LABEL_TEXT_ATTR: 'data-mdc-snackbar-label-text',
-  CLOSED_EVENT: 'MDCSnackbar:closed',
-  CLOSING_EVENT: 'MDCSnackbar:closing',
-  DISMISS_SELECTOR: '.mdc-snackbar__dismiss',
-  LABEL_SELECTOR: '.mdc-snackbar__label',
-  OPENED_EVENT: 'MDCSnackbar:opened',
-  OPENING_EVENT: 'MDCSnackbar:opening',
-  REASON_ACTION: 'action',
-  REASON_DISMISS: 'dismiss',
-  SURFACE_SELECTOR: '.mdc-snackbar__surface',
+  ACTION_SELECTOR: ".mdc-snackbar__action",
+  ARIA_LIVE_LABEL_TEXT_ATTR: "data-mdc-snackbar-label-text",
+  CLOSED_EVENT: "MDCSnackbar:closed",
+  CLOSING_EVENT: "MDCSnackbar:closing",
+  DISMISS_SELECTOR: ".mdc-snackbar__dismiss",
+  LABEL_SELECTOR: ".mdc-snackbar__label",
+  OPENED_EVENT: "MDCSnackbar:opened",
+  OPENING_EVENT: "MDCSnackbar:opening",
+  REASON_ACTION: "action",
+  REASON_DISMISS: "dismiss",
+  SURFACE_SELECTOR: ".mdc-snackbar__surface",
 };
 
 const numbers = {
@@ -59,4 +59,4 @@ const numbers = {
   ARIA_LIVE_DELAY_MS: 1000,
 };
 
-export {cssClasses, strings, numbers};
+export { cssClasses, strings, numbers };

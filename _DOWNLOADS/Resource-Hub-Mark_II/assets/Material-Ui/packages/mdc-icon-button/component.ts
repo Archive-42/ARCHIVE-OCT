@@ -21,14 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {MDCRipple} from '@material/ripple/component';
-import {MDCIconButtonToggleAdapter} from './adapter';
-import {MDCIconButtonToggleFoundation} from './foundation';
-import {MDCIconButtonToggleEventDetail} from './types';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { MDCRipple } from "@material/ripple/component";
+import { MDCIconButtonToggleAdapter } from "./adapter";
+import { MDCIconButtonToggleFoundation } from "./foundation";
+import { MDCIconButtonToggleEventDetail } from "./types";
 
-const {strings} = MDCIconButtonToggleFoundation;
+const { strings } = MDCIconButtonToggleFoundation;
 
 export class MDCIconButtonToggle extends MDCComponent<MDCIconButtonToggleFoundation> {
   static attachTo(root: HTMLElement) {
@@ -36,18 +36,17 @@ export class MDCIconButtonToggle extends MDCComponent<MDCIconButtonToggleFoundat
   }
 
   private readonly rippleComponent: MDCRipple = this.createRipple();
-  private handleClick!:
-      SpecificEventListener<'click'>;  // assigned in initialSyncWithDOM()
+  private handleClick!: SpecificEventListener<"click">; // assigned in initialSyncWithDOM()
 
   initialSyncWithDOM() {
     this.handleClick = () => {
       this.foundation.handleClick();
     };
-    this.listen('click', this.handleClick);
+    this.listen("click", this.handleClick);
   }
 
   destroy() {
-    this.unlisten('click', this.handleClick);
+    this.unlisten("click", this.handleClick);
     this.ripple.destroy();
     super.destroy();
   }
@@ -60,12 +59,14 @@ export class MDCIconButtonToggle extends MDCComponent<MDCIconButtonToggleFoundat
       hasClass: (className) => this.root.classList.contains(className),
       notifyChange: (evtData) => {
         this.emit<MDCIconButtonToggleEventDetail>(
-            strings.CHANGE_EVENT, evtData);
+          strings.CHANGE_EVENT,
+          evtData
+        );
       },
       removeClass: (className) => this.root.classList.remove(className),
       getAttr: (attrName) => this.root.getAttribute(attrName),
       setAttr: (attrName, attrValue) =>
-          this.root.setAttribute(attrName, attrValue),
+        this.root.setAttribute(attrName, attrValue),
     };
     return new MDCIconButtonToggleFoundation(adapter);
   }

@@ -19,17 +19,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-@use 'sass:map';
-@use 'sass:meta';
-@use './css';
-@use './gss';
+@use "sass:map";
+@use "sass:meta";
+@use "./css";
+@use "./gss";
 
 /// Returns true if the parameter is a custom property Map.
 ///
 /// @param {*} $value - the value to test.
 /// @return true if the value is a custom property Map, or false if not.
 @function is-custom-prop($value) {
-  @return meta.type-of($value) == 'map' and map.has-key($value, 'varname');
+  @return meta.type-of($value) == "map" and map.has-key($value, "varname");
 }
 
 /// Returns true if $prop1's varname and fallback values are deeply equal to
@@ -57,7 +57,7 @@
 /// @param {Map} $custom-prop - a custom property Map.
 /// @return the custom property variable name defined by the Map.
 @function get-varname($custom-prop) {
-  @return map.get($custom-prop, 'varname');
+  @return map.get($custom-prop, "varname");
 }
 
 /// Returns the fallback value of a custom property Map. May be null if the
@@ -69,7 +69,7 @@
 ///     the deep final fallback value.
 /// @return the fallback value of a custom property Map. May be null.
 @function get-fallback($custom-prop, $shallow: false) {
-  $fallback: map.get($custom-prop, 'fallback');
+  $fallback: map.get($custom-prop, "fallback");
   @if is-custom-prop($fallback) and not $shallow {
     @return get-fallback($fallback);
   }

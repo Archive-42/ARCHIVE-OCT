@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-const ELEMENTS_KEY_ALLOWED_IN = ['input', 'button', 'textarea', 'select'];
+const ELEMENTS_KEY_ALLOWED_IN = ["input", "button", "textarea", "select"];
 
 /**
  * Ensures that preventDefault is only called if the containing element
@@ -38,4 +38,4 @@ export const preventDefaultEvent = (evt: KeyboardEvent) => {
   if (ELEMENTS_KEY_ALLOWED_IN.indexOf(tagName) === -1) {
     evt.preventDefault();
   }
-}
+};

@@ -20,5 +20,6 @@
 // THE SOFTWARE.
 //
 
-@forward './elevation-theme' show shadow, overlay-surface-position, overlay-dimensions, overlay-fill-color, overlay-opacity, elevation;
-@forward './elevation' show core-styles, overlay-common, overlay-selector_;
+@forward "./elevation-theme" show shadow, overlay-surface-position,
+  overlay-dimensions, overlay-fill-color, overlay-opacity, elevation;
+@forward "./elevation" show core-styles, overlay-common, overlay-selector_;

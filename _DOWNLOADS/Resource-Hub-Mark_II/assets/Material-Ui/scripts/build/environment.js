@@ -25,7 +25,7 @@
  * @fileoverview Provides an API to read and write environment variables and npm lifecycle events.
  */
 
-'use strict';
+"use strict";
 
 // TODO: remove this class. this is only used for webpack.
 // We should just use the built in Webpack production/development arguments.
@@ -35,17 +35,17 @@ class Environment {
     // TODO: Figure out if this `if` check should include all `test:*` targets.
     // See discussion on https://github.com/material-components/material-components-web/pull/2192#discussion_r166330231
     // for context.
-    if (event === 'test' || event === 'test:watch') {
-      process.env.BABEL_ENV = 'test';
+    if (event === "test" || event === "test:watch") {
+      process.env.BABEL_ENV = "test";
     }
   }
 
   isDev() {
-    return process.env.MDC_ENV === 'development';
+    return process.env.MDC_ENV === "development";
   }
 
   isProd() {
-    return process.env.MDC_ENV === 'production';
+    return process.env.MDC_ENV === "production";
   }
 
   getNpmLifecycleEvent_() {

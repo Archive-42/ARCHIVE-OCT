@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
-export * from './adapter';
-export * from './component';
-export * from './constants';
-export * from './foundation';
-export * from './types';
-export * from './character-counter/index';
-export * from './helper-text/index';
-export * from './icon/index';
+export * from "./adapter";
+export * from "./component";
+export * from "./constants";
+export * from "./foundation";
+export * from "./types";
+export * from "./character-counter/index";
+export * from "./helper-text/index";
+export * from "./icon/index";

@@ -21,6 +21,6 @@
  * THE SOFTWARE.
  */
 
-export * from './segmented-button/index';
-export * from './segment/index';
-export * from './types';
+export * from "./segmented-button/index";
+export * from "./segment/index";
+export * from "./types";

@@ -1,5 +1,5 @@
 .badge {
-	composes: badge from "./common.m.css";
+	composes: badge from './common.m.css';
 }
 
 .root {

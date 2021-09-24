@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface ListItemTextProps {
   tabIndex?: number;
@@ -37,15 +37,15 @@ function isReactElement(element: any): element is React.ReactElement<any> {
 }
 
 const ListItemText: React.FunctionComponent<ListItemTextProps> = ({
-  primaryText = '',
-  secondaryText = '',
+  primaryText = "",
+  secondaryText = "",
   tabIndex = -1,
-  className = '',
+  className = "",
   ...otherProps
 }) => {
   const renderText = (text: React.ReactNode, className: string) => {
     if (text === undefined) return null;
-    if (typeof text === 'string' || typeof text === 'number') {
+    if (typeof text === "string" || typeof text === "number") {
       return (
         <span
           className={className}
@@ -57,9 +57,9 @@ const ListItemText: React.FunctionComponent<ListItemTextProps> = ({
     }
     if (!isReactElement(text)) return null;
 
-    const {className: textClassName, ...otherProps} = text.props;
+    const { className: textClassName, ...otherProps } = text.props;
     className = classnames(className, textClassName);
-    const props = {...otherProps, className};
+    const props = { ...otherProps, className };
 
     return React.cloneElement(text, props);
   };
@@ -67,18 +67,18 @@ const ListItemText: React.FunctionComponent<ListItemTextProps> = ({
   if (!secondaryText) {
     return renderText(
       primaryText,
-      classnames('mdc-list-item__text', className)
+      classnames("mdc-list-item__text", className)
     );
   }
 
   return (
     <span
-      className={classnames('mdc-list-item__text', className)}
+      className={classnames("mdc-list-item__text", className)}
       tabIndex={tabIndex !== undefined ? tabIndex : -1}
       {...otherProps}
     >
-      {renderText(primaryText, 'mdc-list-item__primary-text')}
-      {renderText(secondaryText, 'mdc-list-item__secondary-text')}
+      {renderText(primaryText, "mdc-list-item__primary-text")}
+      {renderText(secondaryText, "mdc-list-item__secondary-text")}
     </span>
   );
 };

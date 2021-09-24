@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 
 $interval: 4px !default;
 $minimum-scale: minimum !default;
@@ -88,7 +88,7 @@ $default-scale: 0 !default;
 @function prop-value($density-config, $density-scale, $property-name) {
   @if (
     meta.type-of($density-scale) ==
-      'string' and
+      "string" and
       list.index($list: $supported-scales, $value: $density-scale) ==
       null
   ) {

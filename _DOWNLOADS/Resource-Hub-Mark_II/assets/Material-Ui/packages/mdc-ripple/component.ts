@@ -21,18 +21,27 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {applyPassive} from '@material/dom/events';
-import {matches} from '@material/dom/ponyfill';
-import {MDCRippleAdapter} from './adapter';
-import {MDCRippleFoundation} from './foundation';
-import {MDCRippleAttachOpts, MDCRippleCapableSurface} from './types';
-import * as util from './util';
+import { MDCComponent } from "@material/base/component";
+import { applyPassive } from "@material/dom/events";
+import { matches } from "@material/dom/ponyfill";
+import { MDCRippleAdapter } from "./adapter";
+import { MDCRippleFoundation } from "./foundation";
+import { MDCRippleAttachOpts, MDCRippleCapableSurface } from "./types";
+import * as util from "./util";
 
-export type MDCRippleFactory = (el: Element, foundation?: MDCRippleFoundation) => MDCRipple;
+export type MDCRippleFactory = (
+  el: Element,
+  foundation?: MDCRippleFoundation
+) => MDCRipple;
 
-export class MDCRipple extends MDCComponent<MDCRippleFoundation> implements MDCRippleCapableSurface {
-  static attachTo(root: Element, opts: MDCRippleAttachOpts = {isUnbounded: undefined}): MDCRipple {
+export class MDCRipple
+  extends MDCComponent<MDCRippleFoundation>
+  implements MDCRippleCapableSurface
+{
+  static attachTo(
+    root: Element,
+    opts: MDCRippleAttachOpts = { isUnbounded: undefined }
+  ): MDCRipple {
     const ripple = new MDCRipple(root);
     // Only override unbounded behavior if option is explicitly specified
     if (opts.isUnbounded !== undefined) {
@@ -48,29 +57,43 @@ export class MDCRipple extends MDCComponent<MDCRippleFoundation> implements MDCR
       computeBoundingRect: () => instance.root.getBoundingClientRect(),
       containsEventTarget: (target) => instance.root.contains(target as Node),
       deregisterDocumentInteractionHandler: (evtType, handler) =>
-          document.documentElement.removeEventListener(
-              evtType, handler, applyPassive()),
+        document.documentElement.removeEventListener(
+          evtType,
+          handler,
+          applyPassive()
+        ),
       deregisterInteractionHandler: (evtType, handler) =>
-          (instance.root as HTMLElement)
-              .removeEventListener(evtType, handler, applyPassive()),
+        (instance.root as HTMLElement).removeEventListener(
+          evtType,
+          handler,
+          applyPassive()
+        ),
       deregisterResizeHandler: (handler) =>
-          window.removeEventListener('resize', handler),
-      getWindowPageOffset: () =>
-          ({x: window.pageXOffset, y: window.pageYOffset}),
-      isSurfaceActive: () => matches(instance.root, ':active'),
+        window.removeEventListener("resize", handler),
+      getWindowPageOffset: () => ({
+        x: window.pageXOffset,
+        y: window.pageYOffset,
+      }),
+      isSurfaceActive: () => matches(instance.root, ":active"),
       isSurfaceDisabled: () => Boolean(instance.disabled),
       isUnbounded: () => Boolean(instance.unbounded),
       registerDocumentInteractionHandler: (evtType, handler) =>
-          document.documentElement.addEventListener(
-              evtType, handler, applyPassive()),
+        document.documentElement.addEventListener(
+          evtType,
+          handler,
+          applyPassive()
+        ),
       registerInteractionHandler: (evtType, handler) =>
-          (instance.root as HTMLElement)
-              .addEventListener(evtType, handler, applyPassive()),
+        (instance.root as HTMLElement).addEventListener(
+          evtType,
+          handler,
+          applyPassive()
+        ),
       registerResizeHandler: (handler) =>
-          window.addEventListener('resize', handler),
+        window.addEventListener("resize", handler),
       removeClass: (className) => instance.root.classList.remove(className),
       updateCssVariable: (varName, value) =>
-          (instance.root as HTMLElement).style.setProperty(varName, value),
+        (instance.root as HTMLElement).style.setProperty(varName, value),
     };
   }
 
@@ -105,7 +128,7 @@ export class MDCRipple extends MDCComponent<MDCRippleFoundation> implements MDCR
 
   initialSyncWithDOM() {
     const root = this.root as HTMLElement;
-    this.unbounded = 'mdcRippleIsUnbounded' in root.dataset;
+    this.unbounded = "mdcRippleIsUnbounded" in root.dataset;
   }
 
   /**

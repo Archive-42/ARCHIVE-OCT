@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const MenuContext = React.createContext({
   isOpen: false,
@@ -8,6 +8,6 @@ export const MenuContext = React.createContext({
 });
 
 export const UserContext = React.createContext({
-  name: '',
-  account: '',
+  name: "",
+  account: "",
 });

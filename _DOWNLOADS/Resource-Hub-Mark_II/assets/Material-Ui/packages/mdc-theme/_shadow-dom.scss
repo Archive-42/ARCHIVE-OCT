@@ -20,11 +20,11 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:selector';
-@use 'sass:string';
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
+@use "sass:selector";
+@use "sass:string";
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 
 /// Global variable used to conditionally emit CSS selector fallback
 /// declarations in addition to CSS custom property overrides for IE11 support.
@@ -58,9 +58,9 @@ $css-selector-fallback-declarations: false;
   $css-selector-fallback-declarations: $enable !global;
 }
 
-$_host: ':host';
-$_host-parens: ':host(';
-$_end-parens: ')';
+$_host: ":host";
+$_host-parens: ":host(";
+$_end-parens: ")";
 
 /// Given one or more selectors, this mixin will fix any invalid `:host` parent
 /// nesting by adding parentheses or inserting the nested selector into the
@@ -199,7 +199,7 @@ $_end-parens: ')';
 @function _fix-host-selector($selector) {
   $_host-parens-index: string.index($selector, $_host-parens);
   $has-parens: $_host-parens-index != null;
-  $new-host-inside: '';
+  $new-host-inside: "";
 
   @if $has-parens {
     // e.g. :host(.inside).after -> :host(.inside.after)
@@ -217,7 +217,7 @@ $_end-parens: ')';
     $new-host-inside: string.slice($selector, string.length($_host) + 1);
   }
 
-  @return ':host(#{$new-host-inside})';
+  @return ":host(#{$new-host-inside})";
 }
 
 /// Returns the index of the final occurrence of the end-parenthesis in the
@@ -435,7 +435,7 @@ $_end-parens: ')';
   // This function is primarily a safe-guard against an accidental string
   // slipping in and forgetting to use a selector.append() which would cause a
   // hard-to-debug problem.
-  @if meta.type-of($selector-list) != 'list' {
+  @if meta.type-of($selector-list) != "list" {
     @return false;
   }
 
@@ -444,14 +444,14 @@ $_end-parens: ')';
   @each $complex-selector in $selector-list {
     // Second level is the complex selector: what's separated by spaces
     // e.g. ".foo .bar"
-    @if meta.type-of($complex-selector) != 'list' {
+    @if meta.type-of($complex-selector) != "list" {
       @return false;
     }
 
     // Third level is the compound selector: the actual string
     // e.g. ".foo"
     @each $selector in $complex-selector {
-      @if meta.type-of($selector) != 'string' {
+      @if meta.type-of($selector) != "string" {
         @return false;
       }
     }

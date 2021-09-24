@@ -23,17 +23,17 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:math';
-@use '@material/elevation/mixins' as elevation-mixins;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/shape/mixins' as shape-mixins;
-@use '@material/theme/theme';
-@use './variables';
-@use '@material/theme/theme-color';
-@use '@material/dom/mixins' as dom-mixins;
+@use "sass:math";
+@use "@material/elevation/mixins" as elevation-mixins;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/shape/mixins" as shape-mixins;
+@use "@material/theme/theme";
+@use "./variables";
+@use "@material/theme/theme-color";
+@use "@material/dom/mixins" as dom-mixins;
 
 //
 // Public
@@ -112,7 +112,7 @@
     &::before {
       @include feature-targeting.targets($feat-structure) {
         display: block;
-        content: '';
+        content: "";
       }
     }
   }

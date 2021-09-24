@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-import {createMockFoundation} from '../../../../testing/helpers/foundation';
-import {setUpFoundationTest, setUpMdcTestEnvironment} from '../../../../testing/helpers/setup';
-import {MDCModalDrawerFoundation} from '../foundation';
+import { createMockFoundation } from "../../../../testing/helpers/foundation";
+import {
+  setUpFoundationTest,
+  setUpMdcTestEnvironment,
+} from "../../../../testing/helpers/setup";
+import { MDCModalDrawerFoundation } from "../foundation";
 
 class MDCModalDrawerFoundationTest extends MDCModalDrawerFoundation {
   opened_() {
@@ -35,32 +38,33 @@ class MDCModalDrawerFoundationTest extends MDCModalDrawerFoundation {
   }
 }
 
-describe('MDCModalDrawerFoundation', () => {
+describe("MDCModalDrawerFoundation", () => {
   setUpMdcTestEnvironment();
 
   const setupTest = () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCModalDrawerFoundationTest);
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCModalDrawerFoundationTest
+    );
     const mockFoundation = createMockFoundation(MDCModalDrawerFoundationTest);
 
-    return {foundation, mockAdapter, mockFoundation};
+    return { foundation, mockAdapter, mockFoundation };
   };
 
-  it('#opened_ traps the focus when drawer finishes animating open', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#opened_ traps the focus when drawer finishes animating open", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.opened_();
     expect(mockAdapter.trapFocus).toHaveBeenCalledTimes(1);
   });
 
-  it('#closed_ untraps the focus when drawer finishes animating close', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#closed_ untraps the focus when drawer finishes animating close", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.closed_();
     expect(mockAdapter.releaseFocus).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleScrimClick closes the drawer', () => {
+  it("#handleScrimClick closes the drawer", () => {
     const foundation = new MDCModalDrawerFoundation();
-    foundation.close = jasmine.createSpy('close');
+    foundation.close = jasmine.createSpy("close");
     foundation.handleScrimClick();
     expect(foundation.close).toHaveBeenCalledTimes(1);
   });

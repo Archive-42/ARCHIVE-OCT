@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React from "react";
 import NativeSelect, {
   NativeSelectProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from './NativeSelect';
+} from "./NativeSelect";
 import EnhancedSelect, {
   EnhancedSelectProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from './EnhancedSelect';
-import {MDCSelectFoundation} from '@material/select/foundation';
+} from "./EnhancedSelect";
+import { MDCSelectFoundation } from "@material/select/foundation";
 
 export type BaseSelectProps<T extends HTMLElement> = T extends HTMLSelectElement
   ? NativeSelectProps
@@ -47,11 +47,11 @@ export class BaseSelect<
 > extends React.Component<BaseSelectProps<T>> {
   static defaultProps = {
     enhanced: false,
-    selectClassName: '',
+    selectClassName: "",
   };
 
   handleFocus = (evt: React.FocusEvent<T>) => {
-    const {foundation, onFocus} = this.props;
+    const { foundation, onFocus } = this.props;
     if (foundation) {
       foundation.handleFocus();
     }
@@ -59,7 +59,7 @@ export class BaseSelect<
   };
 
   handleBlur = (evt: React.FocusEvent<T>) => {
-    const {foundation, onBlur} = this.props;
+    const { foundation, onBlur } = this.props;
     if (foundation) {
       foundation.handleBlur();
     }
@@ -67,7 +67,7 @@ export class BaseSelect<
   };
 
   handleTouchStart = (evt: React.TouchEvent<T>) => {
-    const {foundation, onTouchStart} = this.props;
+    const { foundation, onTouchStart } = this.props;
     if (foundation) {
       foundation.handleClick(this.getNormalizedXCoordinate(evt));
     }
@@ -75,7 +75,7 @@ export class BaseSelect<
   };
 
   handleMouseDown = (evt: React.MouseEvent<T>) => {
-    const {foundation, onMouseDown} = this.props;
+    const { foundation, onMouseDown } = this.props;
     if (foundation) {
       foundation.handleClick(this.getNormalizedXCoordinate(evt));
     }
@@ -83,7 +83,7 @@ export class BaseSelect<
   };
 
   handleClick = (evt: React.MouseEvent<T>) => {
-    const {foundation, onClick} = this.props;
+    const { foundation, onClick } = this.props;
     if (foundation) {
       foundation.handleClick(this.getNormalizedXCoordinate(evt));
     }
@@ -91,7 +91,7 @@ export class BaseSelect<
   };
 
   handleKeyDown = (evt: React.KeyboardEvent<T>) => {
-    const {foundation, onKeyDown} = this.props;
+    const { foundation, onKeyDown } = this.props;
     if (foundation) {
       foundation.handleKeydown(evt.nativeEvent);
     }
@@ -105,7 +105,9 @@ export class BaseSelect<
   private getNormalizedXCoordinate = (
     evt: React.MouseEvent<T> | React.TouchEvent<T>
   ) => {
-    const targetClientRect = (evt.currentTarget as Element).getBoundingClientRect();
+    const targetClientRect = (
+      evt.currentTarget as Element
+    ).getBoundingClientRect();
     const xCoordinate = this.isTouchEvent(evt.nativeEvent)
       ? evt.nativeEvent.touches[0].clientX
       : evt.nativeEvent.clientX;

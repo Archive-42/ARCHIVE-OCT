@@ -20,15 +20,15 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:math';
-@use 'sass:meta';
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/theme/custom-properties';
-@use '@material/theme/css';
-@use '@material/theme/theme';
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/theme/custom-properties";
+@use "@material/theme/css";
+@use "@material/theme/theme";
 
 // Shape categories
 $small-component-radius: 4px !default;
@@ -60,7 +60,7 @@ $category-keywords: (
 // 2. mdc-shape-flip-radius((0, 8px)) => 8px 0
 //
 @function flip-radius($radius) {
-  @if meta.type-of($radius) == 'list' {
+  @if meta.type-of($radius) == "list" {
     @if list.length($radius) > 4 {
       @error "Invalid radius: '#{$radius}' is more than 4 values";
     }
@@ -102,7 +102,7 @@ $category-keywords: (
 /// @return {Number | Map | List} the resolved radius value. May be a number,
 ///     a custom property Map, or a List if $radius was a List.
 @function resolve-radius($radius, $component-height: null) {
-  @if meta.type-of($radius) == 'list' {
+  @if meta.type-of($radius) == "list" {
     // $radius is a List
     @if list.length($radius) > 4 or list.length($radius) < 1 {
       @error "mdc-shape: Invalid radius: #{$radius}. Radius must be between 1 and 4 values.";
@@ -134,13 +134,13 @@ $category-keywords: (
     @return custom-properties.set-fallback($radius, $fallback);
   } @else {
     // $radius is a value
-    @if meta.type-of($radius) != 'number' {
+    @if meta.type-of($radius) != "number" {
       @error "mdc-shape: Invalid radius: #{$radius}. Must be a number.";
     }
 
     $radius-unit: math.unit($radius);
     $component-height-type: meta.type-of($component-height);
-    @if $radius-unit == '%' and $component-height-type == 'number' {
+    @if $radius-unit == "%" and $component-height-type == "number" {
       $radius: _resolve-radius-percentage($radius, $component-height);
     }
 
@@ -159,7 +159,7 @@ $category-keywords: (
 // 3. mdc-shape-mask-radius(4px 4px 4px 4px, 0 1 1 0) => 0 4px 4px 0
 //
 @function mask-radius($radius, $masked-corners) {
-  @if meta.type-of($radius) == 'list' {
+  @if meta.type-of($radius) == "list" {
     @if list.length($radius) > 4 {
       @error "Invalid radius: '#{$radius}' is more than 4 values";
     }
@@ -213,7 +213,7 @@ $category-keywords: (
   $feat-structure: feature-targeting.create-target($query, structure);
 
   @include feature-targeting.targets($feat-structure) {
-    $has-multiple-corners: meta.type-of($radius) == 'list' and
+    $has-multiple-corners: meta.type-of($radius) == "list" and
       list.length($radius) > 1;
     // Even if $rtl-reflexive is true, only emit RTL styles if we can't easily tell that the given radius is symmetrical
     $needs-flip: $rtl-reflexive and $has-multiple-corners;

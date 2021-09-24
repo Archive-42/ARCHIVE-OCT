@@ -22,10 +22,10 @@
  */
 
 export const strings = {
-  CHIP_SELECTOR: '.mdc-chip',
+  CHIP_SELECTOR: ".mdc-chip",
 };
 
 export const cssClasses = {
-  CHOICE: 'mdc-chip-set--choice',
-  FILTER: 'mdc-chip-set--filter',
+  CHOICE: "mdc-chip-set--choice",
+  FILTER: "mdc-chip-set--filter",
 };

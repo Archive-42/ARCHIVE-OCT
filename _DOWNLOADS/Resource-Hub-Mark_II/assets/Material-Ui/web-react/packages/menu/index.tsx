@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import * as React from 'react';
-import classnames from 'classnames';
-import {MDCMenuFoundation} from '@material/menu/foundation';
-import {MDCMenuAdapter} from '@material/menu/adapter';
-import MenuSurface, {MenuSurfaceProps} from '@material/react-menu-surface';
-import MenuList, {MenuListProps} from './MenuList';
-import MenuListItem from './MenuListItem';
+import * as React from "react";
+import classnames from "classnames";
+import { MDCMenuFoundation } from "@material/menu/foundation";
+import { MDCMenuAdapter } from "@material/menu/adapter";
+import MenuSurface, { MenuSurfaceProps } from "@material/react-menu-surface";
+import MenuList, { MenuListProps } from "./MenuList";
+import MenuListItem from "./MenuListItem";
 
-const {cssClasses} = MDCMenuFoundation;
+const { cssClasses } = MDCMenuFoundation;
 
 export interface MenuProps extends MenuSurfaceProps {
   children: React.ReactElement<MenuList>;
@@ -52,7 +52,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   static defaultProps: Partial<MenuProps> = {
-    className: '',
+    className: "",
     open: false,
     onKeyDown: () => {},
     onSelected: () => {},
@@ -61,12 +61,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
   componentDidMount() {
     const foundation = new MDCMenuFoundation(this.adapter);
     foundation.init();
-    this.setState({foundation});
+    this.setState({ foundation });
   }
 
   componentDidUpdate(prevProps: MenuProps) {
     if (this.props.open !== prevProps.open) {
-      this.setState({open: this.props.open!});
+      this.setState({ open: this.props.open! });
     }
   }
 
@@ -112,7 +112,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       },
       elementContainsClass: (element, className) =>
         element.classList.contains(className),
-      closeSurface: () => this.setState({open: false}),
+      closeSurface: () => this.setState({ open: false }),
       getElementIndex: (element) => this.listElements.indexOf(element),
       getParentElement: (element) => element.parentElement,
       getSelectedElementIndex: (selectionGroup) => {
@@ -129,7 +129,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (evt) => {
-    const {onKeyDown} = this.props;
+    const { onKeyDown } = this.props;
     if (onKeyDown) {
       onKeyDown(evt);
     }
@@ -137,8 +137,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       this.state.foundation.handleKeydown(evt.nativeEvent);
   };
 
-  handleOpen: MenuSurfaceProps['onOpen'] = () => {
-    const {onOpen} = this.props;
+  handleOpen: MenuSurfaceProps["onOpen"] = () => {
+    const { onOpen } = this.props;
     onOpen && onOpen();
   };
 
@@ -158,7 +158,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       <MenuSurface
         tabIndex={-1}
         open={this.state.open}
-        className={classnames('mdc-menu', className)}
+        className={classnames("mdc-menu", className)}
         onKeyDown={this.handleKeyDown}
         onOpen={this.handleOpen}
         {...otherProps}
@@ -169,11 +169,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   renderChild() {
-    const {children} = this.props;
-    const {foundation} = this.state;
+    const { children } = this.props;
+    const { foundation } = this.state;
     if (!children) return;
 
-    let handleItemAction: MDCMenuFoundation['handleItemAction'] = () => {};
+    let handleItemAction: MDCMenuFoundation["handleItemAction"] = () => {};
     if (foundation) {
       // this is to avoid a `handleItemAction` of undefined error
       handleItemAction = foundation.handleItemAction.bind(foundation);
@@ -190,7 +190,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 }
 
 export default Menu;
-export {MenuList, MenuListItem};
+export { MenuList, MenuListItem };
 export {
   ListDivider as MenuListDivider,
   ListGroup as MenuListGroup,
@@ -198,6 +198,6 @@ export {
   ListItemGraphic as MenuListItemGraphic,
   ListItemMeta as MenuListItemMeta,
   ListItemText as MenuListItemText,
-} from '@material/react-list';
-export {MenuListProps} from './MenuList';
-export {MenuListItemProps} from './MenuListItem';
+} from "@material/react-list";
+export { MenuListProps } from "./MenuList";
+export { MenuListItemProps } from "./MenuListItem";

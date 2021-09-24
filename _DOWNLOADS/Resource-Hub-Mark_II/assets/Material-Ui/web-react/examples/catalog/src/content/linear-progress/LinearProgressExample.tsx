@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import LinearProgress from '@material/react-linear-progress';
-import {Cell, Grid, Row} from '@material/react-layout-grid';
+import LinearProgress from "@material/react-linear-progress";
+import { Cell, Grid, Row } from "@material/react-layout-grid";
 
 export const LinearProgressExample = () => (
   <Grid>

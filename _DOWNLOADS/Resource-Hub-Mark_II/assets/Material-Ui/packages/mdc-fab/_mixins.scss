@@ -18,28 +18,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-@use '@material/animation/functions' as animation-functions;
-@use '@material/elevation/mixins' as elevation-mixins;
-@use '@material/elevation/variables' as elevation-variables;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/dom/mixins' as dom-mixins;
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/rtl/mixins' as rtl-mixins;
-@use '@material/shape/mixins' as shape-mixins;
-@use '@material/shape/functions' as shape-functions;
-@use '@material/theme/css';
-@use '@material/theme/custom-properties';
-@use '@material/theme/state';
-@use '@material/theme/theme-color';
-@use '@material/theme/theme';
-@use '@material/touch-target/mixins' as touch-target-mixins;
-@use '@material/typography/typography';
-@use './variables';
-@use 'sass:math';
-@use 'sass:list';
+@use "@material/animation/functions" as animation-functions;
+@use "@material/elevation/mixins" as elevation-mixins;
+@use "@material/elevation/variables" as elevation-variables;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/dom/mixins" as dom-mixins;
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/rtl/mixins" as rtl-mixins;
+@use "@material/shape/mixins" as shape-mixins;
+@use "@material/shape/functions" as shape-functions;
+@use "@material/theme/css";
+@use "@material/theme/custom-properties";
+@use "@material/theme/state";
+@use "@material/theme/theme-color";
+@use "@material/theme/theme";
+@use "@material/touch-target/mixins" as touch-target-mixins;
+@use "@material/typography/typography";
+@use "./variables";
+@use "sass:math";
+@use "sass:list";
 
-$ripple-target: '.mdc-fab__ripple';
+$ripple-target: ".mdc-fab__ripple";
 
 @mixin core-styles($query: feature-targeting.all()) {
   @include without-ripple($query);
@@ -144,7 +144,7 @@ $ripple-target: '.mdc-fab__ripple';
 
   $fill-tone: theme-color.tone($container-color);
 
-  @if ($fill-tone == 'dark') {
+  @if ($fill-tone == "dark") {
     @include ink-color(text-primary-on-dark, $query: $query);
     @include ripple-theme.states(
       text-primary-on-dark,

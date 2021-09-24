@@ -25,12 +25,12 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/typography/typography';
-@use '@material/touch-target/touch-target';
-@use '@material/elevation/elevation';
-@use '@material/elevation/elevation-theme';
-@use './segment-theme';
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/typography/typography";
+@use "@material/touch-target/touch-target";
+@use "@material/elevation/elevation";
+@use "@material/elevation/elevation-theme";
+@use "./segment-theme";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-animation: feature-targeting.create-target($query, animation);

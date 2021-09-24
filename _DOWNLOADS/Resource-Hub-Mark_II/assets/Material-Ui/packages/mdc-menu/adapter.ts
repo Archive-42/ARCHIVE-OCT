@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCMenuItemEventDetail} from './types';
+import { MDCMenuItemEventDetail } from "./types";
 
 /**
  * Implement this adapter for your framework of choice to delegate updates to
@@ -43,7 +43,11 @@ export interface MDCMenuAdapter {
   /**
    * Adds an attribute, with value, to the element at the index provided.
    */
-  addAttributeToElementAtIndex(index: number, attr: string, value: string): void;
+  addAttributeToElementAtIndex(
+    index: number,
+    attr: string,
+    value: string
+  ): void;
 
   /**
    * Removes an attribute from an element at the index provided.

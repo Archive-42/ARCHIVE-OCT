@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:map';
-@use 'sass:meta';
-@use './custom-properties';
+@use "sass:map";
+@use "sass:meta";
+@use "./custom-properties";
 
 /// Retrieves the default state from the provided parameter. The parameter may
 /// be the state's default value or a state Map. A state Map has individual keys
@@ -173,6 +173,6 @@
 }
 
 @function _is-state-map($default-or-map) {
-  @return meta.type-of($default-or-map) == 'map' and not
+  @return meta.type-of($default-or-map) == "map" and not
     custom-properties.is-custom-prop($default-or-map);
 }

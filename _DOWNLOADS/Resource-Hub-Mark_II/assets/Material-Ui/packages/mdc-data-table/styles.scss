@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 //
 
-@use './data-table';
+@use "./data-table";
 
 @include data-table.core-styles;
 @include data-table.theme-baseline;

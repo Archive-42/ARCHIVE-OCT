@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 //
 
-@use '@material/theme/theme-color';
+@use "@material/theme/theme-color";
 
 // Colors
 $title-ink-color: theme-color.prop-value(on-surface) !default;

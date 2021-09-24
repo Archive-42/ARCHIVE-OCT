@@ -21,40 +21,44 @@
  * THE SOFTWARE.
  */
 
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
-import {MDCSwitchFoundation} from '../foundation';
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
+import { MDCSwitchFoundation } from "../foundation";
 
 function setupTest() {
-  const {foundation, mockAdapter} = setUpFoundationTest(MDCSwitchFoundation);
-  return {foundation, mockAdapter};
+  const { foundation, mockAdapter } = setUpFoundationTest(MDCSwitchFoundation);
+  return { foundation, mockAdapter };
 }
 
-describe('MDCSwitchFoundation', () => {
-  it('exports cssClasses', () => {
-    expect('cssClasses' in MDCSwitchFoundation).toBeTruthy();
+describe("MDCSwitchFoundation", () => {
+  it("exports cssClasses", () => {
+    expect("cssClasses" in MDCSwitchFoundation).toBeTruthy();
   });
 
-  it('exports strings', () => {
-    expect('strings' in MDCSwitchFoundation).toBeTruthy();
+  it("exports strings", () => {
+    expect("strings" in MDCSwitchFoundation).toBeTruthy();
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
-    const {defaultAdapter} = MDCSwitchFoundation;
-    const methods = Object.keys(defaultAdapter)
-                        .filter((k) => typeof (defaultAdapter as any)[k] === 'function');
+  it("defaultAdapter returns a complete adapter implementation", () => {
+    const { defaultAdapter } = MDCSwitchFoundation;
+    const methods = Object.keys(defaultAdapter).filter(
+      (k) => typeof (defaultAdapter as any)[k] === "function"
+    );
 
     expect(methods.length).toEqual(Object.keys(defaultAdapter).length);
     expect(methods).toEqual([
-      'addClass', 'removeClass', 'setNativeControlChecked',
-      'setNativeControlDisabled', 'setNativeControlAttr'
+      "addClass",
+      "removeClass",
+      "setNativeControlChecked",
+      "setNativeControlDisabled",
+      "setNativeControlAttr",
     ]);
     methods.forEach((m) => {
       expect(() => (defaultAdapter as any)[m]).not.toThrow();
     });
   });
 
-  it('#setChecked updates the checked state', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setChecked updates the checked state", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setChecked(true);
     expect(mockAdapter.setNativeControlChecked).toHaveBeenCalledWith(true);
 
@@ -62,24 +66,24 @@ describe('MDCSwitchFoundation', () => {
     expect(mockAdapter.setNativeControlChecked).toHaveBeenCalledWith(false);
   });
 
-  it('#setChecked adds mdc-switch--checked to the switch element when set to true',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setChecked(true);
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(MDCSwitchFoundation.cssClasses.CHECKED);
-     });
+  it("#setChecked adds mdc-switch--checked to the switch element when set to true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setChecked(true);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCSwitchFoundation.cssClasses.CHECKED
+    );
+  });
 
-  it('#setChecked removes mdc-switch--checked from the switch element when set to false',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setChecked(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(MDCSwitchFoundation.cssClasses.CHECKED);
-     });
+  it("#setChecked removes mdc-switch--checked from the switch element when set to false", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setChecked(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      MDCSwitchFoundation.cssClasses.CHECKED
+    );
+  });
 
-  it('#setDisabled updates the disabled state', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setDisabled updates the disabled state", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setDisabled(true);
     expect(mockAdapter.setNativeControlDisabled).toHaveBeenCalledWith(true);
 
@@ -87,37 +91,37 @@ describe('MDCSwitchFoundation', () => {
     expect(mockAdapter.setNativeControlDisabled).toHaveBeenCalledWith(false);
   });
 
-  it('#setDisabled adds mdc-switch--disabled to the switch element when set to true',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setDisabled(true);
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(MDCSwitchFoundation.cssClasses.DISABLED);
-     });
+  it("#setDisabled adds mdc-switch--disabled to the switch element when set to true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setDisabled(true);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCSwitchFoundation.cssClasses.DISABLED
+    );
+  });
 
-  it('#setDisabled removes mdc-switch--disabled from the switch element when set to false',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setDisabled(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(MDCSwitchFoundation.cssClasses.DISABLED);
-     });
+  it("#setDisabled removes mdc-switch--disabled from the switch element when set to false", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setDisabled(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      MDCSwitchFoundation.cssClasses.DISABLED
+    );
+  });
 
-  it('#handleChange adds mdc-switch--checked to the switch when it is a checked state',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#handleChange adds mdc-switch--checked to the switch when it is a checked state", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       foundation.handleChange({target: {checked: true}});
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(MDCSwitchFoundation.cssClasses.CHECKED);
-     });
+    foundation.handleChange({ target: { checked: true } });
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCSwitchFoundation.cssClasses.CHECKED
+    );
+  });
 
-  it('#handleChange removes mdc-switch--checked from the switch when it is an unchecked state',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
+  it("#handleChange removes mdc-switch--checked from the switch when it is an unchecked state", () => {
+    const { foundation, mockAdapter } = setupTest();
 
-       foundation.handleChange({target: {checked: false}});
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(MDCSwitchFoundation.cssClasses.CHECKED);
-     });
+    foundation.handleChange({ target: { checked: false } });
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      MDCSwitchFoundation.cssClasses.CHECKED
+    );
+  });
 });

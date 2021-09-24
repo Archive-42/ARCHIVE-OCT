@@ -22,26 +22,26 @@
  */
 
 const cssClasses = {
-  LIST_ITEM_ACTIVATED_CLASS: 'mdc-list-item--activated',
-  LIST_ITEM_CLASS: 'mdc-list-item',
-  LIST_ITEM_DISABLED_CLASS: 'mdc-list-item--disabled',
-  LIST_ITEM_SELECTED_CLASS: 'mdc-list-item--selected',
-  LIST_ITEM_TEXT_CLASS: 'mdc-list-item__text',
-  LIST_ITEM_PRIMARY_TEXT_CLASS: 'mdc-list-item__primary-text',
-  ROOT: 'mdc-list',
+  LIST_ITEM_ACTIVATED_CLASS: "mdc-list-item--activated",
+  LIST_ITEM_CLASS: "mdc-list-item",
+  LIST_ITEM_DISABLED_CLASS: "mdc-list-item--disabled",
+  LIST_ITEM_SELECTED_CLASS: "mdc-list-item--selected",
+  LIST_ITEM_TEXT_CLASS: "mdc-list-item__text",
+  LIST_ITEM_PRIMARY_TEXT_CLASS: "mdc-list-item__primary-text",
+  ROOT: "mdc-list",
 };
 
 const strings = {
-  ACTION_EVENT: 'MDCList:action',
-  ARIA_CHECKED: 'aria-checked',
+  ACTION_EVENT: "MDCList:action",
+  ARIA_CHECKED: "aria-checked",
   ARIA_CHECKED_CHECKBOX_SELECTOR: '[role="checkbox"][aria-checked="true"]',
   ARIA_CHECKED_RADIO_SELECTOR: '[role="radio"][aria-checked="true"]',
-  ARIA_CURRENT: 'aria-current',
-  ARIA_DISABLED: 'aria-disabled',
-  ARIA_ORIENTATION: 'aria-orientation',
-  ARIA_ORIENTATION_HORIZONTAL: 'horizontal',
+  ARIA_CURRENT: "aria-current",
+  ARIA_DISABLED: "aria-disabled",
+  ARIA_ORIENTATION: "aria-orientation",
+  ARIA_ORIENTATION_HORIZONTAL: "horizontal",
   ARIA_ROLE_CHECKBOX_SELECTOR: '[role="checkbox"]',
-  ARIA_SELECTED: 'aria-selected',
+  ARIA_SELECTED: "aria-selected",
   CHECKBOX_RADIO_SELECTOR: 'input[type="checkbox"], input[type="radio"]',
   CHECKBOX_SELECTOR: 'input[type="checkbox"]',
   CHILD_ELEMENTS_TO_TOGGLE_TABINDEX: `
@@ -59,7 +59,7 @@ const strings = {
 
 const numbers = {
   UNSET_INDEX: -1,
-  TYPEAHEAD_BUFFER_CLEAR_TIMEOUT_MS: 300
+  TYPEAHEAD_BUFFER_CLEAR_TIMEOUT_MS: 300,
 };
 
-export {strings, cssClasses, numbers};
+export { strings, cssClasses, numbers };

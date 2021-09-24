@@ -23,9 +23,9 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:list';
-@use 'sass:meta';
-@use '@material/theme/theme';
+@use "sass:list";
+@use "sass:meta";
+@use "@material/theme/theme";
 
 $include: true !default;
 
@@ -79,14 +79,14 @@ $include: true !default;
   @if ($include) {
     @if ($root-selector) {
       @at-root {
-        #{$root-selector}[dir='rtl'] &,
-        [dir='rtl'] #{$root-selector} & {
+        #{$root-selector}[dir="rtl"] &,
+        [dir="rtl"] #{$root-selector} & {
           @content;
         }
       }
     } @else {
-      [dir='rtl'] &,
-      &[dir='rtl'] {
+      [dir="rtl"] &,
+      &[dir="rtl"] {
         @content;
       }
     }
@@ -308,11 +308,11 @@ $include: true !default;
   $left-replace: null;
   $right-replace: null;
   @if $replace {
-    @if meta.type-of($left-value) == 'string' {
+    @if meta.type-of($left-value) == "string" {
       $left-replace: $replace;
     }
 
-    @if meta.type-of($right-value) == 'string' {
+    @if meta.type-of($right-value) == "string" {
       $right-replace: $replace;
     }
 

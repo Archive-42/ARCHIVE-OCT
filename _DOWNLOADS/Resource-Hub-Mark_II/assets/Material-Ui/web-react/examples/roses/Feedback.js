@@ -20,18 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React from "react";
 
-import {Chip, ChipSet} from '@material/react-chips';
-import TopAppBar from '@material/react-top-app-bar';
-import TextField, {Input, HelperText} from '@material/react-text-field';
-import Button from '@material/react-button';
-import MaterialIcon from '@material/react-material-icon';
-import {Body2, Headline6} from '@material/react-typography';
+import { Chip, ChipSet } from "@material/react-chips";
+import TopAppBar from "@material/react-top-app-bar";
+import TextField, { Input, HelperText } from "@material/react-text-field";
+import Button from "@material/react-button";
+import MaterialIcon from "@material/react-material-icon";
+import { Body2, Headline6 } from "@material/react-typography";
 
 class Feedback extends React.Component {
   state = {
-    feedback: '',
+    feedback: "",
     selectedFeedbackChips: [],
   };
 
@@ -39,22 +39,24 @@ class Feedback extends React.Component {
     return (
       <div>
         {this.renderTopAppBar()}
-        <main className='feedback-page mdc-top-app-bar--fixed-adjust'>
-          <div className='feedback-page__content'>
+        <main className="feedback-page mdc-top-app-bar--fixed-adjust">
+          <div className="feedback-page__content">
             <img
-              className='feedback-logo'
-              src='./assets/red_roses_logo.svg'
-              alt='red roses logo'
+              className="feedback-logo"
+              src="./assets/red_roses_logo.svg"
+              alt="red roses logo"
             />
             {this.renderMessage()}
             <ChipSet
               filter
-              handleSelect={(selectedFeedbackChips) => this.setState({selectedFeedbackChips})}
+              handleSelect={(selectedFeedbackChips) =>
+                this.setState({ selectedFeedbackChips })
+              }
             >
-              <Chip id='fast' label='Fast Delivery'/>
-              <Chip id='great_flowers' label='Great Flowers'/>
-              <Chip id='nice_courier' label='Nice Courier'/>
-              <Chip id='easy_order' label='Easy to Order'/>
+              <Chip id="fast" label="Fast Delivery" />
+              <Chip id="great_flowers" label="Great Flowers" />
+              <Chip id="nice_courier" label="Nice Courier" />
+              <Chip id="easy_order" label="Easy to Order" />
             </ChipSet>
             {this.renderFeedbackTextField()}
             {this.renderSubmit()}
@@ -67,11 +69,13 @@ class Feedback extends React.Component {
   renderTopAppBar() {
     return (
       <TopAppBar
-        title='Feedback'
-        navigationIcon={<MaterialIcon
-          icon='close'
-          onClick={() => console.log('close feedback surface')}
-        />}
+        title="Feedback"
+        navigationIcon={
+          <MaterialIcon
+            icon="close"
+            onClick={() => console.log("close feedback surface")}
+          />
+        }
       />
     );
   }
@@ -79,10 +83,10 @@ class Feedback extends React.Component {
   renderMessage() {
     return (
       <div>
-        <Headline6 className='mdc-theme--primary' tag='h2'>
+        <Headline6 className="mdc-theme--primary" tag="h2">
           Thanks for spreading joy with Red Roses
         </Headline6>
-        <Body2 className='message__subheader'>
+        <Body2 className="message__subheader">
           We would love to hear about your ordering experience.
         </Body2>
       </div>
@@ -96,17 +100,17 @@ class Feedback extends React.Component {
       </HelperText>
     );
     return (
-      <div className='feedback-text-field__container'>
+      <div className="feedback-text-field__container">
         <TextField
-          label='Additional thoughts...'
-          className='feedback-text-field'
-          trailingIcon={<MaterialIcon icon='edit' />}
+          label="Additional thoughts..."
+          className="feedback-text-field"
+          trailingIcon={<MaterialIcon icon="edit" />}
           helperText={helperText}
           outlined
         >
           <Input
             value={this.state.feedback}
-            onChange={(evt) => this.setState({feedback: evt.target.value})}
+            onChange={(evt) => this.setState({ feedback: evt.target.value })}
           />
         </TextField>
       </div>
@@ -115,10 +119,7 @@ class Feedback extends React.Component {
 
   renderSubmit() {
     return (
-      <Button
-        raised
-        onClick={() => console.log('submit!')}
-      >
+      <Button raised onClick={() => console.log("submit!")}>
         Submit
       </Button>
     );

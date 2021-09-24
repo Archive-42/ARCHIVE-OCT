@@ -46,7 +46,7 @@ The HTML structure for a Standard Image List is as follows:
 <ul class="mdc-image-list my-image-list">
   <li class="mdc-image-list__item">
     <div class="mdc-image-list__image-aspect-container">
-      <img class="mdc-image-list__image" src="...">
+      <img class="mdc-image-list__image" src="..." />
     </div>
     <div class="mdc-image-list__supporting">
       <span class="mdc-image-list__label">Text label</span>
@@ -87,7 +87,7 @@ combination of aspect ratios.
 ```html
 <ul class="mdc-image-list mdc-image-list--masonry my-masonry-image-list">
   <li class="mdc-image-list__item">
-    <img class="mdc-image-list__image" src="...">
+    <img class="mdc-image-list__image" src="..." />
     <div class="mdc-image-list__supporting">
       <span class="mdc-image-list__label">Text label</span>
     </div>
@@ -97,7 +97,7 @@ combination of aspect ratios.
 ```
 
 > **Note:** Masonry Image List items _do not_ include the `mdc-image-list__image-aspect-container` element, since
-images in the list are not expected to be locked to a common aspect ratio.
+> images in the list are not expected to be locked to a common aspect ratio.
 
 This would be combined with an invocation of the `mdc-image-list-masonry-columns` mixin, to establish how many columns
 should be displayed:
@@ -112,25 +112,25 @@ should be displayed:
 
 ### CSS Classes
 
-CSS Class | Description
---- | ---
-`mdc-image-list` | Mandatory. Indicates the root Image List element.
-`mdc-image-list--masonry` | Optional. Indicates that this Image List should use the Masonry variant.
-`mdc-image-list--with-text-protection` | Optional. Indicates that supporting content should be positioned in a scrim overlaying each image (instead of positioned separately under each image).
-`mdc-image-list__item` | Mandatory. Indicates each item in an Image List.
-`mdc-image-list__image-aspect-container` | Optional. Parent of each item's image element, responsible for constraining aspect ratio. This element may be omitted entirely if images are already sized to the correct aspect ratio.
-`mdc-image-list__image` | Mandatory. Indicates the image element in each item.
-`mdc-image-list__supporting` | Optional. Indicates the area within each item containing the supporting text label, if the Image List contains text labels.
-`mdc-image-list__label` | Optional. Indicates the text label in each item, if the Image List contains text labels.
+| CSS Class                                | Description                                                                                                                                                                             |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mdc-image-list`                         | Mandatory. Indicates the root Image List element.                                                                                                                                       |
+| `mdc-image-list--masonry`                | Optional. Indicates that this Image List should use the Masonry variant.                                                                                                                |
+| `mdc-image-list--with-text-protection`   | Optional. Indicates that supporting content should be positioned in a scrim overlaying each image (instead of positioned separately under each image).                                  |
+| `mdc-image-list__item`                   | Mandatory. Indicates each item in an Image List.                                                                                                                                        |
+| `mdc-image-list__image-aspect-container` | Optional. Parent of each item's image element, responsible for constraining aspect ratio. This element may be omitted entirely if images are already sized to the correct aspect ratio. |
+| `mdc-image-list__image`                  | Mandatory. Indicates the image element in each item.                                                                                                                                    |
+| `mdc-image-list__supporting`             | Optional. Indicates the area within each item containing the supporting text label, if the Image List contains text labels.                                                             |
+| `mdc-image-list__label`                  | Optional. Indicates the text label in each item, if the Image List contains text labels.                                                                                                |
 
 ### Sass Mixins
 
-Mixin | Description
---- | ---
-`aspect($width-height-ratio)` | Styles the aspect container elements within an Image List to conform to the given ratio, where 1 is 1:1, greater than 1 is wider, and less than 1 is taller.
-`shape-radius($radius, $rtl-reflexive)` | Sets the rounded shape to image list item with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.
-`standard-columns($column-count, $gutter-size)` | Styles a Standard Image List to display the given number of columns. `$gutter-size` is optional and overrides the default amount of space between items.
-`masonry-columns($column-count, $gutter-size)` | Styles a Masonry Image List to display the given number of columns. `$gutter-size` is optional and overrides the default amount of space between items.
+| Mixin                                           | Description                                                                                                                                                  |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `aspect($width-height-ratio)`                   | Styles the aspect container elements within an Image List to conform to the given ratio, where 1 is 1:1, greater than 1 is wider, and less than 1 is taller. |
+| `shape-radius($radius, $rtl-reflexive)`         | Sets the rounded shape to image list item with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.      |
+| `standard-columns($column-count, $gutter-size)` | Styles a Standard Image List to display the given number of columns. `$gutter-size` is optional and overrides the default amount of space between items.     |
+| `masonry-columns($column-count, $gutter-size)`  | Styles a Masonry Image List to display the given number of columns. `$gutter-size` is optional and overrides the default amount of space between items.      |
 
 > **Note:** Only one of the `*-columns` mixins should be used for any given Image List.
 > Use the mixin appropriate to the variant being used.
@@ -155,7 +155,7 @@ List:
 ```
 
 > **Note:** Remember that any specified width will apply to the _entire_ list, so be sure to account for the gutters
-as well.
+> as well.
 
 #### Changing number of columns across breakpoints
 
@@ -183,5 +183,5 @@ specified for list items, they will become distorted. In these cases, you can us
 and set the `background-image` of each.
 
 > **Note:** Ensuring your images are appropriately-sized prior to serving them to browsers is the most efficient and
-ideal approach to using MDC Image List. The `div` alternative is provided as a convenience. If you use this alternative,
-make sure to also include the `mdc-image-list__image-aspect-container` element around each item's image.
+> ideal approach to using MDC Image List. The `div` alternative is provided as a convenience. If you use this alternative,
+> make sure to also include the `mdc-image-list__image-aspect-container` element around each item's image.

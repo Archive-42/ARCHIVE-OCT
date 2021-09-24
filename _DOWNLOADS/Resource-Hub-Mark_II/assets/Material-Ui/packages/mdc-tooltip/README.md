@@ -15,10 +15,10 @@ Tooltips display informative text when users hover over, focus on, or tap an ele
 
 **Contents**
 
-* [Using tooltips](#using-tooltips)
-* [Tooltips](#tooltips)
-* [API](#api)
-* [Usage within web frameworks](#usage-within-web-frameworks)
+- [Using tooltips](#using-tooltips)
+- [Tooltips](#tooltips)
+- [API](#api)
+- [Usage within web frameworks](#usage-within-web-frameworks)
 
 ## Using tooltips
 
@@ -28,20 +28,21 @@ text and avoid restating visible UI text.
 
 Common use cases include:
 
-* Displaying full text that has been truncated
-* Identifying a UI affordance
-* Describing differences between similar elements
-* Distinguishing actions with related iconography
+- Displaying full text that has been truncated
+- Identifying a UI affordance
+- Describing differences between similar elements
+- Distinguishing actions with related iconography
 
 ### Tooltip positioning
+
 Tooltip positioning is based on the anchor element (the element that, on user
 interaction, results in showing or hiding of a tooltip). They appear directly
 below or above this anchor element and can be placed flush with either the end,
 center, or start of the anchor.
 
 ![End, center, and start alignment of tooltip on icon button in a LTR page](images/plain_tooltip_alignment.png)
-<p align="center"> *Tooltips aligned with the end, center, and start of an anchor element (in a LTR page flow).* </p>
 
+<p align="center"> *Tooltips aligned with the end, center, and start of an anchor element (in a LTR page flow).* </p>
 
 A threshold distance of 32px is expected to be maintained between the tooltip
 and the viewport edge. A valid tooltip position is calculated based on which of
@@ -68,8 +69,8 @@ npm install @material/tooltip
 ### JavaScript instantiation
 
 ```js
-import {MDCTooltip} from '@material/tooltip';
-const tooltip = new MDCTooltip(document.querySelector('.mdc-tooltip'));
+import { MDCTooltip } from "@material/tooltip";
+const tooltip = new MDCTooltip(document.querySelector(".mdc-tooltip"));
 ```
 
 > See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.
@@ -86,16 +87,13 @@ attribute, establishing a relationship between the two elements.
 
 ```html
 <div id="tooltip-id" class="mdc-tooltip" role="tooltip" aria-hidden="true">
-  <div class="mdc-tooltip__surface">
-    lorem ipsum dolor
-  </div>
+  <div class="mdc-tooltip__surface">lorem ipsum dolor</div>
 </div>
 ```
 
 To ensure proper positioning of the tooltip, it's important that this tooltip
 element is an immediate child of the `<body>`, rather than nested underneath
 the anchor element or other elements.
-
 
 ```html
 <a aria-describedby="tooltip-id" href="www.google.com"> Link </a>
@@ -115,10 +113,13 @@ attribute.
   <span class="mdc-button__label">Button</span>
 </button>
 ```
+
 #### MDC Icon Button:
 
 ```html
-<button class="mdc-icon-button material-icons" aria-describedby="tooltip-id">favorite</button>
+<button class="mdc-icon-button material-icons" aria-describedby="tooltip-id">
+  favorite
+</button>
 ```
 
 If the information provided in the tooltip is duplicated from the anchor
@@ -129,19 +130,18 @@ same information from being announced twice (once from the `aria-label` and
 a second time from the tooltip).
 
 ```html
-<button class="mdc-icon-button material-icons"
-        aria-label="toggle favorite"
-        data-tooltip-id="tooltip-id">
+<button
+  class="mdc-icon-button material-icons"
+  aria-label="toggle favorite"
+  data-tooltip-id="tooltip-id"
+>
   favorite
 </button>
 
 <div id="tooltip-id" class="mdc-tooltip" role="tooltip" aria-hidden="true">
-  <div class="mdc-tooltip__surface">
-    toggle favorite
-  </div>
+  <div class="mdc-tooltip__surface">toggle favorite</div>
 </div>
 ```
-
 
 ## API
 
@@ -153,20 +153,20 @@ Access to theme mixins require importing the tooltip's theme style module.
 @use "@material/tooltip";
 ```
 
-Mixin | Description
---- | ---
-`fill-color($color)` | Sets the fill color of the tooltip.
-`label-ink-color($color)` | Sets the color of the tooltip's label text.
-`shape-radius($radius, $rtl-reflexive)` | Sets the rounded shape to tooltip surface with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.
-`word-break($value, $fallbackValue)` | Sets the `word-break` property for the tooltip label. This is used to force-wrap long tooltip labels that lack spaces and hyphens. The optional $fallbackValue param can be used for IE11 as it does not support the `break-word` option. Users for IE11 who do not want their tooltip labels to be broken in the middle of the word can use this mixin to remove the default IE11 behavior of `break-all`.
-`z-index($z-index)` | Sets the z-index of the tooltip.
+| Mixin                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fill-color($color)`                    | Sets the fill color of the tooltip.                                                                                                                                                                                                                                                                                                                                                                         |
+| `label-ink-color($color)`               | Sets the color of the tooltip's label text.                                                                                                                                                                                                                                                                                                                                                                 |
+| `shape-radius($radius, $rtl-reflexive)` | Sets the rounded shape to tooltip surface with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.                                                                                                                                                                                                                                                     |
+| `word-break($value, $fallbackValue)`    | Sets the `word-break` property for the tooltip label. This is used to force-wrap long tooltip labels that lack spaces and hyphens. The optional $fallbackValue param can be used for IE11 as it does not support the `break-word` option. Users for IE11 who do not want their tooltip labels to be broken in the middle of the word can use this mixin to remove the default IE11 behavior of `break-all`. |
+| `z-index($z-index)`                     | Sets the z-index of the tooltip.                                                                                                                                                                                                                                                                                                                                                                            |
 
 ### `MDCTooltip` Methods
 
-Method Signature | Description
---- | ---
-`setTooltipPosition(position: {xPos?: XPosition, yPos?: YPosition}) => void` | Specify how the tooltip should be aligned with the anchor element. See [tooltip positioning](#tooltip-positioning) section for more information.
-`setAnchorBoundaryType(type: AnchorBoundaryType) => void` | Specify whether the anchor element is `bounded` (element has an identifiable boundary such as a button) or `unbounded` (element does not have a visually declared boundary such as a text link). Tooltips are placed closer to bounded anchor elements compared to unbounded anchor elements. If no type is specified, defaults to `bounded`
+| Method Signature                                                             | Description                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `setTooltipPosition(position: {xPos?: XPosition, yPos?: YPosition}) => void` | Specify how the tooltip should be aligned with the anchor element. See [tooltip positioning](#tooltip-positioning) section for more information.                                                                                                                                                                                             |
+| `setAnchorBoundaryType(type: AnchorBoundaryType) => void`                    | Specify whether the anchor element is `bounded` (element has an identifiable boundary such as a button) or `unbounded` (element does not have a visually declared boundary such as a text link). Tooltips are placed closer to bounded anchor elements compared to unbounded anchor elements. If no type is specified, defaults to `bounded` |
 
 ### Usage Within Frameworks
 

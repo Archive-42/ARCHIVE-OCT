@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-import {numbers, strings} from './constants';
+import { numbers, strings } from "./constants";
 
-const {ARIA_LIVE_DELAY_MS} = numbers;
-const {ARIA_LIVE_LABEL_TEXT_ATTR} = strings;
+const { ARIA_LIVE_DELAY_MS } = numbers;
+const { ARIA_LIVE_LABEL_TEXT_ATTR } = strings;
 
 function announce(ariaEl: Element, labelEl: Element = ariaEl) {
-  const priority = ariaEl.getAttribute('aria-live');
+  const priority = ariaEl.getAttribute("aria-live");
 
   // Trim text to ignore `&nbsp;` (see below).
   // textContent is only null if the node is a document, DOCTYPE, or notation.
@@ -37,7 +37,7 @@ function announce(ariaEl: Element, labelEl: Element = ariaEl) {
   }
 
   // Temporarily disable `aria-live` to prevent JAWS+Firefox from announcing the message twice.
-  ariaEl.setAttribute('aria-live', 'off');
+  ariaEl.setAttribute("aria-live", "off");
 
   // Temporarily clear `textContent` to force a DOM mutation event that will be detected by screen readers.
   // `aria-live` elements are only announced when the element's `textContent` *changes*, so snackbars
@@ -66,8 +66,9 @@ function announce(ariaEl: Element, labelEl: Element = ariaEl) {
   //       - Firefox 60 (ESR)
   //       - IE 11
   //   * ChromeVox 53
-  labelEl.textContent = '';
-  labelEl.innerHTML = '<span style="display: inline-block; width: 0; height: 1px;">&nbsp;</span>';
+  labelEl.textContent = "";
+  labelEl.innerHTML =
+    '<span style="display: inline-block; width: 0; height: 1px;">&nbsp;</span>';
 
   // Prevent visual jank by temporarily displaying the label text in the ::before pseudo-element.
   // CSS generated content is normally announced by screen readers
@@ -77,7 +78,7 @@ function announce(ariaEl: Element, labelEl: Element = ariaEl) {
 
   setTimeout(() => {
     // Allow screen readers to announce changes to the DOM again.
-    ariaEl.setAttribute('aria-live', priority);
+    ariaEl.setAttribute("aria-live", priority);
 
     // Remove the message from the ::before pseudo-element.
     labelEl.removeAttribute(ARIA_LIVE_LABEL_TEXT_ATTR);
@@ -87,4 +88,4 @@ function announce(ariaEl: Element, labelEl: Element = ariaEl) {
   }, ARIA_LIVE_DELAY_MS);
 }
 
-export {announce};
+export { announce };

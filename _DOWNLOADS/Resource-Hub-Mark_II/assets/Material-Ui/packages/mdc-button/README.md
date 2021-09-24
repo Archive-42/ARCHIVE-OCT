@@ -44,9 +44,9 @@ npm install @material/button
 The button will work without JavaScript, but you can enhance it to have a ripple effect by instantiating `MDCRipple` on the root element. See [MDC Ripple](../mdc-ripple) for details.
 
 ```js
-import {MDCRipple} from '@material/ripple';
+import { MDCRipple } from "@material/ripple";
 
-const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
+const buttonRipple = new MDCRipple(document.querySelector(".mdc-button"));
 ```
 
 **Note: See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.**
@@ -65,6 +65,7 @@ To meet this requirement, add the following to your button:
   </button>
 </div>
 ```
+
 **Note: The outer `mdc-touch-target-wrapper` element is only necessary if you want to avoid potentially overlapping touch targets on adjacent elements (due to collapsing margins).**
 
 ## Text button
@@ -76,9 +77,9 @@ To meet this requirement, add the following to your button:
 <img src="images/text-button.png" alt="Text button example">
 
 ```html
- <button class="mdc-button">
-   <div class="mdc-button__ripple"></div>
-   <span class="mdc-button__label">Text Button</span>
+<button class="mdc-button">
+  <div class="mdc-button__ripple"></div>
+  <span class="mdc-button__label">Text Button</span>
 </button>
 ```
 
@@ -89,12 +90,9 @@ To meet this requirement, add the following to your button:
 ```html
 <button class="mdc-button">
   <div class="mdc-button__ripple"></div>
-  <i class="material-icons mdc-button__icon" aria-hidden="true"
-    >bookmark</i
-  >
+  <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
   <span class="mdc-button__label">Text Button plus icon</span>
 </button>
-
 ```
 
 ## Outlined button
@@ -148,9 +146,7 @@ and `mdc-button--unelevated` is applied for a contained button flush with the su
 ```html
 <button class="mdc-button mdc-button--raised">
   <div class="mdc-button__ripple"></div>
-  <i class="material-icons mdc-button__icon" aria-hidden="true"
-    >bookmark</i
-  >
+  <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
   <span class="mdc-button__label">Contained Button plus Icon</span>
 </button>
 ```
@@ -161,8 +157,8 @@ and `mdc-button--unelevated` is applied for a contained button flush with the su
 
 There are two types of toggle buttons:
 
-* [Toggle button](#toggle-button)
-* [Icon](#icon)
+- [Toggle button](#toggle-button)
+- [Icon](#icon)
 
 <img src="images/toggle-bar.png" alt="toggle button group">
 
@@ -182,7 +178,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -203,8 +202,13 @@ It's also possible to use an SVG icon:
 ```html
 <button class="mdc-button">
   <div class="mdc-button__ripple"></div>
-  <svg class="mdc-button__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="...">
-  ...
+  <svg
+    class="mdc-button__icon"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="..."
+  >
+    ...
   </svg>
   <span class="mdc-button__label">Button</span>
 </button>
@@ -248,10 +252,7 @@ The following example shows text, contained, and outlined button types with Mate
 Before importing any MDC Web modules, set the theme colors in your Sass file:
 
 ```scss
-@use "@material/theme" with (
-  $primary: #FEDBD0,
-  $on-primary: #442C2E
-);
+@use "@material/theme" with ($primary: #fedbd0, $on-primary: #442c2e);
 ```
 
 In this case we also want to customize the label color of the text and outlined
@@ -265,7 +266,7 @@ the `custom-text-button` and `custom-outlined-button` classes to your buttons:
 
 .custom-text-button,
 .custom-outlined-button {
-  @include button.ink-color(#84565E);
+  @include button.ink-color(#84565e);
 }
 ```
 
@@ -281,10 +282,10 @@ across the app, you can also use CSS custom properties:
 
 .custom-text-button,
 .custom-outlined-button {
-  --mdc-theme-primary: #FEDBD0;
-  --mdc-theme-on-primary: #442C2E;
+  --mdc-theme-primary: #fedbd0;
+  --mdc-theme-on-primary: #442c2e;
 
-  @include button.ink-color(#84565E);
+  @include button.ink-color(#84565e);
 }
 ```
 
@@ -295,21 +296,21 @@ For a more information on theming in general, see
 
 ### CSS classes
 
-CSS Class | Description
---- | ---
-`mdc-button` | Mandatory. Defaults to a text button that is flush with the surface.
-`mdc-button__ripple` | Mandatory. Indicates the element which shows the ripple styling.
-`mdc-button--raised` | Optional. Styles a contained button that is elevated above the surface.
-`mdc-button--unelevated` | Optional. Styles a contained button that is flush with the surface.
-`mdc-button--outlined` | Optional. Styles an outlined button that is flush with the surface.
-`mdc-button__label` | Recommended.\* Indicates the element containing the button's text label.
-`mdc-button__icon` | Optional. Indicates the element containing the button's icon.
+| CSS Class                | Description                                                              |
+| ------------------------ | ------------------------------------------------------------------------ |
+| `mdc-button`             | Mandatory. Defaults to a text button that is flush with the surface.     |
+| `mdc-button__ripple`     | Mandatory. Indicates the element which shows the ripple styling.         |
+| `mdc-button--raised`     | Optional. Styles a contained button that is elevated above the surface.  |
+| `mdc-button--unelevated` | Optional. Styles a contained button that is flush with the surface.      |
+| `mdc-button--outlined`   | Optional. Styles an outlined button that is flush with the surface.      |
+| `mdc-button__label`      | Recommended.\* Indicates the element containing the button's text label. |
+| `mdc-button__icon`       | Optional. Indicates the element containing the button's icon.            |
 
 **Note: The `mdc-button__label` element is required for buttons with a trailing icon, but it is currently optional for
- buttons with no icon or a leading icon. In the latter cases, it is acceptable for the text label to simply exist
- directly within the `mdc-button` element.<br>
- However, the `mdc-button__label` class may become mandatory for all cases in the future so we recommended to
- always include it.**
+buttons with no icon or a leading icon. In the latter cases, it is acceptable for the text label to simply exist
+directly within the `mdc-button` element.<br>
+However, the `mdc-button__label` class may become mandatory for all cases in the future so we recommended to
+always include it.**
 
 ### Sass mixins
 
@@ -319,26 +320,26 @@ To customize a button's color and properties, you can use the following mixins.
 
 MDC Button uses [MDC Theme](../mdc-theme)'s `primary` color by default. Use the following mixins to customize it.
 
-Mixin | Description
---- | ---
-`filled-accessible($container-fill-color)` | Sets the container fill color for a contained (_raised_ or _unelevated_) button, and updates the button's ink, icon, and ripple colors to meet accessibility standards
+| Mixin                                      | Description                                                                                                                                                            |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filled-accessible($container-fill-color)` | Sets the container fill color for a contained (_raised_ or _unelevated_) button, and updates the button's ink, icon, and ripple colors to meet accessibility standards |
 
 #### Advanced Sass mixins
 
 These mixins will override the color of the container, ink, outline or ripple. It is up to you to ensure your button meets accessibility standards.
 
-Mixin | Description
---- | ---
-`container-fill-color($color)` | Sets the container fill color to the given color for an enabled button.
-`disabled-container-fill-color($color)` | Sets the container fill color to the given color for a disabled button.
-`icon-color($color)` | Sets the icon color to the given color for an enabled button.
-`disabled-icon-color($color)` | Sets the icon color to the given color for a disabled button.
-`ink-color($color)` | Sets the ink color to the given color for an enabled button, and sets the icon color to the given color unless `icon-color` is also used.
-`disabled-ink-color($color)` | Sets the ink color to the given color for a disabled button, and sets the icon color to the given color unless `icon-color` is also used.
-`density($density-scale)` | Sets density scale for button. Supported density scale values (`-3`, `-2`, `-1`, `0`).
-`height($height)` | Sets custom height for button.
-`shape-radius($radius, $density-scale, $rtl-reflexive)` | Sets rounded shape to button with given radius size. `$density-scale` is only required when `$radius` value is in percentage unit, defaults to `$density-default-scale`. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.
-`horizontal-padding($padding)` | Sets horizontal padding to the given number.
-`outline-color($color)` | Sets the outline color to the given color for an enabled button.
-`disabled-outline-color($color)` | Sets the outline color to the given color for a disabled button.
-`outline-width($width, $padding)` | Sets the outline width to the given number (defaults to 2px) and adjusts padding accordingly. `$padding` is only required in cases where `$horizontal-padding` is also included with a custom value.
+| Mixin                                                   | Description                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container-fill-color($color)`                          | Sets the container fill color to the given color for an enabled button.                                                                                                                                                                                        |
+| `disabled-container-fill-color($color)`                 | Sets the container fill color to the given color for a disabled button.                                                                                                                                                                                        |
+| `icon-color($color)`                                    | Sets the icon color to the given color for an enabled button.                                                                                                                                                                                                  |
+| `disabled-icon-color($color)`                           | Sets the icon color to the given color for a disabled button.                                                                                                                                                                                                  |
+| `ink-color($color)`                                     | Sets the ink color to the given color for an enabled button, and sets the icon color to the given color unless `icon-color` is also used.                                                                                                                      |
+| `disabled-ink-color($color)`                            | Sets the ink color to the given color for a disabled button, and sets the icon color to the given color unless `icon-color` is also used.                                                                                                                      |
+| `density($density-scale)`                               | Sets density scale for button. Supported density scale values (`-3`, `-2`, `-1`, `0`).                                                                                                                                                                         |
+| `height($height)`                                       | Sets custom height for button.                                                                                                                                                                                                                                 |
+| `shape-radius($radius, $density-scale, $rtl-reflexive)` | Sets rounded shape to button with given radius size. `$density-scale` is only required when `$radius` value is in percentage unit, defaults to `$density-default-scale`. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false. |
+| `horizontal-padding($padding)`                          | Sets horizontal padding to the given number.                                                                                                                                                                                                                   |
+| `outline-color($color)`                                 | Sets the outline color to the given color for an enabled button.                                                                                                                                                                                               |
+| `disabled-outline-color($color)`                        | Sets the outline color to the given color for a disabled button.                                                                                                                                                                                               |
+| `outline-width($width, $padding)`                       | Sets the outline width to the given number (defaults to 2px) and adjusts padding accordingly. `$padding` is only required in cases where `$horizontal-padding` is also included with a custom value.                                                           |

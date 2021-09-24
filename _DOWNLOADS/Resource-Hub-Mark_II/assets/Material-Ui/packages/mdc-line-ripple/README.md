@@ -44,35 +44,37 @@ npm install @material/line-ripple
 ### JavaScript Instantiation
 
 ```js
-import {MDCLineRipple} from '@material/line-ripple';
+import { MDCLineRipple } from "@material/line-ripple";
 
-const lineRipple = new MDCLineRipple(document.querySelector('.mdc-line-ripple'));
+const lineRipple = new MDCLineRipple(
+  document.querySelector(".mdc-line-ripple")
+);
 ```
 
 ## Style Customization
 
 ### CSS Classes
 
-CSS Class | Description
---- | ---
-`mdc-line-ripple` | Mandatory.
-`mdc-line-ripple--active` | Styles the line ripple as an active line ripple.
-`mdc-line-ripple--deactivating` | Styles the line ripple as a deactivating line ripple.
+| CSS Class                       | Description                                           |
+| ------------------------------- | ----------------------------------------------------- |
+| `mdc-line-ripple`               | Mandatory.                                            |
+| `mdc-line-ripple--active`       | Styles the line ripple as an active line ripple.      |
+| `mdc-line-ripple--deactivating` | Styles the line ripple as a deactivating line ripple. |
 
 ### Sass Mixins
 
-Mixin | Description
---- | ---
-`active-color($color)` | Customizes the color of the line ripple when active.
-`inactive-color($color)` | Customizes the color of the line ripple when inactive.
+| Mixin                    | Description                                            |
+| ------------------------ | ------------------------------------------------------ |
+| `active-color($color)`   | Customizes the color of the line ripple when active.   |
+| `inactive-color($color)` | Customizes the color of the line ripple when inactive. |
 
 ## `MDCLineRipple` Properties and Methods
 
-Method Signature | Description
---- | ---
-`activate() => void` | Proxies to the foundation's `activate()` method.
-`deactivate() => void` | Proxies to the foundation's `deactivate()` method.
-`setRippleCenter(xCoordinate: number) => void` | Proxies to the foundation's `setRippleCenter(xCoordinate: number)` method.
+| Method Signature                               | Description                                                                |
+| ---------------------------------------------- | -------------------------------------------------------------------------- |
+| `activate() => void`                           | Proxies to the foundation's `activate()` method.                           |
+| `deactivate() => void`                         | Proxies to the foundation's `deactivate()` method.                         |
+| `setRippleCenter(xCoordinate: number) => void` | Proxies to the foundation's `setRippleCenter(xCoordinate: number)` method. |
 
 ## Usage Within Frameworks
 
@@ -80,20 +82,20 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCLineRippleAdapter`
 
-Method Signature | Description
---- | ---
-`addClass(className: string) => void` | Adds a class to the root element.
-`removeClass(className: string) => void` | Removes a class from the root element.
-`hasClass(className: string) => boolean` | Determines whether the root element has the given CSS class name.
-`setStyle(propertyName: string, value: string) => void` | Sets the style property with `propertyName` to `value` on the root element.
-`registerEventHandler(evtType: EventType, handler: EventListener) => void` | Registers an event listener on the root element for a given event.
-`deregisterEventHandler(evtType: EventType, handler: EventListener) => void` | Deregisters an event listener on the root element for a given event.
+| Method Signature                                                             | Description                                                                 |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `addClass(className: string) => void`                                        | Adds a class to the root element.                                           |
+| `removeClass(className: string) => void`                                     | Removes a class from the root element.                                      |
+| `hasClass(className: string) => boolean`                                     | Determines whether the root element has the given CSS class name.           |
+| `setStyle(propertyName: string, value: string) => void`                      | Sets the style property with `propertyName` to `value` on the root element. |
+| `registerEventHandler(evtType: EventType, handler: EventListener) => void`   | Registers an event listener on the root element for a given event.          |
+| `deregisterEventHandler(evtType: EventType, handler: EventListener) => void` | Deregisters an event listener on the root element for a given event.        |
 
 ### `MDCLineRippleFoundation`
 
-Method Signature | Description
---- | ---
-`activate() => void` | Activates the line ripple.
-`deactivate() => void` |  Deactivates the line ripple.
-`setRippleCenter(xCoordinate: number) => void` | Sets the center of the ripple to the `xCoordinate` given.
-`handleTransitionEnd(evt: Event) => void` | Handles a `transitionend` event.
+| Method Signature                               | Description                                               |
+| ---------------------------------------------- | --------------------------------------------------------- |
+| `activate() => void`                           | Activates the line ripple.                                |
+| `deactivate() => void`                         | Deactivates the line ripple.                              |
+| `setRippleCenter(xCoordinate: number) => void` | Sets the center of the ripple to the `xCoordinate` given. |
+| `handleTransitionEnd(evt: Event) => void`      | Handles a `transitionend` event.                          |

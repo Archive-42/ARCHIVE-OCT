@@ -21,4 +21,7 @@
 //
 
 /// @deprecated Import './radio-theme' module instead.
-@forward './radio-theme' show $ripple-size, $icon-size, $transition-duration, $ripple-opacity, $baseline-theme-color, $unchecked-color, $disabled-circle-color, $minimum-size, $maximum-size, $density-scale, $density-config;
+@forward "./radio-theme" show $ripple-size, $icon-size, $transition-duration,
+  $ripple-opacity, $baseline-theme-color, $unchecked-color,
+  $disabled-circle-color, $minimum-size, $maximum-size, $density-scale,
+  $density-config;

@@ -21,4 +21,7 @@
 //
 
 /// @deprecated Import '_elevation-theme.scss' instead.
-@forward './elevation-theme' show $baseline-color, $umbra-opacity, $penumbra-opacity, $ambient-opacity, $umbra-map, $penumbra-map, $ambient-map, $property, $overlay-color, $overlay-property, $transition-duration, $transition-timing-function;
+@forward "./elevation-theme" show $baseline-color, $umbra-opacity,
+  $penumbra-opacity, $ambient-opacity, $umbra-map, $penumbra-map, $ambient-map,
+  $property, $overlay-color, $overlay-property, $transition-duration,
+  $transition-timing-function;

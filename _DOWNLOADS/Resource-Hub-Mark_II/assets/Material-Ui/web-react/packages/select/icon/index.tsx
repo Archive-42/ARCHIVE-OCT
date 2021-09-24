@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCSelectIconAdapter} from '@material/select/icon/adapter';
-import {MDCSelectIconFoundation} from '@material/select/icon/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCSelectIconAdapter } from "@material/select/icon/adapter";
+import { MDCSelectIconFoundation } from "@material/select/icon/foundation";
 
 export interface SelectIconProps extends React.HTMLProps<HTMLElement> {
   setIconFoundation?: (foundation?: MDCSelectIconFoundation) => void;
@@ -49,18 +49,18 @@ export class SelectIcon extends React.Component<
   };
 
   static defaultProps = {
-    tag: 'i',
+    tag: "i",
   };
 
   componentDidMount() {
-    const {setIconFoundation} = this.props;
+    const { setIconFoundation } = this.props;
     this.foundation = new MDCSelectIconFoundation(this.adapter);
     this.foundation.init();
     setIconFoundation && setIconFoundation(this.foundation);
   }
 
   componentWillUnmount() {
-    const {setIconFoundation} = this.props;
+    const { setIconFoundation } = this.props;
     if (this.foundation) {
       this.foundation.destroy();
       setIconFoundation && setIconFoundation(undefined);
@@ -75,7 +75,7 @@ export class SelectIcon extends React.Component<
             attr
           ] as ElementAttributes[keyof ElementAttributes])!.toString();
         }
-        const reactAttr = attr === 'tabindex' ? 'tabIndex' : attr;
+        const reactAttr = attr === "tabindex" ? "tabIndex" : attr;
         if (this.props[reactAttr] !== undefined) {
           return this.props[reactAttr]!.toString();
         }
@@ -91,7 +91,7 @@ export class SelectIcon extends React.Component<
         }));
       },
       removeAttr: (attr: keyof ElementAttributes) => {
-        this.setState((prevState) => ({...prevState, [attr]: null}));
+        this.setState((prevState) => ({ ...prevState, [attr]: null }));
       },
       setContent: () => {
         // not implmenting because developer should would never call `setContent()`
@@ -112,11 +112,11 @@ export class SelectIcon extends React.Component<
       className,
       ...otherProps
     } = this.props;
-    const {tabindex: tabIndex, role} = this.state;
+    const { tabindex: tabIndex, role } = this.state;
     return (
       // @ts-ignore  https://github.com/Microsoft/TypeScript/issues/28892
       <Tag
-        className={classnames('mdc-select__icon', className)}
+        className={classnames("mdc-select__icon", className)}
         role={role}
         tabIndex={tabIndex}
         {...otherProps}

@@ -23,15 +23,19 @@
 
 // tslint:disable:only-arrow-functions
 
-import {MDCComponent} from '@material/base/component';
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCFoundation } from "@material/base/foundation";
 
-import {strings} from './constants';
+import { strings } from "./constants";
 
-const {AUTO_INIT_ATTR, AUTO_INIT_STATE_ATTR, INITIALIZED_STATE} = strings;
+const { AUTO_INIT_ATTR, AUTO_INIT_STATE_ATTR, INITIALIZED_STATE } = strings;
 
 export interface MDCAttachable {
-  new<F extends MDCFoundation>(root: Element, foundation?: F, ...args: Array<unknown>): MDCComponent<F>;
+  new <F extends MDCFoundation>(
+    root: Element,
+    foundation?: F,
+    ...args: Array<unknown>
+  ): MDCComponent<F>;
 
   // Static method.
   attachTo<F extends MDCFoundation>(root: Element): MDCComponent<F>;
@@ -45,15 +49,19 @@ const registry: InternalComponentRegistry = {};
 
 const CONSOLE_WARN = console.warn.bind(console); // tslint:disable-line:no-console
 
-function emit<T extends object>(evtType: string, evtData: T, shouldBubble = false) {
+function emit<T extends object>(
+  evtType: string,
+  evtData: T,
+  shouldBubble = false
+) {
   let evt;
-  if (typeof CustomEvent === 'function') {
+  if (typeof CustomEvent === "function") {
     evt = new CustomEvent<T>(evtType, {
       bubbles: shouldBubble,
       detail: evtData,
     });
   } else {
-    evt = document.createEvent('CustomEvent');
+    evt = document.createEvent("CustomEvent");
     evt.initCustomEvent(evtType, shouldBubble, false, evtData);
   }
 
@@ -66,19 +74,24 @@ function emit<T extends object>(evtType: string, evtData: T, shouldBubble = fals
  */
 function mdcAutoInit(root = document) {
   const components = [];
-  let nodes: Element[] = [].slice.call(root.querySelectorAll(`[${AUTO_INIT_ATTR}]`));
-  nodes = nodes.filter((node) => node.getAttribute(AUTO_INIT_STATE_ATTR) !== INITIALIZED_STATE);
+  let nodes: Element[] = [].slice.call(
+    root.querySelectorAll(`[${AUTO_INIT_ATTR}]`)
+  );
+  nodes = nodes.filter(
+    (node) => node.getAttribute(AUTO_INIT_STATE_ATTR) !== INITIALIZED_STATE
+  );
 
   for (const node of nodes) {
     const ctorName = node.getAttribute(AUTO_INIT_ATTR);
     if (!ctorName) {
-      throw new Error('(mdc-auto-init) Constructor name must be given.');
+      throw new Error("(mdc-auto-init) Constructor name must be given.");
     }
 
     const Constructor = registry[ctorName]; // tslint:disable-line:variable-name
-    if (typeof Constructor !== 'function') {
+    if (typeof Constructor !== "function") {
       throw new Error(
-          `(mdc-auto-init) Could not find constructor in registry for ${ctorName}`);
+        `(mdc-auto-init) Could not find constructor in registry for ${ctorName}`
+      );
     }
 
     // TODO: Should we make an eslint rule for an attachTo() static method?
@@ -94,33 +107,41 @@ function mdcAutoInit(root = document) {
     node.setAttribute(AUTO_INIT_STATE_ATTR, INITIALIZED_STATE);
   }
 
-  emit('MDCAutoInit:End', {});
+  emit("MDCAutoInit:End", {});
   return components;
 }
 
 // Constructor is PascalCased because it is a direct reference to a class, rather than an instance of a class.
 // tslint:disable-next-line:variable-name
-mdcAutoInit.register = function(componentName: string, Constructor: MDCAttachable, warn = CONSOLE_WARN) {
-  if (typeof Constructor !== 'function') {
-    throw new Error(`(mdc-auto-init) Invalid Constructor value: ${Constructor}. Expected function.`);
+mdcAutoInit.register = function (
+  componentName: string,
+  Constructor: MDCAttachable,
+  warn = CONSOLE_WARN
+) {
+  if (typeof Constructor !== "function") {
+    throw new Error(
+      `(mdc-auto-init) Invalid Constructor value: ${Constructor}. Expected function.`
+    );
   }
   const registryValue = registry[componentName];
   if (registryValue) {
-    warn(`(mdc-auto-init) Overriding registration for ${componentName} with ${Constructor}. Was: ${registryValue}`);
+    warn(
+      `(mdc-auto-init) Overriding registration for ${componentName} with ${Constructor}. Was: ${registryValue}`
+    );
   }
   registry[componentName] = Constructor;
 };
 
-mdcAutoInit.deregister = function(componentName: string) {
+mdcAutoInit.deregister = function (componentName: string) {
   delete registry[componentName];
 };
 
 /** @nocollapse */
-mdcAutoInit.deregisterAll = function() {
+mdcAutoInit.deregisterAll = function () {
   const keys = Object.keys(registry) as string[];
   keys.forEach(this.deregister, this);
 };
 
 // tslint:disable-next-line:no-default-export Needed for backward compatibility with MDC Web v0.44.0 and earlier.
 export default mdcAutoInit;
-export {mdcAutoInit};
+export { mdcAutoInit };

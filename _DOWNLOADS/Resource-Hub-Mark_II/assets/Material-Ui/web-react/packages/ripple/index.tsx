@@ -19,15 +19,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
-import {Subtract} from 'utility-types'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import React from "react";
+import classnames from "classnames";
+import { Subtract } from "utility-types"; // eslint-disable-line @typescript-eslint/no-unused-vars
 
-import {MDCRippleFoundation} from '@material/ripple/foundation';
-import {MDCRippleAdapter} from '@material/ripple/adapter';
-import {supportsCssVariables, applyPassive} from '@material/ripple/util';
-import {EventType, SpecificEventListener} from '@material/base/types';
-import {matches} from '@material/dom/ponyfill';
+import { MDCRippleFoundation } from "@material/ripple/foundation";
+import { MDCRippleAdapter } from "@material/ripple/adapter";
+import { supportsCssVariables, applyPassive } from "@material/ripple/util";
+import { EventType, SpecificEventListener } from "@material/base/types";
+import { matches } from "@material/dom/ponyfill";
 
 export interface RippledComponentProps<T> {
   unbounded?: boolean;
@@ -109,7 +109,8 @@ export function withRipple<
         RippledComponentProps<Surface>,
       RippledComponentState
     >
-    implements RippledComponentInterface<Surface, Activator> {
+    implements RippledComponentInterface<Surface, Activator>
+  {
     foundation!: MDCRippleFoundation;
     isComponentMounted: boolean = true;
     isTouched: boolean = false;
@@ -125,7 +126,7 @@ export function withRipple<
       unbounded: false,
       disabled: false,
       style: {},
-      className: '',
+      className: "",
       onMouseDown: () => {},
       onMouseUp: () => {},
       onTouchStart: () => {},
@@ -141,7 +142,7 @@ export function withRipple<
       if (!this.foundation) {
         throw new Error(
           "You must call initRipple from the element's " +
-            'ref prop to initialize the adapter for withRipple'
+            "ref prop to initialize the adapter for withRipple"
         );
       }
     }
@@ -177,25 +178,25 @@ export function withRipple<
         isUnbounded: () => this.props.unbounded! as boolean,
         isSurfaceActive: () => {
           if (activator) {
-            return matches(activator, ':active');
+            return matches(activator, ":active");
           }
 
-          return matches(surface, ':active');
+          return matches(surface, ":active");
         },
         isSurfaceDisabled: () => this.props.disabled as boolean,
         addClass: (className: string) => {
           if (!this.isComponentMounted) {
             return;
           }
-          this.setState({classList: this.state.classList.add(className)});
+          this.setState({ classList: this.state.classList.add(className) });
         },
         removeClass: (className: string) => {
           if (!this.isComponentMounted) {
             return;
           }
-          const {classList} = this.state;
+          const { classList } = this.state;
           classList.delete(className);
-          this.setState({classList});
+          this.setState({ classList });
         },
         registerDocumentInteractionHandler: <K extends EventType>(
           evtType: K,
@@ -215,10 +216,10 @@ export function withRipple<
             handler,
             applyPassive()
           ),
-        registerResizeHandler: (handler: SpecificEventListener<'resize'>) =>
-          window.addEventListener('resize', handler),
-        deregisterResizeHandler: (handler: SpecificEventListener<'resize'>) =>
-          window.removeEventListener('resize', handler),
+        registerResizeHandler: (handler: SpecificEventListener<"resize">) =>
+          window.addEventListener("resize", handler),
+        deregisterResizeHandler: (handler: SpecificEventListener<"resize">) =>
+          window.removeEventListener("resize", handler),
         updateCssVariable: this.updateCssVariable,
         computeBoundingRect: () => {
           if (!this.isComponentMounted) {
@@ -335,32 +336,32 @@ export function withRipple<
     };
 
     get classes() {
-      const {className: wrappedComponentClasses} = this.props;
-      const {classList} = this.state;
+      const { className: wrappedComponentClasses } = this.props;
+      const { classList } = this.state;
       return classnames(Array.from(classList), wrappedComponentClasses);
     }
 
     get style() {
-      const {style: wrappedStyle} = this.props;
-      const {style} = this.state;
+      const { style: wrappedStyle } = this.props;
+      const { style } = this.state;
       return Object.assign({}, style, wrappedStyle);
     }
 
     render() {
       const {
-      /* eslint-disable */
-      unbounded,
-      style,
-      className,
-      onMouseDown,
-      onMouseUp,
-      onTouchStart,
-      onTouchEnd,
-      onKeyDown,
-      onKeyUp,
-      onFocus,
-      onBlur,
-      /* eslint-enable */
+        /* eslint-disable */
+        unbounded,
+        style,
+        className,
+        onMouseDown,
+        onMouseUp,
+        onTouchStart,
+        onTouchEnd,
+        onKeyDown,
+        onKeyUp,
+        onFocus,
+        onBlur,
+        /* eslint-enable */
         ...otherProps
       } = this.props as P;
 
@@ -394,5 +395,5 @@ export function withRipple<
 function getDisplayName<P extends {}>(
   WrappedComponent: React.ComponentType<P>
 ): string {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }

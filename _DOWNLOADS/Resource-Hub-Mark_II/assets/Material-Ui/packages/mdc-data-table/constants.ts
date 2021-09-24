@@ -25,48 +25,48 @@
  * CSS class names used in component.
  */
 export const cssClasses = {
-  CELL: 'mdc-data-table__cell',
-  CELL_NUMERIC: 'mdc-data-table__cell--numeric',
-  CONTENT: 'mdc-data-table__content',
-  HEADER_CELL: 'mdc-data-table__header-cell',
-  HEADER_CELL_LABEL: 'mdc-data-table__header-cell-label',
-  HEADER_CELL_SORTED: 'mdc-data-table__header-cell--sorted',
+  CELL: "mdc-data-table__cell",
+  CELL_NUMERIC: "mdc-data-table__cell--numeric",
+  CONTENT: "mdc-data-table__content",
+  HEADER_CELL: "mdc-data-table__header-cell",
+  HEADER_CELL_LABEL: "mdc-data-table__header-cell-label",
+  HEADER_CELL_SORTED: "mdc-data-table__header-cell--sorted",
   HEADER_CELL_SORTED_DESCENDING:
-      'mdc-data-table__header-cell--sorted-descending',
-  HEADER_CELL_WITH_SORT: 'mdc-data-table__header-cell--with-sort',
-  HEADER_CELL_WRAPPER: 'mdc-data-table__header-cell-wrapper',
-  HEADER_ROW: 'mdc-data-table__header-row',
-  HEADER_ROW_CHECKBOX: 'mdc-data-table__header-row-checkbox',
-  IN_PROGRESS: 'mdc-data-table--in-progress',
-  LINEAR_PROGRESS: 'mdc-data-table__linear-progress',
+    "mdc-data-table__header-cell--sorted-descending",
+  HEADER_CELL_WITH_SORT: "mdc-data-table__header-cell--with-sort",
+  HEADER_CELL_WRAPPER: "mdc-data-table__header-cell-wrapper",
+  HEADER_ROW: "mdc-data-table__header-row",
+  HEADER_ROW_CHECKBOX: "mdc-data-table__header-row-checkbox",
+  IN_PROGRESS: "mdc-data-table--in-progress",
+  LINEAR_PROGRESS: "mdc-data-table__linear-progress",
   PAGINATION_ROWS_PER_PAGE_LABEL:
-      'mdc-data-table__pagination-rows-per-page-label',
+    "mdc-data-table__pagination-rows-per-page-label",
   PAGINATION_ROWS_PER_PAGE_SELECT:
-      'mdc-data-table__pagination-rows-per-page-select',
-  PROGRESS_INDICATOR: 'mdc-data-table__progress-indicator',
-  ROOT: 'mdc-data-table',
-  ROW: 'mdc-data-table__row',
-  ROW_CHECKBOX: 'mdc-data-table__row-checkbox',
-  ROW_SELECTED: 'mdc-data-table__row--selected',
-  SORT_ICON_BUTTON: 'mdc-data-table__sort-icon-button',
-  SORT_STATUS_LABEL: 'mdc-data-table__sort-status-label',
-  TABLE_CONTAINER: 'mdc-data-table__table-container',
+    "mdc-data-table__pagination-rows-per-page-select",
+  PROGRESS_INDICATOR: "mdc-data-table__progress-indicator",
+  ROOT: "mdc-data-table",
+  ROW: "mdc-data-table__row",
+  ROW_CHECKBOX: "mdc-data-table__row-checkbox",
+  ROW_SELECTED: "mdc-data-table__row--selected",
+  SORT_ICON_BUTTON: "mdc-data-table__sort-icon-button",
+  SORT_STATUS_LABEL: "mdc-data-table__sort-status-label",
+  TABLE_CONTAINER: "mdc-data-table__table-container",
 };
 
 /**
  * DOM attributes used in component.
  */
 export const attributes = {
-  ARIA_SELECTED: 'aria-selected',
-  ARIA_SORT: 'aria-sort',
+  ARIA_SELECTED: "aria-selected",
+  ARIA_SORT: "aria-sort",
 };
 
 /**
  * List of data attributes used in component.
  */
 export const dataAttributes = {
-  COLUMN_ID: 'data-column-id',
-  ROW_ID: 'data-row-id',
+  COLUMN_ID: "data-column-id",
+  ROW_ID: "data-row-id",
 };
 
 /**
@@ -90,8 +90,8 @@ export const selectors = {
  * Messages used in component.
  */
 export const messages = {
-  SORTED_IN_DESCENDING: 'Sorted in descending order',
-  SORTED_IN_ASCENDING: 'Sorted in ascending order',
+  SORTED_IN_DESCENDING: "Sorted in descending order",
+  SORTED_IN_ASCENDING: "Sorted in ascending order",
 };
 
 /**
@@ -114,24 +114,24 @@ export const strings = {
  */
 export enum SortValue {
   // Items are sorted in ascending order by this column.
-  ASCENDING = 'ascending',
+  ASCENDING = "ascending",
 
   // Items are sorted in descending order by this column.
-  DESCENDING = 'descending',
+  DESCENDING = "descending",
 
   // There is no defined sort applied to the column.
-  NONE = 'none',
+  NONE = "none",
 
   // A sort algorithm other than ascending or descending has been applied.
-  OTHER = 'other',
+  OTHER = "other",
 }
 
 /**
  * Event names used in component.
  */
 export const events = {
-  ROW_SELECTION_CHANGED: 'MDCDataTable:rowSelectionChanged',
-  SELECTED_ALL: 'MDCDataTable:selectedAll',
-  UNSELECTED_ALL: 'MDCDataTable:unselectedAll',
-  SORTED: 'MDCDataTable:sorted',
+  ROW_SELECTION_CHANGED: "MDCDataTable:rowSelectionChanged",
+  SELECTED_ALL: "MDCDataTable:selectedAll",
+  UNSELECTED_ALL: "MDCDataTable:unselectedAll",
+  SORTED: "MDCDataTable:sorted",
 };

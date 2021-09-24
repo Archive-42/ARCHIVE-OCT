@@ -19,10 +19,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
-import {MDCTextFieldIconAdapter} from '@material/textfield/icon/adapter';
-import {MDCTextFieldIconFoundation} from '@material/textfield/icon/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCTextFieldIconAdapter } from "@material/textfield/icon/adapter";
+import { MDCTextFieldIconFoundation } from "@material/textfield/icon/foundation";
 
 export interface IconProps extends React.HTMLProps<HTMLOrSVGElement> {
   disabled?: boolean;
@@ -44,7 +44,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
 
   constructor(props: IconProps) {
     super(props);
-    const {role} = props.children.props;
+    const { role } = props.children.props;
 
     this.state = {
       tabindex: this.tabindex,
@@ -66,7 +66,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
     }
 
     if (this.props.onSelect !== prevProps.onSelect) {
-      this.setState({tabindex: this.tabindex});
+      this.setState({ tabindex: this.tabindex });
     }
   }
 
@@ -77,7 +77,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
   get tabindex() {
     // if tabIndex is not set onSelect will never fire.
     // note that foundation.js alters tabindex not tabIndex
-    if (typeof this.props.children.props.tabIndex === 'number') {
+    if (typeof this.props.children.props.tabIndex === "number") {
       return this.props.children.props.tabIndex;
     }
 
@@ -90,20 +90,20 @@ export default class Icon extends React.Component<IconProps, IconState> {
       // @types/react requires tabIndex is number
       getAttr: (attr: keyof IconState) => {
         const attr_ = this.state[attr];
-        if (attr_ || (typeof attr_ === 'number' && !isNaN(attr_))) {
+        if (attr_ || (typeof attr_ === "number" && !isNaN(attr_))) {
           return attr_.toString();
         }
-        return '';
+        return "";
       },
       setAttr: (attr: keyof IconState, value: string) =>
         this.setState((prevState) => {
           return {
             ...prevState,
-            [attr]: attr === 'tabindex' ? Number(value) : value,
+            [attr]: attr === "tabindex" ? Number(value) : value,
           };
         }),
       removeAttr: (attr: keyof IconState) =>
-        this.setState((prevState) => ({...prevState, [attr]: null})),
+        this.setState((prevState) => ({ ...prevState, [attr]: null })),
       notifyIconAction: () => this.props.onSelect && this.props.onSelect(),
       // Please manage content and register through JSX
       setContent: () => undefined,
@@ -119,10 +119,10 @@ export default class Icon extends React.Component<IconProps, IconState> {
     this.foundation.handleInteraction(e.nativeEvent);
 
   addIconAttrsToChildren = () => {
-    const {tabindex: tabIndex, role} = this.state;
+    const { tabindex: tabIndex, role } = this.state;
     const child = React.Children.only(this.props.children);
     // TODO change literal to constant
-    const className = classnames('mdc-text-field__icon', child.props.className);
+    const className = classnames("mdc-text-field__icon", child.props.className);
     const props = Object.assign({}, child.props, {
       className,
       onClick: this.handleClick,

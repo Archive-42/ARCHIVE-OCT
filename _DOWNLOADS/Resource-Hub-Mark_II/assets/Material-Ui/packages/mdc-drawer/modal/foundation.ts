@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCDismissibleDrawerFoundation} from '../dismissible/foundation';
+import { MDCDismissibleDrawerFoundation } from "../dismissible/foundation";
 
 /* istanbul ignore next: subclass is not a branch statement */
 export class MDCModalDrawerFoundation extends MDCDismissibleDrawerFoundation {

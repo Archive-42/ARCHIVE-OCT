@@ -21,13 +21,15 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCProgressIndicator} from '@material/progress-indicator/component';
-import {MDCLinearProgressAdapter} from './adapter';
-import {MDCLinearProgressFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCProgressIndicator } from "@material/progress-indicator/component";
+import { MDCLinearProgressAdapter } from "./adapter";
+import { MDCLinearProgressFoundation } from "./foundation";
 
-export class MDCLinearProgress extends
-    MDCComponent<MDCLinearProgressFoundation> implements MDCProgressIndicator {
+export class MDCLinearProgress
+  extends MDCComponent<MDCLinearProgressFoundation>
+  implements MDCProgressIndicator
+{
   static attachTo(root: Element) {
     return new MDCLinearProgress(root);
   }
@@ -57,7 +59,7 @@ export class MDCLinearProgress extends
   }
 
   initialSyncWithDOM() {
-    this.root.addEventListener('transitionend', () => {
+    this.root.addEventListener("transitionend", () => {
       this.foundation.handleTransitionEnd();
     });
   }
@@ -75,14 +77,16 @@ export class MDCLinearProgress extends
       },
       setBufferBarStyle: (styleProperty: string, value: string) => {
         const bufferBar = this.root.querySelector<HTMLElement>(
-            MDCLinearProgressFoundation.strings.BUFFER_BAR_SELECTOR);
+          MDCLinearProgressFoundation.strings.BUFFER_BAR_SELECTOR
+        );
         if (bufferBar) {
           bufferBar.style.setProperty(styleProperty, value);
         }
       },
       setPrimaryBarStyle: (styleProperty: string, value: string) => {
         const primaryBar = this.root.querySelector<HTMLElement>(
-            MDCLinearProgressFoundation.strings.PRIMARY_BAR_SELECTOR);
+          MDCLinearProgressFoundation.strings.PRIMARY_BAR_SELECTOR
+        );
         if (primaryBar) {
           primaryBar.style.setProperty(styleProperty, value);
         }

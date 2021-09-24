@@ -13,13 +13,15 @@ npm install @material/react-text-field
 ### Styles
 
 with Sass:
+
 ```js
-import '@material/react-text-field/index.scss';
+import "@material/react-text-field/index.scss";
 ```
 
 with CSS:
+
 ```js
-import '@material/react-text-field/dist/text-field.css';
+import "@material/react-text-field/dist/text-field.css";
 ```
 
 ### Javascript Instantiation
@@ -27,24 +29,26 @@ import '@material/react-text-field/dist/text-field.css';
 React Text Field accepts one child element which is the input element. For ease of integration, we have provided an input component to be used with React Text Field.
 
 ```js
-import React from 'react';
-import TextField, {HelperText, Input} from '@material/react-text-field';
-import MaterialIcon from '@material/react-material-icon';
+import React from "react";
+import TextField, { HelperText, Input } from "@material/react-text-field";
+import MaterialIcon from "@material/react-material-icon";
 
 class MyApp extends React.Component {
-  state = {value: 'Woof'};
+  state = { value: "Woof" };
 
   render() {
     return (
       <div>
         <TextField
-          label='Dog'
+          label="Dog"
           helperText={<HelperText>Help Me!</HelperText>}
-          onTrailingIconSelect={() => this.setState({value: ''})}
-          trailingIcon={<MaterialIcon role="button" icon="delete"/>}
-        ><Input
-           value={this.state.value}
-           onChange={(e) => this.setState({value: e.currentTarget.value})} />
+          onTrailingIconSelect={() => this.setState({ value: "" })}
+          trailingIcon={<MaterialIcon role="button" icon="delete" />}
+        >
+          <Input
+            value={this.state.value}
+            onChange={(e) => this.setState({ value: e.currentTarget.value })}
+          />
         </TextField>
       </div>
     );
@@ -53,63 +57,64 @@ class MyApp extends React.Component {
 ```
 
 > NOTE: In order to get access to the value, you must add an onChange handler, which accepts an event and updates the value of the input as shown above.
+
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-children | Element | Mandatory. The input element of the text field.
-className | String | An optional class added to the `.mdc-text-field` element.
-dense | Boolean | Enables dense variant.
-floatingLabelClassName | String | An optional class added to the floating label element of the text field.
-fullWidth | Boolean | Enables fullWidth variant.
-helperText | Element | Helper text that appears below the text field. Use the `<HelperText>` component that comes with this package.
-label | String | An optional label text that appears as the floating label or placeholder.
-leadingIcon | Element | An icon element that appears as the leading icon.
-lineRippleClassName | String | An optional class added to the line ripple element.
-notchedOutlineClassName | String | An optional class added to the notched outline element.
-onLeadingIconSelect | Function | Optional callback fired on interaction with `leadingIcon`.
-onTrailingIconSelect | Function | Optional callback fired on interaction with `trailingIcon`.
-outlined | Boolean | Enables outlined variant.
-textarea | Boolean | Enables textarea variant.
-trailingIcon | Element | An icon element that appears as the trailing icon.
+| Prop Name               | Type     | Description                                                                                                   |
+| ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+| children                | Element  | Mandatory. The input element of the text field.                                                               |
+| className               | String   | An optional class added to the `.mdc-text-field` element.                                                     |
+| dense                   | Boolean  | Enables dense variant.                                                                                        |
+| floatingLabelClassName  | String   | An optional class added to the floating label element of the text field.                                      |
+| fullWidth               | Boolean  | Enables fullWidth variant.                                                                                    |
+| helperText              | Element  | Helper text that appears below the text field. Use the `<HelperText>` component that comes with this package. |
+| label                   | String   | An optional label text that appears as the floating label or placeholder.                                     |
+| leadingIcon             | Element  | An icon element that appears as the leading icon.                                                             |
+| lineRippleClassName     | String   | An optional class added to the line ripple element.                                                           |
+| notchedOutlineClassName | String   | An optional class added to the notched outline element.                                                       |
+| onLeadingIconSelect     | Function | Optional callback fired on interaction with `leadingIcon`.                                                    |
+| onTrailingIconSelect    | Function | Optional callback fired on interaction with `trailingIcon`.                                                   |
+| outlined                | Boolean  | Enables outlined variant.                                                                                     |
+| textarea                | Boolean  | Enables textarea variant.                                                                                     |
+| trailingIcon            | Element  | An icon element that appears as the trailing icon.                                                            |
 
 ### Input Props
 
 Not all the props below are used for majority of cases. Properties like `foundation` shouldn't be used when implementing the text field, but is used internally in React Text Field.
 
-Prop Name | Type | Description
---- | --- | ---
-inputType | string | HTML tag to be used to render input element. 'input' (default) or 'textarea'.
-className | String | Classes to be applied to the input element.
-disabled | Function | Disables the input and the parent text field.
-foundation | Function | The text field foundation.
-isValid | Boolean | If set, this value will override the native input's validation.
-id | String | The `<input>` id attribute.
-onBlur | Function | Blur event handler.
-onChange | Function | Change event handler.
-onFocus | Function | Focus event handler.
-onMouseDown | Function | Mouse down event handler.
-onTouchStart | Function | Touch start event handler.
-setDisabled | Function | Callback function that is called when the `disabled` prop updates.
-setInputId | Function | Callback function that is called when the `id` attribute updates.
-handleFocusChange | Function | Callback function that is called when `focus` or `blur` events occur
-value | Number/String | Value of the input.
-ref | Function(input: ReactElement) => void | On mount of component, will call passed function with the instance of the `<Input />`.
+| Prop Name         | Type                                  | Description                                                                            |
+| ----------------- | ------------------------------------- | -------------------------------------------------------------------------------------- |
+| inputType         | string                                | HTML tag to be used to render input element. 'input' (default) or 'textarea'.          |
+| className         | String                                | Classes to be applied to the input element.                                            |
+| disabled          | Function                              | Disables the input and the parent text field.                                          |
+| foundation        | Function                              | The text field foundation.                                                             |
+| isValid           | Boolean                               | If set, this value will override the native input's validation.                        |
+| id                | String                                | The `<input>` id attribute.                                                            |
+| onBlur            | Function                              | Blur event handler.                                                                    |
+| onChange          | Function                              | Change event handler.                                                                  |
+| onFocus           | Function                              | Focus event handler.                                                                   |
+| onMouseDown       | Function                              | Mouse down event handler.                                                              |
+| onTouchStart      | Function                              | Touch start event handler.                                                             |
+| setDisabled       | Function                              | Callback function that is called when the `disabled` prop updates.                     |
+| setInputId        | Function                              | Callback function that is called when the `id` attribute updates.                      |
+| handleFocusChange | Function                              | Callback function that is called when `focus` or `blur` events occur                   |
+| value             | Number/String                         | Value of the input.                                                                    |
+| ref               | Function(input: ReactElement) => void | On mount of component, will call passed function with the instance of the `<Input />`. |
 
->NOTE: the `<Input>` component will receive all properties that a standard `<input>` accepts.
+> NOTE: the `<Input>` component will receive all properties that a standard `<input>` accepts.
 
 ### Accessing the Native Input element
 
 There will be times when you need to access the native <input />. For example if you need to focus the text field, you can add a ref callback method to the `<Input />` element and access the `<input />`. The `ref` will accept a callback method and on mount and will pass the instance of the input component. Here is an example of how to programatically focus the `<input />`:
 
 ```js
-import React from 'react';
-import TextField, {Input} from '@material/react-text-field';
-import Button from '@material/react-button';
+import React from "react";
+import TextField, { Input } from "@material/react-text-field";
+import Button from "@material/react-button";
 
 class MyApp extends React.Component {
   input = null;
-  state = {value: 'Woof'};
+  state = { value: "Woof" };
 
   focusTextField = () => {
     if (!this.input) return;
@@ -117,7 +122,7 @@ class MyApp extends React.Component {
     if (inputElement) {
       inputElement.focus();
     }
-  }
+  };
 
   render() {
     return (
@@ -125,18 +130,18 @@ class MyApp extends React.Component {
         <div>
           <Button onClick={this.focusTextField}>Focus Text Field</Button>
         </div>
-        <TextField label='Dog'>
+        <TextField label="Dog">
           <Input
             value={this.state.value}
-            ref={input => this.input = input}
-            onChange={(e) => this.setState({value: e.currentTarget.value})}/>
+            ref={(input) => (this.input = input)}
+            onChange={(e) => this.setState({ value: e.currentTarget.value })}
+          />
         </TextField>
       </div>
     );
   }
 }
 ```
-
 
 ### Sass Mixins
 

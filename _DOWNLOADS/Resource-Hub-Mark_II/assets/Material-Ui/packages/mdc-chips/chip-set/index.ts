@@ -21,7 +21,10 @@
  * THE SOFTWARE.
  */
 
-export * from './adapter';
-export * from './component';
-export * from './foundation';
-export {cssClasses as chipSetCssClasses, strings as chipSetStrings} from './constants';
+export * from "./adapter";
+export * from "./component";
+export * from "./foundation";
+export {
+  cssClasses as chipSetCssClasses,
+  strings as chipSetStrings,
+} from "./constants";

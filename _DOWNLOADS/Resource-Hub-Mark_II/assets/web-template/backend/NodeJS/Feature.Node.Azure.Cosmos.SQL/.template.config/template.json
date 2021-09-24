@@ -12,13 +12,12 @@
     "wts.platform": "Web",
     "wts.version": "1.0.0",
     "wts.compositionFilter": "$backendframework == Node & identity == wts.Feature.Azure.Cosmos.SQL",
-    "wts.licenses":"[Dotenv](https://github.com/motdotla/dotenv/blob/master/LICENSE)|[AzureCosmos](https://github.com/Azure/azure-sdk-for-js/blob/master/LICENSE)"
+    "wts.licenses": "[Dotenv](https://github.com/motdotla/dotenv/blob/master/LICENSE)|[AzureCosmos](https://github.com/Azure/azure-sdk-for-js/blob/master/LICENSE)"
   },
   "sourceName": "wts.ItemName",
   "preferNameDirectory": true,
   "PrimaryOutputs": [],
-  "symbols": {
-  },
+  "symbols": {},
   "postActions": [
     {
       "description": "Add Cosmos Sql Dependencies",

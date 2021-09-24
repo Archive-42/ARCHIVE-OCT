@@ -19,16 +19,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
-import {MDCChipFoundation} from '@material/chips/chip/foundation';
-import {MDCChipAdapter} from '@material/chips/chip/adapter';
+} from "@material/react-ripple";
+import { MDCChipFoundation } from "@material/chips/chip/foundation";
+import { MDCChipAdapter } from "@material/chips/chip/adapter";
 
 export interface ChipProps extends InjectedProps<HTMLDivElement> {
   id?: string;
@@ -59,9 +59,9 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   foundation!: MDCChipFoundation;
 
   static defaultProps: Partial<ChipProps> = {
-    id: '',
-    label: '',
-    className: '',
+    id: "",
+    label: "",
+    className: "",
     selected: false,
     onClick: () => {},
     onKeyDown: () => {},
@@ -80,7 +80,7 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   };
 
   componentDidMount() {
-    const {selected, shouldRemoveOnTrailingIconClick} = this.props;
+    const { selected, shouldRemoveOnTrailingIconClick } = this.props;
     this.foundation = new MDCChipFoundation(this.adapter);
     this.foundation.init();
     this.foundation.setSelected(selected!);
@@ -95,7 +95,7 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   }
 
   componentDidUpdate(prevProps: ChipProps) {
-    const {selected, shouldRemoveOnTrailingIconClick} = this.props;
+    const { selected, shouldRemoveOnTrailingIconClick } = this.props;
 
     if (selected !== prevProps.selected) {
       this.foundation.setSelected(selected!);
@@ -121,9 +121,9 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   };
 
   get classes() {
-    const {classList} = this.state;
-    const {className} = this.props;
-    return classnames('mdc-chip', Array.from(classList), className);
+    const { classList } = this.state;
+    const { className } = this.props;
+    return classnames("mdc-chip", Array.from(classList), className);
   }
 
   get adapter(): MDCChipAdapter {
@@ -131,20 +131,20 @@ export class Chip extends React.Component<ChipProps, ChipState> {
       addClass: (className: string) => {
         const classList = new Set(this.state.classList);
         classList.add(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       removeClass: (className: string) => {
         const classList = new Set(this.state.classList);
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) =>
-        this.classes.split(' ').includes(className),
+        this.classes.split(" ").includes(className),
       hasLeadingIcon: () => Boolean(this.props.leadingIcon),
       eventTargetHasClass: (target: HTMLElement, className: string) =>
         target.classList.contains(className),
       getComputedStyleValue: (propertyName: string) => {
-        if (!this.chipElement) return '';
+        if (!this.chipElement) return "";
         return window
           .getComputedStyle(this.chipElement)
           .getPropertyValue(propertyName);
@@ -167,7 +167,7 @@ export class Chip extends React.Component<ChipProps, ChipState> {
         return this.chipElement.getBoundingClientRect();
       },
       getCheckmarkBoundingClientRect: () => {
-        const {chipCheckmark} = this.props;
+        const { chipCheckmark } = this.props;
         if (
           !(
             chipCheckmark &&
@@ -206,12 +206,12 @@ export class Chip extends React.Component<ChipProps, ChipState> {
       addClassToLeadingIcon: (className: string) => {
         const leadingIconClassList = new Set(this.state.leadingIconClassList);
         leadingIconClassList.add(className);
-        this.setState({leadingIconClassList});
+        this.setState({ leadingIconClassList });
       },
       removeClassFromLeadingIcon: (className: string) => {
         const leadingIconClassList = new Set(this.state.leadingIconClassList);
         leadingIconClassList.delete(className);
-        this.setState({leadingIconClassList});
+        this.setState({ leadingIconClassList });
       },
     };
   }
@@ -235,14 +235,14 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   };
 
   renderLeadingIcon = (leadingIcon: React.ReactElement<HTMLElement>) => {
-    const {leadingIconClassList} = this.state;
-    const {className, ...otherProps} = leadingIcon.props;
+    const { leadingIconClassList } = this.state;
+    const { className, ...otherProps } = leadingIcon.props;
     const props = {
       className: classnames(
         className,
         Array.from(leadingIconClassList),
-        'mdc-chip__icon',
-        'mdc-chip__icon--leading'
+        "mdc-chip__icon",
+        "mdc-chip__icon--leading"
       ),
       ...otherProps,
     };
@@ -250,17 +250,17 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   };
 
   renderTrailingIcon = (trailingIcon: React.ReactElement<HTMLElement>) => {
-    const {className, ...otherProps} = trailingIcon.props;
+    const { className, ...otherProps } = trailingIcon.props;
     const props = {
       className: classnames(
         className,
-        'mdc-chip__icon',
-        'mdc-chip__icon--trailing'
+        "mdc-chip__icon",
+        "mdc-chip__icon--trailing"
       ),
       onClick: this.handleTrailingIconClick,
       onKeyDown: this.handleTrailingIconClick,
       tabIndex: 0,
-      role: 'button',
+      role: "button",
       ...otherProps,
     };
     return React.cloneElement(trailingIcon, props);
@@ -302,7 +302,7 @@ export class Chip extends React.Component<ChipProps, ChipState> {
       >
         {leadingIcon && this.renderLeadingIcon(leadingIcon)}
         {chipCheckmark}
-        <div className='mdc-chip__text'>{label}</div>
+        <div className="mdc-chip__text">{label}</div>
         {trailingIcon && this.renderTrailingIcon(trailingIcon)}
       </div>
     );

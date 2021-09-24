@@ -21,11 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCTextFieldIconAdapter} from './adapter';
-import {MDCTextFieldIconFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCTextFieldIconAdapter } from "./adapter";
+import { MDCTextFieldIconFoundation } from "./foundation";
 
-export type MDCTextFieldIconFactory = (el: Element, foundation?: MDCTextFieldIconFoundation) => MDCTextFieldIcon;
+export type MDCTextFieldIconFactory = (
+  el: Element,
+  foundation?: MDCTextFieldIconFoundation
+) => MDCTextFieldIcon;
 
 export class MDCTextFieldIcon extends MDCComponent<MDCTextFieldIconFoundation> {
   static attachTo(root: Element): MDCTextFieldIcon {
@@ -48,10 +51,16 @@ export class MDCTextFieldIcon extends MDCComponent<MDCTextFieldIconFoundation> {
       setContent: (content) => {
         this.root.textContent = content;
       },
-      registerInteractionHandler: (evtType, handler) => this.listen(evtType, handler),
-      deregisterInteractionHandler: (evtType, handler) => this.unlisten(evtType, handler),
-      notifyIconAction: () => this.emit(
-          MDCTextFieldIconFoundation.strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */),
+      registerInteractionHandler: (evtType, handler) =>
+        this.listen(evtType, handler),
+      deregisterInteractionHandler: (evtType, handler) =>
+        this.unlisten(evtType, handler),
+      notifyIconAction: () =>
+        this.emit(
+          MDCTextFieldIconFoundation.strings.ICON_EVENT,
+          {} /* evtData */,
+          true /* shouldBubble */
+        ),
     };
     // tslint:enable:object-literal-sort-keys
     return new MDCTextFieldIconFoundation(adapter);

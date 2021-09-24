@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import {EventType, SpecificEventListener} from '@material/base/types';
-import {MDCTextFieldNativeInputElement} from './types';
+import { EventType, SpecificEventListener } from "@material/base/types";
+import { MDCTextFieldNativeInputElement } from "./types";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -31,12 +31,12 @@ import {MDCTextFieldNativeInputElement} from './types';
  * for more details.
  * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
  */
-export interface MDCTextFieldAdapter extends MDCTextFieldRootAdapter,
+export interface MDCTextFieldAdapter
+  extends MDCTextFieldRootAdapter,
     MDCTextFieldInputAdapter,
     MDCTextFieldLabelAdapter,
     MDCTextFieldLineRippleAdapter,
-    MDCTextFieldOutlineAdapter {
-}
+    MDCTextFieldOutlineAdapter {}
 
 export interface MDCTextFieldRootAdapter {
   /**
@@ -57,18 +57,26 @@ export interface MDCTextFieldRootAdapter {
   /**
    * Registers an event handler on the root element for a given event.
    */
-  registerTextFieldInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  registerTextFieldInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event handler on the root element for a given event.
    */
-  deregisterTextFieldInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  deregisterTextFieldInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers a validation attribute change listener on the input element.
    * Handler accepts list of attribute names.
    */
-  registerValidationAttributeChangeHandler(handler: (attributeNames: string[]) => void): MutationObserver;
+  registerValidationAttributeChangeHandler(
+    handler: (attributeNames: string[]) => void
+  ): MutationObserver;
 
   /**
    * Disconnects a validation attribute observer on the input element.
@@ -101,12 +109,18 @@ export interface MDCTextFieldInputAdapter {
   /**
    * Registers an event listener on the native input element for a given event.
    */
-  registerInputInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  registerInputInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener on the native input element for a given event.
    */
-  deregisterInputInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  deregisterInputInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 }
 
 export interface MDCTextFieldLabelAdapter {

@@ -19,8 +19,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-@use '@material/theme/theme';
-@use '@material/theme/custom-properties';
+@use "@material/theme/theme";
+@use "@material/theme/custom-properties";
 
 @mixin primary-indeterminate-translate-keyframes_ {
   @keyframes mdc-linear-progress-primary-indeterminate-translate {

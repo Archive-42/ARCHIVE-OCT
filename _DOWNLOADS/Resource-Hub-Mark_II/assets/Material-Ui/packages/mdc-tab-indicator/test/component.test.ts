@@ -21,11 +21,16 @@
  * THE SOFTWARE.
  */
 
-import {createMockFoundation} from '../../../testing/helpers/foundation';
-import {MDCFadingTabIndicatorFoundation, MDCSlidingTabIndicatorFoundation, MDCTabIndicator, MDCTabIndicatorFoundation,} from '../index';
+import { createMockFoundation } from "../../../testing/helpers/foundation";
+import {
+  MDCFadingTabIndicatorFoundation,
+  MDCSlidingTabIndicatorFoundation,
+  MDCTabIndicator,
+  MDCTabIndicatorFoundation,
+} from "../index";
 
 const getFixture = () => {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
   <span class="mdc-tab-indicator">
     <span class="mdc-tab-indicator__content"></span>
@@ -37,7 +42,7 @@ const getFixture = () => {
 };
 
 const getFadingFixture = () => {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
   <span class="mdc-tab-indicator mdc-tab-indicator--fade">
     <span class="mdc-tab-indicator__content"></span>
@@ -48,98 +53,106 @@ const getFadingFixture = () => {
   return el;
 };
 
-describe('MDCTabIndicator', () => {
-  it('attachTo returns an MDCTabIndicator instance', () => {
-    expect(MDCTabIndicator.attachTo(getFixture()) instanceof MDCTabIndicator)
-        .toBe(true);
+describe("MDCTabIndicator", () => {
+  it("attachTo returns an MDCTabIndicator instance", () => {
+    expect(
+      MDCTabIndicator.attachTo(getFixture()) instanceof MDCTabIndicator
+    ).toBe(true);
   });
 
-  it('attachTo an icon returns an MDCTabIndicator instance', () => {
+  it("attachTo an icon returns an MDCTabIndicator instance", () => {
     expect(
-        MDCTabIndicator.attachTo(getFadingFixture()) instanceof MDCTabIndicator)
-        .toBe(true);
+      MDCTabIndicator.attachTo(getFadingFixture()) instanceof MDCTabIndicator
+    ).toBe(true);
   });
 
   function setupTest() {
     const root = getFixture();
     const component = new MDCTabIndicator(root);
-    const content =
-        root.querySelector(
-            MDCTabIndicatorFoundation.strings.CONTENT_SELECTOR) as HTMLElement;
-    return {root, component, content};
+    const content = root.querySelector(
+      MDCTabIndicatorFoundation.strings.CONTENT_SELECTOR
+    ) as HTMLElement;
+    return { root, component, content };
   }
 
-  it('#adapter.addClass adds a class to the root element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.addClass('foo');
-    expect(root.classList.contains('foo')).toBe(true);
+  it("#adapter.addClass adds a class to the root element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.addClass("foo");
+    expect(root.classList.contains("foo")).toBe(true);
   });
 
-  it('#adapter.removeClass removes a class to the root element', () => {
-    const {root, component} = setupTest();
-    root.classList.add('foo');
-    (component.getDefaultFoundation() as any).adapter.removeClass('foo');
-    expect(root.classList.contains('foo')).toBe(false);
+  it("#adapter.removeClass removes a class to the root element", () => {
+    const { root, component } = setupTest();
+    root.classList.add("foo");
+    (component.getDefaultFoundation() as any).adapter.removeClass("foo");
+    expect(root.classList.contains("foo")).toBe(false);
   });
 
-  it('#adapter.computeContentClientRect returns the root element client rect',
-     () => {
-       const {component, root, content} = setupTest();
-       document.body.appendChild(root);
-       expect((component.getDefaultFoundation() as any)
-                  .adapter.computeContentClientRect())
-           .toEqual(content.getBoundingClientRect());
-       document.body.removeChild(root);
-     });
+  it("#adapter.computeContentClientRect returns the root element client rect", () => {
+    const { component, root, content } = setupTest();
+    document.body.appendChild(root);
+    expect(
+      (
+        component.getDefaultFoundation() as any
+      ).adapter.computeContentClientRect()
+    ).toEqual(content.getBoundingClientRect());
+    document.body.removeChild(root);
+  });
 
-  it('#adapter.setContentStyleProperty sets a style property on the root element',
-     () => {
-       const {component, content} = setupTest();
-       (component.getDefaultFoundation() as any)
-           .adapter.setContentStyleProperty('background-color', 'red');
-       expect(content.style.backgroundColor).toBe('red');
-     });
+  it("#adapter.setContentStyleProperty sets a style property on the root element", () => {
+    const { component, content } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.setContentStyleProperty(
+      "background-color",
+      "red"
+    );
+    expect(content.style.backgroundColor).toBe("red");
+  });
 
   function setupMockSlidingFoundationTest(root = getFixture()) {
-    const mockFoundation =
-        createMockFoundation(MDCSlidingTabIndicatorFoundation);
+    const mockFoundation = createMockFoundation(
+      MDCSlidingTabIndicatorFoundation
+    );
     const component = new MDCTabIndicator(root, mockFoundation);
-    return {root, component, mockFoundation};
+    return { root, component, mockFoundation };
   }
 
   function setupMockFadingFoundationTest(root = getFadingFixture()) {
-    const mockFoundation =
-        createMockFoundation(MDCFadingTabIndicatorFoundation);
+    const mockFoundation = createMockFoundation(
+      MDCFadingTabIndicatorFoundation
+    );
     const component = new MDCTabIndicator(root, mockFoundation);
-    return {root, component, mockFoundation};
+    return { root, component, mockFoundation };
   }
 
-  it('#activate sliding indicator calls activate with passed args', () => {
-    const {component, mockFoundation} = setupMockSlidingFoundationTest();
-    component.activate({width: 100, left: 0} as ClientRect);
-    expect(mockFoundation.activate).toHaveBeenCalledWith({width: 100, left: 0});
+  it("#activate sliding indicator calls activate with passed args", () => {
+    const { component, mockFoundation } = setupMockSlidingFoundationTest();
+    component.activate({ width: 100, left: 0 } as ClientRect);
+    expect(mockFoundation.activate).toHaveBeenCalledWith({
+      width: 100,
+      left: 0,
+    });
   });
 
-  it('#activate icon indicator calls activate with passed args', () => {
-    const {component, mockFoundation} = setupMockFadingFoundationTest();
-    component.activate({width: 1, left: 2} as ClientRect);
-    expect(mockFoundation.activate).toHaveBeenCalledWith({width: 1, left: 2});
+  it("#activate icon indicator calls activate with passed args", () => {
+    const { component, mockFoundation } = setupMockFadingFoundationTest();
+    component.activate({ width: 1, left: 2 } as ClientRect);
+    expect(mockFoundation.activate).toHaveBeenCalledWith({ width: 1, left: 2 });
   });
 
-  it('#deactivate sliding indicator calls deactivate', () => {
-    const {component, mockFoundation} = setupMockSlidingFoundationTest();
+  it("#deactivate sliding indicator calls deactivate", () => {
+    const { component, mockFoundation } = setupMockSlidingFoundationTest();
     component.deactivate();
     expect(mockFoundation.deactivate).toHaveBeenCalledTimes(1);
   });
 
-  it('#deactivate icon indicator calls deactivate', () => {
-    const {component, mockFoundation} = setupMockFadingFoundationTest();
+  it("#deactivate icon indicator calls deactivate", () => {
+    const { component, mockFoundation } = setupMockFadingFoundationTest();
     component.deactivate();
     expect(mockFoundation.deactivate).toHaveBeenCalledTimes(1);
   });
 
-  it('#computeContentClientRect calls computeClientRect', () => {
-    const {component, mockFoundation} = setupMockSlidingFoundationTest();
+  it("#computeContentClientRect calls computeClientRect", () => {
+    const { component, mockFoundation } = setupMockSlidingFoundationTest();
     component.computeContentClientRect();
     expect(mockFoundation.computeContentClientRect).toHaveBeenCalledTimes(1);
   });

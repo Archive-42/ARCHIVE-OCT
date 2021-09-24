@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {InteractionTrigger} from './constants';
+import { InteractionTrigger } from "./constants";
 
 export interface MDCChipTrailingActionInteractionEventDetail {
   trigger: InteractionTrigger;

@@ -1,5 +1,5 @@
 ﻿//{[{
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 const shortLoremIpsum = `Lorem id sint aliqua tempor tempor sit. Ad dolor dolor ut nulla mollit dolore non eiusmod Lorem tempor nisi cillum.`;
 //}]}
@@ -11,12 +11,12 @@ const sampleData = {};
 sampleData.listTextAssets = [
   {
     text: shortLoremIpsum,
-    id: uuidv4()
+    id: uuidv4(),
   },
   {
     text: shortLoremIpsum,
-    id: uuidv4()
-  }
+    id: uuidv4(),
+  },
 ];
 //}]}
 

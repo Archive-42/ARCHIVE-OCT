@@ -19,15 +19,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
-import {cssClasses} from './constants';
-import Button, {ButtonProps} from '@material/react-button';
+import React from "react";
+import classnames from "classnames";
+import { cssClasses } from "./constants";
+import Button, { ButtonProps } from "@material/react-button";
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type ButtonTypes = HTMLAnchorElement | HTMLButtonElement;
 export interface DialogButtonProps<T extends ButtonTypes>
-  extends Omit<ButtonProps<T>, 'initRipple'> {
+  extends Omit<ButtonProps<T>, "initRipple"> {
   action: string;
   className?: string;
   isDefault?: boolean;
@@ -37,7 +37,7 @@ const DialogButton: <T extends ButtonTypes>(
   props: DialogButtonProps<T>
 ) => React.ReactElement<any> = ({
   action,
-  className = '',
+  className = "",
   children,
   isDefault = false,
   ...otherProps

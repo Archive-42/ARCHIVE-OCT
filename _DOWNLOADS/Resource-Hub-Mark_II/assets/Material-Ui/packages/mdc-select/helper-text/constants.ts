@@ -22,14 +22,14 @@
  */
 
 const strings = {
-  ARIA_HIDDEN: 'aria-hidden',
-  ROLE: 'role',
+  ARIA_HIDDEN: "aria-hidden",
+  ROLE: "role",
 };
 
 const cssClasses = {
-  HELPER_TEXT_VALIDATION_MSG: 'mdc-select-helper-text--validation-msg',
+  HELPER_TEXT_VALIDATION_MSG: "mdc-select-helper-text--validation-msg",
   HELPER_TEXT_VALIDATION_MSG_PERSISTENT:
-      'mdc-select-helper-text--validation-msg-persistent',
+    "mdc-select-helper-text--validation-msg-persistent",
 };
 
-export {strings, cssClasses};
+export { strings, cssClasses };

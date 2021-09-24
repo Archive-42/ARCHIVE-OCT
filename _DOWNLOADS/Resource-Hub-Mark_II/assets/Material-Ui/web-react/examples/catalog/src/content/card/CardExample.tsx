@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import Button from '@material/react-button';
+import Button from "@material/react-button";
 import Card, {
   CardPrimaryContent,
   CardMedia,
   CardActions,
   CardActionButtons,
   CardActionIcons,
-} from '@material/react-card';
-import {Cell, Grid, Row} from '@material/react-layout-grid';
-import MaterialIcon from '@material/react-material-icon';
+} from "@material/react-card";
+import { Cell, Grid, Row } from "@material/react-layout-grid";
+import MaterialIcon from "@material/react-material-icon";
 
-const styles = require('./CardExample.scss');
-const avatar = 'https://avatars3.githubusercontent.com/u/19478152?s=200&v=4';
+const styles = require("./CardExample.scss");
+const avatar = "https://avatars3.githubusercontent.com/u/19478152?s=200&v=4";
 
 export const CardExample = () => (
   <Grid className={styles.container}>
@@ -32,7 +32,7 @@ export const CardExample = () => (
                   <Button>Click Me</Button>
                 </CardActionButtons>
                 <CardActionIcons>
-                  <MaterialIcon icon='favorite_border' />
+                  <MaterialIcon icon="favorite_border" />
                 </CardActionIcons>
               </CardActions>
             </Card>

@@ -21,11 +21,10 @@
  * THE SOFTWARE.
  */
 
-
-import {MDCNotchedOutline} from '../../mdc-notched-outline/index';
+import { MDCNotchedOutline } from "../../mdc-notched-outline/index";
 
 const getFixture = () => {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
     <span class="mdc-notched-outline">
       <span class="mdc-notched-outline__leading"></span>
@@ -38,44 +37,44 @@ const getFixture = () => {
   return el;
 };
 
-describe('MDCNotchedOutline', () => {
-  it('attachTo returns an MDCNotchedOutline instance', () => {
+describe("MDCNotchedOutline", () => {
+  it("attachTo returns an MDCNotchedOutline instance", () => {
     expect(
-        MDCNotchedOutline.attachTo(getFixture()) instanceof MDCNotchedOutline)
-        .toBeTruthy();
+      MDCNotchedOutline.attachTo(getFixture()) instanceof MDCNotchedOutline
+    ).toBeTruthy();
   });
 
   function setupTest() {
     const root = getFixture();
     const component = new MDCNotchedOutline(root);
-    return {root, component};
+    return { root, component };
   }
 
-  it('adapter#addClass adds a class to the root element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.addClass('foo');
-    expect(root.classList.contains('foo')).toBe(true);
+  it("adapter#addClass adds a class to the root element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.addClass("foo");
+    expect(root.classList.contains("foo")).toBe(true);
   });
 
-  it('adapter#removeClass removes a class to the root element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.removeClass('foo');
-    (component.getDefaultFoundation() as any)
-        .adapter.setNotchWidthProperty(50);
-    (component.getDefaultFoundation() as any)
-        .adapter.removeNotchWidthProperty();
-    const path =
-        root.querySelector('.mdc-notched-outline__notch') as HTMLElement;
-    expect('').toEqual(path.style.width as string);
+  it("adapter#removeClass removes a class to the root element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.removeClass("foo");
+    (component.getDefaultFoundation() as any).adapter.setNotchWidthProperty(50);
+    (
+      component.getDefaultFoundation() as any
+    ).adapter.removeNotchWidthProperty();
+    const path = root.querySelector(
+      ".mdc-notched-outline__notch"
+    ) as HTMLElement;
+    expect("").toEqual(path.style.width as string);
   });
 
-  it('#adapter.setNotchWidthProperty sets the width property on the notched element',
-     () => {
-       const {root, component} = setupTest();
-       (component.getDefaultFoundation() as any)
-           .adapter.setNotchWidthProperty(50);
-       const path =
-           root.querySelector('.mdc-notched-outline__notch') as HTMLElement;
-       expect('50px').toEqual(path.style.width as string);
-     });
+  it("#adapter.setNotchWidthProperty sets the width property on the notched element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.setNotchWidthProperty(50);
+    const path = root.querySelector(
+      ".mdc-notched-outline__notch"
+    ) as HTMLElement;
+    expect("50px").toEqual(path.style.width as string);
+  });
 });

@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import {EventType, SpecificEventListener} from '@material/base/types';
-import {MDCRipplePoint} from './types';
+import { EventType, SpecificEventListener } from "@material/base/types";
+import { MDCRipplePoint } from "./types";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -46,17 +46,29 @@ export interface MDCRippleAdapter {
 
   containsEventTarget(target: EventTarget | null): boolean;
 
-  registerInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  registerInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
-  deregisterInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  deregisterInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
-  registerDocumentInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  registerDocumentInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
-  deregisterDocumentInteractionHandler<K extends EventType>(evtType: K, handler: SpecificEventListener<K>): void;
+  deregisterDocumentInteractionHandler<K extends EventType>(
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
-  registerResizeHandler(handler: SpecificEventListener<'resize'>): void;
+  registerResizeHandler(handler: SpecificEventListener<"resize">): void;
 
-  deregisterResizeHandler(handler: SpecificEventListener<'resize'>): void;
+  deregisterResizeHandler(handler: SpecificEventListener<"resize">): void;
 
   updateCssVariable(varName: string, value: string | null): void;
 

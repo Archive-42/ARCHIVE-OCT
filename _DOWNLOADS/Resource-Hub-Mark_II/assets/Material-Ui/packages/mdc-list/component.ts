@@ -21,15 +21,18 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {closest, matches} from '@material/dom/ponyfill';
-import {MDCListAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
-import {MDCListFoundation} from './foundation';
-import {MDCListActionEventDetail, MDCListIndex} from './types';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { closest, matches } from "@material/dom/ponyfill";
+import { MDCListAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
+import { MDCListFoundation } from "./foundation";
+import { MDCListActionEventDetail, MDCListIndex } from "./types";
 
-export type MDCListFactory = (el: Element, foundation?: MDCListFoundation) => MDCList;
+export type MDCListFactory = (
+  el: Element,
+  foundation?: MDCListFoundation
+) => MDCList;
 
 export class MDCList extends MDCComponent<MDCListFoundation> {
   set vertical(value: boolean) {
@@ -38,7 +41,8 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
 
   get listElements(): Element[] {
     return [].slice.call(
-        this.root.querySelectorAll(`.${cssClasses.LIST_ITEM_CLASS}`));
+      this.root.querySelectorAll(`.${cssClasses.LIST_ITEM_CLASS}`)
+    );
   }
 
   set wrapFocus(value: boolean) {
@@ -76,29 +80,29 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
     return new MDCList(root);
   }
 
-  private handleKeydown_!: SpecificEventListener<'keydown'>; // assigned in initialSyncWithDOM()
-  private handleClick_!: SpecificEventListener<'click'>; // assigned in initialSyncWithDOM()
-  private focusInEventListener_!: SpecificEventListener<'focus'>; // assigned in initialSyncWithDOM()
-  private focusOutEventListener_!: SpecificEventListener<'focus'>; // assigned in initialSyncWithDOM()
+  private handleKeydown_!: SpecificEventListener<"keydown">; // assigned in initialSyncWithDOM()
+  private handleClick_!: SpecificEventListener<"click">; // assigned in initialSyncWithDOM()
+  private focusInEventListener_!: SpecificEventListener<"focus">; // assigned in initialSyncWithDOM()
+  private focusOutEventListener_!: SpecificEventListener<"focus">; // assigned in initialSyncWithDOM()
 
   initialSyncWithDOM() {
     this.handleClick_ = this.handleClickEvent_.bind(this);
     this.handleKeydown_ = this.handleKeydownEvent_.bind(this);
     this.focusInEventListener_ = this.handleFocusInEvent_.bind(this);
     this.focusOutEventListener_ = this.handleFocusOutEvent_.bind(this);
-    this.listen('keydown', this.handleKeydown_);
-    this.listen('click', this.handleClick_);
-    this.listen('focusin', this.focusInEventListener_);
-    this.listen('focusout', this.focusOutEventListener_);
+    this.listen("keydown", this.handleKeydown_);
+    this.listen("click", this.handleClick_);
+    this.listen("focusin", this.focusInEventListener_);
+    this.listen("focusout", this.focusOutEventListener_);
     this.layout();
     this.initializeListType();
   }
 
   destroy() {
-    this.unlisten('keydown', this.handleKeydown_);
-    this.unlisten('click', this.handleClick_);
-    this.unlisten('focusin', this.focusInEventListener_);
-    this.unlisten('focusout', this.focusOutEventListener_);
+    this.unlisten("keydown", this.handleKeydown_);
+    this.unlisten("click", this.handleClick_);
+    this.unlisten("focusin", this.focusInEventListener_);
+    this.unlisten("focusout", this.focusOutEventListener_);
   }
 
   layout() {
@@ -106,14 +110,16 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
     this.vertical = direction !== strings.ARIA_ORIENTATION_HORIZONTAL;
 
     // List items need to have at least tabindex=-1 to be focusable.
-    [].slice.call(this.root.querySelectorAll('.mdc-list-item:not([tabindex])'))
-        .forEach((el: Element) => {
-          el.setAttribute('tabindex', '-1');
-        });
+    [].slice
+      .call(this.root.querySelectorAll(".mdc-list-item:not([tabindex])"))
+      .forEach((el: Element) => {
+        el.setAttribute("tabindex", "-1");
+      });
 
     // Child button/a elements are not tabbable until the list item is focused.
-    [].slice.call(this.root.querySelectorAll(strings.FOCUSABLE_CHILD_ELEMENTS))
-        .forEach((el: Element) => el.setAttribute('tabindex', '-1'));
+    [].slice
+      .call(this.root.querySelectorAll(strings.FOCUSABLE_CHILD_ELEMENTS))
+      .forEach((el: Element) => el.setAttribute("tabindex", "-1"));
 
     this.foundation.layout();
   }
@@ -124,31 +130,37 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
    * @return The primary text in the element.
    */
   getPrimaryText(item: Element): string {
-    const primaryText =
-        item.querySelector(`.${cssClasses.LIST_ITEM_PRIMARY_TEXT_CLASS}`);
+    const primaryText = item.querySelector(
+      `.${cssClasses.LIST_ITEM_PRIMARY_TEXT_CLASS}`
+    );
     if (primaryText) {
-      return primaryText.textContent || '';
+      return primaryText.textContent || "";
     }
 
-    const singleLineText =
-        item.querySelector(`.${cssClasses.LIST_ITEM_TEXT_CLASS}`);
-    return (singleLineText && singleLineText.textContent) || '';
+    const singleLineText = item.querySelector(
+      `.${cssClasses.LIST_ITEM_TEXT_CLASS}`
+    );
+    return (singleLineText && singleLineText.textContent) || "";
   }
 
   /**
    * Initialize selectedIndex value based on pre-selected checkbox list items, single selection or radio.
    */
   initializeListType() {
-    const checkboxListItems =
-        this.root.querySelectorAll(strings.ARIA_ROLE_CHECKBOX_SELECTOR);
-    const radioSelectedListItem =
-        this.root.querySelector(strings.ARIA_CHECKED_RADIO_SELECTOR);
+    const checkboxListItems = this.root.querySelectorAll(
+      strings.ARIA_ROLE_CHECKBOX_SELECTOR
+    );
+    const radioSelectedListItem = this.root.querySelector(
+      strings.ARIA_CHECKED_RADIO_SELECTOR
+    );
 
     if (checkboxListItems.length) {
-      const preselectedItems =
-          this.root.querySelectorAll(strings.ARIA_CHECKED_CHECKBOX_SELECTOR);
-      this.selectedIndex =
-          [].map.call(preselectedItems, (listItem: Element) => this.listElements.indexOf(listItem)) as number[];
+      const preselectedItems = this.root.querySelectorAll(
+        strings.ARIA_CHECKED_CHECKBOX_SELECTOR
+      );
+      this.selectedIndex = [].map.call(preselectedItems, (listItem: Element) =>
+        this.listElements.indexOf(listItem)
+      ) as number[];
     } else if (radioSelectedListItem) {
       this.selectedIndex = this.listElements.indexOf(radioSelectedListItem);
     }
@@ -175,7 +187,10 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
    */
   typeaheadMatchItem(nextChar: string, startingIndex?: number): number {
     return this.foundation.typeaheadMatchItem(
-        nextChar, startingIndex, /** skipFocus */ true);
+      nextChar,
+      startingIndex,
+      /** skipFocus */ true
+    );
   }
 
   getDefaultFoundation() {
@@ -195,12 +210,12 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
         }
       },
       getAttributeForElementIndex: (index, attr) =>
-          this.listElements[index].getAttribute(attr),
+        this.listElements[index].getAttribute(attr),
       getFocusedElementIndex: () =>
-          this.listElements.indexOf(document.activeElement!),
+        this.listElements.indexOf(document.activeElement!),
       getListItemCount: () => this.listElements.length,
       getPrimaryTextAtIndex: (index) =>
-          this.getPrimaryText(this.listElements[index]),
+        this.getPrimaryText(this.listElements[index]),
       hasCheckboxAtIndex: (index) => {
         const listItem = this.listElements[index];
         return !!listItem.querySelector(strings.CHECKBOX_SELECTOR);
@@ -211,18 +226,26 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
       },
       isCheckboxCheckedAtIndex: (index) => {
         const listItem = this.listElements[index];
-        const toggleEl = listItem.querySelector<HTMLInputElement>(strings.CHECKBOX_SELECTOR);
+        const toggleEl = listItem.querySelector<HTMLInputElement>(
+          strings.CHECKBOX_SELECTOR
+        );
         return toggleEl!.checked;
       },
       isFocusInsideList: () => {
-        return this.root !== document.activeElement &&
-            this.root.contains(document.activeElement);
+        return (
+          this.root !== document.activeElement &&
+          this.root.contains(document.activeElement)
+        );
       },
       isRootFocused: () => document.activeElement === this.root,
       listItemAtIndexHasClass: (index, className) =>
-          this.listElements[index].classList.contains(className),
+        this.listElements[index].classList.contains(className),
       notifyAction: (index) => {
-        this.emit<MDCListActionEventDetail>(strings.ACTION_EVENT, {index}, /** shouldBubble */ true);
+        this.emit<MDCListActionEventDetail>(
+          strings.ACTION_EVENT,
+          { index },
+          /** shouldBubble */ true
+        );
       },
       removeClassForElementIndex: (index, className) => {
         const element = this.listElements[index];
@@ -238,18 +261,23 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
       },
       setCheckedCheckboxOrRadioAtIndex: (index, isChecked) => {
         const listItem = this.listElements[index];
-        const toggleEl = listItem.querySelector<HTMLInputElement>(strings.CHECKBOX_RADIO_SELECTOR);
+        const toggleEl = listItem.querySelector<HTMLInputElement>(
+          strings.CHECKBOX_RADIO_SELECTOR
+        );
         toggleEl!.checked = isChecked;
 
-        const event = document.createEvent('Event');
-        event.initEvent('change', true, true);
+        const event = document.createEvent("Event");
+        event.initEvent("change", true, true);
         toggleEl!.dispatchEvent(event);
       },
       setTabIndexForListItemChildren: (listItemIndex, tabIndexValue) => {
         const element = this.listElements[listItemIndex];
-        const listItemChildren: Element[] =
-            [].slice.call(element.querySelectorAll(strings.CHILD_ELEMENTS_TO_TOGGLE_TABINDEX));
-        listItemChildren.forEach((el) => el.setAttribute('tabindex', tabIndexValue));
+        const listItemChildren: Element[] = [].slice.call(
+          element.querySelectorAll(strings.CHILD_ELEMENTS_TO_TOGGLE_TABINDEX)
+        );
+        listItemChildren.forEach((el) =>
+          el.setAttribute("tabindex", tabIndexValue)
+        );
       },
     };
     return new MDCListFoundation(adapter);
@@ -261,10 +289,16 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
    */
   private getListItemIndex_(evt: Event) {
     const eventTarget = evt.target as Element;
-    const nearestParent = closest(eventTarget, `.${cssClasses.LIST_ITEM_CLASS}, .${cssClasses.ROOT}`);
+    const nearestParent = closest(
+      eventTarget,
+      `.${cssClasses.LIST_ITEM_CLASS}, .${cssClasses.ROOT}`
+    );
 
     // Get the index of the element if it is a list item.
-    if (nearestParent && matches(nearestParent, `.${cssClasses.LIST_ITEM_CLASS}`)) {
+    if (
+      nearestParent &&
+      matches(nearestParent, `.${cssClasses.LIST_ITEM_CLASS}`)
+    ) {
       return this.listElements.indexOf(nearestParent);
     }
 
@@ -295,7 +329,10 @@ export class MDCList extends MDCComponent<MDCListFoundation> {
     const index = this.getListItemIndex_(evt);
     const target = evt.target as Element;
     this.foundation.handleKeydown(
-        evt, target.classList.contains(cssClasses.LIST_ITEM_CLASS), index);
+      evt,
+      target.classList.contains(cssClasses.LIST_ITEM_CLASS),
+      index
+    );
   }
 
   /**

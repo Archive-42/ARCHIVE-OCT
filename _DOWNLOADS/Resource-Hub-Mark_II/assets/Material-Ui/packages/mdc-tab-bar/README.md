@@ -38,13 +38,22 @@ npm install @material/tab-bar
   <div class="mdc-tab-scroller">
     <div class="mdc-tab-scroller__scroll-area">
       <div class="mdc-tab-scroller__scroll-content">
-        <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+        <button
+          class="mdc-tab mdc-tab--active"
+          role="tab"
+          aria-selected="true"
+          tabindex="0"
+        >
           <span class="mdc-tab__content">
-            <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
+            <span class="mdc-tab__icon material-icons" aria-hidden="true"
+              >favorite</span
+            >
             <span class="mdc-tab__text-label">Favorites</span>
           </span>
           <span class="mdc-tab-indicator mdc-tab-indicator--active">
-            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            <span
+              class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
+            ></span>
           </span>
           <span class="mdc-tab__ripple"></span>
         </button>
@@ -66,9 +75,9 @@ npm install @material/tab-bar
 ### JavaScript Instantiation
 
 ```js
-import {MDCTabBar} from '@material/tab-bar';
+import { MDCTabBar } from "@material/tab-bar";
 
-const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+const tabBar = new MDCTabBar(document.querySelector(".mdc-tab-bar"));
 ```
 
 > See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.
@@ -84,7 +93,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -94,37 +106,36 @@ However, you can also use SVG, [Font Awesome](https://fontawesome.com/), or any 
 
 ### CSS Classes
 
-CSS Class | Description
---- | ---
-`mdc-tab-bar` | Mandatory.
+| CSS Class     | Description |
+| ------------- | ----------- |
+| `mdc-tab-bar` | Mandatory.  |
 
 ### Sass Mixins
 
 To customize the width of the tab bar, use the following mixin.
 
-Mixin | Description
---- | ---
-`width($width)` | Customizes the width of the tab bar.
-`density($density-scale)` | Sets density scale to default tab bar variant. Use `stacked-density` mixin for stacked variant. Supported density scales `-4`, `-3`, `-2`, `-1` and `0`.
-`stacked-density($density-scale)` | Sets density scale to stacked tab bar variant. Supported density scales `-4`, `-3`, `-2`, `-1` and `0`.
-`tab-scroller-transition($duration-ms, $timing-function)` | Sets the CSS transition for the tab scrolling animation. This mixin is a proxy to `mdc-tab-scroller-transition` mixin.
-
+| Mixin                                                     | Description                                                                                                                                              |
+| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `width($width)`                                           | Customizes the width of the tab bar.                                                                                                                     |
+| `density($density-scale)`                                 | Sets density scale to default tab bar variant. Use `stacked-density` mixin for stacked variant. Supported density scales `-4`, `-3`, `-2`, `-1` and `0`. |
+| `stacked-density($density-scale)`                         | Sets density scale to stacked tab bar variant. Supported density scales `-4`, `-3`, `-2`, `-1` and `0`.                                                  |
+| `tab-scroller-transition($duration-ms, $timing-function)` | Sets the CSS transition for the tab scrolling animation. This mixin is a proxy to `mdc-tab-scroller-transition` mixin.                                   |
 
 ## `MDCTabBar` Properties and Methods
 
-Property | Value Type | Description
---- | --- | ---
-`focusOnActivate` | `boolean` (write-only) | Sets whether tabs focus themselves when activated. Defaults to `true`.
-`useAutomaticActivation` | `boolean` (write-only) | Sets how tabs activate in response to keyboard interaction. Automatic (`true`) activates as soon as a tab is focused with arrow keys; manual (`false`) activates only when the user presses space/enter. The default is automatic (`true`).
+| Property                 | Value Type             | Description                                                                                                                                                                                                                                 |
+| ------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `focusOnActivate`        | `boolean` (write-only) | Sets whether tabs focus themselves when activated. Defaults to `true`.                                                                                                                                                                      |
+| `useAutomaticActivation` | `boolean` (write-only) | Sets how tabs activate in response to keyboard interaction. Automatic (`true`) activates as soon as a tab is focused with arrow keys; manual (`false`) activates only when the user presses space/enter. The default is automatic (`true`). |
 
-Method Signature | Description
---- | ---
-`activateTab(index: number) => void` | Activates the tab at the given index.
-`scrollIntoView(index: number) => void` | Scrolls the tab at the given index into view.
+| Method Signature                        | Description                                   |
+| --------------------------------------- | --------------------------------------------- |
+| `activateTab(index: number) => void`    | Activates the tab at the given index.         |
+| `scrollIntoView(index: number) => void` | Scrolls the tab at the given index into view. |
 
-Event Name | Event Data Structure | Description
---- | --- | ---
-`MDCTabBar:activated` | `{"detail": {"index": number}}` | Emitted when a Tab is activated with the index of the activated Tab. Listen for this to update content when a Tab becomes active.
+| Event Name            | Event Data Structure            | Description                                                                                                                       |
+| --------------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `MDCTabBar:activated` | `{"detail": {"index": number}}` | Emitted when a Tab is activated with the index of the activated Tab. Listen for this to update content when a Tab becomes active. |
 
 ## Usage within Web Frameworks
 
@@ -132,32 +143,32 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCTabBarAdapter`
 
-Method Signature | Description
---- | ---
-`scrollTo(scrollX: number) => void` | Scrolls the Tab Scroller to the given position.
-`incrementScroll(scrollXIncrement: number) => void` | Increments the Tab Scroller by the given value.
-`getScrollPosition() => number` | Returns the scroll position of the Tab Scroller.
-`getScrollContentWidth() => number` | Returns the width of the Tab Scroller's scroll content element.
-`getOffsetWidth() => number` | Returns the offsetWidth of the root element.
-`isRTL() => boolean` | Returns if the text direction is RTL.
-`setActiveTab(index: number) => void` | Sets the tab at the given index to be activated.
-`activateTabAtIndex(index: number, clientRect: ClientRect) => void` | Activates the Tab at the given index with the given clientRect.
-`deactivateTabAtIndex(index) => void` | Deactivates the Tab at the given index.
-`focusTabAtIndex(index: number) => void` | Focuses the Tab at the given index.
-`getTabIndicatorClientRectAtIndex(index: number) => ClientRect` | Returns the client rect of the Tab at the given index.
-`getTabDimensionsAtIndex(index) => MDCTabDimensions` | Returns the dimensions of the Tab at the given index.
-`getTabListLength() => number` | Returns the number of child Tab components.
-`getPreviousActiveTabIndex() => number` | Returns the index of the previously active Tab.
-`getFocusedTabIndex() => number` | Returns the index of the focused Tab.
-`getIndexOfTabById(id: string) => number` | Returns the index of the given Tab ID.
-`notifyTabActivated(index: number) => void` | Emits the `MDCTabBar:activated` event.
+| Method Signature                                                    | Description                                                     |
+| ------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `scrollTo(scrollX: number) => void`                                 | Scrolls the Tab Scroller to the given position.                 |
+| `incrementScroll(scrollXIncrement: number) => void`                 | Increments the Tab Scroller by the given value.                 |
+| `getScrollPosition() => number`                                     | Returns the scroll position of the Tab Scroller.                |
+| `getScrollContentWidth() => number`                                 | Returns the width of the Tab Scroller's scroll content element. |
+| `getOffsetWidth() => number`                                        | Returns the offsetWidth of the root element.                    |
+| `isRTL() => boolean`                                                | Returns if the text direction is RTL.                           |
+| `setActiveTab(index: number) => void`                               | Sets the tab at the given index to be activated.                |
+| `activateTabAtIndex(index: number, clientRect: ClientRect) => void` | Activates the Tab at the given index with the given clientRect. |
+| `deactivateTabAtIndex(index) => void`                               | Deactivates the Tab at the given index.                         |
+| `focusTabAtIndex(index: number) => void`                            | Focuses the Tab at the given index.                             |
+| `getTabIndicatorClientRectAtIndex(index: number) => ClientRect`     | Returns the client rect of the Tab at the given index.          |
+| `getTabDimensionsAtIndex(index) => MDCTabDimensions`                | Returns the dimensions of the Tab at the given index.           |
+| `getTabListLength() => number`                                      | Returns the number of child Tab components.                     |
+| `getPreviousActiveTabIndex() => number`                             | Returns the index of the previously active Tab.                 |
+| `getFocusedTabIndex() => number`                                    | Returns the index of the focused Tab.                           |
+| `getIndexOfTabById(id: string) => number`                           | Returns the index of the given Tab ID.                          |
+| `notifyTabActivated(index: number) => void`                         | Emits the `MDCTabBar:activated` event.                          |
 
 ### `MDCTabBarFoundation`
 
-Method Signature | Description
---- | ---
-`activateTab(index: number) => void` | Activates the tab at the given index.
-`setUseAutomaticActivation(useAutomaticActivation: boolean) => void` | Sets how tabs activate in response to keyboard interaction. Automatic (`true`) activates as soon as a tab is focused with arrow keys; manual (`false`) activates only when the user presses space/enter.
-`handleKeyDown(evt: Event) => void` | Handles the logic for the `"keydown"` event.
-`handleTabInteraction(evt: Event) => void` | Handles the logic for the `"MDCTab:interacted"` event.
-`scrollIntoView(index: number) => void` | Scrolls the Tab at the given index into view.
+| Method Signature                                                     | Description                                                                                                                                                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activateTab(index: number) => void`                                 | Activates the tab at the given index.                                                                                                                                                                    |
+| `setUseAutomaticActivation(useAutomaticActivation: boolean) => void` | Sets how tabs activate in response to keyboard interaction. Automatic (`true`) activates as soon as a tab is focused with arrow keys; manual (`false`) activates only when the user presses space/enter. |
+| `handleKeyDown(evt: Event) => void`                                  | Handles the logic for the `"keydown"` event.                                                                                                                                                             |
+| `handleTabInteraction(evt: Event) => void`                           | Handles the logic for the `"MDCTab:interacted"` event.                                                                                                                                                   |
+| `scrollIntoView(index: number) => void`                              | Scrolls the Tab at the given index into view.                                                                                                                                                            |

@@ -33,7 +33,7 @@ export const SkillsetFilter = factory(function ({ id, properties, middleware: { 
 				resource={resource({
 					template: typeAheadResourceTemplate,
 					initOptions: {
-						data: skills.map(value => ({ value })),
+						data: skills.map((value) => ({ value })),
 						id
 					}
 				})}

@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {EventType, SpecificEventListener} from '@material/base/types';
+import { EventType, SpecificEventListener } from "@material/base/types";
 
-import {Thumb, TickMark} from './types';
+import { Thumb, TickMark } from "./types";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -51,7 +51,7 @@ export interface MDCSliderAdapter {
   /**
    * @return Returns the given attribute value on the slider root element.
    */
-  getAttribute(attribute: string): string|null;
+  getAttribute(attribute: string): string | null;
 
   /**
    * Adds the class to the given thumb element.
@@ -85,7 +85,7 @@ export interface MDCSliderAdapter {
    * - If thumb is `Thumb.END`, returns the attribute value on the end input (or
    *   only input for single point slider).
    */
-  getInputAttribute(attribute: string, thumb: Thumb): string|null;
+  getInputAttribute(attribute: string, thumb: Thumb): string | null;
 
   /**
    * - If thumb is `Thumb.START`, sets the attribute on the start input
@@ -142,8 +142,11 @@ export interface MDCSliderAdapter {
    * - If thumb is `Thumb.END`, sets style on the end thumb (or only thumb
    *   for single point slider).
    */
-  setThumbStyleProperty(propertyName: string, value: string, thumb: Thumb):
-      void;
+  setThumbStyleProperty(
+    propertyName: string,
+    value: string,
+    thumb: Thumb
+  ): void;
 
   /**
    * Removes the given style property from the thumb element.
@@ -178,7 +181,7 @@ export interface MDCSliderAdapter {
    * `aria-valuetext` attribute on the thumb element. If null, the
    * `aria-valuetext` attribute is unchanged when the value changes.
    */
-  getValueToAriaValueTextFn(): ((value: number) => string)|null;
+  getValueToAriaValueTextFn(): ((value: number) => string) | null;
 
   /**
    * Updates tick marks container element with tick mark elements and their
@@ -226,59 +229,83 @@ export interface MDCSliderAdapter {
    * Registers an event listener on the root element.
    */
   registerEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener on the root element.
    */
   deregisterEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers an event listener on the given thumb element.
    */
   registerThumbEventHandler<K extends EventType>(
-      thumb: Thumb, evtType: K, handler: SpecificEventListener<K>): void;
+    thumb: Thumb,
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener on the given thumb element.
    */
   deregisterThumbEventHandler<K extends EventType>(
-      thumb: Thumb, evtType: K, handler: SpecificEventListener<K>): void;
+    thumb: Thumb,
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers an event listener on the given input element.
    */
   registerInputEventHandler<K extends EventType>(
-      thumb: Thumb, evtType: K, handler: SpecificEventListener<K>): void;
+    thumb: Thumb,
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener on the given input element.
    */
   deregisterInputEventHandler<K extends EventType>(
-      thumb: Thumb, evtType: K, handler: SpecificEventListener<K>): void;
+    thumb: Thumb,
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers an event listener on the body element.
    */
   registerBodyEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener on the body element.
    */
   deregisterBodyEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Registers an event listener on the window.
    */
   registerWindowEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 
   /**
    * Deregisters an event listener on the window.
    */
   deregisterWindowEventHandler<K extends EventType>(
-      evtType: K, handler: SpecificEventListener<K>): void;
+    evtType: K,
+    handler: SpecificEventListener<K>
+  ): void;
 }

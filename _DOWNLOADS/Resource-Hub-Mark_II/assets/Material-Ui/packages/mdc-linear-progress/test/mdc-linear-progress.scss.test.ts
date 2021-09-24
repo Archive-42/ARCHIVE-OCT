@@ -21,12 +21,13 @@
  * THE SOFTWARE.
  */
 
-import 'jasmine';
+import "jasmine";
 
-import * as path from 'path';
-import {expectStylesWithNoFeaturesToBeEmpty} from '../../../testing/featuretargeting';
+import * as path from "path";
+import { expectStylesWithNoFeaturesToBeEmpty } from "../../../testing/featuretargeting";
 
-describe('mdc-linear-progress.scss', () => {
+describe("mdc-linear-progress.scss", () => {
   expectStylesWithNoFeaturesToBeEmpty(
-      path.join(__dirname, 'feature-targeting-any.test.css'));
+    path.join(__dirname, "feature-targeting-any.test.css")
+  );
 });

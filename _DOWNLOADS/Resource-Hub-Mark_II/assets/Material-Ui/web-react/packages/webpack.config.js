@@ -20,30 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-const {readdirSync, lstatSync} = require('fs');
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {readMaterialPackages} = require('../scripts/package-json-reader');
+const { readdirSync, lstatSync } = require("fs");
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { readMaterialPackages } = require("../scripts/package-json-reader");
 const {
   convertToImportMDCWebPaths,
-} = require('../scripts/package-name-converter');
-const {getDirectories} = require('../scripts/directory-reader');
-const {importer} = require('./webpack.util');
+} = require("../scripts/package-name-converter");
+const { getDirectories } = require("../scripts/directory-reader");
+const { importer } = require("./webpack.util");
 
 const isDirectory = (source) => lstatSync(source).isDirectory();
 const containsTsxFile = (source) =>
-  readdirSync(source).some((file) => path.extname(file) === '.tsx');
+  readdirSync(source).some((file) => path.extname(file) === ".tsx");
 
 const getChunks = (source) =>
   readdirSync(source)
     .map((filename) => path.join(source, filename))
     .filter((source) => isDirectory(source) && containsTsxFile(source))
-    .map((directoryPath) => directoryPath.replace('packages/', ''));
+    .map((directoryPath) => directoryPath.replace("packages/", ""));
 
-const chunks = getChunks('./packages');
+const chunks = getChunks("./packages");
 
 const getAbsolutePath = (url) => path.resolve(__dirname, url);
-const filename = '[name]';
+const filename = "[name]";
 
 function getWebpackConfigs() {
   const webpackEntries = {};
@@ -68,24 +68,24 @@ function getWebpackConfigs() {
   return [webpackConfig, webpackConfigCss, webpackConfigCssMin];
 }
 
-function getCommonWebpackParams({isCss} = {}) {
+function getCommonWebpackParams({ isCss } = {}) {
   return {
-    mode: 'production',
+    mode: "production",
     output: {
-      path: getAbsolutePath('../build'),
-      filename: `${filename}${isCss ? '.css' : ''}.js`,
-      libraryTarget: 'umd',
+      path: getAbsolutePath("../build"),
+      filename: `${filename}${isCss ? ".css" : ""}.js`,
+      libraryTarget: "umd",
       globalObject: `typeof self !== 'undefined' ? self : this`,
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+      extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     },
-    devtool: 'source-map',
+    devtool: "source-map",
   };
 }
 
 function getReactMaterialExternals() {
-  return getDirectories('./packages').map(
+  return getDirectories("./packages").map(
     (directory) => `react-${path.parse(directory).name}`
   );
 }
@@ -110,10 +110,10 @@ function getJavaScriptWebpackConfig() {
   return Object.assign(getCommonWebpackParams(), {
     externals: Object.assign(
       {
-        react: 'react',
-        'react-dom': 'react-dom',
-        classnames: 'classnames',
-        'prop-types': 'prop-types',
+        react: "react",
+        "react-dom": "react-dom",
+        classnames: "classnames",
+        "prop-types": "prop-types",
       },
       materialExternals
     ),
@@ -121,18 +121,18 @@ function getJavaScriptWebpackConfig() {
       rules: [
         {
           test: /\.ts(x)?$/,
-          loader: 'ts-loader',
+          loader: "ts-loader",
         },
         {
           test: /\.js$/,
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             babelrc: false,
             compact: true,
-            presets: [['es2015', {modules: false}], 'react'],
+            presets: [["es2015", { modules: false }], "react"],
             plugins: [
-              'transform-class-properties',
-              'transform-object-rest-spread',
+              "transform-class-properties",
+              "transform-object-rest-spread",
             ],
           },
         },
@@ -142,7 +142,7 @@ function getJavaScriptWebpackConfig() {
 }
 
 function getCssWebpackConfig(shouldMinify) {
-  return Object.assign(getCommonWebpackParams({isCss: true}), {
+  return Object.assign(getCommonWebpackParams({ isCss: true }), {
     module: {
       rules: [
         {
@@ -150,30 +150,30 @@ function getCssWebpackConfig(shouldMinify) {
           use: [
             MiniCssExtractPlugin.loader,
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
-                modules: 'global',
-                localIdentName: '[local]',
+                modules: "global",
+                localIdentName: "[local]",
               },
             },
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
                 plugins: () =>
-                  [require('autoprefixer')()].concat(
-                    shouldMinify ? require('cssnano')() : []
+                  [require("autoprefixer")()].concat(
+                    shouldMinify ? require("cssnano")() : []
                   ),
               },
             },
             {
-              loader: 'sass-loader',
-              options: {importer},
+              loader: "sass-loader",
+              options: { importer },
             },
           ],
         },
       ],
     },
-    plugins: [new MiniCssExtractPlugin({filename: `${filename}.css`})],
+    plugins: [new MiniCssExtractPlugin({ filename: `${filename}.css` })],
   });
 }
 

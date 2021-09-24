@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCSelectHelperTextAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCSelectHelperTextAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelperTextAdapter> {
   static get cssClasses() {
@@ -52,21 +52,21 @@ export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelper
   }
 
   constructor(adapter?: Partial<MDCSelectHelperTextAdapter>) {
-    super({...MDCSelectHelperTextFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCSelectHelperTextFoundation.defaultAdapter, ...adapter });
   }
 
   /**
    * @return The ID of the helper text, or null if none is set.
    */
-  getId(): string|null {
-    return this.adapter.getAttr('id');
+  getId(): string | null {
+    return this.adapter.getAttr("id");
   }
 
   /**
    * @return Whether the helper text is currently visible.
    */
   isVisible(): boolean {
-    return this.adapter.getAttr(strings.ARIA_HIDDEN) !== 'true';
+    return this.adapter.getAttr(strings.ARIA_HIDDEN) !== "true";
   }
 
   /**
@@ -102,7 +102,8 @@ export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelper
       this.adapter.addClass(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
     } else {
       this.adapter.removeClass(
-          cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
+        cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT
+      );
     }
   }
 
@@ -111,8 +112,9 @@ export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelper
    * triggers alerts as necessary based on the select's validity.
    */
   setValidity(selectIsValid: boolean) {
-    const isValidationMsg =
-        this.adapter.hasClass(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+    const isValidationMsg = this.adapter.hasClass(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG
+    );
 
     if (!isValidationMsg) {
       // Non-validating helper-text is always displayed and does not participate
@@ -120,8 +122,9 @@ export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelper
       return;
     }
 
-    const isPersistentValidationMsg =
-        this.adapter.hasClass(cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
+    const isPersistentValidationMsg = this.adapter.hasClass(
+      cssClasses.HELPER_TEXT_VALIDATION_MSG_PERSISTENT
+    );
 
     // Validating helper text is displayed if select is invalid, unless it is
     // set as persistent, in which case it always displays.
@@ -132,7 +135,7 @@ export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelper
       // In addition to displaying, also trigger an alert if the select
       // has become invalid.
       if (!selectIsValid) {
-        this.adapter.setAttr(strings.ROLE, 'alert');
+        this.adapter.setAttr(strings.ROLE, "alert");
       } else {
         this.adapter.removeAttr(strings.ROLE);
       }
@@ -155,7 +158,7 @@ export class MDCSelectHelperTextFoundation extends MDCFoundation<MDCSelectHelper
    * Hides the help text from screen readers.
    */
   private hide() {
-    this.adapter.setAttr(strings.ARIA_HIDDEN, 'true');
+    this.adapter.setAttr(strings.ARIA_HIDDEN, "true");
   }
 }
 

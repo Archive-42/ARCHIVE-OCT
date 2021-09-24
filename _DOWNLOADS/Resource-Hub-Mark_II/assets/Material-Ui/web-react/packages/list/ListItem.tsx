@@ -20,18 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {closest} from '@material/dom/ponyfill';
+import React from "react";
+import classnames from "classnames";
+import { closest } from "@material/dom/ponyfill";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
-import {MDCListFoundation} from '@material/list/foundation';
+} from "@material/react-ripple";
+import { MDCListFoundation } from "@material/list/foundation";
 
-import {ListItemContext, ListItemContextShape} from './index';
+import { ListItemContext, ListItemContextShape } from "./index";
 
 export interface ListItemProps<T extends HTMLElement = HTMLElement>
   extends React.HTMLProps<T>,
@@ -58,14 +58,14 @@ export class ListItemBase<
   static defaultProps: Partial<ListItemProps<HTMLElement>> = {
     checkboxList: false,
     radioList: false,
-    className: '',
+    className: "",
     tabIndex: -1,
     onKeyDown: () => {},
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
     onDestroy: () => {},
-    tag: 'li',
+    tag: "li",
     handleClick: () => {},
     handleKeyDown: () => {},
     handleBlur: () => {},
@@ -103,7 +103,7 @@ export class ListItemBase<
 
   componentDidUpdate(prevProps: ListItemProps<T>) {
     if (prevProps.tabIndex !== this.props.tabIndex) {
-      this.setState({tabIndex: this.props.tabIndex});
+      this.setState({ tabIndex: this.props.tabIndex });
     }
   }
 
@@ -115,33 +115,28 @@ export class ListItemBase<
   }
 
   get classes() {
-    const {
-      className,
-      activated,
-      disabled,
-      selected,
-      getClassNamesFromList,
-    } = this.props;
-    let classesFromList = [''];
+    const { className, activated, disabled, selected, getClassNamesFromList } =
+      this.props;
+    let classesFromList = [""];
     if (this.listItemElement.current) {
       const index = this.getIndex(this.listItemElement.current);
       classesFromList = getClassNamesFromList!()[index];
     }
-    return classnames('mdc-list-item', className, classesFromList, {
+    return classnames("mdc-list-item", className, classesFromList, {
       [MDCListFoundation.cssClasses.LIST_ITEM_ACTIVATED_CLASS]: activated,
       [MDCListFoundation.cssClasses.LIST_ITEM_SELECTED_CLASS]: selected,
-      'mdc-list-item--disabled': disabled,
+      "mdc-list-item--disabled": disabled,
     });
   }
 
   get role() {
-    const {checkboxList, radioList, role} = this.props;
+    const { checkboxList, radioList, role } = this.props;
     if (role) {
       return role;
     } else if (checkboxList) {
-      return 'checkbox';
+      return "checkbox";
     } else if (radioList) {
-      return 'radio';
+      return "radio";
     }
     return null;
   }
@@ -150,7 +145,7 @@ export class ListItemBase<
     if (this.listItemElement.current) {
       const index = this.getIndex(this.listItemElement.current);
       const tabIndex = this.props.getListItemInitialTabIndex!(index);
-      this.setState({tabIndex});
+      this.setState({ tabIndex });
     }
   };
 
@@ -159,25 +154,25 @@ export class ListItemBase<
   };
 
   handleClick = (e: React.MouseEvent<any>) => {
-    const {onClick} = this.props;
+    const { onClick } = this.props;
     onClick!(e);
     this.props.handleClick!(e, this.getIndex(e.currentTarget));
   };
 
   handleKeyDown = (e: React.KeyboardEvent<any>) => {
-    const {onKeyDown} = this.props;
+    const { onKeyDown } = this.props;
     onKeyDown!(e);
     this.props.handleKeyDown!(e, this.getIndex(e.currentTarget));
   };
 
   handleFocus = (e: React.FocusEvent<any>) => {
-    const {onFocus} = this.props;
+    const { onFocus } = this.props;
     onFocus!(e);
     this.props.handleFocus!(e, this.getIndex(e.currentTarget));
   };
 
   handleBlur = (e: React.FocusEvent<any>) => {
-    const {onBlur} = this.props;
+    const { onBlur } = this.props;
     onBlur!(e);
     this.props.handleBlur!(e, this.getIndex(e.currentTarget));
   };

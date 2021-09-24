@@ -21,11 +21,10 @@
  * THE SOFTWARE.
  */
 
-
-import {MDCTextFieldCharacterCounter} from '../../../mdc-textfield/character-counter/index';
+import { MDCTextFieldCharacterCounter } from "../../../mdc-textfield/character-counter/index";
 
 const getFixture = () => {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
     <div class="mdc-text-field-character-counter">0/10</div>
   `;
@@ -35,23 +34,23 @@ const getFixture = () => {
   return el;
 };
 
-describe('MDCTextFieldCharacterCounter', () => {
-  it('attachTo returns an MDCTextFieldCharacterCounter instance', () => {
+describe("MDCTextFieldCharacterCounter", () => {
+  it("attachTo returns an MDCTextFieldCharacterCounter instance", () => {
     expect(
-        MDCTextFieldCharacterCounter.attachTo(getFixture()) instanceof
-        MDCTextFieldCharacterCounter)
-        .toBeTruthy();
+      MDCTextFieldCharacterCounter.attachTo(getFixture()) instanceof
+        MDCTextFieldCharacterCounter
+    ).toBeTruthy();
   });
 
   function setupTest() {
     const root = getFixture();
     const component = new MDCTextFieldCharacterCounter(root);
-    return {root, component};
+    return { root, component };
   }
 
-  it('#adapter.setContent sets the text content of the element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.setContent('5 / 10');
-    expect(root.textContent).toEqual('5 / 10');
+  it("#adapter.setContent sets the text content of the element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.setContent("5 / 10");
+    expect(root.textContent).toEqual("5 / 10");
   });
 });

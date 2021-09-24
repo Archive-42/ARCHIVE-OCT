@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCFormFieldAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCFormFieldAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCFormFieldFoundation extends MDCFoundation<MDCFormFieldAdapter> {
   static get cssClasses() {
@@ -46,7 +46,7 @@ export class MDCFormFieldFoundation extends MDCFoundation<MDCFormFieldAdapter> {
   private readonly click: () => void;
 
   constructor(adapter?: Partial<MDCFormFieldAdapter>) {
-    super({...MDCFormFieldFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCFormFieldFoundation.defaultAdapter, ...adapter });
 
     this.click = () => {
       this.handleClick();
@@ -54,11 +54,11 @@ export class MDCFormFieldFoundation extends MDCFoundation<MDCFormFieldAdapter> {
   }
 
   init() {
-    this.adapter.registerInteractionHandler('click', this.click);
+    this.adapter.registerInteractionHandler("click", this.click);
   }
 
   destroy() {
-    this.adapter.deregisterInteractionHandler('click', this.click);
+    this.adapter.deregisterInteractionHandler("click", this.click);
   }
 
   private handleClick() {

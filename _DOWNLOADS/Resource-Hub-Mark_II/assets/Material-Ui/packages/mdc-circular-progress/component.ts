@@ -21,19 +21,21 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCProgressIndicator} from '@material/progress-indicator/component';
-import {MDCCircularProgressAdapter} from './adapter';
-import {MDCCircularProgressFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCProgressIndicator } from "@material/progress-indicator/component";
+import { MDCCircularProgressAdapter } from "./adapter";
+import { MDCCircularProgressFoundation } from "./foundation";
 
-export class MDCCircularProgress extends
-    MDCComponent<MDCCircularProgressFoundation> implements
-        MDCProgressIndicator {
+export class MDCCircularProgress
+  extends MDCComponent<MDCCircularProgressFoundation>
+  implements MDCProgressIndicator
+{
   private determinateCircle_!: HTMLElement;
 
   initialize() {
     this.determinateCircle_ = this.root.querySelector<HTMLElement>(
-        MDCCircularProgressFoundation.strings.DETERMINATE_CIRCLE_SELECTOR)!;
+      MDCCircularProgressFoundation.strings.DETERMINATE_CIRCLE_SELECTOR
+    )!;
   }
 
   static attachTo(root: Element) {
@@ -86,15 +88,15 @@ export class MDCCircularProgress extends
     const adapter: MDCCircularProgressAdapter = {
       addClass: (className: string) => this.root.classList.add(className),
       getDeterminateCircleAttribute: (attributeName: string) =>
-          this.determinateCircle_.getAttribute(attributeName),
+        this.determinateCircle_.getAttribute(attributeName),
       hasClass: (className: string) => this.root.classList.contains(className),
       removeClass: (className: string) => this.root.classList.remove(className),
       removeAttribute: (attributeName: string) =>
-          this.root.removeAttribute(attributeName),
+        this.root.removeAttribute(attributeName),
       setAttribute: (attributeName: string, value: string) =>
-          this.root.setAttribute(attributeName, value),
+        this.root.setAttribute(attributeName, value),
       setDeterminateCircleAttribute: (attributeName: string, value: string) =>
-          this.determinateCircle_.setAttribute(attributeName, value),
+        this.determinateCircle_.setAttribute(attributeName, value),
     };
     return new MDCCircularProgressFoundation(adapter);
   }

@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {cssClasses} from './constants';
+import React from "react";
+import classnames from "classnames";
+import { cssClasses } from "./constants";
 
 export interface SectionProps<T> extends React.HTMLProps<T> {
-  align?: 'start' | 'end';
+  align?: "start" | "end";
   className?: string;
   tag?: string;
 }
@@ -36,14 +36,14 @@ const Section: <T extends HTMLElement = HTMLElement>(
   align,
   className,
   children,
-  tag: Tag = 'section',
+  tag: Tag = "section",
   ...otherProps
 }) => (
   // @ts-ignore  https://github.com/Microsoft/TypeScript/issues/28892
   <Tag
     className={classnames(className, cssClasses.SECTION, {
-      [cssClasses.SECTION_START]: align === 'start',
-      [cssClasses.SECTION_END]: align === 'end',
+      [cssClasses.SECTION_START]: align === "start",
+      [cssClasses.SECTION_END]: align === "end",
     })}
     {...otherProps}
   >

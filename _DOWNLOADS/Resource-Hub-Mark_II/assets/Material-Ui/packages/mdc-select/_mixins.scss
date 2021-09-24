@@ -20,5 +20,16 @@
 // THE SOFTWARE.
 //
 
-@forward './select-theme' show min-width, ink-color, disabled-ink-color, container-fill-color, disabled-container-fill-color, dropdown-icon-color, disabled-dropdown-icon-color, hover-dropdown-icon-color, focused-dropdown-icon-color, focused-label-color, label-floating-color, hover-label-floating-color, bottom-line-color, hover-bottom-line-color, focused-bottom-line-color, label-color, hover-label-color, disabled-label-color, outline-color, hover-outline-color, focused-outline-color, disabled-outline-color, filled-shape-radius, outline-shape-radius, filled-density, filled-with-leading-icon-density, outlined-density, outlined-with-leading-icon-density, filled-height, filled-with-leading-icon-height, outlined-height, outlined-with-leading-icon-height;
-@forward './select' show core-styles;
+@forward "./select-theme" show min-width, ink-color, disabled-ink-color,
+  container-fill-color, disabled-container-fill-color, dropdown-icon-color,
+  disabled-dropdown-icon-color, hover-dropdown-icon-color,
+  focused-dropdown-icon-color, focused-label-color, label-floating-color,
+  hover-label-floating-color, bottom-line-color, hover-bottom-line-color,
+  focused-bottom-line-color, label-color, hover-label-color,
+  disabled-label-color, outline-color, hover-outline-color,
+  focused-outline-color, disabled-outline-color, filled-shape-radius,
+  outline-shape-radius, filled-density, filled-with-leading-icon-density,
+  outlined-density, outlined-with-leading-icon-density, filled-height,
+  filled-with-leading-icon-height, outlined-height,
+  outlined-with-leading-icon-height;
+@forward "./select" show core-styles;

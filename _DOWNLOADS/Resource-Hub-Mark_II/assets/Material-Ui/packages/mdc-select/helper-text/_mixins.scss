@@ -19,5 +19,7 @@
 //  THE SOFTWARE.
 //
 
-@forward '../select-helper-text-theme' show helper-text-color, disabled-helper-text-color, helper-text-validation-color, hover-helper-text-validation-color;
-@forward '../select-helper-text' show helper-text-core-styles;
+@forward "../select-helper-text-theme" show helper-text-color,
+  disabled-helper-text-color, helper-text-validation-color,
+  hover-helper-text-validation-color;
+@forward "../select-helper-text" show helper-text-core-styles;

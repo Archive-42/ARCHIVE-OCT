@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface NativeControlProps extends React.HTMLProps<HTMLInputElement> {
   className?: string;
@@ -30,13 +30,13 @@ export interface NativeControlProps extends React.HTMLProps<HTMLInputElement> {
 
 const NativeControl: React.FunctionComponent<NativeControlProps> = ({
   rippleActivatorRef,
-  className = '',
+  className = "",
   ...otherProps
 }) => {
   return (
     <input
-      type='radio'
-      className={classnames('mdc-radio__native-control', className)}
+      type="radio"
+      className={classnames("mdc-radio__native-control", className)}
       ref={rippleActivatorRef}
       {...otherProps}
     />

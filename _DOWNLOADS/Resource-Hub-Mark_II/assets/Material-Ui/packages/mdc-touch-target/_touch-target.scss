@@ -23,8 +23,8 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/base/mixins' as base-mixins;
-@use '@material/feature-targeting/feature-targeting';
+@use "@material/base/mixins" as base-mixins;
+@use "@material/feature-targeting/feature-targeting";
 
 $height: 48px !default;
 $width: $height !default;
@@ -37,7 +37,7 @@ $width: $height !default;
     @include feature-targeting.targets($feat-structure) {
       // Ensure that styles are only emitted once across all components that
       // have increased touch targets.
-      @include base-mixins.emit-once('mdc-touch-target/wrapper') {
+      @include base-mixins.emit-once("mdc-touch-target/wrapper") {
         // NOTE: Will change to `inline-block` in the future, but keeping as is
         // temporarily for backwards-compatibility.
         display: inline;

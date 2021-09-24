@@ -32,9 +32,12 @@ attribute to the root element with its value set to the component's JavaScript c
 properly.
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled" data-mdc-auto-init="MDCTextField">
+<label
+  class="mdc-text-field mdc-text-field--filled"
+  data-mdc-auto-init="MDCTextField"
+>
   <span class="mdc-text-field__ripple"></span>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="label">
+  <input class="mdc-text-field__input" type="text" aria-labelledby="label" />
   <span id="label" class="mdc-floating-label">Input Label</span>
   <span class="mdc-line-ripple"></span>
 </label>
@@ -53,9 +56,12 @@ When `mdc-auto-init` attaches a component to an element, it assign that instance
 using a property whose name is the value of `data-mdc-auto-init`. For example, given
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled" data-mdc-auto-init="MDCTextField">
+<label
+  class="mdc-text-field mdc-text-field--filled"
+  data-mdc-auto-init="MDCTextField"
+>
   <span class="mdc-text-field__ripple"></span>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="label">
+  <input class="mdc-text-field__input" type="text" aria-labelledby="label" />
   <span id="label" class="mdc-floating-label">Input Label</span>
   <span class="mdc-line-ripple"></span>
 </label>
@@ -65,7 +71,7 @@ Once `mdc.autoInit()` is called, you can access the component instance via an `M
 property on that element.
 
 ```js
-document.querySelector('.mdc-text-field').MDCTextField.disabled = true;
+document.querySelector(".mdc-text-field").MDCTextField.disabled = true;
 ```
 
 #### Calling subsequent `mdc.autoInit()`
@@ -73,7 +79,11 @@ document.querySelector('.mdc-text-field').MDCTextField.disabled = true;
 If you decide to add new components into the DOM after the initial `mdc.autoInit()`, you can make subsequent calls to `mdc.autoInit()`. This will not reinitialize existing components. This works since mdc-auto-init will add the `data-mdc-auto-init-state="initialized"` attribute, which tracks if the component has already been initialized. After calling `mdc.autoInit()` your component will then look like:
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled" data-mdc-auto-init="MDCTextField" data-mdc-auto-init-state="initialized">
+<label
+  class="mdc-text-field mdc-text-field--filled"
+  data-mdc-auto-init="MDCTextField"
+  data-mdc-auto-init-state="initialized"
+>
   ...
 </label>
 ```
@@ -87,10 +97,10 @@ mapping between `data-mdc-auto-init` attribute values and the components which t
 be achieved via `mdcAutoInit.register`.
 
 ```js
-import mdcAutoInit from '@material/auto-init';
-import {MDCTextField} from '@material/textfield';
+import mdcAutoInit from "@material/auto-init";
+import { MDCTextField } from "@material/textfield";
 
-mdcAutoInit.register('MDCTextField', MDCTextField);
+mdcAutoInit.register("MDCTextField", MDCTextField);
 ```
 
 `mdcAutoInit.register()` tells `mdc-auto-init` that when it comes across an element with a
@@ -101,17 +111,22 @@ convenience.
 Also note that a component can be mapped to any string, not necessarily the name of its constructor.
 
 ```js
-import mdcAutoInit from '@material/auto-init';
-import {MDCTextField} from '@material/textfield';
+import mdcAutoInit from "@material/auto-init";
+import { MDCTextField } from "@material/textfield";
 
-mdcAutoInit.register('My amazing text field!!!', MDCTextField);
+mdcAutoInit.register("My amazing text field!!!", MDCTextField);
 ```
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled" data-mdc-auto-init="My amazing text field!!!">
+<label
+  class="mdc-text-field mdc-text-field--filled"
+  data-mdc-auto-init="My amazing text field!!!"
+>
   <!-- ... -->
 </label>
-<script>window.mdc.autoInit();</script>
+<script>
+  window.mdc.autoInit();
+</script>
 ```
 
 ### De-registering components
@@ -120,7 +135,7 @@ Any component can be deregistered by calling `mdcAutoInit.deregister` with the n
 the component.
 
 ```js
-mdcAutoInit.deregister('MDCTextField');
+mdcAutoInit.deregister("MDCTextField");
 ```
 
 This will simply remove the name -> component mapping. It will _not_ affect any already-instantiated
@@ -156,7 +171,9 @@ the root node whose children will be queried for instantiation.
 <div id="mdc-section">
   <!-- MDC Web Components, etc. -->
 </div>
-<script>window.mdc.autoInit(document.getElementById('mdc-section'));</script>
+<script>
+  window.mdc.autoInit(document.getElementById("mdc-section"));
+</script>
 ```
 
 In the above example, only elements within `<div id="mdc-section">` will be queried.
@@ -172,7 +189,9 @@ function used to warn users when a component is initialized multiple times. By d
 warning, you could simply pass in a nop.
 
 ```html
-<script>window.mdc.autoInit(/* root */ document, () => {});</script>
+<script>
+  window.mdc.autoInit(/* root */ document, () => {});
+</script>
 ```
 
 This will suppress any warnings about already initialized elements.
@@ -180,6 +199,7 @@ This will suppress any warnings about already initialized elements.
 ### Events
 
 #### MDCAutoInit:End
+
 Triggered when initialization of all components is complete.
 
 `document.addEventListener("MDCAutoInit:End", () => {...});`

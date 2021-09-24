@@ -22,12 +22,12 @@
  */
 
 const strings = {
-  ICON_EVENT: 'MDCTextField:icon',
-  ICON_ROLE: 'button',
+  ICON_EVENT: "MDCTextField:icon",
+  ICON_ROLE: "button",
 };
 
 const cssClasses = {
-  ROOT: 'mdc-text-field__icon',
+  ROOT: "mdc-text-field__icon",
 };
 
-export {strings, cssClasses};
+export { strings, cssClasses };

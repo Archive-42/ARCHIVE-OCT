@@ -23,29 +23,29 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:list';
-@use 'sass:meta';
-@use '@material/density/functions' as density-functions;
-@use '@material/floating-label/mixins' as floating-label-mixins;
-@use '@material/floating-label/variables' as floating-label-variables;
-@use '@material/line-ripple/mixins' as line-ripple-mixins;
-@use '@material/notched-outline/mixins' as notched-outline-mixins;
-@use '@material/notched-outline/variables' as notched-outline-variables;
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/theme/custom-properties';
-@use '@material/theme/theme';
-@use '@material/shape/mixins' as shape-mixins;
-@use '@material/shape/functions' as shape-functions;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/typography/typography';
-@use 'helper-text/mixins' as helper-text-mixins;
-@use 'character-counter/mixins' as character-counter-mixins;
-@use 'icon/mixins' as icon-mixins;
-@use 'icon/variables' as icon-variables;
-@use './variables';
-@use './functions';
-@use '@material/rtl/mixins' as rtl-mixins;
+@use "sass:list";
+@use "sass:meta";
+@use "@material/density/functions" as density-functions;
+@use "@material/floating-label/mixins" as floating-label-mixins;
+@use "@material/floating-label/variables" as floating-label-variables;
+@use "@material/line-ripple/mixins" as line-ripple-mixins;
+@use "@material/notched-outline/mixins" as notched-outline-mixins;
+@use "@material/notched-outline/variables" as notched-outline-variables;
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/theme/custom-properties";
+@use "@material/theme/theme";
+@use "@material/shape/mixins" as shape-mixins;
+@use "@material/shape/functions" as shape-functions;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/typography/typography";
+@use "helper-text/mixins" as helper-text-mixins;
+@use "character-counter/mixins" as character-counter-mixins;
+@use "icon/mixins" as icon-mixins;
+@use "icon/variables" as icon-variables;
+@use "./variables";
+@use "./functions";
+@use "@material/rtl/mixins" as rtl-mixins;
 
 @mixin core-styles($query: feature-targeting.all()) {
   @include ripple($query);
@@ -788,7 +788,7 @@
   $rtl-reflexive: false,
   $query: feature-targeting.all()
 ) {
-  @if meta.type-of($radius) == 'list' and list.length($radius) > 2 {
+  @if meta.type-of($radius) == "list" and list.length($radius) > 2 {
     @error "mdc-textfield: Invalid radius #{$radius}. Only top-left and top-right corners may be customized.";
   }
 

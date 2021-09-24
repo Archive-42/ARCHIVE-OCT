@@ -18,10 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:math';
-@use './variables';
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "./variables";
 
 // returns the lower grid boundary or null if the smallest grid is selected
 @function breakpoint-min($size) {
@@ -160,7 +160,7 @@
 }
 
 @mixin cell-align($position) {
-  @if $position == 'top' {
+  @if $position == "top" {
     align-self: flex-start;
 
     @supports (display: grid) {
@@ -168,11 +168,11 @@
     }
   }
 
-  @if $position == 'middle' {
+  @if $position == "middle" {
     align-self: center;
   }
 
-  @if $position == 'bottom' {
+  @if $position == "bottom" {
     align-self: flex-end;
 
     @supports (display: grid) {
@@ -180,7 +180,7 @@
     }
   }
 
-  @if $position == 'stretch' {
+  @if $position == "stretch" {
     align-self: stretch;
   }
 }

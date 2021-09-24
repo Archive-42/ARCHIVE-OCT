@@ -16,7 +16,12 @@ Icons describe the type of input a text field requires. They can also be interac
 ### HTML structure
 
 ```html
-<i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">event</i>
+<i
+  class="material-icons mdc-text-field__icon mdc-text-field__icon--leading"
+  tabindex="0"
+  role="button"
+  >event</i
+>
 ```
 
 #### Icon set
@@ -25,7 +30,10 @@ We recommend using [Material Icons](https://material.io/tools/icons/) from Googl
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
 ```
 
@@ -42,9 +50,11 @@ However, you can also use SVG, [Font Awesome](https://fontawesome.com/), or any 
 ### JavaScript instantiation
 
 ```js
-import {MDCTextFieldIcon} from '@material/textfield/icon';
+import { MDCTextFieldIcon } from "@material/textfield/icon";
 
-const icon = new MDCTextFieldIcon(document.querySelector('.mdc-text-field-icon'));
+const icon = new MDCTextFieldIcon(
+  document.querySelector(".mdc-text-field-icon")
+);
 ```
 
 ## Variants
@@ -58,11 +68,22 @@ Leading and trailing icons can be applied to default or `mdc-text-field--outline
 In text field:
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled mdc-text-field--with-leading-icon">
+<label
+  class="mdc-text-field mdc-text-field--filled mdc-text-field--with-leading-icon"
+>
   <span class="mdc-text-field__ripple"></span>
   <span class="mdc-floating-label" id="my-label-id">Your Name</span>
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">event</i>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+  <i
+    class="material-icons mdc-text-field__icon mdc-text-field__icon--leading"
+    tabindex="0"
+    role="button"
+    >event</i
+  >
+  <input
+    class="mdc-text-field__input"
+    type="text"
+    aria-labelledby="my-label-id"
+  />
   <span class="mdc-line-ripple"></span>
 </label>
 ```
@@ -70,7 +91,9 @@ In text field:
 In outlined text field:
 
 ```html
-<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+<label
+  class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon"
+>
   <span class="mdc-notched-outline">
     <span class="mdc-notched-outline__leading"></span>
     <span class="mdc-notched-outline__notch">
@@ -78,8 +101,17 @@ In outlined text field:
     </span>
     <span class="mdc-notched-outline__trailing"></span>
   </span>
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">event</i>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+  <i
+    class="material-icons mdc-text-field__icon mdc-text-field__icon--leading"
+    tabindex="0"
+    role="button"
+    >event</i
+  >
+  <input
+    class="mdc-text-field__input"
+    type="text"
+    aria-labelledby="my-label-id"
+  />
 </label>
 ```
 
@@ -88,11 +120,22 @@ In outlined text field:
 In text field:
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon">
+<label
+  class="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon"
+>
   <span class="mdc-text-field__ripple"></span>
   <span class="mdc-floating-label" id="my-label-id">Your Name</span>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">event</i>
+  <input
+    class="mdc-text-field__input"
+    type="text"
+    aria-labelledby="my-label-id"
+  />
+  <i
+    class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"
+    tabindex="0"
+    role="button"
+    >event</i
+  >
   <span class="mdc-line-ripple"></span>
 </label>
 ```
@@ -100,7 +143,9 @@ In text field:
 In outlined text field:
 
 ```html
-<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon">
+<label
+  class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon"
+>
   <span class="mdc-notched-outline">
     <span class="mdc-notched-outline__leading"></span>
     <span class="mdc-notched-outline__notch">
@@ -108,8 +153,17 @@ In outlined text field:
     </span>
     <span class="mdc-notched-outline__trailing"></span>
   </span>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">event</i>
+  <input
+    class="mdc-text-field__input"
+    type="text"
+    aria-labelledby="my-label-id"
+  />
+  <i
+    class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"
+    tabindex="0"
+    role="button"
+    >event</i
+  >
 </label>
 ```
 
@@ -118,12 +172,25 @@ In outlined text field:
 In text field:
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
+<label
+  class="mdc-text-field mdc-text-field--filled mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon"
+>
   <span class="mdc-text-field__ripple"></span>
   <span class="mdc-floating-label" id="my-label-id">Phone Number</span>
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading">phone</i>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">event</i>
+  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading"
+    >phone</i
+  >
+  <input
+    class="mdc-text-field__input"
+    type="text"
+    aria-labelledby="my-label-id"
+  />
+  <i
+    class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"
+    tabindex="0"
+    role="button"
+    >event</i
+  >
   <div class="mdc-line-ripple"></div>
 </label>
 ```
@@ -131,17 +198,30 @@ In text field:
 In outlined text field:
 
 ```html
-<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
+<label
+  class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon"
+>
   <span class="mdc-notched-outline">
-   <span class="mdc-notched-outline__leading"></span>
+    <span class="mdc-notched-outline__leading"></span>
     <span class="mdc-notched-outline__notch">
       <span class="mdc-floating-label" id="my-label-id">Phone Number</span>
     </span>
     <span class="mdc-notched-outline__trailing"></span>
   </span>
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading">phone</i>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">clear</i>
+  <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading"
+    >phone</i
+  >
+  <input
+    class="mdc-text-field__input"
+    type="text"
+    aria-labelledby="my-label-id"
+  />
+  <i
+    class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"
+    tabindex="0"
+    role="button"
+    >clear</i
+  >
 </label>
 ```
 
@@ -149,26 +229,26 @@ In outlined text field:
 
 ### CSS classes
 
-CSS Class | Description
---- | ---
-`mdc-text-field__icon` | Mandatory.
-`mdc-text-field__icon--leading` | Mandatory for leading icons.
-`mdc-text-field__icon--trailing` | Mandatory for trailing icons.
+| CSS Class                        | Description                   |
+| -------------------------------- | ----------------------------- |
+| `mdc-text-field__icon`           | Mandatory.                    |
+| `mdc-text-field__icon--leading`  | Mandatory for leading icons.  |
+| `mdc-text-field__icon--trailing` | Mandatory for trailing icons. |
 
 ### Sass mixins
 
-Mixin | Description
---- | ---
-`leading-icon-color($color)` | Customizes the color for the leading icon in an enabled text-field.
-`trailing-icon-color($color)` | Customizes the color for the trailing icon in an enabled text-field.
-`disabled-icon-color($color)` | Customizes the color for the leading/trailing icons in a disabled text-field.
-`size($size)` | Sets the size of the leading and trailing icons.
+| Mixin                         | Description                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------- |
+| `leading-icon-color($color)`  | Customizes the color for the leading icon in an enabled text-field.           |
+| `trailing-icon-color($color)` | Customizes the color for the trailing icon in an enabled text-field.          |
+| `disabled-icon-color($color)` | Customizes the color for the leading/trailing icons in a disabled text-field. |
+| `size($size)`                 | Sets the size of the leading and trailing icons.                              |
 
 ## `MDCTextFieldIcon` properties and methods
 
-Property | Value Type | Description
---- | --- | ---
-`foundation` | `MDCTextFieldIconFoundation` | Returns the icon's foundation. This allows the parent `MDCTextField` component to access the public methods on the `MDCTextFieldIconFoundation` class.
+| Property     | Value Type                   | Description                                                                                                                                            |
+| ------------ | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `foundation` | `MDCTextFieldIconFoundation` | Returns the icon's foundation. This allows the parent `MDCTextField` component to access the public methods on the `MDCTextFieldIconFoundation` class. |
 
 ## Usage within frameworks
 
@@ -176,21 +256,21 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCTextFieldIconAdapter`
 
-Method Signature | Description
---- | ---
-`getAttr(attr: string) => string` | Gets the value of an attribute on the icon element.
-`setAttr(attr: string, value: string) => void` | Sets an attribute with a given value on the icon element.
-`removeAttr(attr: string) => void` | Removes an attribute from the icon element.
-`setContent(content: string) => void` | Sets the text content of the icon element.
-`registerInteractionHandler(evtType: string, handler: EventListener) => void` | Registers an event listener for a given event.
-`deregisterInteractionHandler(evtType: string, handler: EventListener) => void` | Deregisters an event listener for a given event.
-`notifyIconAction() => void` | Emits a custom event "MDCTextField:icon" denoting a user has clicked the icon, which bubbles to the top-level text field element.
+| Method Signature                                                                | Description                                                                                                                       |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `getAttr(attr: string) => string`                                               | Gets the value of an attribute on the icon element.                                                                               |
+| `setAttr(attr: string, value: string) => void`                                  | Sets an attribute with a given value on the icon element.                                                                         |
+| `removeAttr(attr: string) => void`                                              | Removes an attribute from the icon element.                                                                                       |
+| `setContent(content: string) => void`                                           | Sets the text content of the icon element.                                                                                        |
+| `registerInteractionHandler(evtType: string, handler: EventListener) => void`   | Registers an event listener for a given event.                                                                                    |
+| `deregisterInteractionHandler(evtType: string, handler: EventListener) => void` | Deregisters an event listener for a given event.                                                                                  |
+| `notifyIconAction() => void`                                                    | Emits a custom event "MDCTextField:icon" denoting a user has clicked the icon, which bubbles to the top-level text field element. |
 
 ### `MDCTextFieldIconFoundation`
 
-Method Signature | Description
---- | ---
-`setDisabled(disabled: boolean) => void` | Updates the icon's disabled state.
-`setAriaLabel(label: string) => void` | Updates the icon's aria-label.
-`setContent(content: string) => void` | Updates the icon's text content.
-`handleInteraction(evt: Event) => void` | Handles a text field interaction event.
+| Method Signature                         | Description                             |
+| ---------------------------------------- | --------------------------------------- |
+| `setDisabled(disabled: boolean) => void` | Updates the icon's disabled state.      |
+| `setAriaLabel(label: string) => void`    | Updates the icon's aria-label.          |
+| `setContent(content: string) => void`    | Updates the icon's text content.        |
+| `handleInteraction(evt: Event) => void`  | Handles a text field interaction event. |

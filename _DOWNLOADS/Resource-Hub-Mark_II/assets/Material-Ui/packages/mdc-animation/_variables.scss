@@ -21,4 +21,6 @@
 //
 
 /// @deprecation Import '_animation.scss' instead.
-@forward './animation' show $deceleration-curve-timing-function, $standard-curve-timing-function, $acceleration-curve-timing-function, $sharp-curve-timing-function;
+@forward "./animation" show $deceleration-curve-timing-function,
+  $standard-curve-timing-function, $acceleration-curve-timing-function,
+  $sharp-curve-timing-function;

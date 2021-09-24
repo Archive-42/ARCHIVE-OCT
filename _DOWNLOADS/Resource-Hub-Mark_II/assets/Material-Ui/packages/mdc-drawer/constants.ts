@@ -22,20 +22,20 @@
  */
 
 const cssClasses = {
-  ANIMATE: 'mdc-drawer--animate',
-  CLOSING: 'mdc-drawer--closing',
-  DISMISSIBLE: 'mdc-drawer--dismissible',
-  MODAL: 'mdc-drawer--modal',
-  OPEN: 'mdc-drawer--open',
-  OPENING: 'mdc-drawer--opening',
-  ROOT: 'mdc-drawer',
+  ANIMATE: "mdc-drawer--animate",
+  CLOSING: "mdc-drawer--closing",
+  DISMISSIBLE: "mdc-drawer--dismissible",
+  MODAL: "mdc-drawer--modal",
+  OPEN: "mdc-drawer--open",
+  OPENING: "mdc-drawer--opening",
+  ROOT: "mdc-drawer",
 };
 
 const strings = {
-  APP_CONTENT_SELECTOR: '.mdc-drawer-app-content',
-  CLOSE_EVENT: 'MDCDrawer:closed',
-  OPEN_EVENT: 'MDCDrawer:opened',
-  SCRIM_SELECTOR: '.mdc-drawer-scrim',
+  APP_CONTENT_SELECTOR: ".mdc-drawer-app-content",
+  CLOSE_EVENT: "MDCDrawer:closed",
+  OPEN_EVENT: "MDCDrawer:opened",
+  SCRIM_SELECTOR: ".mdc-drawer-scrim",
 };
 
-export {cssClasses, strings};
+export { cssClasses, strings };

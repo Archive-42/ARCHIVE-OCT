@@ -19,15 +19,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
-import {MDCTextFieldHelperTextAdapter} from '@material/textfield/helper-text/adapter';
-import {MDCTextFieldHelperTextFoundation} from '@material/textfield/helper-text/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCTextFieldHelperTextAdapter } from "@material/textfield/helper-text/adapter";
+import { MDCTextFieldHelperTextFoundation } from "@material/textfield/helper-text/foundation";
 
 const cssClasses = MDCTextFieldHelperTextFoundation.cssClasses;
 
 export interface HelperTextProps {
-  'aria-hidden'?: boolean;
+  "aria-hidden"?: boolean;
   children: React.ReactNode;
   className?: string;
   isValid?: boolean;
@@ -39,7 +39,7 @@ export interface HelperTextProps {
 }
 
 interface HelperTextState {
-  'aria-hidden': boolean;
+  "aria-hidden": boolean;
   role?: string;
   classList: Set<string>;
 }
@@ -51,8 +51,8 @@ export default class HelperText extends React.Component<
   foundation!: MDCTextFieldHelperTextFoundation;
 
   static defaultProps = {
-    ['aria-hidden']: false,
-    className: '',
+    ["aria-hidden"]: false,
+    className: "",
     isValid: true,
     isValidationMessage: false,
     persistent: false,
@@ -63,7 +63,7 @@ export default class HelperText extends React.Component<
   constructor(props: HelperTextProps) {
     super(props);
     this.state = {
-      ['aria-hidden']: props['aria-hidden']!,
+      ["aria-hidden"]: props["aria-hidden"]!,
       role: props.role,
       classList: new Set(),
     };
@@ -106,7 +106,7 @@ export default class HelperText extends React.Component<
   }
 
   get classes() {
-    const {className, persistent, validation} = this.props;
+    const { className, persistent, validation } = this.props;
     return classnames(cssClasses.ROOT, className, {
       [cssClasses.HELPER_TEXT_PERSISTENT]: persistent,
       [cssClasses.HELPER_TEXT_VALIDATION_MSG]: validation,
@@ -116,19 +116,19 @@ export default class HelperText extends React.Component<
   get adapter(): MDCTextFieldHelperTextAdapter {
     return {
       addClass: (className: string) =>
-        this.setState({classList: this.state.classList.add(className)}),
+        this.setState({ classList: this.state.classList.add(className) }),
       removeClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) =>
-        this.classes.split(' ').includes(className),
+        this.classes.split(" ").includes(className),
       // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/26635
       setAttr: (attr: keyof HelperTextState, value: string) =>
-        this.setState((prevState) => ({...prevState, [attr]: value})),
+        this.setState((prevState) => ({ ...prevState, [attr]: value })),
       removeAttr: (attr: keyof HelperTextState) =>
-        this.setState((prevState) => ({...prevState, [attr]: null})),
+        this.setState((prevState) => ({ ...prevState, [attr]: null })),
       // Please manage content through JSX
       setContent: () => undefined,
     };
@@ -139,7 +139,7 @@ export default class HelperText extends React.Component<
       <p
         className={this.classes}
         role={this.state.role}
-        aria-hidden={this.state['aria-hidden']}
+        aria-hidden={this.state["aria-hidden"]}
       >
         {this.props.children}
       </p>

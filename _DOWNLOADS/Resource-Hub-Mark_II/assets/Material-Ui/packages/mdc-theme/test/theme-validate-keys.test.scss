@@ -1,8 +1,8 @@
-@use '../theme';
+@use "../theme";
 
 $origin-theme: (
   one: 1,
-  two: '22',
+  two: "22",
   three: 3px,
   four: (
     x: 1,
@@ -14,7 +14,7 @@ $origin-theme: (
 @include theme.validate-keys(
   $origin-theme,
   (
-    two: '22',
+    two: "22",
     three: 3px,
   )
 );

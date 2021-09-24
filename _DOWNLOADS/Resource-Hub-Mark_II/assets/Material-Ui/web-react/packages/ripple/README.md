@@ -13,8 +13,9 @@ npm install @material/react-ripple
 ### Styles
 
 with Sass:
+
 ```js
-import '@material/react-ripple/index.scss';
+import "@material/react-ripple/index.scss";
 ```
 
 You'll also need to include these sass mixins on the element. Please also refer to [Advanced Sass Mixins](https://github.com/material-components/material-components-web/blob/master/packages/mdc-ripple/README.md#sass-apis) to customize further.
@@ -32,8 +33,9 @@ You'll also need to include these sass mixins on the element. Please also refer 
 ```
 
 with CSS:
+
 ```js
-import '@material/react-ripple/dist/ripple.css';
+import "@material/react-ripple/dist/ripple.css";
 ```
 
 ### Javascript Instantiation
@@ -41,12 +43,12 @@ import '@material/react-ripple/dist/ripple.css';
 To wrap a component with the ripple HOC, please follow this example:
 
 ```js
-import {withRipple} from '@material/react-ripple';
+import { withRipple } from "@material/react-ripple";
 
 const Icon = (props) => {
   const {
     children,
-    className = '',
+    className = "",
     // You must call `initRipple` from the root element's ref. This attaches the ripple
     // to the element.
     initRipple,
@@ -61,10 +63,7 @@ const Icon = (props) => {
   const classes = `ripple-icon-component ${className}`;
 
   return (
-    <div
-      className={classes}
-      ref={initRipple}
-      {...otherProps}>
+    <div className={classes} ref={initRipple} {...otherProps}>
       {children}
     </div>
   );
@@ -130,57 +129,50 @@ You may want to apply the visual treatment (CSS classes and styles) for a ripple
 The `initRipple` callback prop can take in an extra `activator` argument for the case where the ripple activator differs from the ripple surface. If the `activator` argument is not provided, the ripple surface will also serve as the ripple activator.
 
 ```js
-import {withRipple} from '@material/react-ripple';
+import { withRipple } from "@material/react-ripple";
 
 const MyInput = (props) => {
-  const {
-    rippleActivator,
-    ...otherProps
-  } = props;
+  const { rippleActivator, ...otherProps } = props;
 
-  return (
-    <input ref={rippleActivator} {...otherProps} />
-  );
-}
+  return <input ref={rippleActivator} {...otherProps} />;
+};
 
 class MyComponent extends React.Component {
   rippleActivator = React.createRef();
 
   init = (el) => {
-    this.props.initRipple(el /* surface */, this.rippleActivator.current /* activator */);
-  }
+    this.props.initRipple(
+      el /* surface */,
+      this.rippleActivator.current /* activator */
+    );
+  };
 
   render() {
-    const {
-      className,
-      initRipple,
-      unbounded,
-      ...otherProps
-    } = this.props;
+    const { className, initRipple, unbounded, ...otherProps } = this.props;
 
     return (
       <div
         className={`my-component ${className}`}
         ref={this.init}
-        {...otherProps}>
+        {...otherProps}
+      >
         <MyInput rippleActivator={this.rippleActivator} />
       </div>
     );
   }
-};
+}
 
 const MyRippledComponent = withRipple(MyComponent);
 ```
 
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-unbounded | boolean | Ripple is unbounded if true.
-disabled | n/a | Disables ripple if true.
-style | object | Inline styles of root element.
-className | string | Classes to appear on className attribute of root element.
-
+| Prop Name | Type    | Description                                               |
+| --------- | ------- | --------------------------------------------------------- |
+| unbounded | boolean | Ripple is unbounded if true.                              |
+| disabled  | n/a     | Disables ripple if true.                                  |
+| style     | object  | Inline styles of root element.                            |
+| className | string  | Classes to appear on className attribute of root element. |
 
 ## Sass Mixins
 

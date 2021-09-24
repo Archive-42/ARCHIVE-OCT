@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCFoundation } from "@material/base/foundation";
 
-import {MDCBannerAdapter} from './adapter';
-import {CloseReason, cssClasses, numbers} from './constants';
+import { MDCBannerAdapter } from "./adapter";
+import { CloseReason, cssClasses, numbers } from "./constants";
 
-const {OPENING, OPEN, CLOSING} = cssClasses;
+const { OPENING, OPEN, CLOSING } = cssClasses;
 
 /**
  * Foundation class for banner. Responsibilities include opening and closing the
@@ -55,7 +55,7 @@ export class MDCBannerFoundation extends MDCFoundation<MDCBannerAdapter> {
   private animationTimer = 0;
 
   constructor(adapter?: Partial<MDCBannerAdapter>) {
-    super({...MDCBannerFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCBannerFoundation.defaultAdapter, ...adapter });
   }
 
   destroy() {
@@ -74,7 +74,7 @@ export class MDCBannerFoundation extends MDCFoundation<MDCBannerAdapter> {
     const contentHeight = this.adapter.getContentHeight();
     this.animationFrame = requestAnimationFrame(() => {
       this.adapter.addClass(OPEN);
-      this.adapter.setStyleProperty('height', `${contentHeight}px`);
+      this.adapter.setStyleProperty("height", `${contentHeight}px`);
 
       this.animationTimer = setTimeout(() => {
         this.handleAnimationTimerEnd();
@@ -103,7 +103,7 @@ export class MDCBannerFoundation extends MDCFoundation<MDCBannerAdapter> {
     this.isOpened = false;
     this.adapter.notifyClosing(reason);
     this.adapter.addClass(CLOSING);
-    this.adapter.setStyleProperty('height', '0');
+    this.adapter.setStyleProperty("height", "0");
     this.adapter.removeClass(OPEN);
     this.adapter.removeClass(OPENING);
 
@@ -128,7 +128,7 @@ export class MDCBannerFoundation extends MDCFoundation<MDCBannerAdapter> {
 
   layout() {
     const contentHeight = this.adapter.getContentHeight();
-    this.adapter.setStyleProperty('height', `${contentHeight}px`);
+    this.adapter.setStyleProperty("height", `${contentHeight}px`);
   }
 
   private handleAnimationTimerEnd() {

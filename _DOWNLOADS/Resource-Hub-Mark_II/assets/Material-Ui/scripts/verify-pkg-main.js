@@ -21,11 +21,13 @@
  * THE SOFTWARE.
  */
 
-const fs = require('fs');
-const path = require('path');
-const {sync: globSync} = require('glob');
+const fs = require("fs");
+const path = require("path");
+const { sync: globSync } = require("glob");
 
-const isValidCwd = fs.existsSync('packages') && fs.existsSync(path.join('packages', 'material-components-web', 'dist'));
+const isValidCwd =
+  fs.existsSync("packages") &&
+  fs.existsSync(path.join("packages", "material-components-web", "dist"));
 
 /**
  * Verifies that a file exists at the `packagePropertyKey`. If it does not
@@ -35,34 +37,43 @@ const isValidCwd = fs.existsSync('packages') && fs.existsSync(path.join('package
  * @param {string} packagePropertyKey property key of package.json
  */
 function verifyPath(packageJson, jsonPath, packagePropertyKey) {
-  const isAtRoot = packagePropertyKey === 'module';
-  const packageJsonPropPath = path.join(path.dirname(jsonPath), packageJson[packagePropertyKey]);
+  const isAtRoot = packagePropertyKey === "module";
+  const packageJsonPropPath = path.join(
+    path.dirname(jsonPath),
+    packageJson[packagePropertyKey]
+  );
   let isInvalid = false;
-  if (!isAtRoot && packageJsonPropPath.indexOf('dist') === -1) {
+  if (!isAtRoot && packageJsonPropPath.indexOf("dist") === -1) {
     isInvalid = true;
-    logError(`${jsonPath} ${packagePropertyKey} property does not reference a file under dist`);
-  } else if (isAtRoot && packageJsonPropPath.indexOf('dist') !== -1) {
+    logError(
+      `${jsonPath} ${packagePropertyKey} property does not reference a file under dist`
+    );
+  } else if (isAtRoot && packageJsonPropPath.indexOf("dist") !== -1) {
     isInvalid = true;
-    logError(`${jsonPath} ${packagePropertyKey} property should not reference a file under dist`);
+    logError(
+      `${jsonPath} ${packagePropertyKey} property should not reference a file under dist`
+    );
   }
   if (!fs.existsSync(packageJsonPropPath)) {
     isInvalid = true;
-    logError(`${jsonPath} ${packagePropertyKey} property points to nonexistent ${packageJsonPropPath}`);
+    logError(
+      `${jsonPath} ${packagePropertyKey} property points to nonexistent ${packageJsonPropPath}`
+    );
   }
 
   if (isInvalid) {
     // Multiple checks could have failed, but only increment the counter once for one package.
 
     switch (packagePropertyKey) {
-    case 'main':
-      invalidMains++;
-      break;
-    case 'module':
-      invalidModules++;
-      break;
-    case 'types':
-      invalidTypes++;
-      break;
+      case "main":
+        invalidMains++;
+        break;
+      case "module":
+        invalidModules++;
+        break;
+      case "types":
+        invalidTypes++;
+        break;
     }
   }
 }
@@ -74,8 +85,8 @@ function logError(message) {
 
 if (!isValidCwd) {
   console.error(
-    'Invalid CWD. Please ensure you are running this from the root of the repo, and that you have run ' +
-    '`npm run dist` and `node scripts/cp-pkgs.js`',
+    "Invalid CWD. Please ensure you are running this from the root of the repo, and that you have run " +
+      "`npm run dist` and `node scripts/cp-pkgs.js`"
   );
   process.exit(1);
 }
@@ -83,26 +94,34 @@ if (!isValidCwd) {
 let invalidMains = 0;
 let invalidModules = 0;
 let invalidTypes = 0;
-globSync('packages/*/package.json').forEach((jsonPath) => {
+globSync("packages/*/package.json").forEach((jsonPath) => {
   const packageJson = JSON.parse(fs.readFileSync(jsonPath));
   if (!packageJson.main) {
     return;
   }
-  verifyPath(packageJson, jsonPath, 'main');
-  verifyPath(packageJson, jsonPath, 'module');
-  verifyPath(packageJson, jsonPath, 'types');
+  verifyPath(packageJson, jsonPath, "main");
+  verifyPath(packageJson, jsonPath, "module");
+  verifyPath(packageJson, jsonPath, "types");
 });
 
 if (invalidMains > 0 || invalidModules > 0 || invalidTypes > 0) {
   if (invalidMains > 0) {
-    logError(`${invalidMains} incorrect main property values found; please fix.`);
+    logError(
+      `${invalidMains} incorrect main property values found; please fix.`
+    );
   }
   if (invalidModules > 0) {
-    logError(`${invalidModules} incorrect module property values found; please fix.`);
+    logError(
+      `${invalidModules} incorrect module property values found; please fix.`
+    );
   }
   if (invalidTypes > 0) {
-    logError(`${invalidTypes} incorrect types property values found; please fix.`);
+    logError(
+      `${invalidTypes} incorrect types property values found; please fix.`
+    );
   }
 } else {
-  console.log('Success: All packages with main, module, types properties reference appropriate files!');
+  console.log(
+    "Success: All packages with main, module, types properties reference appropriate files!"
+  );
 }

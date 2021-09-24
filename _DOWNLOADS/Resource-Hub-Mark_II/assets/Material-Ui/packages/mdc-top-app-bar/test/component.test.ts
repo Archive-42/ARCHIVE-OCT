@@ -1,16 +1,14 @@
-
-
-import {MDCRipple} from '../../mdc-ripple/component';
-import {emitEvent} from '../../../testing/dom/events';
-import {createMockFoundation} from '../../../testing/helpers/foundation';
-import {strings} from '../constants';
-import {MDCFixedTopAppBarFoundation} from '../fixed/foundation';
-import {MDCTopAppBar} from '../index';
-import {MDCShortTopAppBarFoundation} from '../short/foundation';
-import {MDCTopAppBarFoundation} from '../standard/foundation';
+import { MDCRipple } from "../../mdc-ripple/component";
+import { emitEvent } from "../../../testing/dom/events";
+import { createMockFoundation } from "../../../testing/helpers/foundation";
+import { strings } from "../constants";
+import { MDCFixedTopAppBarFoundation } from "../fixed/foundation";
+import { MDCTopAppBar } from "../index";
+import { MDCShortTopAppBarFoundation } from "../short/foundation";
+import { MDCTopAppBarFoundation } from "../standard/foundation";
 
 function getFixture(removeIcon = false) {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
     <div>
       <header class="mdc-top-app-bar">
@@ -45,8 +43,9 @@ function getFixture(removeIcon = false) {
   wrapper.removeChild(el);
 
   if (removeIcon) {
-    const icon =
-        el.querySelector(strings.NAVIGATION_ICON_SELECTOR) as HTMLElement;
+    const icon = el.querySelector(
+      strings.NAVIGATION_ICON_SELECTOR
+    ) as HTMLElement;
     (icon.parentNode as HTMLElement).removeChild(icon);
   }
 
@@ -54,13 +53,11 @@ function getFixture(removeIcon = false) {
 }
 
 class FakeRipple {
-  destroy: Function = jasmine.createSpy('.destroy');
-  unbounded: boolean|null = null;
+  destroy: Function = jasmine.createSpy(".destroy");
+  unbounded: boolean | null = null;
 }
 
-function setupTest(
-    removeIcon = false,
-    rippleFactory = () => new FakeRipple()) {
+function setupTest(removeIcon = false, rippleFactory = () => new FakeRipple()) {
   const fixture = getFixture(removeIcon);
   const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
   const mockFoundation = createMockFoundation(MDCTopAppBarFoundation);
@@ -68,230 +65,226 @@ function setupTest(
   mockFoundation.handleTargetScroll = jasmine.createSpy();
   mockFoundation.handleWindowResize = jasmine.createSpy();
 
-  const icon =
-      root.querySelector(strings.NAVIGATION_ICON_SELECTOR) as HTMLElement;
+  const icon = root.querySelector(
+    strings.NAVIGATION_ICON_SELECTOR
+  ) as HTMLElement;
   const component = new MDCTopAppBar(root, mockFoundation, rippleFactory);
 
-  return {root, component, icon, mockFoundation, fixture};
+  return { root, component, icon, mockFoundation, fixture };
 }
 
-describe('MDCTopAppBar', () => {
-  it('attachTo initializes and returns an MDCTopAppBar instance', () => {
-    expect(MDCTopAppBar.attachTo(getFixture()) instanceof MDCTopAppBar)
-        .toBe(true);
+describe("MDCTopAppBar", () => {
+  it("attachTo initializes and returns an MDCTopAppBar instance", () => {
+    expect(MDCTopAppBar.attachTo(getFixture()) instanceof MDCTopAppBar).toBe(
+      true
+    );
   });
 
-  it('constructor instantiates icon ripples for all icons', () => {
-    const rippleFactory = jasmine.createSpy('');
-    rippleFactory.withArgs(jasmine.anything())
-        .and.callFake(() => new FakeRipple());
+  it("constructor instantiates icon ripples for all icons", () => {
+    const rippleFactory = jasmine.createSpy("");
+    rippleFactory
+      .withArgs(jasmine.anything())
+      .and.callFake(() => new FakeRipple());
     setupTest(/** removeIcon */ false, rippleFactory);
   });
 
-  it('constructor does not instantiate ripple for nav icon when not present',
-     () => {
-       const rippleFactory = jasmine.createSpy('');
-       rippleFactory.withArgs(jasmine.anything())
-           .and.callFake(() => new FakeRipple());
-       setupTest(/** removeIcon */ true, rippleFactory);
-     });
+  it("constructor does not instantiate ripple for nav icon when not present", () => {
+    const rippleFactory = jasmine.createSpy("");
+    rippleFactory
+      .withArgs(jasmine.anything())
+      .and.callFake(() => new FakeRipple());
+    setupTest(/** removeIcon */ true, rippleFactory);
+  });
 
-  it('navIcon click event calls #foundation.handleNavigationClick', () => {
-    const {root, mockFoundation} = setupTest();
-    const navIcon =
-        root.querySelector('.mdc-top-app-bar__navigation-icon') as HTMLElement;
-    emitEvent(navIcon, 'click');
-    expect(mockFoundation.handleNavigationClick)
-        .toHaveBeenCalledWith(jasmine.any(Object));
+  it("navIcon click event calls #foundation.handleNavigationClick", () => {
+    const { root, mockFoundation } = setupTest();
+    const navIcon = root.querySelector(
+      ".mdc-top-app-bar__navigation-icon"
+    ) as HTMLElement;
+    emitEvent(navIcon, "click");
+    expect(mockFoundation.handleNavigationClick).toHaveBeenCalledWith(
+      jasmine.any(Object)
+    );
     expect(mockFoundation.handleNavigationClick).toHaveBeenCalledTimes(1);
   });
 
-  it('scroll event triggers #foundation.handleTargetScroll', () => {
-    const {mockFoundation} = setupTest();
-    emitEvent(window, 'scroll');
-    expect(mockFoundation.handleTargetScroll)
-        .toHaveBeenCalledWith(jasmine.any(Object));
+  it("scroll event triggers #foundation.handleTargetScroll", () => {
+    const { mockFoundation } = setupTest();
+    emitEvent(window, "scroll");
+    expect(mockFoundation.handleTargetScroll).toHaveBeenCalledWith(
+      jasmine.any(Object)
+    );
     expect(mockFoundation.handleTargetScroll).toHaveBeenCalledTimes(1);
   });
 
-  it('resize event triggers #foundation.handleWindowResize', () => {
-    const {mockFoundation} = setupTest();
-    emitEvent(window, 'resize');
-    expect(mockFoundation.handleWindowResize)
-        .toHaveBeenCalledWith(jasmine.any(Object));
+  it("resize event triggers #foundation.handleWindowResize", () => {
+    const { mockFoundation } = setupTest();
+    emitEvent(window, "resize");
+    expect(mockFoundation.handleWindowResize).toHaveBeenCalledWith(
+      jasmine.any(Object)
+    );
     expect(mockFoundation.handleWindowResize).toHaveBeenCalledTimes(1);
   });
 
-  it('destroy destroys icon ripples', () => {
-    const {component} = setupTest();
+  it("destroy destroys icon ripples", () => {
+    const { component } = setupTest();
     component.destroy();
     (component as any).iconRipples_.forEach((icon: MDCRipple) => {
       expect(icon.destroy).toHaveBeenCalled();
     });
   });
 
-  it('destroy destroys scroll event handler', () => {
-    const {mockFoundation, component} = setupTest();
+  it("destroy destroys scroll event handler", () => {
+    const { mockFoundation, component } = setupTest();
     component.destroy();
-    emitEvent(window, 'scroll');
-    expect(mockFoundation.handleTargetScroll)
-        .not.toHaveBeenCalledWith(jasmine.any(Object));
+    emitEvent(window, "scroll");
+    expect(mockFoundation.handleTargetScroll).not.toHaveBeenCalledWith(
+      jasmine.any(Object)
+    );
   });
 
-  it('destroy destroys resize event handler', () => {
-    const {mockFoundation, component} = setupTest();
+  it("destroy destroys resize event handler", () => {
+    const { mockFoundation, component } = setupTest();
     component.destroy();
-    emitEvent(window, 'resize');
-    expect(mockFoundation.handleWindowResize)
-        .not.toHaveBeenCalledWith(jasmine.any(Object));
+    emitEvent(window, "resize");
+    expect(mockFoundation.handleWindowResize).not.toHaveBeenCalledWith(
+      jasmine.any(Object)
+    );
   });
 
-  it('destroy destroys handleNavigationClick handler', () => {
-    const {mockFoundation, component, root} = setupTest();
-    const navIcon =
-        root.querySelector('.mdc-top-app-bar__navigation-icon') as HTMLElement;
+  it("destroy destroys handleNavigationClick handler", () => {
+    const { mockFoundation, component, root } = setupTest();
+    const navIcon = root.querySelector(
+      ".mdc-top-app-bar__navigation-icon"
+    ) as HTMLElement;
     component.destroy();
-    emitEvent(navIcon, 'resize');
-    expect(mockFoundation.handleNavigationClick)
-        .not.toHaveBeenCalledWith(jasmine.any(Object));
+    emitEvent(navIcon, "resize");
+    expect(mockFoundation.handleNavigationClick).not.toHaveBeenCalledWith(
+      jasmine.any(Object)
+    );
   });
 
-  it('#setScrollTarget deregisters and registers scroll handler on provided target',
-     () => {
-       const {component} = setupTest();
-       const fakeTarget1 = document.createElement('div');
-       const fakeTarget2 = document.createElement('div');
+  it("#setScrollTarget deregisters and registers scroll handler on provided target", () => {
+    const { component } = setupTest();
+    const fakeTarget1 = document.createElement("div");
+    const fakeTarget2 = document.createElement("div");
 
-       component.setScrollTarget(fakeTarget1);
-       expect((component as any).scrollTarget_).toEqual(fakeTarget1);
+    component.setScrollTarget(fakeTarget1);
+    expect((component as any).scrollTarget_).toEqual(fakeTarget1);
 
-       component.setScrollTarget(fakeTarget2);
+    component.setScrollTarget(fakeTarget2);
 
-       expect((component as any).scrollTarget_).toEqual(fakeTarget2);
-     });
-
-  it('getDefaultFoundation returns the appropriate foundation for default',
-     () => {
-       const fixture = getFixture();
-       const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
-       const component = new MDCTopAppBar(
-           root, undefined, () => new FakeRipple());
-       expect((component as any).foundation instanceof MDCTopAppBarFoundation)
-           .toBe(true);
-       expect(
-           (component as any).foundation instanceof
-           MDCShortTopAppBarFoundation)
-           .toBe(false);
-       expect(
-           (component as any).foundation instanceof
-           MDCFixedTopAppBarFoundation)
-           .toBe(false);
-     });
-
-  it('getDefaultFoundation returns the appropriate foundation for fixed',
-     () => {
-       const fixture = getFixture();
-       const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
-       root.classList.add(MDCTopAppBarFoundation.cssClasses.FIXED_CLASS);
-       const component = new MDCTopAppBar(
-           root, undefined, () => new FakeRipple());
-       expect(
-           (component as any).foundation instanceof
-           MDCShortTopAppBarFoundation)
-           .toBe(false);
-       expect(
-           (component as any).foundation instanceof
-           MDCFixedTopAppBarFoundation)
-           .toBe(true);
-     });
-
-  it('getDefaultFoundation returns the appropriate foundation for short',
-     () => {
-       const fixture = getFixture();
-       const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
-       root.classList.add(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS);
-       const component = new MDCTopAppBar(
-           root, undefined, () => new FakeRipple());
-       expect(
-           (component as any).foundation instanceof
-           MDCShortTopAppBarFoundation)
-           .toBe(true);
-       expect(
-           (component as any).foundation instanceof
-           MDCFixedTopAppBarFoundation)
-           .toBe(false);
-     });
-
-  it('adapter#hasClass returns true if the root element has specified class',
-     () => {
-       const {root, component} = setupTest();
-       root.classList.add('foo');
-       expect(
-           (component.getDefaultFoundation() as any).adapter.hasClass('foo'))
-           .toBe(true);
-     });
-
-  it('adapter#hasClass returns false if the root element does not have specified class',
-     () => {
-       const {component} = setupTest();
-       expect(
-           (component.getDefaultFoundation() as any).adapter.hasClass('foo'))
-           .toBe(false);
-     });
-
-  it('adapter#addClass adds a class to the root element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.addClass('foo');
-    expect(root.classList.contains('foo')).toBe(true);
+    expect((component as any).scrollTarget_).toEqual(fakeTarget2);
   });
 
-  it('adapter#removeClass removes a class from the root element', () => {
-    const {root, component} = setupTest();
-    root.classList.add('foo');
-    (component.getDefaultFoundation() as any).adapter.removeClass('foo');
-    expect(root.classList.contains('foo')).toBe(false);
-  });
-
-  it('adapter#setStyle sets a style attribute on the root element', () => {
-    const {root, component} = setupTest();
-    expect(root.style.getPropertyValue('top') === '1px').toBe(false);
-    (component.getDefaultFoundation() as any).adapter.setStyle('top', '1px');
-    expect(root.style.getPropertyValue('top') === '1px').toBe(true);
-  });
-
-  it('adapter#getViewportScrollY returns scroll distance', () => {
-    const {component} = setupTest();
+  it("getDefaultFoundation returns the appropriate foundation for default", () => {
+    const fixture = getFixture();
+    const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
+    const component = new MDCTopAppBar(root, undefined, () => new FakeRipple());
     expect(
-        (component.getDefaultFoundation() as any).adapter.getViewportScrollY())
-        .toEqual(window.pageYOffset);
+      (component as any).foundation instanceof MDCTopAppBarFoundation
+    ).toBe(true);
+    expect(
+      (component as any).foundation instanceof MDCShortTopAppBarFoundation
+    ).toBe(false);
+    expect(
+      (component as any).foundation instanceof MDCFixedTopAppBarFoundation
+    ).toBe(false);
   });
 
-  it('adapter#getViewportScrollY returns scroll distance when scrollTarget_ is not window',
-     () => {
-       const {component} = setupTest();
-       const mockContent = {addEventListener: () => {}, scrollTop: 20} as any;
-       component.setScrollTarget(mockContent);
-       expect((component.getDefaultFoundation() as any)
-                  .adapter.getViewportScrollY())
-           .toEqual(mockContent.scrollTop);
-     });
+  it("getDefaultFoundation returns the appropriate foundation for fixed", () => {
+    const fixture = getFixture();
+    const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
+    root.classList.add(MDCTopAppBarFoundation.cssClasses.FIXED_CLASS);
+    const component = new MDCTopAppBar(root, undefined, () => new FakeRipple());
+    expect(
+      (component as any).foundation instanceof MDCShortTopAppBarFoundation
+    ).toBe(false);
+    expect(
+      (component as any).foundation instanceof MDCFixedTopAppBarFoundation
+    ).toBe(true);
+  });
 
-  it('adapter#getTotalActionItems returns the number of action items on the opposite side of the menu',
-     () => {
-       const {root, component} = setupTest();
-       const adapterReturn = (component.getDefaultFoundation() as any)
-                                 .adapter.getTotalActionItems();
-       const actual =
-           root.querySelectorAll(strings.ACTION_ITEM_SELECTOR).length;
-       expect(adapterReturn).toEqual(actual);
-     });
+  it("getDefaultFoundation returns the appropriate foundation for short", () => {
+    const fixture = getFixture();
+    const root = fixture.querySelector(strings.ROOT_SELECTOR) as HTMLElement;
+    root.classList.add(MDCTopAppBarFoundation.cssClasses.SHORT_CLASS);
+    const component = new MDCTopAppBar(root, undefined, () => new FakeRipple());
+    expect(
+      (component as any).foundation instanceof MDCShortTopAppBarFoundation
+    ).toBe(true);
+    expect(
+      (component as any).foundation instanceof MDCFixedTopAppBarFoundation
+    ).toBe(false);
+  });
 
-  it('adapter#notifyNavigationIconClicked emits the NAVIGATION_EVENT', () => {
-    const {component} = setupTest();
-    const callback = jasmine.createSpy('');
+  it("adapter#hasClass returns true if the root element has specified class", () => {
+    const { root, component } = setupTest();
+    root.classList.add("foo");
+    expect(
+      (component.getDefaultFoundation() as any).adapter.hasClass("foo")
+    ).toBe(true);
+  });
+
+  it("adapter#hasClass returns false if the root element does not have specified class", () => {
+    const { component } = setupTest();
+    expect(
+      (component.getDefaultFoundation() as any).adapter.hasClass("foo")
+    ).toBe(false);
+  });
+
+  it("adapter#addClass adds a class to the root element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.addClass("foo");
+    expect(root.classList.contains("foo")).toBe(true);
+  });
+
+  it("adapter#removeClass removes a class from the root element", () => {
+    const { root, component } = setupTest();
+    root.classList.add("foo");
+    (component.getDefaultFoundation() as any).adapter.removeClass("foo");
+    expect(root.classList.contains("foo")).toBe(false);
+  });
+
+  it("adapter#setStyle sets a style attribute on the root element", () => {
+    const { root, component } = setupTest();
+    expect(root.style.getPropertyValue("top") === "1px").toBe(false);
+    (component.getDefaultFoundation() as any).adapter.setStyle("top", "1px");
+    expect(root.style.getPropertyValue("top") === "1px").toBe(true);
+  });
+
+  it("adapter#getViewportScrollY returns scroll distance", () => {
+    const { component } = setupTest();
+    expect(
+      (component.getDefaultFoundation() as any).adapter.getViewportScrollY()
+    ).toEqual(window.pageYOffset);
+  });
+
+  it("adapter#getViewportScrollY returns scroll distance when scrollTarget_ is not window", () => {
+    const { component } = setupTest();
+    const mockContent = { addEventListener: () => {}, scrollTop: 20 } as any;
+    component.setScrollTarget(mockContent);
+    expect(
+      (component.getDefaultFoundation() as any).adapter.getViewportScrollY()
+    ).toEqual(mockContent.scrollTop);
+  });
+
+  it("adapter#getTotalActionItems returns the number of action items on the opposite side of the menu", () => {
+    const { root, component } = setupTest();
+    const adapterReturn = (
+      component.getDefaultFoundation() as any
+    ).adapter.getTotalActionItems();
+    const actual = root.querySelectorAll(strings.ACTION_ITEM_SELECTOR).length;
+    expect(adapterReturn).toEqual(actual);
+  });
+
+  it("adapter#notifyNavigationIconClicked emits the NAVIGATION_EVENT", () => {
+    const { component } = setupTest();
+    const callback = jasmine.createSpy("");
     component.listen(strings.NAVIGATION_EVENT, callback);
-    (component.getDefaultFoundation() as any)
-        .adapter.notifyNavigationIconClicked();
+    (
+      component.getDefaultFoundation() as any
+    ).adapter.notifyNavigationIconClicked();
     expect(callback).toHaveBeenCalledWith(jasmine.any(Object));
     expect(callback).toHaveBeenCalledTimes(1);
   });

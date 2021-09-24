@@ -6,7 +6,7 @@ module.exports = class SQLClient {
   constructor(databaseId, containerId) {
     this.client = new CosmosClient({
       endpoint: process.env.COSMOSDB_URI,
-      key: process.env.COSMOSDB_PRIMARY_KEY
+      key: process.env.COSMOSDB_PRIMARY_KEY,
     });
 
     this.databaseId = databaseId;
@@ -18,12 +18,12 @@ module.exports = class SQLClient {
 
   async connect() {
     const dbResponse = await this.client.databases.createIfNotExists({
-      id: this.databaseId
+      id: this.databaseId,
     });
     this.database = dbResponse.database;
 
     const containerResponse = await this.database.containers.createIfNotExists({
-      id: this.containerId
+      id: this.containerId,
     });
     this.container = containerResponse.container;
   }

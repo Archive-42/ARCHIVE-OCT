@@ -21,12 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCTextFieldHelperTextAdapter} from './adapter';
-import {MDCTextFieldHelperTextFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCTextFieldHelperTextAdapter } from "./adapter";
+import { MDCTextFieldHelperTextFoundation } from "./foundation";
 
-export type MDCTextFieldHelperTextFactory =
-    (el: Element, foundation?: MDCTextFieldHelperTextFoundation) => MDCTextFieldHelperText;
+export type MDCTextFieldHelperTextFactory = (
+  el: Element,
+  foundation?: MDCTextFieldHelperTextFoundation
+) => MDCTextFieldHelperText;
 
 export class MDCTextFieldHelperText extends MDCComponent<MDCTextFieldHelperTextFoundation> {
   static attachTo(root: Element): MDCTextFieldHelperText {

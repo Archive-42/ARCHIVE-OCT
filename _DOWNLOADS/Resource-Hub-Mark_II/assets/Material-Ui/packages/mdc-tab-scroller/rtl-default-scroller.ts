@@ -21,13 +21,16 @@
  * THE SOFTWARE.
  */
 
-import {MDCTabScrollerRTL} from './rtl-scroller';
-import {MDCTabScrollerAnimation, MDCTabScrollerHorizontalEdges} from './types';
+import { MDCTabScrollerRTL } from "./rtl-scroller";
+import {
+  MDCTabScrollerAnimation,
+  MDCTabScrollerHorizontalEdges,
+} from "./types";
 
 export class MDCTabScrollerRTLDefault extends MDCTabScrollerRTL {
   getScrollPositionRTL(): number {
     const currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
-    const {right} = this.calculateScrollEdges_();
+    const { right } = this.calculateScrollEdges_();
     // Scroll values on most browsers are ints instead of floats so we round
     return Math.round(right - currentScrollLeft);
   }
@@ -44,7 +47,9 @@ export class MDCTabScrollerRTLDefault extends MDCTabScrollerRTL {
 
   incrementScrollRTL(scrollX: number): MDCTabScrollerAnimation {
     const currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
-    const clampedScrollLeft = this.clampScrollValue_(currentScrollLeft - scrollX);
+    const clampedScrollLeft = this.clampScrollValue_(
+      currentScrollLeft - scrollX
+    );
     return {
       finalScrollPosition: clampedScrollLeft,
       scrollDelta: clampedScrollLeft - currentScrollLeft,

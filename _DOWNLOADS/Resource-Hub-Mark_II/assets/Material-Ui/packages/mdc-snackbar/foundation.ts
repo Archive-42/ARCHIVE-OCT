@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCSnackbarAdapter} from './adapter';
-import {cssClasses, numbers, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCSnackbarAdapter } from "./adapter";
+import { cssClasses, numbers, strings } from "./constants";
 
-const {OPENING, OPEN, CLOSING} = cssClasses;
-const {REASON_ACTION, REASON_DISMISS} = strings;
+const { OPENING, OPEN, CLOSING } = cssClasses;
+const { REASON_ACTION, REASON_DISMISS } = strings;
 
 export class MDCSnackbarFoundation extends MDCFoundation<MDCSnackbarAdapter> {
   static get cssClasses() {
@@ -61,7 +61,7 @@ export class MDCSnackbarFoundation extends MDCFoundation<MDCSnackbarAdapter> {
   private closeOnEscape_ = true;
 
   constructor(adapter?: Partial<MDCSnackbarAdapter>) {
-    super({...MDCSnackbarFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCSnackbarFoundation.defaultAdapter, ...adapter });
   }
 
   destroy() {
@@ -105,7 +105,7 @@ export class MDCSnackbarFoundation extends MDCFoundation<MDCSnackbarAdapter> {
    *     `event.detail.reason` property. Standard values are REASON_ACTION and REASON_DISMISS, but custom
    *     client-specific values may also be used if desired.
    */
-  close(reason = '') {
+  close(reason = "") {
     if (!this.isOpen_) {
       // Avoid redundant close calls (and events), e.g. repeated interactions as the snackbar is animating closed
       return;
@@ -142,7 +142,10 @@ export class MDCSnackbarFoundation extends MDCFoundation<MDCSnackbarAdapter> {
     const maxValue = numbers.MAX_AUTO_DISMISS_TIMEOUT_MS;
     const indeterminateValue = numbers.INDETERMINATE;
 
-    if (timeoutMs === numbers.INDETERMINATE || (timeoutMs <= maxValue && timeoutMs >= minValue)) {
+    if (
+      timeoutMs === numbers.INDETERMINATE ||
+      (timeoutMs <= maxValue && timeoutMs >= minValue)
+    ) {
       this.autoDismissTimeoutMs_ = timeoutMs;
     } else {
       throw new Error(`
@@ -160,7 +163,7 @@ export class MDCSnackbarFoundation extends MDCFoundation<MDCSnackbarAdapter> {
   }
 
   handleKeyDown(evt: KeyboardEvent) {
-    const isEscapeKey = evt.key === 'Escape' || evt.keyCode === 27;
+    const isEscapeKey = evt.key === "Escape" || evt.keyCode === 27;
     if (isEscapeKey && this.getCloseOnEscape()) {
       this.close(REASON_DISMISS);
     }

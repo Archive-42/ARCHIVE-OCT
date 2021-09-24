@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {MDCNotchedOutlineFoundation} from '@material/notched-outline/foundation';
-import {MDCNotchedOutlineAdapter} from '@material/notched-outline/adapter';
-import {MDCFloatingLabelFoundation} from '@material/floating-label/foundation';
-const {cssClasses} = MDCNotchedOutlineFoundation;
+import React from "react";
+import classnames from "classnames";
+import { MDCNotchedOutlineFoundation } from "@material/notched-outline/foundation";
+import { MDCNotchedOutlineAdapter } from "@material/notched-outline/adapter";
+import { MDCFloatingLabelFoundation } from "@material/floating-label/foundation";
+const { cssClasses } = MDCNotchedOutlineFoundation;
 
 export interface NotchedOutlineProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -46,7 +46,7 @@ export default class NotchedOutline extends React.Component<
   notchedEl = React.createRef<HTMLDivElement>();
 
   static defaultProps: Partial<NotchedOutlineProps> = {
-    className: '',
+    className: "",
     notchWidth: 0,
     notch: false,
   };
@@ -62,11 +62,11 @@ export default class NotchedOutline extends React.Component<
     this.notch();
 
     if (this.label) {
-      this.label.style.transitionDuration = '0s';
+      this.label.style.transitionDuration = "0s";
       this.addClass(cssClasses.OUTLINE_UPGRADED);
       requestAnimationFrame(() => {
         if (this.label) {
-          this.label.style.transitionDuration = '';
+          this.label.style.transitionDuration = "";
         }
       });
     }
@@ -88,9 +88,9 @@ export default class NotchedOutline extends React.Component<
   }
 
   get classes() {
-    const {classList} = this.state;
-    const {className} = this.props;
-    return classnames('mdc-notched-outline', Array.from(classList), className, {
+    const { classList } = this.state;
+    const { className } = this.props;
+    return classnames("mdc-notched-outline", Array.from(classList), className, {
       [cssClasses.NO_LABEL]: !this.label,
     });
   }
@@ -111,13 +111,13 @@ export default class NotchedOutline extends React.Component<
         this.setState((prevState: NotchedOutlineState) => {
           const classList = new Set(prevState.classList);
           classList.delete(className);
-          return {classList};
+          return { classList };
         });
       },
       setNotchWidthProperty: (foundationNotchWidth) =>
-        this.setState({foundationNotchWidth}),
+        this.setState({ foundationNotchWidth }),
       removeNotchWidthProperty: () =>
-        this.setState({foundationNotchWidth: undefined}),
+        this.setState({ foundationNotchWidth: undefined }),
     };
   }
 
@@ -125,12 +125,12 @@ export default class NotchedOutline extends React.Component<
     this.setState((prevState: NotchedOutlineState) => {
       const classList = new Set(prevState.classList);
       classList.add(className);
-      return {classList};
+      return { classList };
     });
   };
 
   notch = () => {
-    const {notchWidth, notch} = this.props;
+    const { notchWidth, notch } = this.props;
     if (!this.foundation) return;
     if (notch) {
       this.foundation.notch(notchWidth!);
@@ -149,7 +149,7 @@ export default class NotchedOutline extends React.Component<
       /* eslint-enable @typescript-eslint/no-unused-vars */
       ...otherProps
     } = this.props;
-    const {foundationNotchWidth} = this.state;
+    const { foundationNotchWidth } = this.state;
 
     const notchStyle = {
       width: foundationNotchWidth ? `${foundationNotchWidth}px` : undefined,
@@ -157,13 +157,13 @@ export default class NotchedOutline extends React.Component<
 
     return (
       <div className={this.classes} ref={this.notchedEl} {...otherProps}>
-        <div className='mdc-notched-outline__leading' />
+        <div className="mdc-notched-outline__leading" />
         {children ? (
-          <div className='mdc-notched-outline__notch' style={notchStyle}>
+          <div className="mdc-notched-outline__notch" style={notchStyle}>
             {React.Children.only(children)}
           </div>
         ) : null}
-        <div className='mdc-notched-outline__trailing' />
+        <div className="mdc-notched-outline__trailing" />
       </div>
     );
   }

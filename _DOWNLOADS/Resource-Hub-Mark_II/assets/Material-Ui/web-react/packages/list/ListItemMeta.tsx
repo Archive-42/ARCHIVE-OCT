@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export interface ListItemMetaProps {
   className?: string;
@@ -33,18 +33,18 @@ export interface ListItemMetaProps {
 const ListItemMeta: React.FunctionComponent<ListItemMetaProps> = ({
   tabIndex, // eslint-disable-line @typescript-eslint/no-unused-vars
   meta,
-  className = '',
+  className = "",
   ...otherProps
 }) => {
   let metaElement: React.ReactElement<any>;
-  if (typeof meta === 'string') {
+  if (typeof meta === "string") {
     metaElement = <span>{meta}</span>;
   } else {
     metaElement = meta;
   }
   const metaProps = {
     className: classnames(
-      'mdc-list-item__meta',
+      "mdc-list-item__meta",
       className,
       metaElement.props.className
     ),

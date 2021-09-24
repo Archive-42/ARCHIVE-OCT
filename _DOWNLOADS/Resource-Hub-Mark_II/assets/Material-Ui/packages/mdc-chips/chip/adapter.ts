@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {EventSource} from './constants';
+import { EventSource } from "./constants";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -64,7 +64,7 @@ export interface MDCChipAdapter {
   /**
    * @return the attribute string value if present, otherwise null
    */
-  getAttribute(attr: string): string|null;
+  getAttribute(attr: string): string | null;
 
   /**
    * Emits a custom "MDCChip:interaction" event denoting the chip has been
@@ -86,7 +86,7 @@ export interface MDCChipAdapter {
   /**
    * Emits a custom event "MDCChip:removal" denoting the chip will be removed.
    */
-  notifyRemoval(removedAnnouncement: string|null): void;
+  notifyRemoval(removedAnnouncement: string | null): void;
 
   /**
    * Emits a custom event "MDCChip:navigation" denoting a focus navigation event.

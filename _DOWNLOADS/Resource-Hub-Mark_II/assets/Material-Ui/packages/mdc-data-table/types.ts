@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {SortValue} from './constants';
+import { SortValue } from "./constants";
 
 export interface MDCDataTableRowSelectionChangedEventDetail {
   rowIndex: number;
@@ -35,7 +35,7 @@ export interface MDCDataTableRowSelectionChangedEventDetail {
  * sortable header cell.
  */
 export interface SortActionEventData {
-  columnId: string|null;
+  columnId: string | null;
   columnIndex: number;
   headerCell: HTMLElement;
 }
@@ -45,7 +45,7 @@ export interface SortActionEventData {
  * used to trigger DOM event by component.
  */
 export interface SortActionEventDetail {
-  columnId: string|null;
+  columnId: string | null;
   columnIndex: number;
   headerCell: HTMLElement;
   sortValue: SortValue;

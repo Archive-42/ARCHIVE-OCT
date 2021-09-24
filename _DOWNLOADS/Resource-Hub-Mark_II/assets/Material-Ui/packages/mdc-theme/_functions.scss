@@ -21,5 +21,6 @@
 //
 
 /// @deprecated Import '_color.scss' and '_theme.scss' Sass modules instead.
-@forward './theme-color' show luminance, contrast, tone, contrast-tone, color-hash;
-@forward './theme' show deep-get;
+@forward "./theme-color" show luminance, contrast, tone, contrast-tone,
+  color-hash;
+@forward "./theme" show deep-get;

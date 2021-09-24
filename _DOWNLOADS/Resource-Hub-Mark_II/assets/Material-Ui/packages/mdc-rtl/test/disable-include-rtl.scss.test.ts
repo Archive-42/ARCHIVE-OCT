@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-describe('disable-include-rtl.test.scss', () => {
-  it('emits no [dir=rtl] selectors when `include` is disabled (false)', () => {
-    const filePath = path.join(__dirname, 'disable-include-rtl.test.css');
-    const css = fs.readFileSync(filePath, 'utf8').trim();
-    expect(css).not.toContain('[dir=rtl]');
+describe("disable-include-rtl.test.scss", () => {
+  it("emits no [dir=rtl] selectors when `include` is disabled (false)", () => {
+    const filePath = path.join(__dirname, "disable-include-rtl.test.css");
+    const css = fs.readFileSync(filePath, "utf8").trim();
+    expect(css).not.toContain("[dir=rtl]");
   });
 });

@@ -28,15 +28,12 @@
  * See https://github.com/isaacs/node-glob for supported glob syntax.
  */
 
-'use strict';
+"use strict";
 
-const glob = require('glob');
+const glob = require("glob");
 
 class Globber {
-  constructor({
-    pathResolver,
-    globLib = glob,
-  } = {}) {
+  constructor({ pathResolver, globLib = glob } = {}) {
     /** @type {!PathResolver} */
     this.pathResolver_ = pathResolver;
 
@@ -51,7 +48,9 @@ class Globber {
    * @return {!Array<string>} Array of absolute paths to all files that match the full glob pattern.
    */
   getAbsolutePaths(...pathPatternParts) {
-    return this.globLib_.sync(this.pathResolver_.getAbsolutePath(...pathPatternParts));
+    return this.globLib_.sync(
+      this.pathResolver_.getAbsolutePath(...pathPatternParts)
+    );
   }
 
   /**
@@ -79,22 +78,34 @@ class Globber {
    * @param {string=} inputDirectory
    * @return {!Object<string, string>} Map of chunk names to their absolute filesystem paths
    */
-  getChunks({filePathPattern, inputDirectory = this.pathResolver_.getProjectRootAbsolutePath()}) {
+  getChunks({
+    filePathPattern,
+    inputDirectory = this.pathResolver_.getProjectRootAbsolutePath(),
+  }) {
     const chunks = {};
-    const inputDirectoryAbsolutePath = this.pathResolver_.getAbsolutePath(inputDirectory);
+    const inputDirectoryAbsolutePath =
+      this.pathResolver_.getAbsolutePath(inputDirectory);
 
-    this.getAbsolutePaths(inputDirectory, filePathPattern).forEach((absolutePathToInputFile) => {
-      const relativePath = this.pathResolver_.getRelativePath(absolutePathToInputFile, inputDirectoryAbsolutePath);
-      const relativePathWithoutExtension = this.pathResolver_.removeFileExtension(relativePath);
-      const filename = this.pathResolver_.getFilename(absolutePathToInputFile);
+    this.getAbsolutePaths(inputDirectory, filePathPattern).forEach(
+      (absolutePathToInputFile) => {
+        const relativePath = this.pathResolver_.getRelativePath(
+          absolutePathToInputFile,
+          inputDirectoryAbsolutePath
+        );
+        const relativePathWithoutExtension =
+          this.pathResolver_.removeFileExtension(relativePath);
+        const filename = this.pathResolver_.getFilename(
+          absolutePathToInputFile
+        );
 
-      // Ignore import-only file
-      if (filename.charAt(0) === '_') {
-        return;
+        // Ignore import-only file
+        if (filename.charAt(0) === "_") {
+          return;
+        }
+
+        chunks[relativePathWithoutExtension] = absolutePathToInputFile;
       }
-
-      chunks[relativePathWithoutExtension] = absolutePathToInputFile;
-    });
+    );
 
     return chunks;
   }

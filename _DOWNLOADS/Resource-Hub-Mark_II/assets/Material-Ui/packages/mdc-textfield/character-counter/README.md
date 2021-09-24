@@ -33,32 +33,34 @@ Character counter is used if there is a character limit. It displays the ratio o
 ### JavaScript instantiation
 
 ```js
-import {MDCTextFieldCharacterCounter} from '@material/textfield/character-counter';
+import { MDCTextFieldCharacterCounter } from "@material/textfield/character-counter";
 
-const characterCounter = new MDCTextFieldCharacterCounter(document.querySelector('.mdc-text-field-character-counter'));
+const characterCounter = new MDCTextFieldCharacterCounter(
+  document.querySelector(".mdc-text-field-character-counter")
+);
 ```
 
 ## API
 
 ### CSS classes
 
-CSS Class | Description
---- | ---
-`mdc-text-field-character-counter` | Mandatory.
+| CSS Class                          | Description |
+| ---------------------------------- | ----------- |
+| `mdc-text-field-character-counter` | Mandatory.  |
 
 ### Sass mixins
 
-Mixin | Description
---- | ---
-`mdc-text-field-character-counter-color($color)` | Customizes the color of the character counter associated with an enabled text field.
-`mdc-text-field-disabled-character-counter-color($color)` | Customizes the color of the character counter associated with a disabled text field.
-`mdc-text-field-character-counter-position($xOffset, $yOffset)` | Positions the character counter element inside text field. Used only for textarea variant.
+| Mixin                                                           | Description                                                                                |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `mdc-text-field-character-counter-color($color)`                | Customizes the color of the character counter associated with an enabled text field.       |
+| `mdc-text-field-disabled-character-counter-color($color)`       | Customizes the color of the character counter associated with a disabled text field.       |
+| `mdc-text-field-character-counter-position($xOffset, $yOffset)` | Positions the character counter element inside text field. Used only for textarea variant. |
 
 ## `MDCTextFieldCharacterCounter` properties and methods
 
-Property | Value Type | Description
---- | --- | ---
-`foundation` | `MDCTextFieldCharacterCounterFoundation` | Returns the character counter's foundation. This allows the parent `MDCTextField` component to access the public methods on the `MDCTextFieldCharacterCounterFoundation` class.
+| Property     | Value Type                               | Description                                                                                                                                                                     |
+| ------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `foundation` | `MDCTextFieldCharacterCounterFoundation` | Returns the character counter's foundation. This allows the parent `MDCTextField` component to access the public methods on the `MDCTextFieldCharacterCounterFoundation` class. |
 
 ## Usage within frameworks
 
@@ -66,12 +68,12 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCTextFieldCharacterCounterAdapter`
 
-Method Signature | Description
---- | ---
-`setContent(content: string) => void` | Sets the text content of character counter element.
+| Method Signature                      | Description                                         |
+| ------------------------------------- | --------------------------------------------------- |
+| `setContent(content: string) => void` | Sets the text content of character counter element. |
 
 ### `MDCTextFieldCharacterCounterFoundation`
 
-Method Signature | Description
---- | ---
-`setCounterValue(currentLength: number, maxLength: number) => void` | Sets the character counter values including characters used and total character limit.
+| Method Signature                                                    | Description                                                                            |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `setCounterValue(currentLength: number, maxLength: number) => void` | Sets the character counter values including characters used and total character limit. |

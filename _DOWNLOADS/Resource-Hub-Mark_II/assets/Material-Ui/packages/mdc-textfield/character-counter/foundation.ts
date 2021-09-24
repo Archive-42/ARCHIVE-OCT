@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCTextFieldCharacterCounterAdapter} from './adapter';
-import {cssClasses, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCTextFieldCharacterCounterAdapter } from "./adapter";
+import { cssClasses, strings } from "./constants";
 
 export class MDCTextFieldCharacterCounterFoundation extends MDCFoundation<MDCTextFieldCharacterCounterAdapter> {
   static get cssClasses() {
@@ -44,7 +44,10 @@ export class MDCTextFieldCharacterCounterFoundation extends MDCFoundation<MDCTex
   }
 
   constructor(adapter?: Partial<MDCTextFieldCharacterCounterAdapter>) {
-    super({...MDCTextFieldCharacterCounterFoundation.defaultAdapter, ...adapter});
+    super({
+      ...MDCTextFieldCharacterCounterFoundation.defaultAdapter,
+      ...adapter,
+    });
   }
 
   setCounterValue(currentLength: number, maxLength: number) {

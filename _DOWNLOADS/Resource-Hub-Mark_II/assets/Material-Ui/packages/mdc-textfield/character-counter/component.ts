@@ -21,12 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {MDCTextFieldCharacterCounterAdapter} from './adapter';
-import {MDCTextFieldCharacterCounterFoundation} from './foundation';
+import { MDCComponent } from "@material/base/component";
+import { MDCTextFieldCharacterCounterAdapter } from "./adapter";
+import { MDCTextFieldCharacterCounterFoundation } from "./foundation";
 
-export type MDCTextFieldCharacterCounterFactory =
-    (el: Element, foundation?: MDCTextFieldCharacterCounterFoundation) => MDCTextFieldCharacterCounter;
+export type MDCTextFieldCharacterCounterFactory = (
+  el: Element,
+  foundation?: MDCTextFieldCharacterCounterFoundation
+) => MDCTextFieldCharacterCounter;
 
 export class MDCTextFieldCharacterCounter extends MDCComponent<MDCTextFieldCharacterCounterFoundation> {
   static attachTo(root: Element): MDCTextFieldCharacterCounter {

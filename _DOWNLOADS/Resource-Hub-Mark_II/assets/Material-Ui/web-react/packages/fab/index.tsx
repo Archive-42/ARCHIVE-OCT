@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
+} from "@material/react-ripple";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 export interface FabProps
   extends InjectedProps<HTMLButtonElement>,
@@ -45,7 +45,7 @@ export interface FabProps
 
 const Icon: React.FunctionComponent<{
   icon?: React.ReactElement<HTMLElement>;
-}> = ({icon}) => {
+}> = ({ icon }) => {
   if (!icon) {
     return null;
   }
@@ -55,7 +55,7 @@ const Icon: React.FunctionComponent<{
   return React.cloneElement(icon, updatedProps);
 };
 
-const TextLabel: React.FunctionComponent<{textLabel: string}> = ({
+const TextLabel: React.FunctionComponent<{ textLabel: string }> = ({
   textLabel,
 }) => {
   if (textLabel.length === 0) {
@@ -70,8 +70,8 @@ export const Fab: React.FunctionComponent<
   exited = false,
   mini = false,
   icon,
-  textLabel = '',
-  className = '',
+  textLabel = "",
+  className = "",
   initRipple = () => {},
   unbounded, // eslint-disable-line @typescript-eslint/no-unused-vars
   ...otherProps

@@ -13,20 +13,22 @@ npm install @material/react-notched-outline
 ### Styles
 
 with Sass:
+
 ```js
-import '@material/react-notched-outline/index.scss';
+import "@material/react-notched-outline/index.scss";
 ```
 
 with CSS:
+
 ```js
-import '@material/react-notched-outline/dist/notched-outline.css';
+import "@material/react-notched-outline/dist/notched-outline.css";
 ```
 
 ### Javascript Instantiation
 
 ```js
-import NotchedOutline from '@material/react-notched-outline';
-import FloatingLabel from '@material/react-floating-label';
+import NotchedOutline from "@material/react-notched-outline";
+import FloatingLabel from "@material/react-floating-label";
 
 const MyComponent = () => {
   return (
@@ -34,13 +36,13 @@ const MyComponent = () => {
       <FloatingLabel float>My Label</FloatingLabel>
     </NotchedOutline>
   );
-}
+};
 ```
 
 #### Variant with No Notch
 
 ```js
-import NotchedOutline from '@material/react-notched-outline';
+import NotchedOutline from "@material/react-notched-outline";
 
 const MyComponent = () => {
   return (
@@ -49,16 +51,16 @@ const MyComponent = () => {
       <NotchedOutline />
     </React.Fragment>
   );
-}
+};
 ```
 
 ## Props
 
-Prop Name | Type | Description
---- | --- | ---
-className | String | Classes to be applied to the root element.
-notch | Boolean | Toggles between notched outline and idle outline state.
-notchWidth | Number | Width of the notch in the outline.
+| Prop Name  | Type    | Description                                             |
+| ---------- | ------- | ------------------------------------------------------- |
+| className  | String  | Classes to be applied to the root element.              |
+| notch      | Boolean | Toggles between notched outline and idle outline state. |
+| notchWidth | Number  | Width of the notch in the outline.                      |
 
 ## Sass Mixins
 

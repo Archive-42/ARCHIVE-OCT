@@ -22,29 +22,29 @@
  THE SOFTWARE.
 */
 
-const fs = require('fs');
-const path = require('path');
-const {sync: globSync} = require('glob');
+const fs = require("fs");
+const path = require("path");
+const { sync: globSync } = require("glob");
 
-const isValidCwd = fs.existsSync('packages');
+const isValidCwd = fs.existsSync("packages");
 
 if (!isValidCwd) {
   console.error(
-    'Invalid CWD. Please ensure you are running this from the root of the repo, and that you have run ' +
-      '`npm run dist` and `node scripts/cp-pkgs.js`'
+    "Invalid CWD. Please ensure you are running this from the root of the repo, and that you have run " +
+      "`npm run dist` and `node scripts/cp-pkgs.js`"
   );
   process.exit(1);
 }
 
 let invalidMains = 0;
 let invalidTypes = 0;
-globSync('packages/*/package.json').forEach((jsonPath) => {
+globSync("packages/*/package.json").forEach((jsonPath) => {
   const packageInfo = JSON.parse(fs.readFileSync(jsonPath));
   let isInvalid = false;
   let isTypesInvalid = false;
 
-  const mainPath = path.join(path.dirname(jsonPath), packageInfo.main || '');
-  if (mainPath.indexOf('dist') < 0) {
+  const mainPath = path.join(path.dirname(jsonPath), packageInfo.main || "");
+  if (mainPath.indexOf("dist") < 0) {
     isInvalid = true;
     console.error(
       `${jsonPath} main property does not reference a file under dist`
@@ -56,8 +56,8 @@ globSync('packages/*/package.json').forEach((jsonPath) => {
       `${jsonPath} main property points to nonexistent ${mainPath}`
     );
   }
-  const typesPath = path.join(path.dirname(jsonPath), packageInfo.types || '');
-  if (typesPath.indexOf('dist') < 0) {
+  const typesPath = path.join(path.dirname(jsonPath), packageInfo.types || "");
+  if (typesPath.indexOf("dist") < 0) {
     isTypesInvalid = true;
     console.error(
       `${jsonPath} types property does not reference a file under dist`
@@ -91,6 +91,6 @@ if (invalidMains > 0 || invalidTypes > 0) {
   }
 } else {
   console.log(
-    'Success: All packages with main/types properties reference valid files under dist!'
+    "Success: All packages with main/types properties reference valid files under dist!"
   );
 }

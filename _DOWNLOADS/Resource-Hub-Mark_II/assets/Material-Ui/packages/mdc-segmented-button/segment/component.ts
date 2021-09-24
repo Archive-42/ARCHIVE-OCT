@@ -21,32 +21,34 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {MDCRippleAdapter} from '@material/ripple/adapter';
-import {MDCRipple, MDCRippleFactory} from '@material/ripple/component';
-import {MDCRippleFoundation} from '@material/ripple/foundation';
-import {MDCRippleCapableSurface} from '@material/ripple/types';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { MDCRippleAdapter } from "@material/ripple/adapter";
+import { MDCRipple, MDCRippleFactory } from "@material/ripple/component";
+import { MDCRippleFoundation } from "@material/ripple/foundation";
+import { MDCRippleCapableSurface } from "@material/ripple/types";
 
-import {SegmentDetail} from '../types';
+import { SegmentDetail } from "../types";
 
-import {MDCSegmentedButtonSegmentAdapter} from './adapter';
-import {events} from './constants';
-import {MDCSegmentedButtonSegmentFoundation} from './foundation';
+import { MDCSegmentedButtonSegmentAdapter } from "./adapter";
+import { events } from "./constants";
+import { MDCSegmentedButtonSegmentFoundation } from "./foundation";
 
 /**
  * MDCSegmentedButtonSegment factory type.
  */
-export type MDCSegmentedButtonSegmentFactory =
-    (el: Element, foundation?: MDCSegmentedButtonSegmentFoundation) =>
-        MDCSegmentedButtonSegment;
+export type MDCSegmentedButtonSegmentFactory = (
+  el: Element,
+  foundation?: MDCSegmentedButtonSegmentFoundation
+) => MDCSegmentedButtonSegment;
 
 /**
  * Implementation of MDCSegmentedButtonSegmentFoundation
  */
-export class MDCSegmentedButtonSegment extends
-    MDCComponent<MDCSegmentedButtonSegmentFoundation> implements
-        MDCRippleCapableSurface {
+export class MDCSegmentedButtonSegment
+  extends MDCComponent<MDCSegmentedButtonSegmentFoundation>
+  implements MDCRippleCapableSurface
+{
   get ripple(): MDCRipple {
     return this.rippleComponent;
   }
@@ -55,21 +57,23 @@ export class MDCSegmentedButtonSegment extends
     return new MDCSegmentedButtonSegment(root);
   }
 
-  private index!: number;            // assigned in setIndex by parent
-  private isSingleSelect!: boolean;  // assigned in setIsSingleSelect by parent
-  private rippleComponent!: MDCRipple;  // assigned in initialize
-  private handleClick!:
-      SpecificEventListener<'click'>;  // assigned in initialSyncWithDOM
+  private index!: number; // assigned in setIndex by parent
+  private isSingleSelect!: boolean; // assigned in setIsSingleSelect by parent
+  private rippleComponent!: MDCRipple; // assigned in initialize
+  private handleClick!: SpecificEventListener<"click">; // assigned in initialSyncWithDOM
 
   initialize(
-      rippleFactory: MDCRippleFactory = (el, foundation) =>
-          new MDCRipple(el, foundation)) {
+    rippleFactory: MDCRippleFactory = (el, foundation) =>
+      new MDCRipple(el, foundation)
+  ) {
     const rippleAdapter: MDCRippleAdapter = {
       ...MDCRipple.createAdapter(this),
-      computeBoundingRect: () => this.foundation.getDimensions()
+      computeBoundingRect: () => this.foundation.getDimensions(),
     };
-    this.rippleComponent =
-        rippleFactory(this.root, new MDCRippleFoundation(rippleAdapter));
+    this.rippleComponent = rippleFactory(
+      this.root,
+      new MDCRippleFoundation(rippleAdapter)
+    );
   }
 
   initialSyncWithDOM() {
@@ -114,17 +118,18 @@ export class MDCSegmentedButtonSegment extends
       },
       notifySelectedChange: (selected) => {
         this.emit<SegmentDetail>(
-            events.SELECTED, {
-              index: this.index,
-              selected,
-              segmentId: this.getSegmentId()
-            },
-            true /* shouldBubble */
+          events.SELECTED,
+          {
+            index: this.index,
+            selected,
+            segmentId: this.getSegmentId(),
+          },
+          true /* shouldBubble */
         );
       },
       getRootBoundingClientRect: () => {
         return this.root.getBoundingClientRect();
-      }
+      },
     };
     return new MDCSegmentedButtonSegmentFoundation(adapter);
   }
@@ -172,7 +177,7 @@ export class MDCSegmentedButtonSegment extends
   /**
    * @return Returns segment's segmentId if it was set by client
    */
-  getSegmentId(): string|undefined {
+  getSegmentId(): string | undefined {
     return this.foundation.getSegmentId();
   }
 }

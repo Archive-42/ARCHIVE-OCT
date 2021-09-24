@@ -22,14 +22,14 @@
  */
 
 export const cssClasses = {
-  ICON_BUTTON_ON: 'mdc-icon-button--on',
-  ROOT: 'mdc-icon-button',
+  ICON_BUTTON_ON: "mdc-icon-button--on",
+  ROOT: "mdc-icon-button",
 };
 
 export const strings = {
-  ARIA_LABEL: 'aria-label',
-  ARIA_PRESSED: 'aria-pressed',
-  DATA_ARIA_LABEL_OFF: 'data-aria-label-off',
-  DATA_ARIA_LABEL_ON: 'data-aria-label-on',
-  CHANGE_EVENT: 'MDCIconButtonToggle:change',
+  ARIA_LABEL: "aria-label",
+  ARIA_PRESSED: "aria-pressed",
+  DATA_ARIA_LABEL_OFF: "data-aria-label-off",
+  DATA_ARIA_LABEL_ON: "data-aria-label-on",
+  CHANGE_EVENT: "MDCIconButtonToggle:change",
 };

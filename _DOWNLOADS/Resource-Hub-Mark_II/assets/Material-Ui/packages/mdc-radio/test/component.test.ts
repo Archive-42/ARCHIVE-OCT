@@ -21,15 +21,15 @@
  * THE SOFTWARE.
  */
 
-import {setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
-import {MDCRipple} from '../../mdc-ripple/index';
-import {supportsCssVariables} from '../../mdc-ripple/util';
-import {MDCRadio, MDCRadioFoundation} from '../index';
+import { setUpMdcTestEnvironment } from "../../../testing/helpers/setup";
+import { MDCRipple } from "../../mdc-ripple/index";
+import { supportsCssVariables } from "../../mdc-ripple/util";
+import { MDCRadio, MDCRadioFoundation } from "../index";
 
-const {NATIVE_CONTROL_SELECTOR} = MDCRadioFoundation.strings;
+const { NATIVE_CONTROL_SELECTOR } = MDCRadioFoundation.strings;
 
 function getFixture() {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
     <div class="mdc-radio">
       <input type="radio" id="my-radio" name="my-radio-group"
@@ -48,102 +48,105 @@ function getFixture() {
 function setupTest() {
   const root = getFixture();
   const component = new MDCRadio(root);
-  return {root, component};
+  return { root, component };
 }
 
-describe('MDCRadio', () => {
+describe("MDCRadio", () => {
   setUpMdcTestEnvironment();
 
-  it('attachTo initializes and returns a MDCRadio instance', () => {
+  it("attachTo initializes and returns a MDCRadio instance", () => {
     expect(MDCRadio.attachTo(getFixture()) instanceof MDCRadio).toBeTruthy();
   });
 
   if (supportsCssVariables(window)) {
-    it('#constructor initializes the root element with a ripple', () => {
-      const {root} = setupTest();
+    it("#constructor initializes the root element with a ripple", () => {
+      const { root } = setupTest();
       jasmine.clock().tick(1);
-      expect(root.classList.contains('mdc-ripple-upgraded')).toBeTruthy();
+      expect(root.classList.contains("mdc-ripple-upgraded")).toBeTruthy();
     });
 
-    it('#destroy removes the ripple', () => {
-      const {root, component} = setupTest();
+    it("#destroy removes the ripple", () => {
+      const { root, component } = setupTest();
       jasmine.clock().tick(1);
       component.destroy();
       jasmine.clock().tick(1);
-      expect(root.classList.contains('mdc-ripple-upgraded')).toBeFalsy();
+      expect(root.classList.contains("mdc-ripple-upgraded")).toBeFalsy();
     });
   }
 
-  it('get/set checked updates the checked value of the native radio element',
-     () => {
-       const {root, component} = setupTest();
-       const radio =
-           root.querySelector(NATIVE_CONTROL_SELECTOR) as HTMLInputElement;
-       component.checked = true;
-       expect(radio.checked).toBeTruthy();
-       expect(component.checked).toEqual(radio.checked);
-     });
+  it("get/set checked updates the checked value of the native radio element", () => {
+    const { root, component } = setupTest();
+    const radio = root.querySelector(
+      NATIVE_CONTROL_SELECTOR
+    ) as HTMLInputElement;
+    component.checked = true;
+    expect(radio.checked).toBeTruthy();
+    expect(component.checked).toEqual(radio.checked);
+  });
 
-  it('get/set disabled updates the disabled value of the native radio element',
-     () => {
-       const {root, component} = setupTest();
-       const radio =
-           root.querySelector(NATIVE_CONTROL_SELECTOR) as HTMLInputElement;
-       component.disabled = true;
-       expect(radio.disabled).toBeTruthy();
-       expect(component.disabled).toEqual(radio.disabled);
-       component.disabled = false;
-       expect(radio.disabled).toBeFalsy();
-       expect(component.disabled).toEqual(radio.disabled);
-     });
+  it("get/set disabled updates the disabled value of the native radio element", () => {
+    const { root, component } = setupTest();
+    const radio = root.querySelector(
+      NATIVE_CONTROL_SELECTOR
+    ) as HTMLInputElement;
+    component.disabled = true;
+    expect(radio.disabled).toBeTruthy();
+    expect(component.disabled).toEqual(radio.disabled);
+    component.disabled = false;
+    expect(radio.disabled).toBeFalsy();
+    expect(component.disabled).toEqual(radio.disabled);
+  });
 
-  it('get/set value updates the value of the native radio element', () => {
-    const {root, component} = setupTest();
-    const radio =
-        root.querySelector(NATIVE_CONTROL_SELECTOR) as HTMLInputElement;
-    component.value = 'new value';
-    expect(radio.value).toEqual('new value');
+  it("get/set value updates the value of the native radio element", () => {
+    const { root, component } = setupTest();
+    const radio = root.querySelector(
+      NATIVE_CONTROL_SELECTOR
+    ) as HTMLInputElement;
+    component.value = "new value";
+    expect(radio.value).toEqual("new value");
     expect(component.value).toEqual(radio.value);
   });
 
-  it('get ripple returns a MDCRipple instance', () => {
-    const {component} = setupTest();
+  it("get ripple returns a MDCRipple instance", () => {
+    const { component } = setupTest();
     expect(component.ripple instanceof MDCRipple).toBeTruthy();
   });
 
-  it('adapter#addClass adds a class to the root element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.addClass('foo');
-    expect(root.classList.contains('foo')).toBe(true);
+  it("adapter#addClass adds a class to the root element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.addClass("foo");
+    expect(root.classList.contains("foo")).toBe(true);
   });
 
-  it('adapter#removeClass removes a class from the root element', () => {
-    const {root, component} = setupTest();
-    root.classList.add('foo');
-    (component.getDefaultFoundation() as any).adapter.removeClass('foo');
-    expect(root.classList.contains('foo')).toBe(false);
+  it("adapter#removeClass removes a class from the root element", () => {
+    const { root, component } = setupTest();
+    root.classList.add("foo");
+    (component.getDefaultFoundation() as any).adapter.removeClass("foo");
+    expect(root.classList.contains("foo")).toBe(false);
   });
 
-  it('#adapter.setNativeControlDisabled sets the native control element\'s disabled property to true',
-     () => {
-       const {root, component} = setupTest();
-       const radio =
-           root.querySelector(NATIVE_CONTROL_SELECTOR) as HTMLInputElement;
+  it("#adapter.setNativeControlDisabled sets the native control element's disabled property to true", () => {
+    const { root, component } = setupTest();
+    const radio = root.querySelector(
+      NATIVE_CONTROL_SELECTOR
+    ) as HTMLInputElement;
 
-       (component.getDefaultFoundation() as any)
-           .adapter.setNativeControlDisabled(true);
-       expect(radio.disabled).toBe(true);
-     });
+    (component.getDefaultFoundation() as any).adapter.setNativeControlDisabled(
+      true
+    );
+    expect(radio.disabled).toBe(true);
+  });
 
-  it('#adapter.setNativeControlDisabled sets the native control element\'s disabled property to false',
-     () => {
-       const {root, component} = setupTest();
-       const radio =
-           root.querySelector(NATIVE_CONTROL_SELECTOR) as HTMLInputElement;
-       radio.disabled = true;
+  it("#adapter.setNativeControlDisabled sets the native control element's disabled property to false", () => {
+    const { root, component } = setupTest();
+    const radio = root.querySelector(
+      NATIVE_CONTROL_SELECTOR
+    ) as HTMLInputElement;
+    radio.disabled = true;
 
-       (component.getDefaultFoundation() as any)
-           .adapter.setNativeControlDisabled(false);
-       expect(radio.disabled).toBe(false);
-     });
+    (component.getDefaultFoundation() as any).adapter.setNativeControlDisabled(
+      false
+    );
+    expect(radio.disabled).toBe(false);
+  });
 });

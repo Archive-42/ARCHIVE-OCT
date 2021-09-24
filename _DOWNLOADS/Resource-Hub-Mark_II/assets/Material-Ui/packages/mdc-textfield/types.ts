@@ -21,12 +21,15 @@
  * THE SOFTWARE.
  */
 
-import {MDCTextFieldCharacterCounterFoundation} from './character-counter/foundation';
-import {MDCTextFieldHelperTextFoundation} from './helper-text/foundation';
-import {MDCTextFieldIconFoundation} from './icon/foundation';
+import { MDCTextFieldCharacterCounterFoundation } from "./character-counter/foundation";
+import { MDCTextFieldHelperTextFoundation } from "./helper-text/foundation";
+import { MDCTextFieldIconFoundation } from "./icon/foundation";
 
-export type MDCTextFieldNativeInputElement = Pick<HTMLInputElement, 'disabled' | 'maxLength' | 'type' | 'value' | 'required'> & {
-  validity: Pick<ValidityState, 'badInput' | 'valid'>;
+export type MDCTextFieldNativeInputElement = Pick<
+  HTMLInputElement,
+  "disabled" | "maxLength" | "type" | "value" | "required"
+> & {
+  validity: Pick<ValidityState, "badInput" | "valid">;
 };
 
 export interface MDCTextFieldFoundationMap {

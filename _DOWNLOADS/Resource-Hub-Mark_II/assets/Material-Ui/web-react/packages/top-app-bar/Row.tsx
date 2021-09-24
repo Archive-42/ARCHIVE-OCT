@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
-import {cssClasses} from './constants';
+import React from "react";
+import classnames from "classnames";
+import { cssClasses } from "./constants";
 
 export interface RowProps<T> extends React.HTMLProps<T> {
   className?: string;
@@ -34,7 +34,7 @@ const Row: <T extends HTMLElement = HTMLDivElement>(
 ) => React.ReactElement<T> = ({
   children,
   className,
-  tag: Tag = 'div',
+  tag: Tag = "div",
   ...otherProps
 }) => (
   // @ts-ignore  https://github.com/Microsoft/TypeScript/issues/28892

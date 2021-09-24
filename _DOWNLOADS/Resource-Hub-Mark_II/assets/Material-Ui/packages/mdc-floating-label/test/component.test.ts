@@ -21,11 +21,10 @@
  * THE SOFTWARE.
  */
 
-
-import {MDCFloatingLabel} from '../../mdc-floating-label/index';
+import { MDCFloatingLabel } from "../../mdc-floating-label/index";
 
 const getFixture = () => {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
     <label class="mdc-floating-label"></label>
   `;
@@ -34,58 +33,59 @@ const getFixture = () => {
   return el;
 };
 
-
-describe('MDCFloatingLabel', () => {
-  it('attachTo returns an MDCFloatingLabel instance', () => {
-    expect(MDCFloatingLabel.attachTo(getFixture()) instanceof MDCFloatingLabel)
-        .toBeTruthy();
+describe("MDCFloatingLabel", () => {
+  it("attachTo returns an MDCFloatingLabel instance", () => {
+    expect(
+      MDCFloatingLabel.attachTo(getFixture()) instanceof MDCFloatingLabel
+    ).toBeTruthy();
   });
 
   function setupTest() {
     const root = getFixture();
     const component = new MDCFloatingLabel(root);
-    return {root, component};
+    return { root, component };
   }
 
-  it('#shake calls the foundation shake method', () => {
-    const {component} = setupTest();
-    component['foundation'].shake = jasmine.createSpy('');
+  it("#shake calls the foundation shake method", () => {
+    const { component } = setupTest();
+    component["foundation"].shake = jasmine.createSpy("");
     component.shake(true);
-    expect(component['foundation'].shake).toHaveBeenCalledWith(true);
-    expect(component['foundation'].shake).toHaveBeenCalledTimes(1);
+    expect(component["foundation"].shake).toHaveBeenCalledWith(true);
+    expect(component["foundation"].shake).toHaveBeenCalledTimes(1);
   });
 
-  it('#getWidth calls the foundation getWidth method', () => {
-    const {component} = setupTest();
-    component['foundation'].getWidth = jasmine.createSpy('');
+  it("#getWidth calls the foundation getWidth method", () => {
+    const { component } = setupTest();
+    component["foundation"].getWidth = jasmine.createSpy("");
     component.getWidth();
-    expect(component['foundation'].getWidth).toHaveBeenCalledTimes(1);
+    expect(component["foundation"].getWidth).toHaveBeenCalledTimes(1);
   });
 
-  it('#float calls the foundation float method', () => {
-    const {component} = setupTest();
-    component['foundation'].float = jasmine.createSpy('');
+  it("#float calls the foundation float method", () => {
+    const { component } = setupTest();
+    component["foundation"].float = jasmine.createSpy("");
     component.float(true);
-    expect(component['foundation'].float).toHaveBeenCalledWith(true);
-    expect(component['foundation'].float).toHaveBeenCalledTimes(1);
+    expect(component["foundation"].float).toHaveBeenCalledWith(true);
+    expect(component["foundation"].float).toHaveBeenCalledTimes(1);
   });
 
-  it('#adapter.addClass adds a class to the element', () => {
-    const {root, component} = setupTest();
-    (component.getDefaultFoundation() as any).adapter.addClass('foo');
-    expect(root.classList.contains('foo')).toBe(true);
+  it("#adapter.addClass adds a class to the element", () => {
+    const { root, component } = setupTest();
+    (component.getDefaultFoundation() as any).adapter.addClass("foo");
+    expect(root.classList.contains("foo")).toBe(true);
   });
 
-  it('#adapter.removeClass removes a class from the element', () => {
-    const {root, component} = setupTest();
-    root.classList.add('foo');
-    (component.getDefaultFoundation() as any).adapter.removeClass('foo');
-    expect(root.classList.contains('foo')).toBe(false);
+  it("#adapter.removeClass removes a class from the element", () => {
+    const { root, component } = setupTest();
+    root.classList.add("foo");
+    (component.getDefaultFoundation() as any).adapter.removeClass("foo");
+    expect(root.classList.contains("foo")).toBe(false);
   });
 
-  it('#adapter.getWidth returns the width of the label element', () => {
-    const {root, component} = setupTest();
-    expect((component.getDefaultFoundation() as any).adapter.getWidth())
-        .toEqual(root.offsetWidth);
+  it("#adapter.getWidth returns the width of the label element", () => {
+    const { root, component } = setupTest();
+    expect(
+      (component.getDefaultFoundation() as any).adapter.getWidth()
+    ).toEqual(root.offsetWidth);
   });
 });

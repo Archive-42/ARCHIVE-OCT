@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
+} from "@material/react-ripple";
 
 export interface MaterialIconDefaultProps
   extends React.HTMLAttributes<HTMLElement> {
@@ -49,8 +49,8 @@ const MaterialIconDefault: React.FunctionComponent<MaterialIconProps> = ({
   unbounded, // eslint-disable-line @typescript-eslint/no-unused-vars
   ...otherProps
 }) => {
-  const classes = classnames('material-icons', className, {
-    'material-icons--ripple-surface': hasRipple,
+  const classes = classnames("material-icons", className, {
+    "material-icons--ripple-surface": hasRipple,
   });
   return (
     <i className={classes} ref={initRipple} {...otherProps}>
@@ -68,14 +68,14 @@ export default class MaterialIcon extends React.Component<
   {}
 > {
   static defaultProps: Partial<MaterialIconProps> = {
-    icon: '',
-    className: '',
+    icon: "",
+    className: "",
     hasRipple: false,
     unbounded: false,
   };
 
   render() {
-    const {icon, hasRipple, unbounded, ...otherProps} = this.props; // eslint-disable-line @typescript-eslint/no-unused-vars
+    const { icon, hasRipple, unbounded, ...otherProps } = this.props; // eslint-disable-line @typescript-eslint/no-unused-vars
     if (hasRipple) {
       return (
         <RippleMaterialIcon unbounded hasRipple icon={icon} {...otherProps} />

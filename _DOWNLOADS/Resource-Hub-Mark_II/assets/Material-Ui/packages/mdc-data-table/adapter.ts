@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-
-import {SortValue} from './constants';
-import {MDCDataTableRowSelectionChangedEventDetail, ProgressIndicatorStyles, SortActionEventDetail} from './types';
+import { SortValue } from "./constants";
+import {
+  MDCDataTableRowSelectionChangedEventDetail,
+  ProgressIndicatorStyles,
+  SortActionEventDetail,
+} from "./types";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -108,7 +111,9 @@ export interface MDCDataTableAdapter {
    *
    * @param data Event detail data for row selection changed event.
    */
-  notifyRowSelectionChanged(data: MDCDataTableRowSelectionChangedEventDetail): void;
+  notifyRowSelectionChanged(
+    data: MDCDataTableRowSelectionChangedEventDetail
+  ): void;
 
   /**
    * Notifies when header row is checked.
@@ -185,14 +190,19 @@ export interface MDCDataTableAdapter {
   /**
    * @return Attribute value for given header cell index.
    */
-  getAttributeByHeaderCellIndex(columnIndex: number, attribute: string): string
-      |null;
+  getAttributeByHeaderCellIndex(
+    columnIndex: number,
+    attribute: string
+  ): string | null;
 
   /**
    * Sets attribute of a header cell by index.
    */
   setAttributeByHeaderCellIndex(
-      columnIndex: number, attribute: string, value: string): void;
+    columnIndex: number,
+    attribute: string,
+    value: string
+  ): void;
 
   /**
    * Sets class name of a header cell by index.
@@ -202,8 +212,10 @@ export interface MDCDataTableAdapter {
   /**
    * Removes a class name of a header cell by index.
    */
-  removeClassNameByHeaderCellIndex(columnIndex: number, className: string):
-      void;
+  removeClassNameByHeaderCellIndex(
+    columnIndex: number,
+    className: string
+  ): void;
 
   /**
    * Notifies when column is sorted.
@@ -236,5 +248,7 @@ export interface MDCDataTableAdapter {
    *   - `SortValue.NONE`: '' (Empty string)
    */
   setSortStatusLabelByHeaderCellIndex(
-      columnIndex: number, sortValue: SortValue): void;
+    columnIndex: number,
+    sortValue: SortValue
+  ): void;
 }

@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-export {Corner} from '@material/menu-surface/constants'; // for backward compatibility
-export * from './adapter';
-export * from './component';
-export * from './constants';
-export * from './foundation';
-export * from './types';
+export { Corner } from "@material/menu-surface/constants"; // for backward compatibility
+export * from "./adapter";
+export * from "./component";
+export * from "./constants";
+export * from "./foundation";
+export * from "./types";

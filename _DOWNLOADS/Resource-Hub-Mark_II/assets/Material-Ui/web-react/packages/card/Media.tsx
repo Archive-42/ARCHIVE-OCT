@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 export interface MediaProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -61,16 +61,16 @@ const getStyles: (styleValues: StyleValues) => React.CSSProperties = ({
   imageUrl,
   style,
 }) => {
-  return Object.assign({}, {backgroundImage: `url(${imageUrl})`}, style);
+  return Object.assign({}, { backgroundImage: `url(${imageUrl})` }, style);
 };
 
 const Media: React.FunctionComponent<MediaProps> = ({
-  className = '',
-  contentClassName = '',
+  className = "",
+  contentClassName = "",
   children,
   square = false,
   wide = false,
-  imageUrl = '',
+  imageUrl = "",
   style = {},
   ...otherProps
 }) => {
@@ -82,10 +82,10 @@ const Media: React.FunctionComponent<MediaProps> = ({
   return (
     <div
       className={classes}
-      style={getStyles({imageUrl, style})}
+      style={getStyles({ imageUrl, style })}
       {...otherProps}
     >
-      {renderChildren({children, contentClassName})}
+      {renderChildren({ children, contentClassName })}
     </div>
   );
 };

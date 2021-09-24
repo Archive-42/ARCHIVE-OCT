@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-import {emitEvent} from '../../../testing/dom/events';
-import {FocusTrap} from '../focus-trap';
+import { emitEvent } from "../../../testing/dom/events";
+import { FocusTrap } from "../focus-trap";
 
-const FOCUS_SENTINEL_CLASS = 'mdc-dom-focus-sentinel';
+const FOCUS_SENTINEL_CLASS = "mdc-dom-focus-sentinel";
 
 function getFixture() {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement("div");
   wrapper.innerHTML = `
     <div id="root">
       <button>Hello</button>
@@ -66,49 +66,53 @@ function getFixture() {
 function setUp() {
   const root = getFixture();
   document.body.appendChild(root);
-  const button = root.querySelector('button') as HTMLElement;
-  const container1 = root.querySelector('#container1_innerDiv') as HTMLElement;
-  const container2 = root.querySelector('#container2_standard') as HTMLElement;
-  const container3 =
-      root.querySelector('#container3_notVisibleElements') as HTMLElement;
-  const container4 =
-      root.querySelector('#container4_disabledOrHiddenElements') as HTMLElement;
-  const container5 =
-      root.querySelector('#container5_noFocusableChild') as HTMLElement;
-  return {button, container1, container2, container3, container4, container5};
+  const button = root.querySelector("button") as HTMLElement;
+  const container1 = root.querySelector("#container1_innerDiv") as HTMLElement;
+  const container2 = root.querySelector("#container2_standard") as HTMLElement;
+  const container3 = root.querySelector(
+    "#container3_notVisibleElements"
+  ) as HTMLElement;
+  const container4 = root.querySelector(
+    "#container4_disabledOrHiddenElements"
+  ) as HTMLElement;
+  const container5 = root.querySelector(
+    "#container5_noFocusableChild"
+  ) as HTMLElement;
+  return { button, container1, container2, container3, container4, container5 };
 }
 
-describe('FocusTrap', () => {
+describe("FocusTrap", () => {
   afterEach(() => {
-    [].slice.call(document.querySelectorAll('#root')).forEach((el) => {
+    [].slice.call(document.querySelectorAll("#root")).forEach((el) => {
       document.body.removeChild(el);
     });
   });
 
-  it('traps focus in the given container element', () => {
-    const {container1, container2} = setUp();
+  it("traps focus in the given container element", () => {
+    const { container1, container2 } = setUp();
     const focusTrap1 = new FocusTrap(container1);
     focusTrap1.trapFocus();
-    expectFocusTrapped(container1, 'con1a', 'con1b');
+    expectFocusTrapped(container1, "con1a", "con1b");
 
     const focusTrap2 = new FocusTrap(container2);
     focusTrap2.trapFocus();
-    expectFocusTrapped(container2, 'con2a', 'con2b');
+    expectFocusTrapped(container2, "con2a", "con2b");
   });
 
-  it('releases focus from the given container element', () => {
-    const {container1} = setUp();
+  it("releases focus from the given container element", () => {
+    const { container1 } = setUp();
     const focusTrap1 = new FocusTrap(container1);
     focusTrap1.trapFocus();
-    expectFocusTrapped(container1, 'con1a', 'con1b');
+    expectFocusTrapped(container1, "con1a", "con1b");
 
     focusTrap1.releaseFocus();
-    expect(container1.querySelectorAll(`.${FOCUS_SENTINEL_CLASS}`).length)
-        .toBe(0);
+    expect(container1.querySelectorAll(`.${FOCUS_SENTINEL_CLASS}`).length).toBe(
+      0
+    );
   });
 
-  it('restores focus to previously focused element', () => {
-    const {button, container2} = setUp();
+  it("restores focus to previously focused element", () => {
+    const { button, container2 } = setUp();
     const focusTrap = new FocusTrap(container2);
 
     // First, set focus to button.
@@ -116,38 +120,37 @@ describe('FocusTrap', () => {
     expect(document.activeElement).toBe(button);
     // Trap focus in `container2`.
     focusTrap.trapFocus();
-    expect(document.activeElement!.id).toBe('con2a');
+    expect(document.activeElement!.id).toBe("con2a");
     // Expect focus to be restored to button.
     focusTrap.releaseFocus();
     expect(document.activeElement).toBe(button);
   });
 
-  it('sets initial focus to first visible focusable element', () => {
-    const {container3} = setUp();
+  it("sets initial focus to first visible focusable element", () => {
+    const { container3 } = setUp();
     const focusTrap = new FocusTrap(container3);
     focusTrap.trapFocus();
-    expect(document.activeElement!.id).toBe('con3c');
+    expect(document.activeElement!.id).toBe("con3c");
   });
 
-  it('sets initial focus to first non-hidden/non-disabled focusable element',
-     () => {
-       const {container4} = setUp();
-       const focusTrap = new FocusTrap(container4);
-       focusTrap.trapFocus();
-       expect(document.activeElement!.id).toBe('con4e');
-     });
-
-  it('sets initial focus to initialFocusEl', () => {
-    const {container1} = setUp();
-    const initialFocusEl = container1.querySelector('#con1b') as HTMLElement;
-    const focusTrap = new FocusTrap(container1, {initialFocusEl});
+  it("sets initial focus to first non-hidden/non-disabled focusable element", () => {
+    const { container4 } = setUp();
+    const focusTrap = new FocusTrap(container4);
     focusTrap.trapFocus();
-    expect(document.activeElement!.id).toBe('con1b');
+    expect(document.activeElement!.id).toBe("con4e");
   });
 
-  it('does not set initial focus when skipInitialFocus=true', () => {
-    const {button, container1} = setUp();
-    const focusTrap = new FocusTrap(container1, {skipInitialFocus: true});
+  it("sets initial focus to initialFocusEl", () => {
+    const { container1 } = setUp();
+    const initialFocusEl = container1.querySelector("#con1b") as HTMLElement;
+    const focusTrap = new FocusTrap(container1, { initialFocusEl });
+    focusTrap.trapFocus();
+    expect(document.activeElement!.id).toBe("con1b");
+  });
+
+  it("does not set initial focus when skipInitialFocus=true", () => {
+    const { button, container1 } = setUp();
+    const focusTrap = new FocusTrap(container1, { skipInitialFocus: true });
 
     // First, set focus to button.
     button.focus();
@@ -158,20 +161,22 @@ describe('FocusTrap', () => {
     expect(document.activeElement).toBe(button);
   });
 
-  it('throws an error when trapping focus in an element with 0 focusable elements',
-     () => {
-       const {container5} = setUp();
-       const focusTrap = new FocusTrap(container5);
-       expect(() => {
-         focusTrap.trapFocus();
-       })
-           .toThrow(jasmine.stringMatching(
-               /Element must have at least one focusable child/));
-     });
+  it("throws an error when trapping focus in an element with 0 focusable elements", () => {
+    const { container5 } = setUp();
+    const focusTrap = new FocusTrap(container5);
+    expect(() => {
+      focusTrap.trapFocus();
+    }).toThrow(
+      jasmine.stringMatching(/Element must have at least one focusable child/)
+    );
+  });
 });
 
 function expectFocusTrapped(
-    el: HTMLElement, firstElementId: string, lastElementId: string) {
+  el: HTMLElement,
+  firstElementId: string,
+  lastElementId: string
+) {
   expect(document.activeElement!.id).toBe(firstElementId);
   const focusSentinels = el.querySelectorAll(`.${FOCUS_SENTINEL_CLASS}`);
   const startFocusSentinel = focusSentinels[0] as HTMLElement;
@@ -179,7 +184,7 @@ function expectFocusTrapped(
 
   // Patch #addEventListener to make it synchronous for `focus` events.
   const fakeFocusHandler = (eventName: string, eventHandler: any) => {
-    if (eventName === 'focus') {
+    if (eventName === "focus") {
       eventHandler();
     }
   };
@@ -189,8 +194,8 @@ function expectFocusTrapped(
   // Focus on sentinels gets trapped inside the scope.
   // Note that we use `emitEvent` here as calling #focus does not seem to
   // execute the handler synchronously in IE11.
-  emitEvent(startFocusSentinel, 'focus');
+  emitEvent(startFocusSentinel, "focus");
   expect(document.activeElement!.id).toBe(lastElementId);
-  emitEvent(endFocusSentinel, 'focus');
+  emitEvent(endFocusSentinel, "focus");
   expect(document.activeElement!.id).toBe(firstElementId);
 }

@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-export * from './adapter';
-export * from './component';
-export * from './constants';
-export * from './foundation';
-export * from './fading-foundation';
-export * from './sliding-foundation';
+export * from "./adapter";
+export * from "./component";
+export * from "./constants";
+export * from "./foundation";
+export * from "./fading-foundation";
+export * from "./sliding-foundation";

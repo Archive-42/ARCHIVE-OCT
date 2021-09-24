@@ -25,16 +25,13 @@
  * @fileoverview Parses and resolves filesystem paths.
  */
 
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 class PathResolver {
-  constructor({
-    pathLib = path,
-    fsLib = fs,
-  } = {}) {
+  constructor({ pathLib = path, fsLib = fs } = {}) {
     /** @type {!path} */
     this.pathLib_ = pathLib;
 
@@ -47,7 +44,7 @@ class PathResolver {
    * @return {string}
    */
   getProjectRootAbsolutePath() {
-    return this.pathLib_.resolve(this.pathLib_.join(__dirname, '../../'));
+    return this.pathLib_.resolve(this.pathLib_.join(__dirname, "../../"));
   }
 
   /**
@@ -77,12 +74,19 @@ class PathResolver {
   getAbsolutePath(...pathPartsRelativeToProjectRoot) {
     // First argument is already an absolute path
     if (this.fsLib_.existsSync(pathPartsRelativeToProjectRoot[0])) {
-      return this.pathLib_.resolve(this.pathLib_.join(...pathPartsRelativeToProjectRoot));
+      return this.pathLib_.resolve(
+        this.pathLib_.join(...pathPartsRelativeToProjectRoot)
+      );
     }
 
     // First argument is a path relative to the repo root
     const projectRootAbsolutePath = this.getProjectRootAbsolutePath();
-    return this.pathLib_.resolve(this.pathLib_.join(projectRootAbsolutePath, ...pathPartsRelativeToProjectRoot));
+    return this.pathLib_.resolve(
+      this.pathLib_.join(
+        projectRootAbsolutePath,
+        ...pathPartsRelativeToProjectRoot
+      )
+    );
   }
 
   /**
@@ -91,7 +95,10 @@ class PathResolver {
    * @param absolutePathToRoot
    * @return {string}
    */
-  getRelativePath(absolutePathToFile, absolutePathToRoot = this.getProjectRootAbsolutePath()) {
+  getRelativePath(
+    absolutePathToFile,
+    absolutePathToRoot = this.getProjectRootAbsolutePath()
+  ) {
     return this.pathLib_.relative(absolutePathToRoot, absolutePathToFile);
   }
 
@@ -120,7 +127,7 @@ class PathResolver {
    * @return {string}
    */
   removeFileExtension(filePath) {
-    return filePath.replace(/\.\w+$/, '');
+    return filePath.replace(/\.\w+$/, "");
   }
 }
 

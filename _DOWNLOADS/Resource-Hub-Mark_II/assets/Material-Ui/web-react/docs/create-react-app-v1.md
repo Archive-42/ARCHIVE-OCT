@@ -4,7 +4,7 @@ This is older documentation for [create-react-app v1](https://github.com/faceboo
 
 `create-react-app` is a popular CLI tool to getting started with React. If you're new to React or Webpack, you might be starting out here. This section will walk you through configuring `create-react-app` to install and use our components.
 
->  Recommended things to know
+> Recommended things to know
 
 > 1. node/npm
 > 2. JavaScript
@@ -12,7 +12,6 @@ This is older documentation for [create-react-app v1](https://github.com/faceboo
 > 4. ES6
 
 > _NOTE:_ If you haven't used `create-react-app` before, you may want to read the [Overview Guide](https://github.com/facebook/create-react-app#quick-overview).
-
 
 ### Step 1: Install create-react-app
 
@@ -94,7 +93,6 @@ Then rename `./src/App.css` --> `./src/App.scss`. The `build-css` and `watch-css
 
 ```
 
-
 ### Step 3a: Use Compiled CSS
 
 If you performed [Step 3](#step-3-using-sass), then you can skip to [Step 4](#step-4-use-mdc-react-button).
@@ -102,13 +100,13 @@ If you performed [Step 3](#step-3-using-sass), then you can skip to [Step 4](#st
 If you don't need to customize your app, then using the CSS is a quicker way to get started with MDC React Components. Each package comes with a `/dist` directory, which includes the CSS files compiled from our Sass files. `create-react-app` is ready to import CSS files. To import the Button CSS copy the following line into `./src/App.js` imports:
 
 ```js
-import '@material/react-button/dist/button.css';
+import "@material/react-button/dist/button.css";
 ```
 
 If you want to use the minified version, the import instead looks like:
 
 ```js
-import '@material/react-button/dist/button.min.css';
+import "@material/react-button/dist/button.min.css";
 ```
 
 ### Step 4: Use MDC React Button
@@ -116,10 +114,10 @@ import '@material/react-button/dist/button.min.css';
 Open `./src/App.js`. Then replace the boilerplate App code (entire file) with the barebones MDC React Button:
 
 ```js
-import React, {Component} from 'react';
-import Button from '@material/react-button';
+import React, { Component } from "react";
+import Button from "@material/react-button";
 
-import './App.scss';
+import "./App.scss";
 // add the appropriate line(s) in Step 3a if you are using compiled CSS instead.
 
 class App extends Component {
@@ -128,8 +126,8 @@ class App extends Component {
       <div>
         <Button
           raised
-          className='button-alternate'
-          onClick={() => console.log('clicked!')}
+          className="button-alternate"
+          onClick={() => console.log("clicked!")}
         >
           Click Me!
         </Button>

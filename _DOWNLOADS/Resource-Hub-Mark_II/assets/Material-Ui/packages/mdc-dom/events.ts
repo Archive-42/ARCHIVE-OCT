@@ -25,11 +25,12 @@
  * Determine whether the current browser supports passive event listeners, and
  * if so, use them.
  */
-export function applyPassive(globalObj: Window = window):
-    boolean | EventListenerOptions {
-  return supportsPassiveOption(globalObj) ?
-      {passive: true} as AddEventListenerOptions :
-      false;
+export function applyPassive(
+  globalObj: Window = window
+): boolean | EventListenerOptions {
+  return supportsPassiveOption(globalObj)
+    ? ({ passive: true } as AddEventListenerOptions)
+    : false;
 }
 
 function supportsPassiveOption(globalObj: Window = window): boolean {
@@ -44,13 +45,16 @@ function supportsPassiveOption(globalObj: Window = window): boolean {
       get passive() {
         passiveSupported = true;
         return false;
-      }
+      },
     };
 
     const handler = () => {};
-    globalObj.document.addEventListener('test', handler, options);
+    globalObj.document.addEventListener("test", handler, options);
     globalObj.document.removeEventListener(
-        'test', handler, options as EventListenerOptions);
+      "test",
+      handler,
+      options as EventListenerOptions
+    );
   } catch (err) {
     passiveSupported = false;
   }

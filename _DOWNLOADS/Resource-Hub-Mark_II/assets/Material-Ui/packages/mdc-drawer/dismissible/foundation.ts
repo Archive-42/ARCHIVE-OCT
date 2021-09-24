@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCDrawerAdapter} from '../adapter';
-import {cssClasses, strings} from '../constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCDrawerAdapter } from "../adapter";
+import { cssClasses, strings } from "../constants";
 
 export class MDCDismissibleDrawerFoundation extends MDCFoundation<MDCDrawerAdapter> {
   static get strings() {
@@ -56,7 +56,7 @@ export class MDCDismissibleDrawerFoundation extends MDCFoundation<MDCDrawerAdapt
   private animationTimer_ = 0;
 
   constructor(adapter?: Partial<MDCDrawerAdapter>) {
-    super({...MDCDismissibleDrawerFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCDismissibleDrawerFoundation.defaultAdapter, ...adapter });
   }
 
   destroy() {
@@ -111,8 +111,10 @@ export class MDCDismissibleDrawerFoundation extends MDCFoundation<MDCDrawerAdapt
    * @return true if drawer is animating open.
    */
   isOpening(): boolean {
-    return this.adapter.hasClass(cssClasses.OPENING) ||
-        this.adapter.hasClass(cssClasses.ANIMATE);
+    return (
+      this.adapter.hasClass(cssClasses.OPENING) ||
+      this.adapter.hasClass(cssClasses.ANIMATE)
+    );
   }
 
   /**
@@ -127,8 +129,8 @@ export class MDCDismissibleDrawerFoundation extends MDCFoundation<MDCDrawerAdapt
    * Keydown handler to close drawer when key is escape.
    */
   handleKeydown(evt: KeyboardEvent) {
-    const {keyCode, key} = evt;
-    const isEscape = key === 'Escape' || keyCode === 27;
+    const { keyCode, key } = evt;
+    const isEscape = key === "Escape" || keyCode === 27;
     if (isEscape) {
       this.close();
     }
@@ -138,11 +140,12 @@ export class MDCDismissibleDrawerFoundation extends MDCFoundation<MDCDrawerAdapt
    * Handles the `transitionend` event when the drawer finishes opening/closing.
    */
   handleTransitionEnd(evt: TransitionEvent) {
-    const {OPENING, CLOSING, OPEN, ANIMATE, ROOT} = cssClasses;
+    const { OPENING, CLOSING, OPEN, ANIMATE, ROOT } = cssClasses;
 
     // In Edge, transitionend on ripple pseudo-elements yields a target without classList, so check for Element first.
-    const isRootElement = this.isElement_(evt.target) &&
-        this.adapter.elementHasClass(evt.target, ROOT);
+    const isRootElement =
+      this.isElement_(evt.target) &&
+      this.adapter.elementHasClass(evt.target, ROOT);
     if (!isRootElement) {
       return;
     }

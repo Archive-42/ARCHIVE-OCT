@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import ActionButtons from './ActionButtons';
-import ActionIcons from './ActionIcons';
-import Actions from './Actions';
-import PrimaryContent from './PrimaryContent';
-import Media from './Media';
+import ActionButtons from "./ActionButtons";
+import ActionIcons from "./ActionIcons";
+import Actions from "./Actions";
+import PrimaryContent from "./PrimaryContent";
+import Media from "./Media";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 export interface CardProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -38,7 +38,7 @@ export interface CardProps extends React.HTMLProps<HTMLDivElement> {
 
 const Card: React.FunctionComponent<CardProps> = ({
   children,
-  className = '',
+  className = "",
   outlined = false,
   ...otherProps
 }) => {

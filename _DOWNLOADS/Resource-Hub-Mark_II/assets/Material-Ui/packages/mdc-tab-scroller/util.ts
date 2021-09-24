@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {cssClasses} from './constants';
+import { cssClasses } from "./constants";
 
 /**
  * Stores result from computeHorizontalScrollbarHeight to avoid redundant processing.
@@ -32,12 +32,15 @@ let horizontalScrollbarHeight_: number | undefined;
  * Computes the height of browser-rendered horizontal scrollbars using a self-created test element.
  * May return 0 (e.g. on OS X browsers under default configuration).
  */
-export function computeHorizontalScrollbarHeight(documentObj: Document, shouldCacheResult = true): number {
-  if (shouldCacheResult && typeof horizontalScrollbarHeight_ !== 'undefined') {
+export function computeHorizontalScrollbarHeight(
+  documentObj: Document,
+  shouldCacheResult = true
+): number {
+  if (shouldCacheResult && typeof horizontalScrollbarHeight_ !== "undefined") {
     return horizontalScrollbarHeight_;
   }
 
-  const el = documentObj.createElement('div');
+  const el = documentObj.createElement("div");
   el.classList.add(cssClasses.SCROLL_TEST);
   documentObj.body.appendChild(el);
 

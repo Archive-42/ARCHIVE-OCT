@@ -23,12 +23,12 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use '@material/theme/custom-properties';
-@use '@material/base/mixins' as base-mixins;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
-@use './elevation-theme';
+@use "@material/theme/custom-properties";
+@use "@material/base/mixins" as base-mixins;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
+@use "./elevation-theme";
 
 @mixin core-styles($query: feature-targeting.all()) {
   $feat-animation: feature-targeting.create-target($query, animation);
@@ -60,7 +60,7 @@
 
   .mdc-elevation-overlay {
     @include feature-targeting.targets($feat-structure) {
-      @include base-mixins.emit-once('mdc-elevation/common/structure') {
+      @include base-mixins.emit-once("mdc-elevation/common/structure") {
         position: absolute;
         border-radius: inherit;
         pointer-events: none;
@@ -73,12 +73,12 @@
     }
 
     @include feature-targeting.targets($feat-animation) {
-      @include base-mixins.emit-once('mdc-elevation/common/animation') {
+      @include base-mixins.emit-once("mdc-elevation/common/animation") {
         transition: elevation-theme.overlay-transition-value();
       }
     }
 
-    @include base-mixins.emit-once('mdc-elevation/common/color') {
+    @include base-mixins.emit-once("mdc-elevation/common/color") {
       $fill-color: custom-properties.create(
         --mdc-elevation-overlay-color,
         elevation-theme.$overlay-color

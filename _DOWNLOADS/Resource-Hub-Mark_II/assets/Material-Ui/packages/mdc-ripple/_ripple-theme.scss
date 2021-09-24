@@ -23,16 +23,16 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:color';
-@use 'sass:map';
-@use '@material/animation/functions' as functions2;
-@use '@material/animation/variables' as variables2;
-@use '@material/base/mixins' as base-mixins;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/theme/css';
-@use '@material/theme/custom-properties';
-@use '@material/theme/theme';
-@use '@material/theme/theme-color';
+@use "sass:color";
+@use "sass:map";
+@use "@material/animation/functions" as functions2;
+@use "@material/animation/variables" as variables2;
+@use "@material/base/mixins" as base-mixins;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/theme/css";
+@use "@material/theme/custom-properties";
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
 
 $fade-in-duration: 75ms !default;
 $fade-out-duration: 150ms !default;
@@ -68,7 +68,7 @@ $pressed-light-ink-opacity: 0.32 !default;
 @mixin states-base-color(
   $color,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-color: feature-targeting.create-target($query, color);
 
@@ -102,7 +102,7 @@ $pressed-light-ink-opacity: 0.32 !default;
 @mixin states-opacities(
   $opacity-map: (),
   $has-nested-focusable-element: false,
-  $ripple-target: '&',
+  $ripple-target: "&",
   $query: feature-targeting.all()
 ) {
   // Ensure sufficient specificity to override base state opacities
@@ -135,7 +135,7 @@ $pressed-light-ink-opacity: 0.32 !default;
 @mixin states-hover-opacity(
   $opacity,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-color: feature-targeting.create-target($query, color);
 
@@ -158,7 +158,7 @@ $pressed-light-ink-opacity: 0.32 !default;
   $opacity,
   $has-nested-focusable-element: false,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   // Focus overrides hover by reusing the ::before pseudo-element.
   // :focus-within generally works on non-MS browsers and matches when a *child* of the element has focus.
@@ -215,7 +215,7 @@ $pressed-light-ink-opacity: 0.32 !default;
 @mixin states-press-opacity(
   $opacity,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-animation: feature-targeting.create-target($query, animation);
   $feat-color: feature-targeting.create-target($query, color);
@@ -260,7 +260,7 @@ $pressed-light-ink-opacity: 0.32 !default;
   $color: theme-color.prop-value(on-surface),
   $has-nested-focusable-element: false,
   $query: feature-targeting.all(),
-  $ripple-target: '&',
+  $ripple-target: "&",
   $opacity-map: null
 ) {
   @include states-interactions_(
@@ -278,7 +278,7 @@ $pressed-light-ink-opacity: 0.32 !default;
   $color,
   $has-nested-focusable-element: false,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-color: feature-targeting.create-target($query, color);
   $activated-opacity: states-opacity($color, activated);
@@ -315,7 +315,7 @@ $pressed-light-ink-opacity: 0.32 !default;
   $color,
   $has-nested-focusable-element: false,
   $query: feature-targeting.all(),
-  $ripple-target: '&'
+  $ripple-target: "&"
 ) {
   $feat-color: feature-targeting.create-target($query, color);
   $selected-opacity: states-opacity($color, selected);
@@ -350,7 +350,7 @@ $pressed-light-ink-opacity: 0.32 !default;
   $has-nested-focusable-element,
   $opacity-modifier: 0,
   $query: feature-targeting.all(),
-  $ripple-target: '&',
+  $ripple-target: "&",
   $opacity-map: null
 ) {
   @include target-selector($ripple-target) {
@@ -374,8 +374,8 @@ $pressed-light-ink-opacity: 0.32 !default;
 }
 
 // Wraps content in the `ripple-target` selector if it exists.
-@mixin target-selector($ripple-target: '&') {
-  @if $ripple-target == '&' {
+@mixin target-selector($ripple-target: "&") {
+  @if $ripple-target == "&" {
     @content;
   } @else {
     #{$ripple-target} {
@@ -397,7 +397,7 @@ $pressed-light-ink-opacity: 0.32 !default;
 /// Keep the ripple (State overlay) behind the content.
 @mixin behind-content(
   $ripple-target,
-  $content-root-selector: '&',
+  $content-root-selector: "&",
   $query: feature-targeting.all()
 ) {
   // Needed for IE11. Without this, IE11 renders the state layer completely
@@ -424,7 +424,7 @@ $pressed-light-ink-opacity: 0.32 !default;
 @function states-opacity($color, $state) {
   $color-value: theme-color.prop-value($color);
   $opacity-map: if(
-    theme-color.tone($color-value) == 'light',
+    theme-color.tone($color-value) == "light",
     $light-ink-opacities,
     $dark-ink-opacities
   );

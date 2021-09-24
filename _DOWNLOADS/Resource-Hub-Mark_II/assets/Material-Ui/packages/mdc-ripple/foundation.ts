@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCRippleAdapter} from './adapter';
-import {cssClasses, numbers, strings} from './constants';
-import {MDCRipplePoint} from './types';
-import {getNormalizedEventCoords} from './util';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCRippleAdapter } from "./adapter";
+import { cssClasses, numbers, strings } from "./constants";
+import { MDCRipplePoint } from "./types";
+import { getNormalizedEventCoords } from "./util";
 
 interface ActivationStateType {
   isActivated?: boolean;
@@ -46,17 +46,31 @@ interface Coordinates {
   top: number;
 }
 
-type ActivationEventType = 'touchstart' | 'pointerdown' | 'mousedown' | 'keydown';
-type DeactivationEventType = 'touchend' | 'pointerup' | 'mouseup' | 'contextmenu';
+type ActivationEventType =
+  | "touchstart"
+  | "pointerdown"
+  | "mousedown"
+  | "keydown";
+type DeactivationEventType =
+  | "touchend"
+  | "pointerup"
+  | "mouseup"
+  | "contextmenu";
 
 // Activation events registered on the root element of each instance for activation
 const ACTIVATION_EVENT_TYPES: ActivationEventType[] = [
-  'touchstart', 'pointerdown', 'mousedown', 'keydown',
+  "touchstart",
+  "pointerdown",
+  "mousedown",
+  "keydown",
 ];
 
 // Deactivation events registered on documentElement when a pointer-related down event occurs
 const POINTER_DEACTIVATION_EVENT_TYPES: DeactivationEventType[] = [
-  'touchend', 'pointerup', 'mouseup', 'contextmenu',
+  "touchend",
+  "pointerup",
+  "mouseup",
+  "contextmenu",
 ];
 
 // simultaneous nested activations
@@ -79,12 +93,19 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     return {
       addClass: () => undefined,
       browserSupportsCssVars: () => true,
-      computeBoundingRect: () => ({top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0}),
+      computeBoundingRect: () => ({
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+      }),
       containsEventTarget: () => true,
       deregisterDocumentInteractionHandler: () => undefined,
       deregisterInteractionHandler: () => undefined,
       deregisterResizeHandler: () => undefined,
-      getWindowPageOffset: () => ({x: 0, y: 0}),
+      getWindowPageOffset: () => ({ x: 0, y: 0 }),
       isSurfaceActive: () => true,
       isSurfaceDisabled: () => true,
       isUnbounded: () => true,
@@ -100,12 +121,12 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   private activationState_: ActivationStateType;
   private activationTimer_ = 0;
   private fgDeactivationRemovalTimer_ = 0;
-  private fgScale_ = '0';
-  private frame_ = {width: 0, height: 0};
+  private fgScale_ = "0";
+  private frame_ = { width: 0, height: 0 };
   private initialSize_ = 0;
   private layoutFrame_ = 0;
   private maxRadius_ = 0;
-  private unboundedCoords_: Coordinates = {left: 0, top: 0};
+  private unboundedCoords_: Coordinates = { left: 0, top: 0 };
 
   private readonly activationTimerCallback_: () => void;
   private readonly activateHandler_: EventHandlerNonNull;
@@ -117,7 +138,7 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   private previousActivationEvent_?: Event;
 
   constructor(adapter?: Partial<MDCRippleAdapter>) {
-    super({...MDCRippleFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCRippleFoundation.defaultAdapter, ...adapter });
 
     this.activationState_ = this.defaultActivationState_();
 
@@ -138,7 +159,7 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     this.registerRootHandlers_(supportsPressRipple);
 
     if (supportsPressRipple) {
-      const {ROOT, UNBOUNDED} = MDCRippleFoundation.cssClasses;
+      const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
       requestAnimationFrame(() => {
         this.adapter.addClass(ROOT);
         if (this.adapter.isUnbounded()) {
@@ -162,10 +183,11 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
         clearTimeout(this.fgDeactivationRemovalTimer_);
         this.fgDeactivationRemovalTimer_ = 0;
         this.adapter.removeClass(
-            MDCRippleFoundation.cssClasses.FG_DEACTIVATION);
+          MDCRippleFoundation.cssClasses.FG_DEACTIVATION
+        );
       }
 
-      const {ROOT, UNBOUNDED} = MDCRippleFoundation.cssClasses;
+      const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
       requestAnimationFrame(() => {
         this.adapter.removeClass(ROOT);
         this.adapter.removeClass(UNBOUNDED);
@@ -199,7 +221,7 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   }
 
   setUnbounded(unbounded: boolean): void {
-    const {UNBOUNDED} = MDCRippleFoundation.cssClasses;
+    const { UNBOUNDED } = MDCRippleFoundation.cssClasses;
     if (unbounded) {
       this.adapter.addClass(UNBOUNDED);
     } else {
@@ -208,14 +230,15 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   }
 
   handleFocus(): void {
-    requestAnimationFrame(
-        () => this.adapter.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+    requestAnimationFrame(() =>
+      this.adapter.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED)
+    );
   }
 
   handleBlur(): void {
-    requestAnimationFrame(
-        () => this.adapter.removeClass(
-            MDCRippleFoundation.cssClasses.BG_FOCUSED));
+    requestAnimationFrame(() =>
+      this.adapter.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED)
+    );
   }
 
   /**
@@ -252,17 +275,19 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
       }
     }
 
-    this.adapter.registerInteractionHandler('focus', this.focusHandler_);
-    this.adapter.registerInteractionHandler('blur', this.blurHandler_);
+    this.adapter.registerInteractionHandler("focus", this.focusHandler_);
+    this.adapter.registerInteractionHandler("blur", this.blurHandler_);
   }
 
   private registerDeactivationHandlers_(evt: Event) {
-    if (evt.type === 'keydown') {
-      this.adapter.registerInteractionHandler('keyup', this.deactivateHandler_);
+    if (evt.type === "keydown") {
+      this.adapter.registerInteractionHandler("keyup", this.deactivateHandler_);
     } else {
       POINTER_DEACTIVATION_EVENT_TYPES.forEach((evtType) => {
         this.adapter.registerDocumentInteractionHandler(
-            evtType, this.deactivateHandler_);
+          evtType,
+          this.deactivateHandler_
+        );
       });
     }
   }
@@ -271,8 +296,8 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     ACTIVATION_EVENT_TYPES.forEach((evtType) => {
       this.adapter.deregisterInteractionHandler(evtType, this.activateHandler_);
     });
-    this.adapter.deregisterInteractionHandler('focus', this.focusHandler_);
-    this.adapter.deregisterInteractionHandler('blur', this.blurHandler_);
+    this.adapter.deregisterInteractionHandler("focus", this.focusHandler_);
+    this.adapter.deregisterInteractionHandler("blur", this.blurHandler_);
 
     if (this.adapter.isUnbounded()) {
       this.adapter.deregisterResizeHandler(this.resizeHandler_);
@@ -280,18 +305,22 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   }
 
   private deregisterDeactivationHandlers_() {
-    this.adapter.deregisterInteractionHandler('keyup', this.deactivateHandler_);
+    this.adapter.deregisterInteractionHandler("keyup", this.deactivateHandler_);
     POINTER_DEACTIVATION_EVENT_TYPES.forEach((evtType) => {
       this.adapter.deregisterDocumentInteractionHandler(
-          evtType, this.deactivateHandler_);
+        evtType,
+        this.deactivateHandler_
+      );
     });
   }
 
   private removeCssVars_() {
     const rippleStrings = MDCRippleFoundation.strings;
-    const keys = Object.keys(rippleStrings) as Array<keyof typeof rippleStrings>;
+    const keys = Object.keys(rippleStrings) as Array<
+      keyof typeof rippleStrings
+    >;
     keys.forEach((key) => {
-      if (key.indexOf('VAR_') === 0) {
+      if (key.indexOf("VAR_") === 0) {
         this.adapter.updateCssVariable(rippleStrings[key], null);
       }
     });
@@ -309,7 +338,10 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
 
     // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
     const previousActivationEvent = this.previousActivationEvent_;
-    const isSameInteraction = previousActivationEvent && evt !== undefined && previousActivationEvent.type !== evt.type;
+    const isSameInteraction =
+      previousActivationEvent &&
+      evt !== undefined &&
+      previousActivationEvent.type !== evt.type;
     if (isSameInteraction) {
       return;
     }
@@ -317,14 +349,19 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     activationState.isActivated = true;
     activationState.isProgrammatic = evt === undefined;
     activationState.activationEvent = evt;
-    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : evt !== undefined && (
-        evt.type === 'mousedown' || evt.type === 'touchstart' || evt.type === 'pointerdown'
-    );
+    activationState.wasActivatedByPointer = activationState.isProgrammatic
+      ? false
+      : evt !== undefined &&
+        (evt.type === "mousedown" ||
+          evt.type === "touchstart" ||
+          evt.type === "pointerdown");
 
-    const hasActivatedChild = evt !== undefined &&
-        activatedTargets.length > 0 &&
-        activatedTargets.some(
-            (target) => this.adapter.containsEventTarget(target));
+    const hasActivatedChild =
+      evt !== undefined &&
+      activatedTargets.length > 0 &&
+      activatedTargets.some((target) =>
+        this.adapter.containsEventTarget(target)
+      );
     if (hasActivatedChild) {
       // Immediately reset activation state, while preserving logic that prevents touch follow-on events
       this.resetActivationState_();
@@ -345,16 +382,20 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
       // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
       activatedTargets = [];
 
-      if (!activationState.wasElementMadeActive
-          && evt !== undefined
-          && ((evt as KeyboardEvent).key === ' ' || (evt as KeyboardEvent).keyCode === 32)) {
+      if (
+        !activationState.wasElementMadeActive &&
+        evt !== undefined &&
+        ((evt as KeyboardEvent).key === " " ||
+          (evt as KeyboardEvent).keyCode === 32)
+      ) {
         // If space was pressed, try again within an rAF call to detect :active, because different UAs report
         // active states inconsistently when they're called within event handling code:
         // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
         // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
         // We try first outside rAF to support Edge, which does not exhibit this problem, but will crash if a CSS
         // variable is set within a rAF callback for a submit button interaction (#2241).
-        activationState.wasElementMadeActive = this.checkElementMadeActive_(evt);
+        activationState.wasElementMadeActive =
+          this.checkElementMadeActive_(evt);
         if (activationState.wasElementMadeActive) {
           this.animateActivation_();
         }
@@ -368,23 +409,24 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   }
 
   private checkElementMadeActive_(evt?: Event) {
-    return (evt !== undefined && evt.type === 'keydown') ?
-        this.adapter.isSurfaceActive() :
-        true;
+    return evt !== undefined && evt.type === "keydown"
+      ? this.adapter.isSurfaceActive()
+      : true;
   }
 
   private animateActivation_() {
-    const {VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END} = MDCRippleFoundation.strings;
-    const {FG_DEACTIVATION, FG_ACTIVATION} = MDCRippleFoundation.cssClasses;
-    const {DEACTIVATION_TIMEOUT_MS} = MDCRippleFoundation.numbers;
+    const { VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END } =
+      MDCRippleFoundation.strings;
+    const { FG_DEACTIVATION, FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { DEACTIVATION_TIMEOUT_MS } = MDCRippleFoundation.numbers;
 
     this.layoutInternal_();
 
-    let translateStart = '';
-    let translateEnd = '';
+    let translateStart = "";
+    let translateEnd = "";
 
     if (!this.adapter.isUnbounded()) {
-      const {startPoint, endPoint} = this.getFgTranslationCoordinates_();
+      const { startPoint, endPoint } = this.getFgTranslationCoordinates_();
       translateStart = `${startPoint.x}px, ${startPoint.y}px`;
       translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
     }
@@ -400,18 +442,21 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     // Force layout in order to re-trigger the animation.
     this.adapter.computeBoundingRect();
     this.adapter.addClass(FG_ACTIVATION);
-    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
+    this.activationTimer_ = setTimeout(
+      () => this.activationTimerCallback_(),
+      DEACTIVATION_TIMEOUT_MS
+    );
   }
 
   private getFgTranslationCoordinates_(): FgTranslationCoordinates {
-    const {activationEvent, wasActivatedByPointer} = this.activationState_;
+    const { activationEvent, wasActivatedByPointer } = this.activationState_;
 
     let startPoint;
     if (wasActivatedByPointer) {
       startPoint = getNormalizedEventCoords(
-          activationEvent,
-          this.adapter.getWindowPageOffset(),
-          this.adapter.computeBoundingRect(),
+        activationEvent,
+        this.adapter.getWindowPageOffset(),
+        this.adapter.computeBoundingRect()
       );
     } else {
       startPoint = {
@@ -421,23 +466,23 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     }
     // Center the element around the start point.
     startPoint = {
-      x: startPoint.x - (this.initialSize_ / 2),
-      y: startPoint.y - (this.initialSize_ / 2),
+      x: startPoint.x - this.initialSize_ / 2,
+      y: startPoint.y - this.initialSize_ / 2,
     };
 
     const endPoint = {
-      x: (this.frame_.width / 2) - (this.initialSize_ / 2),
-      y: (this.frame_.height / 2) - (this.initialSize_ / 2),
+      x: this.frame_.width / 2 - this.initialSize_ / 2,
+      y: this.frame_.height / 2 - this.initialSize_ / 2,
     };
 
-    return {startPoint, endPoint};
+    return { startPoint, endPoint };
   }
 
   private runDeactivationUXLogicIfReady_() {
     // This method is called both when a pointing device is released, and when the activation animation ends.
     // The deactivation animation should only run after both of those occur.
-    const {FG_DEACTIVATION} = MDCRippleFoundation.cssClasses;
-    const {hasDeactivationUXRun, isActivated} = this.activationState_;
+    const { FG_DEACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { hasDeactivationUXRun, isActivated } = this.activationState_;
     const activationHasEnded = hasDeactivationUXRun || !isActivated;
 
     if (activationHasEnded && this.activationAnimationHasEnded_) {
@@ -450,7 +495,7 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   }
 
   private rmBoundedActivationClasses_() {
-    const {FG_ACTIVATION} = MDCRippleFoundation.cssClasses;
+    const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
     this.adapter.removeClass(FG_ACTIVATION);
     this.activationAnimationHasEnded_ = false;
     this.adapter.computeBoundingRect();
@@ -461,7 +506,10 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     this.activationState_ = this.defaultActivationState_();
     // Touch devices may fire additional events for the same interaction within a short time.
     // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-    setTimeout(() => this.previousActivationEvent_ = undefined, MDCRippleFoundation.numbers.TAP_DELAY_MS);
+    setTimeout(
+      () => (this.previousActivationEvent_ = undefined),
+      MDCRippleFoundation.numbers.TAP_DELAY_MS
+    );
   }
 
   private deactivate_(): void {
@@ -471,7 +519,7 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
       return;
     }
 
-    const state: ActivationStateType = {...activationState};
+    const state: ActivationStateType = { ...activationState };
 
     if (activationState.isProgrammatic) {
       requestAnimationFrame(() => this.animateDeactivation_(state));
@@ -486,7 +534,10 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     }
   }
 
-  private animateDeactivation_({wasActivatedByPointer, wasElementMadeActive}: ActivationStateType) {
+  private animateDeactivation_({
+    wasActivatedByPointer,
+    wasElementMadeActive,
+  }: ActivationStateType) {
     if (wasActivatedByPointer || wasElementMadeActive) {
       this.runDeactivationUXLogicIfReady_();
     }
@@ -503,14 +554,18 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
     // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
     // `overflow: hidden`.
     const getBoundedRadius = () => {
-      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
+      const hypotenuse = Math.sqrt(
+        Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2)
+      );
       return hypotenuse + MDCRippleFoundation.numbers.PADDING;
     };
 
     this.maxRadius_ = this.adapter.isUnbounded() ? maxDim : getBoundedRadius();
 
     // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-    const initialSize = Math.floor(maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE);
+    const initialSize = Math.floor(
+      maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE
+    );
     // Unbounded ripple size should always be even number to equally center align.
     if (this.adapter.isUnbounded() && initialSize % 2 !== 0) {
       this.initialSize_ = initialSize - 1;
@@ -523,21 +578,22 @@ export class MDCRippleFoundation extends MDCFoundation<MDCRippleAdapter> {
   }
 
   private updateLayoutCssVars_() {
-    const {
-      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE,
-    } = MDCRippleFoundation.strings;
+    const { VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE } =
+      MDCRippleFoundation.strings;
 
     this.adapter.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
     this.adapter.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
 
     if (this.adapter.isUnbounded()) {
       this.unboundedCoords_ = {
-        left: Math.round((this.frame_.width / 2) - (this.initialSize_ / 2)),
-        top: Math.round((this.frame_.height / 2) - (this.initialSize_ / 2)),
+        left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
+        top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2),
       };
 
       this.adapter.updateCssVariable(
-          VAR_LEFT, `${this.unboundedCoords_.left}px`);
+        VAR_LEFT,
+        `${this.unboundedCoords_.left}px`
+      );
       this.adapter.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
     }
   }

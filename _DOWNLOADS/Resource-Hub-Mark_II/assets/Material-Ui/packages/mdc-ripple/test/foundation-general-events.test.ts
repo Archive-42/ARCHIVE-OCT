@@ -21,102 +21,139 @@
  * THE SOFTWARE.
  */
 
+import { cssClasses, strings } from "../../mdc-ripple/constants";
+import { MDCRippleFoundation } from "../../mdc-ripple/foundation";
+import {
+  captureHandlers,
+  checkNumTimesSpyCalledWithArgs,
+} from "../../../testing/helpers/foundation";
+import { setUpMdcTestEnvironment } from "../../../testing/helpers/setup";
 
-import {cssClasses, strings} from '../../mdc-ripple/constants';
-import {MDCRippleFoundation} from '../../mdc-ripple/foundation';
-import {captureHandlers, checkNumTimesSpyCalledWithArgs} from '../../../testing/helpers/foundation';
-import {setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
+import { testFoundation } from "./helpers";
 
-import {testFoundation} from './helpers';
-
-describe('MDCRippleFoundation - General Events', () => {
+describe("MDCRippleFoundation - General Events", () => {
   setUpMdcTestEnvironment();
   testFoundation(
-      're-lays out the component on resize event for unbounded ripple',
-      ({adapter,
-        foundation}: {adapter: any, foundation: MDCRippleFoundation}) => {
-        adapter.isUnbounded.and.returnValue(true);
-        adapter.computeBoundingRect.and.returnValues(
-            {
-              width: 100,
-              height: 200,
-            },
-            {
-              width: 50,
-              height: 100,
-            });
-        let resizeHandler: Function|undefined;
-        adapter.registerResizeHandler.withArgs(jasmine.any(Function))
-            .and.callFake((handler: Function) => {
-              resizeHandler = handler;
-            });
-        foundation.init();
-        jasmine.clock().tick(1);
+    "re-lays out the component on resize event for unbounded ripple",
+    ({
+      adapter,
+      foundation,
+    }: {
+      adapter: any;
+      foundation: MDCRippleFoundation;
+    }) => {
+      adapter.isUnbounded.and.returnValue(true);
+      adapter.computeBoundingRect.and.returnValues(
+        {
+          width: 100,
+          height: 200,
+        },
+        {
+          width: 50,
+          height: 100,
+        }
+      );
+      let resizeHandler: Function | undefined;
+      adapter.registerResizeHandler
+        .withArgs(jasmine.any(Function))
+        .and.callFake((handler: Function) => {
+          resizeHandler = handler;
+        });
+      foundation.init();
+      jasmine.clock().tick(1);
 
-        expect(adapter.updateCssVariable)
-            .toHaveBeenCalledWith(strings.VAR_FG_SIZE, '120px');
+      expect(adapter.updateCssVariable).toHaveBeenCalledWith(
+        strings.VAR_FG_SIZE,
+        "120px"
+      );
 
-        (resizeHandler as Function)();
+      (resizeHandler as Function)();
 
-        jasmine.clock().tick(1);
+      jasmine.clock().tick(1);
 
-        expect(adapter.updateCssVariable)
-            .toHaveBeenCalledWith(strings.VAR_FG_SIZE, '60px');
-      });
-
-  testFoundation(
-      'debounces layout within the same frame on resize',
-      ({adapter,
-        foundation}: {adapter: any, foundation: MDCRippleFoundation}) => {
-        adapter.isUnbounded.and.returnValue(true);
-        adapter.computeBoundingRect.and.returnValue(
-            {
-              width: 100,
-              height: 200,
-            },
-            {
-              width: 50,
-              height: 100,
-            });
-        let resizeHandler: Function|undefined;
-        adapter.registerResizeHandler.withArgs(jasmine.any(Function))
-            .and.callFake((handler: Function) => {
-              resizeHandler = handler;
-            });
-        foundation.init();
-        jasmine.clock().tick(1);
-
-        (resizeHandler as Function)();
-        (resizeHandler as Function)();
-        (resizeHandler as Function)();
-        jasmine.clock().tick(1);
-        checkNumTimesSpyCalledWithArgs(
-            adapter.updateCssVariable, [strings.VAR_FG_SIZE, '120px'], 2);
-      });
+      expect(adapter.updateCssVariable).toHaveBeenCalledWith(
+        strings.VAR_FG_SIZE,
+        "60px"
+      );
+    }
+  );
 
   testFoundation(
-      'activates the background on focus',
-      ({adapter,
-        foundation}: {adapter: any, foundation: MDCRippleFoundation}) => {
-        const handlers = captureHandlers(adapter, 'registerInteractionHandler');
-        foundation.init();
-        jasmine.clock().tick(1);
+    "debounces layout within the same frame on resize",
+    ({
+      adapter,
+      foundation,
+    }: {
+      adapter: any;
+      foundation: MDCRippleFoundation;
+    }) => {
+      adapter.isUnbounded.and.returnValue(true);
+      adapter.computeBoundingRect.and.returnValue(
+        {
+          width: 100,
+          height: 200,
+        },
+        {
+          width: 50,
+          height: 100,
+        }
+      );
+      let resizeHandler: Function | undefined;
+      adapter.registerResizeHandler
+        .withArgs(jasmine.any(Function))
+        .and.callFake((handler: Function) => {
+          resizeHandler = handler;
+        });
+      foundation.init();
+      jasmine.clock().tick(1);
 
-        handlers['focus']();
-        jasmine.clock().tick(1);
-        expect(adapter.addClass).toHaveBeenCalledWith(cssClasses.BG_FOCUSED);
-      });
+      (resizeHandler as Function)();
+      (resizeHandler as Function)();
+      (resizeHandler as Function)();
+      jasmine.clock().tick(1);
+      checkNumTimesSpyCalledWithArgs(
+        adapter.updateCssVariable,
+        [strings.VAR_FG_SIZE, "120px"],
+        2
+      );
+    }
+  );
 
   testFoundation(
-      'deactivates the background on blur',
-      ({adapter,
-        foundation}: {adapter: any, foundation: MDCRippleFoundation}) => {
-        const handlers = captureHandlers(adapter, 'registerInteractionHandler');
-        foundation.init();
-        jasmine.clock().tick(1);
+    "activates the background on focus",
+    ({
+      adapter,
+      foundation,
+    }: {
+      adapter: any;
+      foundation: MDCRippleFoundation;
+    }) => {
+      const handlers = captureHandlers(adapter, "registerInteractionHandler");
+      foundation.init();
+      jasmine.clock().tick(1);
 
-        handlers['blur']();
-        jasmine.clock().tick(1);
-        expect(adapter.removeClass).toHaveBeenCalledWith(cssClasses.BG_FOCUSED);
-      });
+      handlers["focus"]();
+      jasmine.clock().tick(1);
+      expect(adapter.addClass).toHaveBeenCalledWith(cssClasses.BG_FOCUSED);
+    }
+  );
+
+  testFoundation(
+    "deactivates the background on blur",
+    ({
+      adapter,
+      foundation,
+    }: {
+      adapter: any;
+      foundation: MDCRippleFoundation;
+    }) => {
+      const handlers = captureHandlers(adapter, "registerInteractionHandler");
+      foundation.init();
+      jasmine.clock().tick(1);
+
+      handlers["blur"]();
+      jasmine.clock().tick(1);
+      expect(adapter.removeClass).toHaveBeenCalledWith(cssClasses.BG_FOCUSED);
+    }
+  );
 });

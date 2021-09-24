@@ -20,23 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
-import {MDCIconButtonToggleAdapter} from '@material/icon-button/adapter';
-import {MDCIconButtonToggleFoundation} from '@material/icon-button/foundation';
-import {MDCIconButtonToggleEventDetail} from '@material/icon-button/types';
-import IconToggle from './IconToggle';
-const ARIA_PRESSED = 'aria-pressed';
+} from "@material/react-ripple";
+import { MDCIconButtonToggleAdapter } from "@material/icon-button/adapter";
+import { MDCIconButtonToggleFoundation } from "@material/icon-button/foundation";
+import { MDCIconButtonToggleEventDetail } from "@material/icon-button/types";
+import IconToggle from "./IconToggle";
+const ARIA_PRESSED = "aria-pressed";
 
 interface ElementAttributes {
   // from HTMLAttributes
-  [ARIA_PRESSED]?: boolean | 'false' | 'mixed' | 'true';
+  [ARIA_PRESSED]?: boolean | "false" | "mixed" | "true";
 }
 
 type IconButtonTypes = HTMLButtonElement | HTMLAnchorElement;
@@ -69,7 +69,7 @@ class IconButtonBase<T extends IconButtonTypes> extends React.Component<
   }
 
   static defaultProps = {
-    className: '',
+    className: "",
     handleChange: () => {},
     initRipple: () => {},
     isLink: false,
@@ -83,22 +83,22 @@ class IconButtonBase<T extends IconButtonTypes> extends React.Component<
   }
 
   get classes() {
-    const {classList} = this.state;
-    const {className} = this.props;
-    return classnames('mdc-icon-button', Array.from(classList), className);
+    const { classList } = this.state;
+    const { className } = this.props;
+    return classnames("mdc-icon-button", Array.from(classList), className);
   }
 
   get adapter(): MDCIconButtonToggleAdapter {
     return {
       addClass: (className: string) =>
-        this.setState({classList: this.state.classList.add(className)}),
+        this.setState({ classList: this.state.classList.add(className) }),
       removeClass: (className: string) => {
-        const {classList} = this.state;
+        const { classList } = this.state;
         classList.delete(className);
-        this.setState({classList});
+        this.setState({ classList });
       },
       hasClass: (className: string) =>
-        this.classes.split(' ').includes(className),
+        this.classes.split(" ").includes(className),
       setAttr: this.updateState,
       notifyChange: this.props.handleChange!,
     };
@@ -157,4 +157,4 @@ const IconButton = withRipple<
 >(IconButtonBase);
 
 export default IconButton;
-export {IconToggle, IconButtonBase};
+export { IconToggle, IconButtonBase };

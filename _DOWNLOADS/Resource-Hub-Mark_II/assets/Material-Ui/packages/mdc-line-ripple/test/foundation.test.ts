@@ -21,132 +21,144 @@
  * THE SOFTWARE.
  */
 
+import { MDCLineRippleFoundation } from "../../mdc-line-ripple/foundation";
+import { verifyDefaultAdapter } from "../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
 
-import {MDCLineRippleFoundation} from '../../mdc-line-ripple/foundation';
-import {verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
+const { cssClasses } = MDCLineRippleFoundation;
 
-const {cssClasses} = MDCLineRippleFoundation;
-
-describe('MDCLineRippleFoundation', () => {
-  it('exports cssClasses', () => {
-    expect('cssClasses' in MDCLineRippleFoundation).toBeTruthy();
+describe("MDCLineRippleFoundation", () => {
+  it("exports cssClasses", () => {
+    expect("cssClasses" in MDCLineRippleFoundation).toBeTruthy();
   });
 
-  it('exports strings', () => {
-    expect('strings' in MDCLineRippleFoundation).toBeTruthy();
+  it("exports strings", () => {
+    expect("strings" in MDCLineRippleFoundation).toBeTruthy();
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCLineRippleFoundation, [
-      'addClass',
-      'removeClass',
-      'hasClass',
-      'setStyle',
-      'registerEventHandler',
-      'deregisterEventHandler',
+      "addClass",
+      "removeClass",
+      "hasClass",
+      "setStyle",
+      "registerEventHandler",
+      "deregisterEventHandler",
     ]);
   });
 
   const setupTest = () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCLineRippleFoundation);
-    return {foundation, mockAdapter};
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCLineRippleFoundation
+    );
+    return { foundation, mockAdapter };
   };
 
-  it('#init adds event listeners', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init adds event listeners", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
 
-    expect(mockAdapter.registerEventHandler)
-        .toHaveBeenCalledWith('transitionend', jasmine.any(Function));
+    expect(mockAdapter.registerEventHandler).toHaveBeenCalledWith(
+      "transitionend",
+      jasmine.any(Function)
+    );
   });
 
-  it('#destroy removes event listeners', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#destroy removes event listeners", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.destroy();
 
-    expect(mockAdapter.deregisterEventHandler)
-        .toHaveBeenCalledWith('transitionend', jasmine.any(Function));
+    expect(mockAdapter.deregisterEventHandler).toHaveBeenCalledWith(
+      "transitionend",
+      jasmine.any(Function)
+    );
   });
 
   it(`activate adds ${cssClasses.LINE_RIPPLE_ACTIVE} class`, () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
     foundation.activate();
-    expect(mockAdapter.addClass)
-        .toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_ACTIVE);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_ACTIVE
+    );
   });
 
   it(`deactivate adds ${cssClasses.LINE_RIPPLE_DEACTIVATING} class`, () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.init();
     foundation.deactivate();
-    expect(mockAdapter.addClass)
-        .toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_DEACTIVATING);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_DEACTIVATING
+    );
   });
 
-  it('opacity event after adding deactivating class triggers triggers removal of activation classes',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.LINE_RIPPLE_DEACTIVATING)
-           .and.returnValue(true);
-       const event = {
-         propertyName: 'opacity',
-       };
+  it("opacity event after adding deactivating class triggers triggers removal of activation classes", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass
+      .withArgs(cssClasses.LINE_RIPPLE_DEACTIVATING)
+      .and.returnValue(true);
+    const event = {
+      propertyName: "opacity",
+    };
 
-       foundation.init();
-       foundation.handleTransitionEnd(event);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_DEACTIVATING);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_ACTIVE);
-     });
+    foundation.init();
+    foundation.handleTransitionEnd(event);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_DEACTIVATING
+    );
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_ACTIVE
+    );
+  });
 
-  it(`non opacity transition event doesn't remove ${
-         cssClasses.LINE_RIPPLE_DEACTIVATING} class`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.LINE_RIPPLE_DEACTIVATING)
-           .and.returnValue(true);
-       const event = {
-         propertyName: 'not-opacity',
-       };
-       foundation.init();
+  it(`non opacity transition event doesn't remove ${cssClasses.LINE_RIPPLE_DEACTIVATING} class`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass
+      .withArgs(cssClasses.LINE_RIPPLE_DEACTIVATING)
+      .and.returnValue(true);
+    const event = {
+      propertyName: "not-opacity",
+    };
+    foundation.init();
 
-       foundation.handleTransitionEnd(event);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_DEACTIVATING);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_ACTIVE);
-     });
+    foundation.handleTransitionEnd(event);
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_DEACTIVATING
+    );
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_ACTIVE
+    );
+  });
 
-  it(`opacity transition event doesn't remove ${
-         cssClasses.LINE_RIPPLE_DEACTIVATING} class if not deactivating`,
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.LINE_RIPPLE_DEACTIVATING)
-           .and.returnValue(false);
-       const event = {
-         propertyName: 'opacity',
-       };
-       foundation.init();
-       foundation.handleTransitionEnd(event);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_DEACTIVATING);
-       expect(mockAdapter.removeClass)
-           .not.toHaveBeenCalledWith(cssClasses.LINE_RIPPLE_ACTIVE);
-     });
+  it(`opacity transition event doesn't remove ${cssClasses.LINE_RIPPLE_DEACTIVATING} class if not deactivating`, () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass
+      .withArgs(cssClasses.LINE_RIPPLE_DEACTIVATING)
+      .and.returnValue(false);
+    const event = {
+      propertyName: "opacity",
+    };
+    foundation.init();
+    foundation.handleTransitionEnd(event);
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_DEACTIVATING
+    );
+    expect(mockAdapter.removeClass).not.toHaveBeenCalledWith(
+      cssClasses.LINE_RIPPLE_ACTIVE
+    );
+  });
 
-  it('setRippleCenter sets style attribute', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("setRippleCenter sets style attribute", () => {
+    const { foundation, mockAdapter } = setupTest();
     const transformOriginValue = 100;
 
     foundation.init();
     foundation.setRippleCenter(transformOriginValue);
 
-    expect(mockAdapter.setStyle)
-        .toHaveBeenCalledWith('transform-origin', jasmine.any(String));
+    expect(mockAdapter.setStyle).toHaveBeenCalledWith(
+      "transform-origin",
+      jasmine.any(String)
+    );
   });
 });

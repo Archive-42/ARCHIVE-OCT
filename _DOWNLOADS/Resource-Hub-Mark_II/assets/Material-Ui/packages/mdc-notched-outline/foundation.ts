@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
-import {MDCNotchedOutlineAdapter} from './adapter';
-import {cssClasses, numbers, strings} from './constants';
+import { MDCFoundation } from "@material/base/foundation";
+import { MDCNotchedOutlineAdapter } from "./adapter";
+import { cssClasses, numbers, strings } from "./constants";
 
 export class MDCNotchedOutlineFoundation extends MDCFoundation<MDCNotchedOutlineAdapter> {
   static get strings() {
@@ -53,14 +53,14 @@ export class MDCNotchedOutlineFoundation extends MDCFoundation<MDCNotchedOutline
   }
 
   constructor(adapter?: Partial<MDCNotchedOutlineAdapter>) {
-    super({...MDCNotchedOutlineFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCNotchedOutlineFoundation.defaultAdapter, ...adapter });
   }
 
   /**
    * Adds the outline notched selector and updates the notch width calculated based off of notchWidth.
    */
   notch(notchWidth: number) {
-    const {OUTLINE_NOTCHED} = MDCNotchedOutlineFoundation.cssClasses;
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
 
     if (notchWidth > 0) {
       notchWidth += numbers.NOTCH_ELEMENT_PADDING; // Add padding from left/right.
@@ -74,7 +74,7 @@ export class MDCNotchedOutlineFoundation extends MDCFoundation<MDCNotchedOutline
    * Removes notched outline selector to close the notch in the outline.
    */
   closeNotch() {
-    const {OUTLINE_NOTCHED} = MDCNotchedOutlineFoundation.cssClasses;
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
     this.adapter.removeClass(OUTLINE_NOTCHED);
     this.adapter.removeNotchWidthProperty();
   }

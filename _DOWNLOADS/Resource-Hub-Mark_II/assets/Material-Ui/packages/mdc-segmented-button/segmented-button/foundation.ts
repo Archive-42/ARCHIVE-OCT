@@ -21,26 +21,26 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '@material/base/foundation';
+import { MDCFoundation } from "@material/base/foundation";
 
-import {SegmentDetail} from '../types';
+import { SegmentDetail } from "../types";
 
-import {MDCSegmentedButtonAdapter} from './adapter';
-import {cssClasses} from './constants';
+import { MDCSegmentedButtonAdapter } from "./adapter";
+import { cssClasses } from "./constants";
 
-export class MDCSegmentedButtonFoundation extends
-    MDCFoundation<MDCSegmentedButtonAdapter> {
+export class MDCSegmentedButtonFoundation extends MDCFoundation<MDCSegmentedButtonAdapter> {
   static get defaultAdapter(): MDCSegmentedButtonAdapter {
     return {
-      hasClass: () => false, getSegments: () => [],
-                selectSegment: () => undefined,
-                unselectSegment: () => undefined,
-                notifySelectedChange: () => undefined
-    }
+      hasClass: () => false,
+      getSegments: () => [],
+      selectSegment: () => undefined,
+      unselectSegment: () => undefined,
+      notifySelectedChange: () => undefined,
+    };
   }
 
   constructor(adapter?: Partial<MDCSegmentedButtonAdapter>) {
-    super({...MDCSegmentedButtonFoundation.defaultAdapter, ...adapter});
+    super({ ...MDCSegmentedButtonFoundation.defaultAdapter, ...adapter });
   }
 
   /**
@@ -49,7 +49,7 @@ export class MDCSegmentedButtonFoundation extends
    * @param indexOrSegmentId Number index or string segmentId that identifies
    * child segment
    */
-  selectSegment(indexOrSegmentId: number|string) {
+  selectSegment(indexOrSegmentId: number | string) {
     this.adapter.selectSegment(indexOrSegmentId);
   }
 
@@ -59,7 +59,7 @@ export class MDCSegmentedButtonFoundation extends
    * @param indexOrSegmentId Number index or string segmentId that identifies
    * child segment
    */
-  unselectSegment(indexOrSegmentId: number|string) {
+  unselectSegment(indexOrSegmentId: number | string) {
     this.adapter.unselectSegment(indexOrSegmentId);
   }
 
@@ -68,8 +68,9 @@ export class MDCSegmentedButtonFoundation extends
    * SegmentDetails
    */
   getSelectedSegments(): readonly SegmentDetail[] {
-    return this.adapter.getSegments().filter(
-        segmentDetail => segmentDetail.selected);
+    return this.adapter
+      .getSegments()
+      .filter((segmentDetail) => segmentDetail.selected);
   }
 
   /**
@@ -78,11 +79,15 @@ export class MDCSegmentedButtonFoundation extends
    * @return Returns true if identified child segment is currently selected,
    * otherwise returns false
    */
-  isSegmentSelected(indexOrSegmentId: number|string): boolean {
-    return this.adapter.getSegments().some(
-        segmentDetail => (segmentDetail.index === indexOrSegmentId ||
-                          segmentDetail.segmentId === indexOrSegmentId) &&
-            segmentDetail.selected);
+  isSegmentSelected(indexOrSegmentId: number | string): boolean {
+    return this.adapter
+      .getSegments()
+      .some(
+        (segmentDetail) =>
+          (segmentDetail.index === indexOrSegmentId ||
+            segmentDetail.segmentId === indexOrSegmentId) &&
+          segmentDetail.selected
+      );
   }
 
   /**

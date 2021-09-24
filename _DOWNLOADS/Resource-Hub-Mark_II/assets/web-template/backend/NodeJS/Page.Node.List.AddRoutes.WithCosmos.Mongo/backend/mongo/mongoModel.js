@@ -5,18 +5,20 @@ const CONSTANTS = require("../constants");
 // with the following schema. Define your own schema for the Cosmos MongoDB using mongoose (https://mongoosejs.com/docs/index.html).
 const ListItem = mongoose.model(
   CONSTANTS.COSMOS.COLLECTION,
-  new mongoose.Schema({
-    text: String,
-  },
-  {
-    toJSON: {
-      virtuals: true,
-      versionKey: false,
-      transform: function (doc, ret) {
-        delete ret._id;
-      },
+  new mongoose.Schema(
+    {
+      text: String,
     },
-  })
+    {
+      toJSON: {
+        virtuals: true,
+        versionKey: false,
+        transform: function (doc, ret) {
+          delete ret._id;
+        },
+      },
+    }
+  )
 );
 
 module.exports = ListItem;

@@ -23,22 +23,22 @@
 // Selector '.mdc-*' should only be used in this project.
 // stylelint-disable selector-class-pattern
 
-@use 'sass:map';
-@use 'sass:math';
-@use '@material/animation/functions' as functions2;
-@use '@material/animation/variables' as animation-variables;
-@use '@material/density/functions' as density-functions;
-@use '@material/feature-targeting/feature-targeting';
-@use '@material/ripple/ripple';
-@use '@material/ripple/ripple-theme';
-@use '@material/touch-target/mixins' as touch-target-mixins;
-@use '@material/theme/theme-color';
-@use './checkbox-custom-properties';
-@use '@material/theme/theme';
-@use '@material/theme/color-custom-properties';
-@use '@material/theme/custom-properties';
-@use '@material/touch-target/variables' as touch-target-variables;
-@use './checkbox-theme';
+@use "sass:map";
+@use "sass:math";
+@use "@material/animation/functions" as functions2;
+@use "@material/animation/variables" as animation-variables;
+@use "@material/density/functions" as density-functions;
+@use "@material/feature-targeting/feature-targeting";
+@use "@material/ripple/ripple";
+@use "@material/ripple/ripple-theme";
+@use "@material/touch-target/mixins" as touch-target-mixins;
+@use "@material/theme/theme-color";
+@use "./checkbox-custom-properties";
+@use "@material/theme/theme";
+@use "@material/theme/color-custom-properties";
+@use "@material/theme/custom-properties";
+@use "@material/touch-target/variables" as touch-target-variables;
+@use "./checkbox-theme";
 
 ///
 /// Checkbox and ripple styles.
@@ -125,7 +125,7 @@
 
   .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background,
   .mdc-checkbox__native-control:indeterminate ~ .mdc-checkbox__background,
-  .mdc-checkbox__native-control[data-indeterminate='true']
+  .mdc-checkbox__native-control[data-indeterminate="true"]
     ~ .mdc-checkbox__background {
     @include feature-targeting.targets($feat-animation) {
       @include background--marked_;
@@ -185,7 +185,7 @@
     }
   }
   .mdc-checkbox__native-control:indeterminate ~ .mdc-checkbox__background,
-  .mdc-checkbox__native-control[data-indeterminate='true']
+  .mdc-checkbox__native-control[data-indeterminate="true"]
     ~ .mdc-checkbox__background {
     .mdc-checkbox__checkmark {
       @include checkmark--indeterminate_($query);
@@ -408,7 +408,7 @@
     border-radius: 50%;
     opacity: 0;
     pointer-events: none;
-    content: '';
+    content: "";
     will-change: opacity, transform;
   }
 

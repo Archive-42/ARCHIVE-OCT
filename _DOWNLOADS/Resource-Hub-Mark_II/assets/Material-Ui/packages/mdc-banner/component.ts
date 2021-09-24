@@ -21,13 +21,18 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '@material/base/component';
-import {SpecificEventListener} from '@material/base/types';
-import {closest} from '@material/dom/ponyfill';
+import { MDCComponent } from "@material/base/component";
+import { SpecificEventListener } from "@material/base/types";
+import { closest } from "@material/dom/ponyfill";
 
-import {MDCBannerAdapter} from './adapter';
-import {CloseReason, events, MDCBannerCloseEventDetail, selectors} from './constants';
-import {MDCBannerFoundation} from './foundation';
+import { MDCBannerAdapter } from "./adapter";
+import {
+  CloseReason,
+  events,
+  MDCBannerCloseEventDetail,
+  selectors,
+} from "./constants";
+import { MDCBannerFoundation } from "./foundation";
 
 /** Vanilla JS implementation of banner component. */
 export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
@@ -35,21 +40,22 @@ export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
     return new MDCBanner(root);
   }
 
-  root!: HTMLElement;  // Assigned in MDCComponent constructor.
-  private handleContentClick!:
-      SpecificEventListener<'click'>;            // Assigned in #initialize.
-  private primaryActionEl!: HTMLElement;         // Assigned in #initialize.
-  private secondaryActionEl!: HTMLElement|null;  // Assigned in #initialize.
-  private textEl!: HTMLElement;                  // Assigned in #initialize.
-  private contentEl!: HTMLElement;               // Assigned in #initialize.
+  root!: HTMLElement; // Assigned in MDCComponent constructor.
+  private handleContentClick!: SpecificEventListener<"click">; // Assigned in #initialize.
+  private primaryActionEl!: HTMLElement; // Assigned in #initialize.
+  private secondaryActionEl!: HTMLElement | null; // Assigned in #initialize.
+  private textEl!: HTMLElement; // Assigned in #initialize.
+  private contentEl!: HTMLElement; // Assigned in #initialize.
 
   initialize() {
     this.contentEl = this.root.querySelector(selectors.CONTENT) as HTMLElement;
     this.textEl = this.root.querySelector(selectors.TEXT) as HTMLElement;
-    this.primaryActionEl =
-        this.root.querySelector(selectors.PRIMARY_ACTION) as HTMLElement;
-    this.secondaryActionEl =
-        this.root.querySelector(selectors.SECONDARY_ACTION) as HTMLElement;
+    this.primaryActionEl = this.root.querySelector(
+      selectors.PRIMARY_ACTION
+    ) as HTMLElement;
+    this.secondaryActionEl = this.root.querySelector(
+      selectors.SECONDARY_ACTION
+    ) as HTMLElement;
 
     this.handleContentClick = (evt) => {
       const target = evt.target as Element;
@@ -107,10 +113,10 @@ export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
         return this.contentEl.offsetHeight;
       },
       notifyClosed: (reason) => {
-        this.emit<MDCBannerCloseEventDetail>(events.CLOSED, {reason});
+        this.emit<MDCBannerCloseEventDetail>(events.CLOSED, { reason });
       },
       notifyClosing: (reason) => {
-        this.emit<MDCBannerCloseEventDetail>(events.CLOSING, {reason});
+        this.emit<MDCBannerCloseEventDetail>(events.CLOSING, { reason });
       },
       notifyOpened: () => {
         this.emit(events.OPENED, {});
@@ -133,7 +139,7 @@ export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
   }
 
   getText(): string {
-    return this.textEl.textContent || '';
+    return this.textEl.textContent || "";
   }
 
   setText(text: string) {
@@ -141,7 +147,7 @@ export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
   }
 
   getPrimaryActionText(): string {
-    return this.primaryActionEl.textContent || '';
+    return this.primaryActionEl.textContent || "";
   }
 
   setPrimaryActionText(actionButtonText: string) {
@@ -149,9 +155,10 @@ export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
   }
 
   /** Returns null if the banner has no secondary action. */
-  getSecondaryActionText(): string|null {
-    return this.secondaryActionEl ? this.secondaryActionEl.textContent || '' :
-                                    null;
+  getSecondaryActionText(): string | null {
+    return this.secondaryActionEl
+      ? this.secondaryActionEl.textContent || ""
+      : null;
   }
 
   setSecondaryActionText(actionButtonText: string) {
@@ -160,12 +167,13 @@ export class MDCBanner extends MDCComponent<MDCBannerFoundation> {
     }
   }
 
-  private registerContentClickHandler(handler: SpecificEventListener<'click'>) {
-    this.contentEl.addEventListener('click', handler as EventListener);
+  private registerContentClickHandler(handler: SpecificEventListener<"click">) {
+    this.contentEl.addEventListener("click", handler as EventListener);
   }
 
-  private deregisterContentClickHandler(handler:
-                                            SpecificEventListener<'click'>) {
-    this.contentEl.removeEventListener('click', handler as EventListener);
+  private deregisterContentClickHandler(
+    handler: SpecificEventListener<"click">
+  ) {
+    this.contentEl.removeEventListener("click", handler as EventListener);
   }
 }

@@ -21,81 +21,89 @@
  * THE SOFTWARE.
  */
 
-import {checkNumTimesSpyCalledWithArgs, createMockAdapter, verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpMdcTestEnvironment} from '../../../testing/helpers/setup';
-import {cssClasses, numbers, strings} from '../constants';
-import {MDCSelectFoundation} from '../foundation';
+import {
+  checkNumTimesSpyCalledWithArgs,
+  createMockAdapter,
+  verifyDefaultAdapter,
+} from "../../../testing/helpers/foundation";
+import { setUpMdcTestEnvironment } from "../../../testing/helpers/setup";
+import { cssClasses, numbers, strings } from "../constants";
+import { MDCSelectFoundation } from "../foundation";
 
 const LABEL_WIDTH = 100;
 
-describe('MDCSelectFoundation', () => {
+describe("MDCSelectFoundation", () => {
   setUpMdcTestEnvironment();
 
-  it('exports cssClasses', () => {
+  it("exports cssClasses", () => {
     expect(MDCSelectFoundation.cssClasses).toEqual(cssClasses);
   });
 
-  it('exports numbers', () => {
+  it("exports numbers", () => {
     expect(MDCSelectFoundation.numbers).toEqual(numbers);
   });
 
-  it('exports strings', () => {
+  it("exports strings", () => {
     expect(MDCSelectFoundation.strings).toEqual(strings);
   });
 
-  it('default adapter returns a complete adapter implementation', () => {
+  it("default adapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCSelectFoundation, [
-      'addClass',
-      'removeClass',
-      'hasClass',
-      'activateBottomLine',
-      'deactivateBottomLine',
-      'hasLabel',
-      'floatLabel',
-      'setLabelRequired',
-      'getLabelWidth',
-      'hasOutline',
-      'notchOutline',
-      'closeOutline',
-      'setRippleCenter',
-      'notifyChange',
-      'setSelectedText',
-      'isSelectAnchorFocused',
-      'getSelectAnchorAttr',
-      'setSelectAnchorAttr',
-      'removeSelectAnchorAttr',
-      'addMenuClass',
-      'removeMenuClass',
-      'openMenu',
-      'closeMenu',
-      'getAnchorElement',
-      'setMenuAnchorElement',
-      'setMenuAnchorCorner',
-      'setMenuWrapFocus',
-      'focusMenuItemAtIndex',
-      'getMenuItemCount',
-      'getMenuItemValues',
-      'getMenuItemTextAtIndex',
-      'isTypeaheadInProgress',
-      'typeaheadMatchItem',
-      'getSelectedIndex',
-      'setSelectedIndex',
+      "addClass",
+      "removeClass",
+      "hasClass",
+      "activateBottomLine",
+      "deactivateBottomLine",
+      "hasLabel",
+      "floatLabel",
+      "setLabelRequired",
+      "getLabelWidth",
+      "hasOutline",
+      "notchOutline",
+      "closeOutline",
+      "setRippleCenter",
+      "notifyChange",
+      "setSelectedText",
+      "isSelectAnchorFocused",
+      "getSelectAnchorAttr",
+      "setSelectAnchorAttr",
+      "removeSelectAnchorAttr",
+      "addMenuClass",
+      "removeMenuClass",
+      "openMenu",
+      "closeMenu",
+      "getAnchorElement",
+      "setMenuAnchorElement",
+      "setMenuAnchorCorner",
+      "setMenuWrapFocus",
+      "focusMenuItemAtIndex",
+      "getMenuItemCount",
+      "getMenuItemValues",
+      "getMenuItemTextAtIndex",
+      "isTypeaheadInProgress",
+      "typeaheadMatchItem",
+      "getSelectedIndex",
+      "setSelectedIndex",
     ]);
   });
 
   function setupTest(hasLeadingIcon = true, hasHelperText = false) {
     const mockAdapter = createMockAdapter(MDCSelectFoundation);
-    const leadingIcon = jasmine.createSpyObj('leadingIcon', [
-      'setDisabled', 'setAriaLabel', 'setContent', 'registerInteractionHandler',
-      'deregisterInteractionHandler', 'handleInteraction'
+    const leadingIcon = jasmine.createSpyObj("leadingIcon", [
+      "setDisabled",
+      "setAriaLabel",
+      "setContent",
+      "registerInteractionHandler",
+      "deregisterInteractionHandler",
+      "handleInteraction",
     ]);
-    const helperText = jasmine.createSpyObj('helperText', [
-      'getId',
-      'isVisible',
-      'setContent',
-      'setValidationMsgPersistent',
-      'setValidation',
-      'setValidity',
+    const helperText = jasmine.createSpyObj("helperText", [
+      "getId",
+      "isVisible",
+      "setContent",
+      "setValidationMsgPersistent",
+      "setValidation",
+      "setValidity",
     ]);
     const foundationMap = {
       leadingIcon: hasLeadingIcon ? leadingIcon : undefined,
@@ -103,80 +111,84 @@ describe('MDCSelectFoundation', () => {
     };
 
     mockAdapter.hasLabel.and.returnValue(true);
-    mockAdapter.getMenuItemValues.and.returnValue(['foo', 'bar']);
-    mockAdapter.getMenuItemTextAtIndex.withArgs(0).and.returnValue('foo');
-    mockAdapter.getMenuItemTextAtIndex.withArgs(1).and.returnValue('bar');
+    mockAdapter.getMenuItemValues.and.returnValue(["foo", "bar"]);
+    mockAdapter.getMenuItemTextAtIndex.withArgs(0).and.returnValue("foo");
+    mockAdapter.getMenuItemTextAtIndex.withArgs(1).and.returnValue("bar");
     mockAdapter.getMenuItemCount.and.returnValue(2);
 
     const foundation = new MDCSelectFoundation(mockAdapter, foundationMap);
-    return {foundation, mockAdapter, leadingIcon, helperText};
+    return { foundation, mockAdapter, leadingIcon, helperText };
   }
 
-  it('#getDisabled() returns true if disabled', () => {
-    const {foundation} = setupTest();
+  it("#getDisabled() returns true if disabled", () => {
+    const { foundation } = setupTest();
     foundation.setDisabled(true);
     expect(foundation.getDisabled()).toEqual(true);
   });
 
-  it('#getDisabled() returns false if not disabled', () => {
-    const {foundation} = setupTest();
+  it("#getDisabled() returns false if not disabled", () => {
+    const { foundation } = setupTest();
     foundation.setDisabled(false);
     expect(foundation.getDisabled()).toEqual(false);
   });
 
-  it('#setDisabled(true) calls adapter.addClass', () => {
-    const {mockAdapter, foundation} = setupTest();
+  it("#setDisabled(true) calls adapter.addClass", () => {
+    const { mockAdapter, foundation } = setupTest();
     foundation.setDisabled(true);
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.DISABLED);
   });
 
-  it('#setDisabled(false) calls adapter.removeClass', () => {
-    const {mockAdapter, foundation} = setupTest();
+  it("#setDisabled(false) calls adapter.removeClass", () => {
+    const { mockAdapter, foundation } = setupTest();
     foundation.setDisabled(false);
     expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.DISABLED);
   });
 
-  it('#setDisabled sets disabled on leading icon', () => {
-    const {foundation, leadingIcon} = setupTest();
+  it("#setDisabled sets disabled on leading icon", () => {
+    const { foundation, leadingIcon } = setupTest();
     foundation.setDisabled(true);
     expect(leadingIcon.setDisabled).toHaveBeenCalledWith(true);
   });
 
-  it('#setDisabled false adds tabindex 0', () => {
-    const {mockAdapter, foundation} = setupTest();
+  it("#setDisabled false adds tabindex 0", () => {
+    const { mockAdapter, foundation } = setupTest();
     foundation.setDisabled(false);
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('tabindex', '0');
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "tabindex",
+      "0"
+    );
   });
 
-  it('#setDisabled true removes tabindex attr', () => {
-    const {mockAdapter, foundation} = setupTest();
+  it("#setDisabled true removes tabindex attr", () => {
+    const { mockAdapter, foundation } = setupTest();
     foundation.setDisabled(true);
-    expect(mockAdapter.removeSelectAnchorAttr).toHaveBeenCalledWith('tabindex');
+    expect(mockAdapter.removeSelectAnchorAttr).toHaveBeenCalledWith("tabindex");
   });
 
-  it('#notchOutline updates the width of the outline element', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#notchOutline updates the width of the outline element", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.hasOutline.and.returnValue(true);
     mockAdapter.getLabelWidth.and.returnValue(LABEL_WIDTH);
 
     foundation.notchOutline(true);
-    expect(mockAdapter.notchOutline)
-        .toHaveBeenCalledWith(LABEL_WIDTH * numbers.LABEL_SCALE);
+    expect(mockAdapter.notchOutline).toHaveBeenCalledWith(
+      LABEL_WIDTH * numbers.LABEL_SCALE
+    );
   });
 
-  it('#notchOutline does nothing if no outline is present', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#notchOutline does nothing if no outline is present", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.hasOutline.and.returnValue(false);
     mockAdapter.getLabelWidth.and.returnValue(LABEL_WIDTH);
 
     foundation.notchOutline(true);
-    expect(mockAdapter.notchOutline)
-        .not.toHaveBeenCalledWith(jasmine.anything());
+    expect(mockAdapter.notchOutline).not.toHaveBeenCalledWith(
+      jasmine.anything()
+    );
   });
 
-  it('#notchOutline width is set to 0 if no label is present', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#notchOutline width is set to 0 if no label is present", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.hasOutline.and.returnValue(true);
     mockAdapter.getLabelWidth.and.returnValue(0);
 
@@ -185,8 +197,8 @@ describe('MDCSelectFoundation', () => {
     expect(mockAdapter.notchOutline).toHaveBeenCalledTimes(1);
   });
 
-  it('#notchOutline(false) closes the outline', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#notchOutline(false) closes the outline", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.hasOutline.and.returnValue(true);
     mockAdapter.getLabelWidth.and.returnValue(LABEL_WIDTH);
 
@@ -194,19 +206,18 @@ describe('MDCSelectFoundation', () => {
     expect(mockAdapter.closeOutline).toHaveBeenCalled();
   });
 
-  it('#notchOutline does not close the notch if the select is still focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasOutline.and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
-       mockAdapter.getLabelWidth.and.returnValue(LABEL_WIDTH);
+  it("#notchOutline does not close the notch if the select is still focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasOutline.and.returnValue(true);
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+    mockAdapter.getLabelWidth.and.returnValue(LABEL_WIDTH);
 
-       foundation.notchOutline(false);
-       expect(mockAdapter.closeOutline).not.toHaveBeenCalled();
-     });
+    foundation.notchOutline(false);
+    expect(mockAdapter.closeOutline).not.toHaveBeenCalled();
+  });
 
-  it('#handleMenuOpened focuses last selected element', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleMenuOpened focuses last selected element", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
     mockAdapter.getSelectedIndex.and.returnValue(2);
     foundation.handleMenuOpened();
@@ -215,443 +226,446 @@ describe('MDCSelectFoundation', () => {
   });
 
   it(`#handleMenuClosed removes ${cssClasses.ACTIVATED} class name`, () => {
-    const {foundation, mockAdapter} = setupTest();
+    const { foundation, mockAdapter } = setupTest();
     foundation.handleMenuClosed();
     checkNumTimesSpyCalledWithArgs(
-        mockAdapter.removeClass, [cssClasses.ACTIVATED], 1);
+      mockAdapter.removeClass,
+      [cssClasses.ACTIVATED],
+      1
+    );
   });
 
-  it('#handleMenuClosed sets isMenuOpen to false', () => {
-    const {foundation} = setupTest();
+  it("#handleMenuClosed sets isMenuOpen to false", () => {
+    const { foundation } = setupTest();
     foundation.handleMenuClosed();
     expect((foundation as any).isMenuOpen).toBe(false);
   });
 
-  it('#handleMenuClosed set aria-expanded attribute to false', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleMenuClosed set aria-expanded attribute to false", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.handleMenuClosed();
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('aria-expanded', 'false');
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-expanded",
+      "false"
+    );
   });
 
-  it('#handleChange calls adapter.floatLabel(true) when there is a value',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.init();
-       mockAdapter.floatLabel.calls.reset();
-       mockAdapter.getSelectedIndex.and.returnValue(1);
+  it("#handleChange calls adapter.floatLabel(true) when there is a value", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.init();
+    mockAdapter.floatLabel.calls.reset();
+    mockAdapter.getSelectedIndex.and.returnValue(1);
 
-       foundation.handleChange();
-       expect(mockAdapter.floatLabel).toHaveBeenCalledWith(true);
-       expect(mockAdapter.floatLabel).toHaveBeenCalledTimes(1);
-     });
+    foundation.handleChange();
+    expect(mockAdapter.floatLabel).toHaveBeenCalledWith(true);
+    expect(mockAdapter.floatLabel).toHaveBeenCalledTimes(1);
+  });
 
-  it('#handleChange calls adapter.floatLabel(false) when there is no value and the select is not focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getSelectedIndex.and.returnValue(numbers.UNSET_INDEX);
+  it("#handleChange calls adapter.floatLabel(false) when there is no value and the select is not focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getSelectedIndex.and.returnValue(numbers.UNSET_INDEX);
 
-       foundation.handleChange();
-       expect(mockAdapter.floatLabel).toHaveBeenCalledWith(false);
-       expect(mockAdapter.floatLabel).toHaveBeenCalledTimes(1);
-     });
+    foundation.handleChange();
+    expect(mockAdapter.floatLabel).toHaveBeenCalledWith(false);
+    expect(mockAdapter.floatLabel).toHaveBeenCalledTimes(1);
+  });
 
-  it('#handleChange does not call adapter.floatLabel(false) when there is no value if the select is focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getSelectedIndex.and.returnValue(numbers.UNSET_INDEX);
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+  it("#handleChange does not call adapter.floatLabel(false) when there is no value if the select is focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getSelectedIndex.and.returnValue(numbers.UNSET_INDEX);
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
 
-       foundation.handleChange();
-       expect(mockAdapter.floatLabel).not.toHaveBeenCalledWith(false);
-     });
+    foundation.handleChange();
+    expect(mockAdapter.floatLabel).not.toHaveBeenCalledWith(false);
+  });
 
-  it('#handleChange does not call adapter.floatLabel() when no label is present',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasLabel.and.returnValue(false);
+  it("#handleChange does not call adapter.floatLabel() when no label is present", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasLabel.and.returnValue(false);
 
-       foundation.handleChange();
-       expect(mockAdapter.floatLabel)
-           .not.toHaveBeenCalledWith(jasmine.anything());
-     });
+    foundation.handleChange();
+    expect(mockAdapter.floatLabel).not.toHaveBeenCalledWith(jasmine.anything());
+  });
 
-  it('#handleChange calls foundation.notchOutline(true) when there is a value',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getSelectedIndex.and.returnValue(1);
-       foundation.init();
-       foundation.notchOutline = jasmine.createSpy('');
+  it("#handleChange calls foundation.notchOutline(true) when there is a value", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getSelectedIndex.and.returnValue(1);
+    foundation.init();
+    foundation.notchOutline = jasmine.createSpy("");
 
-       foundation.handleChange();
-       expect(foundation.notchOutline).toHaveBeenCalledWith(true);
-       expect(foundation.notchOutline).toHaveBeenCalledTimes(1);
-     });
+    foundation.handleChange();
+    expect(foundation.notchOutline).toHaveBeenCalledWith(true);
+    expect(foundation.notchOutline).toHaveBeenCalledTimes(1);
+  });
 
-  it('#handleChange calls foundation.notchOutline(false) when there is no value',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.notchOutline = jasmine.createSpy('');
-       mockAdapter.getSelectedIndex.and.returnValue(numbers.UNSET_INDEX);
+  it("#handleChange calls foundation.notchOutline(false) when there is no value", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.notchOutline = jasmine.createSpy("");
+    mockAdapter.getSelectedIndex.and.returnValue(numbers.UNSET_INDEX);
 
-       foundation.handleChange();
-       expect(foundation.notchOutline).toHaveBeenCalledWith(false);
-       expect(foundation.notchOutline).toHaveBeenCalledTimes(1);
-     });
+    foundation.handleChange();
+    expect(foundation.notchOutline).toHaveBeenCalledWith(false);
+    expect(foundation.notchOutline).toHaveBeenCalledTimes(1);
+  });
 
-  it('#handleChange does not call foundation.notchOutline() when there is no label',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.notchOutline = jasmine.createSpy('');
-       mockAdapter.hasLabel.and.returnValue(false);
+  it("#handleChange does not call foundation.notchOutline() when there is no label", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.notchOutline = jasmine.createSpy("");
+    mockAdapter.hasLabel.and.returnValue(false);
 
-       foundation.handleChange();
-       expect(foundation.notchOutline)
-           .not.toHaveBeenCalledWith(jasmine.anything());
-     });
+    foundation.handleChange();
+    expect(foundation.notchOutline).not.toHaveBeenCalledWith(
+      jasmine.anything()
+    );
+  });
 
-  it('#handleChange calls adapter.notifyChange()', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleChange calls adapter.notifyChange()", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.handleChange();
     expect(mockAdapter.notifyChange).toHaveBeenCalledWith(jasmine.anything());
     expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleFocus calls foundation.layout()', () => {
-    const {foundation} = setupTest();
-    foundation.layout = jasmine.createSpy('layout');
+  it("#handleFocus calls foundation.layout()", () => {
+    const { foundation } = setupTest();
+    foundation.layout = jasmine.createSpy("layout");
     foundation.handleFocus();
     expect(foundation.layout).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleFocus calls adapter.activateBottomLine()', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleFocus calls adapter.activateBottomLine()", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.handleFocus();
     expect(mockAdapter.activateBottomLine).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleFocus calls adapter.activateBottomLine() if isMenuOpen=true',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       (foundation as any).isMenuOpen = true;
-       foundation.handleFocus();
-       expect(mockAdapter.activateBottomLine).toHaveBeenCalledTimes(1);
-     });
+  it("#handleFocus calls adapter.activateBottomLine() if isMenuOpen=true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    (foundation as any).isMenuOpen = true;
+    foundation.handleFocus();
+    expect(mockAdapter.activateBottomLine).toHaveBeenCalledTimes(1);
+  });
 
-  it('#handleBlur calls foundation.layout()', () => {
-    const {foundation} = setupTest();
-    (foundation as any).layout = jasmine.createSpy('');
+  it("#handleBlur calls foundation.layout()", () => {
+    const { foundation } = setupTest();
+    (foundation as any).layout = jasmine.createSpy("");
     foundation.handleBlur();
     expect((foundation as any).layout).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleBlur calls adapter.deactivateBottomLine()', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleBlur calls adapter.deactivateBottomLine()", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.handleBlur();
     expect(mockAdapter.deactivateBottomLine).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleBlur does not call deactivateBottomLine if isMenuOpen=true',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       (foundation as any).isMenuOpen = true;
-       foundation.handleBlur();
-       expect(mockAdapter.deactivateBottomLine).not.toHaveBeenCalled();
-     });
+  it("#handleBlur does not call deactivateBottomLine if isMenuOpen=true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    (foundation as any).isMenuOpen = true;
+    foundation.handleBlur();
+    expect(mockAdapter.deactivateBottomLine).not.toHaveBeenCalled();
+  });
 
-  it('#handleBlur calls helperText.setValidity(true) if menu is not open',
-     () => {
-       const hasIcon = true;
-       const hasHelperText = true;
-       const {foundation, mockAdapter, helperText} =
-           setupTest(hasIcon, hasHelperText);
-       mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-       mockAdapter.getSelectedIndex.and.returnValue(0);
-       foundation.init();
-       foundation.handleBlur();
-       expect(helperText.setValidity).toHaveBeenCalledWith(true);
-       // once during init, once during blur
-       expect(helperText.setValidity).toHaveBeenCalledTimes(2);
-     });
+  it("#handleBlur calls helperText.setValidity(true) if menu is not open", () => {
+    const hasIcon = true;
+    const hasHelperText = true;
+    const { foundation, mockAdapter, helperText } = setupTest(
+      hasIcon,
+      hasHelperText
+    );
+    mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+    mockAdapter.getSelectedIndex.and.returnValue(0);
+    foundation.init();
+    foundation.handleBlur();
+    expect(helperText.setValidity).toHaveBeenCalledWith(true);
+    // once during init, once during blur
+    expect(helperText.setValidity).toHaveBeenCalledTimes(2);
+  });
 
-  it('#openMenu opens the menu', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#openMenu opens the menu", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.openMenu();
     expect(mockAdapter.openMenu).toHaveBeenCalledTimes(1);
   });
 
-  it('#openMenu sets aria-expanded', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#openMenu sets aria-expanded", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.openMenu();
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('aria-expanded', 'true');
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-expanded",
+      "true"
+    );
   });
 
-  it('#openMenu adds activated class', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#openMenu adds activated class", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.openMenu();
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.ACTIVATED);
   });
 
-  it('#handleClick closes menu if isMenuOpen=true', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleClick closes menu if isMenuOpen=true", () => {
+    const { foundation, mockAdapter } = setupTest();
     (foundation as any).isMenuOpen = true;
     foundation.handleClick(0);
     expect(mockAdapter.closeMenu).toHaveBeenCalled();
   });
 
-  it('#handleClick does nothing if disabled', () => {
-    const {foundation, mockAdapter} = setupTest();
-    foundation['disabled'] = true;
+  it("#handleClick does nothing if disabled", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation["disabled"] = true;
     foundation.handleClick(0);
     expect(mockAdapter.setRippleCenter).not.toHaveBeenCalled();
     expect(mockAdapter.addClass).not.toHaveBeenCalled();
   });
 
-  it('#handleClick debounces clicks', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleClick debounces clicks", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.handleClick(0);
-    foundation['isMenuOpen'] = false;
+    foundation["isMenuOpen"] = false;
     foundation.handleClick(0);
     expect(mockAdapter.openMenu).toHaveBeenCalledTimes(1);
 
-    foundation['isMenuOpen'] = false;
+    foundation["isMenuOpen"] = false;
     jasmine.clock().tick(numbers.CLICK_DEBOUNCE_TIMEOUT_MS);
     foundation.handleClick(0);
     expect(mockAdapter.openMenu).toHaveBeenCalledTimes(2);
   });
 
-  it('#handleClick sets the ripple center if isMenuOpen=false', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleClick sets the ripple center if isMenuOpen=false", () => {
+    const { foundation, mockAdapter } = setupTest();
     (foundation as any).isMenuOpen = false;
     foundation.handleClick(0);
     expect(mockAdapter.setRippleCenter).toHaveBeenCalledWith(0);
     expect(mockAdapter.setRippleCenter).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleClick opens the menu if the select is focused and isMenuOpen=false',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
-       (foundation as any).isMenuOpen = false;
-       foundation.handleClick(0);
-       expect(mockAdapter.openMenu).toHaveBeenCalledTimes(1);
-     });
-
-  it('#handleClick sets the aria-expanded', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleClick opens the menu if the select is focused and isMenuOpen=false", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+    (foundation as any).isMenuOpen = false;
     foundation.handleClick(0);
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('aria-expanded', 'true');
+    expect(mockAdapter.openMenu).toHaveBeenCalledTimes(1);
   });
 
-  it('#handleClick adds activated class if isMenuOpen=false', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#handleClick sets the aria-expanded", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.handleClick(0);
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-expanded",
+      "true"
+    );
+  });
+
+  it("#handleClick adds activated class if isMenuOpen=false", () => {
+    const { foundation, mockAdapter } = setupTest();
     (foundation as any).isMenuOpen = false;
     foundation.handleClick(0);
     expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.ACTIVATED);
   });
 
-  it('#handleKeydown calls adapter.openMenu if valid keys are pressed, menu is not open and select is focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const preventDefault = jasmine.createSpy('');
-       const event = {key: 'Enter', preventDefault} as any;
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
-       foundation.handleKeydown(event);
-       event.key = 'Spacebar';
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       event.key = 'ArrowUp';
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       event.key = 'ArrowDown';
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       event.key = '';
-       event.keyCode = 13;  // Enter
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       event.keyCode = 32;  // Space
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       event.keyCode = 38;  // Up
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       event.keyCode = 40;  // Down
-       (foundation as any).isMenuOpen = false;
-       foundation.handleKeydown(event);
-       expect(mockAdapter.openMenu).toHaveBeenCalledTimes(8);
+  it("#handleKeydown calls adapter.openMenu if valid keys are pressed, menu is not open and select is focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
+    const event = { key: "Enter", preventDefault } as any;
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+    foundation.handleKeydown(event);
+    event.key = "Spacebar";
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    event.key = "ArrowUp";
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    event.key = "ArrowDown";
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    event.key = "";
+    event.keyCode = 13; // Enter
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    event.keyCode = 32; // Space
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    event.keyCode = 38; // Up
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    event.keyCode = 40; // Down
+    (foundation as any).isMenuOpen = false;
+    foundation.handleKeydown(event);
+    expect(mockAdapter.openMenu).toHaveBeenCalledTimes(8);
 
-       checkNumTimesSpyCalledWithArgs(
-           mockAdapter.addClass, [cssClasses.ACTIVATED], 8);
-       checkNumTimesSpyCalledWithArgs(
-           mockAdapter.setSelectAnchorAttr, ['aria-expanded', 'true'], 8);
-       expect(preventDefault).toHaveBeenCalledTimes(8);
-     });
+    checkNumTimesSpyCalledWithArgs(
+      mockAdapter.addClass,
+      [cssClasses.ACTIVATED],
+      8
+    );
+    checkNumTimesSpyCalledWithArgs(
+      mockAdapter.setSelectAnchorAttr,
+      ["aria-expanded", "true"],
+      8
+    );
+    expect(preventDefault).toHaveBeenCalledTimes(8);
+  });
 
-  it('#handleKeydown does not call adapter.openMenu if Enter/Space key is pressed, and select is not focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const preventDefault = jasmine.createSpy('');
-       const event = {key: 'Enter', preventDefault} as any;
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(false);
-       foundation.handleKeydown(event);
-       event.key = 'Spacebar';
-       foundation.handleKeydown(event);
-       event.key = 'ArrowUp';
-       foundation.handleKeydown(event);
-       event.key = 'ArrowDown';
-       foundation.handleKeydown(event);
-       event.key = '';
-       event.keyCode = 13;  // Enter
-       foundation.handleKeydown(event);
-       event.keyCode = 32;  // Space
-       foundation.handleKeydown(event);
-       event.keyCode = 38;  // Up
-       foundation.handleKeydown(event);
-       event.keyCode = 40;  // Down
-       foundation.handleKeydown(event);
-       expect(mockAdapter.openMenu).not.toHaveBeenCalled();
-       expect(preventDefault).not.toHaveBeenCalled();
-     });
-
-  it('#handleKeydown does not call adapter.openMenu if menu is opened', () => {
-    const {foundation, mockAdapter} = setupTest();
-    const preventDefault = jasmine.createSpy('');
-    const event = {key: 'Enter', preventDefault} as any;
-    (foundation as any).isMenuOpen = true;
+  it("#handleKeydown does not call adapter.openMenu if Enter/Space key is pressed, and select is not focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
+    const event = { key: "Enter", preventDefault } as any;
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(false);
     foundation.handleKeydown(event);
-    event.key = 'Spacebar';
+    event.key = "Spacebar";
     foundation.handleKeydown(event);
-    event.key = 'ArrowUp';
+    event.key = "ArrowUp";
     foundation.handleKeydown(event);
-    event.key = 'ArrowDown';
+    event.key = "ArrowDown";
     foundation.handleKeydown(event);
-    event.key = '';
-    event.keyCode = 13;  // Enter
+    event.key = "";
+    event.keyCode = 13; // Enter
     foundation.handleKeydown(event);
-    event.keyCode = 32;  // Space
+    event.keyCode = 32; // Space
     foundation.handleKeydown(event);
-    event.keyCode = 38;  // Up
+    event.keyCode = 38; // Up
     foundation.handleKeydown(event);
-    event.keyCode = 40;  // Down
+    event.keyCode = 40; // Down
     foundation.handleKeydown(event);
     expect(mockAdapter.openMenu).not.toHaveBeenCalled();
     expect(preventDefault).not.toHaveBeenCalled();
   });
 
-  it('#handleKeydown arrowUp decrements selected index when select is focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const preventDefault = jasmine.createSpy('');
+  it("#handleKeydown does not call adapter.openMenu if menu is opened", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
+    const event = { key: "Enter", preventDefault } as any;
+    (foundation as any).isMenuOpen = true;
+    foundation.handleKeydown(event);
+    event.key = "Spacebar";
+    foundation.handleKeydown(event);
+    event.key = "ArrowUp";
+    foundation.handleKeydown(event);
+    event.key = "ArrowDown";
+    foundation.handleKeydown(event);
+    event.key = "";
+    event.keyCode = 13; // Enter
+    foundation.handleKeydown(event);
+    event.keyCode = 32; // Space
+    foundation.handleKeydown(event);
+    event.keyCode = 38; // Up
+    foundation.handleKeydown(event);
+    event.keyCode = 40; // Down
+    foundation.handleKeydown(event);
+    expect(mockAdapter.openMenu).not.toHaveBeenCalled();
+    expect(preventDefault).not.toHaveBeenCalled();
+  });
 
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
-       mockAdapter.getMenuItemValues.and.returnValue(['zero', 'one', 'two']);
-       mockAdapter.getMenuItemCount.and.returnValue(3);
-       mockAdapter.getSelectedIndex.and.returnValue(2);
+  it("#handleKeydown arrowUp decrements selected index when select is focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
 
-       foundation.init();
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+    mockAdapter.getMenuItemValues.and.returnValue(["zero", "one", "two"]);
+    mockAdapter.getMenuItemCount.and.returnValue(3);
+    mockAdapter.getSelectedIndex.and.returnValue(2);
 
-       const event = {key: 'ArrowUp', preventDefault} as any;
-       foundation.handleKeydown(event);
-       expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
+    foundation.init();
 
-       mockAdapter.getSelectedIndex.and.returnValue(1);
-       foundation['isMenuOpen'] = false;
-       event.key = '';
-       event.keyCode = 38;  // Up
-       foundation.handleKeydown(event);
-       expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(0);
+    const event = { key: "ArrowUp", preventDefault } as any;
+    foundation.handleKeydown(event);
+    expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
 
-       // Further ArrowUps should be no-ops once we're at first item
-       mockAdapter.getSelectedIndex.and.returnValue(0);
-       foundation['isMenuOpen'] = false;
-       event.key = 'ArrowUp';
-       event.keyCode = undefined;
-       foundation.handleKeydown(event);
+    mockAdapter.getSelectedIndex.and.returnValue(1);
+    foundation["isMenuOpen"] = false;
+    event.key = "";
+    event.keyCode = 38; // Up
+    foundation.handleKeydown(event);
+    expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(0);
 
-       event.key = '';
-       event.keyCode = 38;  // Up
-       foundation.handleKeydown(event);
+    // Further ArrowUps should be no-ops once we're at first item
+    mockAdapter.getSelectedIndex.and.returnValue(0);
+    foundation["isMenuOpen"] = false;
+    event.key = "ArrowUp";
+    event.keyCode = undefined;
+    foundation.handleKeydown(event);
 
-       expect(foundation.getSelectedIndex()).toEqual(0);
-       expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(2);
-     });
+    event.key = "";
+    event.keyCode = 38; // Up
+    foundation.handleKeydown(event);
 
-  it('#handleKeydown arrowDown increments selected index when select is focused',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const preventDefault = jasmine.createSpy('');
+    expect(foundation.getSelectedIndex()).toEqual(0);
+    expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(2);
+  });
 
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
-       mockAdapter.getMenuItemValues.and.returnValue(['zero', 'one', 'two']);
-       mockAdapter.getMenuItemCount.and.returnValue(3);
-       mockAdapter.getSelectedIndex.and.returnValue(0);
-       foundation.init();
+  it("#handleKeydown arrowDown increments selected index when select is focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
 
-       const event = {key: 'ArrowDown', preventDefault} as any;
-       foundation.handleKeydown(event);
-       expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+    mockAdapter.getMenuItemValues.and.returnValue(["zero", "one", "two"]);
+    mockAdapter.getMenuItemCount.and.returnValue(3);
+    mockAdapter.getSelectedIndex.and.returnValue(0);
+    foundation.init();
 
-       mockAdapter.getSelectedIndex.and.returnValue(1);
-       foundation['isMenuOpen'] = false;
-       event.key = '';
-       event.keyCode = 40;  // Down
-       foundation.handleKeydown(event);
-       expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(2);
+    const event = { key: "ArrowDown", preventDefault } as any;
+    foundation.handleKeydown(event);
+    expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
 
-       // Further ArrowDowns should be no-ops once we're at last item
-       mockAdapter.getSelectedIndex.and.returnValue(2);
-       foundation['isMenuOpen'] = false;
-       event.key = 'ArrowDown';
-       event.keyCode = undefined;
-       foundation.handleKeydown(event);
+    mockAdapter.getSelectedIndex.and.returnValue(1);
+    foundation["isMenuOpen"] = false;
+    event.key = "";
+    event.keyCode = 40; // Down
+    foundation.handleKeydown(event);
+    expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(2);
 
-       event.key = '';
-       event.keyCode = 40;  // Down
-       foundation.handleKeydown(event);
+    // Further ArrowDowns should be no-ops once we're at last item
+    mockAdapter.getSelectedIndex.and.returnValue(2);
+    foundation["isMenuOpen"] = false;
+    event.key = "ArrowDown";
+    event.keyCode = undefined;
+    foundation.handleKeydown(event);
 
-       expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(2);
-     });
+    event.key = "";
+    event.keyCode = 40; // Down
+    foundation.handleKeydown(event);
 
-  it('#handleKeydown with alphanumeric characters calls adapter.getTypeaheadNextIndex',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const preventDefault = jasmine.createSpy('');
-       const event = {key: 'a', preventDefault} as any;
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+    expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(2);
+  });
 
-       foundation.handleKeydown(event);
-       event.key = 'Z';
-       foundation.handleKeydown(event);
-       event.key = '1';
-       foundation.handleKeydown(event);
+  it("#handleKeydown with alphanumeric characters calls adapter.getTypeaheadNextIndex", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
+    const event = { key: "a", preventDefault } as any;
+    mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
 
-       expect(mockAdapter.typeaheadMatchItem).toHaveBeenCalledTimes(3);
-       expect(preventDefault).toHaveBeenCalledTimes(3);
-     });
+    foundation.handleKeydown(event);
+    event.key = "Z";
+    foundation.handleKeydown(event);
+    event.key = "1";
+    foundation.handleKeydown(event);
 
-  it('#handleKeydown with spacebar character when typeahead is in progress ' +
-         'calls adapter.getTypeaheadNextIndex',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const preventDefault = jasmine.createSpy('');
-       const event = {key: 'Spacebar', preventDefault} as any;
-       mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
-       mockAdapter.isTypeaheadInProgress.and.returnValue(true);
-       foundation.handleKeydown(event);
+    expect(mockAdapter.typeaheadMatchItem).toHaveBeenCalledTimes(3);
+    expect(preventDefault).toHaveBeenCalledTimes(3);
+  });
 
-       expect(mockAdapter.typeaheadMatchItem).toHaveBeenCalledTimes(1);
-       expect(preventDefault).toHaveBeenCalledTimes(1);
-     });
+  it(
+    "#handleKeydown with spacebar character when typeahead is in progress " +
+      "calls adapter.getTypeaheadNextIndex",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      const preventDefault = jasmine.createSpy("");
+      const event = { key: "Spacebar", preventDefault } as any;
+      mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
+      mockAdapter.isTypeaheadInProgress.and.returnValue(true);
+      foundation.handleKeydown(event);
 
-  it('#handleKeydown sets selected index based on typeahead results', () => {
-    const {foundation, mockAdapter} = setupTest();
-    const preventDefault = jasmine.createSpy('');
-    const event = {key: 'a', preventDefault} as any;
-    spyOn(foundation, 'setSelectedIndex');
+      expect(mockAdapter.typeaheadMatchItem).toHaveBeenCalledTimes(1);
+      expect(preventDefault).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it("#handleKeydown sets selected index based on typeahead results", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const preventDefault = jasmine.createSpy("");
+    const event = { key: "a", preventDefault } as any;
+    spyOn(foundation, "setSelectedIndex");
 
     mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
     mockAdapter.typeaheadMatchItem.and.returnValue(2);
@@ -661,133 +675,124 @@ describe('MDCSelectFoundation', () => {
     expect(foundation.setSelectedIndex).toHaveBeenCalledWith(2);
   });
 
-  it('#layout notches outline and floats label if unfocused and value is nonempty',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.init();
-       foundation.notchOutline = jasmine.createSpy('');
-       mockAdapter.getSelectedIndex.and.returnValue(1);
+  it("#layout notches outline and floats label if unfocused and value is nonempty", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.init();
+    foundation.notchOutline = jasmine.createSpy("");
+    mockAdapter.getSelectedIndex.and.returnValue(1);
 
-       foundation.layout();
-       expect(foundation.notchOutline).toHaveBeenCalledWith(true);
-       expect(mockAdapter.floatLabel).toHaveBeenCalledWith(true);
-     });
+    foundation.layout();
+    expect(foundation.notchOutline).toHaveBeenCalledWith(true);
+    expect(mockAdapter.floatLabel).toHaveBeenCalledWith(true);
+  });
 
-  it('#layout un-notches outline and un-floats label if unfocused and value is empty',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.notchOutline = jasmine.createSpy('');
-       foundation.layout();
-       expect(foundation.notchOutline).toHaveBeenCalledWith(false);
-       expect(mockAdapter.floatLabel).toHaveBeenCalledWith(false);
-     });
+  it("#layout un-notches outline and un-floats label if unfocused and value is empty", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.notchOutline = jasmine.createSpy("");
+    foundation.layout();
+    expect(foundation.notchOutline).toHaveBeenCalledWith(false);
+    expect(mockAdapter.floatLabel).toHaveBeenCalledWith(false);
+  });
 
-  it('#layout notches outline and floats label if select is focused', () => {
-    const {foundation, mockAdapter} = setupTest();
-    foundation.notchOutline = jasmine.createSpy('');
+  it("#layout notches outline and floats label if select is focused", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.notchOutline = jasmine.createSpy("");
     mockAdapter.hasClass.withArgs(cssClasses.FOCUSED).and.returnValue(true);
     foundation.layout();
     expect(foundation.notchOutline).toHaveBeenCalledWith(true);
     expect(mockAdapter.floatLabel).toHaveBeenCalledWith(true);
   });
 
-  it('#layout does not notch outline nor floats label if label does not exist',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.notchOutline = jasmine.createSpy('');
-       mockAdapter.hasLabel.and.returnValue(false);
-       foundation.layout();
-       expect(foundation.notchOutline).not.toHaveBeenCalled();
-       expect(mockAdapter.floatLabel).not.toHaveBeenCalled();
-     });
+  it("#layout does not notch outline nor floats label if label does not exist", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.notchOutline = jasmine.createSpy("");
+    mockAdapter.hasLabel.and.returnValue(false);
+    foundation.layout();
+    expect(foundation.notchOutline).not.toHaveBeenCalled();
+    expect(mockAdapter.floatLabel).not.toHaveBeenCalled();
+  });
 
-  it('#layout sets label as required if select is required', () => {
-     const {foundation, mockAdapter} = setupTest();
-     mockAdapter.hasLabel.and.returnValue(true);
-     mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-     foundation.layout();
-     expect(mockAdapter.setLabelRequired).toHaveBeenCalledWith(true);
-   });
+  it("#layout sets label as required if select is required", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasLabel.and.returnValue(true);
+    mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+    foundation.layout();
+    expect(mockAdapter.setLabelRequired).toHaveBeenCalledWith(true);
+  });
 
-  it('#layoutOptions refetches menu item values to cache', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#layoutOptions refetches menu item values to cache", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.layoutOptions();
     expect(mockAdapter.getMenuItemValues).toHaveBeenCalled();
   });
 
-  it('#layoutOptions reinitializes selected nonempty value', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#layoutOptions reinitializes selected nonempty value", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
     mockAdapter.getMenuItemCount.and.returnValue(3);
-    mockAdapter.getMenuItemValues.and.returnValue(['zero', 'one', 'two']);
+    mockAdapter.getMenuItemValues.and.returnValue(["zero", "one", "two"]);
     mockAdapter.getSelectedIndex.and.returnValue(2);
 
     foundation.layoutOptions();
     expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(2);
   });
 
-  it('#layoutOptions reinitializes selected empty value', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#layoutOptions reinitializes selected empty value", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
     mockAdapter.getMenuItemCount.and.returnValue(3);
-    mockAdapter.getMenuItemValues.and.returnValue(['', 'one', 'two']);
+    mockAdapter.getMenuItemValues.and.returnValue(["", "one", "two"]);
     mockAdapter.getSelectedIndex.and.returnValue(0);
 
     foundation.layoutOptions();
     expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(0);
   });
 
-  it('#setLeadingIconAriaLabel sets the aria-label of the leading icon element',
-     () => {
-       const {foundation, leadingIcon} = setupTest();
-       foundation.setLeadingIconAriaLabel('foo');
-       expect(leadingIcon.setAriaLabel).toHaveBeenCalledWith('foo');
-       expect(leadingIcon.setAriaLabel).toHaveBeenCalledTimes(1);
-     });
+  it("#setLeadingIconAriaLabel sets the aria-label of the leading icon element", () => {
+    const { foundation, leadingIcon } = setupTest();
+    foundation.setLeadingIconAriaLabel("foo");
+    expect(leadingIcon.setAriaLabel).toHaveBeenCalledWith("foo");
+    expect(leadingIcon.setAriaLabel).toHaveBeenCalledTimes(1);
+  });
 
-  it('#setLeadingIconContent sets the content of the leading icon element',
-     () => {
-       const {foundation, leadingIcon} = setupTest();
-       foundation.setLeadingIconContent('foo');
-       expect(leadingIcon.setContent).toHaveBeenCalledWith('foo');
-       expect(leadingIcon.setContent).toHaveBeenCalledTimes(1);
-     });
+  it("#setLeadingIconContent sets the content of the leading icon element", () => {
+    const { foundation, leadingIcon } = setupTest();
+    foundation.setLeadingIconContent("foo");
+    expect(leadingIcon.setContent).toHaveBeenCalledWith("foo");
+    expect(leadingIcon.setContent).toHaveBeenCalledTimes(1);
+  });
 
-  it('#setLeadingIconAriaLabel does nothing if the leading icon element is undefined',
-     () => {
-       const hasLeadingIcon = false;
-       const {foundation, leadingIcon} = setupTest(hasLeadingIcon);
-       expect(() => foundation.setLeadingIconAriaLabel).not.toThrow();
-       expect(leadingIcon.setAriaLabel).not.toHaveBeenCalledWith('foo');
-     });
+  it("#setLeadingIconAriaLabel does nothing if the leading icon element is undefined", () => {
+    const hasLeadingIcon = false;
+    const { foundation, leadingIcon } = setupTest(hasLeadingIcon);
+    expect(() => foundation.setLeadingIconAriaLabel).not.toThrow();
+    expect(leadingIcon.setAriaLabel).not.toHaveBeenCalledWith("foo");
+  });
 
-  it('#setLeadingIconContent does nothing if the leading icon element is undefined',
-     () => {
-       const hasLeadingIcon = false;
-       const {foundation, leadingIcon} = setupTest(hasLeadingIcon);
-       expect(() => foundation.setLeadingIconContent).not.toThrow();
-       expect(leadingIcon.setContent).not.toHaveBeenCalledWith('foo');
-     });
+  it("#setLeadingIconContent does nothing if the leading icon element is undefined", () => {
+    const hasLeadingIcon = false;
+    const { foundation, leadingIcon } = setupTest(hasLeadingIcon);
+    expect(() => foundation.setLeadingIconContent).not.toThrow();
+    expect(leadingIcon.setContent).not.toHaveBeenCalledWith("foo");
+  });
 
-  it('#setHelperTextContent sets the content of the helper text element',
-     () => {
-       const hasIcon = false;
-       const hasHelperText = true;
-       const {foundation, helperText} = setupTest(hasIcon, hasHelperText);
-       foundation.setHelperTextContent('foo');
-       expect(helperText.setContent).toHaveBeenCalledWith('foo');
-     });
+  it("#setHelperTextContent sets the content of the helper text element", () => {
+    const hasIcon = false;
+    const hasHelperText = true;
+    const { foundation, helperText } = setupTest(hasIcon, hasHelperText);
+    foundation.setHelperTextContent("foo");
+    expect(helperText.setContent).toHaveBeenCalledWith("foo");
+  });
 
-  it('#setHelperTextContent does not throw an error if there is no helperText element',
-     () => {
-       const hasIcon = false;
-       const hasHelperText = false;
-       const {foundation} = setupTest(hasIcon, hasHelperText);
-       expect(() => foundation.setHelperTextContent).not.toThrow();
-     });
+  it("#setHelperTextContent does not throw an error if there is no helperText element", () => {
+    const hasIcon = false;
+    const hasHelperText = false;
+    const { foundation } = setupTest(hasIcon, hasHelperText);
+    expect(() => foundation.setHelperTextContent).not.toThrow();
+  });
 
-  it('#setSelectedIndex', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setSelectedIndex", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.setSelectedIndex(1);
     expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
@@ -804,114 +809,121 @@ describe('MDCSelectFoundation', () => {
     expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(3);
   });
 
-  it('#setValue', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setValue", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
-    foundation.setValue('bar');
+    foundation.setValue("bar");
     expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
     expect(mockAdapter.notifyChange).toHaveBeenCalledTimes(1);
   });
 
-  it('#setValue with skipNotify true does not call notifyChange', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setValue with skipNotify true does not call notifyChange", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
-    foundation.setValue('bar', /** skipNotify */ true);
+    foundation.setValue("bar", /** skipNotify */ true);
     expect(mockAdapter.setSelectedIndex).toHaveBeenCalledWith(1);
     expect(mockAdapter.notifyChange).not.toHaveBeenCalled();
   });
 
-  it('#setValid true sets aria-describedby if validation helper text is shown',
-     () => {
-       const hasIcon = false;
-       const hasHelperText = true;
-       const {foundation, mockAdapter, helperText} =
-           setupTest(hasIcon, hasHelperText);
+  it("#setValid true sets aria-describedby if validation helper text is shown", () => {
+    const hasIcon = false;
+    const hasHelperText = true;
+    const { foundation, mockAdapter, helperText } = setupTest(
+      hasIcon,
+      hasHelperText
+    );
 
-       const mockId = 'foobarbazcool';
-       helperText.getId.and.returnValue(mockId);
-       helperText.isVisible.and.returnValue(true);
+    const mockId = "foobarbazcool";
+    helperText.getId.and.returnValue(mockId);
+    helperText.isVisible.and.returnValue(true);
 
-       foundation.setValid(false);
-       expect(mockAdapter.setSelectAnchorAttr)
-           .toHaveBeenCalledWith(strings.ARIA_DESCRIBEDBY, mockId);
-     });
-
-  it('#setValid true sets aria-invalid to false and removes invalid classes',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setValid(true);
-       expect(mockAdapter.setSelectAnchorAttr)
-           .toHaveBeenCalledWith('aria-invalid', 'false');
-       expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.INVALID);
-       expect(mockAdapter.removeMenuClass)
-           .toHaveBeenCalledWith(cssClasses.MENU_INVALID);
-     });
-
-  it('#setValid false sets aria-invalid to true and adds invalid class', () => {
-    const {foundation, mockAdapter} = setupTest();
     foundation.setValid(false);
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('aria-invalid', 'true');
-    expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.INVALID);
-    expect(mockAdapter.addMenuClass)
-        .toHaveBeenCalledWith(cssClasses.MENU_INVALID);
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      strings.ARIA_DESCRIBEDBY,
+      mockId
+    );
   });
 
-  it('#setValid false removes aria-describedby if validation helper text is hidden',
-     () => {
-       const hasIcon = false;
-       const hasHelperText = true;
-       const {foundation, mockAdapter, helperText} =
-           setupTest(hasIcon, hasHelperText);
+  it("#setValid true sets aria-invalid to false and removes invalid classes", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setValid(true);
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-invalid",
+      "false"
+    );
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(cssClasses.INVALID);
+    expect(mockAdapter.removeMenuClass).toHaveBeenCalledWith(
+      cssClasses.MENU_INVALID
+    );
+  });
 
-       helperText.isVisible.and.returnValue(false);
+  it("#setValid false sets aria-invalid to true and adds invalid class", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setValid(false);
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-invalid",
+      "true"
+    );
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(cssClasses.INVALID);
+    expect(mockAdapter.addMenuClass).toHaveBeenCalledWith(
+      cssClasses.MENU_INVALID
+    );
+  });
 
-       foundation.setValid(true);
-       expect(mockAdapter.removeSelectAnchorAttr)
-           .toHaveBeenCalledWith(strings.ARIA_DESCRIBEDBY);
-     });
+  it("#setValid false removes aria-describedby if validation helper text is hidden", () => {
+    const hasIcon = false;
+    const hasHelperText = true;
+    const { foundation, mockAdapter, helperText } = setupTest(
+      hasIcon,
+      hasHelperText
+    );
 
-  it('#isValid returns false if using default validity check and no index is selected',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.DISABLED)
-           .and.returnValue(false);
-       mockAdapter.getSelectedIndex.and.returnValue(-1);
-       foundation.init();
+    helperText.isVisible.and.returnValue(false);
 
-       expect(foundation.isValid()).toBe(false);
-     });
+    foundation.setValid(true);
+    expect(mockAdapter.removeSelectAnchorAttr).toHaveBeenCalledWith(
+      strings.ARIA_DESCRIBEDBY
+    );
+  });
 
-  it('#isValid returns false if using default validity check and first index ' +
-         'with empty value is selected',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.DISABLED)
-           .and.returnValue(false);
-       mockAdapter.getSelectedIndex.and.returnValue(0);
-       mockAdapter.getMenuItemValues.and.returnValue(['', '<--empty']);
-       foundation.init();
+  it("#isValid returns false if using default validity check and no index is selected", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+    mockAdapter.hasClass.withArgs(cssClasses.DISABLED).and.returnValue(false);
+    mockAdapter.getSelectedIndex.and.returnValue(-1);
+    foundation.init();
 
-       expect(foundation.isValid()).toBe(false);
-     });
+    expect(foundation.isValid()).toBe(false);
+  });
 
-  it('#isValid returns true if using default validity check and an index is selected that has value',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.init();
-       mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.DISABLED)
-           .and.returnValue(false);
-       mockAdapter.getSelectedIndex.and.returnValue(0);
-       foundation.init();
+  it(
+    "#isValid returns false if using default validity check and first index " +
+      "with empty value is selected",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+      mockAdapter.hasClass.withArgs(cssClasses.DISABLED).and.returnValue(false);
+      mockAdapter.getSelectedIndex.and.returnValue(0);
+      mockAdapter.getMenuItemValues.and.returnValue(["", "<--empty"]);
+      foundation.init();
 
-       expect(foundation.isValid()).toBe(true);
-     });
+      expect(foundation.isValid()).toBe(false);
+    }
+  );
 
-  it('#isValid returns false if using custom false validity', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#isValid returns true if using default validity check and an index is selected that has value", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.init();
+    mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+    mockAdapter.hasClass.withArgs(cssClasses.DISABLED).and.returnValue(false);
+    mockAdapter.getSelectedIndex.and.returnValue(0);
+    foundation.init();
+
+    expect(foundation.isValid()).toBe(true);
+  });
+
+  it("#isValid returns false if using custom false validity", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(false);
     mockAdapter.hasClass.withArgs(cssClasses.DISABLED).and.returnValue(false);
 
@@ -922,57 +934,66 @@ describe('MDCSelectFoundation', () => {
     expect(foundation.isValid()).toBe(false);
   });
 
-  it('#isValid returns true if using custom true validity with unset index',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.DISABLED)
-           .and.returnValue(false);
+  it("#isValid returns true if using custom true validity with unset index", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+    mockAdapter.hasClass.withArgs(cssClasses.DISABLED).and.returnValue(false);
 
-       foundation.setUseDefaultValidation(false);
-       foundation.setValid(true);
-       mockAdapter.getSelectedIndex.and.returnValue(-1);
+    foundation.setUseDefaultValidation(false);
+    foundation.setValid(true);
+    mockAdapter.getSelectedIndex.and.returnValue(-1);
 
-       expect(foundation.isValid()).toBe(true);
-     });
-
-  it('#isValid returns true if using custom true validity with first option ' +
-         'selected that has empty value',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
-       mockAdapter.hasClass.withArgs(cssClasses.DISABLED)
-           .and.returnValue(false);
-
-       foundation.setUseDefaultValidation(false);
-       foundation.setValid(true);
-       mockAdapter.getSelectedIndex.and.returnValue(0);
-
-       expect(foundation.isValid()).toBe(true);
-     });
-
-  it('#setRequired adds/removes ${cssClasses.REQUIRED} class name', () => {
-    const {foundation, mockAdapter} = setupTest();
-    foundation.setRequired(true);
-    checkNumTimesSpyCalledWithArgs(
-        mockAdapter.addClass, [cssClasses.REQUIRED], 1);
-    foundation.setRequired(false);
-    checkNumTimesSpyCalledWithArgs(
-        mockAdapter.removeClass, [cssClasses.REQUIRED], 1);
+    expect(foundation.isValid()).toBe(true);
   });
 
-  it('#setRequired sets aria-required through adapter', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it(
+    "#isValid returns true if using custom true validity with first option " +
+      "selected that has empty value",
+    () => {
+      const { foundation, mockAdapter } = setupTest();
+      mockAdapter.hasClass.withArgs(cssClasses.REQUIRED).and.returnValue(true);
+      mockAdapter.hasClass.withArgs(cssClasses.DISABLED).and.returnValue(false);
+
+      foundation.setUseDefaultValidation(false);
+      foundation.setValid(true);
+      mockAdapter.getSelectedIndex.and.returnValue(0);
+
+      expect(foundation.isValid()).toBe(true);
+    }
+  );
+
+  it("#setRequired adds/removes ${cssClasses.REQUIRED} class name", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setRequired(true);
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('aria-required', 'true');
+    checkNumTimesSpyCalledWithArgs(
+      mockAdapter.addClass,
+      [cssClasses.REQUIRED],
+      1
+    );
     foundation.setRequired(false);
-    expect(mockAdapter.setSelectAnchorAttr)
-        .toHaveBeenCalledWith('aria-required', 'false');
+    checkNumTimesSpyCalledWithArgs(
+      mockAdapter.removeClass,
+      [cssClasses.REQUIRED],
+      1
+    );
   });
 
-  it('#setRequired sets label as required', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setRequired sets aria-required through adapter", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setRequired(true);
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-required",
+      "true"
+    );
+    foundation.setRequired(false);
+    expect(mockAdapter.setSelectAnchorAttr).toHaveBeenCalledWith(
+      "aria-required",
+      "false"
+    );
+  });
+
+  it("#setRequired sets label as required", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setRequired(true);
     expect(mockAdapter.setLabelRequired).toHaveBeenCalledWith(true);
     mockAdapter.setLabelRequired.calls.reset();
@@ -980,44 +1001,47 @@ describe('MDCSelectFoundation', () => {
     expect(mockAdapter.setLabelRequired).toHaveBeenCalledWith(false);
   });
 
-  it('#getRequired returns true if aria-required is true', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.getSelectAnchorAttr.withArgs('aria-required')
-        .and.returnValue('true');
+  it("#getRequired returns true if aria-required is true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getSelectAnchorAttr
+      .withArgs("aria-required")
+      .and.returnValue("true");
     expect(foundation.getRequired()).toBe(true);
   });
 
-  it('#getRequired returns false if aria-required is false', () => {
-    const {foundation, mockAdapter} = setupTest();
-    mockAdapter.getSelectAnchorAttr.withArgs('aria-required')
-        .and.returnValue('false');
+  it("#getRequired returns false if aria-required is false", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getSelectAnchorAttr
+      .withArgs("aria-required")
+      .and.returnValue("false");
     expect(foundation.getRequired()).toBe(false);
   });
 
-  it('#init calls adapter methods', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init calls adapter methods", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.getAnchorElement.and.returnValue(true);
     foundation.init();
     expect(mockAdapter.setMenuWrapFocus).toHaveBeenCalledWith(false);
-    expect(mockAdapter.setMenuAnchorElement)
-        .toHaveBeenCalledWith(jasmine.anything());
-    expect(mockAdapter.setMenuAnchorCorner)
-        .toHaveBeenCalledWith(jasmine.anything());
+    expect(mockAdapter.setMenuAnchorElement).toHaveBeenCalledWith(
+      jasmine.anything()
+    );
+    expect(mockAdapter.setMenuAnchorCorner).toHaveBeenCalledWith(
+      jasmine.anything()
+    );
   });
 
-  it('#init emits no change events when value is preselected', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init emits no change events when value is preselected", () => {
+    const { foundation, mockAdapter } = setupTest();
     mockAdapter.getSelectedIndex.and.returnValue(1);
     foundation.init();
     expect(mockAdapter.notifyChange).not.toHaveBeenCalled();
   });
 
-  it('#init computes whether to notch outline exactly once when value is preselected',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.notchOutline = jasmine.createSpy('notchOutline');
-       mockAdapter.getSelectedIndex.and.returnValue(1);
-       foundation.init();
-       expect(foundation.notchOutline).toHaveBeenCalledTimes(1);
-     });
+  it("#init computes whether to notch outline exactly once when value is preselected", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.notchOutline = jasmine.createSpy("notchOutline");
+    mockAdapter.getSelectedIndex.and.returnValue(1);
+    foundation.init();
+    expect(foundation.notchOutline).toHaveBeenCalledTimes(1);
+  });
 });

@@ -22,9 +22,9 @@
  */
 
 export const cssClasses = {
-  ROOT: 'mdc-form-field',
+  ROOT: "mdc-form-field",
 };
 
 export const strings = {
-  LABEL_SELECTOR: '.mdc-form-field > label',
+  LABEL_SELECTOR: ".mdc-form-field > label",
 };

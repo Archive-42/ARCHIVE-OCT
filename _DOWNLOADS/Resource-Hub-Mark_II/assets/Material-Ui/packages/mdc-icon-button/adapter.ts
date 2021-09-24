@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCIconButtonToggleEventDetail} from './types';
+import { MDCIconButtonToggleEventDetail } from "./types";
 
 /**
  * Defines the shape of the adapter expected by the foundation.
@@ -38,7 +38,7 @@ export interface MDCIconButtonToggleAdapter {
   hasClass(className: string): boolean;
 
   /** Returns the given attribute value on the root element. */
-  getAttr(attrName: string): string|null;
+  getAttr(attrName: string): string | null;
 
   setAttr(attrName: string, attrValue: string): void;
 

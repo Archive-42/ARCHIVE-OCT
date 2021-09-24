@@ -20,8 +20,8 @@
 // THE SOFTWARE.
 //
 
-@use 'sass:color';
-@use '@material/theme/theme-color';
+@use "sass:color";
+@use "@material/theme/theme-color";
 
 $fill-color: color.mix(
   theme-color.prop-value(on-surface),

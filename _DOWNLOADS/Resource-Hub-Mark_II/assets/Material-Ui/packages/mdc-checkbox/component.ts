@@ -21,29 +21,35 @@
  * THE SOFTWARE.
  */
 
-import {getCorrectEventName} from '@material/animation/util';
-import {MDCComponent} from '@material/base/component';
-import {applyPassive} from '@material/dom/events';
-import {matches} from '@material/dom/ponyfill';
-import {MDCRippleAdapter} from '@material/ripple/adapter';
-import {MDCRipple} from '@material/ripple/component';
-import {MDCRippleFoundation} from '@material/ripple/foundation';
-import {MDCRippleCapableSurface} from '@material/ripple/types';
+import { getCorrectEventName } from "@material/animation/util";
+import { MDCComponent } from "@material/base/component";
+import { applyPassive } from "@material/dom/events";
+import { matches } from "@material/dom/ponyfill";
+import { MDCRippleAdapter } from "@material/ripple/adapter";
+import { MDCRipple } from "@material/ripple/component";
+import { MDCRippleFoundation } from "@material/ripple/foundation";
+import { MDCRippleCapableSurface } from "@material/ripple/types";
 
-import {MDCCheckboxAdapter} from './adapter';
-import {strings} from './constants';
-import {MDCCheckboxFoundation} from './foundation';
+import { MDCCheckboxAdapter } from "./adapter";
+import { strings } from "./constants";
+import { MDCCheckboxFoundation } from "./foundation";
 
 /**
  * This type is needed for compatibility with Closure Compiler.
  */
 type PropertyDescriptorGetter = (() => unknown) | undefined;
 
-const CB_PROTO_PROPS = ['checked', 'indeterminate'];
+const CB_PROTO_PROPS = ["checked", "indeterminate"];
 
-export type MDCCheckboxFactory = (el: Element, foundation?: MDCCheckboxFoundation) => MDCCheckbox;
+export type MDCCheckboxFactory = (
+  el: Element,
+  foundation?: MDCCheckboxFoundation
+) => MDCCheckbox;
 
-export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements MDCRippleCapableSurface {
+export class MDCCheckbox
+  extends MDCComponent<MDCCheckboxFoundation>
+  implements MDCRippleCapableSurface
+{
   static attachTo(root: Element) {
     return new MDCCheckbox(root);
   }
@@ -89,24 +95,30 @@ export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements 
   private handleAnimationEnd_!: EventListener; // assigned in initialSyncWithDOM()
 
   initialize() {
-    const {DATA_INDETERMINATE_ATTR} = strings;
+    const { DATA_INDETERMINATE_ATTR } = strings;
     this.nativeControl_.indeterminate =
-        this.nativeControl_.getAttribute(DATA_INDETERMINATE_ATTR) === 'true';
+      this.nativeControl_.getAttribute(DATA_INDETERMINATE_ATTR) === "true";
     this.nativeControl_.removeAttribute(DATA_INDETERMINATE_ATTR);
   }
 
   initialSyncWithDOM() {
     this.handleChange_ = () => this.foundation.handleChange();
     this.handleAnimationEnd_ = () => this.foundation.handleAnimationEnd();
-    this.nativeControl_.addEventListener('change', this.handleChange_);
-    this.listen(getCorrectEventName(window, 'animationend'), this.handleAnimationEnd_);
+    this.nativeControl_.addEventListener("change", this.handleChange_);
+    this.listen(
+      getCorrectEventName(window, "animationend"),
+      this.handleAnimationEnd_
+    );
     this.installPropertyChangeHooks_();
   }
 
   destroy() {
     this.ripple_.destroy();
-    this.nativeControl_.removeEventListener('change', this.handleChange_);
-    this.unlisten(getCorrectEventName(window, 'animationend'), this.handleAnimationEnd_);
+    this.nativeControl_.removeEventListener("change", this.handleChange_);
+    this.unlisten(
+      getCorrectEventName(window, "animationend"),
+      this.handleAnimationEnd_
+    );
     this.uninstallPropertyChangeHooks_();
     super.destroy();
   }
@@ -142,12 +154,16 @@ export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements 
     // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
     const adapter: MDCRippleAdapter = {
       ...MDCRipple.createAdapter(this),
-      deregisterInteractionHandler: (evtType, handler) => this.nativeControl_.removeEventListener(
-        evtType, handler, applyPassive()),
-      isSurfaceActive: () => matches(this.nativeControl_, ':active'),
+      deregisterInteractionHandler: (evtType, handler) =>
+        this.nativeControl_.removeEventListener(
+          evtType,
+          handler,
+          applyPassive()
+        ),
+      isSurfaceActive: () => matches(this.nativeControl_, ":active"),
       isUnbounded: () => true,
-      registerInteractionHandler: (evtType, handler) => this.nativeControl_.addEventListener(
-        evtType, handler, applyPassive()),
+      registerInteractionHandler: (evtType, handler) =>
+        this.nativeControl_.addEventListener(evtType, handler, applyPassive()),
     };
     return new MDCRipple(this.root, new MDCRippleFoundation(adapter));
   }
@@ -165,7 +181,7 @@ export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements 
       }
 
       // Type cast is needed for compatibility with Closure Compiler.
-      const nativeGetter = (desc as {get: PropertyDescriptorGetter}).get;
+      const nativeGetter = (desc as { get: PropertyDescriptorGetter }).get;
 
       const nativeCbDesc = {
         configurable: desc.configurable,
@@ -194,16 +210,21 @@ export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements 
   }
 
   private get nativeControl_(): HTMLInputElement {
-    const {NATIVE_CONTROL_SELECTOR} = strings;
-    const el =
-        this.root.querySelector<HTMLInputElement>(NATIVE_CONTROL_SELECTOR);
+    const { NATIVE_CONTROL_SELECTOR } = strings;
+    const el = this.root.querySelector<HTMLInputElement>(
+      NATIVE_CONTROL_SELECTOR
+    );
     if (!el) {
-      throw new Error(`Checkbox component requires a ${NATIVE_CONTROL_SELECTOR} element`);
+      throw new Error(
+        `Checkbox component requires a ${NATIVE_CONTROL_SELECTOR} element`
+      );
     }
     return el;
   }
 }
 
-function validDescriptor(inputPropDesc: PropertyDescriptor | undefined): inputPropDesc is PropertyDescriptor {
-  return !!inputPropDesc && typeof inputPropDesc.set === 'function';
+function validDescriptor(
+  inputPropDesc: PropertyDescriptor | undefined
+): inputPropDesc is PropertyDescriptor {
+  return !!inputPropDesc && typeof inputPropDesc.set === "function";
 }

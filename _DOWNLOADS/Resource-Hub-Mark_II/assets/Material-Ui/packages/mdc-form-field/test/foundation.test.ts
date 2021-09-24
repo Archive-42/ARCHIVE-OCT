@@ -21,52 +21,56 @@
  * THE SOFTWARE.
  */
 
+import { cssClasses, strings } from "../../mdc-form-field/constants";
+import { MDCFormFieldFoundation } from "../../mdc-form-field/foundation";
+import { verifyDefaultAdapter } from "../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
 
-import {cssClasses, strings} from '../../mdc-form-field/constants';
-import {MDCFormFieldFoundation} from '../../mdc-form-field/foundation';
-import {verifyDefaultAdapter} from '../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
-
-describe('MDCFormFieldFoundation', () => {
-  it('exports cssClasses', () => {
-    expect('cssClasses' in MDCFormFieldFoundation).toBeTruthy();
+describe("MDCFormFieldFoundation", () => {
+  it("exports cssClasses", () => {
+    expect("cssClasses" in MDCFormFieldFoundation).toBeTruthy();
     expect(MDCFormFieldFoundation.cssClasses).toEqual(cssClasses);
   });
 
-  it('exports strings', () => {
-    expect('strings' in MDCFormFieldFoundation).toBeTruthy();
+  it("exports strings", () => {
+    expect("strings" in MDCFormFieldFoundation).toBeTruthy();
     expect(MDCFormFieldFoundation.strings).toEqual(strings);
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCFormFieldFoundation, [
-      'registerInteractionHandler',
-      'deregisterInteractionHandler',
-      'activateInputRipple',
-      'deactivateInputRipple',
+      "registerInteractionHandler",
+      "deregisterInteractionHandler",
+      "activateInputRipple",
+      "deactivateInputRipple",
     ]);
   });
 
   function setupTest() {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCFormFieldFoundation);
-    return {foundation, mockAdapter};
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCFormFieldFoundation
+    );
+    return { foundation, mockAdapter };
   }
 
-  it('#init calls event registrations', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init calls event registrations", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.init();
-    expect(mockAdapter.registerInteractionHandler)
-        .toHaveBeenCalledWith('click', jasmine.any(Function));
+    expect(mockAdapter.registerInteractionHandler).toHaveBeenCalledWith(
+      "click",
+      jasmine.any(Function)
+    );
   });
 
-  it('#destroy calls event deregistrations', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#destroy calls event deregistrations", () => {
+    const { foundation, mockAdapter } = setupTest();
 
     foundation.init();
     foundation.destroy();
-    expect(mockAdapter.deregisterInteractionHandler)
-        .toHaveBeenCalledWith('click', jasmine.any(Function));
+    expect(mockAdapter.deregisterInteractionHandler).toHaveBeenCalledWith(
+      "click",
+      jasmine.any(Function)
+    );
   });
 });

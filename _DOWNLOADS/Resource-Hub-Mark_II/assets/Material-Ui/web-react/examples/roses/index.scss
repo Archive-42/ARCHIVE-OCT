@@ -24,22 +24,21 @@
 $grey: #616161;
 $grey-light: #bdbdbd;
 
-
 // react
-@import '@material/react-chips/index';
-@import '@material/react-top-app-bar/index';
-@import '@material/react-text-field/index';
-@import '@material/react-button/index';
+@import "@material/react-chips/index";
+@import "@material/react-top-app-bar/index";
+@import "@material/react-text-field/index";
+@import "@material/react-button/index";
 
 // web
-@import '@material/typography/mdc-typography';
-@import '@material/theme/mdc-theme';
+@import "@material/typography/mdc-typography";
+@import "@material/theme/mdc-theme";
 
 // mixins
-@import '@material/top-app-bar/mixins';
-@import '@material/chips/mixins';
-@import '@material/chips/variables';
-@import '@material/shape/mixins';
+@import "@material/top-app-bar/mixins";
+@import "@material/chips/mixins";
+@import "@material/chips/variables";
+@import "@material/shape/mixins";
 
 body {
   margin: 0;
@@ -68,7 +67,9 @@ body {
 .mdc-chip {
   // TODO update line to use mixin when
   // @include mdc-chip-shape-radius(10px);
-  @include mdc-shape-radius(mdc-shape-resolve-percentage-radius($mdc-chip-height-default, 4px));
+  @include mdc-shape-radius(
+    mdc-shape-resolve-percentage-radius($mdc-chip-height-default, 4px)
+  );
   @include mdc-chip-selected-ink-color(primary);
   @include mdc-chip-fill-color(white);
   @include mdc-chip-outline(1px, solid, $grey-light);

@@ -19,16 +19,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import React from 'react';
-import classnames from 'classnames';
-import {MDCTextFieldCharacterCounterAdapter} from '@material/textfield/character-counter/adapter';
-import {MDCTextFieldCharacterCounterFoundation} from '@material/textfield/character-counter/foundation';
+import React from "react";
+import classnames from "classnames";
+import { MDCTextFieldCharacterCounterAdapter } from "@material/textfield/character-counter/adapter";
+import { MDCTextFieldCharacterCounterFoundation } from "@material/textfield/character-counter/foundation";
 
 const cssClasses = MDCTextFieldCharacterCounterFoundation.cssClasses;
 
 const TEMPLATE = {
-  COUNT: '${count}',
-  MAX_LENGTH: '${maxLength}',
+  COUNT: "${count}",
+  MAX_LENGTH: "${maxLength}",
 };
 
 export interface CharacterCounterProps extends React.HTMLProps<HTMLDivElement> {
@@ -37,9 +37,7 @@ export interface CharacterCounterProps extends React.HTMLProps<HTMLDivElement> {
   template?: string;
 }
 
-export default class CharacterCounter extends React.Component<
-  CharacterCounterProps
-> {
+export default class CharacterCounter extends React.Component<CharacterCounterProps> {
   foundation = new MDCTextFieldCharacterCounterFoundation(this.adapter);
 
   componentWillUnmount() {
@@ -54,7 +52,7 @@ export default class CharacterCounter extends React.Component<
   }
 
   renderTemplate(template: string) {
-    const {count = 0, maxLength = 0} = this.props;
+    const { count = 0, maxLength = 0 } = this.props;
 
     return template
       .replace(TEMPLATE.COUNT, count.toString())
@@ -80,7 +78,7 @@ export default class CharacterCounter extends React.Component<
   }
 
   render() {
-    const {template} = this.props;
+    const { template } = this.props;
 
     return (
       <div className={this.classes} {...this.otherProps}>

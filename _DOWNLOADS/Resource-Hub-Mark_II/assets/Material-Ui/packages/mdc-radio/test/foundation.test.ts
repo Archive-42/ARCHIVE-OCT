@@ -21,55 +21,59 @@
  * THE SOFTWARE.
  */
 
-import {setUpFoundationTest} from '../../../testing/helpers/setup';
-import {MDCRadioFoundation} from '../foundation';
+import { setUpFoundationTest } from "../../../testing/helpers/setup";
+import { MDCRadioFoundation } from "../foundation";
 
 function setupTest() {
-  const {foundation, mockAdapter} = setUpFoundationTest(MDCRadioFoundation);
-  return {foundation, mockAdapter};
+  const { foundation, mockAdapter } = setUpFoundationTest(MDCRadioFoundation);
+  return { foundation, mockAdapter };
 }
 
-describe('MDCRadioFoundation', () => {
-  it('exports cssClasses', () => {
-    expect('cssClasses' in MDCRadioFoundation).toBeTruthy();
+describe("MDCRadioFoundation", () => {
+  it("exports cssClasses", () => {
+    expect("cssClasses" in MDCRadioFoundation).toBeTruthy();
   });
 
-  it('exports strings', () => {
-    expect('strings' in MDCRadioFoundation).toBeTruthy();
+  it("exports strings", () => {
+    expect("strings" in MDCRadioFoundation).toBeTruthy();
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
-    const {defaultAdapter} = MDCRadioFoundation;
-    const methods = Object.keys(defaultAdapter)
-                        .filter((k) => typeof (defaultAdapter as any)[k] === 'function');
+  it("defaultAdapter returns a complete adapter implementation", () => {
+    const { defaultAdapter } = MDCRadioFoundation;
+    const methods = Object.keys(defaultAdapter).filter(
+      (k) => typeof (defaultAdapter as any)[k] === "function"
+    );
 
     expect(methods.length).toEqual(Object.keys(defaultAdapter).length);
-    expect(methods).toEqual(
-        ['addClass', 'removeClass', 'setNativeControlDisabled']);
+    expect(methods).toEqual([
+      "addClass",
+      "removeClass",
+      "setNativeControlDisabled",
+    ]);
     methods.forEach((m) => {
       expect(() => (defaultAdapter as any)[m]).not.toThrow();
     });
   });
 
-  it('#setDisabled calls adapter.setNativeControlDisabled', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#setDisabled calls adapter.setNativeControlDisabled", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.setDisabled(true);
     expect(mockAdapter.setNativeControlDisabled).toHaveBeenCalledWith(true);
   });
 
-  it('#setDisabled adds mdc-radio--disabled to the radio element when set to true',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setDisabled(true);
-       expect(mockAdapter.addClass)
-           .toHaveBeenCalledWith(MDCRadioFoundation.cssClasses.DISABLED);
-     });
+  it("#setDisabled adds mdc-radio--disabled to the radio element when set to true", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setDisabled(true);
+    expect(mockAdapter.addClass).toHaveBeenCalledWith(
+      MDCRadioFoundation.cssClasses.DISABLED
+    );
+  });
 
-  it('#setDisabled removes mdc-radio--disabled from the radio element when set to false',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       foundation.setDisabled(false);
-       expect(mockAdapter.removeClass)
-           .toHaveBeenCalledWith(MDCRadioFoundation.cssClasses.DISABLED);
-     });
+  it("#setDisabled removes mdc-radio--disabled from the radio element when set to false", () => {
+    const { foundation, mockAdapter } = setupTest();
+    foundation.setDisabled(false);
+    expect(mockAdapter.removeClass).toHaveBeenCalledWith(
+      MDCRadioFoundation.cssClasses.DISABLED
+    );
+  });
 });

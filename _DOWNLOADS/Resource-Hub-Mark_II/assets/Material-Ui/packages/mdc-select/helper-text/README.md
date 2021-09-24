@@ -16,7 +16,7 @@ Helper text gives context about a select, such as how the selection will be used
 ### HTML structure
 
 ```html
-<p class="mdc-select-helper-text" aria-hidden="true">
+<p class="mdc-select-helper-text" aria-hidden="true"></p>
 ```
 
 > NOTE: Make sure there are no white-space characters before helper text content.
@@ -24,8 +24,10 @@ Helper text gives context about a select, such as how the selection will be used
 ### JavaScript instantiation
 
 ```js
-import {MDCSelectHelperText} from '@material/select/helper-text';
-const helperText = new MDCSelectHelperText(document.querySelector('.mdc-select-helper-text'));
+import { MDCSelectHelperText } from "@material/select/helper-text";
+const helperText = new MDCSelectHelperText(
+  document.querySelector(".mdc-select-helper-text")
+);
 ```
 
 #### Accessibility
@@ -38,15 +40,18 @@ the display of the helper text is dependent on the interaction with the MDCSelec
 
 ```html
 <div class="mdc-select mdc-select--filled">
-  <div class="mdc-select__anchor"
-       role="button"
-       aria-haspopup="listbox"
-       aria-labelledby="demo-label demo-selected-text"
-       aria-controls="my-helper-text"
-       aria-describedby="my-helper-text">
-   <!-- rest of main component -->
+  <div
+    class="mdc-select__anchor"
+    role="button"
+    aria-haspopup="listbox"
+    aria-labelledby="demo-label demo-selected-text"
+    aria-controls="my-helper-text"
+    aria-describedby="my-helper-text"
+  >
+    <!-- rest of main component -->
+  </div>
+  <p id="my-helper-text" class="mdc-select-helper-text">Helper text</p>
 </div>
-<p id="my-helper-text" class="mdc-select-helper-text">Helper text</p>
 ```
 
 When using our JS component, if the browser sees that the input element has an `aria-controls`
@@ -59,26 +64,26 @@ MDCSelectHelperText API, which is described below.
 
 ### CSS classes
 
-CSS Class | Description
---- | ---
-`mdc-select-helper-text` | Mandatory. By default non-validation helper text is always visible.
-`mdc-select-helper-text--validation-msg` | Indicates the helper text is a validation message. By default validation message is hidden unless the select is invalid.
-`mdc-select-helper-text--validation-msg-persistent` | When the helper text is serving as a validation message, make it permanently visible regardless of the select's validity.
+| CSS Class                                           | Description                                                                                                               |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `mdc-select-helper-text`                            | Mandatory. By default non-validation helper text is always visible.                                                       |
+| `mdc-select-helper-text--validation-msg`            | Indicates the helper text is a validation message. By default validation message is hidden unless the select is invalid.  |
+| `mdc-select-helper-text--validation-msg-persistent` | When the helper text is serving as a validation message, make it permanently visible regardless of the select's validity. |
 
 ### Sass mixins
 
-Mixin | Description
---- | ---
-`helper-text-color($color)` | Customizes the color of the helper text following a select.
-`disabled-helper-text-color($color)` | Customizes the color of the helper text following a select when disabled.
-`helper-text-validation-color($color)` | Customizes the color of the helper text validation message when the select is invalid.
-`hover-helper-text-validation-color($color)` | Customizes the color of the helper text validation message when the select is invalid and hovered.
+| Mixin                                        | Description                                                                                        |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `helper-text-color($color)`                  | Customizes the color of the helper text following a select.                                        |
+| `disabled-helper-text-color($color)`         | Customizes the color of the helper text following a select when disabled.                          |
+| `helper-text-validation-color($color)`       | Customizes the color of the helper text validation message when the select is invalid.             |
+| `hover-helper-text-validation-color($color)` | Customizes the color of the helper text validation message when the select is invalid and hovered. |
 
 ## `MDCSelectHelperText` properties and methods
 
-Property | Value Type | Description
---- | --- | ---
-`foundation` | `MDCSelectHelperTextFoundation` | Returns the helper text's foundation. This allows the parent `MDCSelect` component to access the public methods on the `MDCSelectHelperTextFoundation` class.
+| Property     | Value Type                      | Description                                                                                                                                                   |
+| ------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `foundation` | `MDCSelectHelperTextFoundation` | Returns the helper text's foundation. This allows the parent `MDCSelect` component to access the public methods on the `MDCSelectHelperTextFoundation` class. |
 
 ## Usage within frameworks
 
@@ -86,22 +91,22 @@ If you are using a JavaScript framework, such as React or Angular, you can creat
 
 ### `MDCSelectHelperTextAdapter`
 
-Method Signature | Description
---- | ---
-`addClass(className: string) => void` | Adds a class to the helper text element.
-`removeClass(className: string) => void` | Removes a class from the helper text element.
-`hasClass(className: string) => boolean` | Returns true if classname exists for the helper text element.
-`setAttr(attr: string, value: string) => void` | Sets an attribute with a given value on the helper text element.
-`removeAttr(attr: string) => void` | Removes an attribute on the helper text element.
-`setContent(attr: string) => void` | Sets the text content for the helper text element.
+| Method Signature                               | Description                                                      |
+| ---------------------------------------------- | ---------------------------------------------------------------- |
+| `addClass(className: string) => void`          | Adds a class to the helper text element.                         |
+| `removeClass(className: string) => void`       | Removes a class from the helper text element.                    |
+| `hasClass(className: string) => boolean`       | Returns true if classname exists for the helper text element.    |
+| `setAttr(attr: string, value: string) => void` | Sets an attribute with a given value on the helper text element. |
+| `removeAttr(attr: string) => void`             | Removes an attribute on the helper text element.                 |
+| `setContent(attr: string) => void`             | Sets the text content for the helper text element.               |
 
 ### `MDCSelectHelperTextFoundation`
 
-Method Signature | Description
---- | ---
-`getId() => string|null` | Gets the ID of the helper text.
-`isVisible() => boolean` | Returns whether the helper text is visible.
-`setContent(content: string) => void` | Sets the content of the helper text.
-`setValidation(isValidation: boolean) => void` | Sets the helper text as a validation message. By default, validation messages are hidden when the select is valid and visible when the select is invalid.
-`setValidationMsgPersistent(isPersistent: boolean) => void` | This keeps the validation message visible even if the select is valid, though it will be displayed in the normal (grey) color.
-`setValidity(inputIsValid: boolean) => void` | Sets the validity of the helper text based on the input validity.
+| Method Signature                                            | Description                                                                                                                                               |
+| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `getId() => string                                          | null`                                                                                                                                                     | Gets the ID of the helper text. |
+| `isVisible() => boolean`                                    | Returns whether the helper text is visible.                                                                                                               |
+| `setContent(content: string) => void`                       | Sets the content of the helper text.                                                                                                                      |
+| `setValidation(isValidation: boolean) => void`              | Sets the helper text as a validation message. By default, validation messages are hidden when the select is valid and visible when the select is invalid. |
+| `setValidationMsgPersistent(isPersistent: boolean) => void` | This keeps the validation message visible even if the select is valid, though it will be displayed in the normal (grey) color.                            |
+| `setValidity(inputIsValid: boolean) => void`                | Sets the validity of the helper text based on the input validity.                                                                                         |

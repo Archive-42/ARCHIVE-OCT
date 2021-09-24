@@ -1,4 +1,4 @@
-const {basename} = require('path');
+const { basename } = require("path");
 
 const dashedToCamel = (name) =>
   name.replace(/-(\w)/g, (_, v) => v.toUpperCase());
@@ -12,4 +12,4 @@ convertToImportMDCWebPaths = (packageNames) => {
   });
 };
 
-module.exports = {convertToImportMDCWebPaths};
+module.exports = { convertToImportMDCWebPaths };

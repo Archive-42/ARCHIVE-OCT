@@ -21,144 +21,154 @@
  * THE SOFTWARE.
  */
 
+import { verifyDefaultAdapter } from "../../../../testing/helpers/foundation";
+import { setUpFoundationTest } from "../../../../testing/helpers/setup";
+import { strings } from "../../../mdc-textfield/icon/constants";
+import { MDCTextFieldIconFoundation } from "../../../mdc-textfield/icon/foundation";
 
-import {verifyDefaultAdapter} from '../../../../testing/helpers/foundation';
-import {setUpFoundationTest} from '../../../../testing/helpers/setup';
-import {strings} from '../../../mdc-textfield/icon/constants';
-import {MDCTextFieldIconFoundation} from '../../../mdc-textfield/icon/foundation';
-
-describe('MDCTextFieldIconFoundation', () => {
-  it('exports strings', () => {
+describe("MDCTextFieldIconFoundation", () => {
+  it("exports strings", () => {
     expect(MDCTextFieldIconFoundation.strings).toEqual(strings);
   });
 
-  it('defaultAdapter returns a complete adapter implementation', () => {
+  it("defaultAdapter returns a complete adapter implementation", () => {
     verifyDefaultAdapter(MDCTextFieldIconFoundation, [
-      'getAttr',
-      'setAttr',
-      'removeAttr',
-      'setContent',
-      'registerInteractionHandler',
-      'deregisterInteractionHandler',
-      'notifyIconAction',
+      "getAttr",
+      "setAttr",
+      "removeAttr",
+      "setContent",
+      "registerInteractionHandler",
+      "deregisterInteractionHandler",
+      "notifyIconAction",
     ]);
   });
 
   const setupTest = () => {
-    const {foundation, mockAdapter} =
-        setUpFoundationTest(MDCTextFieldIconFoundation);
-    return {foundation, mockAdapter};
+    const { foundation, mockAdapter } = setUpFoundationTest(
+      MDCTextFieldIconFoundation
+    );
+    return { foundation, mockAdapter };
   };
 
-  it('istanbul code coverage', () => {
-    expect(() => new MDCTextFieldIconFoundation).not.toThrow();
+  it("istanbul code coverage", () => {
+    expect(() => new MDCTextFieldIconFoundation()).not.toThrow();
   });
 
-  it('#init adds event listeners', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#init adds event listeners", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.init();
 
-    expect(mockAdapter.registerInteractionHandler)
-        .toHaveBeenCalledWith('click', jasmine.any(Function));
-    expect(mockAdapter.registerInteractionHandler)
-        .toHaveBeenCalledWith('keydown', jasmine.any(Function));
+    expect(mockAdapter.registerInteractionHandler).toHaveBeenCalledWith(
+      "click",
+      jasmine.any(Function)
+    );
+    expect(mockAdapter.registerInteractionHandler).toHaveBeenCalledWith(
+      "keydown",
+      jasmine.any(Function)
+    );
   });
 
-  it('#destroy removes event listeners', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("#destroy removes event listeners", () => {
+    const { foundation, mockAdapter } = setupTest();
     foundation.destroy();
 
-    expect(mockAdapter.deregisterInteractionHandler)
-        .toHaveBeenCalledWith('click', jasmine.any(Function));
-    expect(mockAdapter.deregisterInteractionHandler)
-        .toHaveBeenCalledWith('keydown', jasmine.any(Function));
+    expect(mockAdapter.deregisterInteractionHandler).toHaveBeenCalledWith(
+      "click",
+      jasmine.any(Function)
+    );
+    expect(mockAdapter.deregisterInteractionHandler).toHaveBeenCalledWith(
+      "keydown",
+      jasmine.any(Function)
+    );
   });
 
-  it('#setDisabled sets icon tabindex to -1 and removes role when set to true if icon initially had a tabindex',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getAttr.withArgs('tabindex').and.returnValue('1');
-       foundation.init();
+  it("#setDisabled sets icon tabindex to -1 and removes role when set to true if icon initially had a tabindex", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getAttr.withArgs("tabindex").and.returnValue("1");
+    foundation.init();
 
-       foundation.setDisabled(true);
-       expect(mockAdapter.setAttr).toHaveBeenCalledWith('tabindex', '-1');
-       expect(mockAdapter.removeAttr).toHaveBeenCalledWith('role');
-     });
+    foundation.setDisabled(true);
+    expect(mockAdapter.setAttr).toHaveBeenCalledWith("tabindex", "-1");
+    expect(mockAdapter.removeAttr).toHaveBeenCalledWith("role");
+  });
 
-  it('#setDisabled does not change icon tabindex or role when set to true if icon initially had no tabindex',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getAttr.withArgs('tabindex').and.returnValue(null);
-       foundation.init();
+  it("#setDisabled does not change icon tabindex or role when set to true if icon initially had no tabindex", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getAttr.withArgs("tabindex").and.returnValue(null);
+    foundation.init();
 
-       foundation.setDisabled(true);
-       expect(mockAdapter.setAttr)
-           .not.toHaveBeenCalledWith('tabindex', jasmine.any(String));
-       expect(mockAdapter.removeAttr).not.toHaveBeenCalledWith('role');
-     });
+    foundation.setDisabled(true);
+    expect(mockAdapter.setAttr).not.toHaveBeenCalledWith(
+      "tabindex",
+      jasmine.any(String)
+    );
+    expect(mockAdapter.removeAttr).not.toHaveBeenCalledWith("role");
+  });
 
-  it('#setDisabled restores icon tabindex and role when set to false if icon initially had a tabindex',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       const expectedTabIndex = '1';
-       mockAdapter.getAttr.withArgs('tabindex')
-           .and.returnValue(expectedTabIndex);
-       foundation.init();
+  it("#setDisabled restores icon tabindex and role when set to false if icon initially had a tabindex", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const expectedTabIndex = "1";
+    mockAdapter.getAttr.withArgs("tabindex").and.returnValue(expectedTabIndex);
+    foundation.init();
 
-       foundation.setDisabled(false);
-       expect(mockAdapter.setAttr)
-           .toHaveBeenCalledWith('tabindex', expectedTabIndex);
-       expect(mockAdapter.setAttr)
-           .toHaveBeenCalledWith('role', strings.ICON_ROLE);
-     });
+    foundation.setDisabled(false);
+    expect(mockAdapter.setAttr).toHaveBeenCalledWith(
+      "tabindex",
+      expectedTabIndex
+    );
+    expect(mockAdapter.setAttr).toHaveBeenCalledWith("role", strings.ICON_ROLE);
+  });
 
-  it('#setDisabled does not change icon tabindex or role when set to false if icon initially had no tabindex',
-     () => {
-       const {foundation, mockAdapter} = setupTest();
-       mockAdapter.getAttr.withArgs('tabindex').and.returnValue(null);
-       foundation.init();
+  it("#setDisabled does not change icon tabindex or role when set to false if icon initially had no tabindex", () => {
+    const { foundation, mockAdapter } = setupTest();
+    mockAdapter.getAttr.withArgs("tabindex").and.returnValue(null);
+    foundation.init();
 
-       foundation.setDisabled(false);
-       expect(mockAdapter.setAttr)
-           .not.toHaveBeenCalledWith('tabindex', jasmine.any(String));
-       expect(mockAdapter.setAttr)
-           .not.toHaveBeenCalledWith('role', jasmine.any(String));
-     });
+    foundation.setDisabled(false);
+    expect(mockAdapter.setAttr).not.toHaveBeenCalledWith(
+      "tabindex",
+      jasmine.any(String)
+    );
+    expect(mockAdapter.setAttr).not.toHaveBeenCalledWith(
+      "role",
+      jasmine.any(String)
+    );
+  });
 
-  it('#setAriaLabel updates the aria-label', () => {
-    const {foundation, mockAdapter} = setupTest();
-    const ariaLabel = 'Test label';
+  it("#setAriaLabel updates the aria-label", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const ariaLabel = "Test label";
     foundation.init();
 
     foundation.setAriaLabel(ariaLabel);
-    expect(mockAdapter.setAttr).toHaveBeenCalledWith('aria-label', ariaLabel);
+    expect(mockAdapter.setAttr).toHaveBeenCalledWith("aria-label", ariaLabel);
   });
 
-  it('#setContent updates the text content', () => {
-    const {foundation, mockAdapter} = setupTest();
-    const content = 'test';
+  it("#setContent updates the text content", () => {
+    const { foundation, mockAdapter } = setupTest();
+    const content = "test";
     foundation.init();
 
     foundation.setContent(content);
     expect(mockAdapter.setContent).toHaveBeenCalledWith(content);
   });
 
-  it('on click notifies custom icon event', () => {
-    const {foundation, mockAdapter} = setupTest();
+  it("on click notifies custom icon event", () => {
+    const { foundation, mockAdapter } = setupTest();
     const evt = {
       target: {},
-      type: 'click',
+      type: "click",
       preventDefault: () => {},
     };
-    let click: Function|undefined;
+    let click: Function | undefined;
 
     mockAdapter.registerInteractionHandler
-        .withArgs(jasmine.any(String), jasmine.any(Function))
-        .and.callFake((evtType: string, handler: Function) => {
-          if (evtType === 'click') {
-            click = handler;
-          }
-        });
+      .withArgs(jasmine.any(String), jasmine.any(Function))
+      .and.callFake((evtType: string, handler: Function) => {
+        if (evtType === "click") {
+          click = handler;
+        }
+      });
 
     foundation.init();
     if (click !== undefined) {

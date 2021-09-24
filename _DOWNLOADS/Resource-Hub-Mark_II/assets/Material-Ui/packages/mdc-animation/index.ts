@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import * as util from './util';
+import * as util from "./util";
 
-export {util}; // New namespace
-export * from './animationframe';
-export * from './types';
-export * from './util'; // Old namespace for backward compatibility
+export { util }; // New namespace
+export * from "./animationframe";
+export * from "./types";
+export * from "./util"; // Old namespace for backward compatibility

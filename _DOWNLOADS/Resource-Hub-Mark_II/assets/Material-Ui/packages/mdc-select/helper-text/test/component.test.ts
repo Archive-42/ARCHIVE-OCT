@@ -21,67 +21,65 @@
  * THE SOFTWARE.
  */
 
-import {getFixture as createFixture} from '../../../../testing/dom/index';
-import {MDCSelectHelperText} from '../index';
+import { getFixture as createFixture } from "../../../../testing/dom/index";
+import { MDCSelectHelperText } from "../index";
 
-const getFixture = () => createFixture(`
+const getFixture = () =>
+  createFixture(`
   <p class="mdc-select-helper-text"></p>
 `);
 
-describe('MDCSelectHelperText', () => {
-  it('attachTo returns an MDCSelectHelperText instance', () => {
+describe("MDCSelectHelperText", () => {
+  it("attachTo returns an MDCSelectHelperText instance", () => {
     expect(
-        MDCSelectHelperText.attachTo(getFixture()) instanceof
-        MDCSelectHelperText)
-        .toBeTruthy();
+      MDCSelectHelperText.attachTo(getFixture()) instanceof MDCSelectHelperText
+    ).toBeTruthy();
   });
 
   function setupTest() {
     const root = getFixture();
     const component = new MDCSelectHelperText(root);
-    const adapter = component.getDefaultFoundation()['adapter'];
-    return {root, adapter};
+    const adapter = component.getDefaultFoundation()["adapter"];
+    return { root, adapter };
   }
 
-  it('#adapter.addClass adds a class to the element', () => {
-    const {root, adapter} = setupTest();
-    adapter.addClass('foo');
-    expect(root.classList.contains('foo')).toBe(true);
+  it("#adapter.addClass adds a class to the element", () => {
+    const { root, adapter } = setupTest();
+    adapter.addClass("foo");
+    expect(root.classList.contains("foo")).toBe(true);
   });
 
-  it('#adapter.removeClass removes a class from the element', () => {
-    const {root, adapter} = setupTest();
-    root.classList.add('foo');
-    adapter.removeClass('foo');
-    expect(root.classList.contains('foo')).toBe(false);
+  it("#adapter.removeClass removes a class from the element", () => {
+    const { root, adapter } = setupTest();
+    root.classList.add("foo");
+    adapter.removeClass("foo");
+    expect(root.classList.contains("foo")).toBe(false);
   });
 
-  it('#adapter.hasClass returns whether or not the element contains a certain class',
-     () => {
-       const {root, adapter} = setupTest();
-       root.classList.add('foo');
-       expect(adapter.hasClass('foo')).toBeTruthy();
-       root.classList.remove('foo');
-       expect(adapter.hasClass('foo')).toBeFalsy();
-     });
-
-  it('#adapter.get/setAttr retrieves/adds a given attribute to the element',
-     () => {
-       const {adapter} = setupTest();
-       adapter.setAttr('aria-label', 'foo');
-       expect(adapter.getAttr('aria-label')).toEqual('foo');
-     });
-
-  it('#adapter.removeAttr removes a given attribute from the element', () => {
-    const {root, adapter} = setupTest();
-    root.setAttribute('aria-label', 'foo');
-    adapter.removeAttr('aria-label');
-    expect(root.hasAttribute('aria-label')).toBeFalsy();
+  it("#adapter.hasClass returns whether or not the element contains a certain class", () => {
+    const { root, adapter } = setupTest();
+    root.classList.add("foo");
+    expect(adapter.hasClass("foo")).toBeTruthy();
+    root.classList.remove("foo");
+    expect(adapter.hasClass("foo")).toBeFalsy();
   });
 
-  it('#adapter.setContent sets the text content of the element', () => {
-    const {root, adapter} = setupTest();
-    adapter.setContent('foo');
-    expect(root.textContent).toEqual('foo');
+  it("#adapter.get/setAttr retrieves/adds a given attribute to the element", () => {
+    const { adapter } = setupTest();
+    adapter.setAttr("aria-label", "foo");
+    expect(adapter.getAttr("aria-label")).toEqual("foo");
+  });
+
+  it("#adapter.removeAttr removes a given attribute from the element", () => {
+    const { root, adapter } = setupTest();
+    root.setAttribute("aria-label", "foo");
+    adapter.removeAttr("aria-label");
+    expect(root.hasAttribute("aria-label")).toBeFalsy();
+  });
+
+  it("#adapter.setContent sets the text content of the element", () => {
+    const { root, adapter } = setupTest();
+    adapter.setContent("foo");
+    expect(root.textContent).toEqual("foo");
   });
 });

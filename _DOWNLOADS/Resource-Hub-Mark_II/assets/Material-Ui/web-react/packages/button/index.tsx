@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 import {
   withRipple,
   InjectedProps,
   // @ts-ignore TODO(issues/955) Remove once possible
   RippledComponentProps, // eslint-disable-line @typescript-eslint/no-unused-vars
-} from '@material/react-ripple';
+} from "@material/react-ripple";
 
-import {CSS_CLASSES} from './constant';
+import { CSS_CLASSES } from "./constant";
 
 type ButtonTypes = HTMLAnchorElement | HTMLButtonElement;
 
@@ -49,7 +49,7 @@ export interface ButtonProps<T extends ButtonTypes>
 }
 
 export const Button = <T extends ButtonTypes>({
-  className = '',
+  className = "",
   raised = false,
   unelevated = false,
   outlined = false,
