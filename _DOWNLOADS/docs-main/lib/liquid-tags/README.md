@@ -23,9 +23,9 @@ Tags always expect a single argument, a language agnostic href:
 
 ## Supported tags
 
-| Markup | Renders |
-| -- | -- |
-| `{% indented_data_reference foo.bar spaces=NUMBER %}` | A data reference with the specified number of spaces prepended to each line. Defaults to 2 spaces if no spaces included. For example: `{% indented_data_reference reusables.pages.wildcard-dns-warning spaces=3 %}`
+| Markup                                                | Renders                                                                                                                                                                                                             |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{% indented_data_reference foo.bar spaces=NUMBER %}` | A data reference with the specified number of spaces prepended to each line. Defaults to 2 spaces if no spaces included. For example: `{% indented_data_reference reusables.pages.wildcard-dns-warning spaces=3 %}` |
 
 ## Creating tags
 

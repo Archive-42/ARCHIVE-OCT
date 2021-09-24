@@ -3,14 +3,17 @@ Markdown and Liquid rendering pipeline.
 ## Usage
 
 ```js
-const renderContent = require('.')
+const renderContent = require(".");
 
-const html = await renderContent(`
+const html = await renderContent(
+  `
 # Beep
 {{ foo }}
-`, {
-  foo: 'bar'
-})
+`,
+  {
+    foo: "bar",
+  }
+);
 ```
 
 Creates:
