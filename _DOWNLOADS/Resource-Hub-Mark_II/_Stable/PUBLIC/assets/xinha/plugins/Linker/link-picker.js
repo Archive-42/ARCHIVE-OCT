@@ -1,5 +1,4 @@
-
-  /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
+/*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
     --  Xinha (is not htmlArea) - http://xinha.gogo.co.nz/
     --
     --  Use of Xinha is granted by the terms of the htmlArea License (based on
@@ -15,8 +14,7 @@
     --  $LastChangedRevision: 694 $
     --  $LastChangedBy: gogo $
     --------------------------------------------------------------------------*/
- 
-    
+
 /** The Link Picker is a semi-standalone instance of the Linker plugin which can be used
  *  for providing a Linker style browse dialog for selecting urls which are then 
  *  returned into a standard form field.
@@ -69,70 +67,99 @@
  *  }}}
  *   
  */
- 
-function LinkPicker(field, config)
-{
+
+function LinkPicker(field, config) {
   this.field = field;
-  
+
   var linkPicker = this;
-  
+
   // We use a tempoary anchor tag to pass to the Linker plugin
-  this.tmpAnchor = document.createElement('a');  
-  
+  this.tmpAnchor = document.createElement("a");
+
   // We will use the detached dialog always
   config.dialog = LinkPicker.Dialog;
-  config.canSetTarget = false; 
+  config.canSetTarget = false;
   config.canRemoveLink = false;
-  
+
   // These methods are dummy versions of stuff that would normally be in a Xinha object
-  this.selectionEmpty = function() { return true; };
-  this.getSelection   = function() { return null; };  
-  this.selectNodeContents = function() { return true; };  
-  this.getHTML = function() { return ''; }
-  this.disableToolbar = function() { return true; }
-  this.enableToolbar  = function() { return true; }
+  this.selectionEmpty = function () {
+    return true;
+  };
+  this.getSelection = function () {
+    return null;
+  };
+  this.selectNodeContents = function () {
+    return true;
+  };
+  this.getHTML = function () {
+    return "";
+  };
+  this.disableToolbar = function () {
+    return true;
+  };
+  this.enableToolbar = function () {
+    return true;
+  };
   this._doc = {
-    execCommand: function() { return false; },
-    getElementsByTagName: function() { return [ ]; }
-  }  
-  this.config = { 
-    Linker: config, 
-    btnList: { }, 
-    registerButton: function() { return true; }, 
-    addToolbarElement: function() { }
-  }
-  
+    execCommand: function () {
+      return false;
+    },
+    getElementsByTagName: function () {
+      return [];
+    },
+  };
+  this.config = {
+    Linker: config,
+    btnList: {},
+    registerButton: function () {
+      return true;
+    },
+    addToolbarElement: function () {},
+  };
+
   // Add a button next to the field
-  var button = document.createElement('input'); button.type='button';
-  button.value = 'Browse';
-  button.onclick = function() { linkPicker.editLink(); return false; } 
-  field.parentNode.insertBefore(button,field.nextSibling);  
-    
+  var button = document.createElement("input");
+  button.type = "button";
+  button.value = "Browse";
+  button.onclick = function () {
+    linkPicker.editLink();
+    return false;
+  };
+  field.parentNode.insertBefore(button, field.nextSibling);
+
   // We co-opt updateToolbar as the point at which we copy the temporary anchor across to the field
   // Linker calls this as the last step, so perfect.
-  this.updateToolbar  = function() { linkPicker.field.value = this.fixRelativeLinks(linkPicker.tmpAnchor.href); };
-    
-  this.linker = new Linker(this);  
+  this.updateToolbar = function () {
+    linkPicker.field.value = this.fixRelativeLinks(linkPicker.tmpAnchor.href);
+  };
+
+  this.linker = new Linker(this);
   this.linker.onGenerateOnce();
 }
 
-LinkPicker.prototype.editLink = function()
-{
+LinkPicker.prototype.editLink = function () {
   this.tmpAnchor.href = this.field.value;
   this.linker._createLink(this.tmpAnchor);
-}
+};
 
-LinkPicker.prototype.fixRelativeLinks = function(href) 
-{  
-  return href.replace(document.location.href.replace( /^(https?:\/\/[^\/]*)(.*)$/i, '$1' ), '');
-}
+LinkPicker.prototype.fixRelativeLinks = function (href) {
+  return href.replace(
+    document.location.href.replace(/^(https?:\/\/[^\/]*)(.*)$/i, "$1"),
+    ""
+  );
+};
 
-LinkPicker.Dialog = function(linkPicker, html, localizer, size, options) 
-{ 
-  LinkPicker.Dialog.parentConstructor.call(this, html, localizer, size, options); 
-}
+LinkPicker.Dialog = function (linkPicker, html, localizer, size, options) {
+  LinkPicker.Dialog.parentConstructor.call(
+    this,
+    html,
+    localizer,
+    size,
+    options
+  );
+};
 
 Xinha.extend(LinkPicker.Dialog, Xinha.DetachedDialog);
 
-LinkPicker.Config = function() { }
+LinkPicker.Config = function () {};
 LinkPicker.Config.prototype = Xinha.Config.prototype.Linker;

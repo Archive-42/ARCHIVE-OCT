@@ -14,27 +14,35 @@
 // Override the ordinary popup.js translation to add translation for a few other HTML elements.
 
 function __dlg_translate(context) {
-    var types = ["span", "option", "td", "th", "button", "div", "label", "a","img", "legend"];
-    for (var type = 0; type < types.length; ++type) {
-        var spans = document.getElementsByTagName(types[type]);
-        for (var i = spans.length; --i >= 0;) {
-            var span = spans[i];
-            if (span.firstChild && span.firstChild.data) {
-                var txt = Xinha._lc(span.firstChild.data, context);
-                if (txt)
-                    span.firstChild.data = txt;
-            }
-            if (span.title) {
-                var txt = Xinha._lc(span.title, context);
-                if (txt)
-                    span.title = txt;
-            }
-            if (span.alt) {
-                var txt = Xinha._lc(span.alt, context);
-                if (txt)
-                    span.alt = txt;
-            }
-        }
+  var types = [
+    "span",
+    "option",
+    "td",
+    "th",
+    "button",
+    "div",
+    "label",
+    "a",
+    "img",
+    "legend",
+  ];
+  for (var type = 0; type < types.length; ++type) {
+    var spans = document.getElementsByTagName(types[type]);
+    for (var i = spans.length; --i >= 0; ) {
+      var span = spans[i];
+      if (span.firstChild && span.firstChild.data) {
+        var txt = Xinha._lc(span.firstChild.data, context);
+        if (txt) span.firstChild.data = txt;
+      }
+      if (span.title) {
+        var txt = Xinha._lc(span.title, context);
+        if (txt) span.title = txt;
+      }
+      if (span.alt) {
+        var txt = Xinha._lc(span.alt, context);
+        if (txt) span.alt = txt;
+      }
     }
-    document.title = Xinha._lc(document.title, context);
+  }
+  document.title = Xinha._lc(document.title, context);
 }

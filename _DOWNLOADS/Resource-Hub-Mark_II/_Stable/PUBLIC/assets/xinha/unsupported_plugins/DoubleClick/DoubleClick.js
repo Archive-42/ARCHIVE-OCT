@@ -14,14 +14,14 @@
 //
 
 DoubleClick._pluginInfo = {
-  name          : "DoubleClick",
-  version       : "1.1",
-  developer     : "Marijn Kampf",
-  developer_url : "http://www.marijn.org",
-  c_owner       : "Marijn Kampf",
-  sponsor       : "smiling-faces.com",
-  sponsor_url   : "http://www.smiling-faces.com",
-  license       : "htmlArea"
+  name: "DoubleClick",
+  version: "1.1",
+  developer: "Marijn Kampf",
+  developer_url: "http://www.marijn.org",
+  c_owner: "Marijn Kampf",
+  sponsor: "smiling-faces.com",
+  sponsor_url: "http://www.smiling-faces.com",
+  license: "htmlArea",
 };
 
 function DoubleClick(editor) {
@@ -37,26 +37,38 @@ function DoubleClick(editor) {
   //              - target is the selected object
   this.editor.dblClickList = {
     // Edit Link dialog
-    a: [ function(e, target) {e.execCommand("createlink", false, target);} ],
+    a: [
+      function (e, target) {
+        e.execCommand("createlink", false, target);
+      },
+    ],
     // Follow link
     //a: [ function(editor, target) { window.location = target.href; properties(target); } ],
 
-    img: [ function(e) {e.execCommand("insertimage");} ],
-    td: [ function(e) {e.execCommand("inserttable");} ]
+    img: [
+      function (e) {
+        e.execCommand("insertimage");
+      },
+    ],
+    td: [
+      function (e) {
+        e.execCommand("inserttable");
+      },
+    ],
   };
 }
 
-DoubleClick.prototype.onGenerate = function() {
+DoubleClick.prototype.onGenerate = function () {
   var self = this;
   var config = this.editor.config;
-  for( var i in this.editor.dblClickList ) {
-      if( typeof i != 'string' ) {
-	  continue;
-      }
-      var actions = this.editor.dblClickList[i];
-      if( typeof actions != 'object' ) {
-	  continue;
-      }
-      this.editor.config.dblclickList[i] = actions;
+  for (var i in this.editor.dblClickList) {
+    if (typeof i != "string") {
+      continue;
+    }
+    var actions = this.editor.dblClickList[i];
+    if (typeof actions != "object") {
+      continue;
+    }
+    this.editor.config.dblclickList[i] = actions;
   }
 };

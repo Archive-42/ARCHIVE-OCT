@@ -6,7 +6,8 @@
  */
 
 function titleCase(str) {
-  var smallWords = /^(a|an|and|as|at|but|by|en|for|from|if|in|nor|of|on|or|per|the|to|vs?\.?|via|with|without|within)$/i;
+  var smallWords =
+    /^(a|an|and|as|at|but|by|en|for|from|if|in|nor|of|on|or|per|the|to|vs?\.?|via|with|without|within)$/i;
 
   if (!str) return str;
   return str.replace(

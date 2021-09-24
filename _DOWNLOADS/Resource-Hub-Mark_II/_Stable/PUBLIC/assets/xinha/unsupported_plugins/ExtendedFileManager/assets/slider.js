@@ -7,99 +7,85 @@
  * http://www.afrusoft.com/htmlarea
  */
 
-var ie=document.all;
-var ns6=document.getElementById&&!document.all;
+var ie = document.all;
+var ns6 = document.getElementById && !document.all;
 
 document.onmouseup = captureStop;
 
-var currentSlider = null,sliderField = null;
-var rangeMin = null, rangeMax= null, sx = -1, sy = -1, initX=0;
+var currentSlider = null,
+  sliderField = null;
+var rangeMin = null,
+  rangeMax = null,
+  sx = -1,
+  sy = -1,
+  initX = 0;
 
 function getMouseXY(e) {
+  //alert('hello');
+  x = ns6 ? e.clientX : event.clientX;
+  y = ns6 ? e.clientY : event.clientY;
 
-    //alert('hello');
-    x = ns6? e.clientX: event.clientX
-    y = ns6? e.clientY: event.clientY
+  if (sx < 0) sx = x;
+  if (sy < 0) sy = y;
 
-    if (sx < 0) sx = x; if (sy < 0) sy = y;
+  var dx = initX + (x - sx);
 
-    var dx = initX +(x-sx);
+  if (dx <= rangeMin) dx = rangeMin;
+  else if (dx >= rangeMax) dx = rangeMax;
 
-    if (dx <= rangeMin)
-        dx = rangeMin;
-    else if (dx >= rangeMax)
-        dx = rangeMax;
+  var range = ((dx - rangeMin) / (rangeMax - rangeMin)) * 100;
 
-    var range = (dx-rangeMin)/(rangeMax - rangeMin)*100;
+  if (currentSlider != null) currentSlider.style.left = dx + "px";
 
-    if (currentSlider !=  null)
-        currentSlider.style.left = dx+"px";
-
-    if (sliderField != null)
-    {
-        sliderField.value = parseInt(range);
-    }
-    return false;
-
+  if (sliderField != null) {
+    sliderField.value = parseInt(range);
+  }
+  return false;
 }
 
-function initSlider()
-{
-    if (currentSlider == null)
-        currentSlider = document.getElementById('sliderbar');
+function initSlider() {
+  if (currentSlider == null)
+    currentSlider = document.getElementById("sliderbar");
 
-    if (sliderField == null)
-        sliderField = document.getElementById('quality');
+  if (sliderField == null) sliderField = document.getElementById("quality");
 
-    if (rangeMin == null)
-        rangeMin = 3
-    if (rangeMax == null)
-    {
-        var track = document.getElementById('slidertrack');
-        rangeMax = parseInt(track.style.width);
-    }
-
+  if (rangeMin == null) rangeMin = 3;
+  if (rangeMax == null) {
+    var track = document.getElementById("slidertrack");
+    rangeMax = parseInt(track.style.width);
+  }
 }
 
-function updateSlider(value)
-{
-    initSlider();
+function updateSlider(value) {
+  initSlider();
 
-    var newValue = parseInt(value)/100*(rangeMax-rangeMin);
+  var newValue = (parseInt(value) / 100) * (rangeMax - rangeMin);
 
-    if (newValue <= rangeMin)
-        newValue = rangeMin;
-    else if (newValue >= rangeMax)
-        newValue = rangeMax;
+  if (newValue <= rangeMin) newValue = rangeMin;
+  else if (newValue >= rangeMax) newValue = rangeMax;
 
-    if (currentSlider !=  null)
-        currentSlider.style.left = newValue+"px";
+  if (currentSlider != null) currentSlider.style.left = newValue + "px";
 
-    var range = newValue/(rangeMax - rangeMin)*100;
+  var range = (newValue / (rangeMax - rangeMin)) * 100;
 
-    if (sliderField != null)
-        sliderField.value = parseInt(range);
+  if (sliderField != null) sliderField.value = parseInt(range);
 }
 
-function captureStart()
-{
+function captureStart() {
+  initSlider();
 
-    initSlider();
+  initX = parseInt(currentSlider.style.left);
+  if (initX > rangeMax) initX = rangeMax;
+  else if (initX < rangeMin) initX = rangeMin;
 
-    initX = parseInt(currentSlider.style.left);
-    if (initX > rangeMax)
-        initX = rangeMax;
-    else if (initX < rangeMin)
-        initX = rangeMin;
+  document.onmousemove = getMouseXY;
 
-    document.onmousemove = getMouseXY;
-
-    return false;
+  return false;
 }
 
-function captureStop()
-{
-    sx = -1; sy = -1;
-    document.onmousemove = null;
-    return false;
+function captureStop() {
+  sx = -1;
+  sy = -1;
+  document.onmousemove = null;
+  return false;
 }

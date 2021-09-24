@@ -1,4 +1,4 @@
-  /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
+/*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
     --  Xinha (is not htmlArea) - http://xinha.org
     --
     --  Use of Xinha is granted by the terms of the htmlArea License (based on
@@ -24,85 +24,100 @@
     --------------------------------------------------------------------------*/
 
 function CreateLink(editor) {
-	this.editor = editor;
-	var cfg = editor.config;
-	var self = this;
+  this.editor = editor;
+  var cfg = editor.config;
+  var self = this;
 
-	if(typeof editor._createLink == 'undefined') {
-	    editor._createLink = function(target) {
-		if(!target) target = self._getSelectedAnchor();
-		self.show(target);
-	    }
-	}
+  if (typeof editor._createLink == "undefined") {
+    editor._createLink = function (target) {
+      if (!target) target = self._getSelectedAnchor();
+      self.show(target);
+    };
+  }
 }
 
 CreateLink._pluginInfo = {
-  name          : "CreateLink",
-  origin        : "Xinha Core",
-  version       : "$LastChangedRevision: 1402 $".replace(/^[^:]*:\s*(.*)\s*\$$/, '$1'),
-  developer     : "The Xinha Core Developer Team",
-  developer_url : "$HeadURL: http://svn.xinha.org/trunk/modules/CreateLink/link.js $".replace(/^[^:]*:\s*(.*)\s*\$$/, '$1'),
-  sponsor       : "",
-  sponsor_url   : "",
-  license       : "htmlArea"
+  name: "CreateLink",
+  origin: "Xinha Core",
+  version: "$LastChangedRevision: 1402 $".replace(/^[^:]*:\s*(.*)\s*\$$/, "$1"),
+  developer: "The Xinha Core Developer Team",
+  developer_url:
+    "$HeadURL: http://svn.xinha.org/trunk/modules/CreateLink/link.js $".replace(
+      /^[^:]*:\s*(.*)\s*\$$/,
+      "$1"
+    ),
+  sponsor: "",
+  sponsor_url: "",
+  license: "htmlArea",
 };
 
-CreateLink.prototype._lc = function(string) {
-	return Xinha._lc(string, 'CreateLink');
+CreateLink.prototype._lc = function (string) {
+  return Xinha._lc(string, "CreateLink");
 };
 
-
-CreateLink.prototype.onGenerateOnce = function()
-{
+CreateLink.prototype.onGenerateOnce = function () {
   CreateLink.loadAssets();
 };
 
-CreateLink.loadAssets = function()
-{
-	var self = CreateLink;
-	if (self.loading) return;
-	self.loading = true;
-	Xinha._getback(_editor_url + 'modules/CreateLink/dialog.html', function(getback) { self.html = getback; self.dialogReady = true; });
-	Xinha._getback(_editor_url + 'modules/CreateLink/pluginMethods.js', function(getback) { eval(getback); self.methodsReady = true; });
-}
-
-CreateLink.prototype.onUpdateToolbar = function()
-{ 
-	if (!(CreateLink.dialogReady && CreateLink.methodsReady))
-	{
-		this.editor._toolbarObjects.createlink.state("enabled", false);
-	}
-	else this.onUpdateToolbar = null;
+CreateLink.loadAssets = function () {
+  var self = CreateLink;
+  if (self.loading) return;
+  self.loading = true;
+  Xinha._getback(
+    _editor_url + "modules/CreateLink/dialog.html",
+    function (getback) {
+      self.html = getback;
+      self.dialogReady = true;
+    }
+  );
+  Xinha._getback(
+    _editor_url + "modules/CreateLink/pluginMethods.js",
+    function (getback) {
+      eval(getback);
+      self.methodsReady = true;
+    }
+  );
 };
 
-CreateLink.prototype.prepareDialog = function()
-{
-	var self = this;
-	var editor = this.editor;
+CreateLink.prototype.onUpdateToolbar = function () {
+  if (!(CreateLink.dialogReady && CreateLink.methodsReady)) {
+    this.editor._toolbarObjects.createlink.state("enabled", false);
+  } else this.onUpdateToolbar = null;
+};
 
-	var dialog = this.dialog = new Xinha.Dialog(editor, CreateLink.html, 'Xinha',{width:400})
-	// Connect the OK and Cancel buttons
-	dialog.getElementById('ok').onclick = function() {self.apply();}
+CreateLink.prototype.prepareDialog = function () {
+  var self = this;
+  var editor = this.editor;
 
-	dialog.getElementById('cancel').onclick = function() { self.dialog.hide()};
+  var dialog = (this.dialog = new Xinha.Dialog(
+    editor,
+    CreateLink.html,
+    "Xinha",
+    { width: 400 }
+  ));
+  // Connect the OK and Cancel buttons
+  dialog.getElementById("ok").onclick = function () {
+    self.apply();
+  };
 
-	if (!editor.config.makeLinkShowsTarget)
-	{
-		dialog.getElementById("f_target_label").style.visibility = "hidden";
-		dialog.getElementById("f_target").style.visibility = "hidden";
-		dialog.getElementById("f_other_target").style.visibility = "hidden";
-	}
+  dialog.getElementById("cancel").onclick = function () {
+    self.dialog.hide();
+  };
 
-	dialog.getElementById('f_target').onchange= function() 
-	{
-		var f = dialog.getElementById("f_other_target");
-		if (this.value == "_other") {
-			f.style.visibility = "visible";
-			f.select();
-			f.focus();
-		} else f.style.visibility = "hidden";
-	};
+  if (!editor.config.makeLinkShowsTarget) {
+    dialog.getElementById("f_target_label").style.visibility = "hidden";
+    dialog.getElementById("f_target").style.visibility = "hidden";
+    dialog.getElementById("f_other_target").style.visibility = "hidden";
+  }
 
-	
-	this.dialogReady = true;
+  dialog.getElementById("f_target").onchange = function () {
+    var f = dialog.getElementById("f_other_target");
+    if (this.value == "_other") {
+      f.style.visibility = "visible";
+      f.select();
+      f.focus();
+    } else f.style.visibility = "hidden";
+  };
+
+  this.dialogReady = true;
 };

@@ -11,134 +11,148 @@ function DynamicCSS(editor, args) {
   var cfg = editor.config;
   var self = this;
 
-/*var cssArray=null;
+  /*var cssArray=null;
   var cssLength=0;*/
-  var lastTag=null;
-  var lastClass=null;
+  var lastTag = null;
+  var lastClass = null;
 
   var css_class = {
-    id         : "DynamicCSS-class",
-    tooltip       : this._lc("Choose stylesheet"),
-    options    : {"":""},
-    action     : function(editor) { self.onSelect(editor, this); },
-    refresh    : function(editor) { self.updateValue(editor, this); }
+    id: "DynamicCSS-class",
+    tooltip: this._lc("Choose stylesheet"),
+    options: { "": "" },
+    action: function (editor) {
+      self.onSelect(editor, this);
+    },
+    refresh: function (editor) {
+      self.updateValue(editor, this);
+    },
   };
   cfg.registerDropdown(css_class);
-  cfg.addToolbarElement(["T[CSS]", "DynamicCSS-class", "separator"] , "formatblock", -1);
+  cfg.addToolbarElement(
+    ["T[CSS]", "DynamicCSS-class", "separator"],
+    "formatblock",
+    -1
+  );
 }
 
-DynamicCSS.parseStyleSheet=function(editor){
-        iframe = editor._iframe.contentWindow.document;
+DynamicCSS.parseStyleSheet = function (editor) {
+  iframe = editor._iframe.contentWindow.document;
 
-        cssArray=DynamicCSS.cssArray;
-        if(!cssArray) cssArray=new Array();
+  cssArray = DynamicCSS.cssArray;
+  if (!cssArray) cssArray = new Array();
 
-        for(i=0;i<iframe.styleSheets.length;i++)
-        {
-            if(iframe.styleSheets[i].title == "XinhaInternalCSS") continue;
-            
-            // Mozilla
-            if(Xinha.is_gecko){
-                try{
-                    cssArray=DynamicCSS.applyCSSRule(iframe.styleSheets[i].cssRules,cssArray);
-                }
-                catch(e){
-                    //alert(e);
-                }
-            }
-            // IE
-            else {
-                try{
-                    if(iframe.styleSheets[i].rules){
-                        cssArray=DynamicCSS.applyCSSRule(iframe.styleSheets[i].rules,cssArray);
-                    }
-                    // @import StyleSheets (IE)
-                    if(iframe.styleSheets[i].imports){
-                        for(j=0;j<iframe.styleSheets[i].imports.length;j++){
-                            cssArray=DynamicCSS.applyCSSRule(iframe.styleSheets[i].imports[j].rules,cssArray);
-                        }
-                    }
-                }
-                catch(e){
-                    //alert(e);
-                }
-            }
+  for (i = 0; i < iframe.styleSheets.length; i++) {
+    if (iframe.styleSheets[i].title == "XinhaInternalCSS") continue;
+
+    // Mozilla
+    if (Xinha.is_gecko) {
+      try {
+        cssArray = DynamicCSS.applyCSSRule(
+          iframe.styleSheets[i].cssRules,
+          cssArray
+        );
+      } catch (e) {
+        //alert(e);
+      }
+    }
+    // IE
+    else {
+      try {
+        if (iframe.styleSheets[i].rules) {
+          cssArray = DynamicCSS.applyCSSRule(
+            iframe.styleSheets[i].rules,
+            cssArray
+          );
         }
-        DynamicCSS.cssArray=cssArray;
+        // @import StyleSheets (IE)
+        if (iframe.styleSheets[i].imports) {
+          for (j = 0; j < iframe.styleSheets[i].imports.length; j++) {
+            cssArray = DynamicCSS.applyCSSRule(
+              iframe.styleSheets[i].imports[j].rules,
+              cssArray
+            );
+          }
+        }
+      } catch (e) {
+        //alert(e);
+      }
+    }
+  }
+  DynamicCSS.cssArray = cssArray;
 };
 
-DynamicCSS.applyCSSRule=function(cssRules,cssArray){
-    for(rule in cssRules){
-        if(typeof cssRules[rule] == 'function') continue;
-        // StyleRule
-        if(cssRules[rule].selectorText){
-            if(cssRules[rule].selectorText.search(/:+/)==-1){
+DynamicCSS.applyCSSRule = function (cssRules, cssArray) {
+  for (rule in cssRules) {
+    if (typeof cssRules[rule] == "function") continue;
+    // StyleRule
+    if (cssRules[rule].selectorText) {
+      if (cssRules[rule].selectorText.search(/:+/) == -1) {
+        // split equal Styles (Mozilla-specific) e.q. head, body {border:0px}
+        // for ie not relevant. returns allways one element
+        cssElements = cssRules[rule].selectorText.split(",");
+        for (k = 0; k < cssElements.length; k++) {
+          cssElement = cssElements[k].split(".");
 
-                // split equal Styles (Mozilla-specific) e.q. head, body {border:0px}
-                // for ie not relevant. returns allways one element
-                cssElements = cssRules[rule].selectorText.split(",");
-                for(k=0;k<cssElements.length;k++){
-                    cssElement = cssElements[k].split(".");
+          tagName = cssElement[0].toLowerCase().trim();
+          className = cssElement[1];
 
-                    tagName=cssElement[0].toLowerCase().trim();
-                    className=cssElement[1];
+          if (!tagName) tagName = "all";
+          if (!cssArray[tagName]) cssArray[tagName] = new Array();
 
-                    if(!tagName) tagName='all';
-                    if(!cssArray[tagName]) cssArray[tagName]=new Array();
-
-                    if(className){
-                        if(tagName=='all') cssName=className;
-                        else cssName='<'+className+'>';
-                    }
-                    else{
-                        className='none';
-                        if(tagName=='all') cssName=Xinha._lc("Default", 'DynamicCSS');
-                        else cssName='<'+Xinha._lc("Default", 'DynamicCSS')+'>';
-                    }
-                    cssArray[tagName][className]=cssName;
-                    DynamicCSS.cssLength++;
-                }
-            }
+          if (className) {
+            if (tagName == "all") cssName = className;
+            else cssName = "<" + className + ">";
+          } else {
+            className = "none";
+            if (tagName == "all") cssName = Xinha._lc("Default", "DynamicCSS");
+            else cssName = "<" + Xinha._lc("Default", "DynamicCSS") + ">";
+          }
+          cssArray[tagName][className] = cssName;
+          DynamicCSS.cssLength++;
         }
-        // ImportRule (Mozilla)
-        else if(cssRules[rule].styleSheet){
-            cssArray=DynamicCSS.applyCSSRule(cssRules[rule].styleSheet.cssRules,cssArray);
-        }
+      }
     }
-    return cssArray;
+    // ImportRule (Mozilla)
+    else if (cssRules[rule].styleSheet) {
+      cssArray = DynamicCSS.applyCSSRule(
+        cssRules[rule].styleSheet.cssRules,
+        cssArray
+      );
+    }
+  }
+  return cssArray;
 };
 
 DynamicCSS._pluginInfo = {
-  name          : "DynamicCSS",
-  version       : "1.5.2",
-  developer     : "Holger Hees",
-  developer_url : "http://www.systemconcept.de/",
-  c_owner       : "Holger Hees",
-  sponsor       : "System Concept GmbH",
-  sponsor_url   : "http://www.systemconcept.de/",
-  license       : "htmlArea"
+  name: "DynamicCSS",
+  version: "1.5.2",
+  developer: "Holger Hees",
+  developer_url: "http://www.systemconcept.de/",
+  c_owner: "Holger Hees",
+  sponsor: "System Concept GmbH",
+  sponsor_url: "http://www.systemconcept.de/",
+  license: "htmlArea",
 };
 
-DynamicCSS.prototype._lc = function(string) {
-    return Xinha._lc(string, 'DynamicCSS');
+DynamicCSS.prototype._lc = function (string) {
+  return Xinha._lc(string, "DynamicCSS");
 };
 
-DynamicCSS.prototype.onSelect = function(editor, obj) {
-    var tbobj = editor._toolbarObjects[obj.id];
-    var index = tbobj.element.selectedIndex;
-    var className = tbobj.element.value;
+DynamicCSS.prototype.onSelect = function (editor, obj) {
+  var tbobj = editor._toolbarObjects[obj.id];
+  var index = tbobj.element.selectedIndex;
+  var className = tbobj.element.value;
 
-    var parent = editor.getParentElement();
+  var parent = editor.getParentElement();
 
-    if(className!='none'){
-        parent.className=className;
-        DynamicCSS.lastClass=className;
-    }
-    else{
-        if(Xinha.is_gecko) parent.removeAttribute('class');
-        else parent.removeAttribute('className');
-    }
-    editor.updateToolbar();
+  if (className != "none") {
+    parent.className = className;
+    DynamicCSS.lastClass = className;
+  } else {
+    if (Xinha.is_gecko) parent.removeAttribute("class");
+    else parent.removeAttribute("className");
+  }
+  editor.updateToolbar();
 };
 
 /*DynamicCSS.prototype.onMode = function(mode) {
@@ -149,89 +163,103 @@ DynamicCSS.prototype.onSelect = function(editor, obj) {
     }
 }*/
 
-DynamicCSS.prototype.reparseTimer = function(editor, obj, instance) {
-    // new attempt of rescan stylesheets in 1,2,4 and 8 second (e.g. for external css-files with longer initialisation)
-    if(DynamicCSS.parseCount<9){
-        setTimeout(function () {
-            DynamicCSS.cssLength=0;
-            DynamicCSS.parseStyleSheet(editor);
-            if(DynamicCSS.cssOldLength!=DynamicCSS.cssLength){
-                DynamicCSS.cssOldLength=DynamicCSS.cssLength;
-                DynamicCSS.lastClass=null;
-                instance.updateValue(editor, obj);
-            }
-            instance.reparseTimer(editor, obj, instance);
-        },DynamicCSS.parseCount*1000);
-        DynamicCSS.parseCount=DynamicCSS.parseCount*2;
-    }
+DynamicCSS.prototype.reparseTimer = function (editor, obj, instance) {
+  // new attempt of rescan stylesheets in 1,2,4 and 8 second (e.g. for external css-files with longer initialisation)
+  if (DynamicCSS.parseCount < 9) {
+    setTimeout(function () {
+      DynamicCSS.cssLength = 0;
+      DynamicCSS.parseStyleSheet(editor);
+      if (DynamicCSS.cssOldLength != DynamicCSS.cssLength) {
+        DynamicCSS.cssOldLength = DynamicCSS.cssLength;
+        DynamicCSS.lastClass = null;
+        instance.updateValue(editor, obj);
+      }
+      instance.reparseTimer(editor, obj, instance);
+    }, DynamicCSS.parseCount * 1000);
+    DynamicCSS.parseCount = DynamicCSS.parseCount * 2;
+  }
 };
 
-DynamicCSS.prototype.updateValue = function(editor, obj) {
-        cssArray=DynamicCSS.cssArray;
-        // initial style init
-        if(!cssArray){
-            DynamicCSS.cssLength=0;
-            DynamicCSS.parseStyleSheet(editor);
-            cssArray=DynamicCSS.cssArray;
-            DynamicCSS.cssOldLength=DynamicCSS.cssLength;
-            DynamicCSS.parseCount=1;
-            this.reparseTimer(editor,obj,this);
+DynamicCSS.prototype.updateValue = function (editor, obj) {
+  cssArray = DynamicCSS.cssArray;
+  // initial style init
+  if (!cssArray) {
+    DynamicCSS.cssLength = 0;
+    DynamicCSS.parseStyleSheet(editor);
+    cssArray = DynamicCSS.cssArray;
+    DynamicCSS.cssOldLength = DynamicCSS.cssLength;
+    DynamicCSS.parseCount = 1;
+    this.reparseTimer(editor, obj, this);
+  }
+
+  var parent = editor.getParentElement();
+  var tagName = parent.tagName.toLowerCase();
+  var className = parent.className;
+
+  if (this.lastTag != tagName || this.lastClass != className) {
+    this.lastTag = tagName;
+    this.lastClass = className;
+
+    var select = editor._toolbarObjects[obj.id].element;
+
+    while (select.length > 0) {
+      select.options[select.length - 1] = null;
+    }
+
+    select.options[0] = new Option(this._lc("Default"), "none");
+    if (cssArray) {
+      // style class only allowed if parent tag is not body or editor is in fullpage mode
+      if (tagName != "body" || editor.config.fullPage) {
+        if (cssArray[tagName]) {
+          for (cssClass in cssArray[tagName]) {
+            if (typeof cssArray[tagName][cssClass] != "string") continue;
+            if (cssClass == "none")
+              select.options[0] = new Option(
+                cssArray[tagName][cssClass],
+                cssClass
+              );
+            else
+              select.options[select.length] = new Option(
+                cssArray[tagName][cssClass],
+                cssClass
+              );
+          }
         }
 
-        var parent = editor.getParentElement();
-        var tagName = parent.tagName.toLowerCase();
-        var className = parent.className;
-
-        if(this.lastTag!=tagName || this.lastClass!=className){
-            this.lastTag=tagName;
-            this.lastClass=className;
-
-            var select = editor._toolbarObjects[obj.id].element;
-
-            while(select.length>0){
-                select.options[select.length-1] = null;
-            }
-
-            select.options[0]=new Option(this._lc("Default"),'none');
-            if(cssArray){
-                // style class only allowed if parent tag is not body or editor is in fullpage mode
-                if(tagName!='body' || editor.config.fullPage){
-                    if(cssArray[tagName]){
-                        for(cssClass in cssArray[tagName]){
-                            if(typeof cssArray[tagName][cssClass] != 'string') continue;
-                            if(cssClass=='none') select.options[0]=new Option(cssArray[tagName][cssClass],cssClass);
-                            else select.options[select.length]=new Option(cssArray[tagName][cssClass],cssClass);
-                        }
-                    }
-
-                    if(cssArray['all']){
-                        for(cssClass in cssArray['all']){
-                            if(typeof cssArray['all'][cssClass] != 'string') continue;
-                            select.options[select.length]=new Option(cssArray['all'][cssClass],cssClass);
-                        }
-                    }
-                }
-                else if(cssArray[tagName] && cssArray[tagName]['none']) select.options[0]=new Option(cssArray[tagName]['none'],'none');
-            }
-
-            select.selectedIndex = 0;
-
-            if (typeof className != "undefined" && /\S/.test(className)) {
-                var options = select.options;
-                for (var i = options.length; --i >= 0;) {
-                    var option = options[i];
-                    if (className == option.value) {
-                            select.selectedIndex = i;
-                            break;
-                    }
-                }
-                if(select.selectedIndex == 0){
-                    select.options[select.length]=new Option(this._lc("Undefined"),className);
-                    select.selectedIndex=select.length-1;
-                }
-            }
-
-            if(select.length>1) select.disabled=false;
-            else select.disabled=true;
+        if (cssArray["all"]) {
+          for (cssClass in cssArray["all"]) {
+            if (typeof cssArray["all"][cssClass] != "string") continue;
+            select.options[select.length] = new Option(
+              cssArray["all"][cssClass],
+              cssClass
+            );
+          }
         }
+      } else if (cssArray[tagName] && cssArray[tagName]["none"])
+        select.options[0] = new Option(cssArray[tagName]["none"], "none");
+    }
+
+    select.selectedIndex = 0;
+
+    if (typeof className != "undefined" && /\S/.test(className)) {
+      var options = select.options;
+      for (var i = options.length; --i >= 0; ) {
+        var option = options[i];
+        if (className == option.value) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+      if (select.selectedIndex == 0) {
+        select.options[select.length] = new Option(
+          this._lc("Undefined"),
+          className
+        );
+        select.selectedIndex = select.length - 1;
+      }
+    }
+
+    if (select.length > 1) select.disabled = false;
+    else select.disabled = true;
+  }
 };

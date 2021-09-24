@@ -1,12 +1,10 @@
-PuTTY README
-============
+# PuTTY README
 
 This is the README file for the PuTTY MSI installer distribution. If
 you're reading this, you've probably just run our installer and
 installed PuTTY on your system.
 
-What should I do next?
-----------------------
+## What should I do next?
 
 If you want to use PuTTY to connect to other computers, or use PSFTP
 to transfer files, you should just be able to run them from the
@@ -24,8 +22,7 @@ Alternatively, you can always run pscp.exe by its full pathname, e.g.
 (Note that a Command Prompt that was already open before you ran the
 installer will not have inherited the update of PATH.)
 
-What do I do if it doesn't work?
---------------------------------
+## What do I do if it doesn't work?
 
 The PuTTY home web site is
 

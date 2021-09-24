@@ -1,6 +1,5 @@
 $(function () {
-    mkTool('uu-encode', function (text) {
-        return uuencode.encode(text);
-    });
-
+  mkTool("uu-encode", function (text) {
+    return uuencode.encode(text);
+  });
 });

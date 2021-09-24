@@ -1,5 +1,5 @@
 $(function () {
-    mkTool('text-length', function (text) {
-        return text.length;
-    });
+  mkTool("text-length", function (text) {
+    return text.length;
+  });
 });

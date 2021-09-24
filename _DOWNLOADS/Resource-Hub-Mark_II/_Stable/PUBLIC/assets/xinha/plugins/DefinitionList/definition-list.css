@@ -1,4 +1,6 @@
-dl { border: 1px dotted #800000; }
+dl {
+  border: 1px dotted #800000;
+}
 dt {
   background-image: url(img/ed_dt.gif);
   background-repeat: no-repeat;

@@ -1,5 +1,4 @@
-
-  /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
+/*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
     --  Xinha (is not htmlArea) - http://xinha.gogo.co.nz/
     --
     --  Use of Xinha is granted by the terms of the htmlArea License (based on
@@ -15,8 +14,8 @@
     --  $LastChangedRevision: 694 $
     --  $LastChangedBy: gogo $
     --------------------------------------------------------------------------*/
- 
-/** The DivDialog is used as a semi-independant means of using a Plugin outside of 
+
+/** The DivDialog is used as a semi-independant means of using a Plugin outside of
  *  Xinha, it does not depend on having a Xinha editor available - not that of of course
  *  Plugins themselves may (and very likely do) require an editor.
  *
@@ -24,7 +23,7 @@
  *
  *  @param HTML for the dialog, with the special subtitutions...
  *    id="[someidhere]" will assign a unique id to the element in question
- *        and this can be retrieved with yourDialog.getElementById('someidhere')   
+ *        and this can be retrieved with yourDialog.getElementById('someidhere')
  *    _(Some Text Here) will localize the text, this is used for within attributes
  *    <l10n>Some Text Here</l10n> will localize the text, this is used outside attributes
  *
@@ -33,38 +32,34 @@
  *   OR;   Null - no localization will happen, only native strings will be used.
  *
  */
-   
-Xinha.DivDialog = function(rootElem, html, localizer)
-{
-  this.id    = { };
-  this.r_id  = { }; // reverse lookup id
+
+Xinha.DivDialog = function (rootElem, html, localizer) {
+  this.id = {};
+  this.r_id = {}; // reverse lookup id
   this.document = document;
-  
+
   this.rootElem = rootElem;
-  this.rootElem.className += ' dialog';
-  this.rootElem.style.display  = 'none';
-    
-  this.width  =  this.rootElem.offsetWidth + 'px';
-  this.height =  this.rootElem.offsetHeight + 'px';
-  
+  this.rootElem.className += " dialog";
+  this.rootElem.style.display = "none";
+
+  this.width = this.rootElem.offsetWidth + "px";
+  this.height = this.rootElem.offsetHeight + "px";
+
   this.setLocalizer(localizer);
-  this.rootElem.innerHTML = this.translateHtml(html);  
-}
+  this.rootElem.innerHTML = this.translateHtml(html);
+};
 
 Xinha.extend(Xinha.DivDialog, Xinha.Dialog);
 
-Xinha.DivDialog.prototype.show = function(values)
-{  
-  if(typeof values != 'undefined')
-  {
+Xinha.DivDialog.prototype.show = function (values) {
+  if (typeof values != "undefined") {
     this.setValues(values);
   }
-  
-  this.rootElem.style.display   = '';
+
+  this.rootElem.style.display = "";
 };
 
-Xinha.DivDialog.prototype.hide = function()
-{
-  this.rootElem.style.display         = 'none';
+Xinha.DivDialog.prototype.hide = function () {
+  this.rootElem.style.display = "none";
   return this.getValues();
 };

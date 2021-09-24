@@ -1,5 +1,5 @@
 $(function () {
-    mkTool('url-encode', function (text) {
-        return encodeURIComponent(text);
-    });
+  mkTool("url-encode", function (text) {
+    return encodeURIComponent(text);
+  });
 });
