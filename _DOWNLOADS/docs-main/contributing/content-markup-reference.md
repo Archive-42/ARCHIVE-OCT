@@ -1,6 +1,7 @@
 # Markup reference for GitHub Docs <!-- omit in toc -->
 
 ## Table of contents <!-- omit in toc -->
+
 - [Writing in Markdown](#writing-in-markdown)
 - [Callout tags](#callout-tags)
   - [Usage](#usage)

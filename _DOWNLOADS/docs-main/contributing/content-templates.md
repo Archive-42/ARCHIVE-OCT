@@ -48,7 +48,7 @@ versions:
 - "[Article title](article-URL)"
 ```
 
-## Referential 
+## Referential
 
 Use the [content model](https://github.com/github/docs/blob/main/contributing/content-model.md#referential) for full instructions and examples on how to write referential content.
 
@@ -87,7 +87,7 @@ versions:
 - "[Article title](article-URL)"
 ```
 
-## Procedural 
+## Procedural
 
 Use the [content model](https://github.com/github/docs/blob/main/contributing/content-model.md#procedural) for full instructions and examples on how to write procedural content.
 
@@ -115,7 +115,7 @@ versions:
 <!-- Then write procedural steps following the instructions in https://github.com/github/docs/blob/main/contributing/content-model.md#procedural-steps. -->
 <!-- Check if there's already a reusable string for the step you want to write in https://github.com/github/docs/tree/main/data/reusables. Tip: Look at the source file for a procedure located in the same area of the user interface to find reusables. -->
 
-## Optionally, another procedural section here 
+## Optionally, another procedural section here
 
 <!-- Keep adding procedures until you've finished writing your article. -->
 
@@ -126,7 +126,7 @@ versions:
 - "[Article title](article-URL)"
 ```
 
-## Quickstart 
+## Quickstart
 
 Use the [content model](https://github.com/github/docs/blob/main/contributing/content-model.md#quickstart) for full instructions and examples on how to write quickstarts.
 
@@ -179,11 +179,11 @@ versions:
 <!-- Provide a quick recap of what has been accomplished in the quick start as a means of transitioning to next steps. Include 2-3 actionable next steps that the user take after completing the quickstart. Always link to conceptual content on the feature or product. You can also link off to other related information on docs.github.com or in GitHub Learning Labs. -->
 ```
 
-## Tutorial 
+## Tutorial
 
 Use the [content model](https://github.com/github/docs/blob/main/contributing/content-model.md#tutorial) for full instructions and examples on how to write tutorials.
 
-```
+````
 ---
 title: Tutorial title
 shortTitle: [subject] # Max 31 characters
@@ -244,7 +244,7 @@ on:
 <!-- include a bulleted list of tutorials or articles the user can reference to extend the concepts taught in this tutorial -->
 
 - "[Article title](article-URL)"
-```
+````
 
 ## Language guides for GitHub Actions
 
@@ -262,15 +262,15 @@ topics: # One or more from list of allowed topics: https://github.com/github/doc
 versions:
 ---
 
-<!-- 
-  - Great intros clarify who the guide is intended for, state what the user will accomplish, and state the technologies that will be used. 
+<!--
+  - Great intros clarify who the guide is intended for, state what the user will accomplish, and state the technologies that will be used.
   - Intros are typically 1-3 sentence summaries, with a longer "Introduction" section that follows.
   - Remove these comments from your article file when you're done writing
 -->
 
 ## Introduction
 
-<!-- 
+<!--
   The language guide introduction should include the following in a short paragraph:
   - Clarify audience.
   - State prerequisites and prior knowledge needed.
@@ -299,7 +299,7 @@ versions:
   - How does the setup action configure the version and what happens when the version isn't supported in the environment. What is the default version, when no version is configured.
   - Include any additional features the setup action might provide that are useful to CI.
   - If applicable, provide examples of configuring exact versions or major/minor versions.
-  - Include information about software already installed on GitHub-hosted runners or software configuration necessary to build and test the project. 
+  - Include information about software already installed on GitHub-hosted runners or software configuration necessary to build and test the project.
   - Provide examples of configuring build matrix strategies.
   - Link out to any docs about available software on the GitHub-hosted runners. (Ex. https://docs.github.com/en/actions/reference/software-installed-on-github-hosted-runners).
   - Include code samples.

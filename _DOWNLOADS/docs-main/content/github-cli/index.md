@@ -1,11 +1,11 @@
 ---
 title: GitHub CLI
 shortTitle: GitHub CLI
-intro: '{% data reusables.cli.about-cli %}'
+intro: "{% data reusables.cli.about-cli %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /github-cli
 introLinks:
@@ -13,7 +13,7 @@ introLinks:
   quickstart: /github-cli/github-cli/quickstart
   reference: /github-cli/github-cli/github-cli-reference
 featuredLinks:
-  guides: 
+  guides:
     - /github-cli/github-cli/creating-github-cli-extensions
     - /github-cli/github-cli/using-github-cli-extensions
     - /actions/guides/using-github-cli-in-workflows

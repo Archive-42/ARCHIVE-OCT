@@ -21,6 +21,7 @@ If you run the tests locally and get failures in `tests/rendering/server.js` aro
 See [`development.md`](./development.md) for more info.
 
 ### Staging deployment stalled
+
 If a staging deployment is pending for more than 5-10min, try the following:
 
 1. Close the PR (don't delete the branch) and reopen it. This will trigger a new staging deployment. It won't break anything.
@@ -31,6 +32,7 @@ $ git commit --allow-empty -m 'empty commit to redeploy staging'
 ```
 
 ### CI stalled or stuck
+
 :yellow_heart: If tests are stuck yellow for more than an hour, rerun CI by pushing an empty commit on the command line:
 
 ```
@@ -40,6 +42,7 @@ $ git commit --allow-empty -m 'empty commit to rerun CI'
 ## Troubleshooting failed deployments and CI
 
 ### Can't run the site locally
+
 If you are running `script/server` and get a `Cannot find module` error, try:
 
 ```
@@ -54,6 +57,7 @@ $ npm install
 ```
 
 ### Failed staging deployment
+
 Check out the branch and run the site locally:
 
 ```
@@ -76,6 +80,7 @@ error parsing file: /Users/z/git/github/docs/content/dotcom/articles/troubleshoo
 make sure single quotes are properly escaped in the frontmatter. Also, check the formatting in `redirect_from` blocks.
 
 ### 500 error on specific page on staging
+
 Check out the branch and run the site locally:
 
 ```
@@ -96,9 +101,10 @@ For broken links to articles on our site, find the file that contains the link b
 
 1. Make sure the link is versioned correctly. For example, if the article only exists for 2.17+, make sure the link is versioned for 2.17+.
 2. If an article that is available for GHES links to a dotcom-only article, use a dotcom-only class to prevent the URL from automatically converting to include a GHES version number:
-  ```
-  <a href="/articles/github-connect-addendum-to-the-github-enterprise-license-agreement/" class="dotcom-only">{{ site.data.variables.product.prodname_github_connect }} Addendum to the {{ site.data.variables.product.prodname_enterprise }} License Agreement</a>
-  ```
+
+```
+<a href="/articles/github-connect-addendum-to-the-github-enterprise-license-agreement/" class="dotcom-only">{{ site.data.variables.product.prodname_github_connect }} Addendum to the {{ site.data.variables.product.prodname_enterprise }} License Agreement</a>
+```
 
 ## Check external links
 
@@ -108,10 +114,10 @@ For broken external links, investigate whether the site is permanently removed. 
 
 During development, you can visit any page on `http://localhost:4000` and add `?json=page` to the end of the path to show some underlying information that may be helpful for debugging. In addition to basic info like title and intro, these are a few fields that may be useful.
 
-| Field | Description |
-| ----- | ----------- |
-|`productVersions` | Shows what the site is parsing from the [`productVersions` frontmatter](content#productVersions).
-| `permalinks` | Shows all [permalinks](contributing/permalinks.md) that the site is generating for the page.
-| `redirect_from` | Shows the hardcoded redirects in the [`redirect_from` frontmatter](content#redirect_from).
-| `redirects` | Shows all redirects that the site is generating for the page.
-| `includesPlatformSpecificContent` | Shows whether the site detects any [platform-specific content](#operating-system-tags) on the page.
+| Field                             | Description                                                                                         |
+| --------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `productVersions`                 | Shows what the site is parsing from the [`productVersions` frontmatter](content#productVersions).   |
+| `permalinks`                      | Shows all [permalinks](contributing/permalinks.md) that the site is generating for the page.        |
+| `redirect_from`                   | Shows the hardcoded redirects in the [`redirect_from` frontmatter](content#redirect_from).          |
+| `redirects`                       | Shows all redirects that the site is generating for the page.                                       |
+| `includesPlatformSpecificContent` | Shows whether the site detects any [platform-specific content](#operating-system-tags) on the page. |

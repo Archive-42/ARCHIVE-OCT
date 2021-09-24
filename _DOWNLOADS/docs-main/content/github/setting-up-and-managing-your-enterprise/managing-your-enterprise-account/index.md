@@ -1,11 +1,11 @@
 ---
 title: Managing your enterprise account
-product: '{% data reusables.gated-features.enterprise-accounts %}'
+product: "{% data reusables.gated-features.enterprise-accounts %}"
 redirect_from:
   - /articles/managing-your-enterprise-account
 versions:
-  fpt: '*'
-  ghes: '*'
+  fpt: "*"
+  ghes: "*"
 topics:
   - Enterprise
 children:
@@ -15,4 +15,3 @@ children:
   - /connecting-an-azure-subscription-to-your-enterprise
 shortTitle: Manage your enterprise
 ---
-

@@ -1,10 +1,10 @@
 ---
 title: Using GitHub CLI extensions
-intro: 'Learn how to use custom extensions written by other {% data variables.product.prodname_cli %} users.'
+intro: "Learn how to use custom extensions written by other {% data variables.product.prodname_cli %} users."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - CLI
 ---

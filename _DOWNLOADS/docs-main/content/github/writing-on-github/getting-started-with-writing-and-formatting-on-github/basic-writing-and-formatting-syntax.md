@@ -5,18 +5,21 @@ redirect_from:
   - /articles/basic-writing-and-formatting-syntax
   - /github/writing-on-github/basic-writing-and-formatting-syntax
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 shortTitle: Basic formatting syntax
 ---
+
 ## Headings
 
 To create a heading, add one to six `#` symbols before your heading text. The number of `#` you use will determine the size of the heading.
 
 ```markdown
 # The largest heading
+
 ## The second largest heading
+
 ###### The smallest heading
 ```
 
@@ -24,15 +27,15 @@ To create a heading, add one to six `#` symbols before your heading text. The nu
 
 ## Styling text
 
-You can indicate emphasis with bold, italic, or strikethrough text in comment fields and `.md` files.  
+You can indicate emphasis with bold, italic, or strikethrough text in comment fields and `.md` files.
 
-| Style | Syntax | Keyboard shortcut | Example | Output |
-| --- | --- | --- | --- | --- |
-| Bold | `** **` or `__ __` | command/control + b | `**This is bold text**` | **This is bold text** |
-| Italic | `* *` or `_ _` | command/control + i | `*This text is italicized*` | *This text is italicized* |
-| Strikethrough | `~~ ~~` | | `~~This was mistaken text~~` | ~~This was mistaken text~~ |
-| Bold and nested italic | `** **` and `_ _` | | `**This text is _extremely_ important**` | **This text is _extremely_ important** |
-| All bold and italic | `*** ***` | | `***All this text is important***` | ***All this text is important*** |
+| Style                  | Syntax             | Keyboard shortcut   | Example                                  | Output                                 |
+| ---------------------- | ------------------ | ------------------- | ---------------------------------------- | -------------------------------------- |
+| Bold                   | `** **` or `__ __` | command/control + b | `**This is bold text**`                  | **This is bold text**                  |
+| Italic                 | `* *` or `_ _`     | command/control + i | `*This text is italicized*`              | _This text is italicized_              |
+| Strikethrough          | `~~ ~~`            |                     | `~~This was mistaken text~~`             | ~~This was mistaken text~~             |
+| Bold and nested italic | `** **` and `_ _`  |                     | `**This text is _extremely_ important**` | **This text is _extremely_ important** |
+| All bold and italic    | `*** ***`          |                     | `***All this text is important***`       | **_All this text is important_**       |
 
 ## Quoting text
 
@@ -107,22 +110,22 @@ You can display an image by adding `!` and wrapping the alt text in`[ ]`. Then w
 
 ![Rendered Image](/assets/images/help/writing/image-rendered.png)
 
-{% data variables.product.product_name %} supports embedding images into your issues, pull requests{% ifversion fpt %}, discussions{% endif %}, comments  and `.md` files. You can display an image from your repository, add a link to an online image, or upload an image. For more information, see "[Uploading assets](#uploading-assets)."
+{% data variables.product.product_name %} supports embedding images into your issues, pull requests{% ifversion fpt %}, discussions{% endif %}, comments and `.md` files. You can display an image from your repository, add a link to an online image, or upload an image. For more information, see "[Uploading assets](#uploading-assets)."
 
 {% tip %}
 
-**Tip:** When you want to display an image which is in your repository, you should use relative links instead of absolute links. 
+**Tip:** When you want to display an image which is in your repository, you should use relative links instead of absolute links.
 
 {% endtip %}
 
 Here are some examples for using relative links to display an image.
 
-| Context | Relative Link |
-| ------ | -------- |
-| In a `.md` file on the same branch | `/assets/images/electrocat.png` |
-| In a `.md` file on another branch | `/../main/assets/images/electrocat.png` |
-| In issues, pull requests and comments of the repository | `../blob/main/assets/images/electrocat.png` |
-| In a `.md` file in another repository | `/../../../../github/docs/blob/main/assets/images/electrocat.png` |
+| Context                                                     | Relative Link                                                          |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------- |
+| In a `.md` file on the same branch                          | `/assets/images/electrocat.png`                                        |
+| In a `.md` file on another branch                           | `/../main/assets/images/electrocat.png`                                |
+| In issues, pull requests and comments of the repository     | `../blob/main/assets/images/electrocat.png`                            |
+| In a `.md` file in another repository                       | `/../../../../github/docs/blob/main/assets/images/electrocat.png`      |
 | In issues, pull requests and comments of another repository | `../../../github/docs/blob/main/assets/images/electrocat.png?raw=true` |
 
 {% note %}
@@ -132,7 +135,6 @@ Here are some examples for using relative links to display an image.
 {% endnote %}
 
 For more information, see "[Relative Links](#relative-links)."
-
 
 ## Lists
 
@@ -181,7 +183,7 @@ In this example, you could add a nested list item under the list item `100. Firs
      - First nested list item
 ```
 
-![List with a nested list item](/assets/images/help/writing/nested-list-example-3.png)   
+![List with a nested list item](/assets/images/help/writing/nested-list-example-3.png)
 
 You can create multiple levels of nested lists using the same method. For example, because the first nested list item has seven spaces (`␣␣␣␣␣-␣`) before the nested list content `First nested list item`, you would need to indent the second nested list item by seven spaces.
 
@@ -191,7 +193,7 @@ You can create multiple levels of nested lists using the same method. For exampl
        - Second nested list item
 ```
 
-![List with two levels of nested items](/assets/images/help/writing/nested-list-example-2.png)    
+![List with two levels of nested items](/assets/images/help/writing/nested-list-example-2.png)
 
 For more examples, see the [GitHub Flavored Markdown Spec](https://github.github.com/gfm/#example-265).
 

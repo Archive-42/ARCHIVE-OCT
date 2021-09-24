@@ -3,7 +3,7 @@ title: GitHub Codespaces Privacy Statement
 redirect_from:
   - /github/site-policy/github-codespaces-privacy-policy
 versions:
-  fpt: '*'
+  fpt: "*"
 topics:
   - Policy
   - Legal

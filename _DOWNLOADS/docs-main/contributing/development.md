@@ -27,8 +27,9 @@ You should now have a running server! Visit [localhost:4000](http://localhost:40
 When you're ready to stop your local server, type <kbd>CTRL</kbd><kbd>c</kbd> in your terminal window.
 
 Note that `npm ci` and `npm run build` are steps that should typically only need to be run once each time you pull the latest for a branch.
- - `npm ci` does a clean install of dependencies, without updating the `package-lock.json` file
- - `npm run build` creates static assets, such as JavaScript and CSS files
+
+- `npm ci` does a clean install of dependencies, without updating the `package-lock.json` file
+- `npm run build` creates static assets, such as JavaScript and CSS files
 
 ### Using GitHub Codespaces
 
@@ -56,7 +57,7 @@ At the `/dev-toc` path, you'll see a list of available versions. Click a version
 
 ### Enabling different languages
 
-By default the local server won't run with all supported languages enabled.  If you need to run the server with a particular language, you can temporarily edit the `start` script in `package.json` and update the `ENABLED_LANGUAGES` variable.  For example, to enable Japanese and Portuguese, you can set it to `ENABLED_LANGUAGES='en,ja,pt'` and then you need to restart the server for the change to take effect.
+By default the local server won't run with all supported languages enabled. If you need to run the server with a particular language, you can temporarily edit the `start` script in `package.json` and update the `ENABLED_LANGUAGES` variable. For example, to enable Japanese and Portuguese, you can set it to `ENABLED_LANGUAGES='en,ja,pt'` and then you need to restart the server for the change to take effect.
 
 The supported language codes are defined in [lib/lanuages.js](../lib/languages.js).
 

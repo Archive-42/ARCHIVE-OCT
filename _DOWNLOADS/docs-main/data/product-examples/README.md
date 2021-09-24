@@ -3,13 +3,13 @@
 Pages that use the `product-landing` layout may optionally include an `Examples` section. Currently, we support three types of examples:
 
 1. Code examples
-  See https://docs.github.com/en/actions#code-examples.
+   See https://docs.github.com/en/actions#code-examples.
 
 2. Community examples
-  See https://docs.github.com/en/discussions#community-examples.
+   See https://docs.github.com/en/discussions#community-examples.
 
 3. User examples
-  See https://docs.github.com/en/sponsors#community-examples.
+   See https://docs.github.com/en/sponsors#community-examples.
 
 ## How it works
 
@@ -30,7 +30,7 @@ At the moment, versioning is only supported in code examples. If an example bloc
     - Pull requests
   versions:
     fpt: '*'
-  ```
+```
 
 where the syntax for `versions` is the same as the [frontmatter `versions` property](content/README.md) and can support semver notation.
 

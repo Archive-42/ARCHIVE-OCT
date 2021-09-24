@@ -9,15 +9,16 @@ redirect_from:
   - /github/administering-a-repository/creating-releases
   - /github/administering-a-repository/editing-and-deleting-releases
   - /github/administering-a-repository/managing-releases-in-a-repository
-permissions: 'Repository collaborators and people with write access to a repository can create, edit, and delete a release.'
+permissions: "Repository collaborators and people with write access to a repository can create, edit, and delete a release."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - Repositories
 shortTitle: Manage releases
 ---
+
 {% ifversion fpt or ghes > 3.0 or ghae %}
 
 ## About release management
@@ -36,32 +37,31 @@ You can choose whether {% data variables.large_files.product_name_long %} ({% da
 {% webui %}
 
 {% data reusables.repositories.navigate-to-repo %}
-{% data reusables.repositories.releases %}
-3. Click **Draft a new release**.
-   ![Releases draft button](/assets/images/help/releases/draft_release_button.png)
-4. {% ifversion fpt %}Click **Choose a tag** and type{% else %}Type{% endif %} a version number for your release.
-   {% ifversion fpt %}
-   ![Enter a tag](/assets/images/help/releases/releases-tag-create.png)
+{% data reusables.repositories.releases %} 3. Click **Draft a new release**.
+![Releases draft button](/assets/images/help/releases/draft_release_button.png) 4. {% ifversion fpt %}Click **Choose a tag** and type{% else %}Type{% endif %} a version number for your release.
+{% ifversion fpt %}
+![Enter a tag](/assets/images/help/releases/releases-tag-create.png)
+
 1. Click **Create new tag**.
-![Confirm you want to create a new tag](/assets/images/help/releases/releases-tag-create-confirm.png)
+   ![Confirm you want to create a new tag](/assets/images/help/releases/releases-tag-create-confirm.png)
    {% else %}
    ![Releases tagged version](/assets/images/enterprise/releases/releases-tag-version.png)
-{% endif %}
-5. Use the drop-down menu to select the branch that contains the project you want to release.
+   {% endif %}
+2. Use the drop-down menu to select the branch that contains the project you want to release.
    {% ifversion fpt %}![Choose a branch](/assets/images/help/releases/releases-choose-branch.png)
    {% else %}![Releases tagged branch](/assets/images/enterprise/releases/releases-tag-branch.png)
    {% endif %}
-6. Type a title and description for your release.
+3. Type a title and description for your release.
    ![Releases description](/assets/images/help/releases/releases_description.png)
-7. Optionally, to include binary files such as compiled programs in your release, drag and drop or manually select files in the binaries box.
+4. Optionally, to include binary files such as compiled programs in your release, drag and drop or manually select files in the binaries box.
    ![Providing a DMG with the Release](/assets/images/help/releases/releases_adding_binary.gif)
-8. To notify users that the release is not ready for production and may be unstable, select **This is a pre-release**.
+5. To notify users that the release is not ready for production and may be unstable, select **This is a pre-release**.
    ![Checkbox to mark a release as prerelease](/assets/images/help/releases/prerelease_checkbox.png)
-{%- ifversion fpt %}
-1. Optionally, select **Create a discussion for this release**, then select the **Category** drop-down menu and click a category for the release discussion.
-  ![Checkbox to create a release discussion and drop-down menu to choose a category](/assets/images/help/releases/create-release-discussion.png)
-{%- endif %}
-9. If you're ready to publicize your release, click **Publish release**. To work on the release later, click **Save draft**.
+   {%- ifversion fpt %}
+6. Optionally, select **Create a discussion for this release**, then select the **Category** drop-down menu and click a category for the release discussion.
+   ![Checkbox to create a release discussion and drop-down menu to choose a category](/assets/images/help/releases/create-release-discussion.png)
+   {%- endif %}
+7. If you're ready to publicize your release, click **Publish release**. To work on the release later, click **Save draft**.
    ![Publish release and Draft release buttons](/assets/images/help/releases/release_buttons.png)
 
 {% endwebui %}
@@ -91,11 +91,9 @@ You can choose whether {% data variables.large_files.product_name_long %} ({% da
 {% webui %}
 
 {% data reusables.repositories.navigate-to-repo %}
-{% data reusables.repositories.releases %}
-3. On the right side of the page, next to the release you want to edit, click **Edit release**.
-  ![Edit a release](/assets/images/help/releases/edit-release.png)
-4. Edit the details for the release in the form, then click **Update release**.
-  ![Update a release](/assets/images/help/releases/update-release.png)
+{% data reusables.repositories.releases %} 3. On the right side of the page, next to the release you want to edit, click **Edit release**.
+![Edit a release](/assets/images/help/releases/edit-release.png) 4. Edit the details for the release in the form, then click **Update release**.
+![Update a release](/assets/images/help/releases/update-release.png)
 
 {% endwebui %}
 
@@ -112,13 +110,10 @@ Releases cannot currently be edited with {% data variables.product.prodname_cli 
 {% webui %}
 
 {% data reusables.repositories.navigate-to-repo %}
-{% data reusables.repositories.releases %}
-3. Click the name of the release you wish to delete.
-  ![Link to view release](/assets/images/help/releases/release-name-link.png)
-4. In the upper-right corner of the page, click **Delete**.
-  ![Delete release button](/assets/images/help/releases/delete-release.png)
-5. Click **Delete this release**.
-  ![Confirm delete release](/assets/images/help/releases/confirm-delete-release.png)
+{% data reusables.repositories.releases %} 3. Click the name of the release you wish to delete.
+![Link to view release](/assets/images/help/releases/release-name-link.png) 4. In the upper-right corner of the page, click **Delete**.
+![Delete release button](/assets/images/help/releases/delete-release.png) 5. Click **Delete this release**.
+![Confirm delete release](/assets/images/help/releases/confirm-delete-release.png)
 
 {% endwebui %}
 
