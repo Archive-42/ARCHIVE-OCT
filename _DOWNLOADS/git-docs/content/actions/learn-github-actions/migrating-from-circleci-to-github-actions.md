@@ -1,12 +1,12 @@
 ---
 title: Migrating from CircleCI to GitHub Actions
-intro: 'GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward.'
+intro: "GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward."
 redirect_from:
   - /actions/migrating-to-github-actions/migrating-from-circleci-to-github-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CircleCI
@@ -36,13 +36,13 @@ For more information, see "[Core concepts for {% data variables.product.prodname
 When migrating from CircleCI, consider the following differences:
 
 - CircleCI’s automatic test parallelism automatically groups tests according to user-specified rules or historical timing information. This functionality is not built into {% data variables.product.prodname_actions %}.
-- Actions that execute in Docker containers are sensitive to permissions problems since containers have a different mapping of users. You can avoid many of these problems by not using the `USER` instruction in your *Dockerfile*. {% ifversion ghae %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images).". 
-{% else %}For more information about the Docker filesystem on {% data variables.product.product_name %}-hosted runners, see "[Virtual environments for {% data variables.product.product_name %}-hosted runners](/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem)."
-{% endif %}
+- Actions that execute in Docker containers are sensitive to permissions problems since containers have a different mapping of users. You can avoid many of these problems by not using the `USER` instruction in your _Dockerfile_. {% ifversion ghae %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images).".
+  {% else %}For more information about the Docker filesystem on {% data variables.product.product_name %}-hosted runners, see "[Virtual environments for {% data variables.product.product_name %}-hosted runners](/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem)."
+  {% endif %}
 
 ## Migrating workflows and jobs
 
-CircleCI defines `workflows` in the *config.yml* file, which allows you to configure more than one workflow. {% data variables.product.product_name %} requires one workflow file per workflow, and as a consequence, does not require you to declare `workflows`. You'll need to create a new workflow file for each workflow configured in *config.yml*.
+CircleCI defines `workflows` in the _config.yml_ file, which allows you to configure more than one workflow. {% data variables.product.product_name %} requires one workflow file per workflow, and as a consequence, does not require you to declare `workflows`. You'll need to create a new workflow file for each workflow configured in _config.yml_.
 
 Both CircleCI and {% data variables.product.prodname_actions %} configure `jobs` in the configuration file using similar syntax. If you configure any dependencies between jobs using `requires` in your CircleCI workflow, you can use the equivalent {% data variables.product.prodname_actions %} `needs` syntax. For more information, see "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/reference/workflow-syntax-for-github-actions#jobsjob_idneeds)."
 
@@ -53,7 +53,6 @@ Both CircleCI and {% data variables.product.prodname_actions %} provide a mechan
 CircleCI can reuse pieces of workflows with YAML anchors and aliases. {% data variables.product.prodname_actions %} supports the most common need for reusability using build matrixes. For more information about build matrixes, see "[Managing complex workflows](/actions/learn-github-actions/managing-complex-workflows/#using-a-build-matrix)."
 
 ## Using Docker images
-
 
 Both CircleCI and {% data variables.product.prodname_actions %} support running steps inside of a Docker image.
 
@@ -149,8 +148,9 @@ GitHub Actions
 ...
 
 - attach_workspace:
-    at: /tmp/workspace
-```
+  at: /tmp/workspace
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -168,8 +168,10 @@ GitHub Actions
   uses: actions/download-artifact@v2
   with:
     name: homework
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -180,7 +182,7 @@ For more information, see "[Persisting workflow data using artifacts](/actions/c
 
 Both systems enable you to include additional containers for databases, caching, or other dependencies.
 
-In CircleCI, the first image listed in the *config.yaml* is the primary image used to run commands. {% data variables.product.prodname_actions %} uses explicit sections: use `container` for the primary container, and list additional containers in `services`.
+In CircleCI, the first image listed in the _config.yaml_ is the primary image used to run commands. {% data variables.product.prodname_actions %} uses explicit sections: use `container` for the primary container, and list additional containers in `services`.
 
 Below is an example in CircleCI and {% data variables.product.prodname_actions %} configuration syntax.
 
@@ -202,18 +204,16 @@ version: 2.1
 
 jobs:
 
-  ruby-26:
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          PGHOST: localhost
-          PGUSER: administrate
-          RAILS_ENV: test
-      - image: postgres:10.1-alpine
-        environment:
-          POSTGRES_USER: administrate
-          POSTGRES_DB: ruby26
-          POSTGRES_PASSWORD: ""
+ruby-26:
+docker: - image: circleci/ruby:2.6.3-node-browsers-legacy
+environment:
+PGHOST: localhost
+PGUSER: administrate
+RAILS_ENV: test - image: postgres:10.1-alpine
+environment:
+POSTGRES_USER: administrate
+POSTGRES_DB: ruby26
+POSTGRES_PASSWORD: ""
 
     working_directory: ~/administrate
 
@@ -235,17 +235,16 @@ jobs:
       # Run the tests
       - run: bundle exec rake
 
-
 workflows:
-  version: 2
-  build:
-    jobs:
-      - ruby-26
+version: 2
+build:
+jobs: - ruby-26
 ...
 
 - attach_workspace:
-    at: /tmp/workspace
-```
+  at: /tmp/workspace
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -292,8 +291,10 @@ jobs:
         run: bundle exec rake db:setup
       - name: Run tests
         run: bundle exec rake
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -302,7 +303,7 @@ For more information, see "[About service containers](/actions/configuring-and-m
 
 ## Complete Example
 
-Below is a real-world example. The left shows the actual CircleCI *config.yml* for the [thoughtbot/administrator](https://github.com/thoughtbot/administrate) repository. The right shows the {% data variables.product.prodname_actions %} equivalent.
+Below is a real-world example. The left shows the actual CircleCI _config.yml_ for the [thoughtbot/administrator](https://github.com/thoughtbot/administrate) repository. The right shows the {% data variables.product.prodname_actions %} equivalent.
 
 <table class="d-block">
 <tr>
@@ -321,9 +322,8 @@ GitHub Actions
 version: 2.1
 
 commands:
-  shared_steps:
-    steps:
-      - checkout
+shared_steps:
+steps: - checkout
 
       # Restore Cached Dependencies
       - restore_cache:
@@ -353,50 +353,40 @@ commands:
       - run: bundle exec rake
 
 default_job: &default_job
-  working_directory: ~/administrate
-  steps:
-    - shared_steps
-    # Run the tests against multiple versions of Rails
-    - run: bundle exec appraisal install
-    - run: bundle exec appraisal rake
+working_directory: ~/administrate
+steps: - shared_steps # Run the tests against multiple versions of Rails - run: bundle exec appraisal install - run: bundle exec appraisal rake
 
 jobs:
-  ruby-25:
-    <<: *default_job
-    docker:
-      - image: circleci/ruby:2.5.0-node-browsers
-        environment:
-          PGHOST: localhost
-          PGUSER: administrate
-          RAILS_ENV: test
-      - image: postgres:10.1-alpine
-        environment:
-          POSTGRES_USER: administrate
-          POSTGRES_DB: ruby25
-          POSTGRES_PASSWORD: ""
+ruby-25:
+<<: \*default_job
+docker: - image: circleci/ruby:2.5.0-node-browsers
+environment:
+PGHOST: localhost
+PGUSER: administrate
+RAILS_ENV: test - image: postgres:10.1-alpine
+environment:
+POSTGRES_USER: administrate
+POSTGRES_DB: ruby25
+POSTGRES_PASSWORD: ""
 
-  ruby-26:
-    <<: *default_job
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          PGHOST: localhost
-          PGUSER: administrate
-          RAILS_ENV: test
-      - image: postgres:10.1-alpine
-        environment:
-          POSTGRES_USER: administrate
-          POSTGRES_DB: ruby26
-          POSTGRES_PASSWORD: ""
-
+ruby-26:
+<<: \*default_job
+docker: - image: circleci/ruby:2.6.3-node-browsers-legacy
+environment:
+PGHOST: localhost
+PGUSER: administrate
+RAILS_ENV: test - image: postgres:10.1-alpine
+environment:
+POSTGRES_USER: administrate
+POSTGRES_DB: ruby26
+POSTGRES_PASSWORD: ""
 
 workflows:
-  version: 2
-  multiple-rubies:
-    jobs:
-      - ruby-26
-      - ruby-25
-```
+version: 2
+multiple-rubies:
+jobs: - ruby-26 - ruby-25
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -461,8 +451,10 @@ jobs:
         run: bundle exec appraisal install
       - name: Run appraisal
         run: bundle exec appraisal rake
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>

@@ -7,7 +7,7 @@ redirect_from:
   - /enterprise/admin/guides/clustering/managing-a-github-enterprise-cluster/
   - /enterprise/admin/enterprise-management/configuring-clustering
 versions:
-  ghes: '*'
+  ghes: "*"
 topics:
   - Enterprise
 children:
@@ -23,4 +23,3 @@ children:
   - /configuring-high-availability-replication-for-a-cluster
   - /initiating-a-failover-to-your-replica-cluster
 ---
-

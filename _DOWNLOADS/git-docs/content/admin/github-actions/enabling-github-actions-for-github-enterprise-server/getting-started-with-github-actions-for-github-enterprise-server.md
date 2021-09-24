@@ -1,19 +1,20 @@
 ---
 title: Getting started with GitHub Actions for GitHub Enterprise Server
 shortTitle: Getting started with GitHub Actions
-intro: 'Learn about enabling and configuring {% data variables.product.prodname_actions %} on {% data variables.product.prodname_ghe_server %} for the first time.'
-permissions: 'Site administrators can enable {% data variables.product.prodname_actions %} and configure enterprise settings.'
+intro: "Learn about enabling and configuring {% data variables.product.prodname_actions %} on {% data variables.product.prodname_ghe_server %} for the first time."
+permissions: "Site administrators can enable {% data variables.product.prodname_actions %} and configure enterprise settings."
 redirect_from:
   - /enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage
   - /admin/github-actions/enabling-github-actions-and-configuring-storage
   - /admin/github-actions/getting-started-with-github-actions-for-github-enterprise-server
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Actions
   - Enterprise
 ---
+
 {% data reusables.actions.enterprise-beta %}
 
 {% data reusables.actions.enterprise-github-hosted-runners %}
@@ -41,11 +42,11 @@ The CPU and memory resources available to {% data variables.product.product_loca
 Internal testing at {% data variables.product.company_short %} demonstrated the following maximum throughput for {% data variables.product.prodname_ghe_server %} instances with a range of CPU and memory configurations. You may see different throughput depending on the overall levels of activity on your instance.
 
 | vCPUs | Memory | Maximum job throughput |
-| :--- | :--- | :--- |
-| 4 | 32 GB | Demo or light testing |
-| 8 | 64 GB | 25 jobs |
-| 16 | 160 GB | 35 jobs |
-| 32 | 256 GB | 100 jobs |
+| :---- | :----- | :--------------------- |
+| 4     | 32 GB  | Demo or light testing  |
+| 8     | 64 GB  | 25 jobs                |
+| 16    | 160 GB | 35 jobs                |
+| 32    | 256 GB | 100 jobs               |
 
 If you {% ifversion ghes = 2.22 %}enabled the beta of{% else %}plan to enable{% endif %} {% data variables.product.prodname_actions %} for the users of an existing instance, review the levels of activity for users and automations on the instance and ensure that you have provisioned adequate CPU and memory for your users. For more information about monitoring the capacity and performance of {% data variables.product.prodname_ghe_server %}, see "[Monitoring your appliance](/admin/enterprise-management/monitoring-your-appliance)."
 
@@ -69,9 +70,9 @@ To enable {% data variables.product.prodname_actions %} on {% data variables.pro
 
 {% data variables.product.prodname_actions %} supports these storage providers:
 
-* Azure Blob storage
-* Amazon S3
-* S3-compatible MinIO Gateway for NAS
+- Azure Blob storage
+- Amazon S3
+- S3-compatible MinIO Gateway for NAS
 
 {% note %}
 
@@ -101,9 +102,9 @@ To enable {% data variables.product.prodname_actions %} on {% data variables.pro
 
 Follow one of the procedures below to enable {% data variables.product.prodname_actions %} with your chosen storage provider:
 
-* [Enabling GitHub Actions with Azure Blob storage](/admin/github-actions/enabling-github-actions-with-azure-blob-storage)
-* [Enabling GitHub Actions with Amazon S3 storage](/admin/github-actions/enabling-github-actions-with-amazon-s3-storage)
-* [Enabling GitHub Actions with MinIO Gateway for NAS storage](/admin/github-actions/enabling-github-actions-with-minio-gateway-for-nas-storage)
+- [Enabling GitHub Actions with Azure Blob storage](/admin/github-actions/enabling-github-actions-with-azure-blob-storage)
+- [Enabling GitHub Actions with Amazon S3 storage](/admin/github-actions/enabling-github-actions-with-amazon-s3-storage)
+- [Enabling GitHub Actions with MinIO Gateway for NAS storage](/admin/github-actions/enabling-github-actions-with-minio-gateway-for-nas-storage)
 
 ## Managing access permissions for {% data variables.product.prodname_actions %} in your enterprise
 
@@ -121,7 +122,7 @@ You can control which actions your users are allowed to use in your enterprise. 
 
 For more information, see "[About using actions in your enterprise](/admin/github-actions/about-using-actions-in-your-enterprise)."
 
-## General security hardening for {% data variables.product.prodname_actions %} 
+## General security hardening for {% data variables.product.prodname_actions %}
 
 If you want to learn more about security practices for {% data variables.product.prodname_actions %}, see "[Security hardening for {% data variables.product.prodname_actions %}](/actions/learn-github-actions/security-hardening-for-github-actions)."
 

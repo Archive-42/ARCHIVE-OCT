@@ -1,9 +1,9 @@
 ---
 title: Setting your default editor for Codespaces
-intro: 'You can set your default editor for {% data variables.product.prodname_codespaces %} in your personal settings page.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "You can set your default editor for {% data variables.product.prodname_codespaces %} in your personal settings page."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 topics:
   - Codespaces
 shortTitle: Set the default editor
@@ -17,6 +17,7 @@ If you want to use {% data variables.product.prodname_vscode %} as your default 
 
 {% data reusables.user_settings.access_settings %}
 {% data reusables.user_settings.codespaces-tab %}
+
 1. Under "Editor preference", select the option you want.
    ![Setting your editor](/assets/images/help/codespaces/select-default-editor.png)
    If you choose **{% data variables.product.prodname_vscode %}**, {% data variables.product.prodname_codespaces %} will automatically open in the desktop application when you next create a codespace. You may need to allow access to both your browser and {% data variables.product.prodname_vscode %} for it to open successfully.

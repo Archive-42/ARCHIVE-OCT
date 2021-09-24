@@ -1,18 +1,19 @@
 ---
 title: About GitHub Enterprise Support
-intro: '{% data variables.contact.github_support %} can help you troubleshoot issues that arise on {% data variables.product.product_name %}.'
+intro: "{% data variables.contact.github_support %} can help you troubleshoot issues that arise on {% data variables.product.product_name %}."
 redirect_from:
   - /enterprise/admin/enterprise-support/about-github-enterprise-support
   - /admin/enterprise-support/about-github-enterprise-support
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 type: overview
 topics:
   - Enterprise
   - Support
 shortTitle: GitHub Enterprise Support
 ---
+
 {% note %}
 
 **Note**: {% data reusables.support.data-protection-and-privacy %}
@@ -25,18 +26,20 @@ shortTitle: GitHub Enterprise Support
 
 {% ifversion ghes %}
 You can contact {% data variables.contact.enterprise_support %} through {% data variables.contact.contact_enterprise_portal %} for help with:
- - Installing and using {% data variables.product.product_name %}
- - Identifying and verifying the causes of suspected errors
+
+- Installing and using {% data variables.product.product_name %}
+- Identifying and verifying the causes of suspected errors
 
 In addition to all of the benefits of {% data variables.contact.enterprise_support %}, {% data variables.contact.premium_support %} support for {% data variables.product.product_name %} offers:
-  - Written support through our support portal 24 hours per day, 7 days per week
-  - Phone support 24 hours per day, 7 days per week
-  - A Service Level Agreement (SLA) with guaranteed initial response times
-  - Customer Reliability Engineers 
-  - Access to premium content
-  - Scheduled health checks
-  - Managed Admin hours
-{% endif %}
+
+- Written support through our support portal 24 hours per day, 7 days per week
+- Phone support 24 hours per day, 7 days per week
+- A Service Level Agreement (SLA) with guaranteed initial response times
+- Customer Reliability Engineers
+- Access to premium content
+- Scheduled health checks
+- Managed Admin hours
+  {% endif %}
 
 {% ifversion ghes %}
 For more information, see "[About {% data variables.contact.premium_support %} for {% data variables.product.prodname_ghe_server %}](/enterprise/admin/guides/enterprise-support/about-github-premium-support-for-github-enterprise-server)."
@@ -49,6 +52,7 @@ For more information, see "[About {% data variables.contact.premium_support %} f
 You can contact {% data variables.contact.enterprise_support %} through {% ifversion ghes %}{% data variables.contact.contact_enterprise_portal %}{% elsif ghae %} the {% data variables.contact.ae_azure_portal %}{% endif %} to report issues in writing. For more information, see "[Receiving help from {% data variables.contact.github_support %}](/admin/enterprise-support/receiving-help-from-github-support)."
 
 {% ifversion ghes %}
+
 ## Hours of operation
 
 ### Support in English
@@ -99,6 +103,7 @@ When you contact {% data variables.contact.enterprise_support %}, you can choose
 ## Further reading
 
 {% ifversion ghes %}
+
 - Section 10 on Support in the "[{% data variables.product.prodname_ghe_server %} License Agreement](https://enterprise.github.com/license)"{% endif %}
 - "[Receiving help from {% data variables.contact.github_support %}](/admin/enterprise-support/receiving-help-from-github-support)"{% ifversion ghes %}
 - "[Preparing to submit a ticket](/enterprise/admin/guides/enterprise-support/preparing-to-submit-a-ticket)"{% endif %}

@@ -1,9 +1,9 @@
 ---
 title: Troubleshooting Codespaces clients
-intro: 'You can use {% data variables.product.prodname_codespaces %} in your browser or through {% data variables.product.prodname_vscode %}. This article provides troubleshooting steps for common client issues.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "You can use {% data variables.product.prodname_codespaces %} in your browser or through {% data variables.product.prodname_vscode %}. This article provides troubleshooting steps for common client issues."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 type: reference
 topics:
   - Codespaces
@@ -12,7 +12,7 @@ shortTitle: Codespaces clients
 
 ## {% data variables.product.prodname_vscode %} troubleshooting
 
-When you connect a desktop version of {% data variables.product.prodname_vscode %} to a codespace, you will notice few differences compared with working in a normal workspace but the experience will be fairly similar. 
+When you connect a desktop version of {% data variables.product.prodname_vscode %} to a codespace, you will notice few differences compared with working in a normal workspace but the experience will be fairly similar.
 
 When you open a codespace in your browser using {% data variables.product.prodname_vscode %} in the web, you will notice more differences. For example, some key bindings will be different or missing, and some extensions may behave differently. For a summary, see: "[Known limitations and adaptions](https://code.visualstudio.com/docs/remote/codespaces#_known-limitations-and-adaptations)" in the {% data variables.product.prodname_vscode %} docs.
 

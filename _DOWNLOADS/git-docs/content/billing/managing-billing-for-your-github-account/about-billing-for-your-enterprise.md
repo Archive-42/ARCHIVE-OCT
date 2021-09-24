@@ -1,16 +1,16 @@
 ---
 title: About billing for your enterprise
 intro: You can view billing information for your enterprise.
-product: '{% data reusables.gated-features.enterprise-accounts %}'
+product: "{% data reusables.gated-features.enterprise-accounts %}"
 redirect_from:
   - /admin/overview/managing-billing-for-your-enterprise
   - /enterprise/admin/installation/managing-billing-for-github-enterprise
   - /enterprise/admin/overview/managing-billing-for-github-enterprise
   - /admin/overview/managing-billing-for-github-enterprise
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - Enterprise
 shortTitle: Billing for your enterprise
@@ -28,14 +28,14 @@ If you add a licensed user mid-month, that user will only be included in the cou
 
 For example, here are the costs for users with licenses on different dates.
 
-User | License dates | Counted days | Cost
----- | ------------ | ------- | -----
-@octocat | January 1 - January 31 | 31 | $39
-@robocat | February 1 - February 28 | 28 | $35.23
-@devtocat  | January 15 - January 31 | 17 | $21.39
-@doctocat | January 1 - January 15 | 31 | $39
-@prodocat | January 7 - January 15 | 25 | $31.45
-@monalisa | January 1 - January 7,<br>January 15 - January 31 | 31 | $39
+| User      | License dates                                     | Counted days | Cost   |
+| --------- | ------------------------------------------------- | ------------ | ------ |
+| @octocat  | January 1 - January 31                            | 31           | $39    |
+| @robocat  | February 1 - February 28                          | 28           | $35.23 |
+| @devtocat | January 15 - January 31                           | 17           | $21.39 |
+| @doctocat | January 1 - January 15                            | 31           | $39    |
+| @prodocat | January 7 - January 15                            | 25           | $31.45 |
+| @monalisa | January 1 - January 7,<br>January 15 - January 31 | 31           | $39    |
 
 {% data variables.product.prodname_ghe_managed %} has a 500-user minimum per instance. {% data variables.product.company_short %} bills you for a minimum of 500 users per instance, even if there are fewer than 500 users with a license that day.
 

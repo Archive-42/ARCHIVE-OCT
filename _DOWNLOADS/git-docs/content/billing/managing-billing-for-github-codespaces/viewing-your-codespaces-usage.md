@@ -1,11 +1,11 @@
 ---
 title: Viewing your Codespaces usage
 shortTitle: Viewing your usage
-intro: 'You can view the compute minutes and storage used by {% data variables.product.prodname_codespaces %}.'
-permissions: 'To manage billing for Codespaces for an organization, you must be an organization owner or a billing manager.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "You can view the compute minutes and storage used by {% data variables.product.prodname_codespaces %}."
+permissions: "To manage billing for Codespaces for an organization, you must be an organization owner or a billing manager."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 type: overview
 topics:
   - Codespaces
@@ -26,4 +26,5 @@ Enterprise owners and billing managers can view {% data variables.product.prodna
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.billing-tab %}
+
 1. Under "{% data variables.product.prodname_codespaces %}", view the usage details of each organization in your enterprise account.

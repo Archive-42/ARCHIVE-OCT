@@ -7,17 +7,17 @@ redirect_from:
   - /github/using-git/caching-your-github-credentials-in-git
   - /github/getting-started-with-github/caching-your-github-credentials-in-git
   - /github/getting-started-with-github/getting-started-with-git/caching-your-github-credentials-in-git
-intro: 'If you''re [cloning {% data variables.product.product_name %} repositories using HTTPS](/github/getting-started-with-github/about-remote-repositories), we recommend you use {% data variables.product.prodname_cli %} or Git Credential Manager Core (GCM Core) to remember your credentials.'
+intro: "If you're [cloning {% data variables.product.product_name %} repositories using HTTPS](/github/getting-started-with-github/about-remote-repositories), we recommend you use {% data variables.product.prodname_cli %} or Git Credential Manager Core (GCM Core) to remember your credentials."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 shortTitle: Caching credentials
 ---
 
 {% tip %}
 
-**Tip:** If you clone {% data variables.product.product_name %} repositories using SSH, then you  can authenticate using an SSH key instead of using other credentials. For information about setting up an SSH connection, see "[Generating an SSH Key](/articles/generating-an-ssh-key)."
+**Tip:** If you clone {% data variables.product.product_name %} repositories using SSH, then you can authenticate using an SSH key instead of using other credentials. For information about setting up an SSH connection, see "[Generating an SSH Key](/articles/generating-an-ssh-key)."
 
 {% endtip %}
 
@@ -39,16 +39,19 @@ For more information about authenticating with {% data variables.product.prodnam
 {% mac %}
 
 1. Install Git using [Homebrew](https://brew.sh/):
-  ```shell
-  $ brew install git
-  ```
+
+```shell
+$ brew install git
+```
 
 2. Install GCM Core using Homebrew:
-  ```shell
-  $ brew tap microsoft/git
-  $ brew install --cask git-credential-manager-core
-  ```
-  For MacOS, you don't need to run `git config` because GCM Core automatically configures Git for you.
+
+```shell
+$ brew tap microsoft/git
+$ brew install --cask git-credential-manager-core
+```
+
+For MacOS, you don't need to run `git config` because GCM Core automatically configures Git for you.
 
 {% data reusables.gcm-core.next-time-you-clone %}
 
@@ -76,7 +79,7 @@ Once you've authenticated successfully, your credentials are stored in the Windo
 
 {% warning %}
 
-**Warning:** If you cached incorrect or outdated credentials in Credential Manager for Windows, Git will fail to access {% data variables.product.product_name %}. To reset your cached credentials so that Git prompts you to enter your credentials, access the Credential Manager in the Windows Control Panel under User Accounts > Credential Manager. Look for the {% data variables.product.product_name %} entry and delete it. 
+**Warning:** If you cached incorrect or outdated credentials in Credential Manager for Windows, Git will fail to access {% data variables.product.product_name %}. To reset your cached credentials so that Git prompts you to enter your credentials, access the Credential Manager in the Windows Control Panel under User Accounts > Credential Manager. Look for the {% data variables.product.product_name %} entry and delete it.
 
 {% endwarning %}
 

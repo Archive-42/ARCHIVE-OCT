@@ -1,13 +1,13 @@
 ---
 title: Building and testing Java with Gradle
 intro: You can create a continuous integration (CI) workflow in GitHub Actions to build and test your Java project with Gradle.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/language-and-framework-guides/building-and-testing-java-with-gradle
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CI
@@ -32,6 +32,7 @@ This guide shows you how to create a workflow that performs continuous integrati
 ## Prerequisites
 
 You should be familiar with YAML and the syntax for {% data variables.product.prodname_actions %}. For more information, see:
+
 - "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)"
 - "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)"
 
@@ -93,6 +94,7 @@ The starter workflow will run the `build` task by default. In the default Gradle
 If you use different commands to build your project, or you want to use a different task, you can specify those. For example, you may want to run the `package` task that's configured in your _ci.gradle_ file.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -105,13 +107,15 @@ steps:
   - name: Run the Gradle package task
     run: ./gradlew -b ci.gradle package
 ```
+
 {% endraw %}
 
 ## Caching dependencies
 
-When using {% data variables.product.prodname_dotcom %}-hosted runners, you can cache your dependencies to speed up your workflow runs. After a successful run, your local Gradle package cache will be stored on GitHub Actions infrastructure. In future workflow runs, the cache will be restored so that dependencies don't need to be downloaded from remote package repositories. You can cache dependencies simply using the [`setup-java` action](https://github.com/marketplace/actions/setup-java-jdk) or can use [`cache` action](https://github.com/actions/cache) for custom and more advanced configuration. 
+When using {% data variables.product.prodname_dotcom %}-hosted runners, you can cache your dependencies to speed up your workflow runs. After a successful run, your local Gradle package cache will be stored on GitHub Actions infrastructure. In future workflow runs, the cache will be restored so that dependencies don't need to be downloaded from remote package repositories. You can cache dependencies simply using the [`setup-java` action](https://github.com/marketplace/actions/setup-java-jdk) or can use [`cache` action](https://github.com/actions/cache) for custom and more advanced configuration.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -132,6 +136,7 @@ steps:
       rm -f ~/.gradle/caches/modules-2/modules-2.lock
       rm -f ~/.gradle/caches/modules-2/gc.properties
 ```
+
 {% endraw %}
 
 This workflow will save the contents of your local Gradle package cache, located in the `.gradle/caches` and `.gradle/wrapper` directories of the runner's home directory. The cache key will be the hashed contents of the gradle build files (including the Gradle wrapper properties file), so any changes to them will invalidate the cache.
@@ -143,6 +148,7 @@ After your build has succeeded and your tests have passed, you may want to uploa
 Gradle will usually create output files like JARs, EARs, or WARs in the `build/libs` directory. You can upload the contents of that directory using the `upload-artifact` action.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -158,4 +164,5 @@ steps:
       name: Package
       path: build/libs
 ```
+
 {% endraw %}

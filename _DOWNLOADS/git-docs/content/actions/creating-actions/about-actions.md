@@ -1,16 +1,16 @@
 ---
 title: About actions
-intro: 'Actions are individual tasks that you can combine to create jobs and customize your workflow. You can create your own actions, or use and customize actions shared by the {% data variables.product.prodname_dotcom %} community.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Actions are individual tasks that you can combine to create jobs and customize your workflow. You can create your own actions, or use and customize actions shared by the {% data variables.product.prodname_dotcom %} community."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/about-actions
   - /github/automating-your-workflow-with-github-actions/about-actions
   - /actions/automating-your-workflow-with-github-actions/about-actions
   - /actions/building-actions/about-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: overview
 topics:
   - Action development
@@ -35,10 +35,10 @@ Actions can run directly on a machine or in a Docker container. You can define a
 
 You can build Docker container and JavaScript actions. Actions require a metadata file to define the inputs, outputs and main entrypoint for your action. The metadata filename must be either `action.yml` or `action.yaml`. For more information, see "[Metadata syntax for {% data variables.product.prodname_actions %}](/articles/metadata-syntax-for-github-actions)."
 
-| Type | Operating system |
-| ---- | ------------------- |
-| Docker container | Linux |
-| JavaScript | Linux, macOS, Windows |
+| Type              | Operating system      |
+| ----------------- | --------------------- |
+| Docker container  | Linux                 |
+| JavaScript        | Linux, macOS, Windows |
 | Composite Actions | Linux, macOS, Windows |
 
 ### Docker container actions
@@ -106,14 +106,14 @@ This example demonstrates how a user can reference a major release tag:
 
 ```yaml
 steps:
-    - uses: actions/javascript-action@v1
+  - uses: actions/javascript-action@v1
 ```
 
 This example demonstrates how a user can reference a specific patch release tag:
 
 ```yaml
 steps:
-    - uses: actions/javascript-action@v1.0.1
+  - uses: actions/javascript-action@v1.0.1
 ```
 
 ### Using branches for release management
@@ -122,7 +122,7 @@ If you prefer to use branch names for release management, this example demonstra
 
 ```yaml
 steps:
-    - uses: actions/javascript-action@v1-beta
+  - uses: actions/javascript-action@v1-beta
 ```
 
 ### Using a commit's SHA for release management
@@ -131,7 +131,7 @@ Each Git commit receives a calculated SHA value, which is unique and immutable. 
 
 ```yaml
 steps:
-    - uses: actions/javascript-action@172239021f7ba04fe7327647b213799853a9eb89
+  - uses: actions/javascript-action@172239021f7ba04fe7327647b213799853a9eb89
 ```
 
 ## Creating a README file for your action
@@ -154,17 +154,19 @@ We recommend creating a README file to help people learn how to use your action.
 While both {% data variables.product.prodname_actions %} and {% data variables.product.prodname_github_apps %} provide ways to build automation and workflow tools, they each have strengths that make them useful in different ways.
 
 {% data variables.product.prodname_github_apps %}:
-* Run persistently and can react to events quickly.
-* Work great when persistent data is needed.
-* Work best with API requests that aren't time consuming.
-* Run on a server or compute infrastructure that you provide.
+
+- Run persistently and can react to events quickly.
+- Work great when persistent data is needed.
+- Work best with API requests that aren't time consuming.
+- Run on a server or compute infrastructure that you provide.
 
 {% data variables.product.prodname_actions %}:
-* Provide automation that can perform continuous integration and continuous deployment.
-* Can run directly on runner machines or in Docker containers.
-* Can include access to a clone of your repository, enabling deployment and publishing tools, code formatters, and command line tools to access your code.
-* Don't require you to deploy code or serve an app.
-* Have a simple interface to create and use secrets, which enables actions to interact with third-party services without needing to store the credentials of the person using the action.
+
+- Provide automation that can perform continuous integration and continuous deployment.
+- Can run directly on runner machines or in Docker containers.
+- Can include access to a clone of your repository, enabling deployment and publishing tools, code formatters, and command line tools to access your code.
+- Don't require you to deploy code or serve an app.
+- Have a simple interface to create and use secrets, which enables actions to interact with third-party services without needing to store the credentials of the person using the action.
 
 ## Further reading
 

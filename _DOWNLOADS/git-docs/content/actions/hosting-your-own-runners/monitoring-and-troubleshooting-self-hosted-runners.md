@@ -6,9 +6,9 @@ redirect_from:
   - /github/automating-your-workflow-with-github-actions/checking-the-status-of-self-hosted-runners
   - /actions/automating-your-workflow-with-github-actions/checking-the-status-of-self-hosted-runners
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 defaultPlatform: linux
 shortTitle: Monitor & troubleshoot
@@ -25,26 +25,26 @@ shortTitle: Monitor & troubleshoot
 
 {% data reusables.github-actions.self-hosted-runner-navigate-repo-and-org %}
 {% data reusables.github-actions.settings-sidebar-actions-runners %}
+
 1. Under {% ifversion fpt %}"Runners"{% else %}"Self-hosted runners"{% endif %}, you can view a list of registered runners, including the runner's name, labels, and status.
 
-    ![Runner list](/assets/images/help/settings/actions-runner-list.png)
+   ![Runner list](/assets/images/help/settings/actions-runner-list.png)
 
-    The status can be one of the following:
+   The status can be one of the following:
 
-    * **Idle**: The runner is connected to {% data variables.product.product_name %} and is ready to execute jobs.
-    * **Active**: The runner is currently executing a job.
-    * **Offline**: The runner is not connected to {% data variables.product.product_name %}. This could be because the machine is offline, the self-hosted runner application is not running on the machine, or the self-hosted runner application cannot communicate with {% data variables.product.product_name %}.
-
+   - **Idle**: The runner is connected to {% data variables.product.product_name %} and is ready to execute jobs.
+   - **Active**: The runner is currently executing a job.
+   - **Offline**: The runner is not connected to {% data variables.product.product_name %}. This could be because the machine is offline, the self-hosted runner application is not running on the machine, or the self-hosted runner application cannot communicate with {% data variables.product.product_name %}.
 
 ## Reviewing the self-hosted runner application log files
 
-You can monitor the status of the self-hosted runner application and its activities. Log files are kept in the `_diag` directory, and a new one is generated each time the application is started. The filename begins with *Runner_*, and is followed by a UTC timestamp of when the application was started.
+You can monitor the status of the self-hosted runner application and its activities. Log files are kept in the `_diag` directory, and a new one is generated each time the application is started. The filename begins with _Runner\__, and is followed by a UTC timestamp of when the application was started.
 
-For detailed logs on workflow job executions, see the next section describing the *Worker_* files.
+For detailed logs on workflow job executions, see the next section describing the _Worker\__ files.
 
 ## Reviewing a job's log file
 
-The self-hosted runner application creates a detailed log file for each job that it processes. These files are stored in the `_diag` directory, and the filename begins with *Worker_*.
+The self-hosted runner application creates a detailed log file for each job that it processes. These files are stored in the `_diag` directory, and the filename begins with _Worker\__.
 
 {% linux %}
 
@@ -108,7 +108,6 @@ If you want to customize the self-hosted runner application service, do not dire
 
 {% endmac %}
 
-
 {% windows %}
 
 ## Using PowerShell to check the self-hosted runner application service
@@ -152,7 +151,7 @@ PS C:\actions-runner> Get-EventLog -LogName Application -Source ActionsRunnerSer
 
 We recommend that you regularly check the automatic update process, as the self-hosted runner will not be able to process jobs if it falls below a certain version threshold. The self-hosted runner application automatically updates itself, but note that this process does not include any updates to the operating system or other software; you will need to separately manage these updates.
 
-You can view the update activities in the *Runner_* log files. For example:
+You can view the update activities in the _Runner\__ log files. For example:
 
 ```shell
 [Feb 12 12:37:07 INFO SelfUpdater] An update is available.

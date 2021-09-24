@@ -1,21 +1,20 @@
 ---
 title: Personalizing Codespaces for your account
-intro: 'You can personalize {% data variables.product.prodname_codespaces %} by using a `dotfiles` repository on {% data variables.product.product_name %} or by using Settings Sync.'
+intro: "You can personalize {% data variables.product.prodname_codespaces %} by using a `dotfiles` repository on {% data variables.product.product_name %} or by using Settings Sync."
 redirect_from:
   - /github/developing-online-with-github-codespaces/personalizing-github-codespaces-for-your-account
   - /github/developing-online-with-codespaces/personalizing-codespaces-for-your-account
   - /codespaces/setting-up-your-codespace/personalizing-codespaces-for-your-account
 versions:
-  fpt: '*'
+  fpt: "*"
 type: how_to
 topics:
   - Codespaces
   - Set up
   - Fundamentals
-product: '{% data reusables.gated-features.codespaces %}'
+product: "{% data reusables.gated-features.codespaces %}"
 shortTitle: Personalize your account
 ---
-
 
 ## About personalizing {% data variables.product.prodname_codespaces %}
 
@@ -48,14 +47,14 @@ Your `dotfiles` repository might include your shell aliases and preferences, any
 
 When you create a new codespace, {% data variables.product.prodname_dotcom %} clones your `dotfiles` repository to the codespace environment, and looks for one of the following files to set up the environment.
 
-* _install.sh_
-* _install_
-* _bootstrap.sh_
-* _bootstrap_
-* _script/bootstrap_
-* _setup.sh_
-* _setup_
-* _script/setup_
+- _install.sh_
+- _install_
+- _bootstrap.sh_
+- _bootstrap_
+- _script/bootstrap_
+- _setup.sh_
+- _setup_
+- _script/setup_
 
 If none of these files are found, then any files or folders in `dotfiles` starting with `.` are symlinked to the codespace's `~` or `$HOME` directory.
 
@@ -73,6 +72,7 @@ You can use your public `dotfiles` repository to personalize your {% data variab
 
 {% data reusables.user_settings.access_settings %}
 {% data reusables.user_settings.codespaces-tab %}
+
 1. Under "Dotfiles", select "Automatically install dotfiles" so that {% data variables.product.prodname_codespaces %} automatically installs your dotfiles into every new codespace you create.
    ![Installing dotfiles](/assets/images/help/codespaces/install-dotfiles.png)
 
@@ -96,4 +96,4 @@ You can also personalize {% data variables.product.prodname_codespaces %} using 
 
 ## Further reading
 
-* "[Creating a new repository](/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)"
+- "[Creating a new repository](/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)"

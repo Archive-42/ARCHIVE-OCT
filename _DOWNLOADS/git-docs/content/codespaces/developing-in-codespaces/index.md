@@ -1,9 +1,9 @@
 ---
 title: Developing in a codespace
-intro: 'Create a codespace to get started with developing your project inside a dedicated cloud environment. You can use forwarded ports to run your application and even use codespaces inside {% data variables.product.prodname_vscode %}'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "Create a codespace to get started with developing your project inside a dedicated cloud environment. You can use forwarded ports to run your application and even use codespaces inside {% data variables.product.prodname_vscode %}"
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 topics:
   - Codespaces
 children:
@@ -17,4 +17,3 @@ children:
   - /using-codespaces-in-visual-studio-code
   - /web-based-editor
 ---
- 

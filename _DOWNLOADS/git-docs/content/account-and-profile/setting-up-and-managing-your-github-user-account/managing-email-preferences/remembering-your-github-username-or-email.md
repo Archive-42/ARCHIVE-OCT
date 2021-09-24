@@ -1,6 +1,6 @@
 ---
 title: Remembering your GitHub username or email
-intro: 'Are you signing in to {% data variables.product.product_location %} for the first time in a while? If so, welcome back! If you can''t remember your {% data variables.product.product_name %} user account name, you can try these methods for remembering it.'
+intro: "Are you signing in to {% data variables.product.product_location %} for the first time in a while? If so, welcome back! If you can't remember your {% data variables.product.product_name %} user account name, you can try these methods for remembering it."
 redirect_from:
   - /articles/oh-noes-i-ve-forgotten-my-username-email/
   - /articles/oh-noes-i-ve-forgotten-my-username-or-email/
@@ -8,21 +8,22 @@ redirect_from:
   - /github/setting-up-and-managing-your-github-user-account/remembering-your-github-username-or-email
   - /github/setting-up-and-managing-your-github-user-account/managing-email-preferences/remembering-your-github-username-or-email
 versions:
-  fpt: '*'
-  ghes: '*'
+  fpt: "*"
+  ghes: "*"
 topics:
   - Accounts
   - Notifications
 shortTitle: Find your username or email
 ---
+
 {% mac %}
 
 ## {% data variables.product.prodname_desktop %} users
 
 1. In the **GitHub Desktop** menu, click **Preferences**.
 2. In the Preferences window, verify the following:
-    - To view your {% data variables.product.product_name %} username, click **Accounts**.
-    - To view your Git email, click **Git**. Note that this email is not guaranteed to be [your primary {% data variables.product.product_name %} email](/articles/changing-your-primary-email-address).
+   - To view your {% data variables.product.product_name %} username, click **Accounts**.
+   - To view your Git email, click **Git**. Note that this email is not guaranteed to be [your primary {% data variables.product.product_name %} email](/articles/changing-your-primary-email-address).
 
 {% endmac %}
 
@@ -32,9 +33,9 @@ shortTitle: Find your username or email
 
 1. In the **File** menu, click **Options**.
 2. In the Options window, verify the following:
-    - To view your {% data variables.product.product_name %} username, click **Accounts**.
-    - To view your Git email, click **Git**. Note that this email is not guaranteed to be [your primary {% data variables.product.product_name %} email](/articles/changing-your-primary-email-address).
-  
+   - To view your {% data variables.product.product_name %} username, click **Accounts**.
+   - To view your Git email, click **Git**. Note that this email is not guaranteed to be [your primary {% data variables.product.product_name %} email](/articles/changing-your-primary-email-address).
+
 {% endwindows %}
 
 ## Finding your username in your `user.name` configuration
@@ -68,7 +69,8 @@ origin	https://{% data variables.command_line.codeblock %}/<em>YOUR_USERNAME</em
 Your user name is what immediately follows the `https://{% data variables.command_line.backticks %}/`.
 
 {% ifversion fpt %}
+
 ## Further reading
 
 - "[Verifying your email address](/articles/verifying-your-email-address)"
-{% endif %}
+  {% endif %}

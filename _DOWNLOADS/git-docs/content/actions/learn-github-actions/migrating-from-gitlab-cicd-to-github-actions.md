@@ -1,10 +1,10 @@
 ---
 title: Migrating from GitLab CI/CD to GitHub Actions
-intro: '{% data variables.product.prodname_actions %} and GitLab CI/CD share several configuration similarities, which makes migrating to {% data variables.product.prodname_actions %} relatively straightforward.'
+intro: "{% data variables.product.prodname_actions %} and GitLab CI/CD share several configuration similarities, which makes migrating to {% data variables.product.prodname_actions %} relatively straightforward."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - GitLab
@@ -33,9 +33,9 @@ There are a few differences, and this guide will show you the important differen
 
 Jobs in GitLab CI/CD are very similar to jobs in {% data variables.product.prodname_actions %}. In both systems, jobs have the following characteristics:
 
-* Jobs contain a series of steps or scripts that run sequentially.
-* Jobs can run on separate machines or in separate containers.
-* Jobs run in parallel by default, but can be configured to run sequentially.
+- Jobs contain a series of steps or scripts that run sequentially.
+- Jobs can run on separate machines or in separate containers.
+- Jobs run in parallel by default, but can be configured to run sequentially.
 
 You can run a script or a shell command in a job. In GitLab CI/CD, script steps are specified using the `script` key. In {% data variables.product.prodname_actions %}, all scripts are specified using the `run` key.
 
@@ -102,11 +102,10 @@ windows_job:
     - echo Hello, %USERNAME%!
 
 linux_job:
-  tags:
-    - linux
-  script:
-    - echo "Hello, $USER!"
-```
+tags: - linux
+script: - echo "Hello, $USER!"
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -121,8 +120,10 @@ linux_job:
   runs-on: ubuntu-latest
   steps:
     - run: echo "Hello, $USER!"
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -237,25 +238,22 @@ stages:
   - deploy
 
 build_a:
-  stage: build
-  script:
-    - echo "This job will run first."
+stage: build
+script: - echo "This job will run first."
 
 build_b:
-  stage: build
-  script:
-    - echo "This job will run first, in parallel with build_a."
+stage: build
+script: - echo "This job will run first, in parallel with build_a."
 
 test_ab:
-  stage: test
-  script:
-    - echo "This job will run after build_a and build_b have finished."
+stage: test
+script: - echo "This job will run after build_a and build_b have finished."
 
 deploy_ab:
-  stage: deploy
-  script:
-    - echo "This job will run after test_ab is complete"
-```
+stage: deploy
+script: - echo "This job will run after test_ab is complete"
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -283,8 +281,10 @@ jobs:
     needs: [test_ab]
     steps:
       - run: echo "This job will run after test_ab is complete"
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -325,17 +325,17 @@ GitLab CI/CD
 image: node:latest
 
 cache:
-  key: $CI_COMMIT_REF_SLUG
-  paths:
-    - .npm/
+key: $CI_COMMIT_REF_SLUG
+paths: - .npm/
 
 before_script:
-  - npm ci --cache .npm --prefer-offline
+
+- npm ci --cache .npm --prefer-offline
 
 test_async:
-  script:
-    - node ./specs/start.js ./specs/async.spec.js
-```
+script: - node ./specs/start.js ./specs/async.spec.js
+
+````
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
@@ -351,8 +351,10 @@ jobs:
         path: ~/.npm
         key: v1-npm-deps-${{ hashFiles('**/package-lock.json') }}
         restore-keys: v1-npm-deps-
-```
+````
+
 {% endraw %}
+
 </td>
 </tr>
 </table>
@@ -478,6 +480,7 @@ jobs:
           POSTGRES_HOST: postgres
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
+
 ```
 {% endraw %}
 </td>
@@ -485,3 +488,4 @@ jobs:
 </table>
 
 For more information, see "[About service containers](/actions/guides/about-service-containers)."
+```

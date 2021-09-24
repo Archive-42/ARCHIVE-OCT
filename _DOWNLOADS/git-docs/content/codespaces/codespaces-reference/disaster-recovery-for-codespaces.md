@@ -1,9 +1,9 @@
 ---
 title: Disaster recovery for Codespaces
-intro: 'This article describes guidance for a disaster recovery scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption.'
+intro: "This article describes guidance for a disaster recovery scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption."
 versions:
-  free-pro-team: '*'
-product: '{% data reusables.gated-features.codespaces %}'
+  free-pro-team: "*"
+product: "{% data reusables.gated-features.codespaces %}"
 topics:
   - Codespaces
 shortTitle: Disaster recovery
@@ -29,7 +29,7 @@ You can optimize recovery time by configuring a `devcontainer.json` in the proje
 
 ## Option 2: Wait for recovery
 
-In this case, no action on your part is required. Know that we are working diligently to restore service availability. 
+In this case, no action on your part is required. Know that we are working diligently to restore service availability.
 
 You can check the current service status on the [Status Dashboard](https://www.githubstatus.com/).
 

@@ -1,8 +1,8 @@
 ---
 title: Understanding billing for Codespaces
-intro: 'Learn how your {% data variables.product.prodname_codespaces %} usage is billed.'
+intro: "Learn how your {% data variables.product.prodname_codespaces %} usage is billed."
 versions:
-  fpt: '*'
+  fpt: "*"
 redirect_from:
   - /github/developing-online-with-codespaces/about-billing-for-codespaces
   - /codespaces/getting-started-with-codespaces/about-billing-for-codespaces
@@ -11,7 +11,7 @@ type: reference
 topics:
   - Codespaces
   - Billing
-product: '{% data reusables.gated-features.codespaces %}'
+product: "{% data reusables.gated-features.codespaces %}"
 shortTitle: Understanding billing
 ---
 
@@ -32,9 +32,11 @@ Before your organization can use {% data variables.product.prodname_codespaces %
 Your codespace is billed for its compute minutes and for the amount of storage it uses on disk.
 
 ### Understanding what compute minutes are
+
 Your codespace is billed for the number of minutes that it's active. If your codespaces window is left idle for 30 minutes, it will automatically shutdown, and compute billing for the codespace will end until you start the codespace again.
 
 ### Understanding how codespace storage is billed
+
 For {% data variables.product.prodname_codespaces %}, storage is defined to include any files relating to your codespace, such as the cloned repository, configuration files, and extensions, among others. This storage is billed while your codespace is shutdown. The storage billing for a codespace ends when you manually delete it from https://github.com/codespaces.
 
 ## How much it costs to use {% data variables.product.prodname_codespaces %}
@@ -42,6 +44,7 @@ For {% data variables.product.prodname_codespaces %}, storage is defined to incl
 To see the pricing for {% data variables.product.prodname_codespaces %} usage, see "[{% data variables.product.prodname_codespaces %} pricing](/billing/managing-billing-for-github-codespaces/about-billing-for-codespaces#codespaces-pricing)."
 
 ## Checking your current usage and limits
+
 If you need to check your current usage or spending limit, contact your organization's billing manager. For more information, see "[Viewing your Codespaces usage](/billing/managing-billing-for-github-codespaces/viewing-your-codespaces-usage)."
 
 ## Codespaces can be automatically deleted

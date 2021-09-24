@@ -1,9 +1,9 @@
 ---
 title: About licenses for GitHub Enterprise
-intro: '{% ifversion fpt %}If you purchase {% data variables.product.prodname_enterprise %} and use {% data variables.product.prodname_ghe_server %}, each{% elsif ghes %}Each{% endif %} {% data variables.product.prodname_ghe_server %} instance requires a license file to validate and unlock the application.'
+intro: "{% ifversion fpt %}If you purchase {% data variables.product.prodname_enterprise %} and use {% data variables.product.prodname_ghe_server %}, each{% elsif ghes %}Each{% endif %} {% data variables.product.prodname_ghe_server %} instance requires a license file to validate and unlock the application."
 versions:
-  fpt: '*'
-  ghes: '*'
+  fpt: "*"
+  ghes: "*"
 type: overview
 topics:
   - Enterprise

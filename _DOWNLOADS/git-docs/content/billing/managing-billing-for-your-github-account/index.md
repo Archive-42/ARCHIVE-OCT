@@ -1,7 +1,7 @@
 ---
 title: Managing billing for your GitHub account
 shortTitle: Your GitHub account
-intro: '{% ifversion fpt %}{% data variables.product.product_name %} offers free and paid products for every account. You can upgrade, downgrade, and view pending changes to your account''s subscription at any time.{% elsif ghes or ghae %}You can manage billing for {% data variables.product.product_name %}{% ifversion ghae %}.{% elsif ghes %} from your enterprise account on {% data variables.product.prodname_dotcom_the_website %}.{% endif %}{% endif %}'
+intro: "{% ifversion fpt %}{% data variables.product.product_name %} offers free and paid products for every account. You can upgrade, downgrade, and view pending changes to your account's subscription at any time.{% elsif ghes or ghae %}You can manage billing for {% data variables.product.product_name %}{% ifversion ghae %}.{% elsif ghes %} from your enterprise account on {% data variables.product.prodname_dotcom_the_website %}.{% endif %}{% endif %}"
 redirect_from:
   - /github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-your-github-account
   - /categories/97/articles/
@@ -14,9 +14,9 @@ redirect_from:
   - /articles/managing-your-organization-s-paid-seats/
   - /articles/managing-billing-for-your-github-account
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /about-billing-for-github-accounts
   - /about-per-user-pricing
@@ -29,4 +29,3 @@ children:
   - /how-does-upgrading-or-downgrading-affect-the-billing-process
   - /discounted-subscriptions-for-github-accounts
 ---
-

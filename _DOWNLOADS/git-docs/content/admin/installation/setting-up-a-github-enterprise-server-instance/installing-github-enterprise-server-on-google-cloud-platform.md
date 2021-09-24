@@ -1,16 +1,17 @@
 ---
 title: Installing GitHub Enterprise Server on Google Cloud Platform
-intro: 'To install {% data variables.product.prodname_ghe_server %} on Google Cloud Platform, you must deploy onto a supported machine type and use a persistent standard disk or a persistent SSD.'
+intro: "To install {% data variables.product.prodname_ghe_server %} on Google Cloud Platform, you must deploy onto a supported machine type and use a persistent standard disk or a persistent SSD."
 redirect_from:
   - /enterprise/admin/guides/installation/installing-github-enterprise-on-google-cloud-platform/
   - /enterprise/admin/installation/installing-github-enterprise-server-on-google-cloud-platform
   - /admin/installation/installing-github-enterprise-server-on-google-cloud-platform
 versions:
-  ghes: '*'
+  ghes: "*"
 topics:
   - Enterprise
 shortTitle: Install on GCP
 ---
+
 ## Prerequisites
 
 - {% data reusables.enterprise_installation.software-license %}
@@ -32,11 +33,12 @@ Before launching {% data variables.product.product_location %} on Google Cloud P
 ## Selecting the {% data variables.product.prodname_ghe_server %} image
 
 1. Using the [gcloud compute](https://cloud.google.com/compute/docs/gcloud-compute/) command-line tool, list the public {% data variables.product.prodname_ghe_server %} images:
+
    ```shell
    $ gcloud compute images list --project github-enterprise-public --no-standard-images
    ```
 
-2. Take note of the image name for the latest GCE image of  {% data variables.product.prodname_ghe_server %}.
+2. Take note of the image name for the latest GCE image of {% data variables.product.prodname_ghe_server %}.
 
 ## Configuring the firewall
 
@@ -47,11 +49,13 @@ GCE virtual machines are created as a member of a network, which has a firewall.
    $ gcloud compute networks create <em>NETWORK-NAME</em> --subnet-mode auto
    ```
 2. Create a firewall rule for each of the ports in the table below. For more information, see "[gcloud compute firewall-rules](https://cloud.google.com/sdk/gcloud/reference/compute/firewall-rules/)" in the Google documentation.
+
    ```shell
    $ gcloud compute firewall-rules create <em>RULE-NAME</em> \
    --network <em>NETWORK-NAME</em> \
    --allow tcp:22,tcp:25,tcp:80,tcp:122,udp:161,tcp:443,udp:1194,tcp:8080,tcp:8443,tcp:9418,icmp
    ```
+
    This table identifies the required ports and what each port is used for.
 
    {% data reusables.enterprise_installation.necessary_ports %}
@@ -67,6 +71,7 @@ In production High Availability configurations, both primary and replica applian
 To create the {% data variables.product.prodname_ghe_server %} instance, you'll need to create a GCE instance with your {% data variables.product.prodname_ghe_server %} image and attach an additional storage volume for your instance data. For more information, see "[Hardware considerations](#hardware-considerations)."
 
 1. Using the gcloud compute command-line tool, create a data disk to use as an attached storage volume for your instance data, and configure the size based on your user license count. For more information, see "[gcloud compute disks create](https://cloud.google.com/sdk/gcloud/reference/compute/disks/create)" in the Google documentation.
+
    ```shell
    $ gcloud compute disks create <em>DATA-DISK-NAME</em> --size <em>DATA-DISK-SIZE</em> --type <em>DATA-DISK-TYPE</em> --zone <em>ZONE</em>
    ```

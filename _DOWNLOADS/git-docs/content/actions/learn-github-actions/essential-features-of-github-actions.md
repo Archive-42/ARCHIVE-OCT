@@ -1,11 +1,11 @@
 ---
 title: Essential features of GitHub Actions
 shortTitle: Essential features
-intro: '{% data variables.product.prodname_actions %} are designed to help you build robust and dynamic automations. This guide will show you how to craft {% data variables.product.prodname_actions %} workflows that include environment variables, customized scripts, and more.'
+intro: "{% data variables.product.prodname_actions %} are designed to help you build robust and dynamic automations. This guide will show you how to craft {% data variables.product.prodname_actions %} workflows that include environment variables, customized scripts, and more."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: overview
 topics:
   - Fundamentals
@@ -19,19 +19,19 @@ topics:
 
 {% data variables.product.prodname_actions %} allow you to customize your workflows to meet the unique needs of your application and team. In this guide, we'll discuss some of the essential customization techniques such as using variables, running scripts, and sharing data and artifacts between jobs.
 
-##  Using variables in your workflows
+## Using variables in your workflows
 
 {% data variables.product.prodname_actions %} include default environment variables for each workflow run. If you need to use custom environment variables, you can set these in your YAML workflow file. This example demonstrates how to create custom variables named `POSTGRES_HOST` and `POSTGRES_PORT`. These variables are then available to the `node client.js` script.
 
 ```yaml
 jobs:
   example-job:
-      steps:
-        - name: Connect to PostgreSQL
-          run: node client.js
-          env:
-            POSTGRES_HOST: postgres
-            POSTGRES_PORT: 5432
+    steps:
+      - name: Connect to PostgreSQL
+        run: node client.js
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
 ```
 
 For more information, see "[Using environment variables](/actions/configuring-and-managing-workflows/using-environment-variables)."

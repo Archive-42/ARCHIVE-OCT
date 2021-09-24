@@ -1,7 +1,7 @@
 ---
 title: GitHub Actions Documentation
 shortTitle: GitHub Actions
-intro: 'Automate, customize, and execute your software development workflows right in your repository with {% data variables.product.prodname_actions %}. You can discover, create, and share actions to perform any job you''d like, including CI/CD, and combine actions in a completely customized workflow.'
+intro: "Automate, customize, and execute your software development workflows right in your repository with {% data variables.product.prodname_actions %}. You can discover, create, and share actions to perform any job you'd like, including CI/CD, and combine actions in a completely customized workflow."
 introLinks:
   quickstart: /actions/quickstart
   reference: /actions/reference
@@ -24,9 +24,9 @@ featuredLinks:
     - /actions/reference/encrypted-secrets
 changelog:
   label: actions
-  prefix: 'GitHub Actions: '
+  prefix: "GitHub Actions: "
 examples_source: data/product-examples/actions/code-examples.yml
-product_video: 'https://www.youtube-nocookie.com/embed/cP0I9w2coGU'
+product_video: "https://www.youtube-nocookie.com/embed/cP0I9w2coGU"
 redirect_from:
   - /articles/automating-your-workflow-with-github-actions/
   - /articles/customizing-your-project-with-github-actions/
@@ -36,9 +36,9 @@ redirect_from:
   - /marketplace/actions
 layout: product-landing
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /quickstart
   - /guides
@@ -50,4 +50,3 @@ children:
   - /hosting-your-own-runners
   - /reference
 ---
-

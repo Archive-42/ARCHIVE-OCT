@@ -2,15 +2,15 @@
 title: Workflow syntax for GitHub Actions
 shortTitle: Workflow syntax
 intro: A workflow is a configurable automated process made up of one or more jobs. You must create a YAML file to define your workflow configuration.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/workflow-syntax-for-github-actions
   - /github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
   - /actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -35,7 +35,7 @@ The name of your workflow. {% data variables.product.prodname_dotcom %} displays
 
 ## `on.<event_name>.types`
 
-Selects the types of activity that will trigger a workflow run. Most GitHub events are triggered by more than one type of activity.  For example, the event for the release resource is triggered when a release is `published`, `unpublished`, `created`, `edited`, `deleted`, or `prereleased`. The `types` keyword enables you to narrow down activity that causes the workflow to run. When only one activity type triggers a webhook event, the `types` keyword is unnecessary.
+Selects the types of activity that will trigger a workflow run. Most GitHub events are triggered by more than one type of activity. For example, the event for the release resource is triggered when a release is `published`, `unpublished`, `created`, `edited`, `deleted`, or `prereleased`. The `types` keyword enables you to narrow down activity that causes the workflow to run. When only one activity type triggers a webhook event, the `types` keyword is unnecessary.
 
 You can use an array of event `types`. For more information about each event and their activity types, see "[Events that trigger workflows](/articles/events-that-trigger-workflows#webhook-events)."
 
@@ -51,7 +51,7 @@ on:
 
 When using the `push` and `pull_request` events, you can configure a workflow to run on specific branches or tags. For a `pull_request` event, only branches and tags on the base are evaluated. If you define only `tags` or only `branches`, the workflow won't run for events affecting the undefined Git ref.
 
-The `branches`, `branches-ignore`, `tags`, and `tags-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch or tag name. If a name contains any of these characters and you want a literal match, you need to *escape* each of these special characters with `\`. For more information about glob patterns, see the "[Filter pattern cheat sheet](#filter-pattern-cheat-sheet)."
+The `branches`, `branches-ignore`, `tags`, and `tags-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch or tag name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with `\`. For more information about glob patterns, see the "[Filter pattern cheat sheet](#filter-pattern-cheat-sheet)."
 
 ### Example: Including branches and tags
 
@@ -61,17 +61,17 @@ The patterns defined in `branches` and `tags` are evaluated against the Git ref'
 on:
   push:
     # Sequence of patterns matched against refs/heads
-    branches:    
+    branches:
       # Push events on main branch
       - main
       # Push events to branches matching refs/heads/mona/octocat
-      - 'mona/octocat'
+      - "mona/octocat"
       # Push events to branches matching refs/heads/releases/10
-      - 'releases/**'
+      - "releases/**"
     # Sequence of patterns matched against refs/tags
-    tags:        
-      - v1             # Push events to v1 tag
-      - v1.*           # Push events to v1.0, v1.1, and v1.9 tags
+    tags:
+      - v1 # Push events to v1 tag
+      - v1.* # Push events to v1.0, v1.1, and v1.9 tags
 ```
 
 ### Example: Ignoring branches and tags
@@ -84,34 +84,36 @@ on:
     # Sequence of patterns matched against refs/heads
     branches-ignore:
       # Do not push events to branches matching refs/heads/mona/octocat
-      - 'mona/octocat'
+      - "mona/octocat"
       # Do not push events to branches matching refs/heads/releases/beta/3-alpha
-      - 'releases/**-alpha'
+      - "releases/**-alpha"
     # Sequence of patterns matched against refs/tags
     tags-ignore:
-      - v1.*           # Do not push events to tags v1.0, v1.1, and v1.9
+      - v1.* # Do not push events to tags v1.0, v1.1, and v1.9
 ```
 
 ### Excluding branches and tags
 
 You can use two types of filters to prevent a workflow from running on pushes and pull requests to tags and branches.
+
 - `branches` or `branches-ignore` - You cannot use both the `branches` and `branches-ignore` filters for the same event in a workflow. Use the `branches` filter when you need to filter branches for positive matches and exclude branches. Use the `branches-ignore` filter when you only need to exclude branch names.
 - `tags` or `tags-ignore` - You cannot use both the `tags` and `tags-ignore` filters for the same event in a workflow. Use the `tags` filter when you need to filter tags for positive matches and exclude tags. Use the `tags-ignore` filter when you only need to exclude tag names.
 
 ### Example: Using positive and negative patterns
 
 You can exclude `tags` and `branches` using the `!` character. The order that you define patterns matters.
-  - A matching negative pattern (prefixed with `!`) after a positive match will exclude the Git ref.
-  - A matching positive pattern after a negative match will include the Git ref again.
+
+- A matching negative pattern (prefixed with `!`) after a positive match will exclude the Git ref.
+- A matching positive pattern after a negative match will include the Git ref again.
 
 The following workflow will run on pushes to `releases/10` or `releases/beta/mona`, but not on `releases/10-alpha` or `releases/beta/3-alpha` because the negative pattern `!releases/**-alpha` follows the positive pattern.
 
 ```yaml
 on:
   push:
-    branches:    
-      - 'releases/**'
-      - '!releases/**-alpha'
+    branches:
+      - "releases/**"
+      - "!releases/**-alpha"
 ```
 
 ## `on.<push|pull_request>.paths`
@@ -128,7 +130,7 @@ When all the path names match patterns in `paths-ignore`, the workflow will not 
 on:
   push:
     paths-ignore:
-      - 'docs/**'
+      - "docs/**"
 ```
 
 ### Example: Including paths
@@ -139,20 +141,22 @@ If at least one path matches a pattern in the `paths` filter, the workflow runs.
 on:
   push:
     paths:
-      - '**.js'
+      - "**.js"
 ```
 
 ### Excluding paths
 
 You can exclude paths using two types of filters. You cannot use both of these filters for the same event in a workflow.
+
 - `paths-ignore` - Use the `paths-ignore` filter when you only need to exclude path names.
 - `paths` - Use the `paths` filter when you need to filter paths for positive matches and exclude paths.
 
 ### Example: Using positive and negative patterns
 
 You can exclude `paths` using the `!` character. The order that you define patterns matters:
-  - A matching negative pattern (prefixed with `!`) after a positive match will exclude the path.
-  - A matching positive pattern after a negative match will include the path again.
+
+- A matching negative pattern (prefixed with `!`) after a positive match will exclude the path.
+- A matching positive pattern after a negative match will include the path again.
 
 This example runs anytime the `push` event includes a file in the `sub-project` directory or its subdirectories, unless the file is in the `sub-project/docs` directory. For example, a push that changed `sub-project/index.js` or `sub-project/src/index.js` will trigger a workflow run, but a push changing only `sub-project/docs/readme.md` will not.
 
@@ -160,8 +164,8 @@ This example runs anytime the `push` event includes a file in the `sub-project` 
 on:
   push:
     paths:
-      - 'sub-project/**'
-      - '!sub-project/docs/**'
+      - "sub-project/**"
+      - "!sub-project/docs/**"
 ```
 
 ### Git diff comparisons
@@ -175,6 +179,7 @@ on:
 The filter determines if a workflow should run by evaluating the changed files and running them against the `paths-ignore` or `paths` list. If there are no files changed, the workflow will not run.
 
 {% data variables.product.prodname_dotcom %} generates the list of changed files using two-dot diffs for pushes and three-dot diffs for pull requests:
+
 - **Pull requests:** Three-dot diffs are a comparison between the most recent version of the topic branch and the commit where the topic branch was last synced with the base branch.
 - **Pushes to existing branches:** A two-dot diff compares the head and base SHAs directly with each other.
 - **Pushes to new branches:** A two-dot diff against the parent of the ancestor of the deepest commit pushed.
@@ -188,15 +193,15 @@ For more information, see "[About comparing branches in pull requests](/articles
 When using `workflow_dispatch` event, you can optionally specify inputs that are passed to the workflow. Workflow dispatch inputs are specified with the same format as action inputs. For more information about the format see "[Metadata syntax for GitHub Actions](/actions/creating-actions/metadata-syntax-for-github-actions#inputs)."
 
 ```yaml
-on: 
+on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'     
+        description: "Log level"
         required: true
-        default: 'warning'
+        default: "warning"
       tags:
-        description: 'Test scenario tags'
+        description: "Test scenario tags"
         required: false
 ```
 
@@ -209,11 +214,12 @@ The triggered workflow receives the inputs in the `github.event.inputs` context.
 For more information about cron syntax, see "[Events that trigger workflows](/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events)."
 
 {% ifversion fpt or ghes > 3.1 or ghae-next %}
+
 ## `permissions`
 
 You can modify the default permissions granted to the `GITHUB_TOKEN`, adding or removing access as required, so that you only allow the minimum required access. For more information, see "[Authentication in a workflow](/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)."
 
-You can use `permissions` either as a top-level key, to apply to all jobs in the workflow, or within specific jobs. When you add the `permissions` key within a specific job, all actions and run commands within that job that use the `GITHUB_TOKEN` gain the access rights you specify.  For more information, see [`jobs.<job_id>.permissions`](#jobsjob_idpermissions).
+You can use `permissions` either as a top-level key, to apply to all jobs in the workflow, or within specific jobs. When you add the `permissions` key within a specific job, all actions and run commands within that job that use the `GITHUB_TOKEN` gain the access rights you specify. For more information, see [`jobs.<job_id>.permissions`](#jobsjob_idpermissions).
 
 {% data reusables.github-actions.github-token-available-permissions %}
 {% data reusables.github-actions.forked-write-permission %}
@@ -225,13 +231,13 @@ This example shows permissions being set for the `GITHUB_TOKEN` that will apply 
 ```yaml
 name: "My workflow"
 
-on: [ push ]
+on: [push]
 
 permissions: read-all
 
-jobs:
-  ...
+jobs: ...
 ```
+
 {% endif %}
 
 ## `env`
@@ -269,6 +275,7 @@ defaults:
 ```
 
 {% ifversion fpt or ghae-next or ghes > 3.1 %}
+
 ## `concurrency`
 
 {% data reusables.actions.concurrency-beta %}
@@ -280,6 +287,7 @@ You can also specify `concurrency` at the job level. For more information, see [
 {% data reusables.actions.actions-group-concurrency %}
 
 {% endif %}
+
 ## `jobs`
 
 A workflow run is made up of one or more jobs. Jobs run in parallel by default. To run jobs sequentially, you can define dependencies on other jobs using the `jobs.<job_id>.needs` keyword.
@@ -350,6 +358,7 @@ In this example, `job3` uses the `always()` conditional expression so that it al
 **Required**. The type of machine to run the job on. The machine can be either a {% data variables.product.prodname_dotcom %}-hosted runner or a self-hosted runner.
 
 {% ifversion ghae %}
+
 ### {% data variables.actions.hosted_runner %}s
 
 If you use an {% data variables.actions.hosted_runner %}, each job runs in a fresh instance of a virtual environment specified by `runs-on`.
@@ -397,6 +406,7 @@ runs-on: [self-hosted, linux]
 For more information, see "[About self-hosted runners](/github/automating-your-workflow-with-github-actions/about-self-hosted-runners)" and "[Using self-hosted runners in a workflow](/github/automating-your-workflow-with-github-actions/using-self-hosted-runners-in-a-workflow)."
 
 {% ifversion fpt or ghes > 3.1 or ghae-next %}
+
 ## `jobs.<job_id>.permissions`
 
 You can modify the default permissions granted to the `GITHUB_TOKEN`, adding or removing access as required, so that you only allow the minimum required access. For more information, see "[Authentication in a workflow](/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)."
@@ -422,9 +432,11 @@ jobs:
     steps:
       - uses: actions/stale@v3
 ```
+
 {% endif %}
 
 {% ifversion fpt or ghes > 3.0 or ghae %}
+
 ## `jobs.<job_id>.environment`
 
 The environment that the job references. All environment protection rules must pass before a job referencing the environment is sent to a runner. For more information, see "[Environments](/actions/reference/environments)."
@@ -432,10 +444,13 @@ The environment that the job references. All environment protection rules must p
 You can provide the environment as only the environment `name`, or as an environment object with the `name` and `url`. The URL maps to `environment_url` in the deployments API. For more information about the deployments API, see "[Deployments](/rest/reference/repos#deployments)."
 
 #### Example using a single environment name
+
 {% raw %}
+
 ```yaml
 environment: staging_environment
 ```
+
 {% endraw %}
 
 #### Example using environment name and URL
@@ -449,17 +464,20 @@ environment:
 The URL can be an expression and can use any context except for the `secrets` context. For more information about expressions, see "[Context and expression syntax for {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions)."
 
 ### Example
+
 {% raw %}
+
 ```yaml
 environment:
   name: production_environment
   url: ${{ steps.step_id.outputs.url_output }}
 ```
+
 {% endraw %}
 {% endif %}
 
-
 {% ifversion fpt or ghae-next or ghes > 3.1 %}
+
 ## `jobs.<job_id>.concurrency`
 
 {% data reusables.actions.concurrency-beta %}
@@ -477,6 +495,7 @@ You can also specify `concurrency` at the workflow level. For more information, 
 {% data reusables.actions.actions-group-concurrency %}
 
 {% endif %}
+
 ## `jobs.<job_id>.outputs`
 
 A `map` of outputs for a job. Job outputs are available to all downstream jobs that depend on this job. For more information on defining job dependencies, see [`jobs.<job_id>.needs`](#jobsjob_idneeds).
@@ -488,6 +507,7 @@ To use job outputs in a dependent job, you can use the `needs` context. For more
 ### Example
 
 {% raw %}
+
 ```yaml
 jobs:
   job1:
@@ -507,6 +527,7 @@ jobs:
     steps:
       - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
 ```
+
 {% endraw %}
 
 ## `jobs.<job_id>.env`
@@ -565,6 +586,7 @@ You can run an unlimited number of steps as long as you are within the workflow 
 ### Example
 
 {% raw %}
+
 ```yaml
 name: Greeting from Mona
 
@@ -584,6 +606,7 @@ jobs:
         run: |
           echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
 ```
+
 {% endraw %}
 
 ## `jobs.<job_id>.steps[*].id`
@@ -598,13 +621,13 @@ You can use the `if` conditional to prevent a step from running unless a conditi
 
 ### Example: Using contexts
 
- This step only runs when the event type is a `pull_request` and the event action is `unassigned`.
+This step only runs when the event type is a `pull_request` and the event action is `unassigned`.
 
- ```yaml
+```yaml
 steps:
-  - name: My first step
-    if: {% raw %}${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}{% endraw %}
-    run: echo This event is a pull request that had an assignee removed.
+ - name: My first step
+   if: {% raw %}${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}{% endraw %}
+   run: echo This event is a pull request that had an assignee removed.
 ```
 
 ### Example: Using status check functions
@@ -629,6 +652,7 @@ A name for your step to display on {% data variables.product.prodname_dotcom %}.
 Selects an action to run as part of a step in your job. An action is a reusable unit of code. You can use an action defined in the same repository as the workflow, a public repository, or in a [published Docker container image](https://hub.docker.com/).
 
 We strongly recommend that you include the version of the action you are using by specifying a Git ref, SHA, or Docker tag number. If you don't specify a version, it could break your workflows or cause unexpected behavior when the action owner publishes an update.
+
 - Using the commit SHA of a released action version is the safest for stability and security.
 - Using the specific major action version allows you to receive critical fixes and security patches while still maintaining compatibility. It also assures that your workflow should still work.
 - Using the default branch of an action may be convenient, but if someone releases a new major version with a breaking change, your workflow could break.
@@ -714,6 +738,7 @@ jobs:
 ```
 
 {% ifversion fpt %}
+
 #### Example: Using the {% data variables.product.prodname_registry %} {% data variables.product.prodname_container_registry %}
 
 `docker://{host}/{image}:{tag}`
@@ -727,7 +752,9 @@ jobs:
       - name: My first step
         uses: docker://ghcr.io/OWNER/IMAGE_NAME
 ```
+
 {% endif %}
+
 #### Example: Using a Docker public registry action
 
 `docker://{host}/{image}:{tag}`
@@ -749,6 +776,7 @@ Your workflow must checkout the private repository and reference the action loca
 Replace `PERSONAL_ACCESS_TOKEN` in the example with the name of your secret.
 
 {% raw %}
+
 ```yaml
 jobs:
   my_first_job:
@@ -763,6 +791,7 @@ jobs:
       - name: Run my action
         uses: ./.github/actions/my-private-repo/my-action
 ```
+
 {% endraw %}
 
 ## `jobs.<job_id>.steps[*].run`
@@ -773,14 +802,14 @@ Commands run using non-login shells by default. You can choose a different shell
 
 Each `run` keyword represents a new process and shell in the runner environment. When you provide multi-line commands, each line runs in the same shell. For example:
 
-* A single-line command:
+- A single-line command:
 
   ```yaml
   - name: Install Dependencies
     run: npm install
   ```
 
-* A multi-line command:
+- A multi-line command:
 
   ```yaml
   - name: Clean install dependencies and build
@@ -801,15 +830,15 @@ Using the `working-directory` keyword, you can specify the working directory of 
 
 You can override the default shell settings in the runner's operating system using the `shell` keyword. You can use built-in `shell` keywords, or you can define a custom set of shell options. The shell command that is run internally executes a temporary file that contains the commands specifed in the `run` keyword.
 
-| Supported platform | `shell` parameter | Description | Command run internally |
-|--------------------|-------------------|-------------|------------------------|
-| All | `bash` | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used. | `bash --noprofile --norc -eo pipefail {0}` |
-| All | `pwsh` | The PowerShell Core. {% data variables.product.prodname_dotcom %} appends the extension `.ps1` to your script name. | `pwsh -command ". '{0}'"` |
-| All | `python` | Executes the python command. | `python {0}` |
-| Linux / macOS | `sh` | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path. | `sh -e {0}` |
-| Windows | `cmd` | {% data variables.product.prodname_dotcom %} appends the extension `.cmd` to your script name and substitutes for `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows | `pwsh` | This is the default shell used on Windows. The PowerShell Core. {% data variables.product.prodname_dotcom %} appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead.| `pwsh -command ". '{0}'"`. |
-| Windows | `powershell` | The PowerShell Desktop. {% data variables.product.prodname_dotcom %} appends the extension `.ps1` to your script name. | `powershell -command ". '{0}'"`. |
+| Supported platform | `shell` parameter | Description                                                                                                                                                                                                                                                                             | Command run internally                          |
+| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| All                | `bash`            | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used.                                                                                                                      | `bash --noprofile --norc -eo pipefail {0}`      |
+| All                | `pwsh`            | The PowerShell Core. {% data variables.product.prodname_dotcom %} appends the extension `.ps1` to your script name.                                                                                                                                                                     | `pwsh -command ". '{0}'"`                       |
+| All                | `python`          | Executes the python command.                                                                                                                                                                                                                                                            | `python {0}`                                    |
+| Linux / macOS      | `sh`              | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path.                                                                                                                                                                            | `sh -e {0}`                                     |
+| Windows            | `cmd`             | {% data variables.product.prodname_dotcom %} appends the extension `.cmd` to your script name and substitutes for `{0}`.                                                                                                                                                                | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows            | `pwsh`            | This is the default shell used on Windows. The PowerShell Core. {% data variables.product.prodname_dotcom %} appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`.                      |
+| Windows            | `powershell`      | The PowerShell Desktop. {% data variables.product.prodname_dotcom %} appends the extension `.ps1` to your script name.                                                                                                                                                                  | `powershell -command ". '{0}'"`.                |
 
 ### Example: Running a script using bash
 
@@ -874,7 +903,6 @@ steps:
 
 The command used, `perl` in this example, must be installed on the runner.
 
-
 {% ifversion ghae %}For instructions on how to make sure your {% data variables.actions.hosted_runner %} has the required software installed, see "[Creating custom images](/actions/using-github-hosted-runners/creating-custom-images)."
 {% else %}
 For information about the software included on GitHub-hosted runners, see "[Specifications for GitHub-hosted runners](/actions/reference/specifications-for-github-hosted-runners#supported-software)."
@@ -885,11 +913,13 @@ For information about the software included on GitHub-hosted runners, see "[Spec
 For built-in shell keywords, we provide the following defaults that are executed by {% data variables.product.prodname_dotcom %}-hosted runners. You should use these guidelines when running shell scripts.
 
 - `bash`/`sh`:
+
   - Fail-fast behavior using `set -eo pipefail`: Default for `bash` and built-in `shell`. It is also the default when you don't provide an option on non-Windows platforms.
   - You can opt out of fail-fast and take full control by providing a template string to the shell options. For example, `bash {0}`.
   - sh-like shells exit with the exit code of the last command executed in a script, which is also the default behavior for actions. The runner will report the status of the step as fail/succeed based on this exit code.
 
 - `powershell`/`pwsh`
+
   - Fail-fast behavior when possible. For `pwsh` and `powershell` built-in shell, we will prepend `$ErrorActionPreference = 'stop'` to script contents.
   - We append `if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }` to powershell scripts so action statuses reflect the script's last exit code.
   - Users can always opt out by not using the built-in shell, and providing a custom shell option like: `pwsh -File {0}`, or `powershell -Command "& '{0}'"`, depending on need.
@@ -915,7 +945,7 @@ jobs:
         with:
           first_name: Mona
           middle_name: The
-          last_name: Octocat      
+          last_name: Octocat
 ```
 
 ## `jobs.<job_id>.steps[*].with.args`
@@ -925,6 +955,7 @@ A `string` that defines the inputs for a Docker container. {% data variables.pro
 ### Example
 
 {% raw %}
+
 ```yaml
 steps:
   - name: Explain why this job ran
@@ -933,6 +964,7 @@ steps:
       entrypoint: /bin/echo
       args: The ${{ github.event_name }} event triggered this step.
 ```
+
 {% endraw %}
 
 The `args` are used in place of the `CMD` instruction in a `Dockerfile`. If you use `CMD` in your `Dockerfile`, use the guidelines ordered by preference:
@@ -968,6 +1000,7 @@ Public actions may specify expected environment variables in the README file. If
 ### Example
 
 {% raw %}
+
 ```yaml
 steps:
   - name: My first action
@@ -976,6 +1009,7 @@ steps:
       FIRST_NAME: Mona
       LAST_NAME: Octocat
 ```
+
 {% endraw %}
 
 ## `jobs.<job_id>.steps[*].continue-on-error`
@@ -1013,6 +1047,7 @@ You can specify a matrix by supplying an array for the configuration options. Fo
 This example creates a matrix of three jobs by setting the `node` key to an array of three Node.js versions. To use the matrix, the example sets the `matrix.node` context property as the value of the `setup-node` action's input parameter `node-version`. As a result, three jobs will run, each using a different Node.js version.
 
 {% raw %}
+
 ```yaml
 strategy:
   matrix:
@@ -1024,6 +1059,7 @@ steps:
       # The Node.js version to configure
       node-version: ${{ matrix.node }}
 ```
+
 {% endraw %}
 
 The `setup-node` action is the recommended way to configure a Node.js version when using {% data variables.product.prodname_dotcom %}-hosted runners. For more information, see the [`setup-node`](https://github.com/actions/setup-node) action.
@@ -1038,6 +1074,7 @@ You can create a matrix to run workflows on more than one runner operating syste
 {% data reusables.repositories.actions-matrix-builds-os %}
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1049,6 +1086,7 @@ steps:
     with:
       node-version: ${{ matrix.node }}
 ```
+
 {% endraw %}
 
 {% ifversion ghae %}To find supported configuration options for {% data variables.actions.hosted_runner %}s, see "[Software specifications](/actions/using-github-hosted-runners/about-ae-hosted-runners#software-specifications)."
@@ -1060,6 +1098,7 @@ steps:
 You can add additional configuration options to a build matrix job that already exists. For example, if you want to use a specific version of `npm` when the job that uses `windows-latest` and version 8 of `node` runs, you can use `include` to specify that additional option.
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1073,6 +1112,7 @@ strategy:
         node: 8
         npm: 6
 ```
+
 {% endraw %}
 
 ### Example: Including new combinations
@@ -1080,6 +1120,7 @@ strategy:
 You can use `include` to add new jobs to a build matrix. Any unmatched include configurations are added to the matrix. For example, if you want to use `node` version 14 to build on multiple operating systems, but wanted one extra experimental job using node version 15 on Ubuntu, you can use `include` to specify that additional job.
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1091,6 +1132,7 @@ strategy:
         os: ubuntu-18.04
         experimental: true
 ```
+
 {% endraw %}
 
 ### Example: Excluding configurations from a matrix
@@ -1098,6 +1140,7 @@ strategy:
 You can remove a specific configurations defined in the build matrix using the `exclude` option. Using `exclude` removes a job defined by the build matrix. The number of jobs is the cross product of the number of operating systems (`os`) included in the arrays you provide, minus any subtractions (`exclude`).
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 strategy:
@@ -1109,6 +1152,7 @@ strategy:
       - os: macos-latest
         node: 8
 ```
+
 {% endraw %}
 
 {% note %}
@@ -1145,6 +1189,7 @@ Prevents a workflow run from failing when a job fails. Set to `true` to allow a 
 You can allow specific jobs in a job matrix to fail without failing the workflow run. For example, if you wanted to only allow an experimental job with `node` set to `15` to fail without failing the workflow run.
 
 {% raw %}
+
 ```yaml
 runs-on: ${{ matrix.os }}
 continue-on-error: ${{ matrix.experimental }}
@@ -1159,6 +1204,7 @@ strategy:
         os: ubuntu-18.04
         experimental: true
 ```
+
 {% endraw %}
 
 ## `jobs.<job_id>.container`
@@ -1204,13 +1250,15 @@ The Docker image to use as the container to run the action. The value can be the
 ### Example
 
 {% raw %}
+
 ```yaml
 container:
   image: ghcr.io/owner/image
   credentials:
-     username: ${{ github.actor }}
-     password: ${{ secrets.ghcr_token }}
+    username: ${{ github.actor }}
+    password: ${{ secrets.ghcr_token }}
 ```
+
 {% endraw %}
 {% endif %}
 
@@ -1255,7 +1303,7 @@ Additional Docker container resource options. For a list of options, see "[`dock
 
 {% data reusables.github-actions.docker-container-os-support %}
 
-Used to host service containers for a job in a workflow. Service containers are useful for creating databases or cache services like Redis. The runner  automatically creates a Docker network and manages the life cycle of the service containers.
+Used to host service containers for a job in a workflow. Service containers are useful for creating databases or cache services like Redis. The runner automatically creates a Docker network and manages the life cycle of the service containers.
 
 If you configure your job to run in a container, or your step uses container actions, you don't need to map ports to access the service or action. Docker automatically exposes all ports between containers on the same Docker user-defined bridge network. You can directly reference the service container by its hostname. The hostname is automatically mapped to the label name you configure for the service in the workflow.
 
@@ -1294,6 +1342,7 @@ The Docker image to use as the service container to run the action. The value ca
 ### Example
 
 {% raw %}
+
 ```yaml
 services:
   myservice1:
@@ -1307,6 +1356,7 @@ services:
       username: ${{ secrets.DOCKER_USER }}
       password: ${{ secrets.DOCKER_PASSWORD }}
 ```
+
 {% endraw %}
 {% endif %}
 
@@ -1373,35 +1423,35 @@ For more information about branch, tag, and path filter syntax, see "[`on.<push|
 
 ### Patterns to match branches and tags
 
-| Pattern | Description | Example matches |
-|---------|------------------------|---------|
-| `feature/*` | The `*` wildcard matches any character, but does not match slash (`/`). |  `feature/my-branch`<br/><br/>`feature/your-branch` |
-| `feature/**` | The `**` wildcard matches any character including slash (`/`) in branch and tag names. | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
-| `main`<br/><br/>`releases/mona-the-octcat` | Matches the exact name of a branch or tag name. | `main`<br/><br/>`releases/mona-the-octocat` |
-| `'*'` | Matches all branch and tag names that don't contain a slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `main`<br/><br/>`releases` |
-| `'**'` | Matches all branch and tag names. This is the default behavior when you don't use a `branches` or `tags` filter. | `all/the/branches`<br/><br/>`every/tag` |
-| `'*feature'` | The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature` |
-| `v2*` | Matches branch and tag names that start with `v2`. | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9` |
-| `v[12].[0-9]+.[0-9]+` | Matches all semantic versioning branches and tags with major version 1 or 2 | `v1.10.1`<br/><br/>`v2.0.0` |
+| Pattern                                    | Description                                                                                                                                                                  | Example matches                                                                               |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `feature/*`                                | The `*` wildcard matches any character, but does not match slash (`/`).                                                                                                      | `feature/my-branch`<br/><br/>`feature/your-branch`                                            |
+| `feature/**`                               | The `**` wildcard matches any character including slash (`/`) in branch and tag names.                                                                                       | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
+| `main`<br/><br/>`releases/mona-the-octcat` | Matches the exact name of a branch or tag name.                                                                                                                              | `main`<br/><br/>`releases/mona-the-octocat`                                                   |
+| `'*'`                                      | Matches all branch and tag names that don't contain a slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `main`<br/><br/>`releases`                                                                    |
+| `'**'`                                     | Matches all branch and tag names. This is the default behavior when you don't use a `branches` or `tags` filter.                                                             | `all/the/branches`<br/><br/>`every/tag`                                                       |
+| `'*feature'`                               | The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes.                                                                    | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature`                                   |
+| `v2*`                                      | Matches branch and tag names that start with `v2`.                                                                                                                           | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9`                                                          |
+| `v[12].[0-9]+.[0-9]+`                      | Matches all semantic versioning branches and tags with major version 1 or 2                                                                                                  | `v1.10.1`<br/><br/>`v2.0.0`                                                                   |
 
 ### Patterns to match file paths
 
 Path patterns must match the whole path, and start from the repository's root.
 
-| Pattern | Description of matches | Example matches |
-|---------|------------------------|-----------------|
-| `'*'` | The `*` wildcard matches any character, but does not match slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `README.md`<br/><br/>`server.rb` |
-| `'*.jsx?'` | The `?` character matches zero or one of the preceding character. | `page.js`<br/><br/>`page.jsx` |
-| `'**'` | The `**` wildcard matches any character including slash (`/`). This is the default behavior when you don't use a `path` filter. | `all/the/files.md` |
-| `'*.js'` | The `*` wildcard matches any character, but does not match slash (`/`). Matches all `.js` files at the root of the repository. | `app.js`<br/><br/>`index.js`
-| `'**.js'` | Matches all `.js` files in the repository. | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js` |
-| `docs/*`  | All files within the root of the `docs` directory, at the root of the repository. | `docs/README.md`<br/><br/>`docs/file.txt` |
-| `docs/**` | Any files in the `/docs` directory at the root of the repository. | `docs/README.md`<br/><br/>`docs/mona/octocat.txt` |
-| `docs/**/*.md` | A file with a `.md` suffix anywhere in the `docs` directory. | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md`
-| `'**/docs/**'`   | Any files in a `docs` directory anywhere in the repository. | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`
-| `'**/README.md'` | A README.md file anywhere in the repository. | `README.md`<br/><br/>`js/README.md`
-| `'**/*src/**'` | Any file in a folder with a `src` suffix anywhere in the repository. | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`
-| `'**/*-post.md'` | A file with the suffix `-post.md` anywhere in the repository. | `my-post.md`<br/><br/>`path/their-post.md` |
-| `'**/migrate-*.sql'` | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository. | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql` |
-| `*.md`<br/><br/>`!README.md` | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md` |
-| `*.md`<br/><br/>`!README.md`<br/><br/>`README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths. | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`|
+| Pattern                                         | Description of matches                                                                                                                                                                        | Example matches                                                                         |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `'*'`                                           | The `*` wildcard matches any character, but does not match slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes.             | `README.md`<br/><br/>`server.rb`                                                        |
+| `'*.jsx?'`                                      | The `?` character matches zero or one of the preceding character.                                                                                                                             | `page.js`<br/><br/>`page.jsx`                                                           |
+| `'**'`                                          | The `**` wildcard matches any character including slash (`/`). This is the default behavior when you don't use a `path` filter.                                                               | `all/the/files.md`                                                                      |
+| `'*.js'`                                        | The `*` wildcard matches any character, but does not match slash (`/`). Matches all `.js` files at the root of the repository.                                                                | `app.js`<br/><br/>`index.js`                                                            |
+| `'**.js'`                                       | Matches all `.js` files in the repository.                                                                                                                                                    | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js`                              |
+| `docs/*`                                        | All files within the root of the `docs` directory, at the root of the repository.                                                                                                             | `docs/README.md`<br/><br/>`docs/file.txt`                                               |
+| `docs/**`                                       | Any files in the `/docs` directory at the root of the repository.                                                                                                                             | `docs/README.md`<br/><br/>`docs/mona/octocat.txt`                                       |
+| `docs/**/*.md`                                  | A file with a `.md` suffix anywhere in the `docs` directory.                                                                                                                                  | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
+| `'**/docs/**'`                                  | Any files in a `docs` directory anywhere in the repository.                                                                                                                                   | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`    |
+| `'**/README.md'`                                | A README.md file anywhere in the repository.                                                                                                                                                  | `README.md`<br/><br/>`js/README.md`                                                     |
+| `'**/*src/**'`                                  | Any file in a folder with a `src` suffix anywhere in the repository.                                                                                                                          | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`                                         |
+| `'**/*-post.md'`                                | A file with the suffix `-post.md` anywhere in the repository.                                                                                                                                 | `my-post.md`<br/><br/>`path/their-post.md`                                              |
+| `'**/migrate-*.sql'`                            | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository.                                                                                                               | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
+| `*.md`<br/><br/>`!README.md`                    | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md`      |
+| `*.md`<br/><br/>`!README.md`<br/><br/>`README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths.                                                                                      | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |

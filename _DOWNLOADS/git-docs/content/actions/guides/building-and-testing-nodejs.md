@@ -1,14 +1,14 @@
 ---
 title: Building and testing Node.js
 intro: You can create a continuous integration (CI) workflow to build and test your Node.js project.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/using-nodejs-with-github-actions
   - /actions/language-and-framework-guides/using-nodejs-with-github-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 hidden: true
 topics:
@@ -42,6 +42,7 @@ We recommend that you have a basic understanding of Node.js, YAML, workflow conf
 To get started quickly, add the template to the `.github/workflows` directory of your repository. The workflow shown below assumes that the default branch for your repository is `main`.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Node.js CI
 
@@ -70,6 +71,7 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
 ```
+
 {% endraw %}
 
 {% data reusables.github-actions.example-github-runner %}
@@ -85,6 +87,7 @@ The template includes a matrix strategy that builds and tests your code with fou
 Each job can access the value defined in the matrix `node-version` array using the `matrix` context. The `setup-node` action uses the context as the `node-version` input. The `setup-node` action configures each job with a different Node.js version before building and testing code. For more information about matrix strategies and contexts, see "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix)" and "[Context and expression syntax for {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions)."
 
 {% raw %}
+
 ```yaml{:copy}
 strategy:
   matrix:
@@ -97,6 +100,7 @@ steps:
   with:
     node-version: ${{ matrix.node-version }}
 ```
+
 {% endraw %}
 
 Alternatively, you can build and test with exact Node.js versions.
@@ -110,6 +114,7 @@ strategy:
 Or, you can build and test using a single version of Node.js too.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Node.js CI
 
@@ -130,6 +135,7 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
 ```
+
 {% endraw %}
 
 If you don't specify a Node.js version, {% data variables.product.prodname_dotcom %} uses the environment's default Node.js version.
@@ -145,7 +151,7 @@ When using {% data variables.product.prodname_dotcom %}-hosted runners, you can 
 
 ### Example using npm
 
-This example installs the dependencies defined in the *package.json* file. For more information, see [`npm install`](https://docs.npmjs.com/cli/install).
+This example installs the dependencies defined in the _package.json_ file. For more information, see [`npm install`](https://docs.npmjs.com/cli/install).
 
 ```yaml{:copy}
 steps:
@@ -158,9 +164,10 @@ steps:
   run: npm install
 ```
 
-Using `npm ci` installs the versions in the *package-lock.json* or *npm-shrinkwrap.json* file and prevents updates to the lock file. Using `npm ci` is generally faster than running `npm install`. For more information, see [`npm ci`](https://docs.npmjs.com/cli/ci.html) and "[Introducing `npm ci` for faster, more reliable builds](https://blog.npmjs.org/post/171556855892/introducing-npm-ci-for-faster-more-reliable)."
+Using `npm ci` installs the versions in the _package-lock.json_ or _npm-shrinkwrap.json_ file and prevents updates to the lock file. Using `npm ci` is generally faster than running `npm install`. For more information, see [`npm ci`](https://docs.npmjs.com/cli/ci.html) and "[Introducing `npm ci` for faster, more reliable builds](https://blog.npmjs.org/post/171556855892/introducing-npm-ci-for-faster-more-reliable)."
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -171,11 +178,12 @@ steps:
 - name: Install dependencies
   run: npm ci
 ```
+
 {% endraw %}
 
 ### Example using Yarn
 
-This example installs the dependencies defined in the *package.json* file. For more information, see [`yarn install`](https://yarnpkg.com/en/docs/cli/install).
+This example installs the dependencies defined in the _package.json_ file. For more information, see [`yarn install`](https://yarnpkg.com/en/docs/cli/install).
 
 ```yaml{:copy}
 steps:
@@ -188,7 +196,7 @@ steps:
   run: yarn
 ```
 
-Alternatively, you can pass `--frozen-lockfile` to install the versions in the *yarn.lock* file and prevent updates to the *yarn.lock* file.
+Alternatively, you can pass `--frozen-lockfile` to install the versions in the _yarn.lock_ file and prevent updates to the _yarn.lock_ file.
 
 ```yaml{:copy}
 steps:
@@ -207,11 +215,12 @@ steps:
 
 To authenticate to your private registry, you'll need to store your npm authentication token as a secret. For example, create a repository secret called `NPM_TOKEN`. For more information, see "[Creating and using encrypted secrets](/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)."
 
-In the example below, the secret `NPM_TOKEN` stores the npm authentication token. The `setup-node` action configures the *.npmrc* file to read the npm authentication token from the `NODE_AUTH_TOKEN` environment variable. When using the `setup-node` action to create an *.npmrc* file, you must set the `NODE_AUTH_TOKEN` environment variable with the secret that contains your npm authentication token.
+In the example below, the secret `NPM_TOKEN` stores the npm authentication token. The `setup-node` action configures the _.npmrc_ file to read the npm authentication token from the `NODE_AUTH_TOKEN` environment variable. When using the `setup-node` action to create an _.npmrc_ file, you must set the `NODE_AUTH_TOKEN` environment variable with the secret that contains your npm authentication token.
 
-Before installing dependencies, use the `setup-node` action to create the *.npmrc* file. The action has two input parameters. The `node-version` parameter sets the Node.js version, and the `registry-url` parameter sets the default registry. If your package registry uses scopes, you must use the `scope` parameter. For more information, see [`npm-scope`](https://docs.npmjs.com/misc/scope).
+Before installing dependencies, use the `setup-node` action to create the _.npmrc_ file. The action has two input parameters. The `node-version` parameter sets the Node.js version, and the `registry-url` parameter sets the default registry. If your package registry uses scopes, you must use the `scope` parameter. For more information, see [`npm-scope`](https://docs.npmjs.com/misc/scope).
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -227,9 +236,10 @@ steps:
   env:
     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 ```
+
 {% endraw %}
 
-The example above creates an *.npmrc* file with the following contents:
+The example above creates an _.npmrc_ file with the following contents:
 
 ```ini
 //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
@@ -242,6 +252,7 @@ always-auth=true
 When using {% data variables.product.prodname_dotcom %}-hosted runners, you can cache and restore the dependencies using the [`setup-node` action](https://github.com/actions/setup-node).
 
 The following example caches dependencies for npm.
+
 ```yaml{:copy}
 steps:
 - uses: actions/checkout@v2
@@ -290,7 +301,7 @@ To cache dependencies, you must have a `package-lock.json`, `yarn.lock`, or `pnp
 
 ## Building and testing your code
 
-You can use the same commands that you use locally to build and test your code. For example, if you run `npm run build` to run build steps defined in your *package.json* file and `npm test` to run your test suite, you would add those commands in your workflow file.
+You can use the same commands that you use locally to build and test your code. For example, if you run `npm run build` to run build steps defined in your _package.json_ file and `npm test` to run your test suite, you would add those commands in your workflow file.
 
 ```yaml{:copy}
 steps:

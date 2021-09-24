@@ -1,11 +1,11 @@
 ---
 title: Authentication
-intro: 'You can configure how users sign into {% data variables.product.product_name %}.'
+intro: "You can configure how users sign into {% data variables.product.product_name %}."
 redirect_from:
   - /enterprise/admin/authentication
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 topics:
   - Enterprise
 children:
@@ -13,4 +13,3 @@ children:
   - /managing-identity-and-access-for-your-enterprise
   - /configuring-authentication-and-provisioning-with-your-identity-provider
 ---
-

@@ -1,12 +1,12 @@
 ---
 title: Enforcing GitHub Actions policies for your enterprise
-intro: 'Enterprise administrators can manage access to {% data variables.product.prodname_actions %} in an enterprise.'
+intro: "Enterprise administrators can manage access to {% data variables.product.prodname_actions %} in an enterprise."
 redirect_from:
   - /enterprise/admin/github-actions/enforcing-github-actions-policies-for-your-enterprise
   - /admin/github-actions/enforcing-github-actions-policies-for-your-enterprise
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 type: how_to
 topics:
   - Actions
@@ -14,6 +14,7 @@ topics:
   - Policies
 shortTitle: Enforce enterprise policies
 ---
+
 {% data reusables.actions.ae-beta %}
 {% data reusables.actions.enterprise-beta %}
 
@@ -29,6 +30,7 @@ shortTitle: Enforce enterprise policies
 {% data reusables.actions.enterprise-actions-permissions %}
 
 {% ifversion ghes > 2.22 %}
+
 ## Allowing specific actions to run
 
 {% data reusables.actions.allow-specific-actions-intro %}
@@ -36,11 +38,13 @@ shortTitle: Enforce enterprise policies
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.policies-tab %}
 {% data reusables.enterprise-accounts.actions-tab %}
+
 1. Under **Policies**, select **Allow select actions** and add your required actions to the list.
    ![Add actions to allow list](/assets/images/help/organizations/enterprise-actions-policy-allow-list.png)
-{% endif %}
+   {% endif %}
 
 {% ifversion ghes > 2.22 or ghae %}
+
 ## Enabling workflows for private repository forks
 
 {% data reusables.github-actions.private-repository-forks-overview %}

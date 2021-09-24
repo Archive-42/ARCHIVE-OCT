@@ -1,11 +1,11 @@
 ---
 title: GitHub CLI
 shortTitle: GitHub CLI
-intro: '{% data reusables.cli.about-cli %}'
+intro: "{% data reusables.cli.about-cli %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /about-github-cli
   - /quickstart

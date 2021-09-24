@@ -1,8 +1,8 @@
 ---
 title: Uploading a new license to GitHub Enterprise Server
-intro: 'You can upload your license file for {% data variables.product.prodname_enterprise %} to {% data variables.product.product_location_enterprise %} to validate your application.'
+intro: "You can upload your license file for {% data variables.product.prodname_enterprise %} to {% data variables.product.product_location_enterprise %} to validate your application."
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Enterprise
@@ -19,15 +19,15 @@ After you purchase or upgrade a license for {% data variables.product.prodname_e
 ## Uploading your license to {% data variables.product.product_location_enterprise %}
 
 1. Sign into {% data variables.product.product_location_enterprise %} as a site administrator.
-{% data reusables.enterprise-accounts.access-enterprise %}
-{% data reusables.enterprise-accounts.settings-tab %}
-{% data reusables.enterprise-accounts.license-tab %}
+   {% data reusables.enterprise-accounts.access-enterprise %}
+   {% data reusables.enterprise-accounts.settings-tab %}
+   {% data reusables.enterprise-accounts.license-tab %}
 1. Under "Quick links", click **Update license**.
-  ![Update license link](/assets/images/enterprise/business-accounts/update-license-link.png)
+   ![Update license link](/assets/images/enterprise/business-accounts/update-license-link.png)
 1. To select your license, click **License file**, or drag your license file onto **License file**.
-  ![Upload license file](/assets/images/enterprise/management-console/upload-license.png)
+   ![Upload license file](/assets/images/enterprise/management-console/upload-license.png)
 1. Click **Upload**.
-  ![Begin upload](/assets/images/enterprise/management-console/begin-upload.png)
+   ![Begin upload](/assets/images/enterprise/management-console/begin-upload.png)
 
 {% ifversion ghes < 3.0 %}
 
@@ -38,7 +38,8 @@ If the web UI for {% data variables.product.prodname_ghe_server %} doesn't refle
 In some scenarios, the web UI for {% data variables.product.prodname_ghe_server %} may not immediately reflect your new license. You can force the system to detect the license by restarting two system services.
 
 {% data reusables.enterprise_installation.ssh-into-instance %}
-1. Restart the services for Git authentication and the HTTP server.
+
+1.  Restart the services for Git authentication and the HTTP server.
 
     {% warning %}
 
@@ -47,6 +48,7 @@ In some scenarios, the web UI for {% data variables.product.prodname_ghe_server 
     {% endwarning %}
 
         sudo systemctl restart github-gitauth github-unicorn
-1. After {% data variables.product.prodname_ghe_server %} returns you to a prompt, try accessing {% data variables.product.prodname_ghe_server %} via the command line or web UI again.
+
+1.  After {% data variables.product.prodname_ghe_server %} returns you to a prompt, try accessing {% data variables.product.prodname_ghe_server %} via the command line or web UI again.
 
 {% endif %}

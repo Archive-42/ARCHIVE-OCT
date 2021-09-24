@@ -1,9 +1,9 @@
 ---
 title: Configuring data encryption for your enterprise
 shortTitle: Configuring data encryption
-intro: 'For encryption at rest, you can provide your own encryption key to encrypt your data under your encryption policies.'
+intro: "For encryption at rest, you can provide your own encryption key to encrypt your data under your encryption policies."
 versions:
-  ghae: '*'
+  ghae: "*"
 type: how_to
 topics:
   - Enterprise
@@ -12,6 +12,7 @@ topics:
 redirect_from:
   - /admin/configuration/configuring-data-encryption-for-your-enterprise
 ---
+
 {% note %}
 
 **Note:** Configuring encryption at rest with a customer-managed key is currently in beta and subject to change.

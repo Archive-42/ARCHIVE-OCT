@@ -1,11 +1,11 @@
 ---
 title: Reviewing deployments
 intro: You can approve or reject jobs awaiting review.
-product: '{% data reusables.gated-features.environments %}'
+product: "{% data reusables.gated-features.environments %}"
 versions:
-  fpt: '*'
-  ghes: '>=3.1'
-  ghae: '*'
+  fpt: "*"
+  ghes: ">=3.1"
+  ghae: "*"
 ---
 
 {% data reusables.actions.ae-beta %}
@@ -19,7 +19,7 @@ For more information about environments and required approvals, see "[Environmen
 ## Approving or rejecting a job
 
 1. Navigate to the workflow run that requires review. For more information about navigating to a workflow run, see "[Viewing workflow run history](/actions/managing-workflow-runs/viewing-workflow-run-history)."
-2. Click **Review deployments**. 
+2. Click **Review deployments**.
    ![Review deployments](/assets/images/actions-review-deployments.png)
 3. Select the job environment(s) to approve or reject. Optionally, leave a comment.
    ![Approve deployments](/assets/images/actions-approve-deployments.png)

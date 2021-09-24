@@ -1,15 +1,15 @@
 ---
 title: Encrypted secrets
-intro: 'Encrypted secrets allow you to store sensitive information in your organization{% ifversion fpt or ghes > 3.0 %}, repository, or repository environments{% else %} or repository{% endif %}.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "Encrypted secrets allow you to store sensitive information in your organization{% ifversion fpt or ghes > 3.0 %}, repository, or repository environments{% else %} or repository{% endif %}."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /github/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
   - /actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
   - /actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -30,9 +30,9 @@ For secrets stored at the environment level, you can enable required reviewers t
 
 {% data reusables.codespaces.secrets-naming %}
 
-  For example, {% ifversion fpt or ghes > 3.0 or ghae %}a secret created at the environment level must have a unique name in that environment, {% endif %}a secret created at the repository level must have a unique name in that repository, and a secret created at the organization level must have a unique name at that level. 
+For example, {% ifversion fpt or ghes > 3.0 or ghae %}a secret created at the environment level must have a unique name in that environment, {% endif %}a secret created at the repository level must have a unique name in that repository, and a secret created at the organization level must have a unique name at that level.
 
-  {% data reusables.codespaces.secret-precedence %}{% ifversion fpt or ghes > 3.0 or ghae %} Similarly, if an organization, repository, and environment all have a secret with the same name, the environment-level secret takes precedence.{% endif %}
+{% data reusables.codespaces.secret-precedence %}{% ifversion fpt or ghes > 3.0 or ghae %} Similarly, if an organization, repository, and environment all have a secret with the same name, the environment-level secret takes precedence.{% endif %}
 
 To help ensure that {% data variables.product.prodname_dotcom %} redacts your secret in logs, avoid using structured data as the values of secrets. For example, avoid creating secrets that contain JSON or encoded Git blobs.
 
@@ -75,6 +75,7 @@ When generating credentials, we recommend that you grant the minimum permissions
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Click **New repository secret**.
 1. Type a name for your secret in the **Name** input box.
 1. Enter the value for your secret.
@@ -117,6 +118,7 @@ To list all secrets for the repository, use the `gh secret list` subcommand.
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.github-actions.sidebar-environment %}
+
 1. Click on the environment that you want to add a secret to.
 2. Under **Environment secrets**, click **Add secret**.
 3. Type a name for your secret in the **Name** input box.
@@ -156,6 +158,7 @@ When creating a secret in an organization, you can use a policy to limit which r
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. Click **New organization secret**.
 1. Type a name for your secret in the **Name** input box.
 1. Enter the **Value** for your secret.
@@ -209,8 +212,9 @@ You can check which access policies are being applied to a secret in your organi
 {% data reusables.organizations.navigate-to-org %}
 {% data reusables.organizations.org_settings %}
 {% data reusables.github-actions.sidebar-secret %}
+
 1. The list of secrets includes any configured permissions and policies. For example:
-![Secrets list](/assets/images/help/settings/actions-org-secrets-list.png)
+   ![Secrets list](/assets/images/help/settings/actions-org-secrets-list.png)
 1. For more details on the configured permissions for each secret, click **Update**.
 
 ## Using encrypted secrets in a workflow
@@ -224,6 +228,7 @@ You can check which access policies are being applied to a secret in your organi
 To provide an action with a secret as an input or environment variable, you can use the `secrets` context to access secrets you've created in your repository. For more information, see "[Context and expression syntax for {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions)" and "[Workflow syntax for {% data variables.product.prodname_actions %}](/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)."
 
 {% raw %}
+
 ```yaml
 steps:
   - name: Hello world action
@@ -232,6 +237,7 @@ steps:
     env: # Or as an environment variable
       super_secret: ${{ secrets.SuperSecret }}
 ```
+
 {% endraw %}
 
 Avoid passing secrets between processes from the command line, whenever possible. Command-line processes may be visible to other users (using the `ps` command) or captured by [security audit events](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing). To help protect secrets, consider using environment variables, `STDIN`, or other mechanisms supported by the target process.
@@ -241,6 +247,7 @@ If you must pass secrets within a command line, then enclose them within the pro
 ### Example using Bash
 
 {% raw %}
+
 ```yaml
 steps:
   - shell: bash
@@ -249,11 +256,13 @@ steps:
     run: |
       example-command "$SUPER_SECRET"
 ```
+
 {% endraw %}
 
 ### Example using PowerShell
 
 {% raw %}
+
 ```yaml
 steps:
   - shell: pwsh
@@ -262,11 +271,13 @@ steps:
     run: |
       example-command "$env:SUPER_SECRET"
 ```
+
 {% endraw %}
 
 ### Example using Cmd.exe
 
 {% raw %}
+
 ```yaml
 steps:
   - shell: cmd
@@ -275,6 +286,7 @@ steps:
     run: |
       example-command "%SUPER_SECRET%"
 ```
+
 {% endraw %}
 
 ## Limits for secrets
@@ -283,9 +295,9 @@ You can store up to 1,000 organization secrets{% ifversion fpt or ghes > 3.0 or 
 
 A workflow created in a repository can access the following number of secrets:
 
-* All 100 repository secrets.
-* If the repository is assigned access to more than 100 organization secrets, the workflow can only use the first 100 organization secrets (sorted alphabetically by secret name).
-{% ifversion fpt or ghes > 3.0 or ghae %}* All 100 environment secrets.{% endif %}
+- All 100 repository secrets.
+- If the repository is assigned access to more than 100 organization secrets, the workflow can only use the first 100 organization secrets (sorted alphabetically by secret name).
+  {% ifversion fpt or ghes > 3.0 or ghae %}\* All 100 environment secrets.{% endif %}
 
 Secrets are limited to 64 KB in size. To use secrets that are larger than 64 KB, you can store encrypted secrets in your repository and save the decryption passphrase as a secret on {% data variables.product.prodname_dotcom %}. For example, you can use `gpg` to encrypt your credentials locally before checking the file in to your repository on {% data variables.product.prodname_dotcom %}. For more information, see the "[gpg manpage](https://www.gnupg.org/gph/de/manual/r1023.html)."
 
@@ -297,9 +309,9 @@ Secrets are limited to 64 KB in size. To use secrets that are larger than 64 KB,
 
 1. Run the following command from your terminal to encrypt the `my_secret.json` file using `gpg` and the AES256 cipher algorithm.
 
- ``` shell
- $ gpg --symmetric --cipher-algo AES256 my_secret.json
- ```
+```shell
+$ gpg --symmetric --cipher-algo AES256 my_secret.json
+```
 
 1. You will be prompted to enter a passphrase. Remember the passphrase, because you'll need to create a new secret on {% data variables.product.prodname_dotcom %} that uses the passphrase as the value.
 
@@ -309,48 +321,50 @@ Secrets are limited to 64 KB in size. To use secrets that are larger than 64 KB,
 
 1. Create a shell script to decrypt the password. Save this file as `decrypt_secret.sh`.
 
-  ``` shell
-  #!/bin/sh
+```shell
+#!/bin/sh
 
-  # Decrypt the file
-  mkdir $HOME/secrets
-  # --batch to prevent interactive command
-  # --yes to assume "yes" for questions
-  gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
-  --output $HOME/secrets/my_secret.json my_secret.json.gpg
-  ```
+# Decrypt the file
+mkdir $HOME/secrets
+# --batch to prevent interactive command
+# --yes to assume "yes" for questions
+gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
+--output $HOME/secrets/my_secret.json my_secret.json.gpg
+```
 
 1. Ensure your shell script is executable before checking it in to your repository.
 
-  ``` shell
-  $ chmod +x decrypt_secret.sh
-  $ git add decrypt_secret.sh
-  $ git commit -m "Add new decryption script"
-  $ git push
-  ```
+```shell
+$ chmod +x decrypt_secret.sh
+$ git add decrypt_secret.sh
+$ git commit -m "Add new decryption script"
+$ git push
+```
 
 1. From your workflow, use a `step` to call the shell script and decrypt the secret. To have a copy of your repository in the environment that your workflow runs in, you'll need to use the [`actions/checkout`](https://github.com/actions/checkout) action. Reference your shell script using the `run` command relative to the root of your repository.
 
 {% raw %}
-  ```yaml
-  name: Workflows with large secrets
 
-  on: push
+```yaml
+name: Workflows with large secrets
 
-  jobs:
-    my-job:
-      name: My Job
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Decrypt large secret
-          run: ./.github/scripts/decrypt_secret.sh
-          env:
-            LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-        # This command is just an example to show your secret being printed
-        # Ensure you remove any print statements of your secrets. GitHub does
-        # not hide secrets that use this workaround.
-        - name: Test printing your secret (Remove this step in production)
-          run: cat $HOME/secrets/my_secret.json
-  ```
+on: push
+
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/secrets/my_secret.json
+```
+
 {% endraw %}

@@ -5,9 +5,9 @@ redirect_from:
   - /articles/customizing-your-profile
   - /github/setting-up-and-managing-your-github-profile/customizing-your-profile
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - Profiles
 children:
@@ -17,4 +17,3 @@ children:
   - /managing-your-profile-readme
   - /pinning-items-to-your-profile
 ---
-

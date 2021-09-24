@@ -1,12 +1,12 @@
 ---
 title: Migrating from Azure Pipelines to GitHub Actions
-intro: '{% data variables.product.prodname_actions %} and Azure Pipelines share several configuration similarities, which makes migrating to {% data variables.product.prodname_actions %} relatively straightforward.'
+intro: "{% data variables.product.prodname_actions %} and Azure Pipelines share several configuration similarities, which makes migrating to {% data variables.product.prodname_actions %} relatively straightforward."
 redirect_from:
   - /actions/migrating-to-github-actions/migrating-from-azure-pipelines-to-github-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Azure Pipelines
@@ -44,9 +44,9 @@ When migrating from Azure Pipelines, consider the following differences:
 
 Jobs and steps in Azure Pipelines are very similar to jobs and steps in {% data variables.product.prodname_actions %}. In both systems, jobs have the following characteristics:
 
-* Jobs contain a series of steps that run sequentially.
-* Jobs run on separate virtual machines or in separate containers.
-* Jobs run in parallel by default, but can be configured to run sequentially.
+- Jobs contain a series of steps that run sequentially.
+- Jobs run on separate virtual machines or in separate containers.
+- Jobs run in parallel by default, but can be configured to run sequentially.
 
 ## Migrating script steps
 

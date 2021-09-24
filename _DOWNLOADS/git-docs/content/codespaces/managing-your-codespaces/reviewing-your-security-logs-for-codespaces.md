@@ -1,17 +1,15 @@
 ---
 title: Reviewing your security logs for Codespaces
 shortTitle: Security logs
-intro: 'You can use the security log to review all actions related to {% data variables.product.prodname_codespaces %}.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "You can use the security log to review all actions related to {% data variables.product.prodname_codespaces %}."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 topics:
   - Codespaces
   - Developer
   - Security
 ---
-
- 
 
 ## About security logs for {% data variables.product.prodname_codespaces %}
 

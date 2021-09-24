@@ -4,9 +4,9 @@ intro: You can configure the self-hosted runner application as a service to auto
 redirect_from:
   - /actions/automating-your-workflow-with-github-actions/configuring-the-self-hosted-runner-application-as-a-service
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 defaultPlatform: linux
 shortTitle: Run runner app on startup
@@ -20,8 +20,7 @@ shortTitle: Run runner app on startup
 {% capture service_first_step %}1. Stop the self-hosted runner application if it is currently running.{% endcapture %}
 {% capture service_non_windows_intro_shell %}On the runner machine, open a shell in the directory where you installed the self-hosted runner application. Use the commands below to install and manage the self-hosted runner service.{% endcapture %}
 {% capture service_nonwindows_intro %}You must add a runner to {% data variables.product.product_name %} before you can configure the self-hosted runner application as a service. For more information, see "[Adding self-hosted runners](/github/automating-your-workflow-with-github-actions/adding-self-hosted-runners)."{% endcapture %}
-{% capture service_win_name %}actions.runner.*{% endcapture %}
-
+{% capture service_win_name %}actions.runner.\*{% endcapture %}
 
 {% linux %}
 
@@ -60,6 +59,7 @@ You can manage the runner service in the Windows **Services** application, or yo
 ## Installing the service
 
 {{ service_first_step }}
+
 1. Install the service with the following command:
 
    ```shell
@@ -72,31 +72,39 @@ You can manage the runner service in the Windows **Services** application, or yo
 ## Installing the service
 
 {{ service_first_step }}
+
 1. Install the service with the following command:
 
    ```shell
    ./svc.sh install
    ```
-{% endmac %}
+
+   {% endmac %}
 
 ## Starting the service
 
 Start the service with the following command:
 
 {% linux %}
+
 ```shell
 sudo ./svc.sh start
 ```
+
 {% endlinux %}
 {% windows %}
+
 ```shell
 Start-Service "{{ service_win_name }}"
 ```
+
 {% endwindows %}
 {% mac %}
+
 ```shell
 ./svc.sh start
 ```
+
 {% endmac %}
 
 ## Checking the status of the service
@@ -104,41 +112,53 @@ Start-Service "{{ service_win_name }}"
 Check the status of the service with the following command:
 
 {% linux %}
+
 ```shell
 sudo ./svc.sh status
 ```
+
 {% endlinux %}
 {% windows %}
+
 ```shell
 Get-Service "{{ service_win_name }}"
 ```
+
 {% endwindows %}
 {% mac %}
+
 ```shell
 ./svc.sh status
 ```
+
 {% endmac %}
 
- For more information on viewing the status of your self-hosted runner, see  "[Monitoring and troubleshooting self-hosted runners](/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners)."
+For more information on viewing the status of your self-hosted runner, see "[Monitoring and troubleshooting self-hosted runners](/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners)."
 
 ## Stopping the service
 
 Stop the service with the following command:
 
 {% linux %}
+
 ```shell
 sudo ./svc.sh stop
 ```
+
 {% endlinux %}
 {% windows %}
+
 ```shell
 Stop-Service "{{ service_win_name }}"
 ```
+
 {% endwindows %}
 {% mac %}
+
 ```shell
 ./svc.sh stop
 ```
+
 {% endmac %}
 
 ## Uninstalling the service
@@ -146,22 +166,27 @@ Stop-Service "{{ service_win_name }}"
 1. Stop the service if it is currently running.
 1. Uninstall the service with the following command:
 
-    {% linux %}
-    ```shell
-    sudo ./svc.sh uninstall
-    ```
-    {% endlinux %}
-    {% windows %}
-    ```shell
-    Remove-Service "{{ service_win_name }}"
-    ```
-    {% endwindows %}
-    {% mac %}
-    ```shell
-    ./svc.sh uninstall
-    ```
-    {% endmac %}
+   {% linux %}
 
+   ```shell
+   sudo ./svc.sh uninstall
+   ```
+
+   {% endlinux %}
+   {% windows %}
+
+   ```shell
+   Remove-Service "{{ service_win_name }}"
+   ```
+
+   {% endwindows %}
+   {% mac %}
+
+   ```shell
+   ./svc.sh uninstall
+   ```
+
+   {% endmac %}
 
 {% linux %}
 

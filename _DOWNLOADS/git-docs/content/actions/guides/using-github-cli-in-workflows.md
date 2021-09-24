@@ -1,11 +1,11 @@
 ---
 title: Using GitHub CLI in workflows
 shortTitle: GitHub CLI in workflows
-intro: 'You can script with {% data variables.product.prodname_cli %} in {% data variables.product.prodname_actions %} workflows.'
+intro: "You can script with {% data variables.product.prodname_cli %} in {% data variables.product.prodname_actions %} workflows."
 versions:
-  fpt: '*'
-  ghes: '>=2.22'
-  ghae: '*'
+  fpt: "*"
+  ghes: ">=2.22"
+  ghae: "*"
 topics:
   - CLI
   - Workflows
@@ -38,8 +38,8 @@ You can also execute API calls through {% data variables.product.prodname_cli %}
 
 ```yaml{:copy}
 name: Report remaining open issues
-on: 
-  schedule: 
+on:
+  schedule:
     # Daily at 8:20 UTC
     - cron: '20 8 * * *'
 jobs:

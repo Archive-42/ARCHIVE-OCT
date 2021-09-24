@@ -1,13 +1,13 @@
 ---
 title: Enabling debug logging
-intro: 'If the workflow logs do not provide enough detail to diagnose why a workflow, job, or step is not working as expected, you can enable additional debug logging.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "If the workflow logs do not provide enough detail to diagnose why a workflow, job, or step is not working as expected, you can enable additional debug logging."
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /actions/managing-workflow-runs/enabling-debug-logging
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 ---
 
 {% data reusables.actions.enterprise-beta %}
@@ -17,9 +17,9 @@ versions:
 These extra logs are enabled by setting secrets in the repository containing the workflow, so the same permissions requirements will apply:
 
 - {% data reusables.github-actions.permissions-statement-secrets-repository %}
-{% ifversion fpt or ghes > 3.0 or ghae %}
+  {% ifversion fpt or ghes > 3.0 or ghae %}
 - {% data reusables.github-actions.permissions-statement-secrets-environment %}
-{% endif %}
+  {% endif %}
 - {% data reusables.github-actions.permissions-statement-secrets-organization %}
 - {% data reusables.github-actions.permissions-statement-secrets-api %}
 
@@ -29,8 +29,8 @@ For more information on setting secrets, see "[Creating and using encrypted secr
 
 Runner diagnostic logging provides additional log files that contain information about how a runner is executing a job. Two extra log files are added to the log archive:
 
-* The runner process log, which includes information about coordinating and setting up runners to execute jobs.
-* The worker process log, which logs the execution of a job.
+- The runner process log, which includes information about coordinating and setting up runners to execute jobs.
+- The worker process log, which logs the execution of a job.
 
 1. To enable runner diagnostic logging, set the following secret in the repository that contains the workflow: `ACTIONS_RUNNER_DEBUG` to `true`.
 

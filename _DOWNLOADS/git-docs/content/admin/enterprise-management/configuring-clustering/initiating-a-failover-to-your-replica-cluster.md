@@ -1,11 +1,11 @@
 ---
 title: Initiating a failover to your replica cluster
-intro: 'If your {% data variables.product.prodname_ghe_server %} cluster fails, you can fail over to the passive replica .'
+intro: "If your {% data variables.product.prodname_ghe_server %} cluster fails, you can fail over to the passive replica ."
 redirect_from:
   - /enterprise/admin/enterprise-management/initiating-a-failover-to-your-replica-cluster
   - /admin/enterprise-management/initiating-a-failover-to-your-replica-cluster
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Clustering
@@ -14,6 +14,7 @@ topics:
   - Infrastructure
 shortTitle: Initiate a failover to replica
 ---
+
 ## About failover to your replica cluster
 
 In the event of a failure at your primary datacenter, you can fail over to the replica nodes in the secondary datacenter if you configure a passive replica node for each node in your active cluster.
@@ -32,12 +33,15 @@ To fail over to passive replica nodes, you must have configured high availabilit
 
 2. Initialize the failover to the secondary cluster and configure it to act as the active nodes.
 
-    ```shell
-  ghe-cluster-failover
-  ```
+   ```shell
+   ghe-cluster-failover
+   ```
+
+```
 
 {% data reusables.enterprise_clustering.configuration-finished %}
 
 3. Update the DNS record to point to the IP address of the load balancer for your passive cluster. Traffic is directed to the replica after the TTL period elapses.
 
 After {% data variables.product.prodname_ghe_server %} returns you to the prompt and your DNS updates have propagated, you've finished failing over. Users can access {% data variables.product.prodname_ghe_server %} using the usual hostname for your cluster.
+```

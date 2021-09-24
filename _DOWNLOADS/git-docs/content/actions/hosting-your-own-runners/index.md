@@ -5,9 +5,9 @@ redirect_from:
   - /github/automating-your-workflow-with-github-actions/hosting-your-own-runners
   - /actions/automating-your-workflow-with-github-actions/hosting-your-own-runners
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /about-self-hosted-runners
   - /adding-self-hosted-runners
@@ -19,6 +19,7 @@ children:
   - /monitoring-and-troubleshooting-self-hosted-runners
   - /removing-self-hosted-runners
 ---
+
 {% data reusables.actions.ae-self-hosted-runners-notice %}
 {% data reusables.actions.enterprise-beta %}
 {% data reusables.actions.enterprise-github-hosted-runners %}

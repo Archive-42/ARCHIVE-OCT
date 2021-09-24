@@ -1,16 +1,16 @@
 ---
 title: Viewing the subscription and usage for your enterprise account
-intro: 'You can view the current {% ifversion fpt %}subscription, {% endif %}license usage{% ifversion fpt %}, invoices, payment history, and other billing information{% endif %} for {% ifversion fpt %}your enterprise account{% elsif ghes %}{% data variables.product.product_location_enterprise %}{% endif %}.'
-product: '{% data reusables.gated-features.enterprise-accounts %}'
-permissions: 'Enterprise owners {% ifversion fpt %}and billing managers {% endif %}can access and manage all billing settings for enterprise accounts.'
+intro: "You can view the current {% ifversion fpt %}subscription, {% endif %}license usage{% ifversion fpt %}, invoices, payment history, and other billing information{% endif %} for {% ifversion fpt %}your enterprise account{% elsif ghes %}{% data variables.product.product_location_enterprise %}{% endif %}."
+product: "{% data reusables.gated-features.enterprise-accounts %}"
+permissions: "Enterprise owners {% ifversion fpt %}and billing managers {% endif %}can access and manage all billing settings for enterprise accounts."
 redirect_from:
   - /github/setting-up-and-managing-your-enterprise/managing-your-enterprise-account/viewing-the-subscription-and-usage-for-your-enterprise-account
   - /github/setting-up-and-managing-your-enterprise-account/viewing-the-subscription-and-usage-for-your-enterprise-account
   - /articles/viewing-the-subscription-and-usage-for-your-enterprise-account
   - /github/setting-up-and-managing-your-enterprise/viewing-the-subscription-and-usage-for-your-enterprise-account
 versions:
-  fpt: '*'
-  ghes: '*'
+  fpt: "*"
+  ghes: "*"
 topics:
   - Enterprise
 shortTitle: View subscription & usage
@@ -41,11 +41,12 @@ If you want to view an overview of your subscription and usage for {% data varia
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.license-tab %}
+
 1. Under "User licenses", view your total licenses, number of consumed licenses, and your subscription expiration date.
-  {% ifversion fpt %}![License and subscription information in enterprise billing settings](/assets/images/help/business-accounts/billing-license-info.png){% else %}
-  ![License and subscription information in enterprise billing settings](/assets/images/enterprise/enterprise-server/enterprise-server-billing-license-info.png){% endif %}
+   {% ifversion fpt %}![License and subscription information in enterprise billing settings](/assets/images/help/business-accounts/billing-license-info.png){% else %}
+   ![License and subscription information in enterprise billing settings](/assets/images/enterprise/enterprise-server/enterprise-server-billing-license-info.png){% endif %}
 1. Optionally, to view details for license usage or download a {% ifversion fpt %}CSV{% elsif ghes %}JSON{% endif %} file with license details{% ifversion fpt %}, to the right of "User Licenses"{% endif %}, click **View {% ifversion fpt %}details{% elsif ghes %}users{% endif %}** or {% ifversion fpt %}{% octicon "download" aria-label="The download icon" %}{% elsif ghes %}**Export license usage**{% endif %}.{% ifversion fpt %}
-  !["View details" button and button with download icon to the right of "User Licenses"](/assets/images/help/business-accounts/billing-license-info-click-view-details-or-download.png){% endif %}{% ifversion fpt %}
+   !["View details" button and button with download icon to the right of "User Licenses"](/assets/images/help/business-accounts/billing-license-info-click-view-details-or-download.png){% endif %}{% ifversion fpt %}
 1. Optionally, to view usage details for other features, in the left sidebar, click **Billing**.
-  ![Billing tab in the enterprise account settings sidebar](/assets/images/help/business-accounts/settings-billing-tab.png)
-{% endif %}
+   ![Billing tab in the enterprise account settings sidebar](/assets/images/help/business-accounts/settings-billing-tab.png)
+   {% endif %}

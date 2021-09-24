@@ -1,6 +1,6 @@
 ---
 title: About clustering
-intro: '{% data variables.product.prodname_ghe_server %} clustering allows services that make up {% data variables.product.prodname_ghe_server %} to be scaled out across multiple nodes.'
+intro: "{% data variables.product.prodname_ghe_server %} clustering allows services that make up {% data variables.product.prodname_ghe_server %} to be scaled out across multiple nodes."
 redirect_from:
   - /enterprise/admin/clustering/overview
   - /enterprise/admin/clustering/about-clustering
@@ -8,12 +8,13 @@ redirect_from:
   - /enterprise/admin/enterprise-management/about-clustering
   - /admin/enterprise-management/about-clustering
 versions:
-  ghes: '*'
+  ghes: "*"
 type: overview
 topics:
   - Clustering
   - Enterprise
 ---
+
 ## Clustering architecture
 
 {% data variables.product.prodname_ghe_server %} is comprised of a set of services. In a cluster, these services run across multiple nodes and requests are load balanced between them. Changes are automatically stored with redundant copies on separate nodes. Most of the services are equal peers with other instances of the same service. The exceptions to this are the `mysql-server` and `redis-server` services. These operate with a single _primary_ node with one or more _replica_ nodes.

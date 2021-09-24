@@ -1,11 +1,11 @@
 ---
 title: Building and testing Swift
 intro: You can create a continuous integration (CI) workflow to build and test your Swift project.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - CI
@@ -37,6 +37,7 @@ We recommend that you have a basic understanding of Swift packages. For more inf
 To get started quickly, add the template to the `.github/workflows` directory of your repository.
 
 {% raw %}
+
 ```yaml{:copy}
 name: Swift
 
@@ -54,6 +55,7 @@ jobs:
       - name: Run tests
         run: swift test
 ```
+
 {% endraw %}
 
 ## Specifying a Swift version
@@ -99,6 +101,7 @@ jobs:
 You can configure your job to use a single specific version of Swift, such as `5.3.3`.
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: fwal/setup-swift@d43a564349d1341cd990cfbd70d94d63b8899475
@@ -107,6 +110,7 @@ steps:
   - name: Get swift version
     run: swift --version # Swift 5.3.3
 ```
+
 {% endraw %}
 
 ## Building and testing your code
@@ -114,6 +118,7 @@ steps:
 You can use the same commands that you use locally to build and test your code using Swift. This example demonstrates how to use `swift build` and `swift test` in a job:
 
 {% raw %}
+
 ```yaml{:copy}
 steps:
   - uses: actions/checkout@v2
@@ -125,4 +130,5 @@ steps:
   - name: Run tests
     run: swift test
 ```
+
 {% endraw %}

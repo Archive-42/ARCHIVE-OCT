@@ -1,11 +1,11 @@
 ---
 title: Environments
 intro: You can configure environments with protection rules and secrets. A workflow job can reference an environment to use the environment's protection rules and secrets.
-product: '{% data reusables.gated-features.environments %}'
+product: "{% data reusables.gated-features.environments %}"
 versions:
-  fpt: '*'
-  ghes: '>=3.1'
-  ghae: '*'
+  fpt: "*"
+  ghes: ">=3.1"
+  ghae: "*"
 ---
 
 {% data reusables.actions.ae-beta %}
@@ -35,16 +35,18 @@ For more information on reviewing jobs that reference an environment with requir
 Use a wait timer to delay a job for a specific amount of time after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).
 
 {% ifversion fpt or ghae-next or ghes > 3.1 %}
+
 #### Deployment branches
 
 Use deployment branches to restrict which branches can deploy to the environment. Below are the options for deployment branches for an environment:
 
-* **All branches**: All branches in the repository can deploy to the environment.
-* **Protected branches**: Only branches with branch protection rules enabled can deploy to the environment. If no branch protection rules are defined for any branch in the repository, then all branches can deploy. For more information about branch protection rules, see "[About protected branches](/github/administering-a-repository/about-protected-branches)."
-* **Selected branches**: Only branches that match your specified name patterns can deploy to the environment.
+- **All branches**: All branches in the repository can deploy to the environment.
+- **Protected branches**: Only branches with branch protection rules enabled can deploy to the environment. If no branch protection rules are defined for any branch in the repository, then all branches can deploy. For more information about branch protection rules, see "[About protected branches](/github/administering-a-repository/about-protected-branches)."
+- **Selected branches**: Only branches that match your specified name patterns can deploy to the environment.
 
   For example, if you specify `releases/*` as a deployment branch rule, only branches whose name begins with `releases/` can deploy to the environment. (Wildcard characters will not match `/`. To match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.) If you add `main` as a deployment branch rule, a branch named `main` can also deploy to the environment. For more information about syntax options for deployment branches, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch).
-{% endif %}
+  {% endif %}
+
 ### Environment secrets
 
 Secrets stored in an environment are only available to workflow jobs that reference the environment. If the environment requires approval, a job cannot access environment secrets until one of the required reviewers approves it. For more information about secrets, see "[Encrypted secrets](/actions/reference/encrypted-secrets)."
@@ -62,6 +64,7 @@ Secrets stored in an environment are only available to workflow jobs that refere
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.github-actions.sidebar-environment %}
+
 1. Click **New environment**.
 1. Enter a name for the environment, then click **Configure environment**. Environment names are not case sensitive. An environment name may not exceed 255 characters and must be unique within the repository.
 1. Configure any environment protection rules or environment secrets.
@@ -79,7 +82,9 @@ For more information on syntax to reference environments in workflows, see "[Wor
 When a workflow references an environment, the environment will appear in the repository's deployments. For more information about viewing current and previous deployments, see "[Viewing deployment history](/developers/overview/viewing-deployment-history)."
 
 {% ifversion fpt or ghae-next or ghes > 3.1 %}
+
 ## Using concurrency to serialize deployments in an environment
+
 You can use concurrency so that an environment has a maximum of one deployment in progress and one deployment pending at a time. For more information, see "[Workflow syntax for GitHub Actions](/actions/reference/workflow-syntax-for-github-actions#concurrency)."{% endif %}
 
 ## Deleting an environment
@@ -91,6 +96,7 @@ Deleting an environment will delete all secrets and protection rules associated 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.github-actions.sidebar-environment %}
+
 1. Next to the environment that you want to delete, click {% octicon "trash" aria-label="The trash icon" %}.
 2. Click **I understand, delete this environment**.
 

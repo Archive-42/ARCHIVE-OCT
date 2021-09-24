@@ -5,8 +5,8 @@ redirect_from:
   - /enterprise/admin/user-management/repositories
   - /enterprise/admin/user-management/managing-repositories-in-your-enterprise
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 topics:
   - Enterprise
 children:
@@ -16,4 +16,3 @@ children:
   - /troubleshooting-service-hooks
 shortTitle: Manage repositories
 ---
-

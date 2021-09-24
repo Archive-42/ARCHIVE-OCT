@@ -1,7 +1,7 @@
 ---
 title: Learn GitHub Actions
 shortTitle: Learn GitHub Actions
-intro: 'Whether you are new to {% data variables.product.prodname_actions %} or interested in learning all they have to offer, this guide will help you use {% data variables.product.prodname_actions %} to accelerate your application development workflows.'
+intro: "Whether you are new to {% data variables.product.prodname_actions %} or interested in learning all they have to offer, this guide will help you use {% data variables.product.prodname_actions %} to accelerate your application development workflows."
 redirect_from:
   - /articles/about-github-actions
   - /github/automating-your-workflow-with-github-actions/about-github-actions
@@ -26,9 +26,9 @@ redirect_from:
   - /articles/getting-started-with-github-actions
   - /actions/migrating-to-github-actions
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /introduction-to-github-actions
   - /finding-and-customizing-actions
@@ -42,4 +42,3 @@ children:
   - /migrating-from-jenkins-to-github-actions
   - /migrating-from-travis-ci-to-github-actions
 ---
-

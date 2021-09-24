@@ -1,11 +1,11 @@
 ---
 title: Moving assigned issues on project boards
-intro: 'You can use {% data variables.product.prodname_actions %} to automatically move an issue to a specific column on a project board when the issue is assigned.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "You can use {% data variables.product.prodname_actions %} to automatically move an issue to a specific column on a project board when the issue is assigned."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -26,38 +26,39 @@ In the tutorial, you will first make a workflow file that uses the [`alex-page/g
 
 ## Creating the workflow
 
-1. {% data reusables.actions.choose-repo %}
-2. In your repository, choose a project board. You can use an existing project, or you can create a new project. For more information about creating a project, see "[Creating a project board](/github/managing-your-work-on-github/creating-a-project-board)."
-3. {% data reusables.actions.make-workflow-file %}
-4. Copy the following YAML contents into your workflow file.
+1.  {% data reusables.actions.choose-repo %}
+2.  In your repository, choose a project board. You can use an existing project, or you can create a new project. For more information about creating a project, see "[Creating a project board](/github/managing-your-work-on-github/creating-a-project-board)."
+3.  {% data reusables.actions.make-workflow-file %}
+4.  Copy the following YAML contents into your workflow file.
 
-    ```yaml{:copy}
-{% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
+        ```yaml{:copy}
 
-    name: Move assigned card
-    on:
-      issues:
-        types:
-          - assigned
-    jobs:
-      move-assigned-card:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: alex-page/github-project-automation-plus@5bcba1c1c091a222584d10913e5c060d32c44044
-            with:
-              project: Docs Work
-              column: In Progress
-              repo-token: {% raw %}${{ secrets.PERSONAL_ACCESS_TOKEN }}{% endraw %}
-    ```
+    {% indented_data_reference reusables.actions.actions-not-certified-by-github-comment spaces=4 %}
 
-5. Customize the parameters in your workflow file:
-   - Change the value for `project` to the name of your project board. If you have multiple project boards with the same name, the `alex-page/github-project-automation-plus` action will act on all projects with the specified name.
-   - Change the value for `column` to the name of the column where you want issues to move when they are assigned.
-   - Change the value for `repo-token`:
-     1. Create a personal access token with the `repo` scope. For more information, see "[Creating a personal access token](/github/authenticating-to-github/creating-a-personal-access-token)."
-     1. Store this personal access token as a secret in your repository. For more information about storing secrets, see "[Encrypted secrets](/actions/reference/encrypted-secrets)."
-     1. In your workflow file, replace `PERSONAL_ACCESS_TOKEN` with the name of your secret.
-6. {% data reusables.actions.commit-workflow %}
+        name: Move assigned card
+        on:
+          issues:
+            types:
+              - assigned
+        jobs:
+          move-assigned-card:
+            runs-on: ubuntu-latest
+            steps:
+              - uses: alex-page/github-project-automation-plus@5bcba1c1c091a222584d10913e5c060d32c44044
+                with:
+                  project: Docs Work
+                  column: In Progress
+                  repo-token: {% raw %}${{ secrets.PERSONAL_ACCESS_TOKEN }}{% endraw %}
+        ```
+
+5.  Customize the parameters in your workflow file:
+    - Change the value for `project` to the name of your project board. If you have multiple project boards with the same name, the `alex-page/github-project-automation-plus` action will act on all projects with the specified name.
+    - Change the value for `column` to the name of the column where you want issues to move when they are assigned.
+    - Change the value for `repo-token`:
+      1. Create a personal access token with the `repo` scope. For more information, see "[Creating a personal access token](/github/authenticating-to-github/creating-a-personal-access-token)."
+      1. Store this personal access token as a secret in your repository. For more information about storing secrets, see "[Encrypted secrets](/actions/reference/encrypted-secrets)."
+      1. In your workflow file, replace `PERSONAL_ACCESS_TOKEN` with the name of your secret.
+6.  {% data reusables.actions.commit-workflow %}
 
 ## Testing the workflow
 

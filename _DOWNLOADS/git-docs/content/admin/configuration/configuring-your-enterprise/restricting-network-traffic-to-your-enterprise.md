@@ -3,7 +3,7 @@ title: Restricting network traffic to your enterprise
 shortTitle: Restricting network traffic
 intro: You can use an IP allow list to restrict access to your enterprise to connections from specified IP addresses.
 versions:
-  ghae: '*'
+  ghae: "*"
 type: how_to
 topics:
   - Access management
@@ -14,13 +14,14 @@ topics:
 redirect_from:
   - /admin/configuration/restricting-network-traffic-to-your-enterprise
 ---
+
 ## About IP allow lists
 
 By default, authorized users can access your enterprise from any IP address. Enterprise owners can restrict access to assets owned by organizations in an enterprise account by configuring an allow list for specific IP addresses. {% data reusables.identity-and-permissions.ip-allow-lists-example-and-restrictions %}
 
 {% data reusables.identity-and-permissions.ip-allow-lists-cidr-notation %}
 
-{% data reusables.identity-and-permissions.ip-allow-lists-enable %} {% data reusables.identity-and-permissions.ip-allow-lists-enterprise %} 
+{% data reusables.identity-and-permissions.ip-allow-lists-enable %} {% data reusables.identity-and-permissions.ip-allow-lists-enterprise %}
 
 You can also configure allowed IP addresses for an individual organization. For more information, see "[Managing allowed IP addresses for your organization](/organizations/keeping-your-organization-secure/managing-allowed-ip-addresses-for-your-organization)."
 
@@ -46,9 +47,10 @@ For instance-level restrictions using Azure NSGs, contact {% data variables.cont
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.security-tab %}
+
 1. Under "IP allow list", select **Enable IP allow list**.
-  ![Checkbox to allow IP addresses](/assets/images/help/security/enable-ip-allowlist-enterprise-checkbox.png)
-4. Click **Save**.
+   ![Checkbox to allow IP addresses](/assets/images/help/security/enable-ip-allowlist-enterprise-checkbox.png)
+2. Click **Save**.
 
 ## Editing an allowed IP address
 
@@ -57,8 +59,7 @@ For instance-level restrictions using Azure NSGs, contact {% data variables.cont
 {% data reusables.enterprise-accounts.security-tab %}
 {% data reusables.identity-and-permissions.ip-allow-lists-edit-entry %}
 {% data reusables.identity-and-permissions.ip-allow-lists-edit-ip %}
-{% data reusables.identity-and-permissions.ip-allow-lists-edit-description %}
-8. Click **Update**.
+{% data reusables.identity-and-permissions.ip-allow-lists-edit-description %} 8. Click **Update**.
 
 ## Deleting an allowed IP address
 

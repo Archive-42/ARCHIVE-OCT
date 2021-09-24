@@ -1,10 +1,10 @@
 ---
 title: About GitHub CLI
-intro: '{% data reusables.cli.cli-intro %}'
+intro: "{% data reusables.cli.cli-intro %}"
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - CLI
 type: overview
@@ -13,6 +13,7 @@ redirect_from:
   - /github/getting-started-with-github/using-github/github-cli
   - /actions/guides/managing-github-actions-with-github-cli
 ---
+
 ## About {% data variables.product.prodname_cli %}
 
 {% data reusables.cli.about-cli %}

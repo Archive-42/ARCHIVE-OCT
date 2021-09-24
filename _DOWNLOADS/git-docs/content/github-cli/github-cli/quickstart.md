@@ -1,10 +1,10 @@
 ---
 title: GitHub CLI quickstart
-intro: 'Start using {% data variables.product.prodname_cli %} to work with {% data variables.product.company_short %} in the command line.'
+intro: "Start using {% data variables.product.prodname_cli %} to work with {% data variables.product.company_short %} in the command line."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - CLI
 type: overview
@@ -21,18 +21,19 @@ shortTitle: Quickstart
 1. [Install](https://github.com/cli/cli#installation) {% data variables.product.prodname_cli %} on macOS, Windows, or Linux.
 1. In the command line, authenticate to {% data variables.product.company_short %}.
 
-  ```shell
-  gh auth login
-  ```
+```shell
+gh auth login
+```
 
-  {% ifversion not fpt %}
-  To authenticate to {% data variables.product.product_location %}, use the `--hostname` flag.
+{% ifversion not fpt %}
+To authenticate to {% data variables.product.product_location %}, use the `--hostname` flag.
 
-  ```shell
-  gh auth login --hostname <em>hostname</em>
-  ```
+```shell
+gh auth login --hostname <em>hostname</em>
+```
 
-  {% endif %}
+{% endif %}
+
 1. Start working with {% data variables.product.company_short %} in the command line. For example, find an issue to work on with `gh issue status` or `gh issue list --assignee @me`. Create a pull request with `gh pr create`. Review a pull request with `gh pr checkout`, `gh pr diff` and `gh pr review`.
 
 ## Next steps

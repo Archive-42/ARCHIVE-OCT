@@ -5,8 +5,8 @@ intro: You can configure your enterprise to suit your organization's needs.
 redirect_from:
   - /enterprise/admin/configuration
 versions:
-  ghes: '*'
-  ghae: '*'
+  ghes: "*"
+  ghae: "*"
 topics:
   - Enterprise
 children:
@@ -14,6 +14,7 @@ children:
   - /configuring-network-settings
   - /managing-connections-between-github-enterprise-server-and-github-enterprise-cloud
 ---
+
 {% ifversion ghes %}
 {% note %}
 

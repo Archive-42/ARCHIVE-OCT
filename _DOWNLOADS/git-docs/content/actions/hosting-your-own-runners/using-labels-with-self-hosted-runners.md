@@ -2,9 +2,9 @@
 title: Using labels with self-hosted runners
 intro: You can use labels to organize your self-hosted runners based on their characteristics.
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 shortTitle: Label runners
 ---
@@ -24,9 +24,10 @@ For information on how to use labels to route jobs to specific types of self-hos
 {% data reusables.github-actions.self-hosted-runner-list %}
 {% data reusables.github-actions.self-hosted-runner-list-group %}
 {% data reusables.github-actions.self-hosted-runner-labels-view-assigned-labels %}
+
 1. In the "Filter labels" field, type the name of your new label, and click **Create new label**.
-    ![Add runner label](/assets/images/help/settings/actions-add-runner-label.png)
-    
+   ![Add runner label](/assets/images/help/settings/actions-add-runner-label.png)
+
 The custom label is created and assigned to the self-hosted runner. Custom labels can be removed from self-hosted runners, but they currently can't be manually deleted. {% data reusables.github-actions.actions-unused-labels %}
 
 ## Assigning a label to a self-hosted runner
@@ -35,7 +36,8 @@ The custom label is created and assigned to the self-hosted runner. Custom label
 {% data reusables.github-actions.self-hosted-runner-list %}
 {% data reusables.github-actions.self-hosted-runner-list-group %}
 {% data reusables.github-actions.self-hosted-runner-labels-view-assigned-labels %}
-1. Click on a label to assign it to your self-hosted runner. 
+
+1. Click on a label to assign it to your self-hosted runner.
 
 ## Removing a custom label from a self-hosted runner
 
@@ -43,17 +45,18 @@ The custom label is created and assigned to the self-hosted runner. Custom label
 {% data reusables.github-actions.self-hosted-runner-list %}
 {% data reusables.github-actions.self-hosted-runner-list-group %}
 {% data reusables.github-actions.self-hosted-runner-labels-view-assigned-labels %}
+
 1. Click on the assigned label to remove it from your self-hosted runner. {% data reusables.github-actions.actions-unused-labels %}
 
 ## Using the configuration script to create and assign labels
 
-You can use the configuration script on the self-hosted runner to create and assign custom labels. For example, this command assigns a label named `gpu` to the self-hosted runner. 
+You can use the configuration script on the self-hosted runner to create and assign custom labels. For example, this command assigns a label named `gpu` to the self-hosted runner.
 
 ```shell
 ./config.sh --labels gpu
 ```
 
-The label is created if it does not already exist. You can also use this approach to assign the default labels to runners, such as `x64` or `linux`. When default labels are assigned using the configuration script, {% data variables.product.prodname_actions %} accepts them as given and does not validate that the runner is actually using that operating system or architecture. 
+The label is created if it does not already exist. You can also use this approach to assign the default labels to runners, such as `x64` or `linux`. When default labels are assigned using the configuration script, {% data variables.product.prodname_actions %} accepts them as given and does not validate that the runner is actually using that operating system or architecture.
 
 You can use comma separation to assign multiple labels. For example:
 

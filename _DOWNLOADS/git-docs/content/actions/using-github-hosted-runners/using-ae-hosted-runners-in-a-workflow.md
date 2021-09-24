@@ -1,8 +1,8 @@
 ---
 title: Using AE hosted runners in a workflow
-intro: 'You can use labels to send jobs to a pool of {% data variables.actions.hosted_runner %}s.'
+intro: "You can use labels to send jobs to a pool of {% data variables.actions.hosted_runner %}s."
 versions:
-  ghae: '*'
+  ghae: "*"
 shortTitle: Use AE hosted runners
 ---
 
@@ -26,9 +26,9 @@ For more information, see "[Workflow syntax for {% data variables.product.prodna
 
 ## Using custom labels to route jobs
 
-You can create custom labels and assign them to your {% data variables.actions.hosted_runner %}s at any time. Custom labels let you send jobs to particular types of runners, based on how they're labeled. 
+You can create custom labels and assign them to your {% data variables.actions.hosted_runner %}s at any time. Custom labels let you send jobs to particular types of runners, based on how they're labeled.
 
-For example, if you have a job that requires a specific software package, you can create a custom label called `octocat` and assign it to the runners that have the package installed. An {% data variables.actions.hosted_runner %} that matches all the assigned labels will then be eligible to run the job. 
+For example, if you have a job that requires a specific software package, you can create a custom label called `octocat` and assign it to the runners that have the package installed. An {% data variables.actions.hosted_runner %} that matches all the assigned labels will then be eligible to run the job.
 
 This example shows a job that uses multiple labels:
 

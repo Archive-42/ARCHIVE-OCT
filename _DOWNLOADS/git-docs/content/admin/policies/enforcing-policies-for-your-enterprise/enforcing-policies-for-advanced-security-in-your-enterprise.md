@@ -1,9 +1,9 @@
 ---
 title: Enforcing policies for Advanced Security in your enterprise
-intro: 'Enterprise owners can enforce policies to manage {% data variables.product.prodname_GH_advanced_security %} features for organizations on {% data variables.product.product_location %}.'
-product: '{% data reusables.gated-features.ghas %}'
+intro: "Enterprise owners can enforce policies to manage {% data variables.product.prodname_GH_advanced_security %} features for organizations on {% data variables.product.product_location %}."
+product: "{% data reusables.gated-features.ghas %}"
 versions:
-  ghes: '>=3.1'
+  ghes: ">=3.1"
   ghae: next
 type: how_to
 topics:
@@ -16,6 +16,7 @@ redirect_from:
   - /admin/policies/enforcing-policies-for-advanced-security-in-your-enterprise
 shortTitle: Advanced Security policies
 ---
+
 ## About {% data variables.product.prodname_GH_advanced_security %}
 
 {% data reusables.advanced-security.ghas-helps-developers %}

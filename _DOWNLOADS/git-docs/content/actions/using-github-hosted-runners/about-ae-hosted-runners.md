@@ -1,19 +1,16 @@
 ---
 title: About AE hosted runners
-intro: '{% data variables.product.prodname_ghe_managed %} offers customizable and security hardened hosted virtual machines to run {% data variables.product.prodname_actions %} workflows. You can select the hardware, bring your own machine image, and enable an IP address for networking with your {% data variables.actions.hosted_runner %}.'
-product: '{% data reusables.gated-features.actions %}'
+intro: "{% data variables.product.prodname_ghe_managed %} offers customizable and security hardened hosted virtual machines to run {% data variables.product.prodname_actions %} workflows. You can select the hardware, bring your own machine image, and enable an IP address for networking with your {% data variables.actions.hosted_runner %}."
+product: "{% data reusables.gated-features.actions %}"
 versions:
-  ghae: '*'
+  ghae: "*"
 ---
-
-
-
 
 {% data reusables.actions.ae-beta %}
 
 ## About {% data variables.actions.hosted_runner %}s
 
-An {% data variables.actions.hosted_runner %} is a virtual machine hosted by {% data variables.product.prodname_dotcom %} with the {% data variables.product.prodname_actions %} runner service installed. 
+An {% data variables.actions.hosted_runner %} is a virtual machine hosted by {% data variables.product.prodname_dotcom %} with the {% data variables.product.prodname_actions %} runner service installed.
 
 {% data variables.product.prodname_ghe_managed %} lets you create and customize {% data variables.actions.hosted_runner %}s using Ubuntu or Windows images; you can select the size of machine you want and configure security hardened networking for them. {% data variables.actions.hosted_runner %}s are fully managed and auto-scaled by {% data variables.product.prodname_dotcom %}.
 
@@ -38,6 +35,7 @@ During the {% data variables.actions.hosted_runner %} beta, you can manage your 
 {% data variables.product.prodname_actions %} is currently in beta for {% data variables.product.prodname_ghe_managed %}. During this beta period, {% data variables.actions.hosted_runner %}s are not billed, and can be used for free.
 
 Once the beta ends, billed usage will include the full uptime of active instances in your AE hosted runner sets. This includes:
+
 - Job time - minutes spent running Actions job.
 - Management - minutes spent re-imaging machines and any idle time created as a result of desired auto-scale behavior.
 
@@ -88,11 +86,11 @@ Windows virtual machines are configured to run as administrators with User Accou
 
 {% data variables.product.prodname_dotcom %} executes actions and shell commands in specific directories on the virtual machine. The file paths on virtual machines are not static. Use the environment variables {% data variables.product.prodname_dotcom %} provides to construct file paths for the `home`, `workspace`, and `workflow` directories.
 
-| Directory | Environment variable | Description |
-|-----------|----------------------|-------------|
-| `home` | `HOME` | Contains user-related data. For example, this directory could contain credentials from a login attempt. |
-| `workspace` | `GITHUB_WORKSPACE` | Actions and shell commands execute in this directory. An action can modify the contents of this directory, which subsequent actions can access. |
-| `workflow/event.json` | `GITHUB_EVENT_PATH` | The `POST` payload of the webhook event that triggered the workflow. {% data variables.product.prodname_dotcom %} rewrites this each time an action executes to isolate file content between actions.
+| Directory             | Environment variable | Description                                                                                                                                                                                           |
+| --------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `home`                | `HOME`               | Contains user-related data. For example, this directory could contain credentials from a login attempt.                                                                                               |
+| `workspace`           | `GITHUB_WORKSPACE`   | Actions and shell commands execute in this directory. An action can modify the contents of this directory, which subsequent actions can access.                                                       |
+| `workflow/event.json` | `GITHUB_EVENT_PATH`  | The `POST` payload of the webhook event that triggered the workflow. {% data variables.product.prodname_dotcom %} rewrites this each time an action executes to isolate file content between actions. |
 
 For a list of the environment variables {% data variables.product.prodname_dotcom %} creates for each workflow, see "[Using environment variables](/github/automating-your-workflow-with-github-actions/using-environment-variables)."
 

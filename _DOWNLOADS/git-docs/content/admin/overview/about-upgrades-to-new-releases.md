@@ -1,10 +1,10 @@
 ---
 title: About upgrades to new releases
 shortTitle: About upgrades
-intro: '{% ifversion ghae %}Your {% data variables.product.product_name %} enterprise is updated with the latest features and bug fixes on a regular basis by {% data variables.product.company_short %}.{% else %}You can benefit from new features and bug fixes for {% data variables.product.product_name %} by upgrading your enterprise to a newly released version.{% endif %}'
+intro: "{% ifversion ghae %}Your {% data variables.product.product_name %} enterprise is updated with the latest features and bug fixes on a regular basis by {% data variables.product.company_short %}.{% else %}You can benefit from new features and bug fixes for {% data variables.product.product_name %} by upgrading your enterprise to a newly released version.{% endif %}"
 versions:
-  ghes: '>=3.0'
-  ghae: '*'
+  ghes: ">=3.0"
+  ghae: "*"
 type: overview
 topics:
   - Enterprise
@@ -17,7 +17,7 @@ Major releases include new functionality and feature upgrades and typically occu
 
 {% ifversion ghes %}
 
-Starting with {% data variables.product.prodname_ghe_server %} 3.0, all major releases begin with at least one release candidate. Release candidates are proposed major releases, with a complete feature set. There may be bugs or issues in a release candidate which can only be found through feedback from customers actually using {% data variables.product.product_name %}. 
+Starting with {% data variables.product.prodname_ghe_server %} 3.0, all major releases begin with at least one release candidate. Release candidates are proposed major releases, with a complete feature set. There may be bugs or issues in a release candidate which can only be found through feedback from customers actually using {% data variables.product.product_name %}.
 
 You can get early access to the latest features by testing a release candidate as soon as the release candidate is available. You can upgrade to a release candidate from a supported version and can upgrade from the release candidate to later versions when released. You should upgrade any environment running a release candidate as soon as the release is generally available. For more information, see "[Upgrade requirements](/admin/enterprise-management/upgrade-requirements)."
 
@@ -43,7 +43,7 @@ To upgrade your enterprise to a new release, see "[Release notes](/enterprise-se
 
 ## Further reading
 
-- [ {% data variables.product.prodname_roadmap %} ]( {% data variables.product.prodname_roadmap_link %} ) in the  `github/roadmap` repository
-{% ifversion ghae %}
+- [ {% data variables.product.prodname_roadmap %} ]( {% data variables.product.prodname_roadmap_link %} ) in the `github/roadmap` repository
+  {% ifversion ghae %}
 - [ {% data variables.product.prodname_ghe_managed %} release notes](/admin/release-notes)
-{% endif %}
+  {% endif %}

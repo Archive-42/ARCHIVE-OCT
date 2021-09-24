@@ -1,20 +1,19 @@
 ---
 title: Setting up a trial of GitHub Enterprise Cloud
-intro: 'You can try {% data variables.product.prodname_ghe_cloud %} for free.'
+intro: "You can try {% data variables.product.prodname_ghe_cloud %} for free."
 redirect_from:
   - /articles/setting-up-a-trial-of-github-enterprise-cloud
   - /github/getting-started-with-github/setting-up-a-trial-of-github-enterprise-cloud
   - /github/getting-started-with-github/signing-up-for-github/setting-up-a-trial-of-github-enterprise-cloud
 versions:
-  fpt: '*'
-  ghes: '*'
+  fpt: "*"
+  ghes: "*"
 topics:
   - Accounts
 shortTitle: Enterprise Cloud trial
 ---
 
 {% data reusables.enterprise.ghec-cta-button %}
-
 
 ## About {% data variables.product.prodname_ghe_cloud %}
 
@@ -61,7 +60,5 @@ Downgrading to {% data variables.product.prodname_free_team %} for organizations
 
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
-{% data reusables.organizations.billing_plans %}
-5. Under "{% data variables.product.prodname_ghe_cloud %} Free Trial", click **Buy Enterprise** or **Downgrade to Team**.
-  ![Buy Enterprise and Downgrade to Team buttons](/assets/images/help/organizations/finish-trial-buttons.png)
-6. Follow the prompts to enter your payment method, then click **Submit**.
+{% data reusables.organizations.billing_plans %} 5. Under "{% data variables.product.prodname_ghe_cloud %} Free Trial", click **Buy Enterprise** or **Downgrade to Team**.
+![Buy Enterprise and Downgrade to Team buttons](/assets/images/help/organizations/finish-trial-buttons.png) 6. Follow the prompts to enter your payment method, then click **Submit**.

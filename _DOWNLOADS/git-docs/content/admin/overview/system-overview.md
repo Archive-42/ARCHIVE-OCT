@@ -1,11 +1,11 @@
 ---
 title: System overview
-intro: '{% data variables.product.prodname_ghe_server %} is your organization''s private copy of {% data variables.product.prodname_dotcom %} contained within a virtual appliance, hosted on premises or in the cloud, that you configure and control.'
+intro: "{% data variables.product.prodname_ghe_server %} is your organization's private copy of {% data variables.product.prodname_dotcom %} contained within a virtual appliance, hosted on premises or in the cloud, that you configure and control."
 redirect_from:
   - /enterprise/admin/installation/system-overview
   - /enterprise/admin/overview/system-overview
 versions:
-  ghes: '*'
+  ghes: "*"
 type: overview
 topics:
   - Enterprise
@@ -17,23 +17,25 @@ topics:
 
 ## Storage architecture
 
-{% data variables.product.prodname_ghe_server %} requires two storage volumes, one mounted to the *root filesystem* path (`/`) and the other to the *user filesystem* path (`/data/user`). This architecture simplifies the upgrade, rollback, and recovery procedures by separating the running software environment from persistent application data.
+{% data variables.product.prodname_ghe_server %} requires two storage volumes, one mounted to the _root filesystem_ path (`/`) and the other to the _user filesystem_ path (`/data/user`). This architecture simplifies the upgrade, rollback, and recovery procedures by separating the running software environment from persistent application data.
 
 The root filesystem is included in the distributed machine image. It contains the base operating system and the {% data variables.product.prodname_ghe_server %} application environment. The root filesystem should be treated as ephemeral. Any data on the root filesystem will be replaced when upgrading to future {% data variables.product.prodname_ghe_server %} releases.
 
 The root filesystem contains:
-  - Custom certificate authority (CA) certificates (in */usr/local/share/ca-certificates*)
-  - Custom networking configurations
-  - Custom firewall configurations
-  - The replication state
+
+- Custom certificate authority (CA) certificates (in _/usr/local/share/ca-certificates_)
+- Custom networking configurations
+- Custom firewall configurations
+- The replication state
 
 The user filesystem contains user configuration and data, such as:
-  - Git repositories
-  - Databases
-  - Search indexes
-  - Content published on {% data variables.product.prodname_pages %} sites
-  - Large files from {% data variables.large_files.product_name_long %}
-  - Pre-receive hook environments
+
+- Git repositories
+- Databases
+- Search indexes
+- Content published on {% data variables.product.prodname_pages %} sites
+- Large files from {% data variables.large_files.product_name_long %}
+- Pre-receive hook environments
 
 ## Deployment options
 
@@ -137,6 +139,7 @@ Access and audit logs include information like the following.
 You can see a complete list of dependencies in your appliance's version of {% data variables.product.prodname_ghe_server %}, as well as each project's license, at `http(s)://HOSTNAME/site/credits`.
 
 Tarballs with a full list of dependencies and associated metadata are available on your appliance:
+
 - For dependencies common to all platforms, at `/usr/local/share/enterprise/dependencies-<GHE version>-base.tar.gz`
 - For dependencies specific to a platform, at `/usr/local/share/enterprise/dependencies-<GHE version>-<platform>.tar.gz`
 
@@ -146,4 +149,4 @@ Tarballs are also available, with a full list of dependencies and metadata, at `
 
 - "[Setting up a trial of {% data variables.product.prodname_ghe_server %}](/articles/setting-up-a-trial-of-github-enterprise-server)"
 - "[Setting up a {% data variables.product.prodname_ghe_server %} instance](/enterprise/{{ currentVersion }}/admin/guides/installation/setting-up-a-github-enterprise-server-instance)"
-- [ {% data variables.product.prodname_roadmap %} ]( {% data variables.product.prodname_roadmap_link %} ) in the  `github/roadmap` repository
+- [ {% data variables.product.prodname_roadmap %} ]( {% data variables.product.prodname_roadmap_link %} ) in the `github/roadmap` repository

@@ -1,17 +1,18 @@
 ---
 title: Integrate GitHub Classroom with an IDE
 shortTitle: Integrate with an IDE
-intro: 'You can preconfigure a supported integrated development environment (IDE) for assignments you create in {% data variables.product.prodname_classroom %}.'
+intro: "You can preconfigure a supported integrated development environment (IDE) for assignments you create in {% data variables.product.prodname_classroom %}."
 versions:
-  fpt: '*'
+  fpt: "*"
 redirect_from:
   - /education/manage-coursework-with-github-classroom/online-ide-integrations
   - /education/manage-coursework-with-github-classroom/integrate-github-classroom-with-an-online-ide
   - /education/manage-coursework-with-github-classroom/integrate-github-classroom-with-an-ide/integrate-github-classroom-with-an-online-ide
 ---
+
 ## About integration with an IDE
 
-{% data reusables.classroom.about-online-ides %} 
+{% data reusables.classroom.about-online-ides %}
 
 After a student accepts an assignment with an IDE, the README file in the student's assignment repository will contain a button to open the assignment in the IDE. The student can begin working immediately, and no additional configuration is necessary.
 
@@ -19,12 +20,12 @@ After a student accepts an assignment with an IDE, the README file in the studen
 
 {% data variables.product.prodname_classroom %} supports the following IDEs. You can learn more about the student experience for each IDE.
 
-| IDE | More information |
-| :- | :- |
+| IDE                       | More information                                                                                                                                                                           |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Microsoft MakeCode Arcade | "[About using MakeCode Arcade with {% data variables.product.prodname_classroom %}](/education/manage-coursework-with-github-classroom/about-using-makecode-arcade-with-github-classroom)" |
-| Visual Studio Code | [{% data variables.product.prodname_classroom %} extension](http://aka.ms/classroom-vscode-ext) in the Visual Studio Marketplace |
+| Visual Studio Code        | [{% data variables.product.prodname_classroom %} extension](http://aka.ms/classroom-vscode-ext) in the Visual Studio Marketplace                                                           |
 
-We know cloud IDE integrations are important to your classroom and are working to bring more options. 
+We know cloud IDE integrations are important to your classroom and are working to bring more options.
 
 ## Configuring an IDE for an assignment
 

@@ -2,16 +2,16 @@
 title: Storing workflow data as artifacts
 shortTitle: Storing workflow artifacts
 intro: Artifacts allow you to share data between jobs in a workflow and store data once that workflow has completed.
-product: '{% data reusables.gated-features.actions %}'
+product: "{% data reusables.gated-features.actions %}"
 redirect_from:
   - /articles/persisting-workflow-data-using-artifacts
   - /github/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts
   - /actions/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts
   - /actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 type: tutorial
 topics:
   - Workflows
@@ -50,8 +50,8 @@ Artifacts are uploaded during a workflow run, and you can view an artifact's nam
 
 To share data between jobs:
 
-* **Uploading files**: Give the uploaded file a name and upload the data before the job ends.
-* **Downloading files**: You can only download artifacts that were uploaded during the same workflow run. When you download a file, you can reference it by name.
+- **Uploading files**: Give the uploaded file a name and upload the data before the job ends.
+- **Downloading files**: You can only download artifacts that were uploaded during the same workflow run. When you download a file, you can reference it by name.
 
 The steps of a job share the same environment on the runner machine, but run in their own individual processes. To pass data between steps in a job, you can use inputs and outputs. For more information about inputs and outputs, see "[Metadata syntax for {% data variables.product.prodname_actions %}](/articles/metadata-syntax-for-github-actions)."
 
@@ -76,7 +76,7 @@ For example, your repository or a web application might contain SASS and TypeScr
 |       └── app.ts
 |   └── output
 |       └── test
-|   
+|
 ```
 
 This example shows you how to create a workflow for a Node.js project that builds the code in the `src` directory and runs the tests in the `tests` directory. You can assume that running `npm test` produces a code coverage report named `code-coverage.html` stored in the `output/test/` directory.
@@ -114,6 +114,7 @@ jobs:
 ```
 
 {% ifversion fpt or ghes > 2.22 or ghae %}
+
 ## Configuring a custom artifact retention period
 
 You can define a custom retention period for individual artifacts created by a workflow. When using a workflow to create a new artifact, you can use `retention-days` with the `upload-artifact` action. This example demonstrates how to set a custom retention period of 5 days for the artifact named `my-artifact`:
@@ -173,15 +174,18 @@ You can use the `upload-artifact` and `download-artifact` actions to share data 
 Jobs that are dependent on a previous job's artifacts must wait for the dependent job to complete successfully. This workflow uses the `needs` keyword to ensure that `job_1`, `job_2`, and `job_3` run sequentially. For example, `job_2` requires `job_1` using the `needs: job_1` syntax.
 
 Job 1 performs these steps:
+
 - Performs a math calculation and saves the result to a text file called `math-homework.txt`.
 - Uses the `upload-artifact` action to upload the `math-homework.txt` file with the artifact name `homework`.
 
 Job 2 uses the result in the previous job:
+
 - Downloads the `homework` artifact uploaded in the previous job. By default, the `download-artifact` action downloads artifacts to the workspace directory that the step is executing in. You can use the `path` input parameter to specify a different download directory.
 - Reads the value in the `math-homework.txt` file, performs a math calculation, and saves the result to `math-homework.txt` again, overwriting its contents.
 - Uploads the `math-homework.txt` file. This upload overwrites the previously uploaded artifact because they share the same name.
 
 Job 3 displays the result uploaded in the previous job:
+
 - Downloads the `homework` artifact.
 - Prints the result of the math equation to the log.
 

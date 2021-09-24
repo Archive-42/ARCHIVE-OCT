@@ -5,17 +5,18 @@ redirect_from:
   - /articles/create-a-repo
   - /github/getting-started-with-github/create-a-repo
   - /github/getting-started-with-github/quickstart/create-a-repo
-intro: 'To put your project up on {% data variables.product.product_location %}, you''ll need to create a repository for it to live in.'
+intro: "To put your project up on {% data variables.product.product_location %}, you'll need to create a repository for it to live in."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 topics:
   - Pull requests
   - Issues
   - Notifications
   - Accounts
 ---
+
 ## Create a repository
 
 {% ifversion fpt %}
@@ -42,16 +43,14 @@ You can store a variety of projects in {% data variables.product.product_name %}
 
 {% webui %}
 
-{% data reusables.repositories.create_new %}
-2. Type a short, memorable name for your repository. For example, "hello-world".
-  ![Field for entering a repository name](/assets/images/help/repository/create-repository-name.png)
-3. Optionally, add a description of your repository. For example, "My first repository on {% data variables.product.product_name %}."
-  ![Field for entering a repository description](/assets/images/help/repository/create-repository-desc.png)
+{% data reusables.repositories.create_new %} 2. Type a short, memorable name for your repository. For example, "hello-world".
+![Field for entering a repository name](/assets/images/help/repository/create-repository-name.png) 3. Optionally, add a description of your repository. For example, "My first repository on {% data variables.product.product_name %}."
+![Field for entering a repository description](/assets/images/help/repository/create-repository-desc.png)
 {% data reusables.repositories.choose-repo-visibility %}
 {% data reusables.repositories.initialize-with-readme %}
 {% data reusables.repositories.create-repo %}
 
-Congratulations! You've successfully created your first repository, and initialized it with a *README* file.
+Congratulations! You've successfully created your first repository, and initialized it with a _README_ file.
 
 {% endwebui %}
 
@@ -76,23 +75,23 @@ Congratulations! You've successfully created your first repository, and initiali
 
 {% webui %}
 
-A *[commit](/articles/github-glossary#commit)* is like a snapshot of all the files in your project at a particular point in time.
+A _[commit](/articles/github-glossary#commit)_ is like a snapshot of all the files in your project at a particular point in time.
 
-When you created your new repository, you initialized it with a *README* file. *README* files are a great place to describe your project in more detail, or add some documentation such as how to install or use your project. The contents of your *README* file are automatically shown on the front page of your repository.
+When you created your new repository, you initialized it with a _README_ file. _README_ files are a great place to describe your project in more detail, or add some documentation such as how to install or use your project. The contents of your _README_ file are automatically shown on the front page of your repository.
 
-Let's commit a change to the *README* file.
+Let's commit a change to the _README_ file.
 
-1. In your repository's list of files, click ***README.md***.
-  ![README file in file list](/assets/images/help/repository/create-commit-open-readme.png)
+1. In your repository's list of files, click **_README.md_**.
+   ![README file in file list](/assets/images/help/repository/create-commit-open-readme.png)
 2. Above the file's content, click {% octicon "pencil" aria-label="The edit icon" %}.
 3. On the **Edit file** tab, type some information about yourself.
-  ![New content in file](/assets/images/help/repository/edit-readme-light.png)
-{% data reusables.files.preview_change %}
-5. Review the changes you made to the file. You'll see the new content in green.
-  ![File preview view](/assets/images/help/repository/create-commit-review.png)
-{% data reusables.files.write_commit_message %}
-{% data reusables.files.choose_commit_branch %}
-{% data reusables.files.propose_file_change %}
+   ![New content in file](/assets/images/help/repository/edit-readme-light.png)
+   {% data reusables.files.preview_change %}
+4. Review the changes you made to the file. You'll see the new content in green.
+   ![File preview view](/assets/images/help/repository/create-commit-review.png)
+   {% data reusables.files.write_commit_message %}
+   {% data reusables.files.choose_commit_branch %}
+   {% data reusables.files.propose_file_change %}
 
 {% endwebui %}
 
@@ -100,44 +99,44 @@ Let's commit a change to the *README* file.
 
 Now that you have created a project, you can start committing changes.
 
-*README* files are a great place to describe your project in more detail, or add some documentation such as how to install or use your project. The contents of your *README* file are automatically shown on the front page of your repository. Follow these steps to add a *README* file. 
+_README_ files are a great place to describe your project in more detail, or add some documentation such as how to install or use your project. The contents of your _README_ file are automatically shown on the front page of your repository. Follow these steps to add a _README_ file.
 
 1. In the command line, navigate to the root directory of your new project. (This directory was created when you ran the `gh repo create` command.)
-1. Create a *README* file with some information about the project.
+1. Create a _README_ file with some information about the project.
 
-    ```shell
-    echo "info about this project" >> README.md
-    ```
+   ```shell
+   echo "info about this project" >> README.md
+   ```
 
 1. Enter `git status`. You will see that you have an untracked `README.md` file.
 
-    ```shell
-    $ git status
+   ```shell
+   $ git status
 
-    Untracked files:
-      (use "git add <file>..." to include in what will be committed)
-      README.md
+   Untracked files:
+     (use "git add <file>..." to include in what will be committed)
+     README.md
 
-    nothing added to commit but untracked files present (use "git add" to track)
-    ```
+   nothing added to commit but untracked files present (use "git add" to track)
+   ```
 
 1. Stage and commit the file.
 
-    ```shell
-    git add README.md && git commit -m "Add README"
-    ```
+   ```shell
+   git add README.md && git commit -m "Add README"
+   ```
 
 1. Push the changes to your branch.
 
-    ```shell
-    git push --set-upstream origin HEAD
-    ```
+   ```shell
+   git push --set-upstream origin HEAD
+   ```
 
 {% endcli %}
 
 ## Celebrate
 
-Congratulations! You have now created a repository, including a *README* file, and created your first commit on {% data variables.product.product_location %}.
+Congratulations! You have now created a repository, including a _README_ file, and created your first commit on {% data variables.product.product_location %}.
 
 {% webui %}
 

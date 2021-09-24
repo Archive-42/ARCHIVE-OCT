@@ -1,9 +1,9 @@
 ---
 title: Troubleshooting creation and deletion of Codespaces
-intro: 'This article provides troubleshooting steps for common issues you may experience when creating or deleting a codespace, including storage and configuration issues.'
-product: '{% data reusables.gated-features.codespaces %}'
+intro: "This article provides troubleshooting steps for common issues you may experience when creating or deleting a codespace, including storage and configuration issues."
+product: "{% data reusables.gated-features.codespaces %}"
 versions:
-  fpt: '*'
+  fpt: "*"
 type: reference
 topics:
   - Codespaces

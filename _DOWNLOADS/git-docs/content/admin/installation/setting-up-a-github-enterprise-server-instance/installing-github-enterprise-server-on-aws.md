@@ -1,16 +1,17 @@
 ---
 title: Installing GitHub Enterprise Server on AWS
-intro: 'To install {% data variables.product.prodname_ghe_server %} on Amazon Web Services (AWS), you must launch an Amazon Elastic Compute Cloud (EC2) instance and create and attach a separate Amazon Elastic Block Store (EBS) data volume.'
+intro: "To install {% data variables.product.prodname_ghe_server %} on Amazon Web Services (AWS), you must launch an Amazon Elastic Compute Cloud (EC2) instance and create and attach a separate Amazon Elastic Block Store (EBS) data volume."
 redirect_from:
   - /enterprise/admin/guides/installation/installing-github-enterprise-on-aws/
   - /enterprise/admin/installation/installing-github-enterprise-server-on-aws
   - /admin/installation/installing-github-enterprise-server-on-aws
 versions:
-  ghes: '*'
+  ghes: "*"
 topics:
   - Enterprise
 shortTitle: Install on AWS
 ---
+
 ## Prerequisites
 
 - {% data reusables.enterprise_installation.software-license %}
@@ -19,14 +20,14 @@ shortTitle: Install on AWS
 
 This guide assumes you are familiar with the following AWS concepts:
 
- - [Launching EC2 Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html)
- - [Managing EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
- - [Using Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) (For managing network access to your instance)
- - [Elastic IP Addresses (EIP)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) (Strongly recommended for production environments)
- - [EC2 and Virtual Private Cloud](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html) (If you plan to launch into a Virtual Private Cloud)
- - [AWS Pricing](https://aws.amazon.com/pricing/) (For calculating and managing costs)
+- [Launching EC2 Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html)
+- [Managing EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
+- [Using Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) (For managing network access to your instance)
+- [Elastic IP Addresses (EIP)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) (Strongly recommended for production environments)
+- [EC2 and Virtual Private Cloud](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html) (If you plan to launch into a Virtual Private Cloud)
+- [AWS Pricing](https://aws.amazon.com/pricing/) (For calculating and managing costs)
 
-For an architectural overview, see the "[AWS Architecture Diagram for Deploying GitHub Enterprise Server](/assets/images/installing-github-enterprise-server-on-aws.png)". 
+For an architectural overview, see the "[AWS Architecture Diagram for Deploying GitHub Enterprise Server](/assets/images/installing-github-enterprise-server-on-aws.png)".
 
 This guide recommends the principle of least privilege when setting up {% data variables.product.product_location %} on AWS. For more information, refer to the [AWS Identity and Access Management (IAM) documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
@@ -51,20 +52,19 @@ AMIs for {% data variables.product.prodname_ghe_server %} are available in the A
 ### Using the {% data variables.product.prodname_ghe_server %} portal to select an AMI
 
 {% data reusables.enterprise_installation.enterprise-download-procedural %}
-{% data reusables.enterprise_installation.download-appliance %}
-3. In the Select your platform drop-down menu, click **Amazon Web Services**.
-4. In the Select your AWS region drop-down menu, choose your desired region.
-5. Take note of the AMI ID that is displayed.
+{% data reusables.enterprise_installation.download-appliance %} 3. In the Select your platform drop-down menu, click **Amazon Web Services**. 4. In the Select your AWS region drop-down menu, choose your desired region. 5. Take note of the AMI ID that is displayed.
 
 ### Using the AWS CLI to select an AMI
 
 1. Using the AWS CLI, get a list of {% data variables.product.prodname_ghe_server %} images published by {% data variables.product.prodname_dotcom %}'s AWS owner IDs (`025577942450` for GovCloud, and `895557238572` for other regions). For more information, see "[describe-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html)" in the AWS documentation.
-  ```shell
-  aws ec2 describe-images \
-  --owners <em>OWNER ID</em> \
-  --query 'sort_by(Images,&Name)[*].{Name:Name,ImageID:ImageId}' \
-  --output=text
-  ```
+
+```shell
+aws ec2 describe-images \
+--owners <em>OWNER ID</em> \
+--query 'sort_by(Images,&Name)[*].{Name:Name,ImageID:ImageId}' \
+--output=text
+```
+
 2. Take note of the AMI ID for the latest {% data variables.product.prodname_ghe_server %} image.
 
 ## Creating a security group
@@ -72,19 +72,22 @@ AMIs for {% data variables.product.prodname_ghe_server %} are available in the A
 If you're setting up your AMI for the first time, you will need to create a security group and add a new security group rule for each port in the table below. For more information, see the AWS guide "[Using Security Groups](http://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-sg.html)."
 
 1. Using the AWS CLI, create a new security group. For more information, see "[create-security-group](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-security-group.html)" in the AWS documentation.
-  ```shell
-  $ aws ec2 create-security-group --group-name <em>SECURITY_GROUP_NAME</em> --description "<em>SECURITY GROUP DESCRIPTION</em>"
-  ```
+
+```shell
+$ aws ec2 create-security-group --group-name <em>SECURITY_GROUP_NAME</em> --description "<em>SECURITY GROUP DESCRIPTION</em>"
+```
 
 2. Take note of the security group ID (`sg-xxxxxxxx`) of your newly created security group.
 
 3. Create a security group rule for each of the ports in the table below. For more information, see "[authorize-security-group-ingress](http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html)" in the AWS documentation.
-  ```shell
-  $ aws ec2 authorize-security-group-ingress --group-id <em>SECURITY_GROUP_ID</em> --protocol <em>PROTOCOL</em> --port <em>PORT_NUMBER</em> --cidr <em>SOURCE IP RANGE</em>
-  ```
-  This table identifies what each port is used for.
 
-  {% data reusables.enterprise_installation.necessary_ports %}
+```shell
+$ aws ec2 authorize-security-group-ingress --group-id <em>SECURITY_GROUP_ID</em> --protocol <em>PROTOCOL</em> --port <em>PORT_NUMBER</em> --cidr <em>SOURCE IP RANGE</em>
+```
+
+This table identifies what each port is used for.
+
+{% data reusables.enterprise_installation.necessary_ports %}
 
 ## Creating the {% data variables.product.prodname_ghe_server %} instance
 
@@ -93,7 +96,7 @@ To create the instance, you'll need to launch an EC2 instance with your {% data 
 {% note %}
 
 **Note:** You can encrypt the data disk to gain an extra level of security and ensure that any data you write to your instance is protected. There is a slight performance impact when using encrypted disks. If you decide to encrypt your volume, we strongly recommend doing so **before** starting your instance for the first time.
- For more information, see the [Amazon guide on EBS encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
+For more information, see the [Amazon guide on EBS encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
 
 {% endnote %}
 
@@ -119,7 +122,7 @@ aws ec2 run-instances \
 
 ### Allocating an Elastic IP and associating it with the instance
 
-If this is a production instance, we strongly recommend allocating an Elastic IP (EIP) and associating it with the instance before proceeding to {% data variables.product.prodname_ghe_server %} configuration. Otherwise, the public IP address of the instance will not be retained after instance restarts. For more information, see "[Allocating an Elastic IP Address](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-allocating)" and "[Associating an Elastic IP Address with a Running Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating)" in the Amazon documentation.  
+If this is a production instance, we strongly recommend allocating an Elastic IP (EIP) and associating it with the instance before proceeding to {% data variables.product.prodname_ghe_server %} configuration. Otherwise, the public IP address of the instance will not be retained after instance restarts. For more information, see "[Allocating an Elastic IP Address](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-allocating)" and "[Associating an Elastic IP Address with a Running Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating)" in the Amazon documentation.
 
 Both primary and replica instances should be assigned separate EIPs in production High Availability configurations. For more information, see "[Configuring {% data variables.product.prodname_ghe_server %} for High Availability](/enterprise/{{ currentVersion }}/admin/guides/installation/configuring-github-enterprise-server-for-high-availability/)."
 

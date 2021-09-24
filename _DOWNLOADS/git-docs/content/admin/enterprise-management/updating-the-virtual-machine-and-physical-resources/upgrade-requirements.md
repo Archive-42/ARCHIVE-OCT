@@ -1,25 +1,27 @@
 ---
 title: Upgrade requirements
-intro: 'Before upgrading {% data variables.product.prodname_ghe_server %}, review these recommendations and requirements to plan your upgrade strategy.'
+intro: "Before upgrading {% data variables.product.prodname_ghe_server %}, review these recommendations and requirements to plan your upgrade strategy."
 redirect_from:
   - /enterprise/admin/installation/upgrade-requirements
   - /enterprise/admin/guides/installation/finding-the-current-github-enterprise-release/
   - /enterprise/admin/enterprise-management/upgrade-requirements
   - /admin/enterprise-management/upgrade-requirements
 versions:
-  ghes: '*'
+  ghes: "*"
 type: reference
 topics:
   - Enterprise
   - Upgrades
 ---
+
 {% note %}
 
 **Notes:**
+
 - To upgrade from {% data variables.product.prodname_enterprise %} 11.10.348 through {% data variables.product.current-340-version %}, you must first migrate to {% data variables.product.prodname_enterprise %} 2.1.23. For more information, see "[Migrating from {% data variables.product.prodname_enterprise %} 11.10.x to 2.1.23](/enterprise/{{ currentVersion }}/admin/guides/installation/migrating-from-github-enterprise-11-10-x-to-2-1-23)."
 - Upgrade packages are available at [enterprise.github.com](https://enterprise.github.com/releases) for supported versions. Verify the availability of the upgrade packages you will need to complete the upgrade. If a package is not available, contact {% data variables.contact.contact_ent_support %} for assistance.
 - If you're using {% data variables.product.prodname_ghe_server %} Clustering, see "[Upgrading a cluster](/enterprise/{{ currentVersion }}/admin/guides/clustering/upgrading-a-cluster/)" in the {% data variables.product.prodname_ghe_server %} Clustering Guide for specific instructions unique to clustering.
--   The release notes for {% data variables.product.prodname_ghe_server %} provide a comprehensive list of new features for every version of {% data variables.product.prodname_ghe_server %}. For more information, see the [releases page](https://enterprise.github.com/releases).
+- The release notes for {% data variables.product.prodname_ghe_server %} provide a comprehensive list of new features for every version of {% data variables.product.prodname_ghe_server %}. For more information, see the [releases page](https://enterprise.github.com/releases).
 
 {% endnote %}
 
@@ -38,9 +40,11 @@ topics:
 - A hotpatch may require downtime if the affected services (like kernel, MySQL, or Elasticsearch) require a VM reboot or a service restart. You'll be notified when a reboot or restart is required. You can complete the reboot or restart at a later time.
 - Additional root storage must be available when upgrading through hotpatching, as it installs multiple versions of certain services until the upgrade is complete. Pre-flight checks will notify you if you don't have enough root disk storage.
 - When upgrading through hotpatching, your instance cannot be too heavily loaded, as it may impact the hotpatching process. Pre-flight checks will consider the load average and the upgrade will fail if the load average is too high.- Upgrading to {% data variables.product.prodname_ghe_server %} 2.17 migrates your audit logs from Elasticsearch to MySQL. This migration also increases the amount of time and disk space it takes to restore a snapshot. Before migrating, check the number of bytes in your Elasticsearch audit log indices with this command:
-``` shell
+
+```shell
 curl -s http://localhost:9201/audit_log/_stats/store | jq ._all.primaries.store.size_in_bytes
 ```
+
 Use the number to estimate the amount of disk space the MySQL audit logs will need. The script also monitors your free disk space while the import is in progress. Monitoring this number is especially useful if your free disk space is close to the amount of disk space necessary for migration.
 
 {% data reusables.enterprise_installation.upgrade-hardware-requirements %}

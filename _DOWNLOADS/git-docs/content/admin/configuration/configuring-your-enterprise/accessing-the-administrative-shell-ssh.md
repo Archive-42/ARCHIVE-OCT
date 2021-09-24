@@ -11,9 +11,9 @@ redirect_from:
   - /enterprise/admin/installation/accessing-the-administrative-shell-ssh
   - /enterprise/admin/configuration/accessing-the-administrative-shell-ssh
   - /admin/configuration/accessing-the-administrative-shell-ssh
-intro: '{% data reusables.enterprise_site_admin_settings.about-ssh-access %}'
+intro: "{% data reusables.enterprise_site_admin_settings.about-ssh-access %}"
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Enterprise
@@ -21,6 +21,7 @@ topics:
   - SSH
 shortTitle: Access the admin shell (SSH)
 ---
+
 ## About administrative shell access
 
 If you have SSH access to the administrative shell, you can run {% data variables.product.prodname_ghe_server %}'s command line utilities. SSH access is also useful for troubleshooting, running backups, and configuring replication. Administrative SSH access is managed separately from Git SSH access and is accessible only via port 122.
@@ -36,9 +37,8 @@ To enable administrative SSH access, you must add your SSH public key to your in
 {% endtip %}
 
 {% data reusables.enterprise_site_admin_settings.access-settings %}
-{% data reusables.enterprise_site_admin_settings.management-console %}
-3. Under "SSH access", paste your key into the text box, then click **Add key**.
-  ![Text box and button for adding an SSH key](/assets/images/enterprise/settings/add-authorized-ssh-key-admin-shell.png)
+{% data reusables.enterprise_site_admin_settings.management-console %} 3. Under "SSH access", paste your key into the text box, then click **Add key**.
+![Text box and button for adding an SSH key](/assets/images/enterprise/settings/add-authorized-ssh-key-admin-shell.png)
 {% data reusables.enterprise_management_console.save-settings %}
 
 ## Connecting to the administrative shell over SSH

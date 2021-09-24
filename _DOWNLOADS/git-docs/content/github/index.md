@@ -4,11 +4,11 @@ redirect_from:
   - /articles/
   - /common-issues-and-questions/
   - /troubleshooting-common-issues/
-intro: 'Documentation, guides, and help topics for software developers, designers, and project managers. Covers using Git, pull requests, issues, wikis, gists, and everything you need to make the most of GitHub for development.'
+intro: "Documentation, guides, and help topics for software developers, designers, and project managers. Covers using Git, pull requests, issues, wikis, gists, and everything you need to make the most of GitHub for development."
 versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
+  fpt: "*"
+  ghes: "*"
+  ghae: "*"
 children:
   - /authenticating-to-github
   - /copilot
@@ -32,4 +32,3 @@ children:
   - /site-policy
   - /site-policy-deprecated
 ---
-

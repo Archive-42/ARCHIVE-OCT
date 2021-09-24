@@ -1,12 +1,12 @@
 ---
 title: Configuring high availability replication for a cluster
-intro: 'You can configure a passive replica of your entire {% data variables.product.prodname_ghe_server %} cluster in a different location, allowing your cluster to fail over to redundant nodes.'
+intro: "You can configure a passive replica of your entire {% data variables.product.prodname_ghe_server %} cluster in a different location, allowing your cluster to fail over to redundant nodes."
 miniTocMaxHeadingLevel: 3
 redirect_from:
   - /enterprise/admin/enterprise-management/configuring-high-availability-replication-for-a-cluster
   - /admin/enterprise-management/configuring-high-availability-replication-for-a-cluster
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Clustering
@@ -15,6 +15,7 @@ topics:
   - Infrastructure
 shortTitle: Configure HA replication
 ---
+
 ## About high availability replication for clusters
 
 You can configure a cluster deployment of {% data variables.product.prodname_ghe_server %} for high availability, where an identical set of passive nodes sync with the nodes in your active cluster. If hardware or software failures affect the datacenter with your active cluster, you can manually fail over to the replica nodes and continue processing user requests, minimizing the impact of the outage.
@@ -59,41 +60,41 @@ Before you define a secondary datacenter for your passive nodes, ensure that you
 
 3. Note the name of your cluster's primary datacenter. The `[cluster]` section at the top of the cluster configuration file defines the primary datacenter's name, using the `primary-datacenter` key-value pair. By default, the primary datacenter for your cluster is named `default`.
 
-    ```shell
-    [cluster]
-      mysql-master = <em>HOSTNAME</em>
-      redis-master = <em>HOSTNAME</em>
-      <strong>primary-datacenter = default</strong>
-    ```
+   ```shell
+   [cluster]
+     mysql-master = <em>HOSTNAME</em>
+     redis-master = <em>HOSTNAME</em>
+     <strong>primary-datacenter = default</strong>
+   ```
 
-    - Optionally, change the name of the primary datacenter to something more descriptive or accurate by editing the value of `primary-datacenter`.
+   - Optionally, change the name of the primary datacenter to something more descriptive or accurate by editing the value of `primary-datacenter`.
 
 4. {% data reusables.enterprise_clustering.configuration-file-heading %} Under each node's heading, add a new key-value pair to assign the node to a datacenter. Use the same value as `primary-datacenter` from step 3 above. For example, if you want to use the default name (`default`), add the following key-value pair to the section for each node.
 
-    ```
-    datacenter = default
-    ```
+   ```
+   datacenter = default
+   ```
 
-    When you're done, the section for each node in the cluster configuration file should look like the following example. {% data reusables.enterprise_clustering.key-value-pair-order-irrelevant %}
+   When you're done, the section for each node in the cluster configuration file should look like the following example. {% data reusables.enterprise_clustering.key-value-pair-order-irrelevant %}
 
-    ```shell
-    [cluster "<em>HOSTNAME</em>"]
-      <strong>datacenter = default</strong>
-      hostname = <em>HOSTNAME</em>
-      ipv4 = <em>IP ADDRESS</em>
-      ...
-    ...
-    ```
+   ```shell
+   [cluster "<em>HOSTNAME</em>"]
+     <strong>datacenter = default</strong>
+     hostname = <em>HOSTNAME</em>
+     ipv4 = <em>IP ADDRESS</em>
+     ...
+   ...
+   ```
 
-    {% note %}
+   {% note %}
 
-    **Note**: If you changed the name of the primary datacenter in step 3, find the `consul-datacenter` key-value pair in the section for each node and change the value to the renamed primary datacenter. For example, if you named the primary datacenter `primary`, use the following key-value pair for each node.
+   **Note**: If you changed the name of the primary datacenter in step 3, find the `consul-datacenter` key-value pair in the section for each node and change the value to the renamed primary datacenter. For example, if you named the primary datacenter `primary`, use the following key-value pair for each node.
 
-    ```
-    consul-datacenter = primary
-    ```
+   ```
+   consul-datacenter = primary
+   ```
 
-    {% endnote %}
+   {% endnote %}
 
 {% data reusables.enterprise_clustering.apply-configuration %}
 
@@ -112,69 +113,69 @@ To configure high availability, you must define a corresponding passive node for
 
 For an example configuration, see "[Example configuration](#example-configuration)."
 
-1. For each node in your cluster, provision a matching virtual machine with identical specifications, running the same version of  {% data variables.product.prodname_ghe_server %}. Note the IPv4 address and hostname for each new cluster node. For more information, see "[Prerequisites](#prerequisites)."
+1. For each node in your cluster, provision a matching virtual machine with identical specifications, running the same version of {% data variables.product.prodname_ghe_server %}. Note the IPv4 address and hostname for each new cluster node. For more information, see "[Prerequisites](#prerequisites)."
 
-    {% note %}
+   {% note %}
 
-    **Note**: If you're reconfiguring high availability after a failover, you can use the old nodes from the primary datacenter instead.
+   **Note**: If you're reconfiguring high availability after a failover, you can use the old nodes from the primary datacenter instead.
 
-    {% endnote %}
+   {% endnote %}
 
 {% data reusables.enterprise_clustering.ssh-to-a-node %}
 
 3. Back up your existing cluster configuration.
 
-    ```
-    cp /data/user/common/cluster.conf ~/$(date +%Y-%m-%d)-cluster.conf.backup
-    ```
+   ```
+   cp /data/user/common/cluster.conf ~/$(date +%Y-%m-%d)-cluster.conf.backup
+   ```
 
 4. Create a copy of your existing cluster configuration file in a temporary location, like _/home/admin/cluster-passive.conf_. Delete unique key-value pairs for IP addresses (`ipv*`), UUIDs (`uuid`), and public keys for WireGuard (`wireguard-pubkey`).
 
-    ```
-    grep -Ev "(?:|ipv|uuid|vpn|wireguard\-pubkey)" /data/user/common/cluster.conf > ~/cluster-passive.conf
-    ```
+   ```
+   grep -Ev "(?:|ipv|uuid|vpn|wireguard\-pubkey)" /data/user/common/cluster.conf > ~/cluster-passive.conf
+   ```
 
 5. Remove the `[cluster]` section from the temporary cluster configuration file that you copied in the previous step.
 
-    ```
-    git config -f ~/cluster-passive.conf --remove-section cluster
-    ```
+   ```
+   git config -f ~/cluster-passive.conf --remove-section cluster
+   ```
 
 6. Decide on a name for the secondary datacenter where you provisioned your passive nodes, then update the temporary cluster configuration file with the new datacenter name. Replace `SECONDARY` with the name you choose.
 
-    ```shell
-    sed -i 's/datacenter = default/datacenter = <em>SECONDARY</em>/g' ~/cluster-passive.conf
-    ```
+   ```shell
+   sed -i 's/datacenter = default/datacenter = <em>SECONDARY</em>/g' ~/cluster-passive.conf
+   ```
 
 7. Decide on a pattern for the passive nodes' hostnames.
 
-    {% warning %}
+   {% warning %}
 
-    **Warning**: Hostnames for passive nodes must be unique and differ from the hostname for the corresponding active node.
+   **Warning**: Hostnames for passive nodes must be unique and differ from the hostname for the corresponding active node.
 
-    {% endwarning %}
+   {% endwarning %}
 
 8. Open the temporary cluster configuration file from step 3 in a text editor. For example, you can use Vim.
 
-    ```shell
-    sudo vim ~/cluster-passive.conf
-    ```
+   ```shell
+   sudo vim ~/cluster-passive.conf
+   ```
 
 9. In each section within the temporary cluster configuration file, update the node's configuration. {% data reusables.enterprise_clustering.configuration-file-heading %}
 
-    - Change the quoted hostname in the section heading and the value for `hostname` within the section to the passive node's hostname, per the pattern you chose in step 7 above.
-    - Add a new key named `ipv4`, and set the value to the passive node's static IPv4 address.
-    - Add a new key-value pair, `replica = enabled`.
+   - Change the quoted hostname in the section heading and the value for `hostname` within the section to the passive node's hostname, per the pattern you chose in step 7 above.
+   - Add a new key named `ipv4`, and set the value to the passive node's static IPv4 address.
+   - Add a new key-value pair, `replica = enabled`.
 
-    ```shell
-    [cluster "<em>NEW PASSIVE NODE HOSTNAME</em>"]
-      ...
-      hostname = <em>NEW PASSIVE NODE HOSTNAME</em>
-      ipv4 = <em>NEW PASSIVE NODE IPV4 ADDRESS</em>
-      <strong>replica = enabled</strong>
-      ...
-    ...
-    ```
+   ```shell
+   [cluster "<em>NEW PASSIVE NODE HOSTNAME</em>"]
+     ...
+     hostname = <em>NEW PASSIVE NODE HOSTNAME</em>
+     ipv4 = <em>NEW PASSIVE NODE IPV4 ADDRESS</em>
+     <strong>replica = enabled</strong>
+     ...
+   ...
+   ```
 
 10. Append the contents of the temporary cluster configuration file that you created in step 4 to the active configuration file.
 
@@ -209,13 +210,13 @@ For an example configuration, see "[Example configuration](#example-configuratio
 
     {% endwarning %}
 
-13. Initialize the new cluster configuration. {% data reusables.enterprise.use-a-multiplexer %}
+12. Initialize the new cluster configuration. {% data reusables.enterprise.use-a-multiplexer %}
 
     ```shell
     ghe-cluster-config-init
     ```
 
-14. After the initialization finishes, {% data variables.product.prodname_ghe_server %} displays the following message.
+13. After the initialization finishes, {% data variables.product.prodname_ghe_server %} displays the following message.
 
     ```shell
     Finished cluster initialization
@@ -327,7 +328,7 @@ You can monitor the progress on any node in the cluster, using command-line tool
   ghe-dpages replication-status
   ```
 
-You can use `ghe-cluster-status` to review the overall health of your cluster. For more information, see  "[Command-line utilities](/enterprise/admin/configuration/command-line-utilities#ghe-cluster-status)."
+You can use `ghe-cluster-status` to review the overall health of your cluster. For more information, see "[Command-line utilities](/enterprise/admin/configuration/command-line-utilities#ghe-cluster-status)."
 
 ## Reconfiguring high availability replication after a failover
 
@@ -342,7 +343,6 @@ After a failover, you can reconfigure high availability in two ways. The method 
 2. Use the old active nodes as the new passive nodes.
 
 The process for reconfiguring high availability is identical to the initial configuration of high availability. For more information, see "[Creating a high availability replica for a cluster](#creating-a-high-availability-replica-for-a-cluster)."
-
 
 ## Disabling high availability replication for a cluster
 

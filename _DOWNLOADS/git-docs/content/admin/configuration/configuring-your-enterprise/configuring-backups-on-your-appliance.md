@@ -14,9 +14,9 @@ redirect_from:
   - /enterprise/admin/installation/configuring-backups-on-your-appliance
   - /enterprise/admin/configuration/configuring-backups-on-your-appliance
   - /admin/configuration/configuring-backups-on-your-appliance
-intro: 'As part of a disaster recovery plan, you can protect production data on {% data variables.product.product_location %} by configuring automated backups.'
+intro: "As part of a disaster recovery plan, you can protect production data on {% data variables.product.product_location %} by configuring automated backups."
 versions:
-  ghes: '*'
+  ghes: "*"
 type: how_to
 topics:
   - Backups
@@ -24,6 +24,7 @@ topics:
   - Fundamentals
   - Infrastructure
 ---
+
 ## About {% data variables.product.prodname_enterprise_backup_utilities %}
 
 {% data variables.product.prodname_enterprise_backup_utilities %} is a backup system you install on a separate host, which takes backup snapshots of {% data variables.product.product_location %} at regular intervals over a secure SSH network connection. You can use a snapshot to restore an existing {% data variables.product.prodname_ghe_server %} instance to a previous state from the backup host.
@@ -42,10 +43,10 @@ We recommend that the backup host and {% data variables.product.product_location
 
 Physical storage requirements will vary based on Git repository disk usage and expected growth patterns:
 
-| Hardware | Recommendation |
-| -------- | --------- |
-| **vCPUs**  | 2 |
-| **Memory** | 2 GB |
+| Hardware    | Recommendation                                      |
+| ----------- | --------------------------------------------------- |
+| **vCPUs**   | 2                                                   |
+| **Memory**  | 2 GB                                                |
 | **Storage** | Five times the primary instance's allocated storage |
 
 More resources may be required depending on your usage, such as user activity and selected integrations.
@@ -59,21 +60,26 @@ More resources may be required depending on your usage, such as user activity an
 {% endnote %}
 
 1. Download the latest [{% data variables.product.prodname_enterprise_backup_utilities %} release](https://github.com/github/backup-utils/releases) and extract the file with the `tar` command.
-  ```shell
-  $ tar -xzvf /path/to/github-backup-utils-v<em>MAJOR.MINOR.PATCH</em>.tar.gz	  
-  ```
+
+```shell
+$ tar -xzvf /path/to/github-backup-utils-v<em>MAJOR.MINOR.PATCH</em>.tar.gz
+```
+
 2. Copy the included `backup.config-example` file to `backup.config` and open in an editor.
 3. Set the `GHE_HOSTNAME` value to your primary {% data variables.product.prodname_ghe_server %} instance's hostname or IP address.
 4. Set the `GHE_DATA_DIR` value to the filesystem location where you want to store backup snapshots.
 5. Open your primary instance's settings page at `https://HOSTNAME/setup/settings` and add the backup host's SSH key to the list of authorized SSH keys. For more information, see [Accessing the administrative shell (SSH)](/enterprise/{{ currentVersion }}/admin/guides/installation/accessing-the-administrative-shell-ssh/).
-5. Verify SSH connectivity with {% data variables.product.product_location %} with the `ghe-host-check` command.
-  ```shell
-  $ bin/ghe-host-check		  
-  ```		  
-  6. To create an initial full backup, run the `ghe-backup` command.
-  ```shell
-  $ bin/ghe-backup		  
-  ```
+6. Verify SSH connectivity with {% data variables.product.product_location %} with the `ghe-host-check` command.
+
+```shell
+$ bin/ghe-host-check
+```
+
+6. To create an initial full backup, run the `ghe-backup` command.
+
+```shell
+$ bin/ghe-backup
+```
 
 For more information on advanced usage, see the [{% data variables.product.prodname_enterprise_backup_utilities %} README](https://github.com/github/backup-utils#readme).
 
@@ -121,5 +127,6 @@ $ ghe-restore -c 169.154.1.1
 {% endnote %}
 
 You can use these additional options with `ghe-restore` command:
+
 - The `-c` flag overwrites the settings, certificate, and license data on the target host even if it is already configured. Omit this flag if you are setting up a staging instance for testing purposes and you wish to retain the existing configuration on the target. For more information, see the "Using using backup and restore commands" section of the [{% data variables.product.prodname_enterprise_backup_utilities %} README](https://github.com/github/backup-utils#using-the-backup-and-restore-commands).
 - The `-s` flag allows you to select a different backup snapshot.

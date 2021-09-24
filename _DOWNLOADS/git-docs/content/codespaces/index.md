@@ -1,7 +1,7 @@
 ---
 title: GitHub Codespaces Documentation
 shortTitle: GitHub Codespaces
-intro: 'Create a codespace to start developing in a secure, configurable, and dedicated development environment that works how and where you want it to.'
+intro: "Create a codespace to start developing in a secure, configurable, and dedicated development environment that works how and where you want it to."
 introLinks:
   overview: /codespaces/overview
   quickstart: /codespaces/getting-started/quickstart
@@ -23,17 +23,17 @@ featuredLinks:
     - /codespaces/developing-in-codespaces/using-codespaces-in-visual-studio-code
     - /codespaces/setting-up-your-codespace/personalizing-codespaces-for-your-account
   popularHeading: Set up your project
-product_video: 'https://www.youtube-nocookie.com/embed/_W9B7qc9lVc'
+product_video: "https://www.youtube-nocookie.com/embed/_W9B7qc9lVc"
 community_redirect:
   name: Provide GitHub Feedback
-  href: 'https://github.com/github/feedback/discussions/categories/codespaces-feedback'
+  href: "https://github.com/github/feedback/discussions/categories/codespaces-feedback"
 redirect_from:
   - /github/developing-online-with-github-codespaces
   - /github/developing-online-with-codespaces
 layout: product-landing
 examples_source: data/product-examples/codespaces/code-examples.yml
 versions:
-  fpt: '*'
+  fpt: "*"
 children:
   - /overview
   - /getting-started
@@ -46,4 +46,3 @@ children:
   - /troubleshooting
   - /guides
 ---
-
