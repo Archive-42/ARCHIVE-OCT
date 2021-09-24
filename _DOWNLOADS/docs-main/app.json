@@ -5,9 +5,7 @@
     "ENABLED_LANGUAGES": "en",
     "WEB_CONCURRENCY": "1"
   },
-  "buildpacks": [
-    { "url": "heroku/nodejs" }
-  ],
+  "buildpacks": [{ "url": "heroku/nodejs" }],
   "formation": {
     "web": {
       "quantity": 1,
