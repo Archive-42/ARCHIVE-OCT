@@ -1,7 +1,6 @@
 Bookmarks
 
-Bookmarks
-=========
+# Bookmarks
 
 ### Bookmarks bar {add_date="1605735900" last_modified="1632323238" personal_toolbar_folder="true"}
 
@@ -22,10 +21,10 @@ DEV](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 
 ### Webdev {add_date="1607776570" last_modified="1613202416"}
 
-[AddToAny](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+[AddToAny](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [App Academy
 Open](https://open.appacademy.io/learn/js-py---sep-2020-online/week-11-sep-2020-online/define-table)
@@ -33,7 +32,7 @@ Open](https://open.appacademy.io/learn/js-py---sep-2020-online/week-11-sep-2020-
 ### New Folder {add_date="1607781903" last_modified="1632323210"}
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 ### New folder {add_date="1624476061" last_modified="1632323723"}
 
@@ -183,8 +182,8 @@ CodeSandbox](https://codesandbox.io/s/quizzical-dijkstra-bf2u5)
 [GitHub - bgoonz/INTERVIEW-PREP-COMPLETE:
 INTERVIEW-PREP-ARCHIVE](https://github.com/bgoonz/INTERVIEW-PREP-COMPLETE)
 
-[Welcome to Lambda School's Admissions Process! - bryan.guner@gmail.com
--
+## [Welcome to Lambda School's Admissions Process! - bryan.guner@gmail.com
+
 Gmail](https://mail.google.com/mail/u/0/#inbox/FMfcgxwLswLjSTtmtXkMJCzTlzTNwxfq)
 
 [Action Required: Bryan, Register for Lambda Launch! -
@@ -310,7 +309,7 @@ Splice](https://splice.com/features/sounds)
 [Download Splice | Splice](https://splice.com/download)
 
 [Splice (platform) -
-Wikipedia](https://en.wikipedia.org/wiki/Splice_(platform)#:~:text=Splice%20is%20a%20cloud%2Dbased,well%20as%20visualization%20of%20the)
+Wikipedia](<https://en.wikipedia.org/wiki/Splice_(platform)#:~:text=Splice%20is%20a%20cloud%2Dbased,well%20as%20visualization%20of%20the>)
 
 [jupyter/notebook: Jupyter Interactive
 Notebook](https://github.com/jupyter/notebook)
@@ -336,7 +335,7 @@ Overflow](https://stackoverflow.com/questions/29045140/env-bash-r-no-such-file-o
 [Lambda/.gitignore at master ·
 bgoonz/Lambda](https://github.com/bgoonz/Lambda/blob/master/.gitignore)
 
-[Web-Dev-Collaborative/ARCHIVE\_MAIN](https://github.com/Web-Dev-Collaborative/ARCHIVE_MAIN)
+[Web-Dev-Collaborative/ARCHIVE_MAIN](https://github.com/Web-Dev-Collaborative/ARCHIVE_MAIN)
 
 [Message 'src refspec master does not match any' when pushing commits in
 Git - Stack
@@ -358,7 +357,7 @@ Wang](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Aly
 UP](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Generic%20-%20Hyperspace%20by%20HTML5%20UP&pos=0&uri=http://127.0.0.1:5500/05-misc/repo/ALW93.github.io-master/generic.html)
 
 [(1) Bryan Guner |
-LinkedIn](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=(1)%20Bryan%20Guner%20%7C%20LinkedIn&pos=499.9999694824219&uri=https://www.linkedin.com/in/bryan-guner-046199128/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAB9Z4fYBOjR8mPtiKIcZgX-UFNh5WtKvONE,1607836837160)/)
+LinkedIn](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=(1)%20Bryan%20Guner%20%7C%20LinkedIn&pos=499.9999694824219&uri=https://www.linkedin.com/in/bryan-guner-046199128/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAB9Z4fYBOjR8mPtiKIcZgX-UFNh5WtKvONE,1607836837160)/>)
 
 [1607836819225](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=1607836819225&pos=0&uri=https://media-exp1.licdn.com/dms/document/C562DAQFpcTxXb0OwDQ/profile-treasury-document-pdf-analyzed/0/1607836819225?e=1610848800&v=beta&t=2FsPvNAAutzhgmPcJDS9QyVb2l-WNzViJMRejmrcG40)
 
@@ -386,10 +385,10 @@ Modal](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=In
 Home](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Analytics%20%7C%20Home&pos=0&uri=https://analytics.google.com/analytics/web/#/p258860576/reports/defaulthome?params=_u..nav%3Ddefault)
 
 [(1) Bryan Guner |
-Facebook](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=(1)%20Bryan%20Guner%20%7C%20Facebook&pos=0&uri=https://www.facebook.com/bryan.guner/)
+Facebook](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=(1)%20Bryan%20Guner%20%7C%20Facebook&pos=0&uri=https://www.facebook.com/bryan.guner/>)
 
 [Bryan Guner Music (@bgoonz) • Instagram photos and
-videos](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Bryan%20Guner%20Music%20(%40bgoonz)%20%E2%80%A2%20Instagram%20photos%20and%20videos&pos=0&uri=https://www.instagram.com/bgoonz/)
+videos](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Bryan%20Guner%20Music%20(%40bgoonz)%20%E2%80%A2%20Instagram%20photos%20and%20videos&pos=0&uri=https://www.instagram.com/bgoonz/>)
 
 [Bryan
 Guner](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Bryan%20Guner&pos=2400&uri=http://127.0.0.1:5500/02-portfolios/bgoonz.github.io-master/index.html)
@@ -560,7 +559,7 @@ JavaScript](https://lambdaschool.instructure.com/courses/1173/quizzes/27983?modu
 [Unit 2 Prep - Google
 Docs](https://docs.google.com/document/d/1c9HpSiFUIJc83E-aI2fGJ-RRe2YtqSFZluxDprbW-l8/edit#)
 
-[AudioToText/audio\_to\_text.py at main ·
+[AudioToText/audio_to_text.py at main ·
 Web-Dev-Collaborative/AudioToText](https://github.com/Web-Dev-Collaborative/AudioToText/blob/main/src/audio_to_text.py)
 
 [Trello Auth Success |
@@ -723,7 +722,7 @@ v3.6](https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_word-wrap)
 
 [april12backup.txt](file:///C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/Lambda-Student-Resource-Site/WEEKS/10-miscellaneous/april12backup.txt)
 
-[/NEW\_BOOTCAMP/Lambda/CIRRICULUMN/Lambda-Student-Resource-Site/WEEKS](file:///C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/Lambda-Student-Resource-Site/WEEKS/right.html)
+[/NEW_BOOTCAMP/Lambda/CIRRICULUMN/Lambda-Student-Resource-Site/WEEKS](file:///C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/Lambda-Student-Resource-Site/WEEKS/right.html)
 
 [code.png
 (2372×304)](file:///C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/Lambda-Student-Resource-Site/WEEKS/code.png)
@@ -733,7 +732,7 @@ Application) for windows | Our Code
 World](https://ourcodeworld.com/articles/read/109/how-to-solve-filename-too-long-error-in-git-powershell-and-github-application-for-windows#:~:text=As%20you%20can%20see%2C%20indeed,there's%20a%20limit%20of%20260)
 
 [bgoonz (Bryan C
-Guner)](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=bgoonz%20(Bryan%20C%20Guner)&pos=3000&uri=https://github.com/bgoonz)
+Guner)](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=bgoonz%20(Bryan%20C%20Guner)&pos=3000&uri=https://github.com/bgoonz>)
 
 [github serve markdown as website - Google
 Search](https://www.google.com/search?q=github+serve+markdown+as+website&oq=github+serve+markdown+as+website&aqs=chrome..69i57j69i64.8142j1j7&sourceid=chrome&ie=UTF-8)
@@ -747,7 +746,7 @@ Pages](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=ni
 
 [markserv/markserv: 🏁 serve markdown as html (GitHub style), index
 directories, live-reload as you
-edit](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=markserv%2Fmarkserv%3A%20%F0%9F%8F%81%20serve%20markdown%20as%20html%20(GitHub%20style)%2C%20index%20directories%2C%20live-reload%20as%20you%20edit&pos=0&uri=https://github.com/markserv/markserv)
+edit](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=markserv%2Fmarkserv%3A%20%F0%9F%8F%81%20serve%20markdown%20as%20html%20(GitHub%20style)%2C%20index%20directories%2C%20live-reload%20as%20you%20edit&pos=0&uri=https://github.com/markserv/markserv>)
 
 [bgoonz/Express-basic-server-template](https://github.com/bgoonz/Express-basic-server-template)
 
@@ -857,8 +856,7 @@ Free](http://theglamstreet.com/linkedin-react-js-assessment-answers/)
 [bgoonz/convert-folder-contents-2-website](https://github.com/bgoonz/convert-folder-contents-2-website)
 
 [kumar-abhishek/CS229-Fall-2018-Problem-Solutions: Problem sets
-solutions of Stanford CS229 Fall
-2018.](https://github.com/kumar-abhishek/CS229-Fall-2018-Problem-Solutions)
+solutions of Stanford CS229 Fall 2018.](https://github.com/kumar-abhishek/CS229-Fall-2018-Problem-Solutions)
 
 [| bgoonz | GistLog - Your dev blog
 delivered](https://gistlog.co/bgoonz/d928f0deb01ce93bfd2a6cd70dbc05a6)
@@ -986,7 +984,7 @@ Documentation](https://www.algolia.com/doc/api-reference/widgets/autocomplete/js
 Gatsby](https://www.gatsbyjs.com/docs/adding-search-with-algolia/)
 
 [Snapshot of
-C:\\Users\\bryan\\Downloads\\RESOURCE\_REPO](file:///C:/Users/bryan/Downloads/RESOURCE_REPO/RESOURCE_REPO.html#C:/Users/bryan/Downloads/RESOURCE_REPO)
+C:\\Users\\bryan\\Downloads\\RESOURCE_REPO](file:///C:/Users/bryan/Downloads/RESOURCE_REPO/RESOURCE_REPO.html#C:/Users/bryan/Downloads/RESOURCE_REPO)
 
 [version control - How do I force "git pull" to overwrite local files? -
 Stack
@@ -997,8 +995,8 @@ Search](https://www.google.com/search?q=github+libris+theme&oq=github+libris+the
 
 [Web-Dev-Hub](https://bgoonz-blog.netlify.app/?stackbit=3482d4890e1b69d678d1f55054a7c556b45321a695dbb1c54140dd6029c46013)
 
-[Editing BGOONZ\_BLOG\_2.0/index.md at master ·
-bgoonz/BGOONZ\_BLOG\_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/edit/master/src/pages/index.md)
+[Editing BGOONZ_BLOG_2.0/index.md at master ·
+bgoonz/BGOONZ_BLOG_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/edit/master/src/pages/index.md)
 
 [Login - LambdaTest](https://accounts.lambdatest.com/login)
 
@@ -1080,7 +1078,7 @@ Overflow](https://stackoverflow.com/jobs/companies/spotify#jobs)
 [bgoonz/UsefulResourceRepo2.0](https://github.com/bgoonz/UsefulResourceRepo2.0)
 
 [Snapshot of
-C:\\Users\\bryan\\Downloads\\RESOURCE\_REPO20\\UsefulResourceRepo2.0](https://resourcerepo2.netlify.app/#.)
+C:\\Users\\bryan\\Downloads\\RESOURCE_REPO20\\UsefulResourceRepo2.0](https://resourcerepo2.netlify.app/#.)
 
 [git pull accept all incoming changes - Google
 Search](https://www.google.com/search?q=git+pull+accept+all+incoming+changes&oq=git+pull+accept+all+incoming+changes&aqs=chrome..69i57.4984j0j7&sourceid=chrome&ie=UTF-8)
@@ -1117,8 +1115,9 @@ Edureka](https://www.edureka.co/blog/python-program-to-check-palindrome/)
 JournalDev](https://www.journaldev.com/23647/python-reverse-string)
 
 [c - Checking if a string is a palindrome (CodeSignal test case problem)
+
 - Stack
-Overflow](https://stackoverflow.com/questions/55441788/checking-if-a-string-is-a-palindrome-codesignal-test-case-problem)
+  Overflow](https://stackoverflow.com/questions/55441788/checking-if-a-string-is-a-palindrome-codesignal-test-case-problem)
 
 [javascript - CodeSignal reverseParentheses Failing one case - Stack
 Overflow](https://stackoverflow.com/questions/66501087/codesignal-reverseparentheses-failing-one-case)
@@ -1333,8 +1332,9 @@ bgoonz/Lambda@24c4b3f](https://github.com/bgoonz/Lambda/commit/24c4b3f68cc00d4fe
 Overflow](https://stackoverflow.com/questions/8289805/getting-rid-of-bullet-points-from-ul)
 
 [javascript - Is there a way to change the CSS resize corner's position?
+
 - Stack
-Overflow](https://stackoverflow.com/questions/35702705/is-there-a-way-to-change-the-css-resize-corners-position)
+  Overflow](https://stackoverflow.com/questions/35702705/is-there-a-way-to-change-the-css-resize-corners-position)
 
 [Signed Out |
 Slack](https://webdevresourc-it76430.slack.com/signout/done?return_to_ssb=1)
@@ -1396,7 +1396,7 @@ Examples](https://www.freecodecamp.org/news/node-module-exports-explained-with-j
 [random-static-html-page-deploy/blog.png at master ·
 bgoonz/random-static-html-page-deploy](https://github.com/bgoonz/random-static-html-page-deploy/blob/master/blog.png)
 
-[bgoonz/DATA\_STRUC\_PYTHON\_NOTES](https://github.com/bgoonz/DATA_STRUC_PYTHON_NOTES)
+[bgoonz/DATA_STRUC_PYTHON_NOTES](https://github.com/bgoonz/DATA_STRUC_PYTHON_NOTES)
 
 [Docs](https://bgoonz.github.io/My-Medium-Blog/#C:/MY-WEB-DEV/MEDIUM/My-Medium-Blog)
 
@@ -1437,7 +1437,7 @@ App](https://app.stackbit.com/studio/609b2d7c71a5dd0016f36326/#/docs/articles/de
 
 [(1) Merge pull request \#866 from bgoonz/preview by bgoonz · Pull
 Request \#867 ·
-bgoonz/BGOONZ\_BLOG\_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/867)
+bgoonz/BGOONZ_BLOG_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/867)
 
 [JavaScript Algorithmic Interview Questions And Considerations | by
 Bryan Guner | Aug, 2021 |
@@ -1483,7 +1483,7 @@ Plugin](https://alvarotrigo.com/fullPage/)
 fullPage.js
 https://alvarotrigo.com/react-fullpage/](https://github.com/Web-Dev-Collaborative/react-fullpage)
 
-[Data-Structures-Notes/W7\_filled\_in\_LOs.md at master ·
+[Data-Structures-Notes/W7_filled_in_LOs.md at master ·
 bgoonz/Data-Structures-Notes](https://github.com/bgoonz/Data-Structures-Notes/blob/master/resources/General/W7D4/W7_filled_in_LOs.md)
 
 [bgoonz/Data-Structures-Notes: for anyone who might
@@ -1781,7 +1781,7 @@ Gmail](https://mail.google.com/mail/u/2/#inbox)
 [wasm-event-loop-1nzxlp -
 StackBlitz](https://stackblitz.com/edit/wasm-event-loop-1nzxlp?file=index.js)
 
-[webcontainer-core/Supported\_frameworks.md at main ·
+[webcontainer-core/Supported_frameworks.md at main ·
 stackblitz/webcontainer-core](https://github.com/stackblitz/webcontainer-core/blob/main/Supported_frameworks.md)
 
 [stackblitz/template-gatsby](https://github.com/stackblitz/template-gatsby)
@@ -1883,7 +1883,7 @@ Search](https://www.google.com/search?q=iframe+example&oq=iframe+example&aqs=chr
 [(no subject) - bryan.guner@gmail.com -
 Gmail](https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/lyuba.guner%40gmail.com/QgrcJHsNkdVDgXJmjdtplTQnpsxbXPnsMmb)
 
-[WEBDEVHUB\_2 - Google
+[WEBDEVHUB_2 - Google
 Drive](https://drive.google.com/drive/u/1/folders/1JxZtwBiuuDBOd12d2cJZOc5mmaDg_8OG)
 
 [My Drive - Google Drive](https://drive.google.com/drive/u/4/my-drive)
@@ -1922,7 +1922,7 @@ Overflow](https://stackoverflow.com/questions/36097965/when-to-use-es6-class-bas
 App](https://app.stackbit.com/studio/609b2d7c71a5dd0016f36326#/docs/about/)
 
 [Branches ·
-bgoonz/BGOONZ\_BLOG\_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/branches)
+bgoonz/BGOONZ_BLOG_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/branches)
 
 [bg-portfolio |
 Netlify](https://app.netlify.com/sites/bg-portfolio/overview)
@@ -2002,7 +2002,7 @@ Developer](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#tt
 Search](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=delete%20zzbots%20account%20-%20Google%20Search&pos=0&uri=https://www.google.com/search?rlz=1C1UEAD_enUS928US928&biw=1424&bih=604&sxsrf=ALeKk02McgXWfmHMCixRYelZ3UzwpEQvdg%3A1609829610512&ei=6gz0X83eHsqQ5gLgl4bIBA&q=delete+zzbots+account&oq=delete+zzbots+account&gs_lcp=CgZwc3ktYWIQAzIFCCEQqwI6BAgAEEc6BAgjECc6BAgAEEM6BQguEJECOgUIABCRAjoFCAAQsQM6CwguELEDEMcBEKMCOggILhDJAxCRAjoHCAAQsQMQQzoFCAAQyQM6AggAOgYIABAWEB46CwgAEMkDEBYQChAeOgUIIRCgAToJCAAQyQMQFhAeOggIABAWEAoQHjoHCAAQyQMQDToECAAQDToGCAAQDRAKOgcIIRAKEKABUK8MWNo-YP4_aANwBXgAgAGRAYgBsQ6SAQQyMy4xmAEAoAEBqgEHZ3dzLXdpesgBCMABAQ&sclient=psy-ab&ved=0ahUKEwjN-9TQmoTuAhVKiFkKHeCLAUkQ4dUDCA0&uact=5)
 
 [Inbox (5,059) - bryan.guner@gmail.com -
-Gmail](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Inbox%20(5%2C059)%20-%20bryan.guner%40gmail.com%20-%20Gmail&pos=0&uri=https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox)
+Gmail](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Inbox%20(5%2C059)%20-%20bryan.guner%40gmail.com%20-%20Gmail&pos=0&uri=https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox>)
 
 [Welcome to zzBots :) - gunerb1@tcnj.edu - The College of New Jersey
 Mail](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Welcome%20to%20zzBots%20%3A)%20-%20gunerb1%40tcnj.edu%20-%20The%20College%20of%20New%20Jersey%20Mail&pos=0&uri=https://mail.google.com/mail/u/1/#inbox/FMfcgxwKkRBWKLqFDGPdrGJDZpKLKTDq)
@@ -2091,7 +2091,7 @@ history](https://account.microsoft.com/billing/orders/)
 In Plain English | Oct, 2020 |
 Medium](https://medium.com/javascript-in-plain-english/stop-using-console-log-in-javascript-d29d6c24dc26)
 
-[0\*t6SE511h7v\_N1ask
+[0\*t6SE511h7v_N1ask
 (1200×900)](https://miro.medium.com/max/1200/0*t6SE511h7v_N1ask)
 
 [New Tab](chrome://newtab/)
@@ -2178,7 +2178,7 @@ MongoDB](https://www.mongodb.com/2)
 
 [www.jetbrains.com](https://www.jetbrains.com/webstorm/download/download-thanks.html?platform=windows)
 
-[Web-Dev-Collaborative/model\_search](https://github.com/Web-Dev-Collaborative/model_search)
+[Web-Dev-Collaborative/model_search](https://github.com/Web-Dev-Collaborative/model_search)
 
 [Deploy details | Bryan C Guner's
 team](https://app.netlify.com/teams/bgoonz/builds/607b62ee00743749d76d235e)
@@ -2234,7 +2234,7 @@ Pluralsight](https://www.pluralsight.com/guides/javascript-closures)
 example - Stack
 Overflow](https://stackoverflow.com/questions/31454474/understanding-private-variables-closure-in-javascript-with-specific-example)
 
-[pr2\_whiteboarding-closures.md -
+[pr2_whiteboarding-closures.md -
 OneDrive](https://onedrive.live.com/?cid=D21009FDD967A241&id=D21009FDD967A241%21337463&parId=D21009FDD967A241%21336808&o=OneUp)
 
 [increment - ++someVariable vs. someVariable++ in JavaScript - Stack
@@ -2507,7 +2507,7 @@ Platform](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl
 Marketplace](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=html-progressbar%20-%20Visual%20Studio%20Marketplace&pos=0&uri=https://marketplace.visualstudio.com/items?itemName=congnguyendinh0.html-progressbar)
 
 [iamshipon1988 (Sazzad
-Hossain)](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=iamshipon1988%20(Sazzad%20Hossain)&pos=0&uri=https://github.com/iamshipon1988)
+Hossain)](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=iamshipon1988%20(Sazzad%20Hossain)&pos=0&uri=https://github.com/iamshipon1988>)
 
 [iamshipon1988/crossway: An open-source block-based template
 system.](https://github.com/iamshipon1988/crossway)
@@ -2526,10 +2526,10 @@ Columns](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=
 
 [Prinzhorn/skrollr: Stand-alone parallax scrolling library for mobile
 (Android + iOS) and desktop. No jQuery. Just plain JavaScript (and some
-love).](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Prinzhorn%2Fskrollr%3A%20Stand-alone%20parallax%20scrolling%20library%20for%20mobile%20(Android%20%2B%20iOS)%20and%20desktop.%20No%20jQuery.%20Just%20plain%20JavaScript%20(and%20some%20love).&pos=0&uri=https://github.com/Prinzhorn/skrollr)
+love).](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Prinzhorn%2Fskrollr%3A%20Stand-alone%20parallax%20scrolling%20library%20for%20mobile%20(Android%20%2B%20iOS)%20and%20desktop.%20No%20jQuery.%20Just%20plain%20JavaScript%20(and%20some%20love).&pos=0&uri=https://github.com/Prinzhorn/skrollr>)
 
 [Prinzhorn (Alexander Prinzhorn) /
-Repositories](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Prinzhorn%20(Alexander%20Prinzhorn)%20%2F%20Repositories&pos=4296.29638671875&uri=https://github.com/Prinzhorn?tab=repositories)
+Repositories](<chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Prinzhorn%20(Alexander%20Prinzhorn)%20%2F%20Repositories&pos=4296.29638671875&uri=https://github.com/Prinzhorn?tab=repositories>)
 
 [Classic parallax
 page](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Classic%20parallax%20page&pos=1979.423828125&uri=http://prinzhorn.github.io/skrollr/examples/classic.html)
@@ -2616,7 +2616,7 @@ Grid](https://bgoonz-games.netlify.app/)
 App](https://app.stackbit.com/studio/609b2d7c71a5dd0016f36326#/docs/gallery)
 
 [(2) hi by bgoonz · Pull Request \#400 ·
-bgoonz/BGOONZ\_BLOG\_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/400)
+bgoonz/BGOONZ_BLOG_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/400)
 
 [Web Dev Hub](https://bgoonz-blog.netlify.app/docs)
 
@@ -2703,7 +2703,7 @@ Web-Dev-Collaborative/portfolio-website](https://github.com/Web-Dev-Collaborativ
 [DOM Tips and Techniques: Parent, Child, and Siblings -
 SitePoint](https://www.sitepoint.com/dom-tips-techniques-parent-child-siblings/)
 
-[C:/MY-WEB-DEV/\_\_Projects/Medium\_Articles](https://modest-booth-4e17df.netlify.app/directory.html)
+[C:/MY-WEB-DEV/\_\_Projects/Medium_Articles](https://modest-booth-4e17df.netlify.app/directory.html)
 
 [PostgreSQL Setup For Windows &
 WSL/Ubuntu](https://modest-booth-4e17df.netlify.app/originals/2021-03-06_postgresql-setup-for-windows---wsl-ubuntu-801672ab7089)
@@ -2971,9 +2971,9 @@ Gallery](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=
 [D3.js Boxplot with Axes and Labels -
 bl.ocks.org](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=D3.js%20Boxplot%20with%20Axes%20and%20Labels%20-%20bl.ocks.org&pos=0&uri=http://bl.ocks.org/anaeliaovalle/60a7ed1f4e55a9052caab3c69668a306)
 
-[127.0.0.1:5501/D3-graph-gallery-master/html\_chunk/menu.html](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=127.0.0.1%3A5501%2FD3-graph-gallery-master%2Fhtml_chunk%2Fmenu.html&pos=0&uri=http://127.0.0.1:5501/D3-graph-gallery-master/html_chunk/menu.html)
+[127.0.0.1:5501/D3-graph-gallery-master/html_chunk/menu.html](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=127.0.0.1%3A5501%2FD3-graph-gallery-master%2Fhtml_chunk%2Fmenu.html&pos=0&uri=http://127.0.0.1:5501/D3-graph-gallery-master/html_chunk/menu.html)
 
-[127.0.0.1:5501/D3-graph-gallery-master/html\_chunk/menu\_modal.html](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=127.0.0.1%3A5501%2FD3-graph-gallery-master%2Fhtml_chunk%2Fmenu_modal.html&pos=266.6666564941406&uri=http://127.0.0.1:5501/D3-graph-gallery-master/html_chunk/menu_modal.html)
+[127.0.0.1:5501/D3-graph-gallery-master/html_chunk/menu_modal.html](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=127.0.0.1%3A5501%2FD3-graph-gallery-master%2Fhtml_chunk%2Fmenu_modal.html&pos=266.6666564941406&uri=http://127.0.0.1:5501/D3-graph-gallery-master/html_chunk/menu_modal.html)
 
 [Start Confirmation | Font
 Awesome](https://fontawesome.com/start/confirm)
@@ -2999,7 +2999,7 @@ Bootstrap](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#tt
 [Free Bootstrap Themes, Templates, Snippets, and Guides - Start
 Bootstrap](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Free%20Bootstrap%20Themes%2C%20Templates%2C%20Snippets%2C%20and%20Guides%20-%20Start%20Bootstrap&pos=0&uri=https://startbootstrap.com/)
 
-[127.0.0.1:5501/02-cloned-repos/\_web\_dev\_tools/\_Html-Templates/startbootstrap-master/templates/admin-dashboard.html](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=127.0.0.1%3A5501%2F02-cloned-repos%2F_web_dev_tools%2F_Html-Templates%2Fstartbootstrap-master%2Ftemplates%2Fadmin-dashboard.html&pos=0&uri=http://127.0.0.1:5501/02-cloned-repos/_web_dev_tools/_Html-Templates/startbootstrap-master/templates/admin-dashboard.html)
+[127.0.0.1:5501/02-cloned-repos/\_web_dev_tools/\_Html-Templates/startbootstrap-master/templates/admin-dashboard.html](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=127.0.0.1%3A5501%2F02-cloned-repos%2F_web_dev_tools%2F_Html-Templates%2Fstartbootstrap-master%2Ftemplates%2Fadmin-dashboard.html&pos=0&uri=http://127.0.0.1:5501/02-cloned-repos/_web_dev_tools/_Html-Templates/startbootstrap-master/templates/admin-dashboard.html)
 
 [Mongodb - Google
 Search](chrome-extension://klbibkeccnjlkjkiokjodocebajanakg/suspended.html#ttl=Mongodb%20-%20Google%20Search&pos=0&uri=https://www.google.com/search?rlz=1C1UEAD_enUS928US928&sxsrf=ALeKk03jA2xWewWzMXp36sg1DiEghNxcjw%3A1610735181489&ei=Td4BYIWBHbGl_QaqsbvACA&q=Mongodb&oq=Mongodb&gs_lcp=CgZwc3ktYWIQAzIICAAQyQMQkQIyBwgAELEDEEMyBwgAEEMQiwMyCggAELEDEEMQiwMyCggAELEDEEMQiwMyCAgAELEDEIsDMgUIABCLAzILCAAQsQMQgwEQiwMyCAgAELEDEIsDMggIABCxAxCLAzoECAAQRzoECCMQJzoECAAQQzoICC4QxwEQowI6CAgAELEDEIMBOgsILhCxAxDHARCjAjoCCAA6BQgAEJECOgsILhCLAxCoAxCjAzoFCC4QiwM6EQguEMcBEKMCEIsDEKgDEKcDOggILhCxAxCLAzoOCC4QsQMQiwMQqAMQnwM6DgguELEDEIsDEKgDEJ0DUPdXWNJoYMJxaABwBXgAgAFhiAHNBJIBATeYAQCgAQGqAQdnd3Mtd2l6yAEIuAEDwAEB&sclient=psy-ab&ved=0ahUKEwjF28aSyJ7uAhWxUt8KHarYDogQ4dUDCA0&uact=5)
@@ -3186,7 +3186,7 @@ IT](https://www.londonacademyofit.co.uk/blog/add-like-button-blogposts-simple-ja
 [londonacademyofit/like-button](https://github.com/londonacademyofit/like-button)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 ### saturday-nia {add_date="1613203505" last_modified="1613203505"}
 
@@ -3208,7 +3208,7 @@ Ubuntu](https://ostechnix.com/simple-script-setup-development-environment-ubuntu
 [How To Install Development Tools In Linux -
 OSTechNix](https://ostechnix.com/install-development-tools-linux/)
 
-[https://raw.githubusercontent.com/sojharo/mangi-script/master/my\_ubuntu\_setup.sh](https://raw.githubusercontent.com/sojharo/mangi-script/master/my_ubuntu_setup.sh)
+[https://raw.githubusercontent.com/sojharo/mangi-script/master/my_ubuntu_setup.sh](https://raw.githubusercontent.com/sojharo/mangi-script/master/my_ubuntu_setup.sh)
 
 [Useful shell scripts for web design/web dev? :
 webdev](https://www.reddit.com/r/webdev/comments/3csye3/useful_shell_scripts_for_web_designweb_dev/)
@@ -3326,7 +3326,7 @@ JetBrains](https://www.jetbrains.com/webstorm/promo/?gclid=Cj0KCQiA962BBhCzARIsA
 [JavaScript Editor and Cleaner - 𝗧𝗛𝗘 𝗕𝗘𝗦𝗧 𝗢𝗡𝗟𝗜𝗡𝗘 𝗝𝗦 𝗖𝗢𝗗𝗘
 𝗖𝗢𝗠𝗣𝗢𝗭𝗘𝗥](https://html-css-js.com/js/editor/)
 
-[How to Fix ERR\_SSL\_PROTOCOL\_ERROR on Google
+[How to Fix ERR_SSL_PROTOCOL_ERROR on Google
 Chrome](https://www.thesslstore.com/blog/fix-err-ssl-protocol-error/)
 
 ### New AWS {add_date="1613764492" last_modified="1614890093"}
@@ -3514,8 +3514,9 @@ Heroku](https://dashboard.heroku.com/apps/node-react-ecommerce42/resources)
 Center](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup)
 
 [ubuntu - Postgresql: password authentication failed for user "postgres"
+
 - Stack
-Overflow](https://stackoverflow.com/questions/7695962/postgresql-password-authentication-failed-for-user-postgres)
+  Overflow](https://stackoverflow.com/questions/7695962/postgresql-password-authentication-failed-for-user-postgres)
 
 [Bash-Snippets - Useful BASH Scripts For Heavy Commandline
 Users](https://ostechnix.com/collection-useful-bash-scripts-heavy-commandline-users/)
@@ -3639,7 +3640,7 @@ EDB](https://www.enterprisedb.com/thank-you-creating-account)
 
 [Samuel messaged you](https://www.facebook.com/mihirishere)
 
-[bgoonz/Mihir\_Beg\_Final](https://github.com/bgoonz/Mihir_Beg_Final)
+[bgoonz/Mihir_Beg_Final](https://github.com/bgoonz/Mihir_Beg_Final)
 
 [16 website templates for musicians and bands | Bandzoogle
 Blog](https://bandzoogle.com/blog/16-website-templates-for-musicians-and-bands)
@@ -3785,7 +3786,7 @@ Snippets](https://speckyboy.com/css-javascript-text-animation-snippets/)
 
 [Simple Typing Carousel](https://codepen.io/bgoonz/pen/ExZvGoZ)
 
-[C:/NEW\_BOOTCAMP/Lambda/CIRRICULUMN/w-01](file:///C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/w-01/directory.html)
+[C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/w-01](file:///C:/NEW_BOOTCAMP/Lambda/CIRRICULUMN/w-01/directory.html)
 
 [HTML to Markdown Converter - Markdown Editor - Online - Browserling Web
 Developer Tools](https://www.browserling.com/tools/html-to-markdown)
@@ -3848,7 +3849,7 @@ development environments.](https://github.com/gitpod-io/gitpod)
 [CyberArmy HeadQuarters](https://www.ca-zeb.com/)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes')){location.href=f+'jump=yes';};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes')){location.href=f+'jump=yes';};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [Coding
 Rooms](https://app.codingrooms.com/management/courses/1811/questions)
@@ -3857,7 +3858,7 @@ Rooms](https://app.codingrooms.com/management/courses/1811/questions)
 documentation](https://nbconvert.readthedocs.io/en/latest/usage.html#convert-html)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){%20f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);%20a=function(){%20if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes')){%20location.href=f+'jump=yes';%20};%20if(/Firefox/.test(navigator.userAgent)){%20setTimeout(a,0)%20}%20else{%20a()%20}%20})())
+Bookmarks!](<javascript:(function(){%20f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);%20a=function(){%20if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes')){%20location.href=f+'jump=yes';%20};%20if(/Firefox/.test(navigator.userAgent)){%20setTimeout(a,0)%20}%20else{%20a()%20}%20})()>)
 
 ### july-2021 {add_date="1625328852" last_modified="1625328870"}
 
@@ -3945,7 +3946,7 @@ git://git.joeyh.name/moreutils](https://github.com/stigtsp/moreutils)
 stories
 get](https://www.freecodecamp.org/news/how-i-analyzed-a-million-medium-articles-to-learn-how-many-claps-great-stories-get-d688cf92759f/)
 
-[harrisonjansma/2020\_Notes: A collection of notes regarding various
+[harrisonjansma/2020_Notes: A collection of notes regarding various
 topics. (Bash, PyTorch, Spark,
 etc.)](https://github.com/harrisonjansma/2020_Notes)
 
@@ -4035,18 +4036,18 @@ Overflow](https://stackoverflow.com/questions/40986340/how-to-wget-a-list-of-url
 focus on blogging.](https://github.com/bgoonz/blog-templates)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){%20f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);%20a=function(){%20if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes')){%20location.href=f+'jump=yes';%20};%20if(/Firefox/.test(navigator.userAgent)){%20setTimeout(a,0)%20}%20else{%20a()%20}%20})())
+Bookmarks!](<javascript:(function(){%20f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);%20a=function(){%20if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes')){%20location.href=f+'jump=yes';%20};%20if(/Firefox/.test(navigator.userAgent)){%20setTimeout(a,0)%20}%20else{%20a()%20}%20})()>)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
-[AddToAny](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+[AddToAny](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [Network Graph ·
 bgoonz/web-dev-notes-resource-site](https://github.com/bgoonz/web-dev-notes-resource-site/network)
@@ -4173,7 +4174,7 @@ Visualization](https://www.cs.usfca.edu/~galles/visualization/source.html)
 [Oct-JSX and React Router Intro October on
 Vimeo](https://vimeo.com/499765814/af0e465cbd)
 
-### JOB\_SEARCH {add_date="1613867508" last_modified="1632324238"}
+### JOB_SEARCH {add_date="1613867508" last_modified="1632324238"}
 
 [Data Structures and Algorithm: Towers of
 Hanoi](http://www.dsalgo.com/2013/02/towers-of-hanoi.html)
@@ -4260,13 +4261,13 @@ Visualizations](https://developers.google.com/datastudio/visualization/define-co
 [Build your first WebAuthn
 app](https://codelabs.developers.google.com/codelabs/webauthn-reauth#1)
 
-[Glitch :･ﾟ✧](https://glitch.com/edit/#!/entertaining-night-garment)
+[Glitch :･ﾟ ✧](https://glitch.com/edit/#!/entertaining-night-garment)
 
 [Glitch
-:･ﾟ✧](https://glitch.com/edit/#!/planet-sore-dragon?path=.env%3A1%3A0)
+:･ﾟ ✧](https://glitch.com/edit/#!/planet-sore-dragon?path=.env%3A1%3A0)
 
 [Glitch
-:･ﾟ✧](https://glitch.com/edit/#!/planet-sore-dragon?path=README.md%3A1%3A0)
+:･ﾟ ✧](https://glitch.com/edit/#!/planet-sore-dragon?path=README.md%3A1%3A0)
 
 [Projects 💻 | Four Ton Fish](https://fourtonfish.com/projects/)
 
@@ -4290,7 +4291,7 @@ Designer](https://us-west-2.console.aws.amazon.com/cloudformation/designer/home?
 [Swagger
 UI](http://www.employee-at-will.com/swagger-ui.html#/web-mvc-links-handler)
 
-### AWESOME\_BLOGS {add_date="1614250544" last_modified="1614260007"}
+### AWESOME_BLOGS {add_date="1614250544" last_modified="1614260007"}
 
 [Implementing OAuth 2.0 with Node.js
 🔐](https://www.sohamkamani.com/blog/javascript/2018-06-24-oauth-with-node-js/)
@@ -4755,7 +4756,7 @@ Search](https://www.google.com/search?q=contentful&oq=contentful&aqs=chrome..69i
 [Login Verification |
 Mailchimp](https://us6.admin.mailchimp.com/login/verify/)
 
-### BUILD\_WEEK {add_date="1624310148" last_modified="1624310362"}
+### BUILD_WEEK {add_date="1624310148" last_modified="1624310362"}
 
 [React App](https://painlesspotlucks.vercel.app/login)
 
@@ -4763,7 +4764,7 @@ Mailchimp](https://us6.admin.mailchimp.com/login/verify/)
 
 ### lambda-interview {add_date="1627522721" last_modified="1627522721"}
 
-### LAMBDA-BUILD\_WEEK {add_date="1627578085" last_modified="1627699584"}
+### LAMBDA-BUILD_WEEK {add_date="1627578085" last_modified="1627699584"}
 
 ### New folder {add_date="1627578085" last_modified="1627578085"}
 
@@ -4835,7 +4836,7 @@ js-interview-questions.md](https://gist.github.com/bgoonz/f7a563ef575fdbfb529280
 
 [bgoonz/python-gitbook](https://github.com/bgoonz/python-gitbook)
 
-[DATA\_STRUC\_PYTHON\_NOTES-3 -
+[DATA_STRUC_PYTHON_NOTES-3 -
 Replit](https://replit.com/@bgoonz/DATASTRUCPYTHONNOTES-3#GCA-prep.py)
 
 [New Tab](chrome://newtab/)
@@ -4927,7 +4928,7 @@ Accounts](https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?response_
 [Cloud
 Shell](https://shell.cloud.google.com/?walkthrough_tutorial_id=cloud_run_cloud_code_create_service&show=ide&environment_deployment=ide)
 
-[Technologies Used.md · bgoonz/BGOONZ\_BLOG\_2.0
+[Technologies Used.md · bgoonz/BGOONZ_BLOG_2.0
 Wiki](https://github.com/bgoonz/BGOONZ_BLOG_2.0/wiki/Technologies-Used.md)
 
 [Sign in - Google
@@ -4948,13 +4949,13 @@ SDK!](https://cloud.google.com/sdk/auth_success)
 App](https://app.stackbit.com/studio/609b2d7c71a5dd0016f36326#/blog/interview-questions-js)
 
 [(2) hi by bgoonz · Pull Request \#882 ·
-bgoonz/BGOONZ\_BLOG\_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/882)
+bgoonz/BGOONZ_BLOG_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/882)
 
 [Quick-Post-Blog - Stackbit
 App](https://app.stackbit.com/studio/60c3546f52e5bb0019dcbea4)
 
 [(1) interview-questions-js.md: added by bgoonz · Pull Request \#881 ·
-bgoonz/BGOONZ\_BLOG\_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/881)
+bgoonz/BGOONZ_BLOG_2.0](https://github.com/bgoonz/BGOONZ_BLOG_2.0/pull/881)
 
 [Create function from prototype – Cloud Functions – My Project 78672 –
 Google Cloud
@@ -5069,8 +5070,9 @@ AddToAny](https://www.addtoany.com/buttons/customize/static_menu)
 [VvvebJs](http://www.vvveb.com/vvvebjs/editor.html)
 
 [Community - Competitive Programming - Competitive Programming Tutorials
+
 - The Importance of
-Algorithms](https://www.topcoder.com/community/competitive-programming/tutorials/the-importance-of-algorithms/)
+  Algorithms](https://www.topcoder.com/community/competitive-programming/tutorials/the-importance-of-algorithms/)
 
 [Learnable Programming
 Patterns](https://maggieappleton.com/learnable-programming)
@@ -5122,8 +5124,9 @@ USA](https://kathyguner.norwex.biz/en_US/customer/shop/Household)
 Linktree](https://linktr.ee/ToxicFreeSimplyClean)
 
 [Convert HTML CSS Code into React App using React Fundamentals Knowledge
+
 - DEV
-Community](https://dev.to/alidhuniya/convert-html-css-code-into-react-app-using-react-fundamentals-knowledge-hl)
+  Community](https://dev.to/alidhuniya/convert-html-css-code-into-react-app-using-react-fundamentals-knowledge-hl)
 
 [https://raw.githubusercontent.com/bgoonz/styling-templates/master/bootstrap3/assets/css/bootstrap.min.css](https://raw.githubusercontent.com/bgoonz/styling-templates/master/bootstrap3/assets/css/bootstrap.min.css)
 
@@ -5283,7 +5286,7 @@ USA](https://kathyguner.norwex.biz/en_US/customer/our-heritage)
 USA](https://kathyguner.norwex.biz/en_US/customer/pages/social-responsibility)
 
 [CSS from
-https://shopus.norwex.biz/en\_US/customer/shop/Best\_Sellers](chrome-extension://bfbameneiokkgbdmiekhjnmfkcnldhhm/generated/view-css.html#style-sheet-1)
+https://shopus.norwex.biz/en_US/customer/shop/Best_Sellers](chrome-extension://bfbameneiokkgbdmiekhjnmfkcnldhhm/generated/view-css.html#style-sheet-1)
 
 [Stripe: Sign
 in](https://dashboard.stripe.com/login?redirect=%2Fauth_stripecli)
@@ -5604,7 +5607,7 @@ Hub](file:///C:/MY-WEB-DEV/08-my-website/_Outer-STABLE/Stable/core-site/index.ht
 [CSS
 Animation](file:///C:/MY-WEB-DEV/__Projects/Medium_Articles/temp/background.html)
 
-[bgoonz/Medium\_Articles](https://github.com/bgoonz/Medium_Articles)
+[bgoonz/Medium_Articles](https://github.com/bgoonz/Medium_Articles)
 
 [link button styling - Yahoo Search
 Results](https://search.yahoo.com/yhs/search?hspart=dcola&hsimp=yhs-005&type=gsp_dimensions_00_00_--x1-114-x2-24--&param1=1&param2=cat%3Dweb%26sesid%3D1426835008e3cd4eadb4b6b4452cab46%26ip%3D173.70.97.51%26b%3DChrome%26bv%3D89.0.4389.82%26os%3DWindows-10%26os_ver%3D10.0%26pa%3Dgencoll05%26sid%3D41e8bf4292de97ad3c9b7818adf3c19c%26abid%3D%26abg%3D%26a%3Dgsp_dimensions_00_00_--x1-114-x2-24--%26sdk_ver%3D%26cd%3D%26cr%3D%26uid%3D%26uref%3D&p=link+button+styling)
@@ -5705,8 +5708,7 @@ Tim](https://github.com/creativetimofficial?ref=adr-documentation-header)
 Fred de Villamil 🙈 🙉 🙊 | Fred
 Thoughts](https://thoughts.t37.net/merging-2-different-git-repositories-without-losing-your-history-de7a06bba804)
 
-[Online Video Cutter - Cut Video, Cut MP4, AVI, MPG, 3GP
--](https://online-video-cutter.com/)
+[Online Video Cutter - Cut Video, Cut MP4, AVI, MPG, 3GP -](https://online-video-cutter.com/)
 
 [New Page ‹ Web Development Resources Site —
 WordPress.com](https://wordpress.com/page/web-dev-hub.com?site=5)
@@ -5763,7 +5765,7 @@ exercises](https://pgexercises.com/questions/basic/selectall.html)
 [PostgreSQL Exercises](https://pgexercises.com/gettingstarted.html)
 
 [bgoonz/python
-(draw\_chirp.py)](https://codedown.io/bgoonz/python/?document=draw_chirp.py)
+(draw_chirp.py)](https://codedown.io/bgoonz/python/?document=draw_chirp.py)
 
 [web.dev](https://web.dev/)
 
@@ -6257,8 +6259,9 @@ DEV](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
 ### capstone project {add_date="1605736030" last_modified="1605736030"}
 
 [Pure Data is running in the browser, for free Web-based sound patching
+
 - CDM Create Digital
-Music](https://cdm.link/2020/10/pure-data-is-running-in-the-browser-for-free-web-based-sound-patching/)
+  Music](https://cdm.link/2020/10/pure-data-is-running-in-the-browser-for-free-web-based-sound-patching/)
 
 [Jack Routing (multichannel and browser audio) — Pd Community
 Site](https://puredata.info/docs/JackRoutingMultichannelAndBrowserAudio/)
@@ -6348,10 +6351,10 @@ Documentation](https://faustdoc.grame.fr/examples/ambisonics/)
 [WTForms — WTForms Documentation
 (2.3.x)](https://wtforms.readthedocs.io/en/2.3.x/)
 
-[AddToAny](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+[AddToAny](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [Drag to Bookmarks to add to
-Bookmarks!](javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})())
+Bookmarks!](<javascript:(function(){f='https://www.addtoany.com/share#url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title);a=function(){if(!window.open(f,'addtoany','width=800,height=600,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()>)
 
 [nj 4321-4 unemployment - Google
 Search](https://www.google.com/search?sxsrf=ALeKk01YYJ6V9jxHXuosnzvJqlR1KuTO4Q:1612569094913&q=nj+4321-4+unemployment&spell=1&sa=X&ved=2ahUKEwjYqs-A-NPuAhUXFVkFHecTDRwQBSgAegQICRAw)
@@ -6371,8 +6374,9 @@ command.](https://github.com/facebook/create-react-app)
 main](https://github.com/bgoonz/React-Components-Insta-Clone/tree/main)
 
 [Objective 1 - explain what side effects are in React components: WEB43
+
 - 2.2 - Intro to
-React](https://lambdaschool.instructure.com/courses/1145/pages/objective-1-explain-what-side-effects-are-in-react-components?module_item_id=583442)
+  React](https://lambdaschool.instructure.com/courses/1145/pages/objective-1-explain-what-side-effects-are-in-react-components?module_item_id=583442)
 
 [React-Resources -
 lambda-website](https://app.gitbook.com/@bryan-guner/s/lambda-website/react-md/react-resources/~/settings/share)
@@ -6403,7 +6407,7 @@ project-showcase-bgoonz](https://app.netlify.com/teams/bgoonz)
 [facebook/react-native-website: The site and docs for React
 Native](https://github.com/facebook/react-native-website)
 
-[massoudmaboudi/datagit\_v2.docusaurus](https://github.com/massoudmaboudi/datagit_v2.docusaurus)
+[massoudmaboudi/datagit_v2.docusaurus](https://github.com/massoudmaboudi/datagit_v2.docusaurus)
 
 [infinum/eightshift-docs: A documentation website for Eightshift open
 source projects](https://github.com/infinum/eightshift-docs)
@@ -6414,7 +6418,7 @@ Docusaurus](https://docusaurus.io/)
 [docsearch-website/index.js at master ·
 algolia/docsearch-website](https://github.com/algolia/docsearch-website/blob/master/src/pages/index.js)
 
-[bgoonz/BGOONZ\_BLOG\_2.0: Jamstack site created with
+[bgoonz/BGOONZ_BLOG_2.0: Jamstack site created with
 Stackbit](https://github.com/bgoonz/BGOONZ_BLOG_2.0)
 
 [Stackbit
@@ -6438,5 +6442,3 @@ Tool](https://codebeautify.org/javascript-escape-unescape)
 [Merge MD files](https://products.aspose.app/words/merger/md)
 
 [HTML Link Code](https://www.quackit.com/html/codes/html_link_code.cfm)
-
-

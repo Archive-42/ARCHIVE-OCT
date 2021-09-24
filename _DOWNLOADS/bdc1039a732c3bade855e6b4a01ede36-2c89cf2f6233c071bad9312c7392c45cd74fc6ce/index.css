@@ -3,10 +3,11 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-button, input[type="text"] {
+button,
+input[type="text"] {
   padding: 5px;
 }
 
